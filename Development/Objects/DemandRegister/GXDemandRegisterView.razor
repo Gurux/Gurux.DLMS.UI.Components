@@ -1,0 +1,58 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSDemandRegister>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Demand Register Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="Current Average" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="Last Average" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" Part="0" InputKind="scaler" Label="Scaler" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="4" Part="1" Label="Unit" Enabled="CanEditAttribute(4)" EnumType="typeof(Unit)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="Status" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="Capture Time" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="Current Start Time" Enabled="CanEditAttribute(7)" />
+    <GXAttributeField Edit="Edit" Index="8" Label="Period" Enabled="CanEditAttribute(8)" />
+    <GXAttributeField Edit="Edit" Index="9" Label="Number of Periods" Enabled="CanEditAttribute(9)" />
+    <fieldset><legend>Methods</legend>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="NextPeriodAsync">Next Period</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    public Task NextPeriodAsync() => InvokeMethodAsync(2, client => Target.NextPeriod(client));
+}

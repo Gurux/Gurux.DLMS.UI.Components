@@ -1,0 +1,124 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSSchedule>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Schedule Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "bool", "logicalname", "number", "datetime", "number", "text", "text", "datetime", "datetime" })" Label="Entries" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Index", "Enable", "Logical Name", "Selector", "Switch time", "Validity Window", "Exec weekdays", "Exec spec days", "Begin", "End" })" CreateRow="@(() => new GXStructure { (ushort)1, true, new byte[6], (ushort)0, new byte[4], (ushort)0, new GXBitString("0000000"), new GXBitString("0"), new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } })" />
+    <fieldset><legend>Methods</legend>
+    <GXValueField Label="Entry index" Value="@EntryIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => EntryIndex = value" Validate="text => ValidateParameter(nameof(EntryIndex), text)" />
+    <GXValueField Label="Entry enabled" InputKind="bool" Value="@EntryEnabled.ToString()" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" OnCommit="value => EntryEnabled = bool.Parse(value)" Validate="@(text => bool.TryParse(text, out _) ? null : "Enter True or False.")" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SetEnabledAsync">Apply enable / disable</GXButton>
+    <GXValueField Label="Script logical name" Value="@ScriptLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ScriptLogicalName = value" Validate="text => ValidateParameter(nameof(ScriptLogicalName), text)" />
+    <GXValueField Label="Script selector" Value="@ScriptSelector" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ScriptSelector = value" Validate="text => ValidateParameter(nameof(ScriptSelector), text)" />
+    <GXValueField Label="Switch time (HH:mm:ss)" Value="@SwitchTime" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => SwitchTime = value" Validate="text => ValidateParameter(nameof(SwitchTime), text)" />
+    <GXValueField Label="Validity window" Value="@ValidityWindow" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ValidityWindow = value" Validate="text => ValidateParameter(nameof(ValidityWindow), text)" />
+    <GXValueField Label="Weekday flags (0–127)" Value="@ExecWeekdays" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ExecWeekdays = value" Validate="text => ValidateParameter(nameof(ExecWeekdays), text)" />
+    <GXValueField Label="Special day bit string" Value="@ExecSpecialDays" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ExecSpecialDays = value" Validate="text => ValidateParameter(nameof(ExecSpecialDays), text)" />
+    <GXValueField Label="Begin date (yyyy-MM-dd)" Value="@BeginDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => BeginDate = value" Validate="text => ValidateParameter(nameof(BeginDate), text)" />
+    <GXValueField Label="End date (yyyy-MM-dd)" Value="@EndDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => EndDate = value" Validate="text => ValidateParameter(nameof(EndDate), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="InsertAsync">Insert entry</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="DeleteAsync">Delete entry</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string EntryIndex { get; set; } = string.Empty;
+    public bool EntryEnabled { get; set; }
+    public string ScriptLogicalName { get; set; } = string.Empty;
+    public string ScriptSelector { get; set; } = string.Empty;
+    public string SwitchTime { get; set; } = string.Empty;
+    public string ValidityWindow { get; set; } = string.Empty;
+    public string ExecWeekdays { get; set; } = string.Empty;
+    public string ExecSpecialDays { get; set; } = string.Empty;
+    public string BeginDate { get; set; } = string.Empty;
+    public string EndDate { get; set; } = string.Empty;
+    private GXScheduleEntry ReadIndex() => new GXScheduleEntry { Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture) };
+    private GXScheduleEntry ReadEntry()
+    {
+        if (ScriptLogicalName.Split('.').Length != 6 || ScriptLogicalName.Split('.').Any(p => !byte.TryParse(p, out _))) throw new FormatException("A script logical name requires six byte values.");
+        var weekdays = byte.Parse(ExecWeekdays, CultureInfo.InvariantCulture);
+        if (weekdays > 127) throw new FormatException("Weekday flags must be between 0 and 127.");
+        if (string.IsNullOrEmpty(ExecSpecialDays) || ExecSpecialDays.Any(c => c != '0' && c != '1')) throw new FormatException("Enter the special day flags as a binary bit string.");
+        var entry = ReadIndex();
+        entry.Enable = EntryEnabled;
+        entry.Script = new GXDLMSScriptTable(ScriptLogicalName);
+        entry.ScriptSelector = ushort.Parse(ScriptSelector, CultureInfo.InvariantCulture);
+        entry.SwitchTime = new GXTime(DateTime.ParseExact(SwitchTime, "HH:mm:ss", CultureInfo.InvariantCulture));
+        entry.ValidityWindow = ushort.Parse(ValidityWindow, CultureInfo.InvariantCulture);
+        entry.ExecWeekdays = (Weekdays)weekdays;
+        entry.ExecSpecDays = ExecSpecialDays;
+        entry.BeginDate = new GXDate(DateTime.ParseExact(BeginDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
+        entry.EndDate = new GXDate(DateTime.ParseExact(EndDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
+        if (entry.BeginDate.Value > entry.EndDate.Value) throw new FormatException("Begin date must not follow end date.");
+        return entry;
+    }
+    public Task SetEnabledAsync() => InvokeMethodAsync(1, client => EntryEnabled ? Target.Enable(client, ReadIndex()) : Target.Disable(client, ReadIndex()));
+    public Task InsertAsync() => InvokeMethodAsync(2, client => Target.Insert(client, ReadEntry()));
+    public Task DeleteAsync() => InvokeMethodAsync(3, client => Target.Delete(client, ReadIndex()));
+
+    private static string? ValidateParameter(string field, string text)
+    {
+        try
+        {
+            switch (field)
+            {
+                case nameof(EntryIndex): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(ScriptLogicalName): { CheckLogicalName(text); break; }
+                case nameof(ScriptSelector): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(SwitchTime): { DateTime.ParseExact(text, "HH:mm:ss", CultureInfo.InvariantCulture); break; }
+                case nameof(ValidityWindow): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(ExecWeekdays): { if (byte.Parse(text, CultureInfo.InvariantCulture) > 127) throw new FormatException("Weekday flags must be between 0 and 127."); break; }
+                case nameof(ExecSpecialDays): { CheckBits(text); break; }
+                case nameof(BeginDate): { DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture); break; }
+                case nameof(EndDate): { DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture); break; }
+            }
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+
+    private static void CheckLogicalName(string text)
+    {
+        var parts = text.Split('.');
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+    }
+
+    private static void CheckBits(string text)
+    {
+        if (string.IsNullOrEmpty(text) || text.Any(c => c != '0' && c != '1')) throw new FormatException("Enter a binary bit string.");
+    }
+}

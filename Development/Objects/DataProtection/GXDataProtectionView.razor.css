@@ -1,0 +1,35 @@
+/*
+--------------------------------------------------------------------------
+Gurux Ltd
+
+Copyright (c) Gurux Ltd.
+
+This file is part of Gurux Device Framework.
+
+Commit: $Format:%H$
+Date:   $Format:%cI$
+
+This software is available under either of the following licenses:
+
+1. GNU General Public License, version 2 only (GPL-2.0-only).
+   See the LICENSE file included with this distribution.
+
+2. A commercial license granted by Gurux Ltd under a separate written
+   agreement. Use under this option requires a valid commercial license
+   and is governed by the terms of that agreement.
+
+If you have not obtained a commercial license from Gurux Ltd,
+use of this software is governed by GPL-2.0-only.
+
+Commercial licensing: https://www.gurux.fi/
+
+SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+--------------------------------------------------------------------------
+*/
+
+.gx-object-view { width: 100%; min-width: 0; min-height: 100%; box-sizing: border-box; padding: .75rem; overflow: auto; }
+.gx-object-view fieldset { min-width: 0; margin: .65rem 0; padding: .65rem; border: 1px solid #8885; }
+.gx-object-view legend { float: none; width: auto; padding: 0 .3rem; font-size: 1rem; }
+.gx-object-view ::deep .nav-tabs { flex-wrap: wrap; }
+.gx-object-view ::deep .gx-table-scroll { overflow: auto; max-width: 100%; }
+@media (max-width: 600px) { .gx-object-view { padding: .3rem; } .gx-object-view fieldset { padding: .35rem; } }

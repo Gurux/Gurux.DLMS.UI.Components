@@ -1,0 +1,152 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSG3Plc6LoWPan>
+
+@using Gurux.UI.Components.Tab
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>G3-PLC 6LoWPAN adaptation layer setup Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="General">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Max Hops:" Enabled="CanEditAttribute(2)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Weak LQI Value:" Enabled="CanEditAttribute(3)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Security Level:" Enabled="CanEditAttribute(4)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Broadcast Log TTL:" Enabled="CanEditAttribute(7)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
+    {
+        <GXAttributeField Edit="Edit" Index="13" Label="Max Join WaitT:" Enabled="CanEditAttribute(13)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
+    {
+        <GXAttributeField Edit="Edit" Index="14" Label="Path discovery time:" Enabled="CanEditAttribute(14)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
+    {
+        <GXAttributeField Edit="Edit" Index="15" Label="Active key Index:" Enabled="CanEditAttribute(15)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 16)
+    {
+        <GXAttributeField Edit="Edit" Index="16" Label="Metric type:" Enabled="CanEditAttribute(16)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 17)
+    {
+        <GXAttributeField Edit="Edit" Index="17" Label="Coord address:" Enabled="CanEditAttribute(17)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 18)
+    {
+        <GXAttributeField Edit="Edit" Index="18" Label="Disable Default Routing" Enabled="CanEditAttribute(18)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 19)
+    {
+        <GXAttributeField Edit="Edit" Index="19" Label="Device Type:" Enabled="CanEditAttribute(19)" EnumType="typeof(DeviceType)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 20)
+    {
+        <GXAttributeField Edit="Edit" Index="20" Label="Default coord route enabled" Enabled="CanEditAttribute(20)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 21)
+    {
+        <GXAttributeField Edit="Edit" Index="21" Label="Destination address" Enabled="CanEditAttribute(21)" Columns='@(new[] { "Destination address" })' CreateRow='@(() => (ushort)0)' />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 22)
+    {
+        <GXAttributeField Edit="Edit" Index="22" Label="Low LQI:" Enabled="CanEditAttribute(22)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 23)
+    {
+        <GXAttributeField Edit="Edit" Index="23" Label="High LQI:" Enabled="CanEditAttribute(23)"  />
+    }
+</GXTabPage>
+<GXTabPage Text="Prefix">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Prefix" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Prefix" })' CreateRow='@(() => (byte)0)' />
+    }
+</GXTabPage>
+<GXTabPage Text="Routing configuration">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Routing configuration" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Net Traversal Time", "TTL", "Kr", "Km", "Kc", "Kq", "Kh", "Krt", "Rreq Retries", "Rreq Rerr Wait", "Black list TTL", "Unicast Rreq Gen Enable", "Rlc Enabled", "Add Rev Link Cost" })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (ushort)0, false, false, (byte)0 })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Routing">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="Routing" Enabled="CanEditAttribute(8)" Columns='@(new[] { "Destination:", "Next Hop:", "Route:", "Hop Count:", "Weak Link:", "Valid Time:" })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0, (ushort)0, (byte)0, (byte)0, (ushort)0 })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Context information">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+    {
+        <GXAttributeField Edit="Edit" Index="9" Label="Context information" Enabled="CanEditAttribute(9)" Columns='@(new[] { "CID", "Context", "Compression", "Valid lifetime" })' CreateRow='@(() => new GXStructure { new GXBitString("0000"), (byte)0, Array.Empty<byte>(), false, (ushort)0 })' ColumnIndices="@(new[] { 0, 2, 3, 4 })" EditorLabels='@(new[] { "CID", "Context length", "Context", "Compression", "Valid lifetime" })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Blacklist">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+    {
+        <GXAttributeField Edit="Edit" Index="10" Label="Blacklist" Enabled="CanEditAttribute(10)" Columns='@(new[] { "Neighbour Address", "Valid Time" })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0 })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Broadcast log">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
+    {
+        <GXAttributeField Edit="Edit" Index="11" Label="Broadcast log" Enabled="CanEditAttribute(11)" Columns='@(new[] { "Source Address", "Sequence Number", "Valid Time" })' CreateRow='@(() => new GXStructure { (ushort)0, (byte)0, (ushort)0 })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Group">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
+    {
+        <GXAttributeField Edit="Edit" Index="12" Label="Group" Enabled="CanEditAttribute(12)" Columns='@(new[] { "Group Address" })' CreateRow='@(() => (ushort)0)' />
+    }
+</GXTabPage>
+</GXTabControl>
+</fieldset>
+</section>
+
+

@@ -1,0 +1,81 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSPrimeNbOfdmPlcMacNetworkAdministrationData>
+
+@using Gurux.UI.Components.Tab
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>PRIME NB OFDM PLC MAC network administration data Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="Multicast:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Multicast:" Enabled="CanEditAttribute(2)" Columns='@(new[] { "ID", "Members" })' CreateRow='@(() => new GXStructure { (sbyte)0, (short)0 })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Switch Table">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Switch Table" Enabled="CanEditAttribute(3)" Columns='@(new[] { "SID:" })' CreateRow='@(() => (short)0)' />
+    }
+</GXTabPage>
+<GXTabPage Text="Direct Table:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Direct Table:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Src SID", "Src LNID", "Src LCID", "Dst SID", "Dst LNID", "Dst LCID", "DID" })' CreateRow='@(() => new GXStructure { (short)0, (short)0, (short)0, (short)0, (short)0, (short)0, new byte[6] })' InputKind="hex" />
+    }
+</GXTabPage>
+<GXTabPage Text="Available Switches:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Available Switches:" Enabled="CanEditAttribute(5)" Columns='@(new[] { "SNA", "LSID", "Level", "RX Level", "RX SNR" })' CreateRow='@(() => new GXStructure { new byte[6], (short)0, (sbyte)0, (sbyte)0, (sbyte)0 })' InputKind="hex" />
+    }
+</GXTabPage>
+<GXTabPage Text="Phy Communication:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Phy Communication:" Enabled="CanEditAttribute(6)" Columns='@(new[] { "EUI", "TX Pwr", "TX Code", "RX Code", "RX Lvl", "SNR", "TX Pwr Mod", "TX Code Mod", "RX Code Mod" })' CreateRow='@(() => new GXStructure { new byte[6], (sbyte)0, (sbyte)0, (sbyte)0, (sbyte)0, (sbyte)0, (sbyte)0, (sbyte)0, (sbyte)0 })' InputKind="hex" />
+    }
+</GXTabPage>
+</GXTabControl>
+</fieldset>
+</section>
+<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset network administration data</GXButton></section>
+@code {
+    private Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+}
+

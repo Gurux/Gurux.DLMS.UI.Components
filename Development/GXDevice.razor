@@ -1,0 +1,44 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+<section class="gx-device" aria-label="Device general information">
+    <h2>@Name</h2>
+    <h3>General</h3>
+    <dl>
+        @foreach (var field in Fields)
+        {
+            <div><dt>@field.Key</dt><dd>@(string.IsNullOrWhiteSpace(field.Value) ? "—" : field.Value)</dd></div>
+        }
+    </dl>
+</section>
+
+@code {
+    [Parameter] public string Name { get; set; } = string.Empty;
+    [Parameter] public IReadOnlyDictionary<string, string?> Fields { get; set; } = new Dictionary<string, string?>();
+}

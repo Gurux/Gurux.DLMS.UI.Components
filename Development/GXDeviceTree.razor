@@ -1,0 +1,157 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Microsoft.AspNetCore.Components.Web
+@typeparam TDevice
+@typeparam TObject
+
+<section class="gx-device-tree" aria-label="@Title">
+    <details open>
+        <summary><GXButton type="button" class="@(IsCollectionSelected ? "node selected" : "node")"
+                         aria-pressed="@(IsCollectionSelected ? "true" : "false")"
+                         OnContextMenu="e => OpenContextMenuAsync(e, OnSelectCollection.InvokeAsync, true)" PreventContextMenu="true" OnClick="() => OnSelectCollection.InvokeAsync()" StopClickPropagation="true"><img src="@Icon("devices")" alt="" width="16" height="16" />@Title</GXButton></summary>
+        @if (Devices.Count == 0)
+        {
+            <p>@EmptyText</p>
+        }
+        @foreach (var device in Devices)
+        {
+            <details class="device" open @key="device">
+                <summary>
+                    <GXButton type="button" class="@(IsDeviceSelected?.Invoke(device) == true ? "node selected" : "node")"
+                            aria-pressed="@(IsDeviceSelected?.Invoke(device) == true ? "true" : "false")"
+                            OnContextMenu="e => OpenContextMenuAsync(e, () => OnSelectDevice.InvokeAsync(device))" PreventContextMenu="true" OnClick="() => OnSelectDevice.InvokeAsync(device)" StopClickPropagation="true"><img src="@Icon("device")" alt="" width="16" height="16" />@GetDeviceName(device)</GXButton>
+                </summary>
+                @foreach (var group in GetObjects(device).GroupBy(GetObjectType))
+                {
+                    <details class="group" open @key="group.Key">
+                        <summary><GXButton type="button" class="@(IsGroupSelected?.Invoke(device, group.Key) == true ? "node selected" : "node")"
+                            aria-pressed="@(IsGroupSelected?.Invoke(device, group.Key) == true ? "true" : "false")"
+                            OnContextMenu="e => OpenContextMenuAsync(e, () => SelectGroupAsync(device, group.Key))" PreventContextMenu="true" OnClick="() => SelectGroupAsync(device, group.Key)" StopClickPropagation="true"><img src="@Icon("category")" alt="" width="16" height="16" />@group.Key</GXButton></summary>
+                        @foreach (var item in group)
+                        {
+                            <GXButton @key="item" type="button" class="@(IsObjectSelected?.Invoke(device, item) == true ? "node object selected" : "node object")"
+                                    aria-pressed="@(IsObjectSelected?.Invoke(device, item) == true ? "true" : "false")"
+                                    OnContextMenu="e => OpenContextMenuAsync(e, () => SelectObjectAsync(device, item))" PreventContextMenu="true" OnClick="() => SelectObjectAsync(device, item)">
+                                <img src="@Icon(GetObjectType(item) == "ProfileGeneric" ? "profile-generic" : "object")" alt="" width="16" height="16" />@GetLogicalName(item) @GetObjectName(item)
+                            </GXButton>
+                        }
+                    </details>
+                }
+            </details>
+        }
+    </details>
+</section>
+@if (_contextOpen)
+{
+    <div class="gx-tree-menu-backdrop" @onclick="CloseContextMenu" @oncontextmenu="CloseContextMenu" @oncontextmenu:preventDefault="true"></div>
+    <div class="gx-tree-context-menu" role="menu" aria-label="Device commands"
+         style="@($"left:min({_contextX.ToString(System.Globalization.CultureInfo.InvariantCulture)}px, calc(100vw - 190px));top:min({_contextY.ToString(System.Globalization.CultureInfo.InvariantCulture)}px, calc(100dvh - 340px))")"
+         @onkeydown="ContextKeyDown">
+        @foreach (var command in ContextCommands)
+        {
+            if (command.Id.Length == 0)
+            {
+                <hr role="separator" />
+            }
+            else
+            {
+                <GXButton type="button" role="menuitem" Disabled="@(IsContextCommandEnabled?.Invoke(command.Id) == false)"
+                        OnClick="() => ExecuteContextCommandAsync(command.Id)">@command.Text</GXButton>
+            }
+        }
+    </div>
+}
+
+
+@code {
+    [Parameter] public EventCallback<string> OnContextCommand { get; set; }
+    [Parameter] public Func<string, bool>? IsContextCommandEnabled { get; set; }
+    private bool _contextOpen, _contextCollection;
+    private double _contextX, _contextY;
+    private (string Id, string Text)[] ContextCommands => _contextCollection
+        ? [("AddDeviceMnu", "Add Device")]
+        : [("ConnectMnu", "Connect"), ("DisconnectMnu", "Disconnect"), ("ReadMnu", "Read"),
+           ("ReadObjectMnu", "Read Object"), ("", ""), ("ImportMenu", "Load Values"),
+           ("ExportMenu", "Save Values As..."), ("", ""), ("DeleteMnu", "Delete"),
+           ("", ""), ("PropertiesMnu", "Properties")];
+
+    public async Task OpenContextMenuAsync(MouseEventArgs e, Func<Task> select, bool collection = false)
+    {
+        await select();
+        _contextCollection = collection;
+        _contextX = e.ClientX;
+        _contextY = e.ClientY;
+        _contextOpen = true;
+    }
+
+    public async Task ExecuteContextCommandAsync(string command)
+    {
+        if (!_contextOpen || !ContextCommands.Any(item => item.Id == command && command.Length != 0)
+            || IsContextCommandEnabled?.Invoke(command) == false) return;
+        CloseContextMenu();
+        await OnContextCommand.InvokeAsync(command);
+    }
+
+    private void CloseContextMenu() => _contextOpen = false;
+    private void ContextKeyDown(KeyboardEventArgs e)
+    {
+        if (e.Key == "Escape") CloseContextMenu();
+    }
+
+    private static string Icon(string name) => $"_content/Gurux.DLMS.UI.Components/images/icons/{name}.svg";
+    [Parameter] public IReadOnlyList<TDevice> Devices { get; set; } = [];
+    [Parameter, EditorRequired] public Func<TDevice, string> GetDeviceName { get; set; } = device => device?.ToString() ?? string.Empty;
+    [Parameter, EditorRequired] public Func<TDevice, IReadOnlyList<TObject>> GetObjects { get; set; } = _ => [];
+    [Parameter, EditorRequired] public Func<TObject, string> GetObjectType { get; set; } = _ => string.Empty;
+    [Parameter, EditorRequired] public Func<TObject, string> GetLogicalName { get; set; } = _ => string.Empty;
+    [Parameter, EditorRequired] public Func<TObject, string> GetObjectName { get; set; } = item => item?.ToString() ?? string.Empty;
+    [Parameter] public Func<TDevice, bool>? IsDeviceSelected { get; set; }
+    [Parameter] public Func<TDevice, TObject, bool>? IsObjectSelected { get; set; }
+    [Parameter] public EventCallback<TDevice> OnSelectDevice { get; set; }
+    [Parameter] public EventCallback OnSelectCollection { get; set; }
+    [Parameter] public bool IsCollectionSelected { get; set; }
+    [Parameter] public EventCallback<TObject> OnSelectObject { get; set; }
+    [Parameter] public EventCallback<(TDevice Device, string ObjectType)> OnSelectGroup { get; set; }
+    [Parameter] public Func<TDevice, string, bool>? IsGroupSelected { get; set; }
+    [Parameter] public string Title { get; set; } = "Devices";
+    [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
+
+    public async Task SelectGroupAsync(TDevice device, string objectType)
+    {
+        await OnSelectDevice.InvokeAsync(device);
+        await OnSelectGroup.InvokeAsync((device, objectType));
+    }
+
+    public async Task SelectObjectAsync(TDevice device, TObject item)
+    {
+        await OnSelectDevice.InvokeAsync(device);
+        await OnSelectObject.InvokeAsync(item);
+    }
+}

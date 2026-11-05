@@ -1,0 +1,66 @@
+/*
+--------------------------------------------------------------------------
+Gurux Ltd
+
+Copyright (c) Gurux Ltd.
+
+This file is part of Gurux Device Framework.
+
+Commit: $Format:%H$
+Date:   $Format:%cI$
+
+This software is available under either of the following licenses:
+
+1. GNU General Public License, version 2 only (GPL-2.0-only).
+   See the LICENSE file included with this distribution.
+
+2. A commercial license granted by Gurux Ltd under a separate written
+   agreement. Use under this option requires a valid commercial license
+   and is governed by the terms of that agreement.
+
+If you have not obtained a commercial license from Gurux Ltd,
+use of this software is governed by GPL-2.0-only.
+
+Commercial licensing: https://www.gurux.fi/
+
+SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+--------------------------------------------------------------------------
+*/
+
+.gx-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .35rem;
+    padding: .5rem .8rem;
+    border: 1px solid var(--gx-button-border, #1477d4);
+    border-radius: .25rem;
+    background-color: var(--gx-button-background, dodgerblue);
+    color: var(--gx-button-color, #fff);
+    font: inherit;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background-color .15s ease, box-shadow .15s ease;
+}
+
+.gx-button:where(:enabled:hover) {
+    background-color: var(--gx-button-hover-background, #1477d4);
+}
+
+.gx-button:where(:enabled:active) {
+    background-color: var(--gx-button-active-background, #1064b3);
+}
+
+.gx-button:focus-visible {
+    outline: 2px solid var(--gx-button-focus-color, #1064b3);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px #fff;
+}
+
+.gx-button:disabled {
+    opacity: .55;
+    cursor: not-allowed;
+}

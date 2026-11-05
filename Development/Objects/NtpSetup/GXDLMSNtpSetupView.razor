@@ -1,0 +1,86 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSNtpSetup>
+
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>NTP Setup Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Activated:" Enabled="CanEditAttribute(2)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Server Address:" Enabled="CanEditAttribute(3)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Port:" Enabled="CanEditAttribute(4)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Authentication:" Enabled="CanEditAttribute(5)" EnumType="typeof(NtpAuthenticationMethod)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Keys:" Enabled="CanEditAttribute(6)" Columns='@(new[] { "ID:", "Key:" })' CreateRow='@(() => new GXStructure { (uint)0, Array.Empty<byte>() })' />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Client Key:" Enabled="CanEditAttribute(7)" InputKind="hex"  />
+    }
+</fieldset>
+</section>
+<section class="gx-object-actions">
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SynchronizeAsync">Synchronize time</GXButton>
+    <GXValueField @key='@((Target, "Authentication key ID"))' Label="Authentication key ID" Value="@KeyId" Enabled="@(CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => KeyId = value)" Validate='@(value => uint.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter a key ID from 0 to 4294967295.")' />
+    <GXValueField @key='@((Target, "Authentication key (hexadecimal)"))' Label="Authentication key (hexadecimal)" Value="@KeyHex" Enabled="@(CanInvokeMethod(2))" InputKind="hex" OnCommit="@(value => KeyHex = value)" Validate='@(value => System.Text.RegularExpressions.Regex.IsMatch(value.Replace(" ", string.Empty), "\\A(?:[0-9A-Fa-f]{2})+\\z") ? null : "Enter a non-empty hexadecimal authentication key.")' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddKeyAsync">Add authentication key</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="DeleteKeyAsync">Delete authentication key</GXButton></section>
+@code {
+    private string KeyId = "";
+    private string KeyHex = "";
+    private Task SynchronizeAsync() => InvokeMethodAsync(1, client => Target.Synchronize(client));
+    private Task AddKeyAsync() => InvokeMethodAsync(2, client =>
+    {
+        var id = uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture);
+        var key = Convert.FromHexString(KeyHex.Replace(" ", ""));
+        if (key.Length == 0) throw new FormatException("Enter a non-empty hexadecimal authentication key.");
+        return Target.AddAuthenticationKey(client, id, key);
+    });
+    private Task DeleteKeyAsync() => InvokeMethodAsync(3, client => Target.DeleteAuthenticationKey(client, uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture)));
+}
+

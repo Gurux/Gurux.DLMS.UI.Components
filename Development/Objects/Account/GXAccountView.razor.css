@@ -1,0 +1,53 @@
+/*
+--------------------------------------------------------------------------
+Gurux Ltd
+
+Copyright (c) Gurux Ltd.
+
+This file is part of Gurux Device Framework.
+
+Commit: $Format:%H$
+Date:   $Format:%cI$
+
+This software is available under either of the following licenses:
+
+1. GNU General Public License, version 2 only (GPL-2.0-only).
+   See the LICENSE file included with this distribution.
+
+2. A commercial license granted by Gurux Ltd under a separate written
+   agreement. Use under this option requires a valid commercial license
+   and is governed by the terms of that agreement.
+
+If you have not obtained a commercial license from Gurux Ltd,
+use of this software is governed by GPL-2.0-only.
+
+Commercial licensing: https://www.gurux.fi/
+
+SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+--------------------------------------------------------------------------
+*/
+
+.gx-account-view { display: flex; flex-direction: column; width: 100%; min-width: 0; box-sizing: border-box; padding: .75rem; }
+.account-object { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; margin: 0; padding: .65rem; border: 1px solid #8887; }
+.account-object > legend { float: none; width: auto; padding: 0 .35rem; font-size: 1rem; }
+.gx-account-view .account-field { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: .4rem; align-items: center; margin: .3rem 0; }
+.account-field > span { font-size: .85rem; }
+.account-field input:not([type=checkbox]), .account-field select { width: 100%; min-width: 0; box-sizing: border-box; padding: .15rem .35rem; font: inherit; font-size: .85rem; }
+.account-field input[readonly] { background: var(--bs-secondary-bg, #f1f1f1); }
+.account-general { display: flex; flex-direction: column; flex: 1 0 auto; padding: .5rem 0 .25rem; }
+.account-general > * { flex-shrink: 0; }
+.credit-status { align-items: start; }
+.account-status-list { border: 1px solid #8887; padding: .25rem .4rem; max-height: 132px; overflow: auto; }
+.gx-account-view .account-status-list label { display: flex; align-items: center; gap: .3rem; margin: 0; font-size: .85rem; }
+.account-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .3rem; margin-top: auto; padding-top: .4rem; }
+.account-actions ::deep button { min-width: 75px; margin: 0; font-size: .85rem; padding: .2rem .5rem; }
+.gx-account-view ::deep .nav-tabs { margin-top: .65rem; flex-wrap: wrap; }
+.gx-account-view ::deep .account-object > div[style]:not(:empty) { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; }
+.gx-account-view ::deep .account-object > div[style]:empty { display: none; }
+.gx-account-view ::deep .nav-tabs .nav-link { padding: .3rem .45rem; font-size: .8rem; }
+.gx-account-view ::deep [role=alert] { color: var(--gx-error-color, #b42318); }
+@media (max-width: 480px) {
+    .gx-account-view { padding: .25rem; }
+    .gx-account-view .account-field { grid-template-columns: 1fr; gap: .15rem; margin-bottom: .6rem; }
+    .account-field input:not([type=checkbox]), .account-field select { min-height: 36px; }
+}

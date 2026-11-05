@@ -1,0 +1,66 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components.Tab
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSActivityCalendar>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Activity Calendar Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXTabControl NavigateOnSelection="false">
+        <GXTabPage Text="Active">
+            <GXAttributeField Edit="Edit" Index="2" InputKind="text" Label="Calendar Name" Enabled="CanEditAttribute(2)" />
+            <GXTabControl NavigateOnSelection="false">
+                <GXTabPage Text="Season Profile"><GXCalendarTable Edit="Edit" Index="3" Label="Season Profile" Enabled="CanEditAttribute(3)" CanEdit="() => CanEditAttribute(3)" /></GXTabPage>
+                <GXTabPage Text="Week Profile"><GXCalendarTable Edit="Edit" Index="4" Label="Week Profile" Enabled="CanEditAttribute(4)" CanEdit="() => CanEditAttribute(4)" /></GXTabPage>
+                <GXTabPage Text="Day Profile"><GXCalendarTable Edit="Edit" Index="5" Label="Day Profile" Enabled="CanEditAttribute(5)" CanEdit="() => CanEditAttribute(5)" /></GXTabPage>
+            </GXTabControl>
+        </GXTabPage>
+        <GXTabPage Text="Passive">
+            <GXAttributeField Edit="Edit" Index="6" InputKind="text" Label="Calendar Name" Enabled="CanEditAttribute(6)" />
+            <GXTabControl NavigateOnSelection="false">
+                <GXTabPage Text="Season Profile"><GXCalendarTable Edit="Edit" Index="7" Label="Season Profile" Enabled="CanEditAttribute(7)" CanEdit="() => CanEditAttribute(7)" /></GXTabPage>
+                <GXTabPage Text="Week Profile"><GXCalendarTable Edit="Edit" Index="8" Label="Week Profile" Enabled="CanEditAttribute(8)" CanEdit="() => CanEditAttribute(8)" /></GXTabPage>
+                <GXTabPage Text="Day Profile"><GXCalendarTable Edit="Edit" Index="9" Label="Day Profile" Enabled="CanEditAttribute(9)" CanEdit="() => CanEditAttribute(9)" /></GXTabPage>
+            </GXTabControl>
+            <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivatePassiveCalendarAsync">Activate</GXButton>
+        </GXTabPage>
+    </GXTabControl>
+    <GXAttributeField Edit="Edit" Index="10" Label="Activate passive calendar" Enabled="CanEditAttribute(10)" />
+</section>
+
+@code {
+    public Task ActivatePassiveCalendarAsync() => InvokeMethodAsync(1, client => Target.ActivatePassiveCalendar(client));
+}
+

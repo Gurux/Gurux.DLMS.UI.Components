@@ -1,0 +1,75 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.DLMS
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Objects.Enums
+@using Gurux.UI.Components.Tab
+@inherits GXDLMSObjectViewBase<GXDLMSAssociationShortName>
+
+<section class="gx-object-view" @key="Target">
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Association Short Name Object" />
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="Objects"><GXAssociationShortObjects Edit="Edit" CanEdit="CanEditAttribute" /></GXTabPage>
+<GXTabPage Text="General">
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+{
+<GXAttributeField Edit="Edit" Index="4" Label="Security setup:" Enabled="CanEditAttribute(4)" />
+}
+<GXValueField Label="Secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(5))" OnCommit="@((string value) => { if (CanInvokeMethod(5)) SecretText = value; })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A nonempty secret is required.")))" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="UpdateSecretAsync">Update</GXButton>
+</GXTabPage>
+</GXTabControl>
+</section>
+
+@code {
+private static string? CheckParameter(Action validate)
+{
+    try { validate(); return null; }
+    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+}
+private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
+
+public string SecretText { get; set; } = "";
+public Task UpdateSecretAsync() => InvokeMethodAsync(5, client =>
+{
+    var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+    if (secret.Length == 0) throw new ArgumentException("A nonempty secret is required.");
+    // This object has no UpdateSecret wrapper in the pinned API; method 5 takes an octet string.
+    return client.Method(Target, 5, secret, DataType.OctetString);
+});
+}
+
+
+
+
+
+

@@ -1,0 +1,11 @@
+<!-- Copyright (c) Gurux Ltd. GPL-2.0-only. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+  <rect x=".5" y="1.5" width="10" height="10" rx="1" fill="#dbe4db" stroke="#526752"/>
+  <rect x="2.5" y="3.5" width="6" height="3" rx=".5" fill="#a8d99b" stroke="#5a7955"/>
+  <path d="M2.5 8.5h5m-5 1.5h3" stroke="#7d8c7d"/>
+  <rect x="3.5" y="3.5" width="10" height="10" rx="1" fill="#edf0f3" stroke="#647186"/>
+  <path d="M5.5 5.5h6v3h-6z" fill="#b5c7e5"/>
+  <rect x="6.5" y="5.5" width="9" height="10" rx="1" fill="#f4f6f6" stroke="#556565"/>
+  <rect x="8.5" y="7.5" width="5" height="3" rx=".5" fill="#b8e7b0" stroke="#5a7955"/>
+  <path d="M8.5 12.5h5m-5 1.5h3" stroke="#7d8c7d"/>
+</svg>

@@ -1,0 +1,66 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+    <PropertyGroup>
+        <Company>Gurux Ltd</Company>
+        <Authors>Gurux Ltd</Authors>
+        <Copyright>Copyright (c) 1998-2026 Gurux Ltd. All rights reserved.</Copyright>
+        <PackageProjectUrl>https://www.gurux.fi</PackageProjectUrl>
+        <Description>Reusable Gurux DLMS UI components for web, Windows, iOS, and Android applications.</Description>
+        <Version Condition=" '$(BUILD_BUILDNUMBER)' == '' ">0.0.1-local</Version>
+        <Version Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
+        <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+        <TargetFramework>net10.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <RepositoryUrl>https://github.com/gurux/gurux.dlms.ui.components</RepositoryUrl>
+        <PackageTags>UI </PackageTags>
+        <PackageId>Gurux.DLMS.UI.Components</PackageId>
+        <PackageIcon>Gurux.DLMS.UI.Components.png</PackageIcon>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseExpression>GPL-2.0-only</PackageLicenseExpression>
+        <ApplicationIcon>Gurux.DLMS.UI.Components.ico</ApplicationIcon>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+    <ItemGroup>
+        <SupportedPlatform Include="browser" />
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Gurux.DLMS" Version="9.0.2609.2201" />
+        <PackageReference Include="Gurux.Net" Version="8.4.2604.201" />
+        <PackageReference Include="Gurux.Serial" Version="8.4.2503.603" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.501" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Compile Update="Properties\Resources.Designer.cs">
+            <DesignTime>True</DesignTime>
+            <AutoGen>True</AutoGen>
+            <DependentUpon>Resources.resx</DependentUpon>
+        </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+        <EmbeddedResource Update="Properties\Resources.resx">
+            <Generator>ResXFileCodeGenerator</Generator>
+            <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+        </EmbeddedResource>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Gurux.DLMS.UI.Components.png" Pack="true" PackagePath="\" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="wwwroot\" />
+    </ItemGroup>
+</Project>

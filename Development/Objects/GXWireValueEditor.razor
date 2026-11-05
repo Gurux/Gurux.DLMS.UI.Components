@@ -1,0 +1,161 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.UI.Components
+@using Gurux.DLMS.Objects
+@if (TypePaths?.Any(path => Matches(path, Prefix)) == true)
+{
+    <div class="gx-wire-typed">
+    <div class="gx-dialog-field"><GXLabel>Type</GXLabel><GXDraftInput EnumType="typeof(Gurux.DLMS.Enums.DataType)" Value="@(((int)GXDLMSConverter.GetDLMSDataType(Value!)).ToString())" ValueChanged="ChangeDataType" Disabled="Disabled" /></div>
+    <div class="gx-dialog-field"><GXLabel>Value</GXLabel><GXWireValueEditor @ref="_typedEditor" Value="Value" ValueChanged="ValueChanged" InputKind="InputKind" Disabled="Disabled" /></div>
+    </div>
+}
+else if (Value is GXStructure or GXArray)
+{
+    var values = (IList<object>)Value;
+    <div class="gx-wire-fields">
+        @for (var position = 0; position < (Paths?.Length ?? values.Count); ++position)
+        {
+            var cell = position;
+            <div class="gx-dialog-field">
+                <GXLabel>@(Labels?.ElementAtOrDefault(cell) ?? Resolve(PathLabels, ChildPath(cell)) ?? $"Value {cell + 1}")</GXLabel>
+                <GXWireValueEditor @key="cell" @ref="_children[cell]" Value="@(Paths is null ? values[cell] : AtPath(Value, Paths[cell]))" ValueChanged="value => ChangeCell(cell, value)"
+                    InputKind="@(InputKinds?.ElementAtOrDefault(cell) ?? Resolve(PathKinds, ChildPath(cell)) ?? (InputKind == "hex" && values.ElementAtOrDefault(cell) is byte[] ? "hex" : null))"
+                    PathLabels="PathLabels" PathKinds="PathKinds" PathFactories="PathFactories" TypePaths="TypePaths" Prefix="@ChildPath(cell)" Disabled="Disabled" />
+                @if (Value is GXArray) { <GXButton type="button" Disabled="Disabled" OnClick="() => RemoveItem(cell)">Remove</GXButton> }
+            </div>
+        }
+    </div>
+    @if (Value is GXArray) { <GXButton type="button" Disabled="@(Disabled || _itemTemplate is null && ArrayFactory is null)" OnClick="AddItem">Add...</GXButton> }
+}
+else
+{
+    <GXDraftInput Label="Value" Value="@Text" ValueChanged="ChangeText" InputKind="@Kind" Disabled="Disabled" />
+}
+@if (Error is not null) { <p role="alert">@Error</p> }
+
+@code {
+    [Parameter] public object? Value { get; set; }
+    [Parameter] public EventCallback<object?> ValueChanged { get; set; }
+    [Parameter] public string[]? Labels { get; set; }
+    [Parameter] public string[]? Paths { get; set; }
+    [Parameter] public string[]? InputKinds { get; set; }
+    [Parameter] public IReadOnlyDictionary<string, string>? PathLabels { get; set; }
+    [Parameter] public IReadOnlyDictionary<string, string>? PathKinds { get; set; }
+    [Parameter] public string Prefix { get; set; } = string.Empty;
+    [Parameter] public IReadOnlyDictionary<string, Func<object>>? PathFactories { get; set; }
+    [Parameter] public string[]? TypePaths { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public string? InputKind { get; set; }
+    public string? Error { get; private set; }
+    private readonly Dictionary<int, GXWireValueEditor> _children = new();
+    private string? _text;
+    private object? _lastValue;
+    private object? _itemTemplate;
+    private GXWireValueEditor? _typedEditor;
+    public bool IsValid => Error is null && (_typedEditor?.IsValid ?? true) && _children.Values.All(child => child.IsValid);
+    private string Text => _text ?? (InputKind == "ip" && Value is byte[] bytes ? new System.Net.IPAddress(bytes).ToString()
+        : InputKind == "ip" && Value is uint address ? new System.Net.IPAddress(BitConverter.GetBytes(address).Reverse().ToArray()).ToString()
+        : InputKind is "text" or "ascii" or "password" && Value is byte[] text ? System.Text.Encoding.UTF8.GetString(text)
+        : InputKind == "hex" && Value is byte[] hex ? GXDLMSTranslator.ToHex(hex)
+        : InputKind == "datetime" && Value is byte[] date ? GXDLMSObjectEditState.Format(GXDLMSClient.ChangeType(date, date.Length == 4 ? Gurux.DLMS.Enums.DataType.Time : date.Length == 5 ? Gurux.DLMS.Enums.DataType.Date : Gurux.DLMS.Enums.DataType.DateTime, false)) : GXWireValue.Editable(Value));
+    private string Kind => InputKind ?? (Value is bool ? "bool" : Value is byte[] bytes && bytes.Length != 6 ? "hex" : Value is GXBitString ? "text" : Value is not (string or byte[] or GXDateTime) ? "number" : "text");
+    protected override void OnParametersSet()
+    {
+        if (ReferenceEquals(_lastValue, Value)) return;
+        _lastValue = Value; _text = null; Error = null;
+        if (Value is GXArray { Count: > 0 } array) _itemTemplate = GXWireValue.Copy(array[0]);
+        if (Value is not (GXStructure or GXArray)) _children.Clear();
+    }
+    private async System.Threading.Tasks.Task ChangeText(string text)
+    {
+        if (Disabled) return;
+        _text = text;
+        try {
+            object? value;
+            if (InputKind == "ip" && Value is byte[]) value = System.Net.IPAddress.Parse(text).GetAddressBytes();
+            else if (InputKind == "ip" && Value is uint) value = BitConverter.ToUInt32(System.Net.IPAddress.Parse(text).GetAddressBytes().Reverse().ToArray());
+            else if (InputKind is "text" or "ascii" or "password" && Value is byte[]) value = System.Text.Encoding.UTF8.GetBytes(text);
+            else if (InputKind == "datetime" && Value is byte[] date)
+            {
+                GXDateTime parsed = date.Length == 4 ? new GXTime(text, System.Globalization.CultureInfo.InvariantCulture)
+                    : date.Length == 5 ? new GXDate(text, System.Globalization.CultureInfo.InvariantCulture) : new GXDateTime(text, System.Globalization.CultureInfo.InvariantCulture);
+                value = GXDLMSTranslator.HexToBytes(parsed.ToHex(false, false));
+            }
+            else value = GXWireValue.Parse(text, Value);
+            Error = null; await ValueChanged.InvokeAsync(value);
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
+    }
+    private System.Threading.Tasks.Task ChangeCell(int cell, object? value)
+    {
+        if (Disabled) return System.Threading.Tasks.Task.CompletedTask;
+        var copy = (IList<object>)GXWireValue.Copy(Value)!;
+        if (Paths is null) copy[cell] = value!;
+        else
+        {
+            var path = Paths[cell].Split('.').Select(int.Parse).ToArray();
+            var parent = path.Length == 1 ? copy : (IList<object>)AtPath(copy, string.Join('.', path.Take(path.Length - 1)))!;
+            parent[path[^1]] = value!;
+        }
+        return ValueChanged.InvokeAsync(copy);
+    }
+    private static object? AtPath(object? value, string path) { foreach (var index in path.Split('.').Select(int.Parse)) value = ((IList<object>)value!)[index]; return value; }
+    private string ChildPath(int cell) => string.IsNullOrEmpty(Prefix) ? Paths?.ElementAtOrDefault(cell) ?? cell.ToString() : Prefix + "." + (Paths?.ElementAtOrDefault(cell) ?? cell.ToString());
+    private static string? Resolve(IReadOnlyDictionary<string,string>? map, string path)
+        => map?.FirstOrDefault(pair => Matches(pair.Key, path)).Value;
+    private static bool Matches(string pattern, string path) => System.Text.RegularExpressions.Regex.IsMatch(path, "^" + System.Text.RegularExpressions.Regex.Escape(pattern).Replace("\\*", "[0-9]+") + "$" );
+    private Func<object>? ArrayFactory => PathFactories?.FirstOrDefault(pair => Matches(pair.Key, Prefix)).Value;
+    private System.Threading.Tasks.Task AddItem() { if (Disabled || Value is not GXArray || _itemTemplate is null && ArrayFactory is null) return System.Threading.Tasks.Task.CompletedTask; var copy=(GXArray)GXWireValue.Copy(Value)!; copy.Add(GXWireValue.Copy(ArrayFactory?.Invoke() ?? _itemTemplate)!); return ValueChanged.InvokeAsync(copy); }
+    private System.Threading.Tasks.Task RemoveItem(int index) { if (Disabled || Value is not GXArray) return System.Threading.Tasks.Task.CompletedTask; var copy=(GXArray)GXWireValue.Copy(Value)!; copy.RemoveAt(index); _children.Clear(); return ValueChanged.InvokeAsync(copy); }
+    private System.Threading.Tasks.Task ChangeDataType(string text)
+    {
+        if (Disabled) return System.Threading.Tasks.Task.CompletedTask;
+        try
+        {
+            var type = (Gurux.DLMS.Enums.DataType)int.Parse(text);
+            object? value = type switch {
+                Gurux.DLMS.Enums.DataType.None => null,
+                Gurux.DLMS.Enums.DataType.Boolean => false,
+                Gurux.DLMS.Enums.DataType.Array => new GXArray(), Gurux.DLMS.Enums.DataType.Structure => new GXStructure(),
+                Gurux.DLMS.Enums.DataType.OctetString => Array.Empty<byte>(), Gurux.DLMS.Enums.DataType.BitString => new GXBitString("0"),
+                Gurux.DLMS.Enums.DataType.String or Gurux.DLMS.Enums.DataType.StringUTF8 => string.Empty,
+                Gurux.DLMS.Enums.DataType.Date => new GXDate(DateTime.Today), Gurux.DLMS.Enums.DataType.Time => new GXTime(DateTime.Now),
+                Gurux.DLMS.Enums.DataType.DateTime => new GXDateTime(DateTime.Now),
+                _ => GXDLMSConverter.ChangeType("0", type, System.Globalization.CultureInfo.InvariantCulture)
+            };
+            if (GXDLMSConverter.GetDLMSDataType(value!) != type)
+                throw new NotSupportedException("The installed value codec cannot preserve this parameter data type.");
+            Error = null; _children.Clear(); _text = null;
+            return ValueChanged.InvokeAsync(value);
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; return System.Threading.Tasks.Task.CompletedTask; }
+    }
+}

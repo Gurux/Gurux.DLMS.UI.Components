@@ -1,0 +1,129 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Task = System.Threading.Tasks.Task
+@inherits GXDLMSObjectViewBase<GXDLMSData>
+
+<section class="gx-object-view" @key="Target">
+    @if (Edit.Error(2) is { } error) { <p role="alert">@error</p> }
+    @if (_writeError is not null) { <p role="alert">@_writeError</p> }
+    <GXObjectViewHeader Target="Target" Edit="Edit" Title="Data Object — Unix time" />
+    <GXValueField Label="Time zone:" Value="@TimeZoneInfo.Local.DisplayName" Enabled="false" />
+    <GXValueField Label="Local time:" Value="@LocalTimeText" Enabled="@(CanEditAttribute(2) && !_writing)" Validate="ValidateLocalTime" OnCommit="EditLocalTime" />
+    <GXButton type="button" Disabled="@(!CanWriteCurrentTime)" OnClick="WriteCurrentTimeAsync">Write current time</GXButton>
+    @if (!OnWriteRequested.HasDelegate) { <p>Immediate writing is not available for this connection.</p> }
+    @if (_written) { <p role="status">Current time written.</p> }
+    @if (Edit.HasChanges) { <p role="status">Value changed</p> }
+</section>
+
+@code {
+    public const string UnixTimeLogicalName = "0.0.1.1.0.255";
+    [Parameter] public EventCallback<GXDLMSWriteRequest> OnWriteRequested { get; set; }
+    [Parameter] public bool WriteEnabled { get; set; } = true;
+    private GXDLMSData? _previousTarget;
+    private bool _writing;
+    private bool _written;
+    private string? _writeError;
+    public bool CanWriteCurrentTime => !_writing && !ReadOnly && WriteEnabled && OnWriteRequested.HasDelegate && GXDLMSObjectAccess.CanWrite(Target, 2, Association);
+    public string LocalTimeText => Edit.GetEditorText(nameof(GXDLMSUnixTimeView)) ?? FormatLocalTime(Edit.CurrentValue);
+
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (!ReferenceEquals(_previousTarget, Target))
+        {
+            _writeError = null; _written = false;
+            _previousTarget = Target;
+        }
+    }
+
+    public static string FormatLocalTime(object? value)
+    {
+        if (value is null) return string.Empty;
+        try
+        {
+            var date = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(value, CultureInfo.InvariantCulture)).ToLocalTime();
+            return date.ToString("G", CultureInfo.CurrentCulture) + " " + date.ToString("zzz", CultureInfo.InvariantCulture);
+        }
+        catch (Exception ex) when (ex is FormatException or InvalidCastException or OverflowException or ArgumentOutOfRangeException)
+        { return string.Empty; }
+    }
+
+    private string? ValidateLocalTime(string text)
+    {
+        if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date)) return "Enter a valid local date and time.";
+        try { _ = MeterEpoch(date.UtcDateTime); return null; } catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+    private object MeterEpoch(DateTime utc)
+    {
+        var epoch = GXDateTime.ToUnixTime(utc);
+        var type = Target.GetDataType(2);
+        return GXDLMSConverter.ChangeType(epoch, type == DataType.None ? DataType.UInt32 : type, CultureInfo.InvariantCulture);
+    }
+
+    public void EditLocalTime(string text)
+    {
+        if (!CanEditAttribute(2) || _writing) return;
+        Edit.SetEditorText(nameof(GXDLMSUnixTimeView), text);
+        _written = false; _writeError = null;
+        if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date))
+        {
+            Edit.SetValueError("Enter a valid local date and time.");
+            return;
+        }
+        try { Edit.EditMeterValue(MeterEpoch(date.UtcDateTime)); }
+        catch (Exception ex) when (ex is OverflowException or FormatException or InvalidCastException or ArgumentException)
+        { Edit.SetValueError("The date is outside the meter's supported range."); }
+    }
+
+    public async Task WriteCurrentTimeAsync()
+    {
+        if (!CanWriteCurrentTime) return;
+        _writing = true; _written = false; _writeError = null;
+        var target = Target;
+        var session = Edit;
+        try
+        {
+            var value = MeterEpoch(DateTime.UtcNow);
+            await OnWriteRequested.InvokeAsync(new GXDLMSWriteRequest(target, 2, value));
+            // The callback is responsible for awaiting the meter acknowledgement.
+            session.AcceptValue(value);
+            if (ReferenceEquals(Target, target)) _written = true;
+        }
+        catch (Exception ex)
+        {
+            if (ReferenceEquals(Target, target)) _writeError = $"Writing current time failed: {ex.Message}";
+        }
+        finally { _writing = false; }
+    }
+}

@@ -1,0 +1,99 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSSFSKPhyMacSetUp>
+
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>S-FSK Phy MAC Setup Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Initiator Electrical Phase:" Enabled="CanEditAttribute(2)" EnumType="typeof(InitiatorElectricalPhase)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Delta Electrical Phase:" Enabled="CanEditAttribute(3)" EnumType="typeof(DeltaElectricalPhase)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Max Receiving Gain:" Enabled="CanEditAttribute(4)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Max Transmitting Gain:" Enabled="CanEditAttribute(5)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Search initiator threshold:" Enabled="CanEditAttribute(6)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Frequency:" Enabled="CanEditAttribute(7)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="MAC Address:" Enabled="CanEditAttribute(8)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+    {
+        <GXAttributeField Edit="Edit" Index="9" Label="MAC Group Addresses:" Enabled="CanEditAttribute(9)" Columns='@(new[] { "MAC Group Address" })' CreateRow='@(() => (ushort)0)' />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+    {
+        <GXAttributeField Edit="Edit" Index="10" Label="Repeater:" Enabled="CanEditAttribute(10)" EnumType="typeof(Repeater)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
+    {
+        <GXAttributeField Edit="Edit" Index="11" Label="Repeater status:" Enabled="CanEditAttribute(11)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
+    {
+        <GXAttributeField Edit="Edit" Index="12" Label="Min Delta Credit:" Enabled="CanEditAttribute(12)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
+    {
+        <GXAttributeField Edit="Edit" Index="13" Label="Initiator MAC Address:" Enabled="CanEditAttribute(13)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
+    {
+        <GXAttributeField Edit="Edit" Index="14" Label="Synchronization locked:" Enabled="CanEditAttribute(14)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
+    {
+        <GXAttributeField Edit="Edit" Index="15" Label="Transmission speed:" Enabled="CanEditAttribute(15)" EnumType="typeof(BaudRate)"  />
+    }
+</fieldset>
+</section>

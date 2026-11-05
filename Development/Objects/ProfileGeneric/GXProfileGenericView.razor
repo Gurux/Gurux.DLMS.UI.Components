@@ -1,0 +1,135 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+@using Gurux.UI.Components.Tab
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSProfileGeneric>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Profile Generic" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="4" Label="Period" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="Entries In Use" Enabled="CanEditAttribute(7)" />
+    <GXAttributeField Edit="Edit" Index="8" Label="Entries" Enabled="CanEditAttribute(8)" />
+    <fieldset><legend>Sort</legend>
+        <GXAttributeField Edit="Edit" Index="5" Label="Mode" Enabled="CanEditAttribute(5)" EnumType="typeof(SortMethod)" />
+        <GXAttributeField Edit="Edit" Index="6" EditorLabels="@(new[] { "Object Type", "Logical Name", "Attribute Index", "Data index" })" Label="Object" Enabled="CanEditAttribute(6)" />
+    </fieldset>
+    <fieldset><legend>Reading</legend>
+        <GXValueField Label="Read" Value="@ReadingMode" Enabled="CanRead" EnumType="typeof(GXProfileReadMode)" OnCommit="value => ReadingMode = value" />
+        <GXValueField Label="Read last (Days)" Value="@LastDays" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => LastDays = value" />
+        <GXValueField Label="Read From" Value="@From" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => From = value" />
+        <GXValueField Label="To" Value="@To" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => To = value" />
+        <GXValueField Label="Read Entry" Value="@EntryStart" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryStart = value" />
+        <GXValueField Label="Count" Value="@EntryCount" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryCount = value" />
+        <GXButton type="button" Disabled="@(!CanRead)" OnClick="ReadAsync">Read</GXButton>
+    </fieldset>
+    <GXTabControl NavigateOnSelection="false">
+    <GXTabPage Text="Data">
+    <div class="gx-profile-scroll">
+    <GXTable @key="Edit.AttributeText(2)" TItem="IReadOnlyList<string>" ItemsProvider="GetBufferRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
+        <HeaderContent>
+        @foreach (var capture in CaptureObjects())
+        {
+            <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@CaptureLabel(capture.Key, capture.Value.AttributeIndex)<br />@capture.Key.LogicalName / attribute @capture.Value.AttributeIndex@if (capture.Value.DataIndex != 0) { <span> / data @capture.Value.DataIndex</span> }</GXTh>
+        }
+        </HeaderContent>
+        <ItemContent Context="row">@foreach (var cell in row) { <GXTd>@cell</GXTd> }</ItemContent>
+    </GXTable></div>
+    <GXAttributeField Edit="Edit" Index="2" Label="Buffer" Enabled="CanEditAttribute(2)" Columns="@CaptureObjects().Select(c => CaptureLabel(c.Key, c.Value.AttributeIndex)).ToArray()" />
+    <GXButton type="button" Disabled="true" title="This action is not available.">Add White list...</GXButton>
+    <GXButton type="button" Disabled="true" title="This action is not available.">Add Black list...</GXButton>
+    <GXButton type="button" Disabled="true" title="This action is not available.">Remove...</GXButton>
+    </GXTabPage>
+    <GXTabPage Text="Capture Objects">
+        <GXAttributeField Edit="Edit" Index="3" Label="Capture Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type", "Logical Name", "Attribute Index", "Data index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" />
+    </GXTabPage>
+    </GXTabControl>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">Capture</GXButton>
+</section>
+
+@code {
+    private IEnumerable<GXKeyValuePair<GXDLMSObject, GXDLMSCaptureObject>> CaptureObjects()
+    {
+        if (!Target.GetDirty(3, out var pending)) return Target.CaptureObjects;
+        var current = (GXDLMSProfileGeneric)Target.Clone();
+        ((IGXDLMSBase)current).SetValue(new GXDLMSSettings(), new ValueEventArgs(current, 3, 0, null) { Value = pending, User = true });
+        return current.CaptureObjects;
+    }
+    private static string CaptureLabel(GXDLMSObject target, int index)
+    {
+        var names = (target as IGXDLMSBase)?.GetNames();
+        var attribute = names is not null && index > 0 && index <= names.Length ? names[index - 1] : $"Attribute {index}";
+        return $"{(string.IsNullOrEmpty(target.Description) ? target.ObjectType.ToString() : target.Description)}: {attribute}";
+    }
+    public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    public Task CaptureAsync() => InvokeMethodAsync(2, client => Target.Capture(client));
+    [Parameter] public EventCallback<GXProfileReadRequest> OnReadRequested { get; set; }
+    public string ReadingMode { get; set; } = nameof(GXProfileReadMode.All);
+    public string LastDays { get; set; } = "1";
+    public string From { get; set; } = DateTime.Today.ToString("s", CultureInfo.InvariantCulture);
+    public string To { get; set; } = DateTime.Today.AddDays(1).ToString("s", CultureInfo.InvariantCulture);
+    public string EntryStart { get; set; } = "1";
+    public string EntryCount { get; set; } = "0";
+    private bool _reading;
+    private bool CanRead => !IsDisposed && !_reading && !ReadOnly && ActionsEnabled && OnReadRequested.HasDelegate;
+    private static string? ValidateUnsigned(string value) => uint.TryParse(value, NumberStyles.None, CultureInfo.InvariantCulture, out _) ? null : "Enter an unsigned 32-bit number.";
+    private static string? ValidateDate(string value) => DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out _) ? null : "Enter a valid date and time.";
+    private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetBufferRows(GXItemsProviderRequest request)
+    {
+        var rows = Edit.AttributeRows(2).ToArray();
+        return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));
+    }
+    public async Task ReadAsync()
+    {
+        if (!CanRead) return;
+        _reading = true;
+        var target = Target;
+        try
+        {
+            ActionError = null;
+            var mode = Enum.Parse<GXProfileReadMode>(ReadingMode);
+            if (!Enum.IsDefined(mode)) throw new FormatException("Choose a reading mode.");
+            var start = DateTime.Parse(From, CultureInfo.InvariantCulture);
+            var end = DateTime.Parse(To, CultureInfo.InvariantCulture);
+            if (mode == GXProfileReadMode.Range && start > end) throw new FormatException("Read From must not follow To.");
+            await OnReadRequested.InvokeAsync(new GXProfileReadRequest(target, mode, uint.Parse(LastDays, CultureInfo.InvariantCulture), start, end, uint.Parse(EntryStart, CultureInfo.InvariantCulture), uint.Parse(EntryCount, CultureInfo.InvariantCulture)));
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { if (!IsDisposed && ReferenceEquals(Target, target)) ActionError = ex.Message; }
+        finally { _reading = false; }
+    }
+}

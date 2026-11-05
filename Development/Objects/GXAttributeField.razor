@@ -1,0 +1,87 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+
+<div class="gx-attribute-field gx-field-row">
+    <GXLabel for="@(_id + "-display")">@Label</GXLabel>
+    <div class="gx-field-value">
+        @if (IsCollection)
+        {
+            <div class="gx-attribute-table">
+                <GXTable @key="(Edit, Index, CurrentPath)" @ref="_table" TItem="int" ItemsProvider="ProvideRows" Filter="false" Menu="false" Total="false" ShowAllData="true" AllowColumnCustomization="false">
+                    <HeaderContent Context="unused">
+                        @foreach (var name in Columns ?? [Label]) { <GXTh TItem="int" Name="@name">@name</GXTh> }
+                        <GXTh TItem="int" Name="Actions">Actions</GXTh>
+                    </HeaderContent>
+                    <ItemContent Context="row">
+                        @foreach (var cell in Cells(row)) { <GXTd>@cell</GXTd> }
+                        <GXTd><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRow(row)">Edit...</GXButton><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRemove(row)">Remove</GXButton></GXTd>
+                    </ItemContent>
+                </GXTable>
+                <GXButton type="button" Disabled="@(!Enabled || CreateRow is null && ((Gurux.DLMS.GXArray)CurrentValue!).Count == 0)" OnClick="BeginAdd">Add...</GXButton>
+            </div>
+        }
+        else if (IsSimple)
+        {
+            <div class="gx-inline-value">
+                <GXDraftInput Id="@(_id + "-display")" Label="@Label" Value="@InlineValue" ValueChanged="ChangeInlineAsync" EnumType="EnumType" InputKind="@Kind" Disabled="@(!CanEditNow)" />
+                @if (Error is not null) { <p role="alert">@Error</p> }
+            </div>
+        }
+        else
+        {
+            <GXInputText id="@(_id + "-display")" Value="@Display" readonly aria-label="@Label" />
+            <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginEdit">Edit...</GXButton>
+        }
+    </div>
+</div>
+@if (Editing && !IsSimple)
+{
+    <GXDialog Id="@_id" Title="@Label" ManageFocus="true" Save="false" OkButtonTitle="" OnOk="AcceptAsync" OnCancel="CancelEdit"
+              class="gx-object-editor-dialog" aria-modal="true" aria-labelledby="@(_id + "-title")">
+        <ChildContent>
+            @if (Error is not null) { <p role="alert">@Error</p> }
+            @if (_remove) { <p>Remove the selected @Label row?</p> }
+            else if (_row.HasValue || _wireDraft is Gurux.DLMS.GXArray or Gurux.DLMS.GXStructure)
+            {
+                <GXWireValueEditor @ref="_wireEditor" Value="_wireDraft" ValueChanged="value => _wireDraft = value" Labels="@(EditorLabels ?? Columns)" Paths="@(EditorLabels is not null ? null : ColumnPaths ?? ColumnIndices?.Select(index => index.ToString()).ToArray())" InputKinds="EditorKinds" PathLabels="EditorPathLabels" PathKinds="EditorPathKinds" PathFactories="EditorPathFactories" TypePaths="EditorTypePaths" InputKind="InputKind" Disabled="@(!Enabled)" />
+            }
+            else
+            {
+                <div class="gx-dialog-field"><GXLabel for="@(_id + "-draft")">@Label</GXLabel>
+                    <GXDraftInput Id="@(_id + "-draft")" Label="@Label" @bind-Value="Draft" EnumType="EnumType" InputKind="@Kind" Disabled="@(!Enabled)" />
+                </div>
+            }
+        </ChildContent>
+        <FooterContent><GXButton type="button" Disabled="@(!Enabled)" OnClick="AcceptAsync">OK</GXButton></FooterContent>
+    </GXDialog>
+}

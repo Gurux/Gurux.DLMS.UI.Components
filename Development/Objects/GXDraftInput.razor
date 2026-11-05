@@ -1,0 +1,116 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.UI.Components
+
+@if (EnumType?.IsEnum == true && !EnumType.IsDefined(typeof(FlagsAttribute), false))
+{
+    <select id="@Id" class="form-select" aria-label="@Label" disabled="@Disabled" value="@EnumValue" @onchange="e => Change(e.Value?.ToString() ?? string.Empty)">
+        @foreach (var option in Enum.GetValues(EnumType).Cast<Enum>().Distinct())
+        {
+            <option value="@Convert.ToInt64(option, CultureInfo.InvariantCulture)">@option</option>
+        }
+    </select>
+}
+else if (EnumType?.IsEnum == true)
+{
+    <div class="gx-draft-flags" role="group" aria-label="@Label">
+        @foreach (var option in Enum.GetValues(EnumType).Cast<Enum>().Distinct())
+        {
+            var flag = Convert.ToInt64(option, CultureInfo.InvariantCulture);
+            <div class="gx-draft-flag">
+                <GXInputSwitch TValue="bool" Inline="true" Save="false" id="@(_flagsId + "-" + flag)" role="switch"
+                    Value="@(flag == 0 ? Flags == 0 : (Flags & flag) == flag)" ValueChanged="@(value => ChangeFlag(flag, value))" Disabled="Disabled" />
+                <GXLabel for="@(_flagsId + "-" + flag)">@option</GXLabel>
+            </div>
+        }
+    </div>
+}
+else if (InputKind == "bool")
+{
+    <GXInputSwitch TValue="bool" Inline="true" Save="false" id="@Id" role="switch" Value="@Boolean" ValueChanged="value => Change(value.ToString())" Disabled="Disabled" aria-label="@Label" />
+}
+else if (InputKind == "password")
+{
+    <GXInputPassword id="@Id" Value="@Value" ValueChanged="Change" ValueExpression="@(() => Value)" disabled="@Disabled" aria-label="@Label" />
+}
+else if (InputKind == "textarea")
+{
+    <GXInputTextArea id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" rows="6" />
+}
+else if (InputKind == "ip")
+{
+    <GXInputIpAddress TItem="string" Save="false" id="@Id" Value="@Value" ValueChanged="Change" @oninput="e => Change(e.Value?.ToString())" disabled="@Disabled" aria-label="@Label" />
+}
+else if (InputKind == "hex")
+{
+    <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" placeholder="Hexadecimal" />
+}
+else if (InputKind == "number")
+{
+    <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" inputmode="decimal" />
+}
+else if (InputKind == "datetime" && DateValue.HasValue)
+{
+    <GXDateTimeSelector TItem="DateTime?" id="@Id" @bind-Value="DateValue" @oninput="e => Change(e.Value?.ToString())" Save="false" Disabled="Disabled" aria-label="@Label" step="1" />
+}
+else
+{
+    <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" inputmode="@(InputKind == "number" ? "decimal" : null)" />
+}
+
+@code {
+    [Parameter] public string Id { get; set; } = string.Empty;
+    [Parameter] public string Label { get; set; } = string.Empty;
+    [Parameter] public string Value { get; set; } = string.Empty;
+    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    [Parameter] public string InputKind { get; set; } = "text";
+    [Parameter] public Type? EnumType { get; set; }
+    [Parameter] public bool Disabled { get; set; }
+    private readonly string _flagsId = $"gx-flags-{Guid.NewGuid():N}";
+    private bool Boolean => bool.TryParse(Value, out var value) && value;
+    private long Flags => long.TryParse(Value, out var value) ? value : EnumType is not null && Enum.TryParse(EnumType, Value, out var parsed) ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture) : 0;
+    private string EnumValue => EnumType?.IsEnum == true && Enum.TryParse(EnumType, Value, out var parsed)
+        ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Value;
+    private DateTime? DateValue
+    {
+        get
+        {
+            // Gurux's UTC meter format can include both the offset and Z.
+            // Keep meter wall time instead of converting to the browser zone.
+            var text = System.Text.RegularExpressions.Regex.IsMatch(Value, @"[+-]\d{2}:\d{2}Z$") ? Value[..^1] : Value;
+            return DateTimeOffset.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.None, out var value) ? value.DateTime : null;
+        }
+        set => _ = Change(value?.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture) ?? string.Empty);
+    }
+    private System.Threading.Tasks.Task Change(string? value) => Disabled ? System.Threading.Tasks.Task.CompletedTask : ValueChanged.InvokeAsync(value ?? string.Empty);
+    private System.Threading.Tasks.Task ChangeFlag(long flag, bool enabled) => Change((flag == 0 ? 0 : enabled ? Flags | flag : Flags & ~flag).ToString(CultureInfo.InvariantCulture));
+}

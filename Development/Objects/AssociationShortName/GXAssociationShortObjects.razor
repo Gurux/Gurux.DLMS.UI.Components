@@ -1,0 +1,187 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@implements IDisposable
+
+<div class="gx-short-objects">
+<GXTable @key="Edit" @ref="_table" TItem="ObjectRow" ItemsProvider="Rows" Filter="false" Menu="false" Total="false" ShowAllData="true" Save="false" OnRowChanged="BeginEdit" AllowColumnCustomization="false">
+    <HeaderContent>
+        @foreach (var label in ObjectColumns) { <GXTh TItem="ObjectRow" Name="@label">@label</GXTh> }
+        <GXTh TItem="ObjectRow" Name="Actions">Actions</GXTh>
+    </HeaderContent>
+    <ItemContent Context="row">
+        @foreach (var cell in row.Cells) { <GXTd>@cell</GXTd> }
+        <GXTd><GXButton type="button" Disabled="@(!CanEdit(2))" OnClick="() => BeginEdit(row)">Edit...</GXButton>
+        <GXButton type="button" Disabled="@(!CanRemove)" OnClick="() => BeginRemove(row)">Remove</GXButton></GXTd>
+    </ItemContent>
+</GXTable>
+<GXButton type="button" Disabled="@(!CanEdit(2))" OnClick="BeginAdd">Add...</GXButton>
+</div>
+@if (_editing)
+{
+    <GXDialog Id="@_id" Title="Association object" Save="false" ManageFocus="true" OkButtonTitle="" OnOk="AcceptAsync" OnCancel="CancelEdit" class="gx-object-editor-dialog">
+        <ChildContent>
+            @if (_error is not null) { <p role="alert">@_error</p> }
+            @if (_removing) { <p>Remove the selected association object and its access rights?</p> }
+            else
+            {
+                <GXWireValueEditor @ref="_objectEditor" Value="_objectDraft" ValueChanged="value => _objectDraft = (GXStructure)value!" Labels="DescriptorColumns" InputKinds="DescriptorKinds" Disabled="@(!CanEdit(2))" />
+                @if (HasRights)
+                {
+                    <fieldset><legend>Access rights</legend>
+                    <GXWireValueEditor @ref="_rightsEditor" Value="_rightsDraft" ValueChanged="value => _rightsDraft = (GXStructure)value!" Labels="RightsColumns" PathLabels="RightsPathLabels" PathFactories="RightsPathFactories" Disabled="@(!CanEdit(3))" />
+                    </fieldset>
+                }
+            }
+        </ChildContent>
+        <FooterContent><GXButton type="button" Disabled="@(!CanEdit(2) || _removing && !CanRemove)" OnClick="AcceptAsync">OK</GXButton></FooterContent>
+    </GXDialog>
+}
+
+@code {
+    [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
+    [Parameter, EditorRequired] public Func<int, bool> CanEdit { get; set; } = default!;
+    private static readonly string[] ObjectColumns = ["Base Name:", "Class ID:", "Version:", "Logical Name:", "Attribute Accesss", "Method Access"];
+    private static readonly string[] DescriptorColumns = ["Base Name:", "Class ID:", "Version:", "Logical Name:"];
+    private static readonly string[] DescriptorKinds = ["number", "number", "number", "logicalname"];
+    private static readonly string[] RightsColumns = ["Base Name:", "Attribute Accesss", "Method Access"];
+    private static readonly IReadOnlyDictionary<string, Func<object>> RightsPathFactories = new Dictionary<string, Func<object>>
+    {
+        ["1"] = () => new GXStructure { (sbyte)1, new GXEnum(0) },
+        ["2"] = () => new GXStructure { (sbyte)1, new GXEnum(0) }
+    };
+    private static readonly IReadOnlyDictionary<string, string> RightsPathLabels = new Dictionary<string, string>
+    {
+        ["1.*"] = "Attribute access",
+        ["1.*.0"] = "Attribute Index:",
+        ["1.*.1"] = "Access Mode:",
+        ["2.*"] = "Method access",
+        ["2.*.0"] = "Method Index:",
+        ["2.*.1"] = "Method Access:"
+    };
+    private sealed record ObjectRow(int Position, string[] Cells);
+    private bool HasRights => ((IGXDLMSBase)Edit.Target).GetAttributeCount() >= 3;
+    private bool CanRemove => CanEdit(2) && (!HasRights || CanEdit(3));
+    private GXArray Objects => (GXArray)GXWireValue.Read(Edit, 2)!;
+    private GXArray Rights => HasRights ? (GXArray)GXWireValue.Read(Edit, 3)! : new GXArray();
+    private GXTable<ObjectRow>? _table;
+    private GXWireValueEditor? _objectEditor, _rightsEditor;
+    private GXDLMSObjectEditState? _openedEdit;
+    private GXStructure _objectDraft = new(), _rightsDraft = new();
+    private int _position;
+    private bool _editing, _removing, _disposed;
+    private string? _error;
+    private string? _openedObjects, _openedRights;
+    private readonly string _id = $"gx-short-objects-{Guid.NewGuid():N}";
+    private static ushort BaseName(object value) => unchecked((ushort)Convert.ToInt32(value));
+    private static GXStructure? FindRights(GXArray rights, object shortName)
+        => rights.Cast<GXStructure>().FirstOrDefault(row => BaseName(row[0]) == BaseName(shortName));
+    private ValueTask<ItemsProviderResult<ObjectRow>> Rows(GXItemsProviderRequest request)
+    {
+        var rights = Rights;
+        var rows = Objects.Cast<GXStructure>().Select((descriptor, index) =>
+        {
+            var access = FindRights(rights, descriptor[0]);
+            return new ObjectRow(index, [
+                BaseName(descriptor[0]).ToString(), ((Gurux.DLMS.Enums.ObjectType)Convert.ToUInt16(descriptor[1])).ToString(),
+                GXWireValue.Display(descriptor[2]), GXWireValue.Display(descriptor[3]),
+                access is null ? "" : GXWireValue.Display(access[1]), access is null ? "" : GXWireValue.Display(access[2])
+            ]);
+        }).ToArray();
+        return ValueTask.FromResult(new ItemsProviderResult<ObjectRow>(rows, rows.Length));
+    }
+    protected override void OnParametersSet() { if (_openedEdit is not null && !ReferenceEquals(Edit, _openedEdit)) CancelEdit(); }
+    private void BeginEdit(ObjectRow row)
+    {
+        if (_disposed || !CanEdit(2)) return;
+        _openedEdit = Edit; _position = row.Position; _error = null; _removing = false;
+        _openedObjects = GXDLMSObjectEditState.Format(Objects); _openedRights = GXDLMSObjectEditState.Format(Rights);
+        _objectDraft = (GXStructure)GXWireValue.Copy(Objects[_position])!;
+        _rightsDraft = (GXStructure)GXWireValue.Copy(FindRights(Rights, _objectDraft[0]) ?? NewRights(_objectDraft[0]))!;
+        _editing = true;
+    }
+    private static GXStructure NewRights(object shortName) => new() { shortName, new GXArray(), new GXArray() };
+    private void BeginAdd()
+    {
+        if (_disposed || !CanEdit(2)) return;
+        _openedEdit = Edit; _position = -1; _error = null; _removing = false;
+        _openedObjects = GXDLMSObjectEditState.Format(Objects); _openedRights = GXDLMSObjectEditState.Format(Rights);
+        _objectDraft = new GXStructure { (short)0, (ushort)Gurux.DLMS.Enums.ObjectType.Data, (byte)0, new byte[6] };
+        _rightsDraft = NewRights((short)0); _editing = true;
+    }
+    private void BeginRemove(ObjectRow row) { if (!CanRemove) return; BeginEdit(row); _removing = _editing; }
+    private void CancelEdit() { _editing = false; _error = null; _openedEdit = null; _objectEditor = null; _rightsEditor = null; }
+    private async System.Threading.Tasks.Task AcceptAsync()
+    {
+        if (!_editing || _disposed || !ReferenceEquals(Edit, _openedEdit) || !CanEdit(2) || _removing && !CanRemove) return;
+        if (!_removing && (_objectEditor?.IsValid == false || _rightsEditor?.IsValid == false)) { _error = "Correct the invalid values."; return; }
+        try
+        {
+            if (_openedObjects != GXDLMSObjectEditState.Format(Objects) || _openedRights != GXDLMSObjectEditState.Format(Rights))
+            { _error = "The association list changed. Cancel and open the editor again."; return; }
+            var objects = Objects;
+            if (_position >= objects.Count) { _error = "The selected object changed. Open the editor again."; return; }
+            var previousShortName = _position < 0 ? null : ((GXStructure)objects[_position])[0];
+            if (_removing) objects.RemoveAt(_position);
+            else
+            {
+                if (objects.Cast<GXStructure>().Where((row, index) => index != _position).Any(row => BaseName(row[0]) == BaseName(_objectDraft[0])))
+                    throw new ArgumentException("Each object must have a unique base name.");
+                if (_position < 0) objects.Add(_objectDraft); else objects[_position] = _objectDraft;
+            }
+            var objectText = GXDLMSObjectEditState.Format(objects);
+            if (!GXWireValue.TryAttribute(Edit, 2, objectText, out _error)) return;
+            string? rightsText = null;
+            if (HasRights && CanEdit(3))
+            {
+                var rights = Rights;
+                var previous = previousShortName is null ? null : FindRights(rights, previousShortName);
+                if (previous is not null) rights.Remove(previous);
+                if (!_removing) { _rightsDraft[0] = _objectDraft[0]; rights.Add(_rightsDraft); }
+                rightsText = GXDLMSObjectEditState.Format(rights);
+                if (!GXWireValue.TryAttribute(Edit, 3, rightsText, out _error)) return;
+            }
+            else if (previousShortName is not null && BaseName(previousShortName) != BaseName(_objectDraft[0]) && HasRights)
+                throw new ArgumentException("Changing the base name also requires permission to update access rights.");
+            Edit.EditAttribute(2, objectText);
+            if (rightsText is not null) Edit.EditAttribute(3, rightsText);
+            CancelEdit();
+            if (_table is not null) await _table.RefreshDataAsync(false);
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { _error = error.Message; }
+    }
+    public void Dispose() { _disposed = true; CancelEdit(); }
+}
+

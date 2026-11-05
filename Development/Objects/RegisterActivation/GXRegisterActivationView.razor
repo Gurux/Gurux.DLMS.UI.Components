@@ -1,0 +1,104 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components.Tab
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSRegisterActivation>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Register Activation Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXTabControl NavigateOnSelection="false"><GXTabPage Text="Assignments"><GXAttributeField Edit="Edit" Index="2" Label="Register Assignment" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Object Type", "Logical Name" })" CreateRow="@(() => new GXStructure { (ushort)3, new byte[6] })" /></GXTabPage><GXTabPage Text="Masks">
+    <GXAttributeField Edit="Edit" Index="3" EditorKinds="@(new[] { "hex", "number" })" Label="Mask List" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Name", "Indexes" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), new GXArray { (byte)1 } })" />
+    <GXAttributeField Edit="Edit" Index="4" InputKind="hex" Label="Active mask" Enabled="CanEditAttribute(4)" /></GXTabPage></GXTabControl>
+    <fieldset><legend>Methods</legend>
+    <GXValueField Label="Object class ID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
+    <GXValueField Label="Object logical name" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddRegisterAsync">Add register</GXButton>
+    <GXValueField Label="Mask name (hexadecimal)" Value="@MaskNameHex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="hex" OnCommit="value => MaskNameHex = value" Validate="text => ValidateParameter(nameof(MaskNameHex), text)" />
+    <GXValueField Label="Mask indexes (comma separated bytes)" Value="@MaskIndexes" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => MaskIndexes = value" Validate="text => ValidateParameter(nameof(MaskIndexes), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddMaskAsync">Add mask</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveMaskAsync">Remove mask</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string ObjectClass { get; set; } = string.Empty;
+    public string ObjectLogicalName { get; set; } = string.Empty;
+    private GXDLMSObject ReadObject()
+    {
+        var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
+        if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Enter a supported object class ID.");
+        var parts = ObjectLogicalName.Split('.');
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        var value = GXDLMSClient.CreateObject(type);
+        value.LogicalName = ObjectLogicalName;
+        return value;
+    }
+    public string MaskNameHex { get; set; } = string.Empty;
+    public string MaskIndexes { get; set; } = string.Empty;
+    private byte[] ReadMaskName()
+    {
+        var value = Convert.FromHexString(MaskNameHex.Replace(" ", string.Empty));
+        return value.Length != 0 ? value : throw new FormatException("Enter a mask name.");
+    }
+    public Task AddRegisterAsync() => InvokeMethodAsync(1, client => {
+        var register = ReadObject();
+        if (register is not GXDLMSRegister && register is not GXDLMSDemandRegister) throw new FormatException("Choose a register, extended register or demand register.");
+        return Target.AddRegister(client, register);
+    });
+    public Task AddMaskAsync() => InvokeMethodAsync(2, client => Target.AddMask(client, ReadMaskName(), MaskIndexes.Split(',').Select(s => byte.Parse(s.Trim(), CultureInfo.InvariantCulture)).ToArray()));
+    public Task RemoveMaskAsync() => InvokeMethodAsync(3, client => Target.RemoveMask(client, ReadMaskName()));
+
+    private static string? ValidateParameter(string field, string text)
+    {
+        try
+        {
+            switch (field)
+            {
+                case nameof(ObjectClass): { var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture); if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Select a supported object class."); break; }
+                case nameof(ObjectLogicalName): { CheckLogicalName(text); break; }
+                case nameof(MaskNameHex): { if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0) throw new FormatException("Enter a mask name."); break; }
+                case nameof(MaskIndexes): { foreach (var part in text.Split(',')) byte.Parse(part.Trim(), CultureInfo.InvariantCulture); break; }
+            }
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+
+    private static void CheckLogicalName(string text)
+    {
+        var parts = text.Split('.');
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+    }
+}

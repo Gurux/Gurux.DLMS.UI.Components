@@ -1,0 +1,170 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.DLMS
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Objects.Enums
+@using Gurux.UI.Components.Tab
+@inherits GXDLMSObjectViewBase<GXDLMSMBusClient>
+
+<section class="gx-object-view" @key="Target">
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="MBus Client Object" />
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+{
+<GXAttributeField Edit="Edit" Index="2" Label="MBus Port Reference:" Enabled="CanEditAttribute(2)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+{
+<GXAttributeField Edit="Edit" Index="4" Label="Capture Period:" Enabled="CanEditAttribute(4)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+{
+<GXAttributeField Edit="Edit" Index="5" Label="Primary Address:" Enabled="CanEditAttribute(5)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+{
+<GXAttributeField Edit="Edit" Index="6" Label="Identification Number:" Enabled="CanEditAttribute(6)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+{
+<GXAttributeField Edit="Edit" Index="7" Label="Manufacturer ID:" Enabled="CanEditAttribute(7)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+{
+<GXAttributeField Edit="Edit" Index="8" Label="Version:" Enabled="CanEditAttribute(8)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+{
+<GXAttributeField Edit="Edit" Index="9" Label="Device Type:" Enabled="CanEditAttribute(9)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+{
+<GXAttributeField Edit="Edit" Index="10" Label="Access Number:" Enabled="CanEditAttribute(10)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
+{
+<GXAttributeField Edit="Edit" Index="11" Label="Status:" Enabled="CanEditAttribute(11)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
+{
+<GXAttributeField Edit="Edit" Index="12" Label="Alarm:" Enabled="CanEditAttribute(12)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
+{
+<GXAttributeField Edit="Edit" Index="13" Label="Configuration:" Enabled="CanEditAttribute(13)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
+{
+<GXAttributeField Edit="Edit" Index="14" Label="Encryption Key Status:" Enabled="CanEditAttribute(14)" EnumType="typeof(MBusEncryptionKeyStatus)" />
+}
+<fieldset><legend>Capture Definition:</legend>
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+{
+<GXAttributeField Edit="Edit" Index="3" Label="Capture Definition:" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Data Information", "Value Information" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), Array.Empty<byte>() })" EditorKinds="@(new[] { "hex", "hex" })" />
+}
+</fieldset>
+<fieldset><legend>Slave</legend>
+<GXValueField Label="Install primary address:" Value="@PrimaryAddressText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) PrimaryAddressText = value; })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Primary address must be between zero and 255.")" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InstallAsync">Install</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeinstallAsync">De-install</GXButton>
+</fieldset>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="CaptureAsync">Capture</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="ResetAlarmAsync">Reset alarm</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="SynchronizeAsync">Synchronize clock</GXButton>
+<fieldset><legend>Send data</legend>
+<GXValueField Label="Data Information (hex):" Value="@DataInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) DataInformationText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="Value Information (hex):" Value="@ValueInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) ValueInformationText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="Data type:" Value="@ValueType.ToString()" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) ValueType = Enum.Parse<DataType>(value); })" EnumType="typeof(DataType)" Validate="@(value => Enum.TryParse<DataType>(value, out var type) && Enum.IsDefined(type) && type is not (DataType.None or DataType.Array or DataType.Structure) ? null : "Select a scalar data type.")" />
+<GXValueField Label="Data value:" Value="@DataText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) DataText = value; })" Validate="@(ValidateDataText)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="SendDataAsync">Send...</GXButton>
+</fieldset>
+<fieldset><legend>Encryption key</legend>
+<GXValueField Label="Encryption key (16 bytes, hex):" Value="@EncryptionKeyText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) EncryptionKeyText = value; })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(ClearKey || Hex(value).Length == 16, "An M-Bus encryption key must contain exactly 16 bytes.")))" />
+<GXValueField Label="Clear encryption key:" Value="@ClearKey.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) ClearKey = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; })" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(7))" OnClick="SetKeyAsync">Set...</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(8))" OnClick="TransferKeyAsync">Transfer...</GXButton>
+</fieldset>
+</section>
+
+@code {
+private static string? CheckParameter(Action validate)
+{
+    try { validate(); return null; }
+    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+}
+private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
+
+private string? ValidateDataText(string text) => CheckParameter(() =>
+{
+    RequireParameter(!string.IsNullOrEmpty(text), "A data value is required.");
+    RequireParameter(ValueType is not (DataType.None or DataType.Array or DataType.Structure), "Select a scalar data type.");
+    if (ValueType == DataType.OctetString) Hex(text);
+    else GXDLMSConverter.ChangeType(text, ValueType, System.Globalization.CultureInfo.InvariantCulture);
+});
+
+private enum BooleanChoice { False, True }
+
+public string PrimaryAddressText { get; set; } = "";
+public string EncryptionKeyText { get; set; } = "";
+public bool ClearKey { get; set; }
+public string DataInformationText { get; set; } = "";
+public string ValueInformationText { get; set; } = "";
+public string DataText { get; set; } = "";
+public DataType ValueType { get; set; } = DataType.String;
+private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+private byte[]? Key()
+{
+    if (ClearKey) return null;
+    var key = Hex(EncryptionKeyText);
+    if (key.Length != 16) throw new ArgumentException("An M-Bus encryption key must contain exactly 16 bytes.");
+    return key;
+}
+public Task InstallAsync() => InvokeMethodAsync(1, client => Target.SlaveInstall(client, byte.Parse(PrimaryAddressText, System.Globalization.CultureInfo.InvariantCulture)));
+public Task DeinstallAsync() => InvokeMethodAsync(2, client => Target.SlaveDeInstall(client));
+public Task CaptureAsync() => InvokeMethodAsync(3, client => Target.Capture(client));
+public Task ResetAlarmAsync() => InvokeMethodAsync(4, client => Target.ResetAlarm(client));
+public Task SynchronizeAsync() => InvokeMethodAsync(5, client => Target.SynchronizeClock(client));
+public Task SetKeyAsync() => InvokeMethodAsync(7, client => Target.SetEncryptionKey(client, Key()));
+public Task TransferKeyAsync() => InvokeMethodAsync(8, client => Target.TransferKey(client, Key()));
+public Task SendDataAsync() => InvokeMethodAsync(6, client =>
+{
+    if (string.IsNullOrEmpty(DataText)) throw new ArgumentException("A data value is required.");
+    object value = ValueType == DataType.OctetString ? Hex(DataText) :
+        GXDLMSConverter.ChangeType(DataText, ValueType, System.Globalization.CultureInfo.InvariantCulture);
+    return Target.SendData(client, new[] { new GXMBusClientData { DataInformation = Hex(DataInformationText), ValueInformation = Hex(ValueInformationText), Data = value } });
+});
+}
+
+
+
+
+
+

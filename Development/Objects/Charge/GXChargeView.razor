@@ -1,0 +1,73 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components.Tab
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSCharge>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Charge Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXTabControl NavigateOnSelection="false"><GXTabPage Text="General"><GXAttributeField Edit="Edit" Index="2" Label="Total Amount Paid" Enabled="CanEditAttribute(2)" />
+<GXAttributeField Edit="Edit" Index="3" Label="Charge Type" Enabled="CanEditAttribute(3)" EnumType="typeof(ChargeType)" />
+<GXAttributeField Edit="Edit" Index="4" Label="Priority" Enabled="CanEditAttribute(4)" />
+<GXAttributeField Edit="Edit" Index="7" Label="Unit Charge Activation Time" Enabled="CanEditAttribute(7)" />
+<GXAttributeField Edit="Edit" Index="8" Label="Period" Enabled="CanEditAttribute(8)" />
+<GXAttributeField Edit="Edit" Index="9" Label="Charge Configuration" Enabled="CanEditAttribute(9)" EnumType="typeof(ChargeConfiguration)" />
+<GXAttributeField Edit="Edit" Index="10" Label="Last Collection Time" Enabled="CanEditAttribute(10)" />
+<GXAttributeField Edit="Edit" Index="11" Label="Last Collection Amount" Enabled="CanEditAttribute(11)" />
+<GXAttributeField Edit="Edit" Index="12" Label="Total Amount Remaining" Enabled="CanEditAttribute(12)" />
+<GXAttributeField Edit="Edit" Index="13" Label="Proportion" Enabled="CanEditAttribute(13)" /></GXTabPage><GXTabPage Text="Unit Charge Active">
+<fieldset><legend>Charge Per Unit Scaling Type</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="0.0" Label="Commodity Scale" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="0.1" Label="Price Scale" Enabled="CanEditAttribute(5)" />
+</fieldset>
+<fieldset><legend>Commodity Reference Type</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="1.0" Label="Object Type" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="1.1" Label="Target" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="1.2" Label="Index" Enabled="CanEditAttribute(5)" />
+</fieldset>
+<fieldset><legend>Charge Tables</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="Charge Tables" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Index", "Charge Per Unit" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true" title="This action is not available.">Collect</GXButton><GXButton type="button" Disabled="true">Update Total...</GXButton><GXButton type="button" Disabled="true">Set Total...</GXButton></fieldset></GXTabPage><GXTabPage Text="Unit Charge Passive">
+<fieldset><legend>Charge Per Unit Scaling Type</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="0.0" Label="Commodity Scale" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="0.1" Label="Price Scale" Enabled="CanEditAttribute(6)" />
+</fieldset>
+<fieldset><legend>Commodity Reference Type</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="1.0" Label="Object Type" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="1.1" Label="Target" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="1.2" Label="Index" Enabled="CanEditAttribute(6)" />
+</fieldset>
+<fieldset><legend>Charge Tables</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="Charge Tables" Enabled="CanEditAttribute(6)" Columns="@(new[] { "Index", "Charge Per Unit" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true">Update</GXButton><GXButton type="button" Disabled="true">Activate</GXButton></fieldset></GXTabPage></GXTabControl>
+</section>

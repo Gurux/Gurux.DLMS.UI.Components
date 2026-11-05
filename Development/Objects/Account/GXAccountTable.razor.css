@@ -1,0 +1,53 @@
+/*
+--------------------------------------------------------------------------
+Gurux Ltd
+
+Copyright (c) Gurux Ltd.
+
+This file is part of Gurux Device Framework.
+
+Commit: $Format:%H$
+Date:   $Format:%cI$
+
+This software is available under either of the following licenses:
+
+1. GNU General Public License, version 2 only (GPL-2.0-only).
+   See the LICENSE file included with this distribution.
+
+2. A commercial license granted by Gurux Ltd under a separate written
+   agreement. Use under this option requires a valid commercial license
+   and is governed by the terms of that agreement.
+
+If you have not obtained a commercial license from Gurux Ltd,
+use of this software is governed by GPL-2.0-only.
+
+Commercial licensing: https://www.gurux.fi/
+
+SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+--------------------------------------------------------------------------
+*/
+
+.account-reference-table { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; padding-top: .4rem; }
+.account-table-scroll { flex: 1 0 12rem; min-height: 12rem; overflow: auto; border: 1px solid #8887; }
+table { width: 100%; border-collapse: collapse; font-size: .85rem; }
+th, td { padding: .25rem .4rem; text-align: left; border-right: 1px solid #8884; }
+th { position: sticky; top: 0; background: var(--bs-secondary-bg, #eee); border-bottom: 1px solid #8887; font-weight: normal; }
+tbody tr { cursor: pointer; }
+tbody tr.selected { background: var(--bs-primary-bg-subtle, #d9e9fc); }
+tbody tr:focus-visible { outline: 2px solid var(--bs-primary, #1668bd); outline-offset: -2px; }
+.account-table-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: .35rem; margin-top: .35rem; }
+.account-table-actions ::deep button { min-width: 75px; margin: 0; padding: .2rem .5rem; font-size: .85rem; }
+.account-reference-table ::deep .account-editor-dialog { left: 0 !important; top: 0 !important; background: #0006; }
+.account-reference-table ::deep .account-editor-dialog .modal-dialog { width: min(500px, calc(100vw - 1rem)); margin: .5rem auto; }
+.account-reference-table ::deep .account-editor-dialog .modal-content { max-height: calc(100dvh - 1rem); }
+.account-reference-table ::deep .account-editor-dialog .modal-body { overflow: auto; }
+.account-row-editor { min-width: 0; }
+.account-configuration-switch { display: flex; align-items: center; gap: .5rem; margin: .3rem 0; }
+.account-configuration-switch ::deep label { margin: 0; }
+.account-row-editor legend { float: none; width: auto; font-size: .9rem; }
+.account-row-editor label { display: flex; gap: .4rem; align-items: center; margin: .3rem 0; font-size: .85rem; }
+.account-row-editor .account-dialog-field { display: grid; grid-template-columns: 14rem minmax(0, 1fr); }
+.account-row-editor .account-dialog-field input { width: 100%; box-sizing: border-box; }
+.account-row-editor input:not([type=checkbox]) { min-width: 0; flex: 1; padding: .2rem .35rem; }
+[role=alert] { color: var(--gx-error-color, #b42318); }
+@media (max-width: 480px) { .account-row-editor .account-dialog-field { grid-template-columns: minmax(0, 1fr); } }

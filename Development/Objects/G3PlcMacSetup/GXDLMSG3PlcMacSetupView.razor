@@ -1,0 +1,165 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSG3PlcMacSetup>
+
+@using Gurux.UI.Components.Tab
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>G3-PLC MAC setup object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="General">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Short Address:" Enabled="CanEditAttribute(2)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Route cost to coord:" Enabled="CanEditAttribute(3)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="PAN ID:" Enabled="CanEditAttribute(4)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Frame Counter:" Enabled="CanEditAttribute(6)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Tone Mask:" Enabled="CanEditAttribute(7)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="Tone Map TTL:" Enabled="CanEditAttribute(8)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+    {
+        <GXAttributeField Edit="Edit" Index="9" Label="Max Frame Retries:" Enabled="CanEditAttribute(9)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+    {
+        <GXAttributeField Edit="Edit" Index="10" Label="Neighbour table TTL:" Enabled="CanEditAttribute(10)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
+    {
+        <GXAttributeField Edit="Edit" Index="12" Label="HighPriority SIze:" Enabled="CanEditAttribute(12)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
+    {
+        <GXAttributeField Edit="Edit" Index="13" Label="CSCM Fairness Limit:" Enabled="CanEditAttribute(13)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
+    {
+        <GXAttributeField Edit="Edit" Index="14" Label="Beacon Rnd:" Enabled="CanEditAttribute(14)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
+    {
+        <GXAttributeField Edit="Edit" Index="15" Label="A:" Enabled="CanEditAttribute(15)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 16)
+    {
+        <GXAttributeField Edit="Edit" Index="16" Label="K:" Enabled="CanEditAttribute(16)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 17)
+    {
+        <GXAttributeField Edit="Edit" Index="17" Label="Min CW Attempts:" Enabled="CanEditAttribute(17)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 18)
+    {
+        <GXAttributeField Edit="Edit" Index="18" Label="Cenelec Legacy:" Enabled="CanEditAttribute(18)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 19)
+    {
+        <GXAttributeField Edit="Edit" Index="19" Label="FCC Legacy Mode:" Enabled="CanEditAttribute(19)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 20)
+    {
+        <GXAttributeField Edit="Edit" Index="20" Label="Max  backoff:" Enabled="CanEditAttribute(20)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 21)
+    {
+        <GXAttributeField Edit="Edit" Index="21" Label="Max CSMA Backoffs" Enabled="CanEditAttribute(21)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 22)
+    {
+        <GXAttributeField Edit="Edit" Index="22" Label="Min  backoff:" Enabled="CanEditAttribute(22)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 23)
+    {
+        <GXAttributeField Edit="Edit" Index="23" Label="Broadcast max CW Enabled" Enabled="CanEditAttribute(23)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 24)
+    {
+        <GXAttributeField Edit="Edit" Index="24" Label="Transmit atten:" Enabled="CanEditAttribute(24)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 26)
+    {
+        <GXAttributeField Edit="Edit" Index="26" Label="Duplicate detection" Enabled="CanEditAttribute(26)"  />
+    }
+</GXTabPage>
+<GXTabPage Text="Key table">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Key table" Enabled="CanEditAttribute(5)" Columns='@(new[] { "ID:", "Key:" })' CreateRow='@(() => new GXStructure { (byte)0, new byte[16] })' />
+    }
+</GXTabPage>
+<GXTabPage Text="Neighbour table">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
+    {
+        <GXAttributeField Edit="Edit" Index="11" Label="Neighbour table" Enabled="CanEditAttribute(11)" Columns='@(new[] { "Address:", "Enabled:", "Modulation:", "Tone Map:" })' CreateRow='@(() => new GXStructure { (ushort)0, false, new GXBitString("0"), new GXEnum(0), (sbyte)0, new GXEnum(0), new GXBitString("0"), (byte)0, (sbyte)0, (byte)0, (byte)0 })' ColumnIndices="@(new[] { 0, 1, 3, 2 })" EditorLabels='@(new[] { "Address:", "Enabled:", "Tone Map:", "Modulation:", "TX Gain", "TX Resolution", "TX Coefficients", "LQI", "Phase Differential", "TMR Valid Time", "Neighbour Valid Time" })' />
+    }
+</GXTabPage>
+<GXTabPage Text="POS table">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 25)
+    {
+        <GXAttributeField Edit="Edit" Index="25" Label="POS table" Enabled="CanEditAttribute(25)" Columns='@(new[] { "Address", "LQI", "Valid time" })' CreateRow='@(() => new GXStructure { (ushort)0, (byte)0, (byte)0 })' />
+    }
+</GXTabPage>
+</GXTabControl>
+</fieldset>
+</section>
+<section class="gx-object-actions">
+    <GXValueField @key='@((Target, "Short address"))' Label="Short address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="@(value => Address = value)" Validate='@(value => ushort.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter a short address from 0 to 65535.")' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="NeighbourAsync">Get neighbour table entry</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="PositionAsync">Get POS table entry</GXButton>
+</section>
+@code {
+    private string Address = "";
+    private Task NeighbourAsync() => InvokeMethodAsync(1, client => Target.GetNeighbourTableEntry(client, ushort.Parse(Address, System.Globalization.CultureInfo.InvariantCulture)));
+    private Task PositionAsync() => InvokeMethodAsync(2, client => Target.GetPosTableEntry(client, ushort.Parse(Address, System.Globalization.CultureInfo.InvariantCulture)));
+}
+
+

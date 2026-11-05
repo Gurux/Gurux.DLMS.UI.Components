@@ -1,0 +1,96 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.DLMS.Objects
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+
+<fieldset class="gx-calendar-table"><legend>@Label</legend>
+@if (!Editing && Error is not null) { <p role="alert">@Error</p> }
+<div class="gx-calendar-scroll">
+    <GXTable @key="TableKey" TItem="int" ItemsProvider="GetRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
+        <HeaderContent>
+            @foreach (var header in Headers) { <GXTh TItem="int" Name="@header">@header</GXTh> }
+            <GXTh TItem="int" Name="Edit">Edit</GXTh>
+        </HeaderContent>
+        <ItemContent Context="row">
+            @foreach (var cell in RowCells(row)) { <GXTd>@cell</GXTd> }
+            <GXTd>
+                @if (Kind == 2) { <GXButton type="button" OnClick="() => SelectDay(row)">Actions</GXButton> }
+                <GXButton type="button" Disabled="@(!Enabled)" OnClick="() => LoadRow(row)">Edit...</GXButton>
+                <GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRemove(row, false)">Remove</GXButton>
+            </GXTd>
+        </ItemContent>
+    </GXTable>
+</div>
+<GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginAddRow">@(Kind == 2 ? "Add Day..." : "Add...")</GXButton>
+@if (Kind == 2 && SelectedRow >= 0 && SelectedRow < RowCount)
+{
+    <fieldset><legend>Day actions</legend>
+    <GXTable @key="ActionTableKey" TItem="int" ItemsProvider="GetActions" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
+        <HeaderContent><GXTh TItem="int" Name="Time">Start Time</GXTh><GXTh TItem="int" Name="Script">Script</GXTh><GXTh TItem="int" Name="Selector">Selector</GXTh><GXTh TItem="int" Name="Edit">Edit</GXTh></HeaderContent>
+        <ItemContent Context="row">
+            <GXTd>@DayActions[row].StartTime</GXTd><GXTd>@DayActions[row].ScriptLogicalName</GXTd><GXTd>@DayActions[row].ScriptSelector</GXTd>
+            <GXTd><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => LoadAction(row)">Edit...</GXButton><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRemove(row, true)">Remove</GXButton></GXTd>
+        </ItemContent>
+    </GXTable>
+    <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginAddAction">Add Action...</GXButton>
+    </fieldset>
+}
+@if (Editing)
+{
+    <GXDialog Title="@DialogTitle" Save="false" ManageFocus="true" OkButtonTitle="" OnOk="AcceptDialog" OnCancel="CancelDialog">
+        <ChildContent>
+            @if (Error is not null) { <p role="alert">@Error</p> }
+            @if (_removing) { <p>Remove the selected @(_editingAction ? "action" : "profile")?</p> }
+            else if (_editingAction)
+            {
+                <label class="calendar-dialog-field"><span>Start Time</span><GXInputText @bind-Value="ActionTime" disabled="@(!Enabled)" /></label>
+                <label class="calendar-dialog-field"><span>Script</span><GXInputText @bind-Value="ActionScript" disabled="@(!Enabled)" /></label>
+                <label class="calendar-dialog-field"><span>Selector</span><GXInputText @bind-Value="ActionSelector" inputmode="numeric" disabled="@(!Enabled)" /></label>
+            }
+            else if (Kind == 0)
+            {
+                <label class="calendar-dialog-field"><span>Name</span><GXInputText @bind-Value="Name" disabled="@(!Enabled)" /></label>
+                <label class="calendar-dialog-field"><span>Start</span><GXInputText @bind-Value="Start" disabled="@(!Enabled)" /></label>
+                <label class="calendar-dialog-field"><span>Week Name</span><GXInputText @bind-Value="WeekName" disabled="@(!Enabled)" /></label>
+            }
+            else if (Kind == 1)
+            {
+                <label class="calendar-dialog-field"><span>Name</span><GXInputText @bind-Value="Name" disabled="@(!Enabled)" /></label>
+                @for (var d = 0; d < 7; ++d) { var day = d; <label class="calendar-dialog-field"><span>@DayNames[day]</span><GXInputText Value="@DayIds[day]" ValueChanged="value => DayIds[day] = value ?? string.Empty" inputmode="numeric" disabled="@(!Enabled)" /></label> }
+            }
+            else { <label class="calendar-dialog-field"><span>Day ID</span><GXInputText @bind-Value="DayId" inputmode="numeric" disabled="@(!Enabled)" /></label> }
+        </ChildContent>
+        <FooterContent><GXButton type="button" Disabled="@(!Enabled)" OnClick="AcceptDialog">OK</GXButton></FooterContent>
+    </GXDialog>
+}
+<details><summary>Advanced COSEM XML</summary><GXAttributeField Edit="Edit" Index="Index" Label="@Label" Enabled="Enabled" Rows="6" /></details>
+</fieldset>

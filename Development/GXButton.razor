@@ -1,0 +1,58 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components
+@using Microsoft.AspNetCore.Components
+@using Microsoft.AspNetCore.Components.Web
+@using Task = System.Threading.Tasks.Task
+
+<button @attributes="AdditionalAttributes" class="@CssClass" type="@Type" disabled="@Disabled"
+        @onclick="HandleClick" @ondblclick="HandleDoubleClick" @oncontextmenu="HandleContextMenu"
+        @onclick:stopPropagation="StopClickPropagation" @oncontextmenu:preventDefault="PreventContextMenu">
+    @ChildContent
+</button>
+
+@code {
+    [Parameter] public string Type { get; set; } = "button";
+    [Parameter] public bool Disabled { get; set; }
+    [Parameter] public RenderFragment? ChildContent { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
+    [Parameter] public EventCallback<MouseEventArgs> OnContextMenu { get; set; }
+    [Parameter] public bool StopClickPropagation { get; set; }
+    [Parameter] public bool PreventContextMenu { get; set; }
+    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+
+    private string CssClass => AdditionalAttributes?.TryGetValue("class", out var value) == true
+        ? "gx-button " + value : "gx-button";
+
+    private Task HandleClick(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnClick.InvokeAsync(args);
+    private Task HandleDoubleClick(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnDoubleClick.InvokeAsync(args);
+    private Task HandleContextMenu(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnContextMenu.InvokeAsync(args);
+}

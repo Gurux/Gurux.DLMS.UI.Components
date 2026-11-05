@@ -1,0 +1,69 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components.Tab
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using Gurux.DLMS.Objects.Italy
+@inherits GXDLMSObjectViewBase<GXDLMSTariffPlan>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Tariff Plan Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" InputKind="text" Label="Calendar Name" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="Enabled" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="Activation Time" Enabled="CanEditAttribute(5)" />
+    <fieldset><legend>Tariff plan</legend>
+    <GXTabControl NavigateOnSelection="false">
+        <GXTabPage Text="General">
+            <GXAttributeField Edit="Edit" Index="4" Part="0" Label="Default Tariff Band" Enabled="CanEditAttribute(4)" />
+            <GXAttributeField Edit="Edit" Index="4" Part="2" Label="Weekly Activation" Enabled="CanEditAttribute(4)" />
+            <GXAttributeField Edit="Edit" Index="4" Part="3" Label="Special Days" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Special Days" })" CreateRow="@(() => (ushort)1)" />
+        </GXTabPage>
+        @for (var season = 0; season < 2; ++season)
+        {
+            var position = season;
+            <GXTabPage Text="@(position == 0 ? "Winter season" : "Summer season")">
+                <fieldset><legend>Activate</legend>
+                    <GXAttributeField Edit="Edit" Index="4" Path="@($"1.{position}.0")" Label="Day of month" Enabled="CanEditAttribute(4)" />
+                    <GXAttributeField Edit="Edit" Index="4" Path="@($"1.{position}.1")" Label="Month" Enabled="CanEditAttribute(4)" />
+                </fieldset>
+                <GXTabControl NavigateOnSelection="false">
+                    <GXTabPage Text="Working Day Intervals"><GXTariffIntervals Edit="Edit" Season="position" Kind="0" Enabled="CanEditAttribute(4)" /></GXTabPage>
+                    <GXTabPage Text="Saturday Intervals"><GXTariffIntervals Edit="Edit" Season="position" Kind="1" Enabled="CanEditAttribute(4)" /></GXTabPage>
+                    <GXTabPage Text="Holiday Intervals"><GXTariffIntervals Edit="Edit" Season="position" Kind="2" Enabled="CanEditAttribute(4)" /></GXTabPage>
+                </GXTabControl>
+            </GXTabPage>
+        }
+    </GXTabControl>
+    </fieldset>
+</section>

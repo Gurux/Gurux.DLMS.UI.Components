@@ -1,0 +1,161 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS.Objects
+@using Gurux.UI.Components.Tab
+@using Gurux.UI.Components
+@inject IGXLocalStorage ReadStorage
+
+<section class="gx-object-tabs">
+    <GXTabControl @key="Target" NavigateOnSelection="false">
+        <GXTabPage Text="Data">@Data</GXTabPage>
+        <GXTabPage Text="Attributes">
+            <div class="attribute-read-actions">
+                <GXButton Disabled="@(!ReadsEnabled || !SelectedAttributes.Any(CanRead))" OnClick="ReadSelectedAsync">Read</GXButton>
+                <GXButton Disabled="@(!ReadsEnabled)" OnClick="ReadAllAsync">Read all</GXButton>
+                <GXButton Disabled="@(!ReadsEnabled)" OnClick="RefreshValuesAsync">Refresh values</GXButton>
+                <GXInputSwitch TValue="bool" Inline="true" Save="false" Text="Read automatically on object selection" Value="AutoRead" ValueChanged="SetAutoReadAsync" />
+            </div>
+            <div class="rights-scroll">
+                <table><thead><tr><th>Read</th><th>Index</th><th>Description</th><th>Value</th><th>Access rights</th></tr></thead><tbody>
+                @for (var index = 1; index <= AttributeCount; ++index)
+                {
+                    var attributeIndex = index;
+                    <tr><td><GXInputSwitch TValue="bool" Inline="true" Save="false" Value="@SelectedAttributes.Contains(index)" Disabled="@(!CanRead(index))" ValueChanged="value => SelectAttributeAsync(attributeIndex, value)" aria-label="@($"Read {AttributeName(index)}")" /></td>
+                        <td>@index</td><td>@AttributeName(index)</td><td>@AttributeValue(index)</td><td>@AttributeAccess(index)</td></tr>
+                }
+                </tbody></table>
+            </div>
+        </GXTabPage>
+        <GXTabPage Text="Access rights">
+            <div class="rights-scroll">
+                <table><thead><tr><th>Attribute Index</th><th>Description</th><th>Access rights</th><th>Access selector</th><th>Static</th><th>Type</th><th>UIType</th></tr></thead>
+                    <tbody>
+                        @for (var index = 1; index <= AttributeCount; ++index)
+                        {
+                            <tr><td>@index</td><td>@AttributeName(index)</td><td>@AttributeAccess(index)</td><td>@Target.GetAccessSelector(index)</td>
+                                <td>@Target.GetStatic(index)</td><td>@Target.GetDataType(index)</td><td>@Target.GetUIDataType(index)</td></tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </GXTabPage>
+        @if (MethodCount > 0)
+        {
+            <GXTabPage Text="Method access rights">
+                <div class="rights-scroll">
+                    <table><thead><tr><th>Method Index</th><th>Description</th><th>Method access</th></tr></thead>
+                        <tbody>
+                            @for (var index = 1; index <= MethodCount; ++index)
+                            {
+                                <tr><td>@index</td><td>@MethodName(index)</td><td>@MethodAccess(index)</td></tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </GXTabPage>
+        }
+    </GXTabControl>
+</section>
+
+@code {
+    [Parameter, EditorRequired] public GXDLMSObject Target { get; set; } = default!;
+    [Parameter] public GXDLMSAssociationLogicalName? Association { get; set; }
+    [Parameter] public RenderFragment? Data { get; set; }
+    [Parameter] public bool ReadsEnabled { get; set; }
+    [Parameter] public EventCallback<int[]> OnReadRequested { get; set; }
+    public HashSet<int> SelectedAttributes { get; private set; } = [];
+    public bool AutoRead { get; private set; }
+    private GXDLMSObject? _settingsTarget;
+    private bool _loaded, _reading;
+    private string SelectionKey => $"GXAttributeReads:{Target.ObjectType}";
+    protected override void OnParametersSet()
+    {
+        if (ReferenceEquals(_settingsTarget, Target)) return;
+        _settingsTarget = Target; _loaded = false;
+        SelectedAttributes = DefaultAttributes().ToHashSet();
+    }
+    private IEnumerable<int> DefaultAttributes() => Target.ObjectType == Gurux.DLMS.Enums.ObjectType.Clock
+        ? new[] { 2, 4 }.Where(CanRead)
+        : Enumerable.Range(1, AttributeCount).Where(index => index > 1 && !Target.GetStatic(index) && CanRead(index));
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (_loaded) return;
+        _loaded = true;
+        var target = Target;
+        var saved = await ReadStorage.GetValueAsync(SelectionKey);
+        var auto = await ReadStorage.GetValueAsync("GXAttributeReads:AutoRead");
+        if (!ReferenceEquals(target, Target)) return;
+        if (saved is not null) SelectedAttributes = saved.Split(',', StringSplitOptions.RemoveEmptyEntries)
+            .Select(value => int.TryParse(value, out var index) ? index : 0).Where(index => index > 0 && index <= AttributeCount).ToHashSet();
+        AutoRead = auto == "true";
+        StateHasChanged();
+        if (AutoRead && ReadsEnabled) await ReadSelectedAsync();
+    }
+    public bool CanRead(int index) => GXDLMSObjectAccess.CanRead(Target, index, Association);
+    public async Task SelectAttributeAsync(int index, bool selected)
+    {
+        if (index < 1 || index > AttributeCount || !CanRead(index)) return;
+        if (selected) SelectedAttributes.Add(index); else SelectedAttributes.Remove(index);
+        await ReadStorage.SetValueAsync(SelectionKey, string.Join(',', SelectedAttributes.Order()));
+    }
+    public async Task SetAutoReadAsync(bool enabled)
+    {
+        AutoRead = enabled;
+        await ReadStorage.SetValueAsync("GXAttributeReads:AutoRead", enabled ? "true" : "false");
+    }
+    public Task ReadSelectedAsync() => RequestReadAsync(SelectedAttributes);
+    public Task ReadAllAsync() => RequestReadAsync(Enumerable.Range(1, AttributeCount));
+    public Task RefreshValuesAsync() => RequestReadAsync(DefaultAttributes());
+    private async Task RequestReadAsync(IEnumerable<int> indices)
+    {
+        if (!ReadsEnabled || _reading || !OnReadRequested.HasDelegate) return;
+        var readable = indices.Where(CanRead).Distinct().Order().ToArray();
+        if (readable.Length == 0) return;
+        _reading = true;
+        try { await OnReadRequested.InvokeAsync(readable); }
+        finally { _reading = false; }
+    }
+    private string AttributeValue(int index)
+    {
+        try { return GXDLMSObjectEditState.For(Target).AttributeText(index); }
+        catch { return string.Empty; }
+    }
+    public int AttributeCount => (Target as IGXDLMSBase)?.GetAttributeCount() ?? Target.Attributes.Select(item => item.Index).DefaultIfEmpty().Max();
+    public int MethodCount => (Target as IGXDLMSBase)?.GetMethodCount() ?? Target.MethodAttributes.Select(item => item.Index).DefaultIfEmpty().Max();
+    private string AttributeName(int index) => Name((Target as IGXDLMSBase)?.GetNames(), index, "Attribute");
+    private string MethodName(int index) => Name((Target as IGXDLMSBase)?.GetMethodNames(), index, "Method");
+    private static string Name(string[]? names, int index, string fallback) => names is not null && index <= names.Length ? names[index - 1] : $"{fallback} {index}";
+    public string AttributeAccess(int index) => Association?.Version >= 3
+        ? GXDLMSObjectAccess.GetAccess3(Target, index, Association).ToString()
+        : GXDLMSObjectAccess.GetAccess(Target, index, Association).ToString();
+    public string MethodAccess(int index) => Association?.Version >= 3
+        ? (Association.IsAccessRightSet(Target) ? Association.GetMethodAccess3(Target, index) : Target.GetMethodAccess3(index)).ToString()
+        : (Association?.IsAccessRightSet(Target) == true ? Association.GetMethodAccess(Target, index) : Target.GetMethodAccess(index)).ToString();
+}

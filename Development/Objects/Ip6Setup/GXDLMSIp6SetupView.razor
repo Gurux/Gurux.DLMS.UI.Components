@@ -1,0 +1,108 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSIp6Setup>
+
+@using Gurux.UI.Components.Tab
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>Ip6 Setup Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="Address config mode:" Enabled="CanEditAttribute(3)" EnumType="typeof(AddressConfigMode)"  />
+    }
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="Unicast:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Unicast IP Address" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+    }
+</GXTabPage>
+<GXTabPage Text="Multicast:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Multicast IP Address" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+    }
+</GXTabPage>
+<GXTabPage Text="Gateway:">
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Gateway IP Address" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+    }
+</GXTabPage>
+</GXTabControl>
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Primary DNS Address:" Enabled="CanEditAttribute(7)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="Secondary DNS Address:" Enabled="CanEditAttribute(8)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+    {
+        <GXAttributeField Edit="Edit" Index="9" Label="Traffic class:" Enabled="CanEditAttribute(9)"  />
+    }
+<fieldset class="gx-object-fields"><legend>Neighbor Discovery Setup</legend>
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+    {
+        <GXAttributeField Edit="Edit" Index="10" Label="Neighbor Discovery Setup" Enabled="CanEditAttribute(10)" Columns='@(new[] { "RS Max Retry", "RS retry wait time", "RA send period" })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (uint)0 })' />
+    }
+</fieldset>
+</fieldset>
+</section>
+<section class="gx-object-actions">
+    <GXValueField @key='@((Target, "Address type"))' Label="Address type" Value="@AddressType.ToString()" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" EnumType="typeof(IPv6AddressType)" OnCommit="@(value => AddressType = Enum.Parse<IPv6AddressType>(value))" Validate='@(value => Enum.TryParse<IPv6AddressType>(value, out var type) && Enum.IsDefined(type) ? null : "Select a supported address type.")' />
+    <GXValueField @key='@((Target, "IPv6 address"))' Label="IPv6 address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => Address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6 ? null : "Enter an IPv6 address.")' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">Add IPv6 address</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RemoveAsync">Remove IPv6 address</GXButton></section>
+@code {
+    private IPv6AddressType AddressType;
+    private string Address = "";
+    private IPAddress ParseAddress()
+    {
+        var address = IPAddress.Parse(Address);
+        if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetworkV6)
+            throw new FormatException("Enter an IPv6 address.");
+        return address;
+    }
+    private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddAddress(client, AddressType, ParseAddress()));
+    private Task RemoveAsync() => InvokeMethodAsync(2, client => Target.RemoveAddress(client, AddressType, ParseAddress()));
+}
+

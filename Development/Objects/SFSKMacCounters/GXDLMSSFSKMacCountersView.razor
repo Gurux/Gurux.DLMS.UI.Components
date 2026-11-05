@@ -1,0 +1,74 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSSFSKMacCounters>
+
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>S-FSK MAC counters Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Synchronization register:" Enabled="CanEditAttribute(2)" Columns='@(new[] { "Synchronization register", "Counter" })' CreateRow='@(() => new GXStructure { (ushort)0, (uint)0 })' />
+    }
+    <fieldset class="gx-object-fields"><legend>Desynchronization listing</legend>
+        <GXAttributeField Edit="Edit" Index="3" Label="Physical layer desynchronization:" Enabled="CanEditAttribute(3)" Part="0" />
+        <GXAttributeField Edit="Edit" Index="3" Label="Timeout not addressed desynchronization:" Enabled="CanEditAttribute(3)" Part="1" />
+        <GXAttributeField Edit="Edit" Index="3" Label="Timeout frame not OK desynchronization:" Enabled="CanEditAttribute(3)" Part="2" />
+        <GXAttributeField Edit="Edit" Index="3" Label="Write request desynchronization:" Enabled="CanEditAttribute(3)" Part="3" />
+        <GXAttributeField Edit="Edit" Index="3" Label="Wrong initiator desynchronization:" Enabled="CanEditAttribute(3)" Part="4" />
+    </fieldset>
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Broadcast frames counter:" Enabled="CanEditAttribute(4)" CreateRow='@(() => new GXStructure { (ushort)0, (uint)0 })'  Columns='@(new[] { "MAC Address", "Counter" })' />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="Repetitions counter:" Enabled="CanEditAttribute(5)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Transmissions counter:" Enabled="CanEditAttribute(6)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="CRC OK frames counter:" Enabled="CanEditAttribute(7)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="CRC NOK frames counter:" Enabled="CanEditAttribute(8)"  />
+    }
+</fieldset>
+</section>

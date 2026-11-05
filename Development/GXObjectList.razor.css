@@ -1,0 +1,42 @@
+﻿/*
+--------------------------------------------------------------------------
+Gurux Ltd
+
+Copyright (c) Gurux Ltd.
+
+This file is part of Gurux Device Framework.
+
+Commit: $Format:%H$
+Date:   $Format:%cI$
+
+This software is available under either of the following licenses:
+
+1. GNU General Public License, version 2 only (GPL-2.0-only).
+   See the LICENSE file included with this distribution.
+
+2. A commercial license granted by Gurux Ltd under a separate written
+   agreement. Use under this option requires a valid commercial license
+   and is governed by the terms of that agreement.
+
+If you have not obtained a commercial license from Gurux Ltd,
+use of this software is governed by GPL-2.0-only.
+
+Commercial licensing: https://www.gurux.fi/
+
+SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+--------------------------------------------------------------------------
+*/
+
+.gx-object-list { padding: .75rem; min-width: 0; }
+h2 { font-size: 1.2rem; margin: 0 0 .75rem; }
+.table-scroll { overflow: auto; max-width: 100%; }
+table { border-collapse: collapse; table-layout: fixed; background: #fff; }
+th, td { box-sizing: border-box; padding: .5rem; text-align: left; border-bottom: 1px solid #d6dde5; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+th { position: relative; background: #f0f4f8; padding-right: 14px; }
+.column-resizer { position: absolute; top: 0; right: 0; bottom: 0; width: 12px; cursor: col-resize; touch-action: none; border-right: 1px solid #c3ccd5; }
+.column-resizer:hover, .column-resizer:focus-visible { background: #9ebcda; outline: none; }
+td ::deep button { display: inline-flex; align-items: center; gap: .4rem; border: 0; padding: .25rem; color: inherit; background: transparent; cursor: pointer; text-align: left; max-width: 100%; overflow: hidden; }
+img { flex: 0 0 16px; object-fit: contain; }
+tr.selected { background: #fff2df; }
+tbody tr:hover { background: #e8f0f7; }
+@media (max-width: 760px) { td ::deep button { min-height: 44px; } }

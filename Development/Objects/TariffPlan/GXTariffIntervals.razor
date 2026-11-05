@@ -1,0 +1,90 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects.Italy.Enums
+
+@for (var row = 0; row < 5; ++row)
+{
+    var position = row;
+    var packed = Interval(position);
+    <fieldset><legend>Interval @(position + 1)</legend>
+        <GXValueField @key="(Edit, position, 0)" Label="Start Hour" Value="@((packed & 31).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" InputKind="number" Validate="ValidateHour" OnCommit="value => SetInterval(position, 0, value)" />
+        <GXValueField @key="(Edit, position, 1)" Label="Interval Tariff" Value="@(((packed >> 5) & 3).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" EnumType="typeof(DefaultTariffBand)" OnCommit="value => SetInterval(position, 1, value)" />
+        <GXValueField @key="(Edit, position, 2)" Label="In use" InputKind="bool" Value="@(((packed & 128) != 0).ToString())" Enabled="Enabled" Validate="ValidateBool" OnCommit="value => SetInterval(position, 2, value)" />
+    </fieldset>
+}
+@if (Error is not null) { <p role="alert">@Error</p> }
+
+@code {
+    [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
+    [Parameter] public int Season { get; set; }
+    [Parameter] public int Kind { get; set; }
+    [Parameter] public bool Enabled { get; set; }
+    public string? Error { get; private set; }
+    private object Root() => Edit.Target.GetDirty(4, out var value) ? value : GXDLMSAttributeCodec.Read(Edit.Target, 4)!;
+    private byte Interval(int position) => Convert.ToByte(((IList<object>)((IList<object>)((IList<object>)Root())[1])[Season])[Kind + 2] is IList<object> intervals ? intervals[position] : (byte)0, CultureInfo.InvariantCulture);
+    private static string? ValidateHour(string text) => byte.TryParse(text, out var value) && value < 24 ? null : "Start hour must be between 0 and 23.";
+    private static string? ValidateBool(string text) => bool.TryParse(text, out _) ? null : "Enter True or False.";
+    private static object CloneValue(object value) => value switch
+    {
+        GXStructure structure => CloneStructure(structure),
+        GXArray array => CloneArray(array),
+        byte[] bytes => bytes.ToArray(),
+        _ => value
+    };
+    private static GXStructure CloneStructure(GXStructure value) { var copy = new GXStructure(); copy.AddRange(value.Select(CloneValue)); return copy; }
+    private static GXArray CloneArray(GXArray value) { var copy = new GXArray(); copy.AddRange(value.Select(CloneValue)); return copy; }
+    public void SetInterval(int position, int field, string text)
+    {
+        if (!Enabled) return;
+        try
+        {
+            var root = (IList<object>)CloneValue(Root());
+            var intervals = (IList<object>)((IList<object>)((IList<object>)root[1])[Season])[Kind + 2];
+            var original = Convert.ToByte(intervals[position], CultureInfo.InvariantCulture);
+            var value = field switch
+            {
+                0 when ValidateHour(text) is null => (byte)((original & 224) | byte.Parse(text, CultureInfo.InvariantCulture)),
+                1 => (byte)((original & 159) | ((byte)Enum.Parse<DefaultTariffBand>(text) << 5)),
+                2 => (byte)((original & 127) | (bool.Parse(text) ? 128 : 0)),
+                _ => throw new FormatException("Start hour must be between 0 and 23.")
+            };
+            intervals[position] = value;
+            var xml = GXDLMSObjectEditState.Format(root);
+            var isolated = GXDLMSObjectEditState.For(Edit.Target.Clone());
+            isolated.EditAttribute(4, xml);
+            if (!isolated.IsValid) throw new FormatException(isolated.Error(4));
+            Edit.EditAttribute(4, xml); Error = Edit.Error(4);
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
+    }
+}

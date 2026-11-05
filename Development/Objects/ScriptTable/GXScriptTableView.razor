@@ -1,0 +1,78 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSScriptTable>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Script Table Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" EditorTypePaths="@(new[] { "1.*.4" })" EditorPathLabels="ScriptLabels" EditorPathKinds="ScriptKinds" Label="Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Script Id", "Actions" })" CreateRow="@(() => new GXStructure { (ushort)1, new GXArray { new GXStructure { (byte)1, (ushort)1, new byte[6], (sbyte)2, (byte)0 } } })" />
+    <fieldset><legend>Methods</legend>
+    <GXValueField Label="Script ID (0–65535)" Value="@ScriptId" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => ScriptId = value" Validate="text => ValidateParameter(nameof(ScriptId), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ExecuteAsync">Execute script</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string ScriptId { get; set; } = string.Empty;
+    public Task ExecuteAsync() => InvokeMethodAsync(1, client => Target.Execute(client, ushort.Parse(ScriptId, CultureInfo.InvariantCulture)));
+
+    private static string? ValidateParameter(string field, string text)
+    {
+        try
+        {
+            switch (field)
+            {
+                case nameof(ScriptId): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
+            }
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+    private static readonly IReadOnlyDictionary<string, string> ScriptLabels = new Dictionary<string, string>
+    {
+        ["0"] = "Identifier",
+        ["1"] = "Actions",
+        ["1.*"] = "Action",
+        ["1.*.0"] = "Type",
+        ["1.*.1"] = "Object",
+        ["1.*.2"] = "Name",
+        ["1.*.3"] = "Index",
+        ["1.*.4"] = "Parameters"
+    };
+    private static readonly IReadOnlyDictionary<string, string> ScriptKinds = new Dictionary<string, string>
+    {
+        ["1.*.2"] = "logicalname"
+    };
+}

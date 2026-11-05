@@ -1,0 +1,99 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@using System.Net
+@namespace Gurux.DLMS.UI.Components.Objects
+@inherits GXDLMSObjectViewBase<GXDLMSIp4Setup>
+
+
+<section class="gx-network-view">
+<fieldset class="gx-object-fields"><legend>Ip4 Setup Object</legend>
+<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+    {
+        <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+    {
+        <GXAttributeField Edit="Edit" Index="3" Label="IP Address:" Enabled="CanEditAttribute(3)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="Multicast IP Address:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Multicast IP Address:" })' CreateRow='@(() => (uint)0xE0000001)' InputKind="ip" />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+    {
+        <GXAttributeField Edit="Edit" Index="5" Label="IP Options:" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Type", "Length", "Data" })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="Subnet Mask:" Enabled="CanEditAttribute(6)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
+    {
+        <GXAttributeField Edit="Edit" Index="7" Label="Gateway IP Address:" Enabled="CanEditAttribute(7)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
+    {
+        <GXAttributeField Edit="Edit" Index="8" Label="Use DHCP:" Enabled="CanEditAttribute(8)"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
+    {
+        <GXAttributeField Edit="Edit" Index="9" Label="Primary DNS Address:" Enabled="CanEditAttribute(9)" InputKind="ip"  />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
+    {
+        <GXAttributeField Edit="Edit" Index="10" Label="Secondary DNS Address:" Enabled="CanEditAttribute(10)" InputKind="ip"  />
+    }
+</fieldset>
+</section>
+<section class="gx-object-actions">
+    <GXValueField @key='@((Target, "Multicast IPv4 address"))' Label="Multicast IPv4 address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => Address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && address.GetAddressBytes()[0] >= 224 && address.GetAddressBytes()[0] <= 239 ? null : "Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).")' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">Add multicast address</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete multicast address</GXButton>
+    <GXValueField @key='@((Target, "Address index"))' Label="Address index" Value="@AddressIndex" Enabled="@(CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => AddressIndex = value)" Validate='@(value => byte.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter an address index from 0 to 255.")' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="CountAsync">Get multicast address count</GXButton></section>
+@code {
+    private string Address = "";
+    private string AddressIndex = "";
+    private IPAddress ParseAddress()
+    {
+        var address = IPAddress.Parse(Address);
+        if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork || address.GetAddressBytes()[0] < 224 || address.GetAddressBytes()[0] > 239)
+            throw new FormatException("Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).");
+        return address;
+    }
+    private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddMcIpAaddress(client, ParseAddress()));
+    private Task DeleteAsync() => InvokeMethodAsync(2, client => Target.DeleteMcIpAaddress(client, ParseAddress()));
+    private Task CountAsync() => InvokeMethodAsync(3, client => Target.GetMcIpAddressCount(client, byte.Parse(AddressIndex, System.Globalization.CultureInfo.InvariantCulture)));
+}
+

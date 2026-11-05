@@ -1,0 +1,28 @@
+# Gurux.DLMS.UI.Components library
+
+Reusable Razor components for editing DLMS COSEM objects in Gurux applications.
+Targets .NET 10.0 and supports Blazor applications.
+
+See the [main README](../README.md) for installation, service registration,
+and confirmed meter value handling.
+
+Build from this directory:
+
+```shell
+dotnet build Gurux.DLMS.UI.Components.csproj
+```
+
+## License
+
+Gurux.DLMS.UI.Components is available under either of the following licenses:
+
+- **Open-source license:** GNU General Public License, version 2 only
+  (GPL-2.0-only). See [LICENSE](../LICENSE) for the full license text.
+- **Commercial license:** Available from Gurux Ltd under a separate
+  written agreement. This option allows use under the terms of that
+  agreement instead of GPL-2.0-only.
+
+A valid commercial license is required to use the commercial licensing
+option. See [Gurux Commercial License Notice](../LICENSES/LicenseRef-Gurux-Commercial.txt).
+
+For commercial licensing inquiries, [contact Gurux Ltd](https://www.gurux.fi/).

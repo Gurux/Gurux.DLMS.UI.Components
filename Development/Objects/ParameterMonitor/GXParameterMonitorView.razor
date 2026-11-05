@@ -1,0 +1,102 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSParameterMonitor>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Parameter Monitor Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>Changed Parameter</legend>
+        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Object Type" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Target" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="Index" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="3" Label="Value" Enabled="CanEditAttribute(2)" />
+    </fieldset>
+    <GXAttributeField Edit="Edit" Index="3" Label="Capture Time" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="Parameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Object Type", "Target", "Index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2 })" />
+    <fieldset><legend>Methods</legend>
+    <GXValueField Label="Object class ID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
+    <GXValueField Label="Object logical name" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
+    <GXValueField Label="Attribute index (1–255)" Value="@AttributeIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => AttributeIndex = value" Validate="text => ValidateParameter(nameof(AttributeIndex), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">Add parameter</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete parameter</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string ObjectClass { get; set; } = string.Empty;
+    public string ObjectLogicalName { get; set; } = string.Empty;
+    private GXDLMSObject ReadObject()
+    {
+        var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
+        if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Enter a supported object class ID.");
+        var parts = ObjectLogicalName.Split('.');
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        var value = GXDLMSClient.CreateObject(type);
+        value.LogicalName = ObjectLogicalName;
+        return value;
+    }
+    public string AttributeIndex { get; set; } = string.Empty;
+    private GXDLMSTarget ReadParameter()
+    {
+        var index = byte.Parse(AttributeIndex, CultureInfo.InvariantCulture);
+        if (index == 0) throw new FormatException("Attribute index must be greater than zero.");
+        var target = ReadObject();
+        if (target is IGXDLMSBase metadata && index > metadata.GetAttributeCount()) throw new FormatException("Attribute index exceeds the object's attribute count.");
+        return new GXDLMSTarget(target, index);
+    }
+    public Task InsertAsync() => InvokeMethodAsync(1, client => Target.Insert(client, ReadParameter()));
+    public Task DeleteAsync() => InvokeMethodAsync(2, client => Target.Delete(client, ReadParameter()));
+
+    private static string? ValidateParameter(string field, string text)
+    {
+        try
+        {
+            switch (field)
+            {
+                case nameof(ObjectClass): { var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture); if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Select a supported object class."); break; }
+                case nameof(ObjectLogicalName): { CheckLogicalName(text); break; }
+                case nameof(AttributeIndex): { if (byte.Parse(text, CultureInfo.InvariantCulture) == 0) throw new FormatException("Attribute index must be greater than zero."); break; }
+            }
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+
+    private static void CheckLogicalName(string text)
+    {
+        var parts = text.Split('.');
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+    }
+}

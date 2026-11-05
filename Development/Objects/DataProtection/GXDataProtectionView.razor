@@ -1,0 +1,98 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using Gurux.DLMS
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Objects.Enums
+@using Gurux.UI.Components.Tab
+@inherits GXDLMSObjectViewBase<GXDLMSDataProtection>
+
+<section class="gx-object-view" @key="Target">
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Data Protection Object" />
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
+{
+<GXAttributeField Edit="Edit" Index="2" Label="Protection Buffer:" Enabled="CanEditAttribute(2)" />
+}
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+{
+<GXAttributeField Edit="Edit" Index="6" Label="Required Protection:" Enabled="CanEditAttribute(6)" />
+}
+<fieldset><legend>Protection:</legend>
+<GXTabControl NavigateOnSelection="false">
+<GXTabPage Text="Objects">
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
+{
+<GXAttributeField Edit="Edit" Index="3" Label="Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type:", "Logical Name:", "Attribute Index:", "Data index:" })" ColumnIndices="@(new[] { 0, 1, 2, 3 })" CreateRow="CreateProtectedObject" EditorKinds="@(new[] { "number", "logicalname", "number", "number" })" />
+}
+</GXTabPage>
+<GXTabPage Text="Get Parameters">
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+{
+<GXAttributeField Edit="Edit" Index="4" Label="Get Parameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Protection Type", "Transaction ID", "Originator System Title", "Recipient System Title", "Other Information", "Key Info" })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
+}
+</GXTabPage>
+<GXTabPage Text="Set Parameters">
+@if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
+{
+<GXAttributeField Edit="Edit" Index="5" Label="Set Parameters" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Protection Type", "Transaction ID", "Originator System Title", "Recipient System Title", "Other Information", "Key Info" })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
+}
+</GXTabPage>
+</GXTabControl>
+</fieldset>
+<p role="status">Protected get, set and method messages are unavailable in Gurux.DLMS 9.0.2609.2201. The object API does not implement these operations.</p>
+<GXButton type="button" Disabled="true">Get protected attributes</GXButton>
+<GXButton type="button" Disabled="true">Set protected attributes</GXButton>
+<GXButton type="button" Disabled="true">Invoke protected method</GXButton>
+</section>
+
+@code {
+private static object CreateProtectedObject() => new GXStructure
+{
+    (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0,
+    new GXStructure { new GXEnum(0), null! }
+};
+private static object CreateProtectionParameter() => new GXStructure
+{
+    new GXEnum(0), new GXStructure
+    {
+        Array.Empty<byte>(), new byte[8], new byte[8], Array.Empty<byte>(),
+        new GXStructure { new GXEnum(0), new GXStructure { new GXEnum(0) } }
+    }
+};
+
+
+}
+
+
+
+
+
+

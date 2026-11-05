@@ -1,0 +1,97 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSArbitrator>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Arbitrator Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>Actions</legend>
+    <GXTable @key="ArbitratorKey" TItem="int" ItemsProvider="GetActionRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
+        <HeaderContent><GXTh TItem="int" Name="Script">Script</GXTh><GXTh TItem="int" Name="Selector">Selector</GXTh><GXTh TItem="int" Name="Allowed">Allowed</GXTh><GXTh TItem="int" Name="Weightings">Weightings</GXTh><GXTh TItem="int" Name="Recent">Most Recent</GXTh></HeaderContent>
+        <ItemContent Context="row">@foreach (var cell in ActionCells(row)) { <GXTd>@cell</GXTd> }</ItemContent>
+    </GXTable>
+    <GXAttributeField Edit="Edit" Index="2" Label="Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Script", "Selector" })" CreateRow="@(() => new GXStructure { new byte[6], (ushort)0 })" />
+    <GXAttributeField Edit="Edit" Index="3" Label="Allowed" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Allowed" })" CreateRow="@(() => new GXBitString("0"))" />
+    <GXAttributeField Edit="Edit" Index="4" Label="Weightings" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Weightings" })" CreateRow="@(() => new GXArray { (ushort)0 })" />
+    <GXAttributeField Edit="Edit" Index="5" Label="Most Recent" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Most Recent" })" CreateRow="@(() => new GXBitString("0"))" />
+    </fieldset>
+    <GXAttributeField Edit="Edit" Index="6" Label="Last Outcome" Enabled="CanEditAttribute(6)" />
+    <fieldset><legend>Methods</legend>
+    <GXValueField Label="Actor (0–255)" Value="@Actor" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => Actor = value" Validate="text => ValidateParameter(nameof(Actor), text)" />
+    <GXValueField Label="Actions (binary bit string)" Value="@RequestedActions" Enabled="@(CanInvokeMethod(1))" InputKind="text" OnCommit="value => RequestedActions = value" Validate="text => ValidateParameter(nameof(RequestedActions), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="RequestAsync">Request Action</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ResetAsync">Reset</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string Actor { get; set; } = string.Empty;
+    public string RequestedActions { get; set; } = string.Empty;
+    public Task RequestAsync() => InvokeMethodAsync(1, client => {
+        if (string.IsNullOrEmpty(RequestedActions) || RequestedActions.Any(c => c != '0' && c != '1')) throw new FormatException("Enter the requested actions as a binary bit string.");
+        return Target.RequestAction(client, byte.Parse(Actor, CultureInfo.InvariantCulture), RequestedActions);
+    });
+    public Task ResetAsync() => InvokeMethodAsync(2, client => Target.Reset(client));
+
+    private static string? ValidateParameter(string field, string text)
+    {
+        try
+        {
+            switch (field)
+            {
+                case nameof(Actor): { byte.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(RequestedActions): { CheckBits(text); break; }
+            }
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+    }
+
+    private static void CheckBits(string text)
+    {
+        if (string.IsNullOrEmpty(text) || text.Any(c => c != '0' && c != '1')) throw new FormatException("Enter a binary bit string.");
+    }
+    private string ArbitratorKey => string.Join("|", Enumerable.Range(2, 4).Select(Edit.AttributeText));
+    private int ActionRowCount => Enumerable.Range(2, 4).Select(i => Edit.AttributeRows(i).Count()).DefaultIfEmpty(0).Max();
+    private ValueTask<ItemsProviderResult<int>> GetActionRows(GXItemsProviderRequest request) => ValueTask.FromResult(new ItemsProviderResult<int>(Enumerable.Range(0, ActionRowCount), ActionRowCount));
+    private IEnumerable<string> ActionCells(int row)
+    {
+        var action = Edit.AttributeRows(2).ElementAtOrDefault(row);
+        return [action?.ElementAtOrDefault(0) ?? "", action?.ElementAtOrDefault(1) ?? "", string.Join(", ", Edit.AttributeRows(3).ElementAtOrDefault(row) ?? []), string.Join(", ", Edit.AttributeRows(4).ElementAtOrDefault(row) ?? []), string.Join(", ", Edit.AttributeRows(5).ElementAtOrDefault(row) ?? [])];
+    }
+}

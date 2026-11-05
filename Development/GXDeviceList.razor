@@ -1,0 +1,74 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@typeparam TDevice
+
+<section class="gx-device-list" aria-label="@Title">
+    <header>@Title</header>
+    @if (Devices.Count == 0)
+    {
+        <p class="empty">@EmptyText</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var device in Devices)
+            {
+                var selected = IsSelected?.Invoke(device) == true;
+                <li @key="device">
+                    <GXButton type="button" class="@(selected ? "entry active" : "entry")"
+                            aria-pressed="@(selected ? "true" : "false")"
+                            OnClick="() => OnSelect.InvokeAsync(device)">
+                        <span class="device-label"><img src="_content/Gurux.DLMS.UI.Components/images/icons/device.svg" alt="" width="16" height="16" />@GetName(device)</span>
+                        @if (GetDescription is not null)
+                        {
+                            <small>@GetDescription(device)</small>
+                        }
+                    </GXButton>
+                </li>
+            }
+        </ul>
+    }
+    @if (OnCreate.HasDelegate)
+    {
+        <GXButton type="button" class="action" OnClick="() => OnCreate.InvokeAsync()">@CreateText</GXButton>
+    }
+</section>
+
+@code {
+    [Parameter] public IReadOnlyList<TDevice> Devices { get; set; } = [];
+    [Parameter, EditorRequired] public Func<TDevice, string> GetName { get; set; } = item => item?.ToString() ?? string.Empty;
+    [Parameter] public Func<TDevice, string?>? GetDescription { get; set; }
+    [Parameter] public Func<TDevice, bool>? IsSelected { get; set; }
+    [Parameter] public EventCallback<TDevice> OnSelect { get; set; }
+    [Parameter] public EventCallback OnCreate { get; set; }
+    [Parameter] public string Title { get; set; } = "Devices";
+    [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
+    [Parameter] public string CreateText { get; set; } = "+ Add Device";
+}

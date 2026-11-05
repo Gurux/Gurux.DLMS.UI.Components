@@ -1,0 +1,87 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@using Gurux.UI.Components
+@using Gurux.UI.Components.Table
+@using Gurux.UI.Components.Tab
+@using Microsoft.AspNetCore.Components.Web.Virtualization
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@using Gurux.DLMS.Objects.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSCompactData>
+
+<section @key="Target" class="gx-object-view">
+    <GXObjectViewHeader Title="Compact Data" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" InputKind="hex" Label="Buffer" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="Template ID" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="5" InputKind="hex" Label="Template Description" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="Capture Method" Enabled="CanEditAttribute(6)" EnumType="typeof(CaptureMethod)" />
+    <GXTabControl NavigateOnSelection="false">
+        <GXTabPage Text="Data">
+            <GXTable @key="CompactKey" TItem="IReadOnlyList<string>" ItemsProvider="GetDataRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
+                <HeaderContent>@foreach (var capture in CurrentCompact().CaptureObjects) { <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@capture.Key.LogicalName / attribute @capture.Value.AttributeIndex</GXTh> }</HeaderContent>
+                <ItemContent Context="row">@foreach (var cell in row) { <GXTd>@cell</GXTd> }</ItemContent>
+            </GXTable>
+        </GXTabPage>
+        <GXTabPage Text="Capture Objects"><GXAttributeField Edit="Edit" Index="3" Label="Capture Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type", "Logical Name", "Attribute Index", "Data index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" /></GXTabPage>
+    </GXTabControl>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">Capture</GXButton>
+</section>
+
+@code {
+    // The package has no convenience methods. The legacy view sends an Int8 zero.
+    public Task ResetAsync() => InvokeMethodAsync(1, client => client.Method(Target, 1, (sbyte)0, DataType.Int8));
+    public Task CaptureAsync() => InvokeMethodAsync(2, client => client.Method(Target, 2, (sbyte)0, DataType.Int8));
+    private string CompactKey => $"{Edit.AttributeText(2)}:{Edit.AttributeText(3)}:{Edit.AttributeText(5)}";
+    private GXDLMSCompactData CurrentCompact()
+    {
+        if (!new[] { 2, 3, 5 }.Any(i => Target.GetDirty(i, out _))) return Target;
+        var current = (GXDLMSCompactData)Target.Clone();
+        foreach (var index in new[] { 2, 3, 5 })
+            if (Target.GetDirty(index, out var pending))
+                ((IGXDLMSBase)current).SetValue(new GXDLMSSettings(), new ValueEventArgs(current, index, 0, null) { Value = pending, User = true });
+        return current;
+    }
+    private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetDataRows(GXItemsProviderRequest request)
+    {
+        IReadOnlyList<string>[] rows = [];
+        try
+        {
+            var current = CurrentCompact();
+            if (current.TemplateDescription is { Length: > 0 } && current.Buffer is { Length: > 0 })
+                rows = GXDLMSCompactData.GetData(current.TemplateDescription, current.Buffer).Select(row => row is System.Collections.IEnumerable cells && row is not (string or byte[]) ? (IReadOnlyList<string>)cells.Cast<object?>().Select(GXDLMSObjectEditState.Format).ToArray() : [GXDLMSObjectEditState.Format(row)]).ToArray();
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { rows = [[ex.Message]]; }
+        return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));
+    }
+}
