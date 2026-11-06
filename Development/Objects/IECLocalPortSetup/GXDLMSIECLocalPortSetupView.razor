@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>IEC Local Port Setup</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="IEC Local Port Setup" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Default Mode:" Enabled="CanEditAttribute(2)" EnumType="typeof(OpticalProtocolMode)"  />
@@ -71,5 +71,5 @@
     {
         <GXAttributeField Edit="Edit" Index="9" Label="Password 5:" Enabled="CanEditAttribute(9)" InputKind="password"  />
     }
-</fieldset>
+</div>
 </section>

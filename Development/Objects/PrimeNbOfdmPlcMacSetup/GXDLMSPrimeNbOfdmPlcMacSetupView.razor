@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>PRIME NB OFDM PLC MAC setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="PRIME NB OFDM PLC MAC setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Min Switch Search Time:" Enabled="CanEditAttribute(2)"  />
@@ -67,5 +67,5 @@
     {
         <GXAttributeField Edit="Edit" Index="8" Label="Max Ctl Re Tx:" Enabled="CanEditAttribute(8)"  />
     }
-</fieldset>
+</div>
 </section>

@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>S-FSK Active initiator Object:</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="S-FSK Active initiator Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="System Title:" Enabled="CanEditAttribute(2)" Part="0" InputKind="hex" />
@@ -51,6 +51,6 @@
     {
         <GXAttributeField Edit="Edit" Index="2" Label="L SAP Selector:" Enabled="CanEditAttribute(2)" Part="2" />
     }
-</fieldset>
+</div>
 </section>
 <p role="status">Reset is unavailable: this Gurux version exposes the method name but provides no supported command API.</p>

@@ -28,8 +28,7 @@ SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
 */
 
 .gx-account-view { display: flex; flex-direction: column; width: 100%; min-width: 0; box-sizing: border-box; padding: .75rem; }
-.account-object { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; margin: 0; padding: .65rem; border: 1px solid #8887; }
-.account-object > legend { float: none; width: auto; padding: 0 .35rem; font-size: 1rem; }
+.account-object { display: flex; flex-direction: column; flex: 1 0 auto; min-width: 0; margin: 0; padding: 0; border: 0; }
 .gx-account-view .account-field { display: grid; grid-template-columns: 14rem minmax(0, 1fr); gap: .4rem; align-items: center; margin: .3rem 0; }
 .account-field > span { font-size: .85rem; }
 .account-field input:not([type=checkbox]), .account-field select { width: 100%; min-width: 0; box-sizing: border-box; padding: .15rem .35rem; font: inherit; font-size: .85rem; }

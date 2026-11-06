@@ -239,6 +239,15 @@ public sealed class GXDLMSObjectEditState
                 if (address.AddressFamily != family) throw new FormatException("Wrong IP address family.");
                 value = address.ToString();
             }
+            else if (Target is GXDLMSCoAPSetup or GXDLMSMBusPortSetup && index == 2)
+            {
+                var parts = text.Split('.');
+                if (parts.Length != 6)
+                {
+                    throw new FormatException("A logical name requires six byte values.");
+                }
+                value = parts.Select(part => byte.Parse(part, NumberStyles.None, CultureInfo.InvariantCulture)).ToArray();
+            }
             else if (Target is GXDLMSGprsSetup && index == 2)
             {
                 value = text;
@@ -248,6 +257,11 @@ public sealed class GXDLMSObjectEditState
                 using var reader = XmlReader.Create(new StringReader(text), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null });
                 var document = XDocument.Load(reader);
                 value = GXDLMSTranslator.XmlToValue(document.ToString());
+                // CoAP capture time requires GXDateTime, while XmlToValue returns DateTime.
+                if (Target is GXDLMSCoAPDiagnostic && index == 5 && value is GXStructure { Count: 2 } capture && capture[1] is DateTime time)
+                {
+                    capture[1] = new GXDateTime(time);
+                }
                 var expected = wire is DataType.Array or DataType.Structure ? wire : type;
                 if (expected == DataType.Array && value is not GXArray || expected == DataType.Structure && value is not GXStructure)
                     throw new FormatException("XML root does not match the COSEM data type.");

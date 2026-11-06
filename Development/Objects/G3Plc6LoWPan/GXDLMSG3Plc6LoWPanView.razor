@@ -38,8 +38,8 @@
 @using Gurux.UI.Components.Tab
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>G3-PLC 6LoWPAN adaptation layer setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="G3-PLC 6LoWPAN adaptation layer setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
 <GXTabControl NavigateOnSelection="false">
 <GXTabPage Text="General">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
@@ -146,7 +146,7 @@
     }
 </GXTabPage>
 </GXTabControl>
-</fieldset>
+</div>
 </section>
 
 

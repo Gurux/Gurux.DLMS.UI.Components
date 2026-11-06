@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Ip4 Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="Ip4 Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
@@ -75,7 +75,7 @@
     {
         <GXAttributeField Edit="Edit" Index="10" Label="Secondary DNS Address:" Enabled="CanEditAttribute(10)" InputKind="ip"  />
     }
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions">
     <GXValueField @key='@((Target, "Multicast IPv4 address"))' Label="Multicast IPv4 address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => Address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && address.GetAddressBytes()[0] >= 224 && address.GetAddressBytes()[0] <= 239 ? null : "Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).")' />

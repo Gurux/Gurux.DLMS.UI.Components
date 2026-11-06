@@ -38,8 +38,8 @@
 @using Gurux.UI.Components.Tab
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Ip6 Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="Ip6 Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
@@ -86,7 +86,7 @@
         <GXAttributeField Edit="Edit" Index="10" Label="Neighbor Discovery Setup" Enabled="CanEditAttribute(10)" Columns='@(new[] { "RS Max Retry", "RS retry wait time", "RA send period" })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (uint)0 })' />
     }
 </fieldset>
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions">
     <GXValueField @key='@((Target, "Address type"))' Label="Address type" Value="@AddressType.ToString()" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" EnumType="typeof(IPv6AddressType)" OnCommit="@(value => AddressType = Enum.Parse<IPv6AddressType>(value))" Validate='@(value => Enum.TryParse<IPv6AddressType>(value, out var type) && Enum.IsDefined(type) ? null : "Select a supported address type.")' />

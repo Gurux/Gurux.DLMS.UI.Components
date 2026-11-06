@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>S-FSK MAC counters Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content account-object">
+<GXObjectViewHeader Title="S-FSK MAC counters Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Synchronization register:" Enabled="CanEditAttribute(2)" Columns='@(new[] { "Synchronization register", "Counter" })' CreateRow='@(() => new GXStructure { (ushort)0, (uint)0 })' />
@@ -70,5 +70,5 @@
     {
         <GXAttributeField Edit="Edit" Index="8" Label="CRC NOK frames counter:" Enabled="CanEditAttribute(8)"  />
     }
-</fieldset>
+</div>
 </section>

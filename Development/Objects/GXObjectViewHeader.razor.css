@@ -29,5 +29,5 @@ SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
 
 .gx-object-identity .gx-field-row { display: grid; grid-template-columns: var(--gx-object-label-width, 14rem) minmax(0, 1fr); gap: .4rem; align-items: center; margin: .35rem 0; }
 .gx-field-row ::deep input { width: 100%; min-width: 0; background: var(--bs-secondary-bg, #f4f4f4); }
-h2 { font-size: 1rem; margin: .4rem 0; }
+h2 { font-size: 1rem; font-weight: 600; margin: 0 0 .75rem; }
 @media(max-width:600px) { .gx-object-identity .gx-field-row { grid-template-columns: minmax(0,1fr); } }

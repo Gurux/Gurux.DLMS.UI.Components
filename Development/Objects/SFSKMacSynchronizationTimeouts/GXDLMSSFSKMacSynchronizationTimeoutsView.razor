@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>S-FSK MAC synchronization timeouts Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="S-FSK MAC synchronization timeouts Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Search initiator timeout:" Enabled="CanEditAttribute(2)"  />
@@ -55,5 +55,5 @@
     {
         <GXAttributeField Edit="Edit" Index="5" Label="Timeuout frame not OK:" Enabled="CanEditAttribute(5)"  />
     }
-</fieldset>
+</div>
 </section>

@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>HDLC Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="HDLC Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Speed:" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
@@ -75,5 +75,5 @@
     {
         <GXAttributeField Edit="Edit" Index="9" Label="Device Address:" Enabled="CanEditAttribute(9)"  />
     }
-</fieldset>
+</div>
 </section>

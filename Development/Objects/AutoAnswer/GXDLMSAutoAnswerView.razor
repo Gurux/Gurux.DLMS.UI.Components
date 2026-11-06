@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Auto Answer Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="Auto Answer Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Mode:" Enabled="CanEditAttribute(2)" EnumType="typeof(AutoAnswerMode)"  />
@@ -67,6 +67,6 @@
     {
         <GXAttributeField Edit="Edit" Index="7" Label="Allowed callers" Enabled="CanEditAttribute(7)" Columns='@(new[] { "Caller identity", "Call type" })' CreateRow='@(() => new GXStructure { Array.Empty<byte>(), new GXEnum(0) })' />
     }
-</fieldset>
+</div>
 </section>
 

@@ -31,14 +31,13 @@
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
 @using Gurux.DLMS.Objects.Enums
-@using System.Net
 @namespace Gurux.DLMS.UI.Components.Objects
 @inherits GXDLMSObjectViewBase<GXDLMSSFSKPhyMacSetUp>
 
 
-<section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>S-FSK Phy MAC Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<section class="gx-network-view" @key="Target">
+<div class="gx-view-content">
+<GXObjectViewHeader Title="S-FSK Phy MAC Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Initiator Electrical Phase:" Enabled="CanEditAttribute(2)" EnumType="typeof(InitiatorElectricalPhase)"  />
@@ -61,7 +60,8 @@
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Frequency:" Enabled="CanEditAttribute(7)"  />
+        <GXAttributeField Edit="Edit" Index="7" Part="0" Label="Mark frequency (Hz):" Enabled="CanEditAttribute(7)" />
+        <GXAttributeField Edit="Edit" Index="7" Part="1" Label="Space frequency (Hz):" Enabled="CanEditAttribute(7)" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
@@ -77,7 +77,7 @@
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
     {
-        <GXAttributeField Edit="Edit" Index="11" Label="Repeater status:" Enabled="CanEditAttribute(11)"  />
+        <GXAttributeField Edit="Edit" Index="11" Label="Repeater status:" InputKind="bool" Enabled="CanEditAttribute(11)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
     {
@@ -89,11 +89,11 @@
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
     {
-        <GXAttributeField Edit="Edit" Index="14" Label="Synchronization locked:" Enabled="CanEditAttribute(14)"  />
+        <GXAttributeField Edit="Edit" Index="14" Label="Synchronization locked:" InputKind="bool" Enabled="CanEditAttribute(14)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
     {
         <GXAttributeField Edit="Edit" Index="15" Label="Transmission speed:" Enabled="CanEditAttribute(15)" EnumType="typeof(BaudRate)"  />
     }
-</fieldset>
+</div>
 </section>

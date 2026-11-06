@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Wireless Mode Q channel</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="Wireless Mode Q channel" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Address State:" Enabled="CanEditAttribute(2)" EnumType="typeof(Gurux.DLMS.Objects.AddressState)"  />
@@ -51,5 +51,5 @@
     {
         <GXAttributeField Edit="Edit" Index="4" Label="Address Mask:" Enabled="CanEditAttribute(4)"  />
     }
-</fieldset>
+</div>
 </section>

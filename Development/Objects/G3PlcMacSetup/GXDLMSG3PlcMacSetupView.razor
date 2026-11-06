@@ -38,8 +38,8 @@
 @using Gurux.UI.Components.Tab
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>G3-PLC MAC setup object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="G3-PLC MAC setup object" Target="Target" Edit="Edit" Error="@ActionError" />
 <GXTabControl NavigateOnSelection="false">
 <GXTabPage Text="General">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
@@ -150,7 +150,7 @@
     }
 </GXTabPage>
 </GXTabControl>
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions">
     <GXValueField @key='@((Target, "Short address"))' Label="Short address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="@(value => Address = value)" Validate='@(value => ushort.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter a short address from 0 to 65535.")' />

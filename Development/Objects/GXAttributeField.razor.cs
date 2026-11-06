@@ -141,6 +141,10 @@ public partial class GXAttributeField : IDisposable
     private string DraftText()
     {
         var value = CurrentValue;
+        if (InputKind == "logicalname" && value is byte[] name)
+        {
+            return string.Join(".", name);
+        }
         if (InputKind is "scaler" or "ip" || Format is not null) return Display;
         if (value is GXBitString flags && EnumType is not null) return flags.ToInteger().ToString(CultureInfo.InvariantCulture);
         if (value is byte[] bytes && InputKind is "text" or "ascii" or "password") return System.Text.Encoding.UTF8.GetString(bytes);

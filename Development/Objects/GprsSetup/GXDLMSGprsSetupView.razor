@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>GPRS Modem Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="GPRS Modem Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="APN:" Enabled="CanEditAttribute(2)"  />
@@ -91,5 +91,5 @@
         <GXAttributeField Edit="Edit" Index="4" Label="Mean Throughput:" Enabled="CanEditAttribute(4)" Path="1.4" />
     }
 </fieldset>
-</fieldset>
+</div>
 </section>

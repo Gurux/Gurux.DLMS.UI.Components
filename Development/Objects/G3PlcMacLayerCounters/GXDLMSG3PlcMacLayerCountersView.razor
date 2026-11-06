@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>G3 PLC MAC layer counters Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="G3 PLC MAC layer counters Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Tx Data Packets:" Enabled="CanEditAttribute(2)"  />
@@ -75,7 +75,7 @@
     {
         <GXAttributeField Edit="Edit" Index="10" Label="Rx Data Broadcasts:" Enabled="CanEditAttribute(10)"  />
     }
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset counters</GXButton></section>
 @code {

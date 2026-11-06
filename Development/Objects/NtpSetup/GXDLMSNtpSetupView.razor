@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>NTP Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="NTP Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Activated:" Enabled="CanEditAttribute(2)"  />
@@ -63,7 +63,7 @@
     {
         <GXAttributeField Edit="Edit" Index="7" Label="Client Key:" Enabled="CanEditAttribute(7)" InputKind="hex"  />
     }
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions">
     <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SynchronizeAsync">Synchronize time</GXButton>

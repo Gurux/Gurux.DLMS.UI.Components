@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>MBus diagnostic Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="MBus diagnostic Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Received Signal Strength:" Enabled="CanEditAttribute(2)"  />
@@ -77,7 +77,7 @@
     {
         <GXAttributeField Edit="Edit" Index="9" Label="Capture Time:" Enabled="CanEditAttribute(9)" Part="1" />
     }
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton></section>
 @code {

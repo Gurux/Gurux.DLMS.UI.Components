@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Auto Connect Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="Auto Connect Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Mode:" Enabled="CanEditAttribute(2)" EnumType="typeof(AutoConnectMode)"  />
@@ -59,7 +59,7 @@
     {
         <GXAttributeField Edit="Edit" Index="6" Label="Destination:" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Destination:" })' CreateRow='@(() => Target.Version == 0 ? (object)string.Empty : Array.Empty<byte>())' />
     }
-</fieldset>
+</div>
 </section>
 <section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ConnectAsync">Connect</GXButton></section>
 @code {

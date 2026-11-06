@@ -37,11 +37,11 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>MBus Master Port Setup Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="MBus Master Port Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Comm Speed:" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
     }
-</fieldset>
+</div>
 </section>

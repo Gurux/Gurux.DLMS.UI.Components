@@ -34,8 +34,8 @@
 @inherits GXDLMSObjectViewBase<GXDLMSAccount>
 
 <section class="gx-account-view" @key="Target">
-    <fieldset class="account-object"><legend>Account Object</legend>
-        <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@string.Empty" />
+    <div class="gx-view-content account-object">
+        <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Account Object" />
         <GXTabControl NavigateOnSelection="false">
             <GXTabPage Text="General">
                 <div class="account-general">
@@ -68,5 +68,5 @@
             <GXTabPage Text="Credit Charge"><GXAccountTable Edit="Edit" Index="11" Enabled="CanEditAttribute(11)" /></GXTabPage>
             <GXTabPage Text="Token Gateway"><GXAccountTable Edit="Edit" Index="12" Enabled="CanEditAttribute(12)" /></GXTabPage>
         </GXTabControl>
-    </fieldset>
+    </div>
 </section>

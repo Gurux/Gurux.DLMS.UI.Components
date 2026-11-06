@@ -1,0 +1,169 @@
+@*
+// --------------------------------------------------------------------------
+// Gurux Ltd
+//
+// Copyright (c) Gurux Ltd.
+//
+// This file is part of Gurux Device Framework.
+//
+// Commit: $Format:%H$
+// Date:   $Format:%cI$
+//
+// This software is available under either of the following licenses:
+//
+// 1. GNU General Public License, version 2 only (GPL-2.0-only).
+//    See the LICENSE file included with this distribution.
+//
+// 2. A commercial license granted by Gurux Ltd under a separate written
+//    agreement. Use under this option requires a valid commercial license
+//    and is governed by the terms of that agreement.
+//
+// If you have not obtained a commercial license from Gurux Ltd,
+// use of this software is governed by GPL-2.0-only.
+//
+// Commercial licensing: https://www.gurux.fi/
+//
+// SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
+// --------------------------------------------------------------------------
+*@
+
+@namespace Gurux.DLMS.UI.Components.Objects
+@using System.Globalization
+@using System.Xml
+@using System.Xml.Linq
+@using Gurux.DLMS
+@using Gurux.DLMS.Objects
+@using Gurux.DLMS.Enums
+@inherits GXDLMSObjectViewBase<GXDLMSArrayManager>
+
+<section class="gx-object-view" @key="Target">
+    <GXObjectViewHeader Title="Array Manager Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="Elements" Enabled="CanEditAttribute(2)"
+        Columns='@(new[] { "ID", "Class ID", "Logical name", "Attribute index" })'
+        ColumnPaths='@(new[] { "0", "1.0", "1.1", "1.2" })'
+        EditorKinds='@(new[] { "number", "number", "logicalname", "number" })'
+        CreateRow="CreateElement" />
+    <fieldset><legend>Array</legend>
+        <GXValueField @ref="_arrayIdField" Label="Array ID (0–255)" Value="@ArrayId" Enabled="CanUseArray" InputKind="number" OnCommit="value => ArrayId = value" Validate="ValidateId" />
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="NumberOfEntriesAsync">Number of entries</GXButton>
+    </fieldset>
+    <fieldset><legend>Entry range</legend>
+        <GXValueField @ref="_fromField" Label="From index (1–65535)" Value="@FromIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => FromIndex = value" Validate="ValidateIndex" />
+        <GXValueField @ref="_toField" Label="To index (1–65535)" Value="@ToIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => ToIndex = value" Validate="ValidateIndex" />
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RetrieveEntriesAsync">Retrieve entries</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="RemoveEntriesAsync">Remove entries</GXButton>
+    </fieldset>
+    <fieldset><legend>Entry</legend>
+        <GXValueField @ref="_indexField" Label="Entry index (1–65535)" Value="@EntryIndex" Enabled="CanUseEntry" InputKind="number" OnCommit="value => EntryIndex = value" Validate="ValidateIndex" />
+        <GXValueField @ref="_entryField" Label="Entry (DLMS XML)" Value="@EntryXml" Enabled="CanUseEntry" OnCommit="value => EntryXml = value" Validate="ValidateEntry" />
+        <p>Use a typed value, for example &lt;Int32 Value="7" /&gt;, or a Structure containing typed values.</p>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="InsertEntryAsync">Insert entry</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="UpdateEntryAsync">Update entry</GXButton>
+    </fieldset>
+</section>
+
+@code {
+    public string ArrayId { get; set; } = "0";
+    public string FromIndex { get; set; } = "1";
+    public string ToIndex { get; set; } = "1";
+    public string EntryIndex { get; set; } = "1";
+    public string EntryXml { get; set; } = "<Int32 Value=\"0\" />";
+    private GXValueField? _arrayIdField, _fromField, _toField, _indexField, _entryField;
+    private bool CanUseArray => Enumerable.Range(1, 5).Any(CanInvokeMethod);
+    private bool CanUseRange => CanInvokeMethod(2) || CanInvokeMethod(5);
+    private bool CanUseEntry => CanInvokeMethod(3) || CanInvokeMethod(4);
+    private static object CreateElement() => new GXStructure
+    {
+        (byte)0, new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2 }
+    };
+
+    public Task NumberOfEntriesAsync() => ExecuteAsync(1);
+    public Task RetrieveEntriesAsync() => ExecuteAsync(2);
+    public Task InsertEntryAsync() => ExecuteAsync(3);
+    public Task UpdateEntryAsync() => ExecuteAsync(4);
+    public Task RemoveEntriesAsync() => ExecuteAsync(5);
+
+    private async Task ExecuteAsync(int method)
+    {
+        if (!CanInvokeMethod(method))
+        {
+            return;
+        }
+        try
+        {
+            if (_arrayIdField?.Error is not null
+                || (method == 2 || method == 5) && (_fromField?.Error is not null || _toField?.Error is not null)
+                || (method == 3 || method == 4) && (_indexField?.Error is not null || _entryField?.Error is not null))
+            {
+                throw new FormatException("Correct the invalid parameters before invoking the method.");
+            }
+            var id = byte.Parse(ArrayId, NumberStyles.None, CultureInfo.InvariantCulture);
+            var target = Target;
+            Func<GXDLMSClient, byte[][]> createMessages;
+            if (method == 1)
+            {
+                createMessages = client => target.NumberOfEntries(client, id);
+            }
+            else if (method == 2 || method == 5)
+            {
+                var from = ParseIndex(FromIndex);
+                var to = ParseIndex(ToIndex);
+                if (from > to)
+                {
+                    throw new FormatException("From index must not exceed to index.");
+                }
+                createMessages = method == 2
+                    ? client => target.RetrieveEntries(client, id, from, to)
+                    : client => target.RemoveEntries(client, id, from, to);
+            }
+            else
+            {
+                var index = ParseIndex(EntryIndex);
+                var entry = ParseEntry(EntryXml);
+                createMessages = method == 3
+                    ? client => target.InsertEntry(client, id, index, entry)
+                    : client => target.UpdateEntry(client, id, index, entry);
+            }
+            await InvokeMethodAsync(method, createMessages);
+        }
+        catch (Exception error) when (error is not OutOfMemoryException)
+        {
+            ActionError = $"Action failed: {error.Message}";
+        }
+    }
+
+    private static ushort ParseIndex(string text)
+    {
+        var index = ushort.Parse(text, NumberStyles.None, CultureInfo.InvariantCulture);
+        if (index == 0)
+        {
+            throw new FormatException("Entry indices must be between 1 and 65535.");
+        }
+        return index;
+    }
+
+    private static object ParseEntry(string text)
+    {
+        using var reader = XmlReader.Create(new StringReader(text), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null });
+        var document = XDocument.Load(reader);
+        return GXDLMSTranslator.XmlToValue(document.ToString())
+            ?? throw new FormatException("Enter a typed DLMS value.");
+    }
+
+    private static string? ValidateId(string text) => byte.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out _)
+        ? null : "Enter an array ID between 0 and 255.";
+    private static string? ValidateIndex(string text) => ushort.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var index) && index != 0
+        ? null : "Enter an index between 1 and 65535.";
+    private static string? ValidateEntry(string text)
+    {
+        try
+        {
+            ParseEntry(text);
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException)
+        {
+            return error.Message;
+        }
+    }
+}

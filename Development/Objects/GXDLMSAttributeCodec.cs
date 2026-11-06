@@ -44,12 +44,39 @@ internal static class GXDLMSAttributeCodec
                 return Enum.ToObject(model.GetType(), confirmed is GXBitString bits ? bits.ToInteger() : Convert.ToInt64(confirmed));
             if (confirmed is byte[] received)
             {
-                if (received.Length == 6 && model is string && target is not GXDLMSData && target is not GXDLMSRegister)
+                if (received.Length == 6 && model is string && target is not GXDLMSData && target is not GXDLMSRegister
+                    && !(target is GXDLMSCoAPSetup && index == 10)
+                    && !(target is GXDLMSMBusPortSetup && index == 2))
+                {
                     return string.Join(".", received);
+                }
                 if (received.Length != 0 && model is GXDateTime or DateTime or DateTimeOffset)
                     return GXDLMSClient.ChangeType(received, model is GXDate ? DataType.Date : model is GXTime ? DataType.Time : DataType.DateTime);
             }
             return confirmed;
+        }
+        if (target is GXDLMSMBusPortSetup mbusPort)
+        {
+            if (index == 2)
+            {
+                return (mbusPort.ProfileSelection ?? "0.0.0.0.0.0").Split('.').Select(byte.Parse).ToArray();
+            }
+            // GetValues returns the COSEM version instead of the M-Bus version.
+            if (index == 8)
+            {
+                return mbusPort.MBusVersion;
+            }
+        }
+        if (target is GXDLMSCoAPSetup coapSetup)
+        {
+            if (index == 2)
+            {
+                return (coapSetup.UdpReference?.LogicalName ?? "0.0.0.0.0.0").Split('.').Select(byte.Parse).ToArray();
+            }
+            if (index == 10)
+            {
+                return System.Text.Encoding.ASCII.GetBytes(coapSetup.CoAPUriPath ?? string.Empty);
+            }
         }
         // PPP reports DataType.None until a user name exists, and GetValues
         // returns a combined display string. Its editor still needs both fields.
@@ -61,6 +88,12 @@ internal static class GXDLMSAttributeCodec
         // account currency's CLR string instead of round-tripping its wire XML.
         if (target is GXDLMSAccount account && index == 15)
             return new GXStructure { account.Currency.Name ?? string.Empty, account.Currency.Scale, new GXEnum((byte)account.Currency.Unit) };
+        // Keep the typed timestamp: the XML decoder cannot read the hexadecimal
+        // DateTime produced by DataToXml inside this structure.
+        if (target is GXDLMSCoAPDiagnostic coap && index == 5)
+        {
+            return new GXStructure { coap.CaptureTime.AttributeId, coap.CaptureTime.TimeStamp! };
+        }
         // Profile cells have already been decoded by the meter read. Re-encoding via capture metadata
         // would lose cells whose capture object's data type has not been read yet.
         if (target is GXDLMSProfileGeneric profile && index == 2)

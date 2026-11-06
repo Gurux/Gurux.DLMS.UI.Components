@@ -37,8 +37,8 @@
 
 
 <section class="gx-network-view">
-<fieldset class="gx-object-fields"><legend>Data Object</legend>
-<GXObjectViewHeader Title="@string.Empty" Target="Target" Edit="Edit" Error="@ActionError" />
+<div class="gx-view-content">
+<GXObjectViewHeader Title="IEC Twisted Pair Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
         <GXAttributeField Edit="Edit" Index="2" Label="Mode" Enabled="CanEditAttribute(2)" EnumType="typeof(IecTwistedPairSetupMode)"  />
@@ -55,5 +55,5 @@
     {
         <GXAttributeField Edit="Edit" Index="5" Label="TAB(i)" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Name" })' CreateRow='@(() => (byte)0)' />
     }
-</fieldset>
+</div>
 </section>
