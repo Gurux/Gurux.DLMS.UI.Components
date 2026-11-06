@@ -62,9 +62,6 @@ public static class GXDLMSObjectViewRegistry
         [typeof(GXDLMSGSMDiagnostic)] = typeof(GXDLMSGSMDiagnosticView),
         [typeof(GXDLMSHdlcSetup)] = typeof(GXDLMSHdlcSetupView),
         [typeof(GXDLMSIECLocalPortSetup)] = typeof(GXDLMSIECLocalPortSetupView),
-#pragma warning disable CS0612
-        [typeof(GXDLMSIECOpticalPortSetup)] = typeof(GXDLMSIECOpticalPortSetupView),
-#pragma warning restore CS0612
         [typeof(GXDLMSIecTwistedPairSetup)] = typeof(GXDLMSIecTwistedPairSetupView),
         [typeof(GXDLMSImageTransfer)] = typeof(GXImageTransferView),
         [typeof(GXDLMSIp4Setup)] = typeof(GXDLMSIp4SetupView),

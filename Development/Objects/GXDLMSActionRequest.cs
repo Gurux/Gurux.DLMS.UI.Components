@@ -39,5 +39,8 @@ namespace Gurux.DLMS.UI.Components.Objects;
 public sealed record GXDLMSActionRequest(GXDLMSObject Target, int MethodIndex, Func<GXDLMSClient, byte[][]> CreateMessages)
 {
     /// <summary>The host sets this to the decoded method return value after receiving the meter response.</summary>
-    public object? Result { get; set; }
+    public object? Result
+    {
+        get; set;
+    }
 }
