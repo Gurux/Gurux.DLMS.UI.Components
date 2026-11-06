@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS ip6 setup values and supported actions.</summary> *@
+
 @using Gurux.DLMS
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
@@ -99,7 +101,9 @@
     {
         var address = IPAddress.Parse(Address);
         if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetworkV6)
+        {
             throw new FormatException("Enter an IPv6 address.");
+        }
         return address;
     }
     private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddAddress(client, AddressType, ParseAddress()));

@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS array manager values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using System.Xml
@@ -63,10 +65,25 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Array identifier entered for array-manager operations.
+    /// </summary>
     public string ArrayId { get; set; } = "0";
+    /// <summary>
+    /// First entry index entered for retrieval or removal.
+    /// </summary>
     public string FromIndex { get; set; } = "1";
+    /// <summary>
+    /// Last entry index entered for retrieval or removal.
+    /// </summary>
     public string ToIndex { get; set; } = "1";
+    /// <summary>
+    /// Entry index entered for the selected operation.
+    /// </summary>
     public string EntryIndex { get; set; } = "1";
+    /// <summary>
+    /// XML representation of the value to insert or update.
+    /// </summary>
     public string EntryXml { get; set; } = "<Int32 Value=\"0\" />";
     private GXValueField? _arrayIdField, _fromField, _toField, _indexField, _entryField;
     private bool CanUseArray => Enumerable.Range(1, 5).Any(CanInvokeMethod);
@@ -77,10 +94,30 @@
         (byte)0, new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2 }
     };
 
+    /// <summary>
+    /// Requests the number of entries in the selected managed array.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task NumberOfEntriesAsync() => ExecuteAsync(1);
+    /// <summary>
+    /// Requests the entered index range from the selected managed array.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task RetrieveEntriesAsync() => ExecuteAsync(2);
+    /// <summary>
+    /// Requests insertion of the XML value at the entered array index.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task InsertEntryAsync() => ExecuteAsync(3);
+    /// <summary>
+    /// Requests replacement of the entered array entry with the XML value.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task UpdateEntryAsync() => ExecuteAsync(4);
+    /// <summary>
+    /// Requests removal of the entered index range from the managed array.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveEntriesAsync() => ExecuteAsync(5);
 
     private async Task ExecuteAsync(int method)

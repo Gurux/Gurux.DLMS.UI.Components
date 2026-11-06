@@ -27,4 +27,7 @@
 
 using Gurux.DLMS.Objects;
 namespace Gurux.DLMS.UI.Components.Objects;
+/// <summary>Provides an object and its attribute edit permissions to child editors.</summary>
+/// <param name="Target">The object being edited.</param>
+/// <param name="CanEdit">A predicate that tests whether a one-based attribute index can be edited.</param>
 public sealed record GXObjectEditorAccess(GXDLMSObject Target, Func<int, bool> CanEdit);

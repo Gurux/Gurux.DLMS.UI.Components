@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS parameter monitor values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -55,28 +57,57 @@
 </section>
 
 @code {
+    /// <summary>
+    /// DLMS class identifier entered for the selected operation.
+    /// </summary>
     public string ObjectClass { get; set; } = string.Empty;
+    /// <summary>
+    /// Logical name identifying the object used by the operation.
+    /// </summary>
     public string ObjectLogicalName { get; set; } = string.Empty;
     private GXDLMSObject ReadObject()
     {
         var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
-        if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Enter a supported object class ID.");
+        if (!Enum.IsDefined(type) || type == ObjectType.None)
+        {
+            throw new FormatException("Enter a supported object class ID.");
+        }
         var parts = ObjectLogicalName.Split('.');
-        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A logical name requires six byte values.");
+        }
         var value = GXDLMSClient.CreateObject(type);
         value.LogicalName = ObjectLogicalName;
         return value;
     }
+    /// <summary>
+    /// Attribute index entered for the monitored parameter.
+    /// </summary>
     public string AttributeIndex { get; set; } = string.Empty;
     private GXDLMSTarget ReadParameter()
     {
         var index = byte.Parse(AttributeIndex, CultureInfo.InvariantCulture);
-        if (index == 0) throw new FormatException("Attribute index must be greater than zero.");
+        if (index == 0)
+        {
+            throw new FormatException("Attribute index must be greater than zero.");
+        }
         var target = ReadObject();
-        if (target is IGXDLMSBase metadata && index > metadata.GetAttributeCount()) throw new FormatException("Attribute index exceeds the object's attribute count.");
+        if (target is IGXDLMSBase metadata && index > metadata.GetAttributeCount())
+        {
+            throw new FormatException("Attribute index exceeds the object's attribute count.");
+        }
         return new GXDLMSTarget(target, index);
     }
+    /// <summary>
+    /// Requests insertion of the entered monitored parameter.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task InsertAsync() => InvokeMethodAsync(1, client => Target.Insert(client, ReadParameter()));
+    /// <summary>
+    /// Requests deletion of the selected monitored parameter.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task DeleteAsync() => InvokeMethodAsync(2, client => Target.Delete(client, ReadParameter()));
 
     private static string? ValidateParameter(string field, string text)
@@ -85,9 +116,28 @@
         {
             switch (field)
             {
-                case nameof(ObjectClass): { var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture); if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Select a supported object class."); break; }
-                case nameof(ObjectLogicalName): { CheckLogicalName(text); break; }
-                case nameof(AttributeIndex): { if (byte.Parse(text, CultureInfo.InvariantCulture) == 0) throw new FormatException("Attribute index must be greater than zero."); break; }
+                case nameof(ObjectClass):
+                    {
+                        var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture);
+                        if (!Enum.IsDefined(type) || type == ObjectType.None)
+                        {
+                            throw new FormatException("Select a supported object class.");
+                        }
+                        break;
+                    }
+                case nameof(ObjectLogicalName):
+                    {
+                        CheckLogicalName(text);
+                        break;
+                    }
+                case nameof(AttributeIndex):
+                    {
+                        if (byte.Parse(text, CultureInfo.InvariantCulture) == 0)
+                        {
+                            throw new FormatException("Attribute index must be greater than zero.");
+                        }
+                        break;
+                    }
             }
             return null;
         }
@@ -97,6 +147,9 @@
     private static void CheckLogicalName(string text)
     {
         var parts = text.Split('.');
-        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A logical name requires six byte values.");
+        }
     }
 }

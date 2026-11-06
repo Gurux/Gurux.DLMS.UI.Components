@@ -36,22 +36,30 @@ namespace Gurux.DLMS.UI.Components
     // This class can be registered as scoped DI service and then injected into Blazor
     // components for use.
 
+    /// <summary>Wraps the example JavaScript module for use by Blazor components.</summary>
     public class ExampleJsInterop : IAsyncDisposable
     {
         private readonly Lazy<Task<IJSObjectReference>> moduleTask;
 
+        /// <summary>Initializes the JavaScript module wrapper.</summary>
+        /// <param name="jsRuntime">The runtime used to import and invoke the JavaScript module.</param>
         public ExampleJsInterop(IJSRuntime jsRuntime)
         {
             moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
                 "import", "./_content/Gurux.DLMS.UI.Components/exampleJsInterop.js").AsTask());
         }
 
+        /// <summary>Displays a browser prompt with the specified message.</summary>
+        /// <param name="message">The message displayed in the prompt.</param>
+        /// <returns>The text returned by the JavaScript prompt.</returns>
         public async ValueTask<string> Prompt(string message)
         {
             var module = await moduleTask.Value;
             return await module.InvokeAsync<string>("showPrompt", message);
         }
 
+        /// <summary>Releases the JavaScript module if it has been loaded.</summary>
+        /// <returns>A task that completes when the module is released.</returns>
         public async ValueTask DisposeAsync()
         {
             if (moduleTask.IsValueCreated)

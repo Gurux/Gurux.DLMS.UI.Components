@@ -38,10 +38,16 @@ internal static class GXDLMSAttributeCodec
         if (GXDLMSObjectEditState.For(target).TryGetConfirmedAttribute(index, out var confirmed))
         {
             if (target is GXDLMSPppSetup && index == 5 && confirmed is null)
+            {
                 return new GXStructure { Array.Empty<byte>(), Array.Empty<byte>() };
+            }
+
             var model = target.GetValues().ElementAtOrDefault(index - 1);
             if (model is Enum && confirmed is not null)
+            {
                 return Enum.ToObject(model.GetType(), confirmed is GXBitString bits ? bits.ToInteger() : Convert.ToInt64(confirmed));
+            }
+
             if (confirmed is byte[] received)
             {
                 if (received.Length == 6 && model is string && target is not GXDLMSData && target is not GXDLMSRegister
@@ -51,7 +57,9 @@ internal static class GXDLMSAttributeCodec
                     return string.Join(".", received);
                 }
                 if (received.Length != 0 && model is GXDateTime or DateTime or DateTimeOffset)
+                {
                     return GXDLMSClient.ChangeType(received, model is GXDate ? DataType.Date : model is GXTime ? DataType.Time : DataType.DateTime);
+                }
             }
             return confirmed;
         }
@@ -81,13 +89,20 @@ internal static class GXDLMSAttributeCodec
         // PPP reports DataType.None until a user name exists, and GetValues
         // returns a combined display string. Its editor still needs both fields.
         if (target is GXDLMSPppSetup ppp && index == 5)
+        {
             return new GXStructure { ppp.UserName ?? [], ppp.Password ?? [] };
+        }
+
         if (target is GXDLMSAccount statusAccount && index == 4)
+        {
             return new GXBitString((uint)statusAccount.CurrentCreditStatus, 8);
+        }
         // XmlToValue does not support StringUTF8 nested in a structure. Preserve the
         // account currency's CLR string instead of round-tripping its wire XML.
         if (target is GXDLMSAccount account && index == 15)
+        {
             return new GXStructure { account.Currency.Name ?? string.Empty, account.Currency.Scale, new GXEnum((byte)account.Currency.Unit) };
+        }
         // Keep the typed timestamp: the XML decoder cannot read the hexadecimal
         // DateTime produced by DataToXml inside this structure.
         if (target is GXDLMSCoAPDiagnostic coap && index == 5)
@@ -102,20 +117,42 @@ internal static class GXDLMSAttributeCodec
             foreach (var row in profile.Buffer)
             {
                 var cells = new GXStructure();
-                foreach (var cell in row) cells.Add(cell);
+                foreach (var cell in row)
+                {
+                    cells.Add(cell);
+                }
+
                 buffer.Add(cells);
             }
             return buffer;
         }
         var original = target.GetValues().ElementAtOrDefault(index - 1);
-        if (original is null && target.GetDataType(index) == DataType.Array) return new GXArray();
+        if (original is null && target.GetDataType(index) == DataType.Array)
+        {
+            return new GXArray();
+        }
+
         if (target.GetDataType(index) is not (DataType.Array or DataType.Structure))
+        {
             return original;
-        if (target is not IGXDLMSBase details) return original;
+        }
+
+        if (target is not IGXDLMSBase details)
+        {
+            return original;
+        }
+
         var args = new ValueEventArgs(target, index, 0, null) { SkipMaxPduSize = true };
         var value = details.GetValue(new GXDLMSSettings(), args);
-        if (args.Error != ErrorCode.Ok) throw new InvalidOperationException($"Cannot display attribute {index}: {args.Error}.");
-        if (value is not byte[] bytes) return value;
+        if (args.Error != ErrorCode.Ok)
+        {
+            throw new InvalidOperationException($"Cannot display attribute {index}: {args.Error}.");
+        }
+
+        if (value is not byte[] bytes)
+        {
+            return value;
+        }
         // XmlToValue reads decimal numeric values, matching ValueToXml's output.
         var translator = new GXDLMSTranslator(TranslatorOutputType.SimpleXml) { Hex = false };
         translator.DataToXml(bytes, out var xml);

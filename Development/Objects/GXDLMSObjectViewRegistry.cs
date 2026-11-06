@@ -107,9 +107,16 @@ public static class GXDLMSObjectViewRegistry
         [typeof(GXDLMSUtilityTables)] = typeof(GXUtilityTablesView),
         [typeof(GXDLMSWirelessModeQchannel)] = typeof(GXDLMSWirelessModeQchannelView),
     };
+    /// <summary>Finds the view component for an object, using the generic view when supported.</summary>
+    /// <param name="target">The object to display.</param>
+    /// <returns>The matching component type, or null when no view is available.</returns>
     public static Type? GetViewType(GXDLMSObject target)
     {
-        if (target is GXDLMSData && target.LogicalName == GXDLMSUnixTimeView.UnixTimeLogicalName) return typeof(GXDLMSUnixTimeView);
+        if (target is GXDLMSData && target.LogicalName == GXDLMSUnixTimeView.UnixTimeLogicalName)
+        {
+            return typeof(GXDLMSUnixTimeView);
+        }
+
         return Views.GetValueOrDefault(target.GetType()) ?? (target is IGXDLMSBase ? typeof(GXGenericObjectView) : null);
     }
 }

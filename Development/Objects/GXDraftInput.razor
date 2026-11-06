@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Edits a draft scalar or enumeration value and reports input changes.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.UI.Components
@@ -88,13 +90,46 @@ else
 }
 
 @code {
+    /// <summary>
+    /// HTML identifier of the input element.
+    /// </summary>
     [Parameter] public string Id { get; set; } = string.Empty;
+    /// <summary>
+    /// Label displayed for the input value.
+    /// </summary>
     [Parameter] public string Label { get; set; } = string.Empty;
+    /// <summary>
+    /// Value displayed and edited by the component.
+    /// </summary>
     [Parameter] public string Value { get; set; } = string.Empty;
-    [Parameter] public EventCallback<string> ValueChanged { get; set; }
+    /// <summary>
+    /// Callback receiving a successfully converted edited value.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> ValueChanged
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Input representation used to edit the value, such as text, hex, or datetime.
+    /// </summary>
     [Parameter] public string InputKind { get; set; } = "text";
-    [Parameter] public Type? EnumType { get; set; }
-    [Parameter] public bool Disabled { get; set; }
+    /// <summary>
+    /// Enumeration type whose members are offered as input choices.
+    /// </summary>
+    [Parameter]
+    public Type? EnumType
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether user interaction with this control is disabled.
+    /// </summary>
+    [Parameter]
+    public bool Disabled
+    {
+        get; set;
+    }
     private readonly string _flagsId = $"gx-flags-{Guid.NewGuid():N}";
     private bool Boolean => bool.TryParse(Value, out var value) && value;
     private long Flags => long.TryParse(Value, out var value) ? value : EnumType is not null && Enum.TryParse(EnumType, Value, out var parsed) ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture) : 0;

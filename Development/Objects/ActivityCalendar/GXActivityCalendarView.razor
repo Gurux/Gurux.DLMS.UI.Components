@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS activity calendar values and supported actions.</summary> *@
+
 @using Gurux.UI.Components.Tab
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
@@ -61,6 +63,10 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Requests activation of the passive activity calendar.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ActivatePassiveCalendarAsync() => InvokeMethodAsync(1, client => Target.ActivatePassiveCalendar(client));
 }
 

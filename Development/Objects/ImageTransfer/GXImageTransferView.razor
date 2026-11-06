@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS image transfer values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -81,11 +83,11 @@
     </GXDialog>
 }
 
-<GXValueField Label="Identifier (hex):" Value="@IdentifierText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) IdentifierText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "An image identifier is required.")))" />
-<GXValueField Label="Identifier signature (hex, optional):" Value="@SignatureText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) SignatureText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
-<GXValueField Label="Image (hex):" Value="@ImageText" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2)) ImageText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "Select a nonempty image.")))" />
-<GXValueField Label="Resume block index:" Value="@ResumeIndexText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) ResumeIndexText = value; })" InputKind="number" Validate="@(value => int.TryParse(value, out var index) && index >= 0 ? null : "Enter a nonnegative block index.")" />
-<GXValueField Label="Received blocks bit string (optional):" Value="@BlocksStatusText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) BlocksStatusText = value; })" Validate="@(ValidateBlocksStatus)" />
+<GXValueField Label="Identifier (hex):" Value="@IdentifierText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { IdentifierText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "An image identifier is required.")))" />
+<GXValueField Label="Identifier signature (hex, optional):" Value="@SignatureText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { SignatureText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="Image (hex):" Value="@ImageText" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2)) { ImageText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "Select a nonempty image.")))" />
+<GXValueField Label="Resume block index:" Value="@ResumeIndexText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ResumeIndexText = value; } })" InputKind="number" Validate="@(value => int.TryParse(value, out var index) && index >= 0 ? null : "Enter a nonnegative block index.")" />
+<GXValueField Label="Received blocks bit string (optional):" Value="@BlocksStatusText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { BlocksStatusText = value; } })" Validate="@(ValidateBlocksStatus)" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InitiateAsync">Update Image...</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="TransferAsync">Transfer image blocks</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="VerifyAsync">Verify Image...</GXButton>
@@ -99,101 +101,230 @@
 </section>
 
 @code {
-private static string? CheckParameter(Action validate)
-{
-    try { validate(); return null; }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
-
-private string? ValidateBlocksStatus(string text) => CheckParameter(() =>
-{
-    if (string.IsNullOrWhiteSpace(text)) return;
-    RequireParameter(Target.ImageBlockSize > 0, "Read a nonzero image block size before entering block status.");
-    var count = (Image().LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
-    RequireParameter(text.Length == count && text.All(c => c is '0' or '1'), "Block status must contain one zero or one per image block.");
-});
-
-public string ImageFileName { get; private set; } = string.Empty;
-public bool EditingImageFile { get; private set; }
-private GXDLMSImageTransfer? _fileTarget, _lastTarget;
-private byte[]? _draftImage;
-private string _draftFileName = string.Empty;
-private string? _fileError;
-private readonly string _fileDialogId = $"gx-image-file-{Guid.NewGuid():N}";
-private sealed record ImageLogEntry(DateTime Time, string Description);
-private readonly List<ImageLogEntry> _imageLog = new();
-private GXTable<ImageLogEntry>? _logTable;
-protected override void OnParametersSet()
-{
-    base.OnParametersSet();
-    if (!ReferenceEquals(_lastTarget, Target)) { CancelImageFile(); _imageLog.Clear(); _lastTarget = Target; }
-}
-public void BeginImageFile()
-{
-    if (!CanInvokeMethod(1) && !CanInvokeMethod(2)) return;
-    _fileTarget = Target; _draftImage = null; _draftFileName = string.Empty; _fileError = null; EditingImageFile = true;
-}
-public void LoadImageFile((byte[]? Value, string FileName) loaded)
-{
-    if (!EditingImageFile || !ReferenceEquals(_fileTarget, Target) || !CanInvokeMethod(1) && !CanInvokeMethod(2)) return;
-    _draftImage = loaded.Value?.ToArray(); _draftFileName = loaded.FileName; _fileError = null;
-}
-public void AcceptImageFile()
-{
-    if (!EditingImageFile || !ReferenceEquals(_fileTarget, Target) || !CanInvokeMethod(1) && !CanInvokeMethod(2)) return;
-    if (_draftImage is not { Length: > 0 }) { _fileError = "Select a nonempty image file."; return; }
-    ImageText = Convert.ToHexString(_draftImage); ImageFileName = _draftFileName; CancelImageFile();
-}
-public void CancelImageFile() { EditingImageFile = false; _fileTarget = null; _draftImage = null; _draftFileName = string.Empty; _fileError = null; }
-private ValueTask<ItemsProviderResult<ImageLogEntry>> ImageLogItems(GXItemsProviderRequest request)
-    => ValueTask.FromResult(new ItemsProviderResult<ImageLogEntry>(_imageLog.ToArray(), _imageLog.Count));
-private async Task RunImageMethodAsync(int method, Func<GXDLMSClient, byte[][]> messages)
-{
-    if (!CanInvokeMethod(method)) return;
-    var target = Target;
-    await InvokeMethodAsync(method, messages);
-    if (!ReferenceEquals(target, Target)) return;
-    var operation = method switch { 1 => "Image initiation", 2 => "Image block transfer", 3 => "Image verification", _ => "Image activation" };
-    _imageLog.Add(new ImageLogEntry(DateTime.Now, ActionError ?? $"{operation} request completed."));
-    if (_logTable is not null) await _logTable.RefreshDataAsync(false);
-}
-
-public string IdentifierText { get; set; } = "";
-public string SignatureText { get; set; } = "";
-public string ImageText { get; set; } = "";
-public string ResumeIndexText { get; set; } = "0";
-public string BlocksStatusText { get; set; } = "";
-private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
-private byte[] Image()
-{
-    var image = Hex(ImageText);
-    if (image.Length == 0) throw new ArgumentException("Select a nonempty image.");
-    return image;
-}
-public Task InitiateAsync() => RunImageMethodAsync(1, client =>
-{
-    var identifier = Hex(IdentifierText);
-    if (identifier.Length == 0) throw new ArgumentException("An image identifier is required.");
-    return Target.ImageTransferInitiate(client, identifier.Concat(Hex(SignatureText)).ToArray(), Image().LongLength);
-});
-public Task TransferAsync() => RunImageMethodAsync(2, client =>
-{
-    var image = Image();
-    if (Target.ImageBlockSize == 0) throw new ArgumentException("Read a nonzero image block size before transfer.");
-    var count = (image.LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
-    if (!string.IsNullOrWhiteSpace(BlocksStatusText))
+    private static string? CheckParameter(Action validate)
     {
-        if (BlocksStatusText.Length != count || BlocksStatusText.Any(c => c != '0' && c != '1'))
-            throw new ArgumentException("Block status must contain one zero or one per image block.");
-        return Target.ImageBlockTransfer(client, image, BlocksStatusText, out _);
+        try
+        {
+            validate();
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
-    var index = int.Parse(ResumeIndexText, System.Globalization.CultureInfo.InvariantCulture);
-    if (index < 0 || index >= count) throw new ArgumentException("Resume index must identify an image block.");
-    return Target.ImageBlockTransfer(client, image, index, out _);
-});
-public Task VerifyAsync() => RunImageMethodAsync(3, client => Target.ImageVerify(client));
-public Task ActivateAsync() => RunImageMethodAsync(4, client => Target.ImageActivate(client));
+    private static void RequireParameter(bool valid, string message)
+    {
+        if (!valid)
+        {
+            throw new ArgumentException(message);
+        }
+    }
+
+    private string? ValidateBlocksStatus(string text) => CheckParameter(() =>
+    {
+        if (string.IsNullOrWhiteSpace(text))
+        {
+            return;
+        }
+        RequireParameter(Target.ImageBlockSize > 0, "Read a nonzero image block size before entering block status.");
+        var count = (Image().LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
+        RequireParameter(text.Length == count && text.All(c => c is '0' or '1'), "Block status must contain one zero or one per image block.");
+    });
+
+    /// <summary>
+    /// Name of the accepted local image file.
+    /// </summary>
+    public string ImageFileName { get; private set; } = string.Empty;
+    /// <summary>
+    /// Whether the image-file selection dialog is open.
+    /// </summary>
+    public bool EditingImageFile
+    {
+        get; private set;
+    }
+    private GXDLMSImageTransfer? _fileTarget, _lastTarget;
+    private byte[]? _draftImage;
+    private string _draftFileName = string.Empty;
+    private string? _fileError;
+    private readonly string _fileDialogId = $"gx-image-file-{Guid.NewGuid():N}";
+    private sealed record ImageLogEntry(DateTime Time, string Description);
+    private readonly List<ImageLogEntry> _imageLog = new();
+    private GXTable<ImageLogEntry>? _logTable;
+    /// <inheritdoc />
+    protected override void OnParametersSet()
+    {
+        base.OnParametersSet();
+        if (!ReferenceEquals(_lastTarget, Target))
+        {
+            CancelImageFile();
+            _imageLog.Clear();
+            _lastTarget = Target;
+        }
+    }
+    /// <summary>
+    /// Opens draft image-file selection for the current target.
+    /// </summary>
+    public void BeginImageFile()
+    {
+        if (!CanInvokeMethod(1) && !CanInvokeMethod(2))
+        {
+            return;
+        }
+        _fileTarget = Target;
+        _draftImage = null;
+        _draftFileName = string.Empty;
+        _fileError = null;
+        EditingImageFile = true;
+    }
+    /// <summary>
+    /// Loads selected file bytes and name into the image-file draft.
+    /// </summary>
+    /// <param name="loaded">Selected image bytes and file name.</param>
+    public void LoadImageFile((byte[]? Value, string FileName) loaded)
+    {
+        if (!EditingImageFile || !ReferenceEquals(_fileTarget, Target) || !CanInvokeMethod(1) && !CanInvokeMethod(2))
+        {
+            return;
+        }
+        _draftImage = loaded.Value?.ToArray();
+        _draftFileName = loaded.FileName;
+        _fileError = null;
+    }
+    /// <summary>
+    /// Accepts the selected image file after validating the draft.
+    /// </summary>
+    public void AcceptImageFile()
+    {
+        if (!EditingImageFile || !ReferenceEquals(_fileTarget, Target) || !CanInvokeMethod(1) && !CanInvokeMethod(2))
+        {
+            return;
+        }
+        if (_draftImage is not { Length: > 0 })
+        {
+            _fileError = "Select a nonempty image file.";
+            return;
+        }
+        ImageText = Convert.ToHexString(_draftImage);
+        ImageFileName = _draftFileName;
+        CancelImageFile();
+    }
+    /// <summary>
+    /// Closes the image-file dialog and discards its draft.
+    /// </summary>
+    public void CancelImageFile()
+    {
+        EditingImageFile = false;
+        _fileTarget = null;
+        _draftImage = null;
+        _draftFileName = string.Empty;
+        _fileError = null;
+    }
+    private ValueTask<ItemsProviderResult<ImageLogEntry>> ImageLogItems(GXItemsProviderRequest request)
+        => ValueTask.FromResult(new ItemsProviderResult<ImageLogEntry>(_imageLog.ToArray(), _imageLog.Count));
+    private async Task RunImageMethodAsync(int method, Func<GXDLMSClient, byte[][]> messages)
+    {
+        if (!CanInvokeMethod(method))
+        {
+            return;
+        }
+        var target = Target;
+        await InvokeMethodAsync(method, messages);
+        if (!ReferenceEquals(target, Target))
+        {
+            return;
+        }
+        var operation = method switch
+        {
+            1 => "Image initiation",
+            2 => "Image block transfer",
+            3 => "Image verification",
+            _ => "Image activation"
+        };
+        _imageLog.Add(new ImageLogEntry(DateTime.Now, ActionError ?? $"{operation} request completed."));
+        if (_logTable is not null)
+        {
+            await _logTable.RefreshDataAsync(false);
+        }
+    }
+
+    /// <summary>
+    /// Image identifier entered for transfer initiation.
+    /// </summary>
+    public string IdentifierText { get; set; } = "";
+    /// <summary>
+    /// Image signature entered for transfer initiation.
+    /// </summary>
+    public string SignatureText { get; set; } = "";
+    /// <summary>
+    /// Hexadecimal image bytes entered for transfer.
+    /// </summary>
+    public string ImageText { get; set; } = "";
+    /// <summary>
+    /// First image-block index entered when resuming transfer.
+    /// </summary>
+    public string ResumeIndexText { get; set; } = "0";
+    /// <summary>
+    /// Transferred-block status bit string used to resume transfer.
+    /// </summary>
+    public string BlocksStatusText { get; set; } = "";
+    private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+    private byte[] Image()
+    {
+        var image = Hex(ImageText);
+        if (image.Length == 0)
+        {
+            throw new ArgumentException("Select a nonempty image.");
+        }
+        return image;
+    }
+    /// <summary>
+    /// Requests image-transfer initiation using the entered image metadata.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task InitiateAsync() => RunImageMethodAsync(1, client =>
+    {
+        var identifier = Hex(IdentifierText);
+        if (identifier.Length == 0)
+        {
+            throw new ArgumentException("An image identifier is required.");
+        }
+        return Target.ImageTransferInitiate(client, identifier.Concat(Hex(SignatureText)).ToArray(), Image().LongLength);
+    });
+    /// <summary>
+    /// Requests image-block transfer using the entered image and resume settings.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task TransferAsync() => RunImageMethodAsync(2, client =>
+    {
+        var image = Image();
+        if (Target.ImageBlockSize == 0)
+        {
+            throw new ArgumentException("Read a nonzero image block size before transfer.");
+        }
+        var count = (image.LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
+        if (!string.IsNullOrWhiteSpace(BlocksStatusText))
+        {
+            if (BlocksStatusText.Length != count || BlocksStatusText.Any(c => c != '0' && c != '1'))
+            {
+                throw new ArgumentException("Block status must contain one zero or one per image block.");
+            }
+            return Target.ImageBlockTransfer(client, image, BlocksStatusText, out _);
+        }
+        var index = int.Parse(ResumeIndexText, System.Globalization.CultureInfo.InvariantCulture);
+        if (index < 0 || index >= count)
+        {
+            throw new ArgumentException("Resume index must identify an image block.");
+        }
+        return Target.ImageBlockTransfer(client, image, index, out _);
+    });
+    /// <summary>
+    /// Requests verification of the transferred image.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task VerifyAsync() => RunImageMethodAsync(3, client => Target.ImageVerify(client));
+    /// <summary>
+    /// Requests activation of the transferred image.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task ActivateAsync() => RunImageMethodAsync(4, client => Target.ImageActivate(client));
 }
 
 

@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS token gateway values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -50,10 +52,21 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Hexadecimal token entered for the token-gateway request.
+    /// </summary>
     public string TokenHex { get; set; } = string.Empty;
-    public Task EnterAsync() => InvokeMethodAsync(1, client => {
+    /// <summary>
+    /// Requests processing of the entered token by the token gateway.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task EnterAsync() => InvokeMethodAsync(1, client =>
+    {
         var bytes = Convert.FromHexString(TokenHex.Replace(" ", string.Empty));
-        if (bytes.Length == 0) throw new FormatException("Enter a token.");
+        if (bytes.Length == 0)
+        {
+            throw new FormatException("Enter a token.");
+        }
         return Target.Enter(client, bytes);
     });
 
@@ -63,7 +76,14 @@
         {
             switch (field)
             {
-                case nameof(TokenHex): { if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0) throw new FormatException("Enter a token."); break; }
+                case nameof(TokenHex):
+                    {
+                        if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0)
+                        {
+                            throw new FormatException("Enter a token.");
+                        }
+                        break;
+                    }
             }
             return null;
         }

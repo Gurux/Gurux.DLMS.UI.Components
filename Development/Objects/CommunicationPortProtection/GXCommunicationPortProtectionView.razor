@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS communication port protection values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -77,7 +79,11 @@
 </section>
 
 @code {
-public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    /// <summary>
+    /// Requests execution of the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
 }
 
 

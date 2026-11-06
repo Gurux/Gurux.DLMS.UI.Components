@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS mbus client values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -92,7 +94,7 @@
 }
 </fieldset>
 <fieldset><legend>Slave</legend>
-<GXValueField Label="Install primary address:" Value="@PrimaryAddressText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) PrimaryAddressText = value; })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Primary address must be between zero and 255.")" />
+<GXValueField Label="Install primary address:" Value="@PrimaryAddressText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { PrimaryAddressText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Primary address must be between zero and 255.")" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InstallAsync">Install</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeinstallAsync">De-install</GXButton>
 </fieldset>
@@ -100,67 +102,151 @@
 <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="ResetAlarmAsync">Reset alarm</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="SynchronizeAsync">Synchronize clock</GXButton>
 <fieldset><legend>Send data</legend>
-<GXValueField Label="Data Information (hex):" Value="@DataInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) DataInformationText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
-<GXValueField Label="Value Information (hex):" Value="@ValueInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) ValueInformationText = value; })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
-<GXValueField Label="Data type:" Value="@ValueType.ToString()" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) ValueType = Enum.Parse<DataType>(value); })" EnumType="typeof(DataType)" Validate="@(value => Enum.TryParse<DataType>(value, out var type) && Enum.IsDefined(type) && type is not (DataType.None or DataType.Array or DataType.Structure) ? null : "Select a scalar data type.")" />
-<GXValueField Label="Data value:" Value="@DataText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) DataText = value; })" Validate="@(ValidateDataText)" />
+<GXValueField Label="Data Information (hex):" Value="@DataInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { DataInformationText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="Value Information (hex):" Value="@ValueInformationText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { ValueInformationText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="Data type:" Value="@ValueType.ToString()" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { ValueType = Enum.Parse<DataType>(value); } })" EnumType="typeof(DataType)" Validate="@(value => Enum.TryParse<DataType>(value, out var type) && Enum.IsDefined(type) && type is not (DataType.None or DataType.Array or DataType.Structure) ? null : "Select a scalar data type.")" />
+<GXValueField Label="Data value:" Value="@DataText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { DataText = value; } })" Validate="@(ValidateDataText)" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="SendDataAsync">Send...</GXButton>
 </fieldset>
 <fieldset><legend>Encryption key</legend>
-<GXValueField Label="Encryption key (16 bytes, hex):" Value="@EncryptionKeyText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) EncryptionKeyText = value; })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(ClearKey || Hex(value).Length == 16, "An M-Bus encryption key must contain exactly 16 bytes.")))" />
-<GXValueField Label="Clear encryption key:" Value="@ClearKey.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) ClearKey = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; })" />
+<GXValueField Label="Encryption key (16 bytes, hex):" Value="@EncryptionKeyText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { EncryptionKeyText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(ClearKey || Hex(value).Length == 16, "An M-Bus encryption key must contain exactly 16 bytes.")))" />
+<GXValueField Label="Clear encryption key:" Value="@ClearKey.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { ClearKey = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(7))" OnClick="SetKeyAsync">Set...</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(8))" OnClick="TransferKeyAsync">Transfer...</GXButton>
 </fieldset>
 </section>
 
 @code {
-private static string? CheckParameter(Action validate)
-{
-    try { validate(); return null; }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
+    private static string? CheckParameter(Action validate)
+    {
+        try
+        {
+            validate();
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+    }
+    private static void RequireParameter(bool valid, string message)
+    {
+        if (!valid)
+        {
+            throw new ArgumentException(message);
+        }
+    }
 
-private string? ValidateDataText(string text) => CheckParameter(() =>
-{
-    RequireParameter(!string.IsNullOrEmpty(text), "A data value is required.");
-    RequireParameter(ValueType is not (DataType.None or DataType.Array or DataType.Structure), "Select a scalar data type.");
-    if (ValueType == DataType.OctetString) Hex(text);
-    else GXDLMSConverter.ChangeType(text, ValueType, System.Globalization.CultureInfo.InvariantCulture);
-});
+    private string? ValidateDataText(string text) => CheckParameter(() =>
+    {
+        RequireParameter(!string.IsNullOrEmpty(text), "A data value is required.");
+        RequireParameter(ValueType is not (DataType.None or DataType.Array or DataType.Structure), "Select a scalar data type.");
+        if (ValueType == DataType.OctetString)
+        {
+            Hex(text);
+        }
+        else
+        {
+            GXDLMSConverter.ChangeType(text, ValueType, System.Globalization.CultureInfo.InvariantCulture);
+        }
+    });
 
-private enum BooleanChoice { False, True }
+    private enum BooleanChoice
+    {
+        False, True
+    }
 
-public string PrimaryAddressText { get; set; } = "";
-public string EncryptionKeyText { get; set; } = "";
-public bool ClearKey { get; set; }
-public string DataInformationText { get; set; } = "";
-public string ValueInformationText { get; set; } = "";
-public string DataText { get; set; } = "";
-public DataType ValueType { get; set; } = DataType.String;
-private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
-private byte[]? Key()
-{
-    if (ClearKey) return null;
-    var key = Hex(EncryptionKeyText);
-    if (key.Length != 16) throw new ArgumentException("An M-Bus encryption key must contain exactly 16 bytes.");
-    return key;
-}
-public Task InstallAsync() => InvokeMethodAsync(1, client => Target.SlaveInstall(client, byte.Parse(PrimaryAddressText, System.Globalization.CultureInfo.InvariantCulture)));
-public Task DeinstallAsync() => InvokeMethodAsync(2, client => Target.SlaveDeInstall(client));
-public Task CaptureAsync() => InvokeMethodAsync(3, client => Target.Capture(client));
-public Task ResetAlarmAsync() => InvokeMethodAsync(4, client => Target.ResetAlarm(client));
-public Task SynchronizeAsync() => InvokeMethodAsync(5, client => Target.SynchronizeClock(client));
-public Task SetKeyAsync() => InvokeMethodAsync(7, client => Target.SetEncryptionKey(client, Key()));
-public Task TransferKeyAsync() => InvokeMethodAsync(8, client => Target.TransferKey(client, Key()));
-public Task SendDataAsync() => InvokeMethodAsync(6, client =>
-{
-    if (string.IsNullOrEmpty(DataText)) throw new ArgumentException("A data value is required.");
-    object value = ValueType == DataType.OctetString ? Hex(DataText) :
-        GXDLMSConverter.ChangeType(DataText, ValueType, System.Globalization.CultureInfo.InvariantCulture);
-    return Target.SendData(client, new[] { new GXMBusClientData { DataInformation = Hex(DataInformationText), ValueInformation = Hex(ValueInformationText), Data = value } });
-});
+    /// <summary>
+    /// M-Bus primary address entered for slave installation.
+    /// </summary>
+    public string PrimaryAddressText { get; set; } = "";
+    /// <summary>
+    /// Hexadecimal M-Bus encryption key entered for key operations.
+    /// </summary>
+    public string EncryptionKeyText { get; set; } = "";
+    /// <summary>
+    /// Whether the encryption-key operation clears the key.
+    /// </summary>
+    public bool ClearKey
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Hexadecimal M-Bus data-information bytes for the outgoing record.
+    /// </summary>
+    public string DataInformationText { get; set; } = "";
+    /// <summary>
+    /// Hexadecimal M-Bus value-information bytes for the outgoing record.
+    /// </summary>
+    public string ValueInformationText { get; set; } = "";
+    /// <summary>
+    /// Value text entered for the outgoing M-Bus record.
+    /// </summary>
+    public string DataText { get; set; } = "";
+    /// <summary>
+    /// DLMS data type used to parse the outgoing record value.
+    /// </summary>
+    public DataType ValueType { get; set; } = DataType.String;
+    private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+    private byte[]? Key()
+    {
+        if (ClearKey)
+        {
+            return null;
+        }
+        var key = Hex(EncryptionKeyText);
+        if (key.Length != 16)
+        {
+            throw new ArgumentException("An M-Bus encryption key must contain exactly 16 bytes.");
+        }
+        return key;
+    }
+    /// <summary>
+    /// Requests M-Bus slave installation at the entered primary address.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task InstallAsync() => InvokeMethodAsync(1, client => Target.SlaveInstall(client, byte.Parse(PrimaryAddressText, System.Globalization.CultureInfo.InvariantCulture)));
+    /// <summary>
+    /// Requests removal of the installed M-Bus slave.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task DeinstallAsync() => InvokeMethodAsync(2, client => Target.SlaveDeInstall(client));
+    /// <summary>
+    /// Requests capture of the target object's current values.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task CaptureAsync() => InvokeMethodAsync(3, client => Target.Capture(client));
+    /// <summary>
+    /// Requests reset of the M-Bus slave alarm.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task ResetAlarmAsync() => InvokeMethodAsync(4, client => Target.ResetAlarm(client));
+    /// <summary>
+    /// Requests synchronization of the M-Bus slave clock.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task SynchronizeAsync() => InvokeMethodAsync(5, client => Target.SynchronizeClock(client));
+    /// <summary>
+    /// Requests setting or clearing the M-Bus encryption key.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task SetKeyAsync() => InvokeMethodAsync(7, client => Target.SetEncryptionKey(client, Key()));
+    /// <summary>
+    /// Requests transfer of the entered M-Bus encryption key.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task TransferKeyAsync() => InvokeMethodAsync(8, client => Target.TransferKey(client, Key()));
+    /// <summary>
+    /// Requests sending the entered record to the M-Bus slave.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task SendDataAsync() => InvokeMethodAsync(6, client =>
+    {
+        if (string.IsNullOrEmpty(DataText))
+        {
+            throw new ArgumentException("A data value is required.");
+        }
+        object value = ValueType == DataType.OctetString ? Hex(DataText) :
+            GXDLMSConverter.ChangeType(DataText, ValueType, System.Globalization.CultureInfo.InvariantCulture);
+        return Target.SendData(client, new[] { new GXMBusClientData { DataInformation = Hex(DataInformationText), ValueInformation = Hex(ValueInformationText), Data = value } });
+    });
 }
 
 

@@ -46,7 +46,10 @@ public sealed class GXDLMSObjectEditState
     private readonly Dictionary<int, object?> _confirmedAttributes = new();
     private readonly Dictionary<string, string> _editorTexts = new();
     /// <summary>Gets the model whose dirty attributes hold pending writes.</summary>
-    public GXDLMSObject Target { get; }
+    public GXDLMSObject Target
+    {
+        get;
+    }
     /// <summary>Raised synchronously after an edit, acknowledgement, or refresh.</summary>
     public event Action? Changed;
     /// <summary>Gets whether dirty attributes or validation errors remain.</summary>
@@ -54,7 +57,10 @@ public sealed class GXDLMSObjectEditState
     /// <summary>Gets whether all recorded attribute inputs are valid.</summary>
     public bool IsValid => _errors.Count == 0;
     /// <summary>Gets the formatted method result, or null if none is recorded.</summary>
-    public string? LastActionResult { get; private set; }
+    public string? LastActionResult
+    {
+        get; private set;
+    }
     /// <summary>Records a method result without raising Changed.</summary>
     /// <param name="value">Decoded result, or null to clear the result.</param>
     public void SetActionResult(object? value) => LastActionResult = value is null ? null : Format(value);
@@ -85,7 +91,11 @@ public sealed class GXDLMSObjectEditState
     }
     internal bool TryGetConfirmedAttribute(int index, out object? value)
     {
-        if (_confirmedAttributes.TryGetValue(index, out var stored)) { value = GXWireValue.Copy(stored); return true; }
+        if (_confirmedAttributes.TryGetValue(index, out var stored))
+        {
+            value = GXWireValue.Copy(stored);
+            return true;
+        }
         value = null;
         return false;
     }
@@ -99,8 +109,15 @@ public sealed class GXDLMSObjectEditState
     /// <returns>Display text, including a diagnostic if conversion fails.</returns>
     public string AttributeText(int index)
     {
-        if (_drafts.TryGetValue(index, out var draft)) return draft;
-        try { return Format(ToUI(GXDLMSAttributeCodec.Read(Target, index), index)); }
+        if (_drafts.TryGetValue(index, out var draft))
+        {
+            return draft;
+        }
+
+        try
+        {
+            return Format(ToUI(GXDLMSAttributeCodec.Read(Target, index), index));
+        }
         catch (Exception ex) when (ex is not OutOfMemoryException) { return $"Unable to display attribute: {ex.Message}"; }
     }
     /// <summary>Checks whether the wire or UI type requires collection XML.</summary>
@@ -114,11 +131,18 @@ public sealed class GXDLMSObjectEditState
     public IEnumerable<IReadOnlyList<string>> AttributeRows(int index)
     {
         object? value;
-        try { value = Target.GetDirty(index, out var pending) ? pending : GXDLMSAttributeCodec.Read(Target, index); }
+        try
+        {
+            value = Target.GetDirty(index, out var pending) ? pending : GXDLMSAttributeCodec.Read(Target, index);
+        }
         catch (Exception ex) when (ex is not OutOfMemoryException) { return [[ex.Message]]; }
-        if (value is not System.Collections.IEnumerable rows || value is string or byte[]) return [[Format(value)]];
+        if (value is not System.Collections.IEnumerable rows || value is string or byte[])
+        {
+            return [[Format(value)]];
+        }
+
         return rows.Cast<object?>().Select(row => row is System.Collections.IEnumerable cells && row is not (string or byte[])
-            ? (IReadOnlyList<string>)cells.Cast<object?>().Select(Format).ToArray() : [Format(row)]).ToArray();
+                    ? (IReadOnlyList<string>)cells.Cast<object?>().Select(Format).ToArray() : [Format(row)]).ToArray();
     }
     /// <summary>Gets pending attribute 2, falling back to the model, without copying.</summary>
     public object? CurrentValue => Target.GetDirty(2, out var value) ? value : OriginalValue;
@@ -145,8 +169,15 @@ public sealed class GXDLMSObjectEditState
     public void EditMeterValue(object value)
     {
         _drafts[2] = Format(value);
-        if (Format(value) == Format(OriginalValue)) Target.ClearDirty(2);
-        else Target.UpdateDirty(2, value);
+        if (Format(value) == Format(OriginalValue))
+        {
+            Target.ClearDirty(2);
+        }
+        else
+        {
+            Target.UpdateDirty(2, value);
+        }
+
         _errors.Remove(2);
         Changed?.Invoke();
     }
@@ -158,8 +189,15 @@ public sealed class GXDLMSObjectEditState
     /// editor texts, then raises Changed. Intended for GXDLMSData and GXDLMSRegister.</remarks>
     public void AcceptValue(object value)
     {
-        if (Target is GXDLMSData data) data.Value = value;
-        else if (Target is GXDLMSRegister register) register.Value = value;
+        if (Target is GXDLMSData data)
+        {
+            data.Value = value;
+        }
+        else if (Target is GXDLMSRegister register)
+        {
+            register.Value = value;
+        }
+
         SetConfirmedAttribute(2, value);
         Target.ClearDirty(2);
         _drafts.Remove(2);
@@ -174,12 +212,22 @@ public sealed class GXDLMSObjectEditState
     public void RefreshConfirmedValues()
     {
         foreach (var index in _drafts.Keys.ToArray())
+        {
             if (!Target.GetDirty(index, out _) && !_errors.ContainsKey(index))
             {
                 _drafts.Remove(index);
-                if (index == 2) _editorTexts.Clear();
-                if (index == 3) _unit = null;
+                if (index == 2)
+                {
+                    _editorTexts.Clear();
+                }
+
+                if (index == 3)
+                {
+                    _unit = null;
+                }
             }
+        }
+
         Changed?.Invoke();
     }
     /// <summary>Gets draft or confirmed display text for attribute 2.</summary>
@@ -197,7 +245,10 @@ public sealed class GXDLMSObjectEditState
     {
         var ui = Target.GetUIDataType(index);
         if (value is byte[] bytes && ui is not DataType.None and not DataType.OctetString)
+        {
             return GXDLMSClient.ChangeType(bytes, ui);
+        }
+
         return value;
     }
 
@@ -227,8 +278,11 @@ public sealed class GXDLMSObjectEditState
             var ui = Target.GetUIDataType(index);
             var type = ui != DataType.None ? ui : wire == DataType.OctetString ? original switch
             {
-                GXDate => DataType.Date, GXTime => DataType.Time, GXDateTime or DateTime => DataType.DateTime,
-                string => DataType.String, _ => wire
+                GXDate => DataType.Date,
+                GXTime => DataType.Time,
+                GXDateTime or DateTime => DataType.DateTime,
+                string => DataType.String,
+                _ => wire
             } : wire;
             object? value;
             if (Target is GXDLMSIp4Setup && index is 3 or 6 or 7 or 9 or 10
@@ -236,7 +290,11 @@ public sealed class GXDLMSObjectEditState
             {
                 var address = System.Net.IPAddress.Parse(text);
                 var family = Target is GXDLMSIp4Setup ? System.Net.Sockets.AddressFamily.InterNetwork : System.Net.Sockets.AddressFamily.InterNetworkV6;
-                if (address.AddressFamily != family) throw new FormatException("Wrong IP address family.");
+                if (address.AddressFamily != family)
+                {
+                    throw new FormatException("Wrong IP address family.");
+                }
+
                 value = address.ToString();
             }
             else if (Target is GXDLMSCoAPSetup or GXDLMSMBusPortSetup && index == 2)
@@ -264,7 +322,9 @@ public sealed class GXDLMSObjectEditState
                 }
                 var expected = wire is DataType.Array or DataType.Structure ? wire : type;
                 if (expected == DataType.Array && value is not GXArray || expected == DataType.Structure && value is not GXStructure)
+                {
                     throw new FormatException("XML root does not match the COSEM data type.");
+                }
             }
             else
             {
@@ -284,11 +344,22 @@ public sealed class GXDLMSObjectEditState
                 var clone = Target.Clone();
                 var args = new ValueEventArgs(clone, index, 0, null) { Value = value, User = true };
                 ((IGXDLMSBase)clone).SetValue(new GXDLMSSettings(), args);
-                if (args.Error != ErrorCode.Ok) throw new FormatException(args.Error.ToString());
+                if (args.Error != ErrorCode.Ok)
+                {
+                    throw new FormatException(args.Error.ToString());
+                }
             }
             // Compare in UI form so OctetString displayed as text can return to its original value.
-            if (unchanged) { Target.ClearDirty(index); _drafts.Remove(index); }
-            else Target.UpdateDirty(index, value);
+            if (unchanged)
+            {
+                Target.ClearDirty(index);
+                _drafts.Remove(index);
+            }
+            else
+            {
+                Target.UpdateDirty(index, value);
+            }
+
             _errors.Remove(index);
         }
         catch (Exception ex) when (ex is not OutOfMemoryException)
@@ -318,10 +389,18 @@ public sealed class GXDLMSObjectEditState
 
     /// <summary>Stages a register scaler, validating its signed-byte base-ten exponent.</summary>
     /// <param name="text">Positive power of ten in invariant notation, such as 0.01.</param>
-    public void EditScaler(string text) { _drafts[3] = text; UpdateScalerUnit(); }
+    public void EditScaler(string text)
+    {
+        _drafts[3] = text;
+        UpdateScalerUnit();
+    }
     /// <summary>Stages the register unit together with the current scaler draft.</summary>
     /// <param name="unit">COSEM register unit.</param>
-    public void EditUnit(Unit unit) { _unit = unit; UpdateScalerUnit(); }
+    public void EditUnit(Unit unit)
+    {
+        _unit = unit;
+        UpdateScalerUnit();
+    }
     private void UpdateScalerUnit()
     {
         try
@@ -330,9 +409,19 @@ public sealed class GXDLMSObjectEditState
             var scaler = double.Parse(ScalerText, CultureInfo.InvariantCulture);
             var exponent = Math.Log10(scaler);
             if (!double.IsFinite(exponent) || Math.Abs(exponent - Math.Round(exponent)) > 1e-9 || exponent < sbyte.MinValue || exponent > sbyte.MaxValue)
+            {
                 throw new FormatException();
-            if (scaler == register.Scaler && Unit == register.Unit) Target.ClearDirty(3);
-            else Target.UpdateDirty(3, new GXStructure { (sbyte)Math.Round(exponent), new GXEnum((byte)Unit) });
+            }
+
+            if (scaler == register.Scaler && Unit == register.Unit)
+            {
+                Target.ClearDirty(3);
+            }
+            else
+            {
+                Target.UpdateDirty(3, new GXStructure { (sbyte)Math.Round(exponent), new GXEnum((byte)Unit) });
+            }
+
             _errors.Remove(3);
         }
         catch (Exception ex) when (ex is FormatException or OverflowException)

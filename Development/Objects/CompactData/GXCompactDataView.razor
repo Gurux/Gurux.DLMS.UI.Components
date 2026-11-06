@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS compact data values and supported actions.</summary> *@
+
 @using Gurux.UI.Components
 @using Gurux.UI.Components.Table
 @using Gurux.UI.Components.Tab
@@ -60,16 +62,31 @@
 
 @code {
     // The package has no convenience methods. The legacy view sends an Int8 zero.
+    /// <summary>
+    /// Requests the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ResetAsync() => InvokeMethodAsync(1, client => client.Method(Target, 1, (sbyte)0, DataType.Int8));
+    /// <summary>
+    /// Requests capture of the target object's current values.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task CaptureAsync() => InvokeMethodAsync(2, client => client.Method(Target, 2, (sbyte)0, DataType.Int8));
     private string CompactKey => $"{Edit.AttributeText(2)}:{Edit.AttributeText(3)}:{Edit.AttributeText(5)}";
     private GXDLMSCompactData CurrentCompact()
     {
-        if (!new[] { 2, 3, 5 }.Any(i => Target.GetDirty(i, out _))) return Target;
+        if (!new[] { 2, 3, 5 }.Any(i => Target.GetDirty(i, out _)))
+        {
+            return Target;
+        }
         var current = (GXDLMSCompactData)Target.Clone();
         foreach (var index in new[] { 2, 3, 5 })
+        {
             if (Target.GetDirty(index, out var pending))
+            {
                 ((IGXDLMSBase)current).SetValue(new GXDLMSSettings(), new ValueEventArgs(current, index, 0, null) { Value = pending, User = true });
+            }
+        }
         return current;
     }
     private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetDataRows(GXItemsProviderRequest request)
@@ -79,7 +96,9 @@
         {
             var current = CurrentCompact();
             if (current.TemplateDescription is { Length: > 0 } && current.Buffer is { Length: > 0 })
+            {
                 rows = GXDLMSCompactData.GetData(current.TemplateDescription, current.Buffer).Select(row => row is System.Collections.IEnumerable cells && row is not (string or byte[]) ? (IReadOnlyList<string>)cells.Cast<object?>().Select(GXDLMSObjectEditState.Format).ToArray() : [GXDLMSObjectEditState.Format(row)]).ToArray();
+            }
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { rows = [[ex.Message]]; }
         return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));

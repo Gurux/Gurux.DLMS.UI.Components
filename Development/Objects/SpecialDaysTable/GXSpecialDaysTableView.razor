@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS special days table values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -48,14 +50,32 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Entry index entered for the selected operation.
+    /// </summary>
     public string EntryIndex { get; set; } = string.Empty;
+    /// <summary>
+    /// Date entered for the special-day entry.
+    /// </summary>
     public string EntryDate { get; set; } = string.Empty;
+    /// <summary>
+    /// Day identifier associated with the special-day entry.
+    /// </summary>
     public string DayId { get; set; } = string.Empty;
-    public Task InsertAsync() => InvokeMethodAsync(1, client => Target.Insert(client, new GXDLMSSpecialDay {
+    /// <summary>
+    /// Requests insertion of the entered special-day entry.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task InsertAsync() => InvokeMethodAsync(1, client => Target.Insert(client, new GXDLMSSpecialDay
+    {
         Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture),
         Date = new GXDate(DateTime.ParseExact(EntryDate, "yyyy-MM-dd", CultureInfo.InvariantCulture)),
         DayId = byte.Parse(DayId, CultureInfo.InvariantCulture)
     }));
+    /// <summary>
+    /// Requests deletion of the selected special-day entry.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task DeleteAsync() => InvokeMethodAsync(2, client => Target.Delete(client, new GXDLMSSpecialDay { Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture) }));
 
     private static string? ValidateParameter(string field, string text)
@@ -64,9 +84,21 @@
         {
             switch (field)
             {
-                case nameof(EntryIndex): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
-                case nameof(EntryDate): { DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture); break; }
-                case nameof(DayId): { byte.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(EntryIndex):
+                    {
+                        ushort.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(EntryDate):
+                    {
+                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(DayId):
+                    {
+                        byte.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
             }
             return null;
         }

@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS script table values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -45,7 +47,14 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Script identifier entered for the execution request.
+    /// </summary>
     public string ScriptId { get; set; } = string.Empty;
+    /// <summary>
+    /// Requests execution of the entered script identifier.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ExecuteAsync() => InvokeMethodAsync(1, client => Target.Execute(client, ushort.Parse(ScriptId, CultureInfo.InvariantCulture)));
 
     private static string? ValidateParameter(string field, string text)
@@ -54,7 +63,11 @@
         {
             switch (field)
             {
-                case nameof(ScriptId): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(ScriptId):
+                    {
+                        ushort.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
             }
             return null;
         }

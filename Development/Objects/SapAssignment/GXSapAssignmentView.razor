@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS sap assignment values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -47,14 +49,32 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Service access point identifier entered for the assignment.
+    /// </summary>
     public string SapId { get; set; } = string.Empty;
+    /// <summary>
+    /// Device name entered for the SAP assignment operation.
+    /// </summary>
     public string DeviceName { get; set; } = string.Empty;
     private string RequireName() => !string.IsNullOrWhiteSpace(DeviceName) ? DeviceName : throw new FormatException("Enter a logical device name.");
-    public Task AddAsync() => InvokeMethodAsync(1, client => {
+    /// <summary>
+    /// Requests adding the entered SAP identifier and device name.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task AddAsync() => InvokeMethodAsync(1, client =>
+    {
         var id = ushort.Parse(SapId, CultureInfo.InvariantCulture);
-        if (id == 0) throw new FormatException("SAP ID zero removes an assignment; enter an ID from 1 to 65535.");
+        if (id == 0)
+        {
+            throw new FormatException("SAP ID zero removes an assignment; enter an ID from 1 to 65535.");
+        }
         return Target.AddSap(client, id, RequireName());
     });
+    /// <summary>
+    /// Requests removal of the entered SAP device name.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveAsync() => InvokeMethodAsync(1, client => Target.RemoveSap(client, RequireName()));
 
     private static string? ValidateParameter(string field, string text)
@@ -63,8 +83,22 @@
         {
             switch (field)
             {
-                case nameof(SapId): { if (ushort.Parse(text, CultureInfo.InvariantCulture) == 0) throw new FormatException("Enter an ID from 1 to 65535."); break; }
-                case nameof(DeviceName): { if (string.IsNullOrWhiteSpace(text)) throw new FormatException("Enter a logical device name."); break; }
+                case nameof(SapId):
+                    {
+                        if (ushort.Parse(text, CultureInfo.InvariantCulture) == 0)
+                        {
+                            throw new FormatException("Enter an ID from 1 to 65535.");
+                        }
+                        break;
+                    }
+                case nameof(DeviceName):
+                    {
+                        if (string.IsNullOrWhiteSpace(text))
+                        {
+                            throw new FormatException("Enter a logical device name.");
+                        }
+                        break;
+                    }
             }
             return null;
         }

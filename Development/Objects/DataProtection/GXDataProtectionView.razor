@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS data protection values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -74,12 +76,12 @@
 </section>
 
 @code {
-private static object CreateProtectedObject() => new GXStructure
+    private static object CreateProtectedObject() => new GXStructure
 {
     (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0,
     new GXStructure { new GXEnum(0), null! }
 };
-private static object CreateProtectionParameter() => new GXStructure
+    private static object CreateProtectionParameter() => new GXStructure
 {
     new GXEnum(0), new GXStructure
     {

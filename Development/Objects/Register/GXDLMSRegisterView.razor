@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS register values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
@@ -46,22 +48,39 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Whether the register reset action is offered.
+    /// </summary>
     [Parameter] public bool ResetEnabled { get; set; } = true;
     private bool _resetting;
     private string? _resetError;
     private GXDLMSRegister? _previousTarget;
+    /// <summary>
+    /// Whether the register can currently execute its reset method.
+    /// </summary>
     public bool CanReset => !_resetting && ResetEnabled && CanInvokeMethod(1);
 
+    /// <inheritdoc />
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
-        if (!ReferenceEquals(Target, _previousTarget)) _resetError = null;
+        if (!ReferenceEquals(Target, _previousTarget))
+        {
+            _resetError = null;
+        }
         _previousTarget = Target;
     }
 
+    /// <summary>
+    /// Requests execution of the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public async System.Threading.Tasks.Task ResetAsync()
     {
-        if (!CanReset) return;
+        if (!CanReset)
+        {
+            return;
+        }
         _resetting = true;
         _resetError = null;
         var target = Target;
@@ -71,7 +90,10 @@
         }
         catch (Exception ex)
         {
-            if (ReferenceEquals(Target, target)) _resetError = $"Reset failed: {ex.Message}";
+            if (ReferenceEquals(Target, target))
+            {
+                _resetError = $"Reset failed: {ex.Message}";
+            }
         }
         finally { _resetting = false; }
     }

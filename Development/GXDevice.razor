@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays a device name and its labeled property values.</summary> *@
+
 <section class="gx-device" aria-label="Device general information">
     <h2>@Name</h2>
     <h3>General</h3>
@@ -39,6 +41,12 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Device name displayed above its fields.
+    /// </summary>
     [Parameter] public string Name { get; set; } = string.Empty;
+    /// <summary>
+    /// Device field labels and values shown in the details panel.
+    /// </summary>
     [Parameter] public IReadOnlyDictionary<string, string?> Fields { get; set; } = new Dictionary<string, string?>();
 }

@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Renders a button with configurable event handling and propagation.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components
 @using Microsoft.AspNetCore.Components
 @using Microsoft.AspNetCore.Components.Web
@@ -39,15 +41,74 @@
 </button>
 
 @code {
+    /// <summary>
+    /// HTML button type used for form actions.
+    /// </summary>
     [Parameter] public string Type { get; set; } = "button";
-    [Parameter] public bool Disabled { get; set; }
-    [Parameter] public RenderFragment? ChildContent { get; set; }
-    [Parameter] public EventCallback<MouseEventArgs> OnClick { get; set; }
-    [Parameter] public EventCallback<MouseEventArgs> OnDoubleClick { get; set; }
-    [Parameter] public EventCallback<MouseEventArgs> OnContextMenu { get; set; }
-    [Parameter] public bool StopClickPropagation { get; set; }
-    [Parameter] public bool PreventContextMenu { get; set; }
-    [Parameter(CaptureUnmatchedValues = true)] public IReadOnlyDictionary<string, object>? AdditionalAttributes { get; set; }
+    /// <summary>
+    /// Whether user interaction with this control is disabled.
+    /// </summary>
+    [Parameter]
+    public bool Disabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Content rendered inside the button.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? ChildContent
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback invoked when the button is clicked.
+    /// </summary>
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnClick
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback invoked when the button is double-clicked.
+    /// </summary>
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnDoubleClick
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback invoked when the context menu is requested.
+    /// </summary>
+    [Parameter]
+    public EventCallback<MouseEventArgs> OnContextMenu
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether click events stop propagating to ancestor elements.
+    /// </summary>
+    [Parameter]
+    public bool StopClickPropagation
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether the browser context menu is suppressed.
+    /// </summary>
+    [Parameter]
+    public bool PreventContextMenu
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Additional HTML attributes applied to the button.
+    /// </summary>
+    [Parameter(CaptureUnmatchedValues = true)]
+    public IReadOnlyDictionary<string, object>? AdditionalAttributes
+    {
+        get; set;
+    }
 
     private string CssClass => AdditionalAttributes?.TryGetValue("class", out var value) == true
         ? "gx-button " + value : "gx-button";

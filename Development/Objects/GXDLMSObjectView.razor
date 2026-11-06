@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Selects and configures the editor for the target DLMS object type.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS.Objects
 
@@ -36,19 +38,86 @@
 }
 
 @code {
+    /// <summary>
+    /// DLMS object whose values or help are displayed.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObject Target { get; set; } = default!;
-    [Parameter] public GXDLMSAssociationLogicalName? Association { get; set; }
-    [Parameter] public bool ReadOnly { get; set; }
-    [Parameter] public GXDLMSClient? Client { get; set; }
-    [Parameter] public bool ActionsEnabled { get; set; }
-    [Parameter] public bool ImmediateWriteEnabled { get; set; }
-    [Parameter] public EventCallback<GXDLMSObjectEditState> OnChanged { get; set; }
-    [Parameter] public EventCallback<GXDLMSActionRequest> OnActionRequested { get; set; }
-    [Parameter] public EventCallback<GXDLMSWriteRequest> OnWriteRequested { get; set; }
-    [Parameter] public EventCallback<GXProfileReadRequest> OnProfileReadRequested { get; set; }
+    /// <summary>
+    /// Association used to resolve attribute and method access rights.
+    /// </summary>
+    [Parameter]
+    public GXDLMSAssociationLogicalName? Association
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether editing of object values is disabled.
+    /// </summary>
+    [Parameter]
+    public bool ReadOnly
+    {
+        get; set;
+    }
+    /// <summary>
+    /// DLMS client used to encode method and write requests.
+    /// </summary>
+    [Parameter]
+    public GXDLMSClient? Client
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether supported DLMS method actions can be requested.
+    /// </summary>
+    [Parameter]
+    public bool ActionsEnabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether an attribute edit can request an immediate write.
+    /// </summary>
+    [Parameter]
+    public bool ImmediateWriteEnabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the updated object edit state.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXDLMSObjectEditState> OnChanged
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving an encoded DLMS method request.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXDLMSActionRequest> OnActionRequested
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving an attribute write request.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXDLMSWriteRequest> OnWriteRequested
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the profile-buffer read selection.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXProfileReadRequest> OnProfileReadRequested
+    {
+        get; set;
+    }
     private Type? _viewType;
     private GXObjectEditorAccess? _access;
     private IDictionary<string, object> _parameters = new Dictionary<string, object>();
+    /// <inheritdoc />
     protected override void OnParametersSet()
     {
         var target = Target;
@@ -56,12 +125,22 @@
         _viewType = GXDLMSObjectViewRegistry.GetViewType(Target);
         _parameters = new Dictionary<string, object>
         {
-            ["Target"] = Target, ["Association"] = Association!, ["ReadOnly"] = ReadOnly,
-            ["OnChanged"] = OnChanged, ["Client"] = Client!, ["OnActionRequested"] = OnActionRequested,
+            ["Target"] = Target,
+            ["Association"] = Association!,
+            ["ReadOnly"] = ReadOnly,
+            ["OnChanged"] = OnChanged,
+            ["Client"] = Client!,
+            ["OnActionRequested"] = OnActionRequested,
             ["ActionsEnabled"] = ActionsEnabled
         };
-        if (_viewType == typeof(GXDLMSRegisterView)) _parameters["ResetEnabled"] = ActionsEnabled;
-        if (_viewType == typeof(GXProfileGenericView)) _parameters["OnReadRequested"] = OnProfileReadRequested;
+        if (_viewType == typeof(GXDLMSRegisterView))
+        {
+            _parameters["ResetEnabled"] = ActionsEnabled;
+        }
+        if (_viewType == typeof(GXProfileGenericView))
+        {
+            _parameters["OnReadRequested"] = OnProfileReadRequested;
+        }
         if (_viewType == typeof(GXDLMSUnixTimeView))
         {
             _parameters["WriteEnabled"] = ImmediateWriteEnabled;

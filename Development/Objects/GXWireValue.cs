@@ -35,8 +35,18 @@ internal static class GXWireValue
 {
     public static object? Copy(object? value)
     {
-        if (value is GXStructure structure) { var result = new GXStructure(); result.AddRange(structure.Select(Copy)!); return result; }
-        if (value is GXArray array) { var result = new GXArray(); result.AddRange(array.Select(Copy)!); return result; }
+        if (value is GXStructure structure)
+        {
+            var result = new GXStructure();
+            result.AddRange(structure.Select(Copy)!);
+            return result;
+        }
+        if (value is GXArray array)
+        {
+            var result = new GXArray();
+            result.AddRange(array.Select(Copy)!);
+            return result;
+        }
         return value is byte[] bytes ? bytes.ToArray() : value;
     }
     public static object? Read(GXDLMSObjectEditState edit, int index)
@@ -50,23 +60,55 @@ internal static class GXWireValue
     };
     public static object Parse(string text, object? original)
     {
-        if (original is GXEnum) return new GXEnum(byte.Parse(text, CultureInfo.InvariantCulture));
-        if (original is GXBitString) return new GXBitString(text);
+        if (original is GXEnum)
+        {
+            return new GXEnum(byte.Parse(text, CultureInfo.InvariantCulture));
+        }
+
+        if (original is GXBitString)
+        {
+            return new GXBitString(text);
+        }
+
         if (original is byte[] bytes)
         {
             if (bytes.Length == 6 && text.Contains('.'))
             {
                 var parts = text.Split('.');
-                if (parts.Length != 6) throw new FormatException("Enter a logical name with six numbers.");
+                if (parts.Length != 6)
+                {
+                    throw new FormatException("Enter a logical name with six numbers.");
+                }
+
                 return parts.Select(part => byte.Parse(part, NumberStyles.None, CultureInfo.InvariantCulture)).ToArray();
             }
             return Convert.FromHexString(string.Concat(text.Where(character => !char.IsWhiteSpace(character))));
         }
-        if (original is GXTime) return new GXTime(text, CultureInfo.InvariantCulture);
-        if (original is GXDate) return new GXDate(text, CultureInfo.InvariantCulture);
-        if (original is GXDateTime) return new GXDateTime(text, CultureInfo.InvariantCulture);
-        if (original is Enum) return Enum.Parse(original.GetType(), text);
-        if (original is not null && original is not string) return Convert.ChangeType(text, original.GetType(), CultureInfo.InvariantCulture)!;
+        if (original is GXTime)
+        {
+            return new GXTime(text, CultureInfo.InvariantCulture);
+        }
+
+        if (original is GXDate)
+        {
+            return new GXDate(text, CultureInfo.InvariantCulture);
+        }
+
+        if (original is GXDateTime)
+        {
+            return new GXDateTime(text, CultureInfo.InvariantCulture);
+        }
+
+        if (original is Enum)
+        {
+            return Enum.Parse(original.GetType(), text);
+        }
+
+        if (original is not null && original is not string)
+        {
+            return Convert.ChangeType(text, original.GetType(), CultureInfo.InvariantCulture)!;
+        }
+
         return text;
     }
     public static string Editable(object? value) => value is GXBitString bits ? bits.ToString()
@@ -80,10 +122,15 @@ internal static class GXWireValue
             if (source.Target is GXDLMSData data)
             {
                 var copy = new GXDLMSData(data.LogicalName ?? "0.0.0.0.0.0") { Value = Copy(data.Value), Version = data.Version };
-                copy.SetDataType(2, data.GetDataType(2)); copy.SetUIDataType(2, data.GetUIDataType(2));
+                copy.SetDataType(2, data.GetDataType(2));
+                copy.SetUIDataType(2, data.GetUIDataType(2));
                 clone = copy;
             }
-            else clone = source.Target.Clone();
+            else
+            {
+                clone = source.Target.Clone();
+            }
+
             var trial = GXDLMSObjectEditState.For(clone);
             trial.EditAttribute(index, text);
             error = trial.Error(index);

@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Lists selectable devices and offers an add-device action.</summary> *@
+
 @typeparam TDevice
 
 <section class="gx-device-list" aria-label="@Title">
@@ -62,13 +64,56 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Devices displayed in the collection.
+    /// </summary>
     [Parameter] public IReadOnlyList<TDevice> Devices { get; set; } = [];
+    /// <summary>
+    /// Resolves each item's display name.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TDevice, string> GetName { get; set; } = item => item?.ToString() ?? string.Empty;
-    [Parameter] public Func<TDevice, string?>? GetDescription { get; set; }
-    [Parameter] public Func<TDevice, bool>? IsSelected { get; set; }
-    [Parameter] public EventCallback<TDevice> OnSelect { get; set; }
-    [Parameter] public EventCallback OnCreate { get; set; }
+    /// <summary>
+    /// Resolves optional device description text.
+    /// </summary>
+    [Parameter]
+    public Func<TDevice, string?>? GetDescription
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Determines whether an item is displayed as selected.
+    /// </summary>
+    [Parameter]
+    public Func<TDevice, bool>? IsSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the selected item.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TDevice> OnSelect
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback invoked by the add-device action.
+    /// </summary>
+    [Parameter]
+    public EventCallback OnCreate
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Heading displayed above the component content.
+    /// </summary>
     [Parameter] public string Title { get; set; } = "Devices";
+    /// <summary>
+    /// Message displayed when the collection is empty.
+    /// </summary>
     [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
+    /// <summary>
+    /// Caption of the add-device action.
+    /// </summary>
     [Parameter] public string CreateText { get; set; } = "+ Add Device";
 }

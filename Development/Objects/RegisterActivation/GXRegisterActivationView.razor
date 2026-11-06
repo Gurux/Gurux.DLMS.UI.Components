@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS register activation values and supported actions.</summary> *@
+
 @using Gurux.UI.Components.Tab
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
@@ -53,31 +55,65 @@
 </section>
 
 @code {
+    /// <summary>
+    /// DLMS class identifier entered for the selected operation.
+    /// </summary>
     public string ObjectClass { get; set; } = string.Empty;
+    /// <summary>
+    /// Logical name identifying the object used by the operation.
+    /// </summary>
     public string ObjectLogicalName { get; set; } = string.Empty;
     private GXDLMSObject ReadObject()
     {
         var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
-        if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Enter a supported object class ID.");
+        if (!Enum.IsDefined(type) || type == ObjectType.None)
+        {
+            throw new FormatException("Enter a supported object class ID.");
+        }
         var parts = ObjectLogicalName.Split('.');
-        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A logical name requires six byte values.");
+        }
         var value = GXDLMSClient.CreateObject(type);
         value.LogicalName = ObjectLogicalName;
         return value;
     }
+    /// <summary>
+    /// Hexadecimal name identifying the register activation mask.
+    /// </summary>
     public string MaskNameHex { get; set; } = string.Empty;
+    /// <summary>
+    /// Comma-separated register indices included in the activation mask.
+    /// </summary>
     public string MaskIndexes { get; set; } = string.Empty;
     private byte[] ReadMaskName()
     {
         var value = Convert.FromHexString(MaskNameHex.Replace(" ", string.Empty));
         return value.Length != 0 ? value : throw new FormatException("Enter a mask name.");
     }
-    public Task AddRegisterAsync() => InvokeMethodAsync(1, client => {
+    /// <summary>
+    /// Requests adding the entered object to the register assignment list.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task AddRegisterAsync() => InvokeMethodAsync(1, client =>
+    {
         var register = ReadObject();
-        if (register is not GXDLMSRegister && register is not GXDLMSDemandRegister) throw new FormatException("Choose a register, extended register or demand register.");
+        if (register is not GXDLMSRegister && register is not GXDLMSDemandRegister)
+        {
+            throw new FormatException("Choose a register, extended register or demand register.");
+        }
         return Target.AddRegister(client, register);
     });
+    /// <summary>
+    /// Requests adding the entered mask name and register indices.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task AddMaskAsync() => InvokeMethodAsync(2, client => Target.AddMask(client, ReadMaskName(), MaskIndexes.Split(',').Select(s => byte.Parse(s.Trim(), CultureInfo.InvariantCulture)).ToArray()));
+    /// <summary>
+    /// Requests removal of the entered activation mask.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveMaskAsync() => InvokeMethodAsync(3, client => Target.RemoveMask(client, ReadMaskName()));
 
     private static string? ValidateParameter(string field, string text)
@@ -86,10 +122,36 @@
         {
             switch (field)
             {
-                case nameof(ObjectClass): { var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture); if (!Enum.IsDefined(type) || type == ObjectType.None) throw new FormatException("Select a supported object class."); break; }
-                case nameof(ObjectLogicalName): { CheckLogicalName(text); break; }
-                case nameof(MaskNameHex): { if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0) throw new FormatException("Enter a mask name."); break; }
-                case nameof(MaskIndexes): { foreach (var part in text.Split(',')) byte.Parse(part.Trim(), CultureInfo.InvariantCulture); break; }
+                case nameof(ObjectClass):
+                    {
+                        var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture);
+                        if (!Enum.IsDefined(type) || type == ObjectType.None)
+                        {
+                            throw new FormatException("Select a supported object class.");
+                        }
+                        break;
+                    }
+                case nameof(ObjectLogicalName):
+                    {
+                        CheckLogicalName(text);
+                        break;
+                    }
+                case nameof(MaskNameHex):
+                    {
+                        if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0)
+                        {
+                            throw new FormatException("Enter a mask name.");
+                        }
+                        break;
+                    }
+                case nameof(MaskIndexes):
+                    {
+                        foreach (var part in text.Split(','))
+                        {
+                            byte.Parse(part.Trim(), CultureInfo.InvariantCulture);
+                        }
+                        break;
+                    }
             }
             return null;
         }
@@ -99,6 +161,9 @@
     private static void CheckLogicalName(string text)
     {
         var parts = text.Split('.');
-        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A logical name requires six byte values.");
+        }
     }
 }

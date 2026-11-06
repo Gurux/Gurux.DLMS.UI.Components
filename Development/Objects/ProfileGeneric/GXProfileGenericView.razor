@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS profile generic values and supported actions.</summary> *@
+
 @using Gurux.UI.Components
 @using Gurux.UI.Components.Table
 @using Gurux.UI.Components.Tab
@@ -85,7 +87,10 @@
 @code {
     private IEnumerable<GXKeyValuePair<GXDLMSObject, GXDLMSCaptureObject>> CaptureObjects()
     {
-        if (!Target.GetDirty(3, out var pending)) return Target.CaptureObjects;
+        if (!Target.GetDirty(3, out var pending))
+        {
+            return Target.CaptureObjects;
+        }
         var current = (GXDLMSProfileGeneric)Target.Clone();
         ((IGXDLMSBase)current).SetValue(new GXDLMSSettings(), new ValueEventArgs(current, 3, 0, null) { Value = pending, User = true });
         return current.CaptureObjects;
@@ -96,14 +101,47 @@
         var attribute = names is not null && index > 0 && index <= names.Length ? names[index - 1] : $"Attribute {index}";
         return $"{(string.IsNullOrEmpty(target.Description) ? target.ObjectType.ToString() : target.Description)}: {attribute}";
     }
+    /// <summary>
+    /// Requests execution of the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    /// <summary>
+    /// Requests capture of the target object's current values.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task CaptureAsync() => InvokeMethodAsync(2, client => Target.Capture(client));
-    [Parameter] public EventCallback<GXProfileReadRequest> OnReadRequested { get; set; }
+    /// <summary>
+    /// Callback receiving the requested attributes or profile selection.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXProfileReadRequest> OnReadRequested
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Profile read mode selected by the user.
+    /// </summary>
     public string ReadingMode { get; set; } = nameof(GXProfileReadMode.All);
+    /// <summary>
+    /// Number of recent days entered for a relative profile read.
+    /// </summary>
     public string LastDays { get; set; } = "1";
+    /// <summary>
+    /// Start timestamp entered for a profile range read.
+    /// </summary>
     public string From { get; set; } = DateTime.Today.ToString("s", CultureInfo.InvariantCulture);
+    /// <summary>
+    /// End timestamp entered for a profile range read.
+    /// </summary>
     public string To { get; set; } = DateTime.Today.AddDays(1).ToString("s", CultureInfo.InvariantCulture);
+    /// <summary>
+    /// First entry index entered for a profile entry read.
+    /// </summary>
     public string EntryStart { get; set; } = "1";
+    /// <summary>
+    /// Number of profile entries requested; zero requests the remaining entries.
+    /// </summary>
     public string EntryCount { get; set; } = "0";
     private bool _reading;
     private bool CanRead => !IsDisposed && !_reading && !ReadOnly && ActionsEnabled && OnReadRequested.HasDelegate;
@@ -114,22 +152,35 @@
         var rows = Edit.AttributeRows(2).ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));
     }
+    /// <summary>
+    /// Validates the profile selection and emits a profile read request.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public async Task ReadAsync()
     {
-        if (!CanRead) return;
+        if (!CanRead)
+        {
+            return;
+        }
         _reading = true;
         var target = Target;
         try
         {
             ActionError = null;
             var mode = Enum.Parse<GXProfileReadMode>(ReadingMode);
-            if (!Enum.IsDefined(mode)) throw new FormatException("Choose a reading mode.");
+            if (!Enum.IsDefined(mode))
+            {
+                throw new FormatException("Choose a reading mode.");
+            }
             var start = DateTime.Parse(From, CultureInfo.InvariantCulture);
             var end = DateTime.Parse(To, CultureInfo.InvariantCulture);
-            if (mode == GXProfileReadMode.Range && start > end) throw new FormatException("Read From must not follow To.");
+            if (mode == GXProfileReadMode.Range && start > end)
+            {
+                throw new FormatException("Read From must not follow To.");
+            }
             await OnReadRequested.InvokeAsync(new GXProfileReadRequest(target, mode, uint.Parse(LastDays, CultureInfo.InvariantCulture), start, end, uint.Parse(EntryStart, CultureInfo.InvariantCulture), uint.Parse(EntryCount, CultureInfo.InvariantCulture)));
         }
-        catch (Exception ex) when (ex is not OutOfMemoryException) { if (!IsDisposed && ReferenceEquals(Target, target)) ActionError = ex.Message; }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { if (!IsDisposed && ReferenceEquals(Target, target)) { ActionError = ex.Message; } }
         finally { _reading = false; }
     }
 }

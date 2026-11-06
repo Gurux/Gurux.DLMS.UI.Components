@@ -37,18 +37,50 @@ namespace Gurux.DLMS.UI.Components.Objects;
 /// <summary>Edits account reference lists using typed COSEM drafts, preserving confirmed meter values.</summary>
 public partial class GXAccountTable : IDisposable
 {
+    /// <summary>Gets or sets the shared edit state used to read and stage attribute values.</summary>
     [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
-    [Parameter] public int Index { get; set; }
-    [Parameter] public bool Enabled { get; set; }
-    [CascadingParameter] public GXObjectEditorAccess? Access { get; set; }
+    /// <summary>Gets or sets the account attribute index, from 9 through 12, identifying the reference table.</summary>
+    [Parameter]
+    public int Index
+    {
+        get; set;
+    }
+    /// <summary>Gets or sets whether editing is enabled, subject to object access rights.</summary>
+    [Parameter]
+    public bool Enabled
+    {
+        get; set;
+    }
+    /// <summary>Gets or sets the cascading access rules for the target object.</summary>
+    [CascadingParameter]
+    public GXObjectEditorAccess? Access
+    {
+        get; set;
+    }
     private bool _disposed;
     private bool CanEditNow => !_disposed && Enabled && (Access is null ? GXDLMSObjectAccess.CanEdit(Edit.Target, Index) : ReferenceEquals(Access.Target, Edit.Target) && Access.CanEdit(Index));
+    /// <summary>Gets the zero-based selected row index, or -1 when no row is selected.</summary>
     public int SelectedRow { get; private set; } = -1;
-    public bool Editing { get; private set; }
-    public string? Error { get; private set; }
+    /// <summary>Gets whether an editing session is open.</summary>
+    public bool Editing
+    {
+        get; private set;
+    }
+    /// <summary>Gets the current validation or editing error, or null when no error is present.</summary>
+    public string? Error
+    {
+        get; private set;
+    }
+    /// <summary>Gets or sets the credit or charge logical name being edited.</summary>
     public string Reference { get; set; } = string.Empty;
+    /// <summary>Gets or sets the charge logical name in a credit-charge configuration row.</summary>
     public string ChargeReference { get; set; } = string.Empty;
-    public CreditCollectionConfiguration Configuration { get; set; }
+    /// <summary>Gets or sets the credit collection flags for a credit-charge configuration row.</summary>
+    public CreditCollectionConfiguration Configuration
+    {
+        get; set;
+    }
+    /// <summary>Gets or sets the token proportion text for a token gateway configuration row.</summary>
     public string TokenProportionText { get; set; } = "0";
     private int _editRow = -1;
     private bool _removing;
@@ -78,56 +110,140 @@ public partial class GXAccountTable : IDisposable
     {
         var parts = text.Split('.');
         if (parts.Length != 6 || parts.Any(part => !byte.TryParse(part, NumberStyles.None, CultureInfo.InvariantCulture, out _)))
+        {
             throw new FormatException("Enter a logical name with six numbers between 0 and 255.");
+        }
+
         return parts.Select(part => byte.Parse(part, CultureInfo.InvariantCulture)).ToArray();
     }
     private IEnumerable<string> Cells(int row)
     {
         var value = Rows[row];
-        if (Index <= 10) return [LogicalName(value)];
+        if (Index <= 10)
+        {
+            return [LogicalName(value)];
+        }
+
         var cells = (GXStructure)value;
         return Index == 11
             ? [LogicalName(cells[0]), LogicalName(cells[1]), ((CreditCollectionConfiguration)Convert.ToByte(cells[2], CultureInfo.InvariantCulture)).ToString()]
             : [LogicalName(cells[0]), Convert.ToString(cells[1], CultureInfo.InvariantCulture) ?? "0"];
     }
+    /// <inheritdoc />
     protected override void OnParametersSet()
     {
-        if (Index is < 9 or > 12) throw new ArgumentOutOfRangeException(nameof(Index));
-        if (ReferenceEquals(_lastEdit, Edit) && _lastIndex == Index) return;
-        _lastEdit = Edit; _lastIndex = Index;
+        if (Index is < 9 or > 12)
+        {
+            throw new ArgumentOutOfRangeException(nameof(Index));
+        }
+
+        if (ReferenceEquals(_lastEdit, Edit) && _lastIndex == Index)
+        {
+            return;
+        }
+
+        _lastEdit = Edit;
+        _lastIndex = Index;
         SelectedRow = -1;
         CancelEdit();
     }
-    public void SelectRow(int row) { if (row >= 0 && row < Rows.Count) SelectedRow = row; }
-    private void EditRow(int row) { SelectRow(row); BeginEdit(); }
+    /// <summary>Selects an existing account reference row.</summary>
+    /// <param name="row">The zero-based row index to select.</param>
+    public void SelectRow(int row)
+    {
+        if (row >= 0 && row < Rows.Count)
+        {
+            SelectedRow = row;
+        }
+    }
+    private void EditRow(int row)
+    {
+        SelectRow(row);
+        BeginEdit();
+    }
     private void RowKey(KeyboardEventArgs args, int row)
     {
-        if (args.Key is "Enter" or " ") SelectRow(row);
-        if (args.Key == "Enter") BeginEdit();
+        if (args.Key is "Enter" or " ")
+        {
+            SelectRow(row);
+        }
+
+        if (args.Key == "Enter")
+        {
+            BeginEdit();
+        }
     }
+    /// <summary>Opens an empty editing session for a new reference row.</summary>
     public void BeginAdd()
     {
-        if (!CanEditNow) return;
-        _editRow = -1; Editing = true; Error = null; _removing = false;
+        if (!CanEditNow)
+        {
+            return;
+        }
+
+        _editRow = -1;
+        Editing = true;
+        Error = null;
+        _removing = false;
         Reference = ChargeReference = string.Empty;
-        Configuration = 0; TokenProportionText = "0";
+        Configuration = 0;
+        TokenProportionText = "0";
     }
+    /// <summary>Loads the selected reference row into an editing session.</summary>
     public void BeginEdit()
     {
-        if (!CanEditNow || !HasSelection) return;
+        if (!CanEditNow || !HasSelection)
+        {
+            return;
+        }
+
         _editRow = SelectedRow;
         var cells = Cells(SelectedRow).ToArray();
         Reference = cells[0];
-        if (Index == 11) { ChargeReference = cells[1]; Configuration = Enum.Parse<CreditCollectionConfiguration>(cells[2]); }
-        if (Index == 12) TokenProportionText = cells[1];
-        Editing = true; Error = null; _removing = false;
+        if (Index == 11)
+        {
+            ChargeReference = cells[1];
+            Configuration = Enum.Parse<CreditCollectionConfiguration>(cells[2]);
+        }
+        if (Index == 12)
+        {
+            TokenProportionText = cells[1];
+        }
+
+        Editing = true;
+        Error = null;
+        _removing = false;
     }
-    public void BeginRemove() { BeginEdit(); if (Editing) _removing = true; }
-    public void CancelEdit() { Editing = false; _editRow = -1; Error = null; _removing = false; }
+    /// <summary>Opens a removal confirmation session for the selected reference row.</summary>
+    public void BeginRemove()
+    {
+        BeginEdit();
+        if (Editing)
+        {
+            _removing = true;
+        }
+    }
+    /// <summary>Discards the current editing session and clears its error.</summary>
+    public void CancelEdit()
+    {
+        Editing = false;
+        _editRow = -1;
+        Error = null;
+        _removing = false;
+    }
+    /// <summary>Validates and stages the edited reference row or the confirmed removal.</summary>
     public void SaveRow()
     {
-        if (!CanEditNow || !Editing) return;
-        if (_removing) { RemoveSelected(); return; }
+        if (!CanEditNow || !Editing)
+        {
+            return;
+        }
+
+        if (_removing)
+        {
+            RemoveSelected();
+            return;
+        }
         try
         {
             var reference = LogicalNameBytes(Reference);
@@ -138,28 +254,60 @@ public partial class GXAccountTable : IDisposable
                 _ => new GXStructure { reference, byte.Parse(TokenProportionText, CultureInfo.InvariantCulture) }
             };
             var rows = Rows;
-            if (_editRow < 0) rows.Add(value);
-            else if (_editRow < rows.Count) rows[_editRow] = value;
-            else throw new InvalidOperationException("The selected row no longer exists.");
-            if (!Save(rows)) return;
+            if (_editRow < 0)
+            {
+                rows.Add(value);
+            }
+            else if (_editRow < rows.Count)
+            {
+                rows[_editRow] = value;
+            }
+            else
+            {
+                throw new InvalidOperationException("The selected row no longer exists.");
+            }
+
+            if (!Save(rows))
+            {
+                return;
+            }
+
             SelectedRow = _editRow < 0 ? rows.Count - 1 : _editRow;
             CancelEdit();
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
     }
+    /// <summary>Stages removal of the selected reference row and clears the selection on success.</summary>
     public void RemoveSelected()
     {
-        if (!CanEditNow || !HasSelection) return;
+        if (!CanEditNow || !HasSelection)
+        {
+            return;
+        }
+
         var rows = Rows;
         rows.RemoveAt(SelectedRow);
-        if (Save(rows)) { SelectedRow = -1; CancelEdit(); }
+        if (Save(rows))
+        {
+            SelectedRow = -1;
+            CancelEdit();
+        }
     }
     private bool Save(GXArray rows)
     {
-        if (!GXWireValue.TryAttribute(Edit, Index, GXDLMSObjectEditState.Format(rows), out var error)) { Error = error; return false; }
+        if (!GXWireValue.TryAttribute(Edit, Index, GXDLMSObjectEditState.Format(rows), out var error))
+        {
+            Error = error;
+            return false;
+        }
         Edit.EditAttribute(Index, GXDLMSObjectEditState.Format(rows));
         Error = Edit.Error(Index);
         return Error is null;
     }
-    public void Dispose() { _disposed = true; CancelEdit(); }
+    /// <summary>Prevents further editing and discards the current editing session.</summary>
+    public void Dispose()
+    {
+        _disposed = true;
+        CancelEdit();
+    }
 }

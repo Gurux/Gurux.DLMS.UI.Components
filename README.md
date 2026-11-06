@@ -30,6 +30,52 @@ Add the component namespace to `_Imports.razor`:
 @using Gurux.DLMS.UI.Components
 ```
 
+## COSEM contextual help
+
+Register the COSEM `IGXHelpProvider` implementation and the shared help service:
+
+```csharp
+using Gurux.DLMS.UI.Components.Help;
+
+builder.Services.AddGXDLMSHelp();
+```
+
+`AddGXDLMSHelp` can be called more than once. It preserves an existing
+`GXHelpService` registration and adds `GXDLMSObjectHelpProvider` alongside other
+help providers. The provider returns Markdown for known COSEM topics and null for
+unrelated or unknown topics, allowing the service to try the next provider.
+
+Object views register their class topic and current object version with
+`GXHelpContext`. A host's help presenter can inject
+`Gurux.UI.Components.Help.GXHelpService` and load the active object's help:
+
+```csharp
+var content = await helpService.GetHelpAsync(cancellationToken);
+```
+
+To request help for an object directly, without changing the active context:
+
+```csharp
+var request = GXDLMSObjectHelpCatalog.GetRequest(target);
+var content = await helpService.GetHelpAsync(request, cancellationToken);
+```
+
+The request includes a stable topic such as `cosem.GXDLMSPushSetup` and the
+object's COSEM version, formatted independently of the current culture. The
+provider returns only the attributes and descriptions applicable to that COSEM
+version. For example, Push setup versions 0, 1 and 2 show attributes 1-7, 1-10
+and 1-13 respectively, and version 2 gets the structured retry-delay description.
+An invalid or unsupported version returns null rather than showing another
+version's instructions. Requests without a version return the complete class help
+with all version alternatives and notes. Other requested languages fall back to
+English. Render the returned Markdown with
+`GXMarkdownView` in the host's presenter. The common `GXHelp` documentation-link
+control requires the host to connect provider content to its help presentation.
+
+The Help button in each object view uses the same provider directly and works
+without this registration. It loads on demand, preserves the dialog during value
+refreshes and closes it when the selected class or object version changes.
+
 ## License
 
 Gurux.DLMS.UI.Components is available under either of the following licenses:

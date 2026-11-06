@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Edits the packed tariff interval fields for a selected season and day kind.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -45,11 +47,41 @@
 @if (Error is not null) { <p role="alert">@Error</p> }
 
 @code {
+    /// <summary>
+    /// Edit state containing pending attribute changes and validation errors.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
-    [Parameter] public int Season { get; set; }
-    [Parameter] public int Kind { get; set; }
-    [Parameter] public bool Enabled { get; set; }
-    public string? Error { get; private set; }
+    /// <summary>
+    /// Zero-based season index containing the tariff intervals.
+    /// </summary>
+    [Parameter]
+    public int Season
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Day-kind offset selecting the interval collection within the season.
+    /// </summary>
+    [Parameter]
+    public int Kind
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether tariff interval values can be edited.
+    /// </summary>
+    [Parameter]
+    public bool Enabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Validation or operation error displayed by the component.
+    /// </summary>
+    public string? Error
+    {
+        get; private set;
+    }
     private object Root() => Edit.Target.GetDirty(4, out var value) ? value : GXDLMSAttributeCodec.Read(Edit.Target, 4)!;
     private byte Interval(int position) => Convert.ToByte(((IList<object>)((IList<object>)((IList<object>)Root())[1])[Season])[Kind + 2] is IList<object> intervals ? intervals[position] : (byte)0, CultureInfo.InvariantCulture);
     private static string? ValidateHour(string text) => byte.TryParse(text, out var value) && value < 24 ? null : "Start hour must be between 0 and 23.";
@@ -61,11 +93,30 @@
         byte[] bytes => bytes.ToArray(),
         _ => value
     };
-    private static GXStructure CloneStructure(GXStructure value) { var copy = new GXStructure(); copy.AddRange(value.Select(CloneValue)); return copy; }
-    private static GXArray CloneArray(GXArray value) { var copy = new GXArray(); copy.AddRange(value.Select(CloneValue)); return copy; }
+    private static GXStructure CloneStructure(GXStructure value)
+    {
+        var copy = new GXStructure();
+        copy.AddRange(value.Select(CloneValue));
+        return copy;
+    }
+    private static GXArray CloneArray(GXArray value)
+    {
+        var copy = new GXArray();
+        copy.AddRange(value.Select(CloneValue));
+        return copy;
+    }
+    /// <summary>
+    /// Validates and stages a tariff interval field while preserving the other packed fields.
+    /// </summary>
+    /// <param name="text">Field value to parse and stage.</param>
+    /// <param name="position">Zero-based interval position.</param>
+    /// <param name="field">Field selector: zero for hour, one for tariff band, or two for enabled.</param>
     public void SetInterval(int position, int field, string text)
     {
-        if (!Enabled) return;
+        if (!Enabled)
+        {
+            return;
+        }
         try
         {
             var root = (IList<object>)CloneValue(Root());
@@ -82,8 +133,12 @@
             var xml = GXDLMSObjectEditState.Format(root);
             var isolated = GXDLMSObjectEditState.For(Edit.Target.Clone());
             isolated.EditAttribute(4, xml);
-            if (!isolated.IsValid) throw new FormatException(isolated.Error(4));
-            Edit.EditAttribute(4, xml); Error = Edit.Error(4);
+            if (!isolated.IsValid)
+            {
+                throw new FormatException(isolated.Error(4));
+            }
+            Edit.EditAttribute(4, xml);
+            Error = Edit.Error(4);
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
     }

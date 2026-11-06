@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS association short name values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -44,28 +46,48 @@
 {
 <GXAttributeField Edit="Edit" Index="4" Label="Security setup:" Enabled="CanEditAttribute(4)" />
 }
-<GXValueField Label="Secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(5))" OnCommit="@((string value) => { if (CanInvokeMethod(5)) SecretText = value; })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A nonempty secret is required.")))" />
+<GXValueField Label="Secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(5))" OnCommit="@((string value) => { if (CanInvokeMethod(5)) { SecretText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A nonempty secret is required.")))" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="UpdateSecretAsync">Update</GXButton>
 </GXTabPage>
 </GXTabControl>
 </section>
 
 @code {
-private static string? CheckParameter(Action validate)
-{
-    try { validate(); return null; }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
+    private static string? CheckParameter(Action validate)
+    {
+        try
+        {
+            validate();
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+    }
+    private static void RequireParameter(bool valid, string message)
+    {
+        if (!valid)
+        {
+            throw new ArgumentException(message);
+        }
+    }
 
-public string SecretText { get; set; } = "";
-public Task UpdateSecretAsync() => InvokeMethodAsync(5, client =>
-{
-    var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
-    if (secret.Length == 0) throw new ArgumentException("A nonempty secret is required.");
-    // This object has no UpdateSecret wrapper in the pinned API; method 5 takes an octet string.
-    return client.Method(Target, 5, secret, DataType.OctetString);
-});
+    /// <summary>
+    /// Authentication secret entered for the update request.
+    /// </summary>
+    public string SecretText { get; set; } = "";
+    /// <summary>
+    /// Requests replacement of the association authentication secret with the entered hexadecimal bytes.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task UpdateSecretAsync() => InvokeMethodAsync(5, client =>
+    {
+        var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+        if (secret.Length == 0)
+        {
+            throw new ArgumentException("A nonempty secret is required.");
+        }
+        // This object has no UpdateSecret wrapper in the pinned API; method 5 takes an octet string.
+        return client.Method(Target, 5, secret, DataType.OctetString);
+    });
 }
 
 

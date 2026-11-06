@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS push setup values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -40,9 +42,9 @@
 <GXTabControl NavigateOnSelection="false">
 <GXTabPage Text="General">
 <fieldset><legend>Send destination and method</legend>
-<GXValueField Label="Service:" Value="@SelectedService.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(ServiceType)" Validate="@(value => Enum.TryParse<ServiceType>(value, out var service) ? ValidateDestination(service, DestinationText, SelectedMessage) : "Choose a supported service.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) SelectedService = Enum.Parse<ServiceType>(value); })" />
-<GXValueField Label="Destination:" Value="@DestinationText" Enabled="CanEditAttribute(3)" Validate="@(value => ValidateDestination(SelectedService, value, SelectedMessage))" OnCommit="@((string value) => { if (CanEditAttribute(3)) DestinationText = value; })" />
-<GXValueField Label="Message:" Value="@SelectedMessage.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(MessageType)" Validate="@(value => Enum.TryParse<MessageType>(value, out var message) ? ValidateDestination(SelectedService, DestinationText, message) : "Choose a supported message.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) SelectedMessage = Enum.Parse<MessageType>(value); })" />
+<GXValueField Label="Service:" Value="@SelectedService.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(ServiceType)" Validate="@(value => Enum.TryParse<ServiceType>(value, out var service) ? ValidateDestination(service, DestinationText, SelectedMessage) : "Choose a supported service.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedService = Enum.Parse<ServiceType>(value); } })" />
+<GXValueField Label="Destination:" Value="@DestinationText" Enabled="CanEditAttribute(3)" Validate="@(value => ValidateDestination(SelectedService, value, SelectedMessage))" OnCommit="@((string value) => { if (CanEditAttribute(3)) { DestinationText = value; } })" />
+<GXValueField Label="Message:" Value="@SelectedMessage.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(MessageType)" Validate="@(value => Enum.TryParse<MessageType>(value, out var message) ? ValidateDestination(SelectedService, DestinationText, message) : "Choose a supported message.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedMessage = Enum.Parse<MessageType>(value); } })" />
 </fieldset>
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
 {
@@ -110,39 +112,45 @@ else
 </section>
 
 @code {
-private string[] PushObjectEditorLabels => Target.Version switch
-{
-    0 => ["Type", "LogicalName", "Attribute Index", "Data Index"],
-    1 => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction"],
-    _ => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction", "Column selection"]
-};
-private static readonly IReadOnlyDictionary<string, Func<object>> PushObjectPathFactories = new Dictionary<string, Func<object>>
-{
-    ["5"] = () => new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 }
-};
-private static readonly IReadOnlyDictionary<string, string> PushObjectPathLabels = new Dictionary<string, string>
-{
-    ["4.0"] = "Restriction Type",
-    ["4.1"] = "Restriction range",
-    ["5.*"] = "Column",
-    ["5.*.0"] = "Type",
-    ["5.*.1"] = "LogicalName",
-    ["5.*.2"] = "Attribute Index",
-    ["5.*.3"] = "Data Index"
-};
-private static readonly IReadOnlyDictionary<string, string> PushObjectPathKinds = new Dictionary<string, string>
-{
-    ["5.*.1"] = "logicalname"
-};
+    private string[] PushObjectEditorLabels => Target.Version switch
+    {
+        0 => ["Type", "LogicalName", "Attribute Index", "Data Index"],
+        1 => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction"],
+        _ => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction", "Column selection"]
+    };
+    private static readonly IReadOnlyDictionary<string, Func<object>> PushObjectPathFactories = new Dictionary<string, Func<object>>
+    {
+        ["5"] = () => new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 }
+    };
+    private static readonly IReadOnlyDictionary<string, string> PushObjectPathLabels = new Dictionary<string, string>
+    {
+        ["4.0"] = "Restriction Type",
+        ["4.1"] = "Restriction range",
+        ["5.*"] = "Column",
+        ["5.*.0"] = "Type",
+        ["5.*.1"] = "LogicalName",
+        ["5.*.2"] = "Attribute Index",
+        ["5.*.3"] = "Data Index"
+    };
+    private static readonly IReadOnlyDictionary<string, string> PushObjectPathKinds = new Dictionary<string, string>
+    {
+        ["5.*.1"] = "logicalname"
+    };
 
-private object CreatePushObject()
-{
-    var row = new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 };
-    if (Target.Version > 0) row.Add(new GXStructure { new GXEnum(0), null! });
-    if (Target.Version > 1) row.Add(new GXArray());
-    return row;
-}
-private static object CreateProtectionParameter() => new GXStructure
+    private object CreatePushObject()
+    {
+        var row = new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 };
+        if (Target.Version > 0)
+        {
+            row.Add(new GXStructure { new GXEnum(0), null! });
+        }
+        if (Target.Version > 1)
+        {
+            row.Add(new GXArray());
+        }
+        return row;
+    }
+    private static object CreateProtectionParameter() => new GXStructure
 {
     new GXEnum(0), new GXStructure
     {
@@ -151,55 +159,106 @@ private static object CreateProtectionParameter() => new GXStructure
     }
 };
 
-private GXStructure DestinationValue(ServiceType service, string text, MessageType message)
-{
-    var destination = System.Text.Encoding.ASCII.GetBytes(text);
-    var parts = text.Split('.');
-    if (service == ServiceType.Hdlc && parts.Length == 6 && parts.All(part => byte.TryParse(part, out _)) && parts[5] == "255")
-        destination = parts.Select(byte.Parse).ToArray();
-    return new GXStructure { new GXEnum((byte)service), destination, new GXEnum((byte)message) };
-}
-private GXStructure? PendingDestination => Target.GetDirty(3, out var pending) ? pending as GXStructure : null;
-public ServiceType SelectedService
-{
-    get => PendingDestination is { Count: 3 } value ? (ServiceType)Convert.ToByte(value[0]) : Target.Service;
-    set { if (CanEditAttribute(3)) SaveDestination(value, DestinationText, SelectedMessage); }
-}
-public MessageType SelectedMessage
-{
-    get => PendingDestination is { Count: 3 } value ? (MessageType)Convert.ToByte(value[2]) : Target.Message;
-    set { if (CanEditAttribute(3)) SaveDestination(SelectedService, DestinationText, value); }
-}
-public string DestinationText
-{
-    get
+    private GXStructure DestinationValue(ServiceType service, string text, MessageType message)
     {
-        if (PendingDestination is not { Count: 3 } value || value[1] is not byte[] destination) return Target.Destination ?? "";
-        if (SelectedService == ServiceType.Hdlc && destination.Length == 6 && destination[5] == 255)
-            return string.Join(".", destination);
-        return System.Text.Encoding.ASCII.GetString(destination);
+        var destination = System.Text.Encoding.ASCII.GetBytes(text);
+        var parts = text.Split('.');
+        if (service == ServiceType.Hdlc && parts.Length == 6 && parts.All(part => byte.TryParse(part, out _)) && parts[5] == "255")
+        {
+            destination = parts.Select(byte.Parse).ToArray();
+        }
+        return new GXStructure { new GXEnum((byte)service), destination, new GXEnum((byte)message) };
     }
-    set { if (CanEditAttribute(3)) SaveDestination(SelectedService, value, SelectedMessage); }
-}
-private string? ValidateDestination(ServiceType service, string text, MessageType message)
-{
-    if (!Enum.IsDefined(service) || !Enum.IsDefined(message)) return "Choose a supported service and message.";
-    if (text.Any(character => character > 127)) return "Destination must contain ASCII characters.";
-    try
+    private GXStructure? PendingDestination => Target.GetDirty(3, out var pending) ? pending as GXStructure : null;
+    /// <summary>
+    /// Service type used by the edited push destination.
+    /// </summary>
+    public ServiceType SelectedService
     {
-        var trial = GXDLMSObjectEditState.For(Target.Clone());
-        trial.EditAttribute(3, GXDLMSObjectEditState.Format(DestinationValue(service, text, message)));
-        return trial.Error(3);
+        get => PendingDestination is { Count: 3 } value ? (ServiceType)Convert.ToByte(value[0]) : Target.Service;
+        set
+        {
+            if (CanEditAttribute(3))
+            {
+                SaveDestination(value, DestinationText, SelectedMessage);
+            }
+        }
     }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private void SaveDestination(ServiceType service, string text, MessageType message)
-{
-    if (ValidateDestination(service, text, message) is not null) return;
-    Edit.EditAttribute(3, GXDLMSObjectEditState.Format(DestinationValue(service, text, message)));
-}
-public Task PushAsync() => InvokeMethodAsync(1, client => Target.Push(client));
-public Task ResetAsync() => InvokeMethodAsync(2, client => Target.Reset(client));
+    /// <summary>
+    /// Message encoding used by the edited push destination.
+    /// </summary>
+    public MessageType SelectedMessage
+    {
+        get => PendingDestination is { Count: 3 } value ? (MessageType)Convert.ToByte(value[2]) : Target.Message;
+        set
+        {
+            if (CanEditAttribute(3))
+            {
+                SaveDestination(SelectedService, DestinationText, value);
+            }
+        }
+    }
+    /// <summary>
+    /// Destination address entered for push messages.
+    /// </summary>
+    public string DestinationText
+    {
+        get
+        {
+            if (PendingDestination is not { Count: 3 } value || value[1] is not byte[] destination)
+            {
+                return Target.Destination ?? "";
+            }
+            if (SelectedService == ServiceType.Hdlc && destination.Length == 6 && destination[5] == 255)
+            {
+                return string.Join(".", destination);
+            }
+            return System.Text.Encoding.ASCII.GetString(destination);
+        }
+        set
+        {
+            if (CanEditAttribute(3))
+            {
+                SaveDestination(SelectedService, value, SelectedMessage);
+            }
+        }
+    }
+    private string? ValidateDestination(ServiceType service, string text, MessageType message)
+    {
+        if (!Enum.IsDefined(service) || !Enum.IsDefined(message))
+        {
+            return "Choose a supported service and message.";
+        }
+        if (text.Any(character => character > 127))
+        {
+            return "Destination must contain ASCII characters.";
+        }
+        try
+        {
+            var trial = GXDLMSObjectEditState.For(Target.Clone());
+            trial.EditAttribute(3, GXDLMSObjectEditState.Format(DestinationValue(service, text, message)));
+            return trial.Error(3);
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+    }
+    private void SaveDestination(ServiceType service, string text, MessageType message)
+    {
+        if (ValidateDestination(service, text, message) is not null)
+        {
+            return;
+        }
+        Edit.EditAttribute(3, GXDLMSObjectEditState.Format(DestinationValue(service, text, message)));
+    }
+    /// <summary>
+    /// Requests immediate transmission using the push setup.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task PushAsync() => InvokeMethodAsync(1, client => Target.Push(client));
+    /// <summary>
+    /// Requests execution of the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task ResetAsync() => InvokeMethodAsync(2, client => Target.Reset(client));
 }
 
 

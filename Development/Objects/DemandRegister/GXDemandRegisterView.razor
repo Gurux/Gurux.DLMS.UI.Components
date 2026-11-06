@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS demand register values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -53,6 +55,14 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Requests execution of the target object's reset method.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    /// <summary>
+    /// Requests advancement of the demand register to its next period.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task NextPeriodAsync() => InvokeMethodAsync(2, client => Target.NextPeriod(client));
 }

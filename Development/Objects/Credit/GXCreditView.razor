@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS credit values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -57,13 +59,35 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Credit amount entered for an adjustment or replacement request.
+    /// </summary>
     public string Amount { get; set; } = string.Empty;
+    /// <summary>
+    /// Credit status entered for the invocation request.
+    /// </summary>
     public string RequestedStatus { get; set; } = string.Empty;
+    /// <summary>
+    /// Requests adjustment of the credit by the entered amount.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task UpdateAmountAsync() => InvokeMethodAsync(1, client => Target.UpdateAmount(client, int.Parse(Amount, CultureInfo.InvariantCulture)));
+    /// <summary>
+    /// Requests replacement of the credit with the entered amount.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task SetAmountAsync() => InvokeMethodAsync(2, client => Target.SetAmountToValue(client, int.Parse(Amount, CultureInfo.InvariantCulture)));
-    public Task InvokeCreditAsync() => InvokeMethodAsync(3, client => {
+    /// <summary>
+    /// Requests credit invocation with the entered status.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task InvokeCreditAsync() => InvokeMethodAsync(3, client =>
+    {
         var status = Enum.Parse<CreditStatus>(RequestedStatus);
-        if (!Enum.IsDefined(status)) throw new FormatException("Select a valid credit status.");
+        if (!Enum.IsDefined(status))
+        {
+            throw new FormatException("Select a valid credit status.");
+        }
         return Target.InvokeCredit(client, status);
     });
 
@@ -73,7 +97,11 @@
         {
             switch (field)
             {
-                case nameof(Amount): { int.Parse(text, CultureInfo.InvariantCulture); break; }
+                case nameof(Amount):
+                    {
+                        int.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
             }
             return null;
         }

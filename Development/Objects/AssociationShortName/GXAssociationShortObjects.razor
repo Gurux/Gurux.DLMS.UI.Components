@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits objects and access rights in a short-name association.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Objects
@@ -71,7 +73,13 @@
 }
 
 @code {
+    /// <summary>
+    /// Edit state containing pending attribute changes and validation errors.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
+    /// <summary>
+    /// Determines whether the specified attribute can be edited.
+    /// </summary>
     [Parameter, EditorRequired] public Func<int, bool> CanEdit { get; set; } = default!;
     private static readonly string[] ObjectColumns = ["Base Name:", "Class ID:", "Version:", "Logical Name:", "Attribute Accesss", "Method Access"];
     private static readonly string[] DescriptorColumns = ["Base Name:", "Class ID:", "Version:", "Logical Name:"];
@@ -122,12 +130,26 @@
         }).ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<ObjectRow>(rows, rows.Length));
     }
-    protected override void OnParametersSet() { if (_openedEdit is not null && !ReferenceEquals(Edit, _openedEdit)) CancelEdit(); }
+    /// <inheritdoc />
+    protected override void OnParametersSet()
+    {
+        if (_openedEdit is not null && !ReferenceEquals(Edit, _openedEdit))
+        {
+            CancelEdit();
+        }
+    }
     private void BeginEdit(ObjectRow row)
     {
-        if (_disposed || !CanEdit(2)) return;
-        _openedEdit = Edit; _position = row.Position; _error = null; _removing = false;
-        _openedObjects = GXDLMSObjectEditState.Format(Objects); _openedRights = GXDLMSObjectEditState.Format(Rights);
+        if (_disposed || !CanEdit(2))
+        {
+            return;
+        }
+        _openedEdit = Edit;
+        _position = row.Position;
+        _error = null;
+        _removing = false;
+        _openedObjects = GXDLMSObjectEditState.Format(Objects);
+        _openedRights = GXDLMSObjectEditState.Format(Rights);
         _objectDraft = (GXStructure)GXWireValue.Copy(Objects[_position])!;
         _rightsDraft = (GXStructure)GXWireValue.Copy(FindRights(Rights, _objectDraft[0]) ?? NewRights(_objectDraft[0]))!;
         _editing = true;
@@ -135,53 +157,130 @@
     private static GXStructure NewRights(object shortName) => new() { shortName, new GXArray(), new GXArray() };
     private void BeginAdd()
     {
-        if (_disposed || !CanEdit(2)) return;
-        _openedEdit = Edit; _position = -1; _error = null; _removing = false;
-        _openedObjects = GXDLMSObjectEditState.Format(Objects); _openedRights = GXDLMSObjectEditState.Format(Rights);
+        if (_disposed || !CanEdit(2))
+        {
+            return;
+        }
+        _openedEdit = Edit;
+        _position = -1;
+        _error = null;
+        _removing = false;
+        _openedObjects = GXDLMSObjectEditState.Format(Objects);
+        _openedRights = GXDLMSObjectEditState.Format(Rights);
         _objectDraft = new GXStructure { (short)0, (ushort)Gurux.DLMS.Enums.ObjectType.Data, (byte)0, new byte[6] };
-        _rightsDraft = NewRights((short)0); _editing = true;
+        _rightsDraft = NewRights((short)0);
+        _editing = true;
     }
-    private void BeginRemove(ObjectRow row) { if (!CanRemove) return; BeginEdit(row); _removing = _editing; }
-    private void CancelEdit() { _editing = false; _error = null; _openedEdit = null; _objectEditor = null; _rightsEditor = null; }
+    private void BeginRemove(ObjectRow row)
+    {
+        if (!CanRemove)
+        {
+            return;
+        }
+        BeginEdit(row);
+        _removing = _editing;
+    }
+    private void CancelEdit()
+    {
+        _editing = false;
+        _error = null;
+        _openedEdit = null;
+        _objectEditor = null;
+        _rightsEditor = null;
+    }
     private async System.Threading.Tasks.Task AcceptAsync()
     {
-        if (!_editing || _disposed || !ReferenceEquals(Edit, _openedEdit) || !CanEdit(2) || _removing && !CanRemove) return;
-        if (!_removing && (_objectEditor?.IsValid == false || _rightsEditor?.IsValid == false)) { _error = "Correct the invalid values."; return; }
+        if (!_editing || _disposed || !ReferenceEquals(Edit, _openedEdit) || !CanEdit(2) || _removing && !CanRemove)
+        {
+            return;
+        }
+        if (!_removing && (_objectEditor?.IsValid == false || _rightsEditor?.IsValid == false))
+        {
+            _error = "Correct the invalid values.";
+            return;
+        }
         try
         {
             if (_openedObjects != GXDLMSObjectEditState.Format(Objects) || _openedRights != GXDLMSObjectEditState.Format(Rights))
-            { _error = "The association list changed. Cancel and open the editor again."; return; }
+            {
+                _error = "The association list changed. Cancel and open the editor again.";
+                return;
+            }
             var objects = Objects;
-            if (_position >= objects.Count) { _error = "The selected object changed. Open the editor again."; return; }
+            if (_position >= objects.Count)
+            {
+                _error = "The selected object changed. Open the editor again.";
+                return;
+            }
             var previousShortName = _position < 0 ? null : ((GXStructure)objects[_position])[0];
-            if (_removing) objects.RemoveAt(_position);
+            if (_removing)
+            {
+                objects.RemoveAt(_position);
+            }
             else
             {
                 if (objects.Cast<GXStructure>().Where((row, index) => index != _position).Any(row => BaseName(row[0]) == BaseName(_objectDraft[0])))
+                {
                     throw new ArgumentException("Each object must have a unique base name.");
-                if (_position < 0) objects.Add(_objectDraft); else objects[_position] = _objectDraft;
+                }
+                if (_position < 0)
+                {
+                    objects.Add(_objectDraft);
+                }
+                else
+                {
+                    objects[_position] = _objectDraft;
+                }
             }
             var objectText = GXDLMSObjectEditState.Format(objects);
-            if (!GXWireValue.TryAttribute(Edit, 2, objectText, out _error)) return;
+            if (!GXWireValue.TryAttribute(Edit, 2, objectText, out _error))
+            {
+                return;
+            }
             string? rightsText = null;
             if (HasRights && CanEdit(3))
             {
                 var rights = Rights;
                 var previous = previousShortName is null ? null : FindRights(rights, previousShortName);
-                if (previous is not null) rights.Remove(previous);
-                if (!_removing) { _rightsDraft[0] = _objectDraft[0]; rights.Add(_rightsDraft); }
+                if (previous is not null)
+                {
+                    rights.Remove(previous);
+                }
+                if (!_removing)
+                {
+                    _rightsDraft[0] = _objectDraft[0];
+                    rights.Add(_rightsDraft);
+                }
                 rightsText = GXDLMSObjectEditState.Format(rights);
-                if (!GXWireValue.TryAttribute(Edit, 3, rightsText, out _error)) return;
+                if (!GXWireValue.TryAttribute(Edit, 3, rightsText, out _error))
+                {
+                    return;
+                }
             }
             else if (previousShortName is not null && BaseName(previousShortName) != BaseName(_objectDraft[0]) && HasRights)
+            {
                 throw new ArgumentException("Changing the base name also requires permission to update access rights.");
+            }
             Edit.EditAttribute(2, objectText);
-            if (rightsText is not null) Edit.EditAttribute(3, rightsText);
+            if (rightsText is not null)
+            {
+                Edit.EditAttribute(3, rightsText);
+            }
             CancelEdit();
-            if (_table is not null) await _table.RefreshDataAsync(false);
+            if (_table is not null)
+            {
+                await _table.RefreshDataAsync(false);
+            }
         }
         catch (Exception error) when (error is not OutOfMemoryException) { _error = error.Message; }
     }
-    public void Dispose() { _disposed = true; CancelEdit(); }
+    /// <summary>
+    /// Releases subscriptions and cancels pending component editing.
+    /// </summary>
+    public void Dispose()
+    {
+        _disposed = true;
+        CancelEdit();
+    }
 }
 

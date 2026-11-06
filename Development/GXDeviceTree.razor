@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays devices and their objects in selectable groups with context-menu actions.</summary> *@
+
 @using Microsoft.AspNetCore.Components.Web
 @typeparam TDevice
 @typeparam TObject
@@ -91,8 +93,22 @@
 
 
 @code {
-    [Parameter] public EventCallback<string> OnContextCommand { get; set; }
-    [Parameter] public Func<string, bool>? IsContextCommandEnabled { get; set; }
+    /// <summary>
+    /// Callback receiving the chosen context-menu command identifier.
+    /// </summary>
+    [Parameter]
+    public EventCallback<string> OnContextCommand
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Determines whether a context-menu command is enabled.
+    /// </summary>
+    [Parameter]
+    public Func<string, bool>? IsContextCommandEnabled
+    {
+        get; set;
+    }
     private bool _contextOpen, _contextCollection;
     private double _contextX, _contextY;
     private (string Id, string Text)[] ContextCommands => _contextCollection
@@ -102,6 +118,13 @@
            ("ExportMenu", "Save Values As..."), ("", ""), ("DeleteMnu", "Delete"),
            ("", ""), ("PropertiesMnu", "Properties")];
 
+    /// <summary>
+    /// Selects the target node and opens its context menu at the pointer position.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="collection">Whether to show commands for the root device collection.</param>
+    /// <param name="e">Pointer event supplying the menu position.</param>
+    /// <param name="select">Callback that selects the target node.</param>
     public async Task OpenContextMenuAsync(MouseEventArgs e, Func<Task> select, bool collection = false)
     {
         await select();
@@ -111,10 +134,18 @@
         _contextOpen = true;
     }
 
+    /// <summary>
+    /// Dispatches an enabled command from the open context menu.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="command">Context-menu command identifier.</param>
     public async Task ExecuteContextCommandAsync(string command)
     {
         if (!_contextOpen || !ContextCommands.Any(item => item.Id == command && command.Length != 0)
-            || IsContextCommandEnabled?.Invoke(command) == false) return;
+            || IsContextCommandEnabled?.Invoke(command) == false)
+        {
+            return;
+        }
         CloseContextMenu();
         await OnContextCommand.InvokeAsync(command);
     }
@@ -122,33 +153,128 @@
     private void CloseContextMenu() => _contextOpen = false;
     private void ContextKeyDown(KeyboardEventArgs e)
     {
-        if (e.Key == "Escape") CloseContextMenu();
+        if (e.Key == "Escape")
+        {
+            CloseContextMenu();
+        }
     }
 
     private static string Icon(string name) => $"_content/Gurux.DLMS.UI.Components/images/icons/{name}.svg";
+    /// <summary>
+    /// Devices displayed in the collection.
+    /// </summary>
     [Parameter] public IReadOnlyList<TDevice> Devices { get; set; } = [];
+    /// <summary>
+    /// Resolves the display name for a device node.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TDevice, string> GetDeviceName { get; set; } = device => device?.ToString() ?? string.Empty;
+    /// <summary>
+    /// Resolves the objects belonging to a device.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TDevice, IReadOnlyList<TObject>> GetObjects { get; set; } = _ => [];
+    /// <summary>
+    /// Resolves the object type used for grouping or display.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetObjectType { get; set; } = _ => string.Empty;
+    /// <summary>
+    /// Resolves the object's displayed logical name.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetLogicalName { get; set; } = _ => string.Empty;
+    /// <summary>
+    /// Resolves the display name for an object node.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetObjectName { get; set; } = item => item?.ToString() ?? string.Empty;
-    [Parameter] public Func<TDevice, bool>? IsDeviceSelected { get; set; }
-    [Parameter] public Func<TDevice, TObject, bool>? IsObjectSelected { get; set; }
-    [Parameter] public EventCallback<TDevice> OnSelectDevice { get; set; }
-    [Parameter] public EventCallback OnSelectCollection { get; set; }
-    [Parameter] public bool IsCollectionSelected { get; set; }
-    [Parameter] public EventCallback<TObject> OnSelectObject { get; set; }
-    [Parameter] public EventCallback<(TDevice Device, string ObjectType)> OnSelectGroup { get; set; }
-    [Parameter] public Func<TDevice, string, bool>? IsGroupSelected { get; set; }
+    /// <summary>
+    /// Determines whether a device node is selected.
+    /// </summary>
+    [Parameter]
+    public Func<TDevice, bool>? IsDeviceSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Determines whether an object node in a device is selected.
+    /// </summary>
+    [Parameter]
+    public Func<TDevice, TObject, bool>? IsObjectSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the selected device.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TDevice> OnSelectDevice
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback invoked when the root device collection is selected.
+    /// </summary>
+    [Parameter]
+    public EventCallback OnSelectCollection
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether the root device collection is selected.
+    /// </summary>
+    [Parameter]
+    public bool IsCollectionSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the selected object.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TObject> OnSelectObject
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the selected device and object-type group.
+    /// </summary>
+    [Parameter]
+    public EventCallback<(TDevice Device, string ObjectType)> OnSelectGroup
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Determines whether an object-type group in a device is selected.
+    /// </summary>
+    [Parameter]
+    public Func<TDevice, string, bool>? IsGroupSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Heading displayed above the component content.
+    /// </summary>
     [Parameter] public string Title { get; set; } = "Devices";
+    /// <summary>
+    /// Message displayed when the collection is empty.
+    /// </summary>
     [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
 
+    /// <summary>
+    /// Selects the device and notifies the parent of the chosen object-type group.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="objectType">Object type identifying the group.</param>
+    /// <param name="device">Device containing the group.</param>
     public async Task SelectGroupAsync(TDevice device, string objectType)
     {
         await OnSelectDevice.InvokeAsync(device);
         await OnSelectGroup.InvokeAsync((device, objectType));
     }
 
+    /// <summary>
+    /// Selects the device and notifies the parent of the chosen object.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="device">Device containing the object.</param>
+    /// <param name="item">Object to select.</param>
     public async Task SelectObjectAsync(TDevice device, TObject item)
     {
         await OnSelectDevice.InvokeAsync(device);

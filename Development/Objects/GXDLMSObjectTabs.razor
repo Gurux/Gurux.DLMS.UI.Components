@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays object data, access rights, and help with attribute read controls.</summary> *@
+
 @using Gurux.DLMS.Objects
 @using Gurux.UI.Components.Tab
 @using Gurux.UI.Components
@@ -85,76 +87,200 @@
 </section>
 
 @code {
+    /// <summary>
+    /// DLMS object whose values or help are displayed.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObject Target { get; set; } = default!;
-    [Parameter] public GXDLMSAssociationLogicalName? Association { get; set; }
-    [Parameter] public RenderFragment? Data { get; set; }
-    [Parameter] public bool ReadsEnabled { get; set; }
-    [Parameter] public EventCallback<int[]> OnReadRequested { get; set; }
+    /// <summary>
+    /// Association used to resolve attribute and method access rights.
+    /// </summary>
+    [Parameter]
+    public GXDLMSAssociationLogicalName? Association
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Content rendered in the object data tab.
+    /// </summary>
+    [Parameter]
+    public RenderFragment? Data
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether attribute read requests can be issued.
+    /// </summary>
+    [Parameter]
+    public bool ReadsEnabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the requested attributes or profile selection.
+    /// </summary>
+    [Parameter]
+    public EventCallback<int[]> OnReadRequested
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Attribute indices currently selected for reading.
+    /// </summary>
     public HashSet<int> SelectedAttributes { get; private set; } = [];
-    public bool AutoRead { get; private set; }
+    /// <summary>
+    /// Whether changing the attribute selection automatically requests a read.
+    /// </summary>
+    public bool AutoRead
+    {
+        get; private set;
+    }
     private GXDLMSObject? _settingsTarget;
     private bool _loaded, _reading;
     private string SelectionKey => $"GXAttributeReads:{Target.ObjectType}";
+    /// <inheritdoc />
     protected override void OnParametersSet()
     {
-        if (ReferenceEquals(_settingsTarget, Target)) return;
-        _settingsTarget = Target; _loaded = false;
+        if (ReferenceEquals(_settingsTarget, Target))
+        {
+            return;
+        }
+        _settingsTarget = Target;
+        _loaded = false;
         SelectedAttributes = DefaultAttributes().ToHashSet();
     }
     private IEnumerable<int> DefaultAttributes() => Target.ObjectType == Gurux.DLMS.Enums.ObjectType.Clock
         ? new[] { 2, 4 }.Where(CanRead)
         : Enumerable.Range(1, AttributeCount).Where(index => index > 1 && !Target.GetStatic(index) && CanRead(index));
+    /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        if (_loaded) return;
+        if (_loaded)
+        {
+            return;
+        }
         _loaded = true;
         var target = Target;
         var saved = await ReadStorage.GetValueAsync(SelectionKey);
         var auto = await ReadStorage.GetValueAsync("GXAttributeReads:AutoRead");
-        if (!ReferenceEquals(target, Target)) return;
-        if (saved is not null) SelectedAttributes = saved.Split(',', StringSplitOptions.RemoveEmptyEntries)
+        if (!ReferenceEquals(target, Target))
+        {
+            return;
+        }
+        if (saved is not null)
+        {
+            SelectedAttributes = saved.Split(',', StringSplitOptions.RemoveEmptyEntries)
             .Select(value => int.TryParse(value, out var index) ? index : 0).Where(index => index > 0 && index <= AttributeCount).ToHashSet();
+        }
         AutoRead = auto == "true";
         StateHasChanged();
-        if (AutoRead && ReadsEnabled) await ReadSelectedAsync();
+        if (AutoRead && ReadsEnabled)
+        {
+            await ReadSelectedAsync();
+        }
     }
+    /// <summary>
+    /// Determines whether the association permits reading the specified attribute.
+    /// </summary>
+    /// <param name="index">One-based attribute index.</param>
+    /// <returns>Whether the attribute can be read.</returns>
     public bool CanRead(int index) => GXDLMSObjectAccess.CanRead(Target, index, Association);
+    /// <summary>
+    /// Updates the attribute selection and requests a read when automatic reading is enabled.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="index">One-based attribute index.</param>
+    /// <param name="selected">Whether the attribute is selected.</param>
     public async Task SelectAttributeAsync(int index, bool selected)
     {
-        if (index < 1 || index > AttributeCount || !CanRead(index)) return;
-        if (selected) SelectedAttributes.Add(index); else SelectedAttributes.Remove(index);
+        if (index < 1 || index > AttributeCount || !CanRead(index))
+        {
+            return;
+        }
+        if (selected)
+        {
+            SelectedAttributes.Add(index);
+        }
+        else
+        {
+            SelectedAttributes.Remove(index);
+        }
         await ReadStorage.SetValueAsync(SelectionKey, string.Join(',', SelectedAttributes.Order()));
     }
+    /// <summary>
+    /// Changes automatic reading and requests selected attributes when enabled.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    /// <param name="enabled">Whether selection changes automatically request reads.</param>
     public async Task SetAutoReadAsync(bool enabled)
     {
         AutoRead = enabled;
         await ReadStorage.SetValueAsync("GXAttributeReads:AutoRead", enabled ? "true" : "false");
     }
+    /// <summary>
+    /// Requests the selected readable attributes.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ReadSelectedAsync() => RequestReadAsync(SelectedAttributes);
+    /// <summary>
+    /// Requests all readable attributes of the target object.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ReadAllAsync() => RequestReadAsync(Enumerable.Range(1, AttributeCount));
+    /// <summary>
+    /// Requests the default attributes used to refresh displayed values.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task RefreshValuesAsync() => RequestReadAsync(DefaultAttributes());
     private async Task RequestReadAsync(IEnumerable<int> indices)
     {
-        if (!ReadsEnabled || _reading || !OnReadRequested.HasDelegate) return;
+        if (!ReadsEnabled || _reading || !OnReadRequested.HasDelegate)
+        {
+            return;
+        }
         var readable = indices.Where(CanRead).Distinct().Order().ToArray();
-        if (readable.Length == 0) return;
+        if (readable.Length == 0)
+        {
+            return;
+        }
         _reading = true;
-        try { await OnReadRequested.InvokeAsync(readable); }
+        try
+        {
+            await OnReadRequested.InvokeAsync(readable);
+        }
         finally { _reading = false; }
     }
     private string AttributeValue(int index)
     {
-        try { return GXDLMSObjectEditState.For(Target).AttributeText(index); }
+        try
+        {
+            return GXDLMSObjectEditState.For(Target).AttributeText(index);
+        }
         catch { return string.Empty; }
     }
+    /// <summary>
+    /// Number of attributes exposed by the target object.
+    /// </summary>
     public int AttributeCount => (Target as IGXDLMSBase)?.GetAttributeCount() ?? Target.Attributes.Select(item => item.Index).DefaultIfEmpty().Max();
+    /// <summary>
+    /// Number of methods exposed by the target object.
+    /// </summary>
     public int MethodCount => (Target as IGXDLMSBase)?.GetMethodCount() ?? Target.MethodAttributes.Select(item => item.Index).DefaultIfEmpty().Max();
     private string AttributeName(int index) => Name((Target as IGXDLMSBase)?.GetNames(), index, "Attribute");
     private string MethodName(int index) => Name((Target as IGXDLMSBase)?.GetMethodNames(), index, "Method");
     private static string Name(string[]? names, int index, string fallback) => names is not null && index <= names.Length ? names[index - 1] : $"{fallback} {index}";
+    /// <summary>
+    /// Returns association-specific access rights for an attribute.
+    /// </summary>
+    /// <param name="index">One-based attribute index.</param>
+    /// <returns>The formatted access rights.</returns>
     public string AttributeAccess(int index) => Association?.Version >= 3
         ? GXDLMSObjectAccess.GetAccess3(Target, index, Association).ToString()
         : GXDLMSObjectAccess.GetAccess(Target, index, Association).ToString();
+    /// <summary>
+    /// Returns association-specific access rights for a method.
+    /// </summary>
+    /// <param name="index">One-based method index.</param>
+    /// <returns>The formatted access rights.</returns>
     public string MethodAccess(int index) => Association?.Version >= 3
         ? (Association.IsAccessRightSet(Target) ? Association.GetMethodAccess3(Target, index) : Target.GetMethodAccess3(index)).ToString()
         : (Association?.IsAccessRightSet(Target) == true ? Association.GetMethodAccess(Target, index) : Target.GetMethodAccess(index)).ToString();

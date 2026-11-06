@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS function control values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -51,9 +53,9 @@
 </GXTable>
 </div>
 <fieldset><legend>Function commands</legend>
-<GXValueField Label="Function Name:" Value="@FunctionName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3)) FunctionName = value; })" Validate="@(value => !string.IsNullOrWhiteSpace(value) && value.All(c => c <= 127) ? null : "A nonempty ASCII function name is required.")" />
-<GXValueField Label="Status:" Value="@FunctionEnabled.ToString()" Enabled="@(CanInvokeMethod(1))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(1)) FunctionEnabled = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; })" />
-<GXValueField Label="Objects (class-id,logical-name per line):" Value="@ObjectsText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) ObjectsText = value; })" InputKind="textarea" Validate="@(ValidateObjectReferences)" />
+<GXValueField Label="Function Name:" Value="@FunctionName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3)) { FunctionName = value; } })" Validate="@(value => !string.IsNullOrWhiteSpace(value) && value.All(c => c <= 127) ? null : "A nonempty ASCII function name is required.")" />
+<GXValueField Label="Status:" Value="@FunctionEnabled.ToString()" Enabled="@(CanInvokeMethod(1))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { FunctionEnabled = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
+<GXValueField Label="Objects (class-id,logical-name per line):" Value="@ObjectsText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ObjectsText = value; } })" InputKind="textarea" Validate="@(ValidateObjectReferences)" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SetStatusAsync">Set status...</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddAsync">Add function...</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveAsync">Remove...</GXButton>
@@ -61,75 +63,127 @@
 </section>
 
 @code {
-private static string? CheckParameter(Action validate)
-{
-    try { validate(); return null; }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
-
-private static string? ValidateObjectReferences(string text) => CheckParameter(() =>
-{
-    var lines = text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-    RequireParameter(lines.Length > 0, "Select at least one object.");
-    foreach (var line in lines)
+    private static string? CheckParameter(Action validate)
     {
-        var parts = line.Split(',', StringSplitOptions.TrimEntries);
-        RequireParameter(parts.Length == 2, "Each object requires class-id,logical-name.");
-        RequireParameter(ushort.TryParse(parts[0], out var id) && id != 0 && Enum.IsDefined((ObjectType)id), "Choose a valid COSEM class.");
-        var logicalName = parts[1].Split('.');
-        RequireParameter(logicalName.Length == 6 && logicalName.All(part => byte.TryParse(part, out _)), "Logical names require six bytes.");
+        try
+        {
+            validate();
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
-});
-
-private enum BooleanChoice { False, True }
-private sealed record FunctionStatusRow(string Name, bool Enabled);
-private ValueTask<ItemsProviderResult<FunctionStatusRow>> StatusItems(GXItemsProviderRequest request)
-{
-    var rows = Target.ActivationStatus.Select(item => new FunctionStatusRow(item.Key, item.Value)).ToArray();
-    return ValueTask.FromResult(new ItemsProviderResult<FunctionStatusRow>(rows, rows.Length));
-}
-private ValueTask<ItemsProviderResult<GXDLMSObject>> FunctionItems(GXItemsProviderRequest request)
-{
-    var rows = Target.FunctionList.FirstOrDefault(item => item.Key == FunctionName).Value?.ToArray() ?? Array.Empty<GXDLMSObject>();
-    return ValueTask.FromResult(new ItemsProviderResult<GXDLMSObject>(rows, rows.Length));
-}
-private void SelectFunction(FunctionStatusRow row)
-{
-    FunctionName = row.Name;
-    FunctionEnabled = row.Enabled;
-    StateHasChanged();
-}
-
-public string FunctionName { get; set; } = "";
-public bool FunctionEnabled { get; set; }
-public string ObjectsText { get; set; } = "";
-private string NameValue()
-{
-    if (string.IsNullOrWhiteSpace(FunctionName) || FunctionName.Any(c => c > 127))
-        throw new ArgumentException("A nonempty ASCII function name is required.");
-    return FunctionName;
-}
-private List<GXDLMSObject> Objects()
-{
-    var result = new List<GXDLMSObject>();
-    foreach (var line in ObjectsText.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+    private static void RequireParameter(bool valid, string message)
     {
-        var parts = line.Split(',', StringSplitOptions.TrimEntries);
-        if (parts.Length != 2) throw new ArgumentException("Each object requires class-id,logical-name.");
-        var type = (ObjectType)ushort.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture);
-        if (!Enum.IsDefined(type) || (int)type == 0) throw new ArgumentException("Select a valid COSEM class.");
-        var ln = parts[1].Split('.');
-        if (ln.Length != 6 || ln.Any(x => !byte.TryParse(x, out _))) throw new ArgumentException("Logical names require six bytes.");
-        var obj = Target.Parent?.FindByLN(type, parts[1]) ?? GXDLMSClient.CreateObject(type);
-        obj.LogicalName = parts[1]; result.Add(obj);
+        if (!valid)
+        {
+            throw new ArgumentException(message);
+        }
     }
-    if (result.Count == 0) throw new ArgumentException("Select at least one object.");
-    return result;
-}
-public Task SetStatusAsync() => InvokeMethodAsync(1, client => Target.SetFunctionStatus(client, new List<GXKeyValuePair<string, bool>> { new(NameValue(), FunctionEnabled) }));
-public Task AddAsync() => InvokeMethodAsync(2, client => Target.AddFunction(client, NameValue(), Objects()));
-public Task RemoveAsync() => InvokeMethodAsync(3, client => Target.RemoveFunction(client, NameValue()));
+
+    private static string? ValidateObjectReferences(string text) => CheckParameter(() =>
+    {
+        var lines = text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+        RequireParameter(lines.Length > 0, "Select at least one object.");
+        foreach (var line in lines)
+        {
+            var parts = line.Split(',', StringSplitOptions.TrimEntries);
+            RequireParameter(parts.Length == 2, "Each object requires class-id,logical-name.");
+            RequireParameter(ushort.TryParse(parts[0], out var id) && id != 0 && Enum.IsDefined((ObjectType)id), "Choose a valid COSEM class.");
+            var logicalName = parts[1].Split('.');
+            RequireParameter(logicalName.Length == 6 && logicalName.All(part => byte.TryParse(part, out _)), "Logical names require six bytes.");
+        }
+    });
+
+    private enum BooleanChoice
+    {
+        False, True
+    }
+    private sealed record FunctionStatusRow(string Name, bool Enabled);
+    private ValueTask<ItemsProviderResult<FunctionStatusRow>> StatusItems(GXItemsProviderRequest request)
+    {
+        var rows = Target.ActivationStatus.Select(item => new FunctionStatusRow(item.Key, item.Value)).ToArray();
+        return ValueTask.FromResult(new ItemsProviderResult<FunctionStatusRow>(rows, rows.Length));
+    }
+    private ValueTask<ItemsProviderResult<GXDLMSObject>> FunctionItems(GXItemsProviderRequest request)
+    {
+        var rows = Target.FunctionList.FirstOrDefault(item => item.Key == FunctionName).Value?.ToArray() ?? Array.Empty<GXDLMSObject>();
+        return ValueTask.FromResult(new ItemsProviderResult<GXDLMSObject>(rows, rows.Length));
+    }
+    private void SelectFunction(FunctionStatusRow row)
+    {
+        FunctionName = row.Name;
+        FunctionEnabled = row.Enabled;
+        StateHasChanged();
+    }
+
+    /// <summary>
+    /// Name identifying the function to add, remove, or update.
+    /// </summary>
+    public string FunctionName { get; set; } = "";
+    /// <summary>
+    /// Activation state to apply to the selected function.
+    /// </summary>
+    public bool FunctionEnabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Object definitions entered for the function's object list.
+    /// </summary>
+    public string ObjectsText { get; set; } = "";
+    private string NameValue()
+    {
+        if (string.IsNullOrWhiteSpace(FunctionName) || FunctionName.Any(c => c > 127))
+        {
+            throw new ArgumentException("A nonempty ASCII function name is required.");
+        }
+        return FunctionName;
+    }
+    private List<GXDLMSObject> Objects()
+    {
+        var result = new List<GXDLMSObject>();
+        foreach (var line in ObjectsText.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        {
+            var parts = line.Split(',', StringSplitOptions.TrimEntries);
+            if (parts.Length != 2)
+            {
+                throw new ArgumentException("Each object requires class-id,logical-name.");
+            }
+            var type = (ObjectType)ushort.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture);
+            if (!Enum.IsDefined(type) || (int)type == 0)
+            {
+                throw new ArgumentException("Select a valid COSEM class.");
+            }
+            var ln = parts[1].Split('.');
+            if (ln.Length != 6 || ln.Any(x => !byte.TryParse(x, out _)))
+            {
+                throw new ArgumentException("Logical names require six bytes.");
+            }
+            var obj = Target.Parent?.FindByLN(type, parts[1]) ?? GXDLMSClient.CreateObject(type);
+            obj.LogicalName = parts[1];
+            result.Add(obj);
+        }
+        if (result.Count == 0)
+        {
+            throw new ArgumentException("Select at least one object.");
+        }
+        return result;
+    }
+    /// <summary>
+    /// Requests the entered activation state for the selected function.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task SetStatusAsync() => InvokeMethodAsync(1, client => Target.SetFunctionStatus(client, new List<GXKeyValuePair<string, bool>> { new(NameValue(), FunctionEnabled) }));
+    /// <summary>
+    /// Requests adding the entered function and its object list.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task AddAsync() => InvokeMethodAsync(2, client => Target.AddFunction(client, NameValue(), Objects()));
+    /// <summary>
+    /// Requests removal of the entered function.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task RemoveAsync() => InvokeMethodAsync(3, client => Target.RemoveFunction(client, NameValue()));
 }
 
 

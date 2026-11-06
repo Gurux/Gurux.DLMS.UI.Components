@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS association logical name values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -45,11 +47,11 @@
 <GXAttributeField Edit="Edit" Index="2" Label="Objects" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Class ID:", "Version:", "Logical Name:", "Attribute Access:", "Method Access:" })" ColumnPaths="@(new[] { "0", "1", "2", "3.0", "3.1" })" EditorKinds="@(new[] { "number", "number", "logicalname", "text", "text" })" />
 }
 <fieldset><legend>Association objects</legend>
-<GXValueField Label="Class ID:" Value="@ClassIdText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) ClassIdText = value; })" InputKind="number" Validate="@(value => ushort.TryParse(value, out var id) && id != 0 && Enum.IsDefined((ObjectType)id) ? null : "Choose a valid COSEM class.")" />
-<GXValueField Label="Logical Name:" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) ObjectLogicalName = value; })" Validate="@(value => value.Split('.').Length == 6 && value.Split('.').All(part => byte.TryParse(part, out _)) ? null : "Logical names require six bytes.")" />
-<GXValueField Label="Version:" Value="@ObjectVersionText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) ObjectVersionText = value; })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Version must be between zero and 255.")" />
-<GXValueField Label="Attribute Access (index:mask):" Value="@AttributeRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) AttributeRightsText = value; })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
-<GXValueField Label="Method Access (index:mask):" Value="@MethodRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) MethodRightsText = value; })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
+<GXValueField Label="Class ID:" Value="@ClassIdText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ClassIdText = value; } })" InputKind="number" Validate="@(value => ushort.TryParse(value, out var id) && id != 0 && Enum.IsDefined((ObjectType)id) ? null : "Choose a valid COSEM class.")" />
+<GXValueField Label="Logical Name:" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectLogicalName = value; } })" Validate="@(value => value.Split('.').Length == 6 && value.Split('.').All(part => byte.TryParse(part, out _)) ? null : "Logical names require six bytes.")" />
+<GXValueField Label="Version:" Value="@ObjectVersionText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectVersionText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Version must be between zero and 255.")" />
+<GXValueField Label="Attribute Access (index:mask):" Value="@AttributeRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { AttributeRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
+<GXValueField Label="Method Access (index:mask):" Value="@MethodRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { MethodRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
 <p>Rights masks follow this association version. Unspecified rights are denied.</p>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AddObjectAsync">Add...</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="RemoveObjectAsync">Remove...</GXButton>
@@ -73,7 +75,7 @@
 <GXAttributeField Edit="Edit" Index="9" Label="Security setup:" Enabled="CanEditAttribute(9)" />
 }
 <fieldset><legend>Authentication secret</legend>
-<GXValueField Label="New high authentication secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC))" OnCommit="@((string value) => { if (CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC)) SecretText = value; })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A new secret is required.")))" />
+<GXValueField Label="New high authentication secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC))" OnCommit="@((string value) => { if (CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC)) { SecretText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A new secret is required.")))" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(2) || Target.AuthenticationMechanismName.MechanismId is Authentication.None or Authentication.Low or Authentication.HighGMAC)" OnClick="UpdateSecretAsync">Update High password</GXButton>
 <p>For low authentication, edit Secret and write attribute 7. GMAC keys use Security setup.</p>
 </fieldset>
@@ -119,8 +121,8 @@
 {
 <GXAttributeField Edit="Edit" Index="11" Label="Current user" Enabled="CanEditAttribute(11)" Columns="@(new[] { "ID:", "Name" })" />
 }
-<GXValueField Label="ID:" Value="@UserIdText" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) UserIdText = value; })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "User ID must be between zero and 255.")" />
-<GXValueField Label="Name:" Value="@UserName" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) UserName = value; })" Validate="@(value => string.IsNullOrWhiteSpace(value) ? "A user name is required." : null)" />
+<GXValueField Label="ID:" Value="@UserIdText" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserIdText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "User ID must be between zero and 255.")" />
+<GXValueField Label="Name:" Value="@UserName" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserName = value; } })" Validate="@(value => string.IsNullOrWhiteSpace(value) ? "A user name is required." : null)" />
 <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="AddUserAsync">Add</GXButton>
 <GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="RemoveUserAsync">Remove</GXButton>
 </GXTabPage>
@@ -129,79 +131,176 @@
 </section>
 
 @code {
-private static string? CheckParameter(Action validate)
-{
-    try { validate(); return null; }
-    catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
-}
-private static void RequireParameter(bool valid, string message) { if (!valid) throw new ArgumentException(message); }
+    private static string? CheckParameter(Action validate)
+    {
+        try
+        {
+            validate();
+            return null;
+        }
+        catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
+    }
+    private static void RequireParameter(bool valid, string message)
+    {
+        if (!valid)
+        {
+            throw new ArgumentException(message);
+        }
+    }
 
-private string RegistrationAuthority(int index)
-{
-    var oid = (GXStructure)GXWireValue.Read(Edit, index)!;
-    return GXAssociationRegistrationAuthorities.Find(Convert.ToByte(oid[0]), Convert.ToByte(oid[1]), Convert.ToUInt16(oid[2]));
-}
+    private string RegistrationAuthority(int index)
+    {
+        var oid = (GXStructure)GXWireValue.Read(Edit, index)!;
+        return GXAssociationRegistrationAuthorities.Find(Convert.ToByte(oid[0]), Convert.ToByte(oid[1]), Convert.ToUInt16(oid[2]));
+    }
 
-public string ClassIdText { get; set; } = "";
-public string ObjectLogicalName { get; set; } = "";
-public string ObjectVersionText { get; set; } = "0";
-public string AttributeRightsText { get; set; } = "";
-public string MethodRightsText { get; set; } = "";
-public string SecretText { get; set; } = "";
-public string UserIdText { get; set; } = "";
-public string UserName { get; set; } = "";
-private GXDLMSObject ObjectValue()
-{
-    var type = (ObjectType)ushort.Parse(ClassIdText, System.Globalization.CultureInfo.InvariantCulture);
-    if (!Enum.IsDefined(type) || (int)type == 0) throw new ArgumentException("Select a valid COSEM class.");
-    var parts = ObjectLogicalName.Split('.');
-    if (parts.Length != 6 || parts.Any(x => !byte.TryParse(x, out _))) throw new ArgumentException("Logical names require six bytes.");
-    var obj = GXDLMSClient.CreateObject(type, byte.Parse(ObjectVersionText, System.Globalization.CultureInfo.InvariantCulture));
-    obj.LogicalName = ObjectLogicalName;
-    var attributes = ((IGXDLMSBase)obj).GetAttributeCount();
-    var methods = ((IGXDLMSBase)obj).GetMethodCount();
-    for (var i = 1; i <= attributes; ++i) { obj.SetAccess(i, AccessMode.NoAccess); obj.SetAccess3(i, AccessMode3.NoAccess); }
-    for (var i = 1; i <= methods; ++i) { obj.SetMethodAccess(i, MethodAccessMode.NoAccess); obj.SetMethodAccess3(i, MethodAccessMode3.NoAccess); }
-    foreach (var pair in Rights(AttributeRightsText, attributes))
+    /// <summary>
+    /// Numeric DLMS class identifier entered for the association object.
+    /// </summary>
+    public string ClassIdText { get; set; } = "";
+    /// <summary>
+    /// Logical name identifying the object used by the operation.
+    /// </summary>
+    public string ObjectLogicalName { get; set; } = "";
+    /// <summary>
+    /// Object version entered for the association object.
+    /// </summary>
+    public string ObjectVersionText { get; set; } = "0";
+    /// <summary>
+    /// Attribute access-right entries entered for the association object.
+    /// </summary>
+    public string AttributeRightsText { get; set; } = "";
+    /// <summary>
+    /// Method access-right entries entered for the association object.
+    /// </summary>
+    public string MethodRightsText { get; set; } = "";
+    /// <summary>
+    /// Authentication secret entered for the update request.
+    /// </summary>
+    public string SecretText { get; set; } = "";
+    /// <summary>
+    /// Numeric identifier entered for the association user.
+    /// </summary>
+    public string UserIdText { get; set; } = "";
+    /// <summary>
+    /// Name entered for the association user.
+    /// </summary>
+    public string UserName { get; set; } = "";
+    private GXDLMSObject ObjectValue()
     {
-        if (Target.Version < 3 && !Enum.IsDefined((AccessMode)pair.Value) || Target.Version == 0 && pair.Value > 3)
-            throw new ArgumentException("Attribute access mask is not supported by this association version.");
-        if (Target.Version >= 3) obj.SetAccess3(pair.Key, (AccessMode3)pair.Value); else obj.SetAccess(pair.Key, (AccessMode)pair.Value);
+        var type = (ObjectType)ushort.Parse(ClassIdText, System.Globalization.CultureInfo.InvariantCulture);
+        if (!Enum.IsDefined(type) || (int)type == 0)
+        {
+            throw new ArgumentException("Select a valid COSEM class.");
+        }
+        var parts = ObjectLogicalName.Split('.');
+        if (parts.Length != 6 || parts.Any(x => !byte.TryParse(x, out _)))
+        {
+            throw new ArgumentException("Logical names require six bytes.");
+        }
+        var obj = GXDLMSClient.CreateObject(type, byte.Parse(ObjectVersionText, System.Globalization.CultureInfo.InvariantCulture));
+        obj.LogicalName = ObjectLogicalName;
+        var attributes = ((IGXDLMSBase)obj).GetAttributeCount();
+        var methods = ((IGXDLMSBase)obj).GetMethodCount();
+        for (var i = 1; i <= attributes; ++i)
+        {
+            obj.SetAccess(i, AccessMode.NoAccess);
+            obj.SetAccess3(i, AccessMode3.NoAccess);
+        }
+        for (var i = 1; i <= methods; ++i)
+        {
+            obj.SetMethodAccess(i, MethodAccessMode.NoAccess);
+            obj.SetMethodAccess3(i, MethodAccessMode3.NoAccess);
+        }
+        foreach (var pair in Rights(AttributeRightsText, attributes))
+        {
+            if (Target.Version < 3 && !Enum.IsDefined((AccessMode)pair.Value) || Target.Version == 0 && pair.Value > 3)
+            {
+                throw new ArgumentException("Attribute access mask is not supported by this association version.");
+            }
+            if (Target.Version >= 3)
+            {
+                obj.SetAccess3(pair.Key, (AccessMode3)pair.Value);
+            }
+            else
+            {
+                obj.SetAccess(pair.Key, (AccessMode)pair.Value);
+            }
+        }
+        foreach (var pair in Rights(MethodRightsText, methods))
+        {
+            if (Target.Version < 3 && !Enum.IsDefined((MethodAccessMode)pair.Value) || Target.Version >= 3 && (pair.Value & 2) != 0)
+            {
+                throw new ArgumentException("Method access mask is not supported by this association version.");
+            }
+            if (Target.Version >= 3)
+            {
+                obj.SetMethodAccess3(pair.Key, (MethodAccessMode3)pair.Value);
+            }
+            else
+            {
+                obj.SetMethodAccess(pair.Key, (MethodAccessMode)pair.Value);
+            }
+        }
+        return obj;
     }
-    foreach (var pair in Rights(MethodRightsText, methods))
+    private static IEnumerable<KeyValuePair<int, int>> Rights(string text, int maximum)
     {
-        if (Target.Version < 3 && !Enum.IsDefined((MethodAccessMode)pair.Value) || Target.Version >= 3 && (pair.Value & 2) != 0)
-            throw new ArgumentException("Method access mask is not supported by this association version.");
-        if (Target.Version >= 3) obj.SetMethodAccess3(pair.Key, (MethodAccessMode3)pair.Value); else obj.SetMethodAccess(pair.Key, (MethodAccessMode)pair.Value);
+        var seen = new HashSet<int>();
+        foreach (var line in text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        {
+            var parts = line.Split(':');
+            if (parts.Length != 2 || !int.TryParse(parts[0], out var index) || index < 1 || index > maximum || !int.TryParse(parts[1], out var mask) || mask < 0 || mask > 255)
+            {
+                throw new ArgumentException("Rights require a valid index:mask pair.");
+            }
+            if (!seen.Add(index))
+            {
+                throw new ArgumentException("Each access-right index may appear only once.");
+            }
+            yield return new(index, mask);
+        }
     }
-    return obj;
-}
-private static IEnumerable<KeyValuePair<int, int>> Rights(string text, int maximum)
-{
-    var seen = new HashSet<int>();
-    foreach (var line in text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+    private string UserValue() => string.IsNullOrWhiteSpace(UserName) ? throw new ArgumentException("A user name is required.") : UserName;
+    /// <summary>
+    /// Requests adding the entered object and access rights to the association.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task AddObjectAsync() => InvokeMethodAsync(3, client => Target.AddObject(client, ObjectValue()));
+    /// <summary>
+    /// Requests removal of the entered object from the association.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task RemoveObjectAsync() => InvokeMethodAsync(4, client => Target.RemoveObject(client, ObjectValue()));
+    /// <summary>
+    /// Requests adding the entered user to the association.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task AddUserAsync() => InvokeMethodAsync(5, client => Target.AddUser(client, byte.Parse(UserIdText, System.Globalization.CultureInfo.InvariantCulture), UserValue()));
+    /// <summary>
+    /// Requests removal of the entered user from the association.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task RemoveUserAsync() => InvokeMethodAsync(6, client => Target.RemoveUser(client, byte.Parse(UserIdText, System.Globalization.CultureInfo.InvariantCulture), UserValue()));
+    /// <summary>
+    /// Requests replacement of the authentication secret.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task UpdateSecretAsync() => InvokeMethodAsync(2, client =>
     {
-        var parts = line.Split(':');
-        if (parts.Length != 2 || !int.TryParse(parts[0], out var index) || index < 1 || index > maximum || !int.TryParse(parts[1], out var mask) || mask < 0 || mask > 255)
-            throw new ArgumentException("Rights require a valid index:mask pair.");
-        if (!seen.Add(index)) throw new ArgumentException("Each access-right index may appear only once.");
-        yield return new(index, mask);
-    }
-}
-private string UserValue() => string.IsNullOrWhiteSpace(UserName) ? throw new ArgumentException("A user name is required.") : UserName;
-public Task AddObjectAsync() => InvokeMethodAsync(3, client => Target.AddObject(client, ObjectValue()));
-public Task RemoveObjectAsync() => InvokeMethodAsync(4, client => Target.RemoveObject(client, ObjectValue()));
-public Task AddUserAsync() => InvokeMethodAsync(5, client => Target.AddUser(client, byte.Parse(UserIdText, System.Globalization.CultureInfo.InvariantCulture), UserValue()));
-public Task RemoveUserAsync() => InvokeMethodAsync(6, client => Target.RemoveUser(client, byte.Parse(UserIdText, System.Globalization.CultureInfo.InvariantCulture), UserValue()));
-public Task UpdateSecretAsync() => InvokeMethodAsync(2, client =>
-{
-    var auth = Target.AuthenticationMechanismName.MechanismId;
-    if (auth is Authentication.None or Authentication.Low or Authentication.HighGMAC) throw new ArgumentException("This method requires high authentication; use attribute write or Security setup for other mechanisms.");
-    var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
-    if (secret.Length == 0) throw new ArgumentException("A new secret is required.");
-    var requestTarget = new GXDLMSAssociationLogicalName(Target.LogicalName) { ShortName = Target.ShortName, Version = Target.Version, AuthenticationMechanismName = Target.AuthenticationMechanismName, Secret = secret };
-    return requestTarget.UpdateSecret(client);
-});
+        var auth = Target.AuthenticationMechanismName.MechanismId;
+        if (auth is Authentication.None or Authentication.Low or Authentication.HighGMAC)
+        {
+            throw new ArgumentException("This method requires high authentication; use attribute write or Security setup for other mechanisms.");
+        }
+        var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+        if (secret.Length == 0)
+        {
+            throw new ArgumentException("A new secret is required.");
+        }
+        var requestTarget = new GXDLMSAssociationLogicalName(Target.LogicalName) { ShortName = Target.ShortName, Version = Target.Version, AuthenticationMechanismName = Target.AuthenticationMechanismName, Secret = secret };
+        return requestTarget.UpdateSecret(client);
+    });
 }
 
 

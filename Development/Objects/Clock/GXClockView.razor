@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS clock values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS.Objects
@@ -83,8 +85,24 @@
 </section>
 @code {
     private GXAttributeField? _timeField, _timeZoneField;
-    private void ConfirmCurrentTime() { if (_timeField is null || !CanEditAttribute(2)) return; _timeField.BeginEdit(); _timeField.Draft = new GXDateTime(DateTime.Now).ToFormatMeterString(CultureInfo.InvariantCulture); }
-    private void ConfirmCurrentTimeZone() { if (_timeZoneField is null || !CanEditAttribute(3)) return; _timeZoneField.BeginEdit(); _timeZoneField.Draft = (-(int)TimeZoneInfo.Local.BaseUtcOffset.TotalMinutes).ToString(CultureInfo.InvariantCulture); }
+    private void ConfirmCurrentTime()
+    {
+        if (_timeField is null || !CanEditAttribute(2))
+        {
+            return;
+        }
+        _timeField.BeginEdit();
+        _timeField.Draft = new GXDateTime(DateTime.Now).ToFormatMeterString(CultureInfo.InvariantCulture);
+    }
+    private void ConfirmCurrentTimeZone()
+    {
+        if (_timeZoneField is null || !CanEditAttribute(3))
+        {
+            return;
+        }
+        _timeZoneField.BeginEdit();
+        _timeZoneField.Draft = (-(int)TimeZoneInfo.Local.BaseUtcOffset.TotalMinutes).ToString(CultureInfo.InvariantCulture);
+    }
     private DateTime? TimeValue
     {
         get => Edit.AttributeValue(2) switch
@@ -99,44 +117,124 @@
             : string.Empty);
     }
     private static string? ValidateShift(string text) => int.TryParse(text, out var value) && value is >= -900 and <= 900 ? null : "Shift seconds must be between -900 and 900.";
+    /// <summary>
+    /// Meter date and time entered for the preset-adjustment request.
+    /// </summary>
     public string PresetTimeText { get; set; } = string.Empty;
+    /// <summary>
+    /// Start of the validity interval for the preset time.
+    /// </summary>
     public string ValidityStartText { get; set; } = string.Empty;
+    /// <summary>
+    /// End of the validity interval for the preset time.
+    /// </summary>
     public string ValidityEndText { get; set; } = string.Empty;
+    /// <summary>
+    /// Signed number of seconds entered for the clock-shift request.
+    /// </summary>
     public string ShiftSeconds { get; set; } = string.Empty;
+    /// <summary>
+    /// Requests clock adjustment to the nearest quarter hour.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task AdjustToQuarterAsync() => InvokeMethodAsync(1, client => Target.AdjustToQuarter(client));
+    /// <summary>
+    /// Requests clock adjustment to the measuring-period boundary.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task AdjustToMeasuringPeriodAsync() => InvokeMethodAsync(2, client => Target.AdjustToMeasuringPeriod(client));
+    /// <summary>
+    /// Requests clock adjustment to the nearest minute.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task AdjustToMinuteAsync() => InvokeMethodAsync(3, client => Target.AdjustToMinute(client));
+    /// <summary>
+    /// Requests clock adjustment to the previously preset time.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task AdjustToPresetTimeAsync() => InvokeMethodAsync(4, client => Target.AdjustToPresetTime(client));
+    /// <summary>
+    /// Requests the entered preset time and its validity interval.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task PresetAdjustingTimeAsync() => InvokeMethodAsync(5, client =>
     {
         var formats = new[] { "yyyy-MM-ddTHH:mm:ss", "yyyy-MM-ddTHH:mm" };
         var preset = DateTime.ParseExact(PresetTimeText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         var start = DateTime.ParseExact(ValidityStartText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         var end = DateTime.ParseExact(ValidityEndText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
-        if (start > end) throw new FormatException("The validity start must not follow the validity end.");
+        if (start > end)
+        {
+            throw new FormatException("The validity start must not follow the validity end.");
+        }
         return Target.PresetAdjustingTime(client, preset, start, end);
     });
+    /// <summary>
+    /// Requests a clock shift by the entered number of seconds.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task ShiftTimeAsync() => InvokeMethodAsync(6, client =>
     {
         var seconds = int.Parse(ShiftSeconds, CultureInfo.InvariantCulture);
-        if (seconds < -900 || seconds > 900) throw new FormatException("Shift seconds must be between -900 and 900.");
+        if (seconds < -900 || seconds > 900)
+        {
+            throw new FormatException("Shift seconds must be between -900 and 900.");
+        }
         return Target.ShiftTime(client, seconds);
     });
+    /// <summary>
+    /// Whether the edited clock has daylight saving enabled.
+    /// </summary>
     public bool DaylightEnabled => Convert.ToBoolean(Edit.AttributeValue(8), CultureInfo.InvariantCulture);
+    /// <summary>
+    /// Whether the edited clock specifies a time-zone deviation.
+    /// </summary>
     public bool TimeZoneEnabled => Convert.ToInt32(Edit.AttributeValue(3), CultureInfo.InvariantCulture) != short.MinValue;
+    /// <summary>
+    /// Clock status flags from the pending or current attribute value.
+    /// </summary>
     public ClockStatus Status => (ClockStatus)Convert.ToByte(Edit.AttributeValue(4), CultureInfo.InvariantCulture);
+    /// <summary>
+    /// Stages a clock attribute from the supplied text and refreshes the view.
+    /// </summary>
+    /// <param name="index">One-based clock attribute index.</param>
+    /// <param name="text">Text to parse and stage.</param>
     public void ChangeAttribute(int index, string text)
     {
-        if (index < 2 || index > 9 || !CanEditAttribute(index) || index is >= 5 and <= 7 && !DaylightEnabled) return;
+        if (index < 2 || index > 9 || !CanEditAttribute(index) || index is >= 5 and <= 7 && !DaylightEnabled)
+        {
+            return;
+        }
         Edit.EditAttribute(index, text);
     }
+    /// <summary>
+    /// Stages the local current date and time as the meter clock value.
+    /// </summary>
     public void UseCurrentTime() => ChangeAttribute(2, new GXDateTime(DateTime.Now).ToFormatMeterString(CultureInfo.InvariantCulture));
+    /// <summary>
+    /// Stages the local time-zone deviation as the meter clock deviation.
+    /// </summary>
     public void UseCurrentTimeZone() => ChangeAttribute(3, (-(int)TimeZoneInfo.Local.BaseUtcOffset.TotalMinutes).ToString(CultureInfo.InvariantCulture));
+    /// <summary>
+    /// Stages the local time-zone deviation or the unspecified-deviation value.
+    /// </summary>
+    /// <param name="enabled">Whether the local time-zone deviation is specified.</param>
     public void EnableTimeZone(bool enabled)
     {
-        if (enabled) UseCurrentTimeZone();
-        else ChangeAttribute(3, short.MinValue.ToString(CultureInfo.InvariantCulture));
+        if (enabled)
+        {
+            UseCurrentTimeZone();
+        }
+        else
+        {
+            ChangeAttribute(3, short.MinValue.ToString(CultureInfo.InvariantCulture));
+        }
     }
+    /// <summary>
+    /// Adds or removes a flag in the edited clock status.
+    /// </summary>
+    /// <param name="enabled">Whether to set the flag.</param>
+    /// <param name="flag">Clock status flag to change.</param>
     public void ChangeStatus(ClockStatus flag, bool enabled)
         => ChangeAttribute(4, ((byte)(enabled ? Status | flag : Status & ~flag)).ToString(CultureInfo.InvariantCulture));
 }

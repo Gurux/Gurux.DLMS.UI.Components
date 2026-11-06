@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS ntp setup values and supported actions.</summary> *@
+
 @using Gurux.DLMS
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
@@ -78,7 +80,10 @@
     {
         var id = uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture);
         var key = Convert.FromHexString(KeyHex.Replace(" ", ""));
-        if (key.Length == 0) throw new FormatException("Enter a non-empty hexadecimal authentication key.");
+        if (key.Length == 0)
+        {
+            throw new FormatException("Enter a non-empty hexadecimal authentication key.");
+        }
         return Target.AddAuthenticationKey(client, id, key);
     });
     private Task DeleteKeyAsync() => InvokeMethodAsync(3, client => Target.DeleteAuthenticationKey(client, uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture)));

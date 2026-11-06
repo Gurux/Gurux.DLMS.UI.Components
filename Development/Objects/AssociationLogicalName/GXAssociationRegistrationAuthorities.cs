@@ -113,7 +113,11 @@ Uruguay;2.16.uy(858)
         var names = new Dictionary<string, string>(StringComparer.Ordinal);
         foreach (var line in CountryData.Split('\n', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
         {
-            if (line.StartsWith('#')) continue;
+            if (line.StartsWith('#'))
+            {
+                continue;
+            }
+
             var fields = line.Split(';');
             var oid = fields[1].Split('.');
             var start = oid[2].IndexOf('(') + 1;

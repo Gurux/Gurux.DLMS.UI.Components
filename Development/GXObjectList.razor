@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Lists selectable DLMS objects and attribute values with persistent resizable columns.</summary> *@
+
 @typeparam TObject
 @using System.Globalization
 @using System.Text.Json
@@ -85,6 +87,9 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Storage key used to persist object-list column widths.
+    /// </summary>
     [Parameter] public string ColumnWidthsKey { get; set; } = "GXObjectList:ColumnWidths";
     private readonly string _tableId = "gx-objects-" + Guid.NewGuid().ToString("N");
     private readonly Dictionary<string, double> _widths = new();
@@ -102,6 +107,7 @@
         aria-label="@($"Resize {label}")" aria-orientation="vertical" aria-valuemin="64" aria-valuemax="4096"
         aria-valuenow="@Width(key)" data-column="@key"></span>;
 
+    /// <inheritdoc />
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (!_loaded)
@@ -114,8 +120,12 @@
                 {
                     var values = JsonSerializer.Deserialize<Dictionary<string, double>>(saved);
                     if (values is not null)
+                    {
                         foreach (var entry in values.Where(entry => ValidKey(entry.Key) && double.IsFinite(entry.Value) && entry.Value >= 64 && entry.Value <= 4096))
+                        {
                             _widths[entry.Key] = entry.Value;
+                        }
+                    }
                 }
                 catch (JsonException) { }
             }
@@ -139,15 +149,28 @@
         }
     }
 
+    /// <summary>
+    /// Validates and persists a resized object-list column width.
+    /// </summary>
+    /// <param name="key">Identifier of the resized column.</param>
+    /// <param name="width">New width in pixels.</param>
+    /// <returns>A task representing completion of the operation.</returns>
     [JSInvokable]
     public async Task SaveColumnWidthAsync(string key, double width)
     {
-        if (!ValidKey(key) || !double.IsFinite(width) || width < 64 || width > 4096) return;
+        if (!ValidKey(key) || !double.IsFinite(width) || width < 64 || width > 4096)
+        {
+            return;
+        }
         _widths[key] = width;
         await Storage.SetValueAsync(ColumnWidthsKey, JsonSerializer.Serialize(_widths));
         StateHasChanged();
     }
 
+    /// <summary>
+    /// Releases JavaScript resize helpers and the component reference.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public async ValueTask DisposeAsync()
     {
         try
@@ -157,21 +180,70 @@
                 await _resizer.InvokeVoidAsync("dispose");
                 await _resizer.DisposeAsync();
             }
-            if (_module is not null) await _module.DisposeAsync();
+            if (_module is not null)
+            {
+                await _module.DisposeAsync();
+            }
         }
         catch (JSDisconnectedException) { }
         finally { _reference?.Dispose(); }
     }
+    /// <summary>
+    /// Objects displayed in the list.
+    /// </summary>
     [Parameter] public IReadOnlyList<TObject> Objects { get; set; } = [];
+    /// <summary>
+    /// Resolves each item's display name.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetName { get; set; } = item => item?.ToString() ?? string.Empty;
+    /// <summary>
+    /// Resolves the object's displayed logical name.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetLogicalName { get; set; } = _ => string.Empty;
+    /// <summary>
+    /// Resolves the object type used for grouping or display.
+    /// </summary>
     [Parameter, EditorRequired] public Func<TObject, string> GetObjectType { get; set; } = _ => string.Empty;
-    [Parameter] public Func<TObject, IReadOnlyDictionary<int, string?>> GetAttributeValues { get; set; }
+    /// <summary>
+    /// Resolves attribute indices and display values for each object.
+    /// </summary>
+    [Parameter]
+    public Func<TObject, IReadOnlyDictionary<int, string?>> GetAttributeValues
+    {
+        get; set;
+    }
         = item => item is Gurux.DLMS.Objects.GXDLMSObject target ? Gurux.DLMS.UI.Components.Objects.GXDLMSAttributeValues.Get(target) : new Dictionary<int, string?>();
-    [Parameter] public Func<TObject, bool>? IsSelected { get; set; }
-    [Parameter] public EventCallback<TObject> OnSelect { get; set; }
-    [Parameter] public EventCallback<TObject> OnActivate { get; set; }
+    /// <summary>
+    /// Determines whether an item is displayed as selected.
+    /// </summary>
+    [Parameter]
+    public Func<TObject, bool>? IsSelected
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving the selected item.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TObject> OnSelect
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Callback receiving an object activated by double-clicking.
+    /// </summary>
+    [Parameter]
+    public EventCallback<TObject> OnActivate
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Heading displayed above the component content.
+    /// </summary>
     [Parameter] public string Title { get; set; } = "Objects";
+    /// <summary>
+    /// Message displayed when the collection is empty.
+    /// </summary>
     [Parameter] public string EmptyText { get; set; } = "No objects loaded.";
     private static string Icon(string name) => $"_content/Gurux.DLMS.UI.Components/images/icons/{name}.svg";
 }

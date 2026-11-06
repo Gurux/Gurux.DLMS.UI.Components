@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS schedule values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS
@@ -56,23 +58,65 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Entry index entered for the selected operation.
+    /// </summary>
     public string EntryIndex { get; set; } = string.Empty;
-    public bool EntryEnabled { get; set; }
+    /// <summary>
+    /// Whether the selected schedule entry should be enabled.
+    /// </summary>
+    public bool EntryEnabled
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Logical name of the script table referenced by the schedule entry.
+    /// </summary>
     public string ScriptLogicalName { get; set; } = string.Empty;
+    /// <summary>
+    /// Script selector entered for the schedule entry.
+    /// </summary>
     public string ScriptSelector { get; set; } = string.Empty;
+    /// <summary>
+    /// Execution time entered for the schedule entry.
+    /// </summary>
     public string SwitchTime { get; set; } = string.Empty;
+    /// <summary>
+    /// Validity window entered for the schedule entry.
+    /// </summary>
     public string ValidityWindow { get; set; } = string.Empty;
+    /// <summary>
+    /// Weekday execution flags entered for the schedule entry.
+    /// </summary>
     public string ExecWeekdays { get; set; } = string.Empty;
+    /// <summary>
+    /// Special-day execution flags entered for the schedule entry.
+    /// </summary>
     public string ExecSpecialDays { get; set; } = string.Empty;
+    /// <summary>
+    /// First date on which the schedule entry is valid.
+    /// </summary>
     public string BeginDate { get; set; } = string.Empty;
+    /// <summary>
+    /// Last date on which the schedule entry is valid.
+    /// </summary>
     public string EndDate { get; set; } = string.Empty;
     private GXScheduleEntry ReadIndex() => new GXScheduleEntry { Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture) };
     private GXScheduleEntry ReadEntry()
     {
-        if (ScriptLogicalName.Split('.').Length != 6 || ScriptLogicalName.Split('.').Any(p => !byte.TryParse(p, out _))) throw new FormatException("A script logical name requires six byte values.");
+        if (ScriptLogicalName.Split('.').Length != 6 || ScriptLogicalName.Split('.').Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A script logical name requires six byte values.");
+        }
         var weekdays = byte.Parse(ExecWeekdays, CultureInfo.InvariantCulture);
-        if (weekdays > 127) throw new FormatException("Weekday flags must be between 0 and 127.");
-        if (string.IsNullOrEmpty(ExecSpecialDays) || ExecSpecialDays.Any(c => c != '0' && c != '1')) throw new FormatException("Enter the special day flags as a binary bit string.");
+        if (weekdays > 127)
+        {
+            throw new FormatException("Weekday flags must be between 0 and 127.");
+        }
+        if (string.IsNullOrEmpty(ExecSpecialDays) || ExecSpecialDays.Any(c => c != '0' && c != '1'))
+        {
+            throw new FormatException("Enter the special day flags as a binary bit string.");
+        }
         var entry = ReadIndex();
         entry.Enable = EntryEnabled;
         entry.Script = new GXDLMSScriptTable(ScriptLogicalName);
@@ -83,11 +127,26 @@
         entry.ExecSpecDays = ExecSpecialDays;
         entry.BeginDate = new GXDate(DateTime.ParseExact(BeginDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
         entry.EndDate = new GXDate(DateTime.ParseExact(EndDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
-        if (entry.BeginDate.Value > entry.EndDate.Value) throw new FormatException("Begin date must not follow end date.");
+        if (entry.BeginDate.Value > entry.EndDate.Value)
+        {
+            throw new FormatException("Begin date must not follow end date.");
+        }
         return entry;
     }
+    /// <summary>
+    /// Requests enabling or disabling the selected schedule entry.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task SetEnabledAsync() => InvokeMethodAsync(1, client => EntryEnabled ? Target.Enable(client, ReadIndex()) : Target.Disable(client, ReadIndex()));
+    /// <summary>
+    /// Requests insertion of the entered schedule entry.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task InsertAsync() => InvokeMethodAsync(2, client => Target.Insert(client, ReadEntry()));
+    /// <summary>
+    /// Requests deletion of the selected schedule entry.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public Task DeleteAsync() => InvokeMethodAsync(3, client => Target.Delete(client, ReadIndex()));
 
     private static string? ValidateParameter(string field, string text)
@@ -96,15 +155,54 @@
         {
             switch (field)
             {
-                case nameof(EntryIndex): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
-                case nameof(ScriptLogicalName): { CheckLogicalName(text); break; }
-                case nameof(ScriptSelector): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
-                case nameof(SwitchTime): { DateTime.ParseExact(text, "HH:mm:ss", CultureInfo.InvariantCulture); break; }
-                case nameof(ValidityWindow): { ushort.Parse(text, CultureInfo.InvariantCulture); break; }
-                case nameof(ExecWeekdays): { if (byte.Parse(text, CultureInfo.InvariantCulture) > 127) throw new FormatException("Weekday flags must be between 0 and 127."); break; }
-                case nameof(ExecSpecialDays): { CheckBits(text); break; }
-                case nameof(BeginDate): { DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture); break; }
-                case nameof(EndDate): { DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture); break; }
+                case nameof(EntryIndex):
+                    {
+                        ushort.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(ScriptLogicalName):
+                    {
+                        CheckLogicalName(text);
+                        break;
+                    }
+                case nameof(ScriptSelector):
+                    {
+                        ushort.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(SwitchTime):
+                    {
+                        DateTime.ParseExact(text, "HH:mm:ss", CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(ValidityWindow):
+                    {
+                        ushort.Parse(text, CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(ExecWeekdays):
+                    {
+                        if (byte.Parse(text, CultureInfo.InvariantCulture) > 127)
+                        {
+                            throw new FormatException("Weekday flags must be between 0 and 127.");
+                        }
+                        break;
+                    }
+                case nameof(ExecSpecialDays):
+                    {
+                        CheckBits(text);
+                        break;
+                    }
+                case nameof(BeginDate):
+                    {
+                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        break;
+                    }
+                case nameof(EndDate):
+                    {
+                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        break;
+                    }
             }
             return null;
         }
@@ -114,11 +212,17 @@
     private static void CheckLogicalName(string text)
     {
         var parts = text.Split('.');
-        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _))) throw new FormatException("A logical name requires six byte values.");
+        if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
+        {
+            throw new FormatException("A logical name requires six byte values.");
+        }
     }
 
     private static void CheckBits(string text)
     {
-        if (string.IsNullOrEmpty(text) || text.Any(c => c != '0' && c != '1')) throw new FormatException("Enter a binary bit string.");
+        if (string.IsNullOrEmpty(text) || text.Any(c => c != '0' && c != '1'))
+        {
+            throw new FormatException("Enter a binary bit string.");
+        }
     }
 }

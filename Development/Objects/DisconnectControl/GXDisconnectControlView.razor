@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS disconnect control values and supported actions.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS
 @using Gurux.DLMS.Enums
@@ -54,8 +56,16 @@
 </section>
 
 @code {
-public Task DisconnectAsync() => InvokeMethodAsync(1, client => Target.RemoteDisconnect(client));
-public Task ReconnectAsync() => InvokeMethodAsync(2, client => Target.RemoteReconnect(client));
+    /// <summary>
+    /// Requests remote disconnection of the controlled output.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task DisconnectAsync() => InvokeMethodAsync(1, client => Target.RemoteDisconnect(client));
+    /// <summary>
+    /// Requests remote reconnection of the controlled output.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
+    public Task ReconnectAsync() => InvokeMethodAsync(2, client => Target.RemoteReconnect(client));
 }
 
 

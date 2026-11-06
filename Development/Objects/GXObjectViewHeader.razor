@@ -27,8 +27,11 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays object identity, edit status, and operation errors.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using Gurux.DLMS.Objects
+@using Gurux.DLMS.UI.Components.Help
 @using Gurux.UI.Components
 
 @if (Error is not null) { <p class="gx-object-error" role="alert">@Error</p> }
@@ -36,7 +39,13 @@
 {
     if (Edit.Error(index) is { } error) { <p class="gx-object-error" role="alert">Attribute @index: @error</p> }
 }
-@if (Title != string.Empty) { <h2>@(Title ?? Target.ObjectType + " Object")</h2> }
+<div class="gx-object-title">
+    @if (Title != string.Empty)
+    {
+        <h2>@(Title ?? Target.ObjectType + " Object")</h2>
+    }
+    <GXDLMSObjectHelp Target="Target" />
+</div>
 <div class="gx-object-identity">
     <div class="gx-field-row"><GXLabel>Description:</GXLabel><GXInputText Value="@Target.Description" readonly aria-label="Description" /></div>
     <div class="gx-field-row"><GXLabel>Logical Name:</GXLabel><GXInputText Value="@Target.LogicalName" readonly aria-label="Logical Name" /></div>
@@ -48,8 +57,28 @@
 }
 
 @code {
+    /// <summary>
+    /// DLMS object whose values or help are displayed.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObject Target { get; set; } = default!;
+    /// <summary>
+    /// Edit state containing pending attribute changes and validation errors.
+    /// </summary>
     [Parameter, EditorRequired] public GXDLMSObjectEditState Edit { get; set; } = default!;
-    [Parameter] public string? Error { get; set; }
-    [Parameter] public string? Title { get; set; }
+    /// <summary>
+    /// Validation or operation error displayed by the component.
+    /// </summary>
+    [Parameter]
+    public string? Error
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Heading displayed above the component content.
+    /// </summary>
+    [Parameter]
+    public string? Title
+    {
+        get; set;
+    }
 }

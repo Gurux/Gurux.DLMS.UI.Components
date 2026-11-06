@@ -31,8 +31,12 @@ using Gurux.DLMS.Objects;
 
 namespace Gurux.DLMS.UI.Components.Objects;
 
+/// <summary>Formats DLMS object attribute values for display and editing.</summary>
 public static class GXDLMSAttributeValues
 {
+    /// <summary>Gets formatted attribute values, including pending edits, excluding the logical name.</summary>
+    /// <param name="target">The object whose attribute values are formatted.</param>
+    /// <returns>The formatted values keyed by one-based attribute index.</returns>
     public static IReadOnlyDictionary<int, string?> Get(GXDLMSObject target)
     {
         var result = new Dictionary<int, string?>();
@@ -44,10 +48,15 @@ public static class GXDLMSAttributeValues
             {
                 value = pending;
                 if (target is GXDLMSRegister && index == 3 && pending is GXStructure scalerUnit && scalerUnit.Count == 2)
+                {
                     value = new GXStructure { Math.Pow(10, Convert.ToInt32(scalerUnit[0], CultureInfo.InvariantCulture)), scalerUnit[1] };
+                }
             }
             if (value is byte[] bytes && target.GetUIDataType(index) is var ui && ui is not DataType.None and not DataType.OctetString)
+            {
                 value = GXDLMSClient.ChangeType(bytes, ui);
+            }
+
             result[index] = value is null ? null : GXDLMSObjectEditState.Format(value);
         }
         return result;

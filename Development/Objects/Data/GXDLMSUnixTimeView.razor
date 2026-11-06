@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays a Unix-time data object as local date and time and supports writing the current time.</summary> *@
+
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.DLMS.Objects
@@ -47,42 +49,81 @@
 </section>
 
 @code {
+    /// <summary>
+    /// Standard logical name identifying the Unix-time data object.
+    /// </summary>
     public const string UnixTimeLogicalName = "0.0.1.1.0.255";
-    [Parameter] public EventCallback<GXDLMSWriteRequest> OnWriteRequested { get; set; }
+    /// <summary>
+    /// Callback receiving an attribute write request.
+    /// </summary>
+    [Parameter]
+    public EventCallback<GXDLMSWriteRequest> OnWriteRequested
+    {
+        get; set;
+    }
+    /// <summary>
+    /// Whether the current-time write action is offered.
+    /// </summary>
     [Parameter] public bool WriteEnabled { get; set; } = true;
     private GXDLMSData? _previousTarget;
     private bool _writing;
     private bool _written;
     private string? _writeError;
+    /// <summary>
+    /// Whether the current time can be written with the current access rights and callback.
+    /// </summary>
     public bool CanWriteCurrentTime => !_writing && !ReadOnly && WriteEnabled && OnWriteRequested.HasDelegate && GXDLMSObjectAccess.CanWrite(Target, 2, Association);
+    /// <summary>
+    /// Gets the draft local timestamp, or the current object value formatted with its UTC offset.
+    /// </summary>
     public string LocalTimeText => Edit.GetEditorText(nameof(GXDLMSUnixTimeView)) ?? FormatLocalTime(Edit.CurrentValue);
 
+    /// <inheritdoc />
     protected override void OnParametersSet()
     {
         base.OnParametersSet();
         if (!ReferenceEquals(_previousTarget, Target))
         {
-            _writeError = null; _written = false;
+            _writeError = null;
+            _written = false;
             _previousTarget = Target;
         }
     }
 
+    /// <summary>
+    /// Converts a Unix timestamp to local date and time with its UTC offset, or returns empty text for invalid values.
+    /// </summary>
+    /// <param name="value">Unix timestamp in seconds since the UTC epoch.</param>
+    /// <returns>The local timestamp and UTC offset, or empty text for an invalid timestamp.</returns>
     public static string FormatLocalTime(object? value)
     {
-        if (value is null) return string.Empty;
+        if (value is null)
+        {
+            return string.Empty;
+        }
         try
         {
             var date = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(value, CultureInfo.InvariantCulture)).ToLocalTime();
             return date.ToString("G", CultureInfo.CurrentCulture) + " " + date.ToString("zzz", CultureInfo.InvariantCulture);
         }
         catch (Exception ex) when (ex is FormatException or InvalidCastException or OverflowException or ArgumentOutOfRangeException)
-        { return string.Empty; }
+        {
+            return string.Empty;
+        }
     }
 
     private string? ValidateLocalTime(string text)
     {
-        if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date)) return "Enter a valid local date and time.";
-        try { _ = MeterEpoch(date.UtcDateTime); return null; } catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
+        if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date))
+        {
+            return "Enter a valid local date and time.";
+        }
+        try
+        {
+            _ = MeterEpoch(date.UtcDateTime);
+            return null;
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
     private object MeterEpoch(DateTime utc)
     {
@@ -91,25 +132,47 @@
         return GXDLMSConverter.ChangeType(epoch, type == DataType.None ? DataType.UInt32 : type, CultureInfo.InvariantCulture);
     }
 
+    /// <summary>
+    /// Parses local date and time and stages its Unix timestamp using the meter data type.
+    /// </summary>
+    /// <param name="text">Local date and time text to parse.</param>
     public void EditLocalTime(string text)
     {
-        if (!CanEditAttribute(2) || _writing) return;
+        if (!CanEditAttribute(2) || _writing)
+        {
+            return;
+        }
         Edit.SetEditorText(nameof(GXDLMSUnixTimeView), text);
-        _written = false; _writeError = null;
+        _written = false;
+        _writeError = null;
         if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date))
         {
             Edit.SetValueError("Enter a valid local date and time.");
             return;
         }
-        try { Edit.EditMeterValue(MeterEpoch(date.UtcDateTime)); }
+        try
+        {
+            Edit.EditMeterValue(MeterEpoch(date.UtcDateTime));
+        }
         catch (Exception ex) when (ex is OverflowException or FormatException or InvalidCastException or ArgumentException)
-        { Edit.SetValueError("The date is outside the meter's supported range."); }
+        {
+            Edit.SetValueError("The date is outside the meter's supported range.");
+        }
     }
 
+    /// <summary>
+    /// Writes the current UTC timestamp and accepts it after the write callback completes.
+    /// </summary>
+    /// <returns>A task representing completion of the operation.</returns>
     public async Task WriteCurrentTimeAsync()
     {
-        if (!CanWriteCurrentTime) return;
-        _writing = true; _written = false; _writeError = null;
+        if (!CanWriteCurrentTime)
+        {
+            return;
+        }
+        _writing = true;
+        _written = false;
+        _writeError = null;
         var target = Target;
         var session = Edit;
         try
@@ -118,11 +181,17 @@
             await OnWriteRequested.InvokeAsync(new GXDLMSWriteRequest(target, 2, value));
             // The callback is responsible for awaiting the meter acknowledgement.
             session.AcceptValue(value);
-            if (ReferenceEquals(Target, target)) _written = true;
+            if (ReferenceEquals(Target, target))
+            {
+                _written = true;
+            }
         }
         catch (Exception ex)
         {
-            if (ReferenceEquals(Target, target)) _writeError = $"Writing current time failed: {ex.Message}";
+            if (ReferenceEquals(Target, target))
+            {
+                _writeError = $"Writing current time failed: {ex.Message}";
+            }
         }
         finally { _writing = false; }
     }

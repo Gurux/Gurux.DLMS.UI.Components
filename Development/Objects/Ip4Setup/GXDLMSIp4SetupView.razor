@@ -27,6 +27,8 @@
 // --------------------------------------------------------------------------
 *@
 
+@* <summary>Displays and edits DLMS ip4 setup values and supported actions.</summary> *@
+
 @using Gurux.DLMS
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
@@ -89,7 +91,9 @@
     {
         var address = IPAddress.Parse(Address);
         if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork || address.GetAddressBytes()[0] < 224 || address.GetAddressBytes()[0] > 239)
+        {
             throw new FormatException("Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).");
+        }
         return address;
     }
     private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddMcIpAaddress(client, ParseAddress()));
