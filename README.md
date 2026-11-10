@@ -32,49 +32,38 @@ Add the component namespace to `_Imports.razor`:
 
 ## COSEM contextual help
 
-Register the COSEM `IGXHelpProvider` implementation and the shared help service:
+`builder.Services.AddGXDLMSHelp()` registers the shared COSEM provider and help
+service. Object views also work without registration, using the default native
+HTTP reader. A registered host help service is used by the object help dialog,
+so browser hosts can supply an authenticated server proxy instead of requiring
+cross-origin access to gurux.fi.
 
-```csharp
-using Gurux.DLMS.UI.Components.Help;
+`GXDLMSObjectHelpCatalog.GetRequest(target)` retains the selected class, COSEM
+version and current UI culture. `LoadAsync(request)` retrieves only the body of
+`https://www.gurux.fi/Gurux.DLMS.Objects.GXDLMS...`; navigation, login forms,
+headers, footers and scripts are removed. The article is returned as Markdown
+with headings, tables, images and absolute links. No local COSEM documentation
+is embedded in the package.
 
-builder.Services.AddGXDLMSHelp();
-```
+Finnish cultures (`fi` and `fi-FI`) use the `/fi/` article. If that translation
+is missing, the reader retries English. Other UI languages use English. The
+online article describes its own version variants; the reader does not filter
+out sections for a requested COSEM version. Successful articles are cached by
+address/language for one hour. Fetching is bounded by time and response size.
 
-`AddGXDLMSHelp` can be called more than once. It preserves an existing
-`GXHelpService` registration and adds `GXDLMSObjectHelpProvider` alongside other
-help providers. The provider returns Markdown for known COSEM topics and null for
-unrelated or unknown topics, allowing the service to try the next provider.
+`GXDLMSHelpArticleReader(HttpClient)` supports a host-owned transport for tests
+or application networking. Disable automatic redirects on that client. A host
+can register a `GXDLMSObjectHelpProvider` with a loader delegate; the help
+service and object dialog then use that transport. Do not fetch the website
+from browser WebAssembly: expose a server endpoint calling the same catalog
+and return its Markdown through the application's authenticated API.
 
-Object views register their class topic and current object version with
-`GXHelpContext`. A host's help presenter can inject
-`Gurux.UI.Components.Help.GXHelpService` and load the active object's help:
-
-```csharp
-var content = await helpService.GetHelpAsync(cancellationToken);
-```
-
-To request help for an object directly, without changing the active context:
-
-```csharp
-var request = GXDLMSObjectHelpCatalog.GetRequest(target);
-var content = await helpService.GetHelpAsync(request, cancellationToken);
-```
-
-The request includes a stable topic such as `cosem.GXDLMSPushSetup` and the
-object's COSEM version, formatted independently of the current culture. The
-provider returns only the attributes and descriptions applicable to that COSEM
-version. For example, Push setup versions 0, 1 and 2 show attributes 1-7, 1-10
-and 1-13 respectively, and version 2 gets the structured retry-delay description.
-An invalid or unsupported version returns null rather than showing another
-version's instructions. Requests without a version return the complete class help
-with all version alternatives and notes. Other requested languages fall back to
-English. Render the returned Markdown with
-`GXMarkdownView` in the host's presenter. The common `GXHelp` documentation-link
-control requires the host to connect provider content to its help presentation.
-
-The Help button in each object view uses the same provider directly and works
-without this registration. It loads on demand, preserves the dialog during value
-refreshes and closes it when the selected class or object version changes.
+Director uses the native reader. AMI's COSEM endpoint delegates to the same
+catalog; its browser provider only calls AMI. AMI release builds must update
+their pinned NuGet version after this library version has been published.
+Set AMI's `GuruxDlmsUiComponentsVersion` build property to that published
+version. AMI deliberately refuses builds using the old 1.0.2611.902 package
+when the sibling source checkout is unavailable or release mode is selected.
 
 ## License
 

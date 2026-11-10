@@ -1,3 +1,5 @@
+@using Microsoft.Extensions.DependencyInjection
+@inject IServiceProvider Services
 @*
 // --------------------------------------------------------------------------
 // Gurux Ltd
@@ -97,7 +99,10 @@
         _loading = loading;
         try
         {
-            GXHelpContent? content = await Provider.GetHelpAsync(_request, loading.Token);
+            var help = Services.GetService<GXHelpService>();
+            GXHelpContent? content = help == null
+                ? await Provider.GetHelpAsync(_request, loading.Token)
+                : await help.GetHelpAsync(_request, loading.Token);
             string? markdown = content?.Value;
             if (!loading.IsCancellationRequested)
             {
@@ -111,7 +116,7 @@
         catch (OperationCanceledException) when (loading.IsCancellationRequested)
         {
         }
-        catch (Exception error) when (error is IOException or InvalidOperationException)
+        catch (Exception error) when (error is IOException or InvalidOperationException or HttpRequestException or OperationCanceledException)
         {
             if (!loading.IsCancellationRequested)
             {

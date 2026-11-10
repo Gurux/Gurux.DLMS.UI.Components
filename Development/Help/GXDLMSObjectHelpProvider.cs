@@ -31,19 +31,33 @@ using Gurux.UI.Components.Help;
 
 namespace Gurux.DLMS.UI.Components.Help;
 
-/// <summary>Provides the embedded English COSEM class documentation through the shared help contract.</summary>
-/// <remarks>Filters by the requested COSEM version; requests without a version include all variants. Cultures fall back to English.</remarks>
+/// <summary>Provides online Gurux COSEM articles without the surrounding website.</summary>
 public sealed class GXDLMSObjectHelpProvider : IGXHelpProvider
 {
-    /// <summary>Loads Markdown for an owned COSEM topic, or returns null for another topic.</summary>
-    /// <param name="request">The class topic and optional object version and culture.</param>
-    /// <param name="cancellationToken">Token used to cancel loading, including a cached lookup.</param>
-    /// <returns>English help for the requested version, or null for an unknown topic or unsupported version.</returns>
+    private readonly Func<GXHelpRequest, CancellationToken, Task<string?>> _load;
+
+    /// <summary>Uses the shared online article reader and its language-specific cache.</summary>
+    public GXDLMSObjectHelpProvider() : this(GXDLMSObjectHelpCatalog.LoadAsync)
+    {
+    }
+
+    /// <summary>Uses a host-owned loader, for example an authenticated server proxy in a browser application.</summary>
+    public GXDLMSObjectHelpProvider(Func<GXHelpRequest, CancellationToken, Task<string?>> load)
+    {
+        _load = load ?? throw new ArgumentNullException(nameof(load));
+    }
+
+    /// <inheritdoc />
     public async Task<GXHelpContent?> GetHelpAsync(GXHelpRequest request, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(request);
-        string? markdown = await GXDLMSObjectHelpCatalog.LoadAsync(request, cancellationToken).ConfigureAwait(false);
         cancellationToken.ThrowIfCancellationRequested();
-        return markdown is null ? null : new GXHelpContent(HelpKind.Markdown, markdown);
+        if (GXDLMSObjectHelpCatalog.GetAddress(request) == null)
+        {
+            return null;
+        }
+        var markdown = await _load(request, cancellationToken).ConfigureAwait(false);
+        cancellationToken.ThrowIfCancellationRequested();
+        return markdown == null ? null : new GXHelpContent(HelpKind.Markdown, markdown);
     }
 }
