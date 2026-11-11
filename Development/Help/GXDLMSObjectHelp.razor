@@ -35,17 +35,18 @@
 @using Gurux.DLMS.Objects
 @using Gurux.UI.Components
 @using Gurux.UI.Components.Help
+@using HelpResources = Gurux.DLMS.UI.Components.Properties.Resources
 @implements IDisposable
 
 <CascadingValue TValue="string" Name="@GXHelpContext.ScopeName" Value="@((string)null!)" IsFixed="true">
     <GXHelpContext Topic="@_request.Topic" Version="@_request.Version" Culture="@_request.Culture" />
 </CascadingValue>
 <div class="gx-object-help">
-<button type="button" class="gx-object-help-button" title="Help for this COSEM class" @onclick="OpenAsync">Help</button>
+<button type="button" class="gx-object-help-button" title="@HelpResources.HelpForCosemClass" @onclick="OpenAsync">@HelpResources.Help</button>
 @if (_visible)
 {
-    <GXDialog Title="COSEM object help" OkButtonTitle="" CancelButtonTitle="Close" Save="false"
-              ManageFocus="true" Resizable="true" OnCancel="Close" class="gx-object-help-dialog" aria-label="COSEM object help">
+    <GXDialog Title="@HelpResources.CosemObjectHelp" OkButtonTitle="" CancelButtonTitle="@HelpResources.Close" Save="false"
+              ManageFocus="true" Resizable="true" OnCancel="Close" class="gx-object-help-dialog" aria-label="@HelpResources.CosemObjectHelp">
         <div class="gx-object-help-content">
             @if (_markdown is not null)
             {
@@ -57,7 +58,7 @@
             }
             else
             {
-                <p role="status">Loading help...</p>
+                <p role="status">@HelpResources.LoadingHelp</p>
             }
         </div>
     </GXDialog>
@@ -109,7 +110,7 @@
                 _markdown = markdown;
                 if (markdown is null)
                 {
-                    _error = "Help is not available for this COSEM class and version.";
+                    _error = HelpResources.CosemHelpUnavailable;
                 }
             }
         }
@@ -120,7 +121,7 @@
         {
             if (!loading.IsCancellationRequested)
             {
-                _error = "Unable to load the COSEM object help.";
+                _error = HelpResources.CosemHelpLoadFailed;
             }
         }
         finally

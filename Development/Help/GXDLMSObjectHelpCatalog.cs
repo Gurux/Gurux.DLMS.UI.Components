@@ -76,12 +76,12 @@ public static class GXDLMSObjectHelpCatalog
         return new Uri("https://www.gurux.fi/" + (finnish ? "fi/" : "") + "Gurux.DLMS.Objects." + request.Topic[6..]);
     }
 
-    /// <summary>Loads the article body without website navigation or executable HTML.</summary>
-    public static Task<string?> LoadAsync(string topic, CancellationToken cancellationToken = default)
-        => LoadAsync(new GXHelpRequest(topic), cancellationToken);
+    /// <summary>Loads HTML for browser article extraction and sanitization.</summary>
+    public static Task<string?> LoadHtmlAsync(string topic, CancellationToken cancellationToken = default)
+        => LoadHtmlAsync(new GXHelpRequest(topic), cancellationToken);
 
     /// <summary>Loads localized online help. Official articles describe their own version variants.</summary>
     /// <remarks>Version remains context metadata; the online article is not filtered by object version.</remarks>
-    public static Task<string?> LoadAsync(GXHelpRequest request, CancellationToken cancellationToken = default)
-        => Reader.Value.LoadAsync(request, cancellationToken);
+    public static Task<string?> LoadHtmlAsync(GXHelpRequest request, CancellationToken cancellationToken = default)
+        => Reader.Value.LoadHtmlAsync(request, cancellationToken);
 }

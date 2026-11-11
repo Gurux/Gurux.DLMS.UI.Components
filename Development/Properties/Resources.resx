@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms</value></resheader>
+  <data name="Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Close" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="CosemObjectHelp" xml:space="preserve">
+    <value>COSEM object help</value>
+  </data>
+  <data name="HelpForCosemClass" xml:space="preserve">
+    <value>Help for this COSEM class</value>
+  </data>
+  <data name="LoadingHelp" xml:space="preserve">
+    <value>Loading help...</value>
+  </data>
+  <data name="CosemHelpUnavailable" xml:space="preserve">
+    <value>Help is not available for this COSEM class and version.</value>
+  </data>
+  <data name="CosemHelpLoadFailed" xml:space="preserve">
+    <value>Unable to load the COSEM object help.</value>
+  </data>
+</root>

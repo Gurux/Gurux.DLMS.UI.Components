@@ -34,14 +34,16 @@ namespace Gurux.DLMS.UI.Components.Help;
 /// <summary>Provides online Gurux COSEM articles without the surrounding website.</summary>
 public sealed class GXDLMSObjectHelpProvider : IGXHelpProvider
 {
+    private readonly bool _html;
     private readonly Func<GXHelpRequest, CancellationToken, Task<string?>> _load;
 
     /// <summary>Uses the shared online article reader and its language-specific cache.</summary>
-    public GXDLMSObjectHelpProvider() : this(GXDLMSObjectHelpCatalog.LoadAsync)
+    public GXDLMSObjectHelpProvider() : this(GXDLMSObjectHelpCatalog.LoadHtmlAsync)
     {
+        _html = true;
     }
 
-    /// <summary>Uses a host-owned loader, for example an authenticated server proxy in a browser application.</summary>
+    /// <summary>Uses a host-owned Markdown loader, without HTML conversion.</summary>
     public GXDLMSObjectHelpProvider(Func<GXHelpRequest, CancellationToken, Task<string?>> load)
     {
         _load = load ?? throw new ArgumentNullException(nameof(load));
@@ -56,8 +58,17 @@ public sealed class GXDLMSObjectHelpProvider : IGXHelpProvider
         {
             return null;
         }
-        var markdown = await _load(request, cancellationToken).ConfigureAwait(false);
+        var html = await _load(request, cancellationToken).ConfigureAwait(false);
         cancellationToken.ThrowIfCancellationRequested();
-        return markdown == null ? null : new GXHelpContent(HelpKind.Markdown, markdown);
+        if (!_html)
+        {
+            // Existing host delegates supply Markdown directly; no HTML conversion is involved.
+            return html == null ? null : new GXHelpContent(HelpKind.Markdown, html);
+        }
+        return html == null ? null : new GXHelpContent(HelpKind.Html, html)
+        {
+            BaseAddress = GXDLMSObjectHelpCatalog.GetAddress(request)!.AbsoluteUri,
+            ArticleSelector = "article.node--type-book .field--name-body, article .field--name-body"
+        };
     }
 }
