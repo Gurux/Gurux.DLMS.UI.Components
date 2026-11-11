@@ -31,7 +31,7 @@
         <PackageReference Include="Gurux.DLMS" Version="9.0.2609.2201" />
         <PackageReference Include="Gurux.Net" Version="8.4.2604.201" />
         <PackageReference Include="Gurux.Serial" Version="8.4.2503.603" />
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1101" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1102" />
         <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.14" />
     </ItemGroup>
 
