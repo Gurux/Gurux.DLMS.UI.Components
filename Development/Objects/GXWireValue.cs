@@ -91,7 +91,7 @@ internal static class GXWireValue
 
         if (original is GXDate)
         {
-            return new GXDate(text, CultureInfo.InvariantCulture);
+            return ParseDate(text);
         }
 
         if (original is GXDateTime)
@@ -111,6 +111,10 @@ internal static class GXWireValue
 
         return text;
     }
+    public static GXDate ParseDate(string text)
+        => DateTime.TryParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)
+            ? new GXDate(date) : new GXDate(text, CultureInfo.InvariantCulture);
+
     public static string Editable(object? value) => value is GXBitString bits ? bits.ToString()
         : value is GXEnum e ? Convert.ToByte(e, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Display(value);
 

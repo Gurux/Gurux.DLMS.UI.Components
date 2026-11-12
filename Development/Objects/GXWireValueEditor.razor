@@ -177,7 +177,7 @@ else
         : InputKind is "text" or "ascii" or "password" && Value is byte[] text ? System.Text.Encoding.UTF8.GetString(text)
         : InputKind == "hex" && Value is byte[] hex ? GXDLMSTranslator.ToHex(hex)
         : InputKind == "datetime" && Value is byte[] date ? GXDLMSObjectEditState.Format(GXDLMSClient.ChangeType(date, date.Length == 4 ? Gurux.DLMS.Enums.DataType.Time : date.Length == 5 ? Gurux.DLMS.Enums.DataType.Date : Gurux.DLMS.Enums.DataType.DateTime, false)) : GXWireValue.Editable(Value));
-    private string Kind => InputKind ?? (Value is bool ? "bool" : Value is byte[] bytes && bytes.Length != 6 ? "hex" : Value is GXBitString ? "text" : Value is not (string or byte[] or GXDateTime) ? "number" : "text");
+    private string Kind => Value is GXDateTime ? "datetime" : InputKind ?? (Value is bool ? "bool" : Value is byte[] bytes && bytes.Length != 6 ? "hex" : Value is GXBitString ? "text" : Value is not (string or byte[]) ? "number" : "text");
     /// <inheritdoc />
     protected override void OnParametersSet()
     {
@@ -222,7 +222,7 @@ else
             else if (InputKind == "datetime" && Value is byte[] date)
             {
                 GXDateTime parsed = date.Length == 4 ? new GXTime(text, System.Globalization.CultureInfo.InvariantCulture)
-                    : date.Length == 5 ? new GXDate(text, System.Globalization.CultureInfo.InvariantCulture) : new GXDateTime(text, System.Globalization.CultureInfo.InvariantCulture);
+                    : date.Length == 5 ? GXWireValue.ParseDate(text) : new GXDateTime(text, System.Globalization.CultureInfo.InvariantCulture);
                 value = GXDLMSTranslator.HexToBytes(parsed.ToHex(false, false));
             }
             else

@@ -46,12 +46,12 @@
     <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SetEnabledAsync">Apply enable / disable</GXButton>
     <GXValueField Label="Script logical name" Value="@ScriptLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ScriptLogicalName = value" Validate="text => ValidateParameter(nameof(ScriptLogicalName), text)" />
     <GXValueField Label="Script selector" Value="@ScriptSelector" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ScriptSelector = value" Validate="text => ValidateParameter(nameof(ScriptSelector), text)" />
-    <GXValueField Label="Switch time (HH:mm:ss)" Value="@SwitchTime" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => SwitchTime = value" Validate="text => ValidateParameter(nameof(SwitchTime), text)" />
+    <GXValueField Label="Switch time (HH:mm:ss)" Value="@SwitchTime" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="time" OnCommit="value => SwitchTime = value" Validate="text => ValidateParameter(nameof(SwitchTime), text)" />
     <GXValueField Label="Validity window" Value="@ValidityWindow" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ValidityWindow = value" Validate="text => ValidateParameter(nameof(ValidityWindow), text)" />
     <GXValueField Label="Weekday flags (0–127)" Value="@ExecWeekdays" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ExecWeekdays = value" Validate="text => ValidateParameter(nameof(ExecWeekdays), text)" />
     <GXValueField Label="Special day bit string" Value="@ExecSpecialDays" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ExecSpecialDays = value" Validate="text => ValidateParameter(nameof(ExecSpecialDays), text)" />
-    <GXValueField Label="Begin date (yyyy-MM-dd)" Value="@BeginDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => BeginDate = value" Validate="text => ValidateParameter(nameof(BeginDate), text)" />
-    <GXValueField Label="End date (yyyy-MM-dd)" Value="@EndDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => EndDate = value" Validate="text => ValidateParameter(nameof(EndDate), text)" />
+    <GXValueField Label="Begin date (yyyy-MM-dd)" Value="@BeginDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="date" OnCommit="value => BeginDate = value" Validate="text => ValidateParameter(nameof(BeginDate), text)" />
+    <GXValueField Label="End date (yyyy-MM-dd)" Value="@EndDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="date" OnCommit="value => EndDate = value" Validate="text => ValidateParameter(nameof(EndDate), text)" />
     <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="InsertAsync">Insert entry</GXButton>
     <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="DeleteAsync">Delete entry</GXButton>
     </fieldset>
@@ -121,13 +121,14 @@
         entry.Enable = EntryEnabled;
         entry.Script = new GXDLMSScriptTable(ScriptLogicalName);
         entry.ScriptSelector = ushort.Parse(ScriptSelector, CultureInfo.InvariantCulture);
-        entry.SwitchTime = new GXTime(DateTime.ParseExact(SwitchTime, "HH:mm:ss", CultureInfo.InvariantCulture));
+        entry.SwitchTime = new GXTime(SwitchTime, CultureInfo.InvariantCulture);
         entry.ValidityWindow = ushort.Parse(ValidityWindow, CultureInfo.InvariantCulture);
         entry.ExecWeekdays = (Weekdays)weekdays;
         entry.ExecSpecDays = ExecSpecialDays;
-        entry.BeginDate = new GXDate(DateTime.ParseExact(BeginDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
-        entry.EndDate = new GXDate(DateTime.ParseExact(EndDate, "yyyy-MM-dd", CultureInfo.InvariantCulture));
-        if (entry.BeginDate.Value > entry.EndDate.Value)
+        entry.BeginDate = GXWireValue.ParseDate(BeginDate);
+        entry.EndDate = GXWireValue.ParseDate(EndDate);
+        var dateParts = DateTimeSkips.Year | DateTimeSkips.Month | DateTimeSkips.Day;
+        if ((entry.BeginDate.Skip & dateParts) == 0 && (entry.EndDate.Skip & dateParts) == 0 && entry.BeginDate.Value > entry.EndDate.Value)
         {
             throw new FormatException("Begin date must not follow end date.");
         }
@@ -172,7 +173,7 @@
                     }
                 case nameof(SwitchTime):
                     {
-                        DateTime.ParseExact(text, "HH:mm:ss", CultureInfo.InvariantCulture);
+                        _ = new GXTime(text, CultureInfo.InvariantCulture);
                         break;
                     }
                 case nameof(ValidityWindow):
@@ -195,12 +196,12 @@
                     }
                 case nameof(BeginDate):
                     {
-                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        _ = GXWireValue.ParseDate(text);
                         break;
                     }
                 case nameof(EndDate):
                     {
-                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        _ = GXWireValue.ParseDate(text);
                         break;
                     }
             }

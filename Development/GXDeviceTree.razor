@@ -257,6 +257,12 @@
     /// </summary>
     [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
 
+    /// <summary>Optional atomic device/object selection callback, used instead of the separate selection callbacks.</summary>
+    [Parameter] public EventCallback<(TDevice Device, TObject Object)> OnNavigateObject { get; set; }
+
+    /// <summary>Optional atomic device/group selection callback, used instead of the separate selection callbacks.</summary>
+    [Parameter] public EventCallback<(TDevice Device, string ObjectType)> OnNavigateGroup { get; set; }
+
     /// <summary>
     /// Selects the device and notifies the parent of the chosen object-type group.
     /// </summary>
@@ -265,6 +271,11 @@
     /// <param name="device">Device containing the group.</param>
     public async Task SelectGroupAsync(TDevice device, string objectType)
     {
+        if (OnNavigateGroup.HasDelegate)
+        {
+            await OnNavigateGroup.InvokeAsync((device, objectType));
+            return;
+        }
         await OnSelectDevice.InvokeAsync(device);
         await OnSelectGroup.InvokeAsync((device, objectType));
     }
@@ -277,6 +288,11 @@
     /// <param name="item">Object to select.</param>
     public async Task SelectObjectAsync(TDevice device, TObject item)
     {
+        if (OnNavigateObject.HasDelegate)
+        {
+            await OnNavigateObject.InvokeAsync((device, item));
+            return;
+        }
         await OnSelectDevice.InvokeAsync(device);
         await OnSelectObject.InvokeAsync(item);
     }

@@ -80,9 +80,9 @@ else if (InputKind == "number")
 {
     <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" inputmode="decimal" />
 }
-else if (InputKind == "datetime" && DateValue.HasValue)
+else if (InputKind is "datetime" or "date" or "time")
 {
-    <GXDateTimeSelector TItem="DateTime?" id="@Id" @bind-Value="DateValue" @oninput="e => Change(e.Value?.ToString())" Save="false" Disabled="Disabled" aria-label="@Label" step="1" />
+    <GXDateTimeSelector TItem="string" id="@Id" Value="@Value" ValueChanged="Change" Save="false" Disabled="Disabled" aria-label="@Label" />
 }
 else
 {
@@ -135,17 +135,6 @@ else
     private long Flags => long.TryParse(Value, out var value) ? value : EnumType is not null && Enum.TryParse(EnumType, Value, out var parsed) ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture) : 0;
     private string EnumValue => EnumType?.IsEnum == true && Enum.TryParse(EnumType, Value, out var parsed)
         ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Value;
-    private DateTime? DateValue
-    {
-        get
-        {
-            // Gurux's UTC meter format can include both the offset and Z.
-            // Keep meter wall time instead of converting to the browser zone.
-            var text = System.Text.RegularExpressions.Regex.IsMatch(Value, @"[+-]\d{2}:\d{2}Z$") ? Value[..^1] : Value;
-            return DateTimeOffset.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.None, out var value) ? value.DateTime : null;
-        }
-        set => _ = Change(value?.ToString("yyyy-MM-ddTHH:mm:ss", CultureInfo.InvariantCulture) ?? string.Empty);
-    }
     private System.Threading.Tasks.Task Change(string? value) => Disabled ? System.Threading.Tasks.Task.CompletedTask : ValueChanged.InvokeAsync(value ?? string.Empty);
     private System.Threading.Tasks.Task ChangeFlag(long flag, bool enabled) => Change((flag == 0 ? 0 : enabled ? Flags | flag : Flags & ~flag).ToString(CultureInfo.InvariantCulture));
 }

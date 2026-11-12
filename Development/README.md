@@ -21,24 +21,18 @@ so browser hosts can supply an authenticated server proxy instead of requiring
 cross-origin access to gurux.fi.
 
 `GXDLMSObjectHelpCatalog.GetRequest(target)` retains the selected class, COSEM
-version and current UI culture. `LoadAsync(request)` retrieves only the body of
-`https://www.gurux.fi/Gurux.DLMS.Objects.GXDLMS...`; navigation, login forms,
-headers, footers and scripts are removed. The article is returned as Markdown
-with headings, tables, images and absolute links. No local COSEM documentation
-is embedded in the package.
+version and current UI culture. `LoadHtmlAsync(request)` retrieves the official
+HTML document. `GXDLMSObjectHelpProvider` returns `HelpKind.Html` with the
+original address and article selector. `GXHelpContentView` extracts and
+sanitizes the article in the browser and displays it in a sandboxed iframe.
+No HTML-to-Markdown conversion or AngleSharp dependency is required.
+The existing host-loader delegate constructor still accepts Markdown directly.
 
-Finnish cultures (`fi` and `fi-FI`) use the `/fi/` article. If that translation
-is missing, the reader retries English. Other UI languages use English. The
-online article describes its own version variants; the reader does not filter
-out sections for a requested COSEM version. Successful articles are cached by
-address/language for one hour. Fetching is bounded by time and response size.
-
-`GXDLMSHelpArticleReader(HttpClient)` supports a host-owned transport for tests
-or application networking. Disable automatic redirects on that client. A host
-can register a `GXDLMSObjectHelpProvider` with a loader delegate; the help
-service and object dialog then use that transport. Do not fetch the website
-from browser WebAssembly: expose a server endpoint calling the same catalog
-and return its Markdown through the application's authenticated API.
+Finnish cultures use the /fi/ article; HTTP 404 falls back to English.
+Other cultures use English. Successful documents are cached for one hour,
+with request time and response size limits. Configure supplied HTTP clients
+to disable automatic redirects. Browser hosts should register a same-origin
+proxy rather than request gurux.fi directly from WebAssembly.
 
 Director uses the native reader. AMI's COSEM endpoint delegates to the same
 catalog; its browser provider only calls AMI. AMI release builds must update

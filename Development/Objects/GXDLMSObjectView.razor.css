@@ -38,7 +38,7 @@ SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
 .gx-object-host ::deep .gx-network-view > .gx-object-fields { flex: 1 0 auto; }
 .gx-object-host ::deep label { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem; margin: .4rem 0; }
 .gx-object-host ::deep input:not([type=checkbox]), .gx-object-host ::deep select, .gx-object-host ::deep textarea { max-width: 100%; min-width: 0; box-sizing: border-box; font: inherit; }
-.gx-object-host ::deep button { margin: .25rem; padding: .35rem .7rem; }
+.gx-object-host ::deep button:not(.btn-close) { margin: .25rem; padding: .35rem .7rem; }
 .gx-object-host ::deep pre { white-space: pre-wrap; overflow-wrap: anywhere; }
 .gx-object-host ::deep [role=alert] { color: var(--gx-error-color, #b42318); overflow-wrap: anywhere; }
 .gx-object-host ::deep dd { overflow-wrap: anywhere; }

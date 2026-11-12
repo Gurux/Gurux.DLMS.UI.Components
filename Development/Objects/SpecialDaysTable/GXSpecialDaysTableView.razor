@@ -42,7 +42,7 @@
     <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "datetime", "number" })" Label="Entries" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Index", "Special Day Date", "Day ID" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, (byte)1 })" />
     <fieldset><legend>Methods</legend>
     <GXValueField Label="Entry index" Value="@EntryIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => EntryIndex = value" Validate="text => ValidateParameter(nameof(EntryIndex), text)" />
-    <GXValueField Label="Date (yyyy-MM-dd)" Value="@EntryDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="text" OnCommit="value => EntryDate = value" Validate="text => ValidateParameter(nameof(EntryDate), text)" />
+    <GXValueField Label="Date (yyyy-MM-dd)" Value="@EntryDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="date" OnCommit="value => EntryDate = value" Validate="text => ValidateParameter(nameof(EntryDate), text)" />
     <GXValueField Label="Day ID (0–255)" Value="@DayId" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => DayId = value" Validate="text => ValidateParameter(nameof(DayId), text)" />
     <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">Insert day</GXButton>
     <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete day</GXButton>
@@ -69,7 +69,7 @@
     public Task InsertAsync() => InvokeMethodAsync(1, client => Target.Insert(client, new GXDLMSSpecialDay
     {
         Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture),
-        Date = new GXDate(DateTime.ParseExact(EntryDate, "yyyy-MM-dd", CultureInfo.InvariantCulture)),
+        Date = GXWireValue.ParseDate(EntryDate),
         DayId = byte.Parse(DayId, CultureInfo.InvariantCulture)
     }));
     /// <summary>
@@ -91,7 +91,7 @@
                     }
                 case nameof(EntryDate):
                     {
-                        DateTime.ParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                        _ = GXWireValue.ParseDate(text);
                         break;
                     }
                 case nameof(DayId):

@@ -284,7 +284,7 @@ public partial class GXAttributeField : IDisposable
         Draft = value;
         await AcceptAsync();
     }
-    private string Kind => InputKind ?? (CurrentValue is bool ? "bool" : Edit.IsXmlAttribute(Index) && Indices.Length == 0 ? "textarea" : "text");
+    private string Kind => CurrentValue is GXDateTime ? "datetime" : InputKind ?? (CurrentValue is bool ? "bool" : Edit.IsXmlAttribute(Index) && Indices.Length == 0 ? "textarea" : "text");
     /// <inheritdoc />
     protected override void OnParametersSet()
     {
