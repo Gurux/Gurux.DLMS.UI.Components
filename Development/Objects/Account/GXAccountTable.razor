@@ -43,29 +43,29 @@
         </GXTable>
     </div>
     <div class="account-table-actions">
-        <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginAdd">Add...</GXButton>
-        <GXButton type="button" Disabled="@(!Enabled || !HasSelection)" OnClick="BeginEdit">Edit...</GXButton>
-        <GXButton type="button" Disabled="@(!Enabled || !HasSelection)" OnClick="BeginRemove">Remove</GXButton>
+        <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginAdd">@Properties.Resources.Add</GXButton>
+        <GXButton type="button" Disabled="@(!Enabled || !HasSelection)" OnClick="BeginEdit">@Properties.Resources.Edit</GXButton>
+        <GXButton type="button" Disabled="@(!Enabled || !HasSelection)" OnClick="BeginRemove">@Properties.Resources.Remove</GXButton>
     </div>
     @if (Editing)
     {
-        <GXDialog Id="@(_referenceListId + "-dialog")" Title="@($"{(_editRow < 0 ? "Add" : "Edit")} {Title}")" Save="false" ManageFocus="true"
+        <GXDialog Id="@(_referenceListId + "-dialog")" Title="@($"{(_editRow < 0 ? Properties.Resources.Add2 : Properties.Resources.Edit2)} {Title}")" Save="false" ManageFocus="true"
                   OkButtonTitle="" OnOk="SaveRow" OnCancel="CancelEdit" class="account-editor-dialog" aria-modal="true"
                   aria-labelledby="@(_referenceListId + "-dialog-title")">
             <ChildContent>
-            @if (_removing) { <p>Remove the selected @Title row?</p> }
+            @if (_removing) { <p>@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.RemoveTheSelected0Row, Title))</p> }
             else {
             <div class="account-row-editor">
             @if (Error is not null) { <p role="alert">@Error</p> }
-            <label class="account-dialog-field"><span>@(Index <= 10 ? "Name" : "Credit Reference")</span>
-                <GXInputText aria-label="@(Index <= 10 ? "Name" : "Credit Reference")" list="@_referenceListId" disabled="@(!Enabled)" @bind-Value="Reference" />
+            <label class="account-dialog-field"><span>@(Index <= 10 ? Properties.Resources.Name : Properties.Resources.CreditReference)</span>
+                <GXInputText aria-label="@(Index <= 10 ? Properties.Resources.Name : Properties.Resources.CreditReference)" list="@_referenceListId" disabled="@(!Enabled)" @bind-Value="Reference" />
             </label>
             <datalist id="@_referenceListId">@foreach (var name in ReferenceOptions) { <option value="@name" /> }</datalist>
             @if (Index == 11)
             {
-                <label class="account-dialog-field"><span>Charge Reference</span><GXInputText aria-label="Charge Reference" list="@_chargeListId" disabled="@(!Enabled)" @bind-Value="ChargeReference" /></label>
+                <label class="account-dialog-field"><span>@Properties.Resources.ChargeReference</span><GXInputText aria-label="@Properties.Resources.ChargeReference" list="@_chargeListId" disabled="@(!Enabled)" @bind-Value="ChargeReference" /></label>
                 <datalist id="@_chargeListId">@foreach (var name in ChargeOptions) { <option value="@name" /> }</datalist>
-                <fieldset><legend>Configuration</legend>
+                <fieldset><legend>@Properties.Resources.Configuration</legend>
                     @foreach (var flag in Enum.GetValues<CreditCollectionConfiguration>().Where(flag => flag != 0))
                     {
                         <div class="account-configuration-switch">
@@ -79,13 +79,13 @@
             }
             @if (Index == 12)
             {
-                <label class="account-dialog-field"><span>Token proportion</span><GXInputText aria-label="Token proportion" inputmode="numeric" disabled="@(!Enabled)" @bind-Value="TokenProportionText" /></label>
+                <label class="account-dialog-field"><span>@Properties.Resources.TokenProportion</span><GXInputText aria-label="@Properties.Resources.TokenProportion" inputmode="numeric" disabled="@(!Enabled)" @bind-Value="TokenProportionText" /></label>
             }
             </div>
             }
             </ChildContent>
             <FooterContent>
-                <GXButton type="button" Disabled="@(!Enabled)" OnClick="SaveRow">OK</GXButton>
+                <GXButton type="button" Disabled="@(!Enabled)" OnClick="SaveRow">@Properties.Resources.OK</GXButton>
             </FooterContent>
         </GXDialog>
     }

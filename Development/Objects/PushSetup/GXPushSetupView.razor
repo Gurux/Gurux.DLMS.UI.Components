@@ -38,105 +38,111 @@
 @inherits GXDLMSObjectViewBase<GXDLMSPushSetup>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Push Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.PushObject" />
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="General">
-<fieldset><legend>Send destination and method</legend>
-<GXValueField Label="Service:" Value="@SelectedService.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(ServiceType)" Validate="@(value => Enum.TryParse<ServiceType>(value, out var service) ? ValidateDestination(service, DestinationText, SelectedMessage) : "Choose a supported service.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedService = Enum.Parse<ServiceType>(value); } })" />
-<GXValueField Label="Destination:" Value="@DestinationText" Enabled="CanEditAttribute(3)" Validate="@(value => ValidateDestination(SelectedService, value, SelectedMessage))" OnCommit="@((string value) => { if (CanEditAttribute(3)) { DestinationText = value; } })" />
-<GXValueField Label="Message:" Value="@SelectedMessage.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(MessageType)" Validate="@(value => Enum.TryParse<MessageType>(value, out var message) ? ValidateDestination(SelectedService, DestinationText, message) : "Choose a supported message.")" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedMessage = Enum.Parse<MessageType>(value); } })" />
+<GXTabPage Text="@Properties.Resources.General">
+<fieldset><legend>@Properties.Resources.SendDestinationAndMethod</legend>
+<GXValueField Label="@Properties.Resources.ServiceLabel" Value="@SelectedService.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(ServiceType)" Validate="@(value => Enum.TryParse<ServiceType>(value, out var service) ? ValidateDestination(service, DestinationText, SelectedMessage) : Properties.Resources.ChooseASupportedService)" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedService = Enum.Parse<ServiceType>(value); } })" />
+<GXValueField Label="@Properties.Resources.DestinationLabel" Value="@DestinationText" Enabled="CanEditAttribute(3)" Validate="@(value => ValidateDestination(SelectedService, value, SelectedMessage))" OnCommit="@((string value) => { if (CanEditAttribute(3)) { DestinationText = value; } })" />
+<GXValueField Label="@Properties.Resources.MessageLabel" Value="@SelectedMessage.ToString()" Enabled="CanEditAttribute(3)" EnumType="typeof(MessageType)" Validate="@(value => Enum.TryParse<MessageType>(value, out var message) ? ValidateDestination(SelectedService, DestinationText, message) : Properties.Resources.ChooseASupportedMessage)" OnCommit="@((string value) => { if (CanEditAttribute(3)) { SelectedMessage = Enum.Parse<MessageType>(value); } })" />
 </fieldset>
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
 {
-<GXAttributeField Edit="Edit" Index="5" Label="Randomisation:" Enabled="CanEditAttribute(5)" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.RandomisationLabel" Enabled="CanEditAttribute(5)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
 {
-<GXAttributeField Edit="Edit" Index="6" Label="Number of retries:" Enabled="CanEditAttribute(6)" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.NumberOfRetriesLabel" Enabled="CanEditAttribute(6)" />
 }
 @if (Target.Version < 2)
 {
-<GXAttributeField Edit="Edit" Index="7" Label="Repetition delay:" Enabled="CanEditAttribute(7)" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.RepetitionDelayLabel2" Enabled="CanEditAttribute(7)" />
 }
 else
 {
-<fieldset><legend>Repetition delay:</legend>
-<GXAttributeField Edit="Edit" Index="7" Label="Min:" Enabled="CanEditAttribute(7)" Part="0" />
-<GXAttributeField Edit="Edit" Index="7" Label="Exponent:" Enabled="CanEditAttribute(7)" Part="1" />
-<GXAttributeField Edit="Edit" Index="7" Label="Max:" Enabled="CanEditAttribute(7)" Part="2" />
+<fieldset><legend>@Properties.Resources.RepetitionDelayLabel2</legend>
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.MinLabel" Enabled="CanEditAttribute(7)" Part="0" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.ExponentLabel" Enabled="CanEditAttribute(7)" Part="1" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.MaxLabel" Enabled="CanEditAttribute(7)" Part="2" />
 </fieldset>
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
 {
-<GXAttributeField Edit="Edit" Index="8" Label="Port reference:" Enabled="CanEditAttribute(8)" />
+<GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.PortReferenceLabel" Enabled="CanEditAttribute(8)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
 {
-<GXAttributeField Edit="Edit" Index="9" Label="Push client SAP:" Enabled="CanEditAttribute(9)" />
+<GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.PushClientSAPLabel" Enabled="CanEditAttribute(9)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
 {
-<GXAttributeField Edit="Edit" Index="10" Label="Push protection parameters:" Enabled="CanEditAttribute(10)" Columns="@(new[] { "Protection Type", "Transaction ID", "Originator System Title", "Recipient System Title", "Other Information", "Key Info" })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
+<GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.PushProtectionParametersLabel" Enabled="CanEditAttribute(10)" Columns="@(new[] { Properties.Resources.ProtectionType, Properties.Resources.TransactionID, Properties.Resources.OriginatorSystemTitle, Properties.Resources.RecipientSystemTitle, Properties.Resources.OtherInformation, Properties.Resources.KeyInfo })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
 {
-<GXAttributeField Edit="Edit" Index="11" Label="Operation method:" Enabled="CanEditAttribute(11)" EnumType="typeof(PushOperationMethod)" />
+<GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.OperationMethodLabel" Enabled="CanEditAttribute(11)" EnumType="typeof(PushOperationMethod)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
 {
-<fieldset><legend>Confirmation parameters</legend>
-<GXAttributeField Edit="Edit" Index="12" Label="Start date:" Enabled="CanEditAttribute(12)" Part="0" />
-<GXAttributeField Edit="Edit" Index="12" Label="Interval:" Enabled="CanEditAttribute(12)" Part="1" />
+<fieldset><legend>@Properties.Resources.ConfirmationParameters</legend>
+<GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.StartDateLabel" Enabled="CanEditAttribute(12)" Part="0" />
+<GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.IntervalLabel" Enabled="CanEditAttribute(12)" Part="1" />
 </fieldset>
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
 {
-<GXAttributeField Edit="Edit" Index="13" Label="Last confirmation:" Enabled="CanEditAttribute(13)" />
+<GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.LastConfirmationLabel" Enabled="CanEditAttribute(13)" />
 }
 </GXTabPage>
-<GXTabPage Text="Objects">
+<GXTabPage Text="@Properties.Resources.Objects">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Objects" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Type", "LogicalName", "Attribute Index", "Data Index" })" ColumnIndices="@(new[] { 0, 1, 2, 3 })" CreateRow="CreatePushObject" EditorLabels="PushObjectEditorLabels" EditorKinds="@(new[] { "number", "logicalname", "number", "number", "text", "text" })" EditorPathLabels="PushObjectPathLabels" EditorPathKinds="PushObjectPathKinds" EditorPathFactories="PushObjectPathFactories" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Objects" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.Type, Properties.Resources.LogicalName3, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex2 })" ColumnIndices="@(new[] { 0, 1, 2, 3 })" CreateRow="CreatePushObject" EditorLabels="PushObjectEditorLabels" EditorKinds="@(new[] { "number", "logicalname", "number", "number", "text", "text" })" EditorPathLabels="PushObjectPathLabels" EditorPathKinds="_pushObjectPathKinds" EditorPathFactories="_pushObjectPathFactories" />
 }
 </GXTabPage>
-<GXTabPage Text="Communication Window">
+<GXTabPage Text="@Properties.Resources.CommunicationWindow">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
 {
-<GXAttributeField Edit="Edit" Index="4" Label="Communication Window" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Start", "End" })" CreateRow="@(() => new GXStructure { GXDLMSTranslator.HexToBytes(new GXDateTime(DateTime.Now).ToHex(false, false)), GXDLMSTranslator.HexToBytes(new GXDateTime(DateTime.Now).ToHex(false, false)) })" EditorKinds="@(new[] { "datetime", "datetime" })" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.CommunicationWindow" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.Start, Properties.Resources.End })" CreateRow="@(() => new GXStructure { GXDLMSTranslator.HexToBytes(new GXDateTime(DateTime.Now).ToHex(false, false)), GXDLMSTranslator.HexToBytes(new GXDateTime(DateTime.Now).ToHex(false, false)) })" EditorKinds="@(new[] { "datetime", "datetime" })" />
 }
 </GXTabPage>
 </GXTabControl>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="PushAsync">Push</GXButton>
-@if (Target.Version > 1) { <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ResetAsync">Reset</GXButton> }
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="PushAsync">@Properties.Resources.Push</GXButton>
+@if (Target.Version > 1) { <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton> }
 </section>
 
 @code {
+    /// <summary>Gets the push-object descriptor captions supported by the current object version.</summary>
     private string[] PushObjectEditorLabels => Target.Version switch
     {
-        0 => ["Type", "LogicalName", "Attribute Index", "Data Index"],
-        1 => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction"],
-        _ => ["Type", "LogicalName", "Attribute Index", "Data Index", "Restriction", "Column selection"]
+        0 => [Properties.Resources.Type, Properties.Resources.LogicalName3, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex2],
+        1 => [Properties.Resources.Type, Properties.Resources.LogicalName3, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex2, Properties.Resources.Restriction],
+        _ => [Properties.Resources.Type, Properties.Resources.LogicalName3, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex2, Properties.Resources.Restriction, Properties.Resources.ColumnSelection]
     };
-    private static readonly IReadOnlyDictionary<string, Func<object>> PushObjectPathFactories = new Dictionary<string, Func<object>>
+    /// <summary>Creates nested restriction and column-selection structures for push objects.</summary>
+    private static readonly IReadOnlyDictionary<string, Func<object>> _pushObjectPathFactories = new Dictionary<string, Func<object>>
     {
         ["5"] = () => new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 }
     };
-    private static readonly IReadOnlyDictionary<string, string> PushObjectPathLabels = new Dictionary<string, string>
+    /// <summary>Maps nested push-object descriptor paths to field captions.</summary>
+    private static IReadOnlyDictionary<string, string> PushObjectPathLabels => new Dictionary<string, string>
     {
-        ["4.0"] = "Restriction Type",
-        ["4.1"] = "Restriction range",
-        ["5.*"] = "Column",
-        ["5.*.0"] = "Type",
-        ["5.*.1"] = "LogicalName",
-        ["5.*.2"] = "Attribute Index",
-        ["5.*.3"] = "Data Index"
+        ["4.0"] = Properties.Resources.RestrictionType,
+        ["4.1"] = Properties.Resources.RestrictionRange,
+        ["5.*"] = Properties.Resources.Column,
+        ["5.*.0"] = Properties.Resources.Type,
+        ["5.*.1"] = Properties.Resources.LogicalName3,
+        ["5.*.2"] = Properties.Resources.AttributeIndex,
+        ["5.*.3"] = Properties.Resources.DataIndex2
     };
-    private static readonly IReadOnlyDictionary<string, string> PushObjectPathKinds = new Dictionary<string, string>
+    /// <summary>Maps nested push-object descriptor paths to scalar input kinds.</summary>
+    private static readonly IReadOnlyDictionary<string, string> _pushObjectPathKinds = new Dictionary<string, string>
     {
         ["5.*.1"] = "logicalname"
     };
 
+    /// <summary>Creates a push-object descriptor with the fields required by the current version.</summary>
+    /// <returns>A push-object descriptor with the fields required by the current version.</returns>
     private object CreatePushObject()
     {
         var row = new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0 };
@@ -150,6 +156,8 @@ else
         }
         return row;
     }
+    /// <summary>Creates the default nested structure for a protection parameter.</summary>
+    /// <returns>The default nested structure for a protection parameter.</returns>
     private static object CreateProtectionParameter() => new GXStructure
 {
     new GXEnum(0), new GXStructure
@@ -159,6 +167,11 @@ else
     }
 };
 
+    /// <summary>Validates and encodes the push destination, service and message as a structure.</summary>
+    /// <param name="service">The transport service used by the push destination.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="message">The push message format to encode.</param>
+    /// <returns>Validates and encodes the push destination, service and message as a structure.</returns>
     private GXStructure DestinationValue(ServiceType service, string text, MessageType message)
     {
         var destination = System.Text.Encoding.ASCII.GetBytes(text);
@@ -169,6 +182,7 @@ else
         }
         return new GXStructure { new GXEnum((byte)service), destination, new GXEnum((byte)message) };
     }
+    /// <summary>Gets the staged push destination structure when a pending value exists.</summary>
     private GXStructure? PendingDestination => Target.GetDirty(3, out var pending) ? pending as GXStructure : null;
     /// <summary>
     /// Service type used by the edited push destination.
@@ -223,15 +237,20 @@ else
             }
         }
     }
+    /// <summary>Checks a proposed destination structure and returns any validation error.</summary>
+    /// <param name="service">The transport service used by the push destination.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="message">The push message format to encode.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private string? ValidateDestination(ServiceType service, string text, MessageType message)
     {
         if (!Enum.IsDefined(service) || !Enum.IsDefined(message))
         {
-            return "Choose a supported service and message.";
+            return Properties.Resources.ChooseASupportedServiceAndMessage;
         }
         if (text.Any(character => character > 127))
         {
-            return "Destination must contain ASCII characters.";
+            return Properties.Resources.DestinationMustContainASCIICharacters;
         }
         try
         {
@@ -241,6 +260,10 @@ else
         }
         catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
+    /// <summary>Stages a validated push destination structure on the target object.</summary>
+    /// <param name="service">The transport service used by the push destination.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="message">The push message format to encode.</param>
     private void SaveDestination(ServiceType service, string text, MessageType message)
     {
         if (ValidateDestination(service, text, message) is not null)

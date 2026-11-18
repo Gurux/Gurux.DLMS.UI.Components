@@ -38,16 +38,16 @@
 @inherits GXDLMSObjectViewBase<GXDLMSRegisterMonitor>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Register Monitor Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset><legend>Monitored Value</legend>
-        <GXAttributeField Edit="Edit" Index="3" Part="0" Label="Object Type" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="1" Label="Target" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="2" Label="Index" Enabled="CanEditAttribute(3)" />
+    <GXObjectViewHeader Title="@Properties.Resources.RegisterMonitorObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>@Properties.Resources.MonitoredValue</legend>
+        <GXAttributeField Edit="Edit" Index="3" Part="0" Label="@Properties.Resources.ObjectType" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="1" Label="@Properties.Resources.Target" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="2" Label="@Properties.Resources.Index" Enabled="CanEditAttribute(3)" />
     </fieldset>
-    <fieldset><legend>Thresholds</legend>
-        <GXAttributeField Edit="Edit" Index="2" Label="Thresholds" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Threshold" })" CreateRow="@(() => (int)0)" />
+    <fieldset><legend>@Properties.Resources.Thresholds</legend>
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Thresholds" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.Threshold })" CreateRow="@(() => (int)0)" />
     </fieldset>
-    <fieldset><legend>Actions</legend>
-        <GXAttributeField Edit="Edit" Index="4" Label="Actions" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Up LogicalName", "Up Script Selector", "Down LogicalName", "Down Script Selector" })" CreateRow="@(() => new GXStructure { new GXStructure { new byte[6], (ushort)0 }, new GXStructure { new byte[6], (ushort)0 } })" />
+    <fieldset><legend>@Properties.Resources.Actions</legend>
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Actions" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.UpLogicalName, Properties.Resources.UpScriptSelector, Properties.Resources.DownLogicalName, Properties.Resources.DownScriptSelector })" CreateRow="@(() => new GXStructure { new GXStructure { new byte[6], (ushort)0 }, new GXStructure { new byte[6], (ushort)0 } })" />
     </fieldset>
 </section>

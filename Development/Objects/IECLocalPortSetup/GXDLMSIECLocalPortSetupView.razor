@@ -40,38 +40,38 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="IEC Local Port Setup" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.IECLocalPortSetup" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Default Mode:" Enabled="CanEditAttribute(2)" EnumType="typeof(OpticalProtocolMode)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.DefaultModeLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(OpticalProtocolMode)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Default Baudrate:" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.DefaultBaudrateLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Maximum Baudrate:" Enabled="CanEditAttribute(4)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MaximumBaudrateLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Response Time:" Enabled="CanEditAttribute(5)" EnumType="typeof(LocalPortResponseTime)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.ResponseTimeLabel" Enabled="CanEditAttribute(5)" EnumType="typeof(LocalPortResponseTime)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Device Address:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.DeviceAddressLabel" Enabled="CanEditAttribute(6)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Password 1:" Enabled="CanEditAttribute(7)" InputKind="password"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.Password1Label" Enabled="CanEditAttribute(7)" InputKind="password"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Password 2:" Enabled="CanEditAttribute(8)" InputKind="password"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Password2Label" Enabled="CanEditAttribute(8)" InputKind="password"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Password 5:" Enabled="CanEditAttribute(9)" InputKind="password"  />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.Password5Label" Enabled="CanEditAttribute(9)" InputKind="password"  />
     }
 </div>
 </section>

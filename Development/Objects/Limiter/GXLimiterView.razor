@@ -38,30 +38,30 @@
 @inherits GXDLMSObjectViewBase<GXDLMSLimiter>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Limiter Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset><legend>Monitored</legend>
-        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Object Type" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Value" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="Index" Enabled="CanEditAttribute(2)" />
+    <GXObjectViewHeader Title="@Properties.Resources.LimiterObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>@Properties.Resources.Monitored</legend>
+        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="@Properties.Resources.ObjectType" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="@Properties.Resources.Value" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="@Properties.Resources.Index" Enabled="CanEditAttribute(2)" />
     </fieldset>
-    <GXAttributeField Edit="Edit" Index="3" Label="Threshold Active" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Threshold Normal" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Threshold Emergency" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="6" Label="Minimal Over" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="7" Label="Minimal Under" Enabled="CanEditAttribute(7)" />
-    <fieldset><legend>Emergency profile</legend>
-        <GXAttributeField Edit="Edit" Index="8" Part="0" Label="ID" Enabled="CanEditAttribute(8)" />
-        <GXAttributeField Edit="Edit" Index="8" Part="1" Label="Activation Time" Enabled="CanEditAttribute(8)" />
-        <GXAttributeField Edit="Edit" Index="8" Part="2" Label="Duration" Enabled="CanEditAttribute(8)" />
-        <GXAttributeField Edit="Edit" Index="9" Label="Group IDs" Enabled="CanEditAttribute(9)" Columns="@(new[] { "Group ID" })" CreateRow="@(() => (ushort)0)" />
-        <GXAttributeField Edit="Edit" Index="10" Label="Active" Enabled="CanEditAttribute(10)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ThresholdActive" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ThresholdNormal" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.ThresholdEmergency" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.MinimalOver" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.MinimalUnder" Enabled="CanEditAttribute(7)" />
+    <fieldset><legend>@Properties.Resources.EmergencyProfile</legend>
+        <GXAttributeField Edit="Edit" Index="8" Part="0" Label="@Properties.Resources.ID" Enabled="CanEditAttribute(8)" />
+        <GXAttributeField Edit="Edit" Index="8" Part="1" Label="@Properties.Resources.ActivationTime" Enabled="CanEditAttribute(8)" />
+        <GXAttributeField Edit="Edit" Index="8" Part="2" Label="@Properties.Resources.Duration" Enabled="CanEditAttribute(8)" />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.GroupIDs" Enabled="CanEditAttribute(9)" Columns="@(new[] { Properties.Resources.GroupID })" CreateRow="@(() => (ushort)0)" />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.Active" Enabled="CanEditAttribute(10)" />
     </fieldset>
-    <fieldset><legend>Action Over</legend>
-        <GXAttributeField Edit="Edit" Index="11" Path="0.0" Label="Script" Enabled="CanEditAttribute(11)" />
-        <GXAttributeField Edit="Edit" Index="11" Path="0.1" Label="Selector" Enabled="CanEditAttribute(11)" />
+    <fieldset><legend>@Properties.Resources.ActionOver</legend>
+        <GXAttributeField Edit="Edit" Index="11" Path="0.0" Label="@Properties.Resources.Script" Enabled="CanEditAttribute(11)" />
+        <GXAttributeField Edit="Edit" Index="11" Path="0.1" Label="@Properties.Resources.Selector" Enabled="CanEditAttribute(11)" />
     </fieldset>
-    <fieldset><legend>Action Under</legend>
-        <GXAttributeField Edit="Edit" Index="11" Path="1.0" Label="Script" Enabled="CanEditAttribute(11)" />
-        <GXAttributeField Edit="Edit" Index="11" Path="1.1" Label="Selector" Enabled="CanEditAttribute(11)" />
+    <fieldset><legend>@Properties.Resources.ActionUnder</legend>
+        <GXAttributeField Edit="Edit" Index="11" Path="1.0" Label="@Properties.Resources.Script" Enabled="CanEditAttribute(11)" />
+        <GXAttributeField Edit="Edit" Index="11" Path="1.1" Label="@Properties.Resources.Selector" Enabled="CanEditAttribute(11)" />
     </fieldset>
 </section>

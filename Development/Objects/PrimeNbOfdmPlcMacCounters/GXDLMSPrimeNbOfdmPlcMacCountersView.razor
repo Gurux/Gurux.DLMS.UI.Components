@@ -40,34 +40,36 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content account-object">
-<GXObjectViewHeader Title="PRIME NB OFDM PLC MAC counters Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.PRIMENBOFDMPLCMACCountersObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="TX Data Packet Counter:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.TXDataPacketCounterLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="RX Data Packet Counter:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.RXDataPacketCounterLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="TX Ctrl Packet Counter:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.TXCtrlPacketCounterLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="RX Ctrl Packet Counter:" Enabled="CanEditAttribute(5)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.RXCtrlPacketCounterLabel" Enabled="CanEditAttribute(5)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="CSMA Fail Counter:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CSMAFailCounterLabel" Enabled="CanEditAttribute(6)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="CSMA Busy Counter:" Enabled="CanEditAttribute(7)"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.CSMABusyCounterLabel" Enabled="CanEditAttribute(7)"  />
     }
 </div>
 </section>
-<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset counters</GXButton></section>
+<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.ResetCounters</GXButton></section>
 @code {
+    /// <summary>Submits the object&apos;s reset method through the host action callback.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
 }

@@ -39,12 +39,12 @@
     @if (_resetError is not null) { <p role="alert">@_resetError</p> }
     @if (Edit.Error(2) is { } valueError) { <p role="alert">@valueError</p> }
     @if (Edit.Error(3) is { } scalerError) { <p role="alert">@scalerError</p> }
-    <GXObjectViewHeader Target="Target" Edit="Edit" Title="Register Object" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Value" Enabled="CanEditAttribute(2)" Rows="@(Edit.IsXml ? 10 : 2)" />
-    <GXAttributeField Edit="Edit" Index="3" Part="0" Label="Scaler:" InputKind="scaler" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="3" Part="1" Label="Unit:" EnumType="typeof(Unit)" Enabled="CanEditAttribute(3)" />
-    @if (Edit.HasChanges) { <p role="status">Value changed</p> }
-    <GXButton type="button" Disabled="@(!CanReset)" OnClick="ResetAsync">Reset</GXButton>
+    <GXObjectViewHeader Target="Target" Edit="Edit" Title="@Properties.Resources.RegisterObject" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Value" Enabled="CanEditAttribute(2)" Rows="@(Edit.IsXml ? 10 : 2)" />
+    <GXAttributeField Edit="Edit" Index="3" Part="0" Label="@Properties.Resources.ScalerLabel" InputKind="scaler" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="3" Part="1" Label="@Properties.Resources.UnitLabel" EnumType="typeof(Unit)" Enabled="CanEditAttribute(3)" />
+    @if (Edit.HasChanges) { <p role="status">@Properties.Resources.ValueChanged</p> }
+    <GXButton type="button" Disabled="@(!CanReset)" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
 </section>
 
 @code {
@@ -52,8 +52,11 @@
     /// Whether the register reset action is offered.
     /// </summary>
     [Parameter] public bool ResetEnabled { get; set; } = true;
+    /// <summary>Prevents overlapping register-reset requests.</summary>
     private bool _resetting;
+    /// <summary>Stores the most recent register-reset failure displayed in the view.</summary>
     private string? _resetError;
+    /// <summary>Retains the previous model to clear operation state when the target changes.</summary>
     private GXDLMSRegister? _previousTarget;
     /// <summary>
     /// Whether the register can currently execute its reset method.
@@ -92,7 +95,7 @@
         {
             if (ReferenceEquals(Target, target))
             {
-                _resetError = $"Reset failed: {ex.Message}";
+                _resetError = string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.ResetFailed0, ex.Message);
             }
         }
         finally { _resetting = false; }

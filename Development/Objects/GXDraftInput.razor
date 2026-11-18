@@ -74,7 +74,7 @@ else if (InputKind == "ip")
 }
 else if (InputKind == "hex")
 {
-    <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" placeholder="Hexadecimal" />
+    <GXInputText id="@Id" Value="@Value" ValueChanged="Change" disabled="@Disabled" aria-label="@Label" placeholder="@Properties.Resources.Hexadecimal" />
 }
 else if (InputKind == "number")
 {
@@ -130,11 +130,22 @@ else
     {
         get; set;
     }
+    /// <summary>Provides a unique HTML identifier prefix for the enum flag switches.</summary>
     private readonly string _flagsId = $"gx-flags-{Guid.NewGuid():N}";
+    /// <summary>Gets the input value interpreted as a Boolean.</summary>
     private bool Boolean => bool.TryParse(Value, out var value) && value;
+    /// <summary>Gets the numeric bit mask represented by the current enum input.</summary>
     private long Flags => long.TryParse(Value, out var value) ? value : EnumType is not null && Enum.TryParse(EnumType, Value, out var parsed) ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture) : 0;
+    /// <summary>Gets the enum input normalized to its invariant numeric representation.</summary>
     private string EnumValue => EnumType?.IsEnum == true && Enum.TryParse(EnumType, Value, out var parsed)
         ? Convert.ToInt64(parsed, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Value;
+    /// <summary>Updates the editable draft when editing is enabled.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task Change(string? value) => Disabled ? System.Threading.Tasks.Task.CompletedTask : ValueChanged.InvokeAsync(value ?? string.Empty);
+    /// <summary>Sets or clears an enum bit and forwards the new input value.</summary>
+    /// <param name="flag">The enum bit to set or clear; zero clears the mask.</param>
+    /// <param name="enabled">Whether the selected flag or option is enabled.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task ChangeFlag(long flag, bool enabled) => Change((flag == 0 ? 0 : enabled ? Flags | flag : Flags & ~flag).ToString(CultureInfo.InvariantCulture));
 }

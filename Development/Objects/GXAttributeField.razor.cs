@@ -158,6 +158,7 @@ public partial class GXAttributeField : IDisposable
     {
         get; set;
     }
+    /// <summary>Gets whether the current target and access rights permit editing.</summary>
     private bool CanEditNow => Enabled && !_disposed && (Access is null ? GXDLMSObjectAccess.CanEdit(Edit.Target, Index) : ReferenceEquals(Access.Target, Edit.Target) && Access.CanEdit(Index));
     /// <summary>Gets or sets the uncommitted text being edited.</summary>
     public string Draft { get; set; } = string.Empty;
@@ -171,21 +172,39 @@ public partial class GXAttributeField : IDisposable
     {
         get; private set;
     }
+    /// <summary>Retains the edit state for which the current dialog was opened. Retains the previously rendered edit state to detect target changes.</summary>
     private GXDLMSObjectEditState? _openedEdit, _lastEdit;
+    /// <summary>Retains the previously rendered attribute index.</summary>
     private int _lastIndex;
+    /// <summary>Retains the previously rendered nested attribute path.</summary>
     private string? _lastPath;
+    /// <summary>Gets the nested structure indices selected by the path or part parameter.</summary>
     private int[] Indices => Path is not null ? Path.Split('.').Select(int.Parse).ToArray() : Part.HasValue ? [Part.Value] : [];
+    /// <summary>Gets the dot-separated path of the selected nested value.</summary>
     private string CurrentPath => string.Join('.', Indices);
+    /// <summary>Gets the selected nested value from the pending or confirmed attribute.</summary>
     private object? CurrentValue => At(GXWireValue.Read(Edit, Index), Indices);
+    /// <summary>Holds the isolated wire value edited by the dialog.</summary>
     private object? _wireDraft;
+    /// <summary>References the nested editor used to validate the wire draft.</summary>
     private GXWireValueEditor? _wireEditor;
+    /// <summary>Prevents callbacks from updating a component after disposal.</summary>
     private bool _disposed;
+    /// <summary>Stores the collection row selected for the dialog operation.</summary>
     private int? _row;
+    /// <summary>Tracks whether the dialog is confirming removal of a collection row.</summary>
     private bool _remove;
+    /// <summary>Retains the original value fingerprint for stale-edit detection.</summary>
     private string? _openedFingerprint;
+    /// <summary>Combines the CLR type and formatted value to detect changes during editing.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Combines the CLR type and formatted value to detect changes during editing.</returns>
     private static string Fingerprint(object? value) => value?.GetType().FullName + ":" + GXDLMSObjectEditState.Format(value);
+    /// <summary>Provides an instance-unique prefix for the editor&apos;s HTML element identifiers.</summary>
     private readonly string _id = $"gx-attribute-{Guid.NewGuid():N}";
+    /// <summary>References the rendered table so edits can refresh its rows.</summary>
     private GXTable<int>? _table;
+    /// <summary>Formats the current value for display, masking passwords and applying field-specific formatting.</summary>
     private string Display
     {
         get
@@ -238,11 +257,12 @@ public partial class GXAttributeField : IDisposable
                     return Enum.ToObject(EnumType, Convert.ToInt64(value, CultureInfo.InvariantCulture)).ToString() ?? string.Empty;
                 }
 
-                return value is GXArray array ? $"{array.Count} items" : GXWireValue.Display(value);
+                return value is GXArray array ? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0Items, array.Count) : GXWireValue.Display(value);
             }
             catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
         }
     }
+    /// <summary>Gets whether the selected value needs a collection editor.</summary>
     private bool IsCollection
     {
         get
@@ -254,6 +274,7 @@ public partial class GXAttributeField : IDisposable
             catch { return false; }
         }
     }
+    /// <summary>Gets whether the selected value can use the inline scalar editor.</summary>
     private bool IsSimple
     {
         get
@@ -265,6 +286,7 @@ public partial class GXAttributeField : IDisposable
             catch { return false; }
         }
     }
+    /// <summary>Gets the active input draft or the formatted value before editing begins.</summary>
     private string InlineValue => Editing ? Draft : DraftText();
     /// <summary>Validates and stages a scalar value entered inline.</summary>
     /// <param name="value">The new text entered in the field.</param>
@@ -284,6 +306,7 @@ public partial class GXAttributeField : IDisposable
         Draft = value;
         await AcceptAsync();
     }
+    /// <summary>Gets the input or table variant selected for the current value.</summary>
     private string Kind => CurrentValue is GXDateTime ? "datetime" : InputKind ?? (CurrentValue is bool ? "bool" : Edit.IsXmlAttribute(Index) && Indices.Length == 0 ? "textarea" : "text");
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -297,6 +320,10 @@ public partial class GXAttributeField : IDisposable
         _lastIndex = Index;
         _lastPath = CurrentPath;
     }
+    /// <summary>Follows nested collection indices and returns the selected value.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <param name="path">The zero-based indices to follow through nested collections.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     private static object? At(object? value, IEnumerable<int> path)
     {
         foreach (var part in path)
@@ -306,6 +333,10 @@ public partial class GXAttributeField : IDisposable
 
         return value;
     }
+    /// <summary>Copies the containing collections and replaces the selected nested value.</summary>
+    /// <param name="root">The root collection containing the selected nested value.</param>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     private object? Replace(object? root, object? value)
     {
         var path = Indices;
@@ -335,6 +366,8 @@ public partial class GXAttributeField : IDisposable
         Error = null;
         Editing = true;
     }
+    /// <summary>Formats the current value for the field&apos;s input representation.</summary>
+    /// <returns>The formatted text for the supplied value.</returns>
     private string DraftText()
     {
         var value = CurrentValue;
@@ -424,12 +457,12 @@ public partial class GXAttributeField : IDisposable
 
             if (_openedFingerprint != Fingerprint(CurrentValue))
             {
-                Error = "The value changed. Cancel and open the editor again.";
+                Error = Properties.Resources.TheValueChangedCancelAndOpenTheEditorAgain;
                 return;
             }
             if (_wireEditor is not null && !_wireEditor.IsValid)
             {
-                Error = "Correct the invalid fields before accepting.";
+                Error = Properties.Resources.CorrectTheInvalidFieldsBeforeAccepting;
                 return;
             }
             object? value;
@@ -463,7 +496,7 @@ public partial class GXAttributeField : IDisposable
                     var exponent = Math.Log10(double.Parse(Draft, CultureInfo.InvariantCulture));
                     if (!double.IsFinite(exponent) || Math.Abs(exponent - Math.Round(exponent)) > 1e-9 || exponent < sbyte.MinValue || exponent > sbyte.MaxValue)
                     {
-                        throw new FormatException("Scaler must be a positive power of ten.");
+                        throw new FormatException(Properties.Resources.ScalerMustBeAPositivePowerOfTen);
                     }
 
                     partValue = (sbyte)Math.Round(exponent);
@@ -527,12 +560,20 @@ public partial class GXAttributeField : IDisposable
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
     }
+    /// <summary>Refreshes the collection table when a table instance is available.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task RefreshTable() => _table?.RefreshDataAsync(false) ?? System.Threading.Tasks.Task.CompletedTask;
+    /// <summary>Supplies the current row indices and total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<int>> ProvideRows(GXItemsProviderRequest request)
     {
         var count = ((GXArray)CurrentValue!).Count;
         return ValueTask.FromResult(new ItemsProviderResult<int>(Enumerable.Range(0, count), count));
     }
+    /// <summary>Formats the selected row into the table&apos;s visible cells.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private string[] Cells(int row)
     {
         var value = ((GXArray)CurrentValue!)[row];
@@ -562,6 +603,11 @@ public partial class GXAttributeField : IDisposable
         }
         return cells.Select((cell, column) => FormatCell(cell, EditorKinds?.ElementAtOrDefault(ColumnIndices?.ElementAtOrDefault(column) ?? column) ?? InputKind, ColumnFormats?.ElementAtOrDefault(column))).ToArray();
     }
+    /// <summary>Formats a cell using its configured input kind and display format.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <param name="kind">The configured scalar input kind for this cell.</param>
+    /// <param name="format">The optional display format applied to scalar cell values.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private static string FormatCell(object? value, string? kind, string? format)
     {
         if (!string.IsNullOrEmpty(format) && value is IFormattable formatted)
@@ -601,6 +647,9 @@ public partial class GXAttributeField : IDisposable
 
         return GXWireValue.Display(value);
     }
+    /// <summary>Enumerates scalar leaves of nested GXStructure values.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Enumerates scalar leaves of nested GXStructure values.</returns>
     private static IEnumerable<object?> Flatten(object? value) => value is GXStructure structure ? structure.SelectMany(Flatten) : [value];
     /// <summary>Prevents further editing and discards the current editing session.</summary>
     public void Dispose()

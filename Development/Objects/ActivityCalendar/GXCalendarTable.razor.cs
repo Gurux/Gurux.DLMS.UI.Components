@@ -59,6 +59,7 @@ public partial class GXCalendarTable
     {
         get; set;
     }
+    /// <summary>Gets whether the current access checks permit calendar editing.</summary>
     private bool Writable => Enabled && (CanEdit?.Invoke() ?? GXDLMSObjectAccess.CanEdit(Edit.Target, Index, null));
     /// <summary>Gets the current validation or editing error, or null when no error is present.</summary>
     public string? Error
@@ -85,8 +86,11 @@ public partial class GXCalendarTable
     public string ActionScript { get; set; } = string.Empty;
     /// <summary>Gets or sets the script selector for the day action being edited.</summary>
     public string ActionSelector { get; set; } = string.Empty;
+    /// <summary>Retains the previously rendered edit state to detect target changes.</summary>
     private GXDLMSObjectEditState? _lastEdit;
+    /// <summary>Retains the previously rendered attribute index.</summary>
     private int _lastIndex;
+    /// <summary>Caches the cloned calendar used during the current edit operation.</summary>
     private GXDLMSActivityCalendar? _snapshot;
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -105,9 +109,14 @@ public partial class GXCalendarTable
         DayIds = Enumerable.Repeat(string.Empty, 7).ToArray();
         Error = null;
     }
+    /// <summary>Gets the input or table variant selected for the current value.</summary>
     private int Kind => (Index - 3) % 4;
+    /// <summary>Gets whether the selected attribute belongs to the active calendar.</summary>
     private bool Active => Index < 7;
-    private static readonly string[] DayNames = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    /// <summary>Lists the weekday captions in Monday-to-Sunday order.</summary>
+    private static string[] DayNames => [Properties.Resources.Monday, Properties.Resources.Tuesday, Properties.Resources.Wednesday, Properties.Resources.Thursday, Properties.Resources.Friday, Properties.Resources.Saturday, Properties.Resources.Sunday];
+    /// <summary>Gets a cloned calendar with the selected pending attribute applied.</summary>
+    /// <returns>A cloned calendar with the selected pending attribute applied.</returns>
     private GXDLMSActivityCalendar Calendar()
     {
         if (_snapshot is not null)
@@ -123,9 +132,19 @@ public partial class GXCalendarTable
         }
         return _snapshot = value;
     }
+    /// <summary>Gets the season profiles from the selected active or passive calendar.</summary>
+    /// <param name="c">The calendar clone containing the active and passive profile tables.</param>
+    /// <returns>The season profiles from the selected active or passive calendar.</returns>
     private GXDLMSSeasonProfile[] Seasons(GXDLMSActivityCalendar c) => (Active ? c.SeasonProfileActive : c.SeasonProfilePassive) ?? [];
+    /// <summary>Gets the week profiles from the selected active or passive calendar.</summary>
+    /// <param name="c">The calendar clone containing the active and passive profile tables.</param>
+    /// <returns>The week profiles from the selected active or passive calendar.</returns>
     private GXDLMSWeekProfile[] Weeks(GXDLMSActivityCalendar c) => (Active ? c.WeekProfileTableActive : c.WeekProfileTablePassive) ?? [];
+    /// <summary>Gets the day profiles from the selected active or passive calendar.</summary>
+    /// <param name="c">The calendar clone containing the active and passive profile tables.</param>
+    /// <returns>The day profiles from the selected active or passive calendar.</returns>
     private GXDLMSDayProfile[] Days(GXDLMSActivityCalendar c) => (Active ? c.DayProfileTableActive : c.DayProfileTablePassive) ?? [];
+    /// <summary>Gets the number of profiles in the selected calendar table.</summary>
     private int RowCount
     {
         get
@@ -134,8 +153,15 @@ public partial class GXCalendarTable
             return Kind == 0 ? Seasons(c).Length : Kind == 1 ? Weeks(c).Length : Days(c).Length;
         }
     }
+    /// <summary>Gets the actions of the selected day profile, or an empty array.</summary>
     private GXDLMSDayProfileAction[] DayActions => Days(Calendar()).ElementAtOrDefault(SelectedRow)?.DaySchedules ?? [];
+    /// <summary>Returns a week&apos;s seven day identifiers in Monday-to-Sunday order.</summary>
+    /// <param name="w">The week profile containing seven day identifiers.</param>
+    /// <returns>A week&apos;s seven day identifiers in Monday-to-Sunday order.</returns>
     private static int[] WeekDays(GXDLMSWeekProfile w) => [w.Monday, w.Tuesday, w.Wednesday, w.Thursday, w.Friday, w.Saturday, w.Sunday];
+    /// <summary>Formats a calendar profile into the cells of its table row.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private IEnumerable<string> RowCells(int row)
     {
         var c = Calendar();
@@ -152,6 +178,8 @@ public partial class GXCalendarTable
         var d = Days(c)[row];
         return [d.DayId.ToString(CultureInfo.InvariantCulture)];
     }
+    /// <summary>Validates a calendar update on a clone and stages the changed profile attribute.</summary>
+    /// <param name="update">The operation applied to an isolated calendar clone.</param>
     private void Change(Action<GXDLMSActivityCalendar> update)
     {
         if (!Writable)
@@ -177,6 +205,10 @@ public partial class GXCalendarTable
         catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
         finally { _snapshot = null; }
     }
+    /// <summary>Replaces the selected active or passive profile table on a calendar clone.</summary>
+    /// <param name="c">The calendar clone containing the active and passive profile tables.</param>
+    /// <param name="rows">The replacement profile or reference rows to stage.</param>
+    /// <typeparam name="T">The profile element type stored in the selected calendar table.</typeparam>
     private void SetRows<T>(GXDLMSActivityCalendar c, T[] rows)
     {
         if (rows is GXDLMSSeasonProfile[] seasons)
@@ -213,7 +245,10 @@ public partial class GXCalendarTable
             }
         }
     }
-    private static byte[] NameBytes(string value) => !string.IsNullOrEmpty(value) && value.All(c => c <= 127) ? Encoding.ASCII.GetBytes(value) : throw new FormatException("Enter an ASCII profile name.");
+    /// <summary>Validates and encodes an ASCII calendar profile name.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Validates and encodes an ASCII calendar profile name.</returns>
+    private static byte[] NameBytes(string value) => !string.IsNullOrEmpty(value) && value.All(c => c <= 127) ? Encoding.ASCII.GetBytes(value) : throw new FormatException(Properties.Resources.EnterAnASCIIProfileName);
     /// <summary>Loads a profile into the edit dialog.</summary>
     /// <param name="row">The zero-based profile index.</param>
     public void LoadRow(int row)
@@ -255,6 +290,8 @@ public partial class GXCalendarTable
             StoreRow(SelectedRow);
         }
     }
+    /// <summary>Validates the dialog fields and adds or replaces a calendar profile.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
     private void StoreRow(int row) => Change(c =>
     {
         if (Kind == 0)
@@ -278,7 +315,7 @@ public partial class GXCalendarTable
             var d = DayIds.Select(v => byte.Parse(v, CultureInfo.InvariantCulture)).ToArray();
             if (d.Length != 7)
             {
-                throw new FormatException("Enter seven day IDs.");
+                throw new FormatException(Properties.Resources.EnterSevenDayIDs);
             }
 
             var w = new GXDLMSWeekProfile { Name = NameBytes(Name), Monday = d[0], Tuesday = d[1], Wednesday = d[2], Thursday = d[3], Friday = d[4], Saturday = d[5], Sunday = d[6] };
@@ -301,7 +338,7 @@ public partial class GXCalendarTable
             var id = byte.Parse(DayId, CultureInfo.InvariantCulture);
             if (rows.Where((_, i) => i != row).Any(d => d.DayId == id))
             {
-                throw new FormatException("Day IDs must be unique.");
+                throw new FormatException(Properties.Resources.DayIDsMustBeUnique);
             }
 
             var d = new GXDLMSDayProfile { DayId = id, DaySchedules = row < 0 ? [] : rows[row].DaySchedules };
@@ -346,17 +383,19 @@ public partial class GXCalendarTable
             StoreAction(SelectedAction);
         }
     }
+    /// <summary>Validates the dialog fields and adds or replaces a day action.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
     private void StoreAction(int row) => Change(c =>
     {
         if (Kind != 2 || SelectedRow < 0)
         {
-            throw new FormatException("Select a day first.");
+            throw new FormatException(Properties.Resources.SelectADayFirst);
         }
 
         var parts = ActionScript.Split('.');
         if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
         {
-            throw new FormatException("A script logical name requires six byte values.");
+            throw new FormatException(Properties.Resources.AScriptLogicalNameRequiresSixByteValues);
         }
 
         var action = new GXDLMSDayProfileAction { StartTime = new GXTime(ActionTime, CultureInfo.InvariantCulture), ScriptLogicalName = ActionScript, ScriptSelector = ushort.Parse(ActionSelector, CultureInfo.InvariantCulture) };
@@ -381,19 +420,37 @@ public partial class GXCalendarTable
     {
         get; private set;
     }
+    /// <summary>Tracks whether the calendar dialog edits a day action instead of a profile.</summary>
     private bool _editingAction;
+    /// <summary>Tracks whether the current dialog confirms row removal.</summary>
     private bool _removing;
+    /// <summary>Tracks whether the calendar dialog adds a new profile or action.</summary>
     private bool _adding;
+    /// <summary>Retains the edit state captured when the calendar dialog opened.</summary>
     private GXDLMSObjectEditState? _dialogEdit;
+    /// <summary>Retains the attribute index captured when the calendar dialog opened.</summary>
     private int _dialogIndex;
+    /// <summary>Retains the original attribute text used to reject stale calendar edits.</summary>
     private string? _sourceText;
+    /// <summary>Snapshots the calendar dialog fields so cancellation can restore them.</summary>
     private string[]? _savedFields;
+    /// <summary>Snapshots the profile selection before opening a calendar dialog. Snapshots the day-action selection before opening a calendar dialog.</summary>
     private int _savedRow, _savedAction;
+    /// <summary>Gets a render key that changes when the selected attribute value changes.</summary>
     private string TableKey => $"{Index}:{Edit.AttributeText(Index)}";
+    /// <summary>Gets a render key for the actions of the selected day profile.</summary>
     private string ActionTableKey => $"{TableKey}:{SelectedRow}";
-    private string[] Headers => Kind == 0 ? ["Name", "Start", "Week Name"] : Kind == 1 ? ["Name", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] : ["Day ID"];
-    private string DialogTitle => _removing ? "Remove" : _editingAction ? "Day action" : Label;
+    /// <summary>Gets the column captions for the current table variant.</summary>
+    private string[] Headers => Kind == 0 ? [Properties.Resources.Name, Properties.Resources.Start, Properties.Resources.WeekName] : Kind == 1 ? [Properties.Resources.Name, Properties.Resources.Mon, Properties.Resources.Tue, Properties.Resources.Wed, Properties.Resources.Thu, Properties.Resources.Fri, Properties.Resources.Sat, Properties.Resources.Sun] : [Properties.Resources.DayID];
+    /// <summary>Gets the caption for the current profile or action dialog operation.</summary>
+    private string DialogTitle => _removing ? Properties.Resources.Remove : _editingAction ? Properties.Resources.DayAction : Label;
+    /// <summary>Supplies calendar profile indices and their total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<int>> GetRows(GXItemsProviderRequest request) => ValueTask.FromResult(new ItemsProviderResult<int>(Enumerable.Range(0, RowCount), RowCount));
+    /// <summary>Supplies the selected day&apos;s action indices and their total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<int>> GetActions(GXItemsProviderRequest request) => ValueTask.FromResult(new ItemsProviderResult<int>(Enumerable.Range(0, DayActions.Length), DayActions.Length));
     /// <summary>Selects a day profile and clears the action selection.</summary>
     /// <param name="row">The zero-based day profile index.</param>
@@ -402,6 +459,9 @@ public partial class GXCalendarTable
         SelectedRow = row;
         SelectedAction = -1;
     }
+    /// <summary>Snapshots the calendar selection and fields before opening the edit dialog.</summary>
+    /// <param name="action">Whether the dialog edits a day action instead of a calendar profile.</param>
+    /// <param name="removing">Whether the dialog confirms removal of the selected entry.</param>
     private void OpenDialog(bool action, bool removing)
     {
         _savedFields = [Name, Start, WeekName, DayId, ActionTime, ActionScript, ActionSelector, .. DayIds];
@@ -471,7 +531,7 @@ public partial class GXCalendarTable
 
         if (!Writable || !ReferenceEquals(Edit, _dialogEdit) || Index != _dialogIndex || Edit.AttributeText(Index) != _sourceText)
         {
-            Error = "The target, access rights or pending value changed. Cancel and open the editor again.";
+            Error = Properties.Resources.TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain;
             return;
         }
         Error = null;

@@ -36,23 +36,25 @@
 @inherits GXDLMSObjectViewBase<GXDLMSMBusPortSetup>
 
 <section class="gx-object-view" @key="Target">
-    <GXObjectViewHeader Title="M-Bus Port Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset class="gx-object-fields"><legend>Port settings</legend>
-        <GXAttributeField Edit="Edit" Index="2" Label="Profile selection:" Enabled="CanEditAttribute(2)" InputKind="logicalname" />
-        <GXAttributeField Edit="Edit" Index="3" Label="Port communication status:" Enabled="CanEditAttribute(3)" EnumType="typeof(MBusPortCommunicationState)" />
-        <GXAttributeField Edit="Edit" Index="4" Label="Data header type:" Enabled="CanEditAttribute(4)" EnumType="typeof(MBusDataHeaderType)" />
-        <GXAttributeField Edit="Edit" Index="5" Label="Primary address:" Enabled="CanEditAttribute(5)" />
-        <GXAttributeField Edit="Edit" Index="6" Label="Identification number:" Enabled="CanEditAttribute(6)" />
-        <GXAttributeField Edit="Edit" Index="7" Label="Manufacturer ID:" Enabled="CanEditAttribute(7)" />
-        <GXAttributeField Edit="Edit" Index="8" Label="M-Bus version:" Enabled="CanEditAttribute(8)" />
-        <GXAttributeField Edit="Edit" Index="9" Label="Device type:" Enabled="CanEditAttribute(9)" EnumType="typeof(MBusDeviceType)" />
-        <GXAttributeField Edit="Edit" Index="10" Label="Maximum PDU size:" Enabled="CanEditAttribute(10)" />
+    <GXObjectViewHeader Title="@Properties.Resources.MBusPortSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.PortSettings</legend>
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ProfileSelectionLabel" Enabled="CanEditAttribute(2)" InputKind="logicalname" />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.PortCommunicationStatusLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(MBusPortCommunicationState)" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.DataHeaderTypeLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(MBusDataHeaderType)" />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.PrimaryAddressLabel2" Enabled="CanEditAttribute(5)" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.IdentificationNumberLabel2" Enabled="CanEditAttribute(6)" />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.ManufacturerIDLabel" Enabled="CanEditAttribute(7)" />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.MBusVersionLabel" Enabled="CanEditAttribute(8)" />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.DeviceTypeLabel2" Enabled="CanEditAttribute(9)" EnumType="typeof(MBusDeviceType)" />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.MaximumPDUSizeLabel" Enabled="CanEditAttribute(10)" />
     </fieldset>
-    <GXAttributeField Edit="Edit" Index="11" Label="Listening windows" Enabled="CanEditAttribute(11)"
-        Columns='@(new[] { "Start", "End" })' EditorKinds='@(new[] { "datetime", "datetime" })' CreateRow="CreateListeningWindow" />
+    <GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.ListeningWindows" Enabled="CanEditAttribute(11)"
+        Columns='@(new[] { Properties.Resources.Start, Properties.Resources.End })' EditorKinds='@(new[] { "datetime", "datetime" })' CreateRow="CreateListeningWindow" />
 </section>
 
 @code {
+    /// <summary>Creates the default start-and-end date-time structure for a listening window.</summary>
+    /// <returns>The default start-and-end date-time structure for a listening window.</returns>
     private static object CreateListeningWindow()
     {
         var start = new GXDateTime(DateTime.Today);

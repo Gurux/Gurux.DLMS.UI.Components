@@ -38,21 +38,21 @@
 @inherits GXDLMSObjectViewBase<GXDLMSDisconnectControl>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Disconnect Control Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.DisconnectControlObject" />
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Output State:" Enabled="CanEditAttribute(2)" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.OutputStateLabel" Enabled="CanEditAttribute(2)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
 {
-<GXAttributeField Edit="Edit" Index="3" Label="Control State:" Enabled="CanEditAttribute(3)" EnumType="typeof(ControlState)" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ControlStateLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(ControlState)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
 {
-<GXAttributeField Edit="Edit" Index="4" Label="Control Mode:" Enabled="CanEditAttribute(4)" EnumType="typeof(ControlMode)" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ControlModeLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(ControlMode)" />
 }
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="DisconnectAsync">Disconnect</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ReconnectAsync">Reconnect</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="DisconnectAsync">@Properties.Resources.Disconnect</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ReconnectAsync">@Properties.Resources.Reconnect</GXButton>
 </section>
 
 @code {

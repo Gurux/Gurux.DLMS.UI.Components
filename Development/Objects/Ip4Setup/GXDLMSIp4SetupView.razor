@@ -40,64 +40,74 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="Ip4 Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.Ip4SetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.DataLinkLayerLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="IP Address:" Enabled="CanEditAttribute(3)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.IPAddressLabel" Enabled="CanEditAttribute(3)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Multicast IP Address:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Multicast IP Address:" })' CreateRow='@(() => (uint)0xE0000001)' InputKind="ip" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MulticastIPAddressLabel" Enabled="CanEditAttribute(4)" Columns='@(new[] { Properties.Resources.MulticastIPAddressLabel })' CreateRow='@(() => (uint)0xE0000001)' InputKind="ip" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="IP Options:" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Type", "Length", "Data" })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.IPOptionsLabel" Enabled="CanEditAttribute(5)" Columns='@(new[] { Properties.Resources.Type, Properties.Resources.Length, Properties.Resources.Data })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Subnet Mask:" Enabled="CanEditAttribute(6)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.SubnetMaskLabel" Enabled="CanEditAttribute(6)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Gateway IP Address:" Enabled="CanEditAttribute(7)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.GatewayIPAddressLabel" Enabled="CanEditAttribute(7)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Use DHCP:" Enabled="CanEditAttribute(8)"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.UseDHCPLabel" Enabled="CanEditAttribute(8)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Primary DNS Address:" Enabled="CanEditAttribute(9)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.PrimaryDNSAddressLabel" Enabled="CanEditAttribute(9)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
     {
-        <GXAttributeField Edit="Edit" Index="10" Label="Secondary DNS Address:" Enabled="CanEditAttribute(10)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.SecondaryDNSAddressLabel" Enabled="CanEditAttribute(10)" InputKind="ip"  />
     }
 </div>
 </section>
 <section class="gx-object-actions">
-    <GXValueField @key='@((Target, "Multicast IPv4 address"))' Label="Multicast IPv4 address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => Address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && address.GetAddressBytes()[0] >= 224 && address.GetAddressBytes()[0] <= 239 ? null : "Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).")' />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">Add multicast address</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete multicast address</GXButton>
-    <GXValueField @key='@((Target, "Address index"))' Label="Address index" Value="@AddressIndex" Enabled="@(CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => AddressIndex = value)" Validate='@(value => byte.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter an address index from 0 to 255.")' />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="CountAsync">Get multicast address count</GXButton></section>
+    <GXValueField @key='@((Target, Properties.Resources.MulticastIPv4Address))' Label="@Properties.Resources.MulticastIPv4Address" Value="@_address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => _address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetwork && address.GetAddressBytes()[0] >= 224 && address.GetAddressBytes()[0] <= 239 ? null : Properties.Resources.EnterAnIPv4MulticastAddress224000239255255255)' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">@Properties.Resources.AddMulticastAddress</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">@Properties.Resources.DeleteMulticastAddress</GXButton>
+    <GXValueField @key='@((Target, Properties.Resources.AddressIndex))' Label="@Properties.Resources.AddressIndex" Value="@_addressIndex" Enabled="@(CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => _addressIndex = value)" Validate='@(value => byte.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : Properties.Resources.EnterAnAddressIndexFrom0To255)' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="CountAsync">@Properties.Resources.GetMulticastAddressCount</GXButton></section>
 @code {
-    private string Address = "";
-    private string AddressIndex = "";
+    /// <summary>Retains the address text supplied to the object&apos;s address methods.</summary>
+    private string _address = "";
+    /// <summary>Retains the multicast address index supplied to the count method.</summary>
+    private string _addressIndex = "";
+    /// <summary>Parses and validates an IP address of the family required by this object.</summary>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     private IPAddress ParseAddress()
     {
-        var address = IPAddress.Parse(Address);
+        var address = IPAddress.Parse(_address);
         if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetwork || address.GetAddressBytes()[0] < 224 || address.GetAddressBytes()[0] > 239)
         {
-            throw new FormatException("Enter an IPv4 multicast address (224.0.0.0–239.255.255.255).");
+            throw new FormatException(Properties.Resources.EnterAnIPv4MulticastAddress224000239255255255);
         }
         return address;
     }
+    /// <summary>Submits the method that adds the specified address to the object&apos;s address list.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddMcIpAaddress(client, ParseAddress()));
+    /// <summary>Submits the method that removes the specified IPv4 multicast address.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task DeleteAsync() => InvokeMethodAsync(2, client => Target.DeleteMcIpAaddress(client, ParseAddress()));
-    private Task CountAsync() => InvokeMethodAsync(3, client => Target.GetMcIpAddressCount(client, byte.Parse(AddressIndex, System.Globalization.CultureInfo.InvariantCulture)));
+    /// <summary>Requests the multicast-address count using the specified address index.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
+    private Task CountAsync() => InvokeMethodAsync(3, client => Target.GetMcIpAddressCount(client, byte.Parse(_addressIndex, System.Globalization.CultureInfo.InvariantCulture)));
 }
 

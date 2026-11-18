@@ -34,7 +34,9 @@ namespace Gurux.DLMS.UI.Components.Help;
 /// <summary>Provides online Gurux COSEM articles without the surrounding website.</summary>
 public sealed class GXDLMSObjectHelpProvider : IGXHelpProvider
 {
+    /// <summary>Selects whether loaded articles require HTML-to-Markdown conversion.</summary>
     private readonly bool _html;
+    /// <summary>Loads an article for a help request using the supplied cancellation token.</summary>
     private readonly Func<GXHelpRequest, CancellationToken, Task<string?>> _load;
 
     /// <summary>Uses the shared online article reader and its language-specific cache.</summary>
@@ -44,6 +46,7 @@ public sealed class GXDLMSObjectHelpProvider : IGXHelpProvider
     }
 
     /// <summary>Uses a host-owned Markdown loader, without HTML conversion.</summary>
+    /// <param name="load">Loads help content for the requested topic, version and culture.</param>
     public GXDLMSObjectHelpProvider(Func<GXHelpRequest, CancellationToken, Task<string?>> load)
     {
         _load = load ?? throw new ArgumentNullException(nameof(load));

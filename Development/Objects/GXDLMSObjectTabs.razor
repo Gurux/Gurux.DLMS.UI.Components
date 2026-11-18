@@ -36,28 +36,28 @@
 
 <section class="gx-object-tabs">
     <GXTabControl @key="Target" NavigateOnSelection="false">
-        <GXTabPage Text="Data">@Data</GXTabPage>
-        <GXTabPage Text="Attributes">
+        <GXTabPage Text="@Properties.Resources.Data">@Data</GXTabPage>
+        <GXTabPage Text="@Properties.Resources.Attributes">
             <div class="attribute-read-actions">
-                <GXButton Disabled="@(!ReadsEnabled || !SelectedAttributes.Any(CanRead))" OnClick="ReadSelectedAsync">Read</GXButton>
-                <GXButton Disabled="@(!ReadsEnabled)" OnClick="ReadAllAsync">Read all</GXButton>
-                <GXButton Disabled="@(!ReadsEnabled)" OnClick="RefreshValuesAsync">Refresh values</GXButton>
-                <GXInputSwitch TValue="bool" Inline="true" Save="false" Text="Read automatically on object selection" Value="AutoRead" ValueChanged="SetAutoReadAsync" />
+                <GXButton Disabled="@(!ReadsEnabled || !SelectedAttributes.Any(CanRead))" OnClick="ReadSelectedAsync">@Properties.Resources.Read</GXButton>
+                <GXButton Disabled="@(!ReadsEnabled)" OnClick="ReadAllAsync">@Properties.Resources.ReadAll</GXButton>
+                <GXButton Disabled="@(!ReadsEnabled)" OnClick="RefreshValuesAsync">@Properties.Resources.RefreshValues</GXButton>
+                <GXInputSwitch TValue="bool" Inline="true" Save="false" Text="@Properties.Resources.ReadAutomaticallyOnObjectSelection" Value="AutoRead" ValueChanged="SetAutoReadAsync" />
             </div>
             <div class="rights-scroll">
-                <table><thead><tr><th>Read</th><th>Index</th><th>Description</th><th>Value</th><th>Access rights</th></tr></thead><tbody>
+                <table><thead><tr><th>@Properties.Resources.Read</th><th>@Properties.Resources.Index</th><th>@Properties.Resources.Description</th><th>@Properties.Resources.Value</th><th>@Properties.Resources.AccessRights</th></tr></thead><tbody>
                 @for (var index = 1; index <= AttributeCount; ++index)
                 {
                     var attributeIndex = index;
-                    <tr><td><GXInputSwitch TValue="bool" Inline="true" Save="false" Value="@SelectedAttributes.Contains(index)" Disabled="@(!CanRead(index))" ValueChanged="value => SelectAttributeAsync(attributeIndex, value)" aria-label="@($"Read {AttributeName(index)}")" /></td>
+                    <tr><td><GXInputSwitch TValue="bool" Inline="true" Save="false" Value="@SelectedAttributes.Contains(index)" Disabled="@(!CanRead(index))" ValueChanged="value => SelectAttributeAsync(attributeIndex, value)" aria-label="@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Read0, AttributeName(index)))" /></td>
                         <td>@index</td><td>@AttributeName(index)</td><td>@AttributeValue(index)</td><td>@AttributeAccess(index)</td></tr>
                 }
                 </tbody></table>
             </div>
         </GXTabPage>
-        <GXTabPage Text="Access rights">
+        <GXTabPage Text="@Properties.Resources.AccessRights">
             <div class="rights-scroll">
-                <table><thead><tr><th>Attribute Index</th><th>Description</th><th>Access rights</th><th>Access selector</th><th>Static</th><th>Type</th><th>UIType</th></tr></thead>
+                <table><thead><tr><th>@Properties.Resources.AttributeIndex</th><th>@Properties.Resources.Description</th><th>@Properties.Resources.AccessRights</th><th>@Properties.Resources.AccessSelector</th><th>@Properties.Resources.Static</th><th>@Properties.Resources.Type</th><th>@Properties.Resources.UIType</th></tr></thead>
                     <tbody>
                         @for (var index = 1; index <= AttributeCount; ++index)
                         {
@@ -70,9 +70,9 @@
         </GXTabPage>
         @if (MethodCount > 0)
         {
-            <GXTabPage Text="Method access rights">
+            <GXTabPage Text="@Properties.Resources.MethodAccessRights">
                 <div class="rights-scroll">
-                    <table><thead><tr><th>Method Index</th><th>Description</th><th>Method access</th></tr></thead>
+                    <table><thead><tr><th>@Properties.Resources.MethodIndex</th><th>@Properties.Resources.Description</th><th>@Properties.Resources.MethodAccess</th></tr></thead>
                         <tbody>
                             @for (var index = 1; index <= MethodCount; ++index)
                             {
@@ -134,8 +134,11 @@
     {
         get; private set;
     }
+    /// <summary>Identifies the model whose read selections are currently loaded.</summary>
     private GXDLMSObject? _settingsTarget;
+    /// <summary>Tracks whether the persisted component settings have been loaded. Prevents overlapping read requests while a host callback is running.</summary>
     private bool _loaded, _reading;
+    /// <summary>Gets the storage key for the current object&apos;s selected attribute indices.</summary>
     private string SelectionKey => $"GXAttributeReads:{Target.ObjectType}";
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -148,6 +151,8 @@
         _loaded = false;
         SelectedAttributes = DefaultAttributes().ToHashSet();
     }
+    /// <summary>Chooses the default readable attributes, with the clock-specific selection.</summary>
+    /// <returns>Chooses the default readable attributes, with the clock-specific selection.</returns>
     private IEnumerable<int> DefaultAttributes() => Target.ObjectType == Gurux.DLMS.Enums.ObjectType.Clock
         ? new[] { 2, 4 }.Where(CanRead)
         : Enumerable.Range(1, AttributeCount).Where(index => index > 1 && !Target.GetStatic(index) && CanRead(index));
@@ -231,6 +236,9 @@
     /// </summary>
     /// <returns>A task representing completion of the operation.</returns>
     public Task RefreshValuesAsync() => RequestReadAsync(DefaultAttributes());
+    /// <summary>Requests a host-managed attribute read and updates the loading state.</summary>
+    /// <param name="indices">The one-based attribute indices requested from the host.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private async Task RequestReadAsync(IEnumerable<int> indices)
     {
         if (!ReadsEnabled || _reading || !OnReadRequested.HasDelegate)
@@ -249,6 +257,9 @@
         }
         finally { _reading = false; }
     }
+    /// <summary>Formats an attribute value and retains a readable error when conversion fails.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private string AttributeValue(int index)
     {
         try
@@ -265,9 +276,20 @@
     /// Number of methods exposed by the target object.
     /// </summary>
     public int MethodCount => (Target as IGXDLMSBase)?.GetMethodCount() ?? Target.MethodAttributes.Select(item => item.Index).DefaultIfEmpty().Max();
-    private string AttributeName(int index) => Name((Target as IGXDLMSBase)?.GetNames(), index, "Attribute");
-    private string MethodName(int index) => Name((Target as IGXDLMSBase)?.GetMethodNames(), index, "Method");
-    private static string Name(string[]? names, int index, string fallback) => names is not null && index <= names.Length ? names[index - 1] : $"{fallback} {index}";
+    /// <summary>Gets the protocol attribute name or a numbered fallback.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The protocol attribute name or a numbered fallback.</returns>
+    private string AttributeName(int index) => Name((Target as IGXDLMSBase)?.GetNames(), index, Properties.Resources.Attribute0);
+    /// <summary>Gets the protocol method name or a numbered fallback.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The protocol method name or a numbered fallback.</returns>
+    private string MethodName(int index) => Name((Target as IGXDLMSBase)?.GetMethodNames(), index, Properties.Resources.Method0);
+    /// <summary>Returns the indexed protocol name or a numbered fallback label.</summary>
+    /// <param name="names">The ordered protocol names, if supplied by the object.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <param name="fallback">The numbered fallback format used when no protocol name is available.</param>
+    /// <returns>The indexed protocol name or a numbered fallback label.</returns>
+    private static string Name(string[]? names, int index, string fallback) => names is not null && index <= names.Length ? names[index - 1] : string.Format(System.Globalization.CultureInfo.CurrentCulture, fallback, index);
     /// <summary>
     /// Returns association-specific access rights for an attribute.
     /// </summary>

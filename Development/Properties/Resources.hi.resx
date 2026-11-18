@@ -20,9 +20,3378 @@
     <value>सहायता लोड हो रही है...</value>
   </data>
   <data name="CosemHelpUnavailable" xml:space="preserve">
-    <value>इस COSEM क्लास और संस्करण के लिए सहायता उपलब्ध नहीं है।</value>
+    <value>इस COSEM क्लास और संस्करण के लिए सहायता उपलब्ध नहीं है.</value>
   </data>
   <data name="CosemHelpLoadFailed" xml:space="preserve">
-    <value>COSEM ऑब्जेक्ट की सहायता लोड नहीं हो सकी।</value>
+    <value>COSEM ऑब्जेक्ट की सहायता लोड नहीं हो सकी.</value>
+  </data>
+  <data name="Actions" xml:space="preserve">
+    <value>क्रियाएँ</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>जोड़ें...</value>
+  </data>
+  <data name="AddDevice" xml:space="preserve">
+    <value>+ डिवाइस जोड़ें</value>
+  </data>
+  <data name="AddDevice2" xml:space="preserve">
+    <value>डिवाइस जोड़ें</value>
+  </data>
+  <data name="ALogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>लॉजिकल नाम के लिए छह बाइट मान आवश्यक हैं.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>एट्रिब्यूट</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>कनेक्ट करें</value>
+  </data>
+  <data name="CorrectTheInvalidFieldsBeforeAccepting" xml:space="preserve">
+    <value>स्वीकार करने से पहले अमान्य फ़ील्ड ठीक करें.</value>
+  </data>
+  <data name="COSEMObjects" xml:space="preserve">
+    <value>COSEM ऑब्जेक्ट</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>डेटा</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="DeviceCommands" xml:space="preserve">
+    <value>डिवाइस कमांड</value>
+  </data>
+  <data name="DeviceGeneralInformation" xml:space="preserve">
+    <value>डिवाइस की सामान्य जानकारी</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>डिवाइस</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>डिस्कनेक्ट करें</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>संपादित करें...</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>सामान्य</value>
+  </data>
+  <data name="InvalidValueForTheSelectedDataType" xml:space="preserve">
+    <value>चुने गए डेटा प्रकार के लिए अमान्य मान.</value>
+  </data>
+  <data name="LoadValues" xml:space="preserve">
+    <value>मान लोड करें</value>
+  </data>
+  <data name="NoDevicesLoaded" xml:space="preserve">
+    <value>कोई डिवाइस लोड नहीं किया गया है.</value>
+  </data>
+  <data name="NoObjectsLoaded" xml:space="preserve">
+    <value>कोई ऑब्जेक्ट लोड नहीं किया गया है.</value>
+  </data>
+  <data name="Objects" xml:space="preserve">
+    <value>ऑब्जेक्ट</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>ठीक है</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>गुण</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>पढ़ें</value>
+  </data>
+  <data name="ReadObject" xml:space="preserve">
+    <value>ऑब्जेक्ट पढ़ें</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>हटाएँ</value>
+  </data>
+  <data name="SaveValuesAs" xml:space="preserve">
+    <value>मान इस रूप में सहेजें...</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTen" xml:space="preserve">
+    <value>स्केलिंग गुणक दस की एक धनात्मक घात होनी चाहिए.</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTenForExample0011Or100" xml:space="preserve">
+    <value>स्केलिंग गुणक दस की एक धनात्मक घात होनी चाहिए (उदाहरण के लिए 0.01, 1 या 100).</value>
+  </data>
+  <data name="TheValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>मान बदल गया है. रद्द करें और संपादक को फिर से खोलें.</value>
+  </data>
+  <data name="WrongIPAddressFamily" xml:space="preserve">
+    <value>गलत IP पता परिवार.</value>
+  </data>
+  <data name="XMLRootDoesNotMatchTheCOSEMDataType" xml:space="preserve">
+    <value>XML का मूल तत्व COSEM डेटा प्रकार से मेल नहीं खाता है.</value>
+  </data>
+  <data name="AccessRights" xml:space="preserve">
+    <value>अभिगम अधिकार</value>
+  </data>
+  <data name="AccessSelector" xml:space="preserve">
+    <value>अभिगम चयनकर्ता</value>
+  </data>
+  <data name="Add2" xml:space="preserve">
+    <value>जोड़ें</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>एट्रिब्यूट</value>
+  </data>
+  <data name="AttributeIndex" xml:space="preserve">
+    <value>एट्रिब्यूट सूचकांक</value>
+  </data>
+  <data name="CreditReference" xml:space="preserve">
+    <value>क्रेडिट संदर्भ</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>विवरण</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>विवरण:</value>
+  </data>
+  <data name="Edit2" xml:space="preserve">
+    <value>संपादित करें</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbers" xml:space="preserve">
+    <value>छह संख्याओं वाला लॉजिकल नाम दर्ज करें.</value>
+  </data>
+  <data name="EnterAValidDateAndTime" xml:space="preserve">
+    <value>मान्य दिनांक और समय दर्ज करें.</value>
+  </data>
+  <data name="EnterAValidIPAddress" xml:space="preserve">
+    <value>मान्य IP पता दर्ज करें.</value>
+  </data>
+  <data name="EnterAValidNumber" xml:space="preserve">
+    <value>मान्य संख्या दर्ज करें.</value>
+  </data>
+  <data name="Hexadecimal" xml:space="preserve">
+    <value>हेक्साडेसिमल</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>सूचकांक</value>
+  </data>
+  <data name="LogicalName" xml:space="preserve">
+    <value>लॉजिकल नाम</value>
+  </data>
+  <data name="LogicalNameLabel" xml:space="preserve">
+    <value>लॉजिकल नाम:</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>विधि</value>
+  </data>
+  <data name="MethodAccess" xml:space="preserve">
+    <value>विधि अभिगम</value>
+  </data>
+  <data name="MethodAccessRights" xml:space="preserve">
+    <value>विधि के अभिगम अधिकार</value>
+  </data>
+  <data name="MethodIndex" xml:space="preserve">
+    <value>विधि सूचकांक</value>
+  </data>
+  <data name="MethodResult" xml:space="preserve">
+    <value>विधि का परिणाम</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>नाम</value>
+  </data>
+  <data name="ReadAll" xml:space="preserve">
+    <value>सभी पढ़ें</value>
+  </data>
+  <data name="ReadAutomaticallyOnObjectSelection" xml:space="preserve">
+    <value>ऑब्जेक्ट चुनने पर स्वचालित रूप से पढ़ें</value>
+  </data>
+  <data name="RefreshValues" xml:space="preserve">
+    <value>मान अद्यतन करें</value>
+  </data>
+  <data name="Static" xml:space="preserve">
+    <value>स्थिर</value>
+  </data>
+  <data name="TheInstalledValueCodecCannotPreserveThisParameterDataType" xml:space="preserve">
+    <value>स्थापित मान कोडेक इस पैरामीटर का डेटा प्रकार सुरक्षित नहीं रख सकता है.</value>
+  </data>
+  <data name="TheSelectedObjectChangedBeforeTheActionStarted" xml:space="preserve">
+    <value>क्रिया शुरू होने से पहले चयनित ऑब्जेक्ट बदल गया.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>प्रकार</value>
+  </data>
+  <data name="UIType" xml:space="preserve">
+    <value>उपयोगकर्ता इंटरफ़ेस प्रकार</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>मान</value>
+  </data>
+  <data name="ValueChanged" xml:space="preserve">
+    <value>मान बदल गया है</value>
+  </data>
+  <data name="ChargeReference" xml:space="preserve">
+    <value>शुल्क संदर्भ</value>
+  </data>
+  <data name="TokenProportion" xml:space="preserve">
+    <value>टोकन अनुपात</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>विन्यास</value>
+  </data>
+  <data name="CreditReference2" xml:space="preserve">
+    <value>क्रेडिट संदर्भ</value>
+  </data>
+  <data name="CreditCharge" xml:space="preserve">
+    <value>क्रेडिट शुल्क</value>
+  </data>
+  <data name="TokenGateway" xml:space="preserve">
+    <value>टोकन गेटवे</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>क्रेडिट</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>शुल्क</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbersBetween0And255" xml:space="preserve">
+    <value>0 और 255 के बीच छह संख्याओं वाला तार्किक नाम दर्ज करें.</value>
+  </data>
+  <data name="TheSelectedRowNoLongerExists" xml:space="preserve">
+    <value>चुनी गई पंक्ति अब मौजूद नहीं है.</value>
+  </data>
+  <data name="AccountObject" xml:space="preserve">
+    <value>खाता ऑब्जेक्ट</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>भुगतान मोड:</value>
+  </data>
+  <data name="StatusLabel" xml:space="preserve">
+    <value>स्थिति:</value>
+  </data>
+  <data name="CurrentCreditInUseLabel" xml:space="preserve">
+    <value>वर्तमान में प्रयुक्त क्रेडिट:</value>
+  </data>
+  <data name="CurrentCreditStatusLabel" xml:space="preserve">
+    <value>वर्तमान क्रेडिट स्थिति:</value>
+  </data>
+  <data name="AccountActivationTimeLabel" xml:space="preserve">
+    <value>खाता सक्रियण समय:</value>
+  </data>
+  <data name="AccountClosureTimeLabel" xml:space="preserve">
+    <value>खाता बंद करने का समय:</value>
+  </data>
+  <data name="CurrencyNameLabel" xml:space="preserve">
+    <value>मुद्रा का नाम:</value>
+  </data>
+  <data name="CurrencyScaleLabel" xml:space="preserve">
+    <value>मुद्रा पैमाना:</value>
+  </data>
+  <data name="CurrencyUnitLabel" xml:space="preserve">
+    <value>मुद्रा इकाई:</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>सक्रिय करें</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>रीसेट करें</value>
+  </data>
+  <data name="ActionScheduleObject" xml:space="preserve">
+    <value>क्रिया अनुसूची ऑब्जेक्ट</value>
+  </data>
+  <data name="ScriptName" xml:space="preserve">
+    <value>स्क्रिप्ट का नाम</value>
+  </data>
+  <data name="ScriptSelector" xml:space="preserve">
+    <value>स्क्रिप्ट चयनकर्ता</value>
+  </data>
+  <data name="ScriptType" xml:space="preserve">
+    <value>स्क्रिप्ट प्रकार</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>समय</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>तारीख</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>निष्पादन समय</value>
+  </data>
+  <data name="ExecutedScript" xml:space="preserve">
+    <value>निष्पादित स्क्रिप्ट</value>
+  </data>
+  <data name="ActivityCalendarObject" xml:space="preserve">
+    <value>गतिविधि कैलेंडर ऑब्जेक्ट</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>सक्रिय</value>
+  </data>
+  <data name="CalendarName" xml:space="preserve">
+    <value>कैलेंडर का नाम</value>
+  </data>
+  <data name="SeasonProfile" xml:space="preserve">
+    <value>ऋतु प्रोफ़ाइल</value>
+  </data>
+  <data name="WeekProfile" xml:space="preserve">
+    <value>सप्ताह प्रोफ़ाइल</value>
+  </data>
+  <data name="DayProfile" xml:space="preserve">
+    <value>दिन प्रोफ़ाइल</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>निष्क्रिय</value>
+  </data>
+  <data name="ActivatePassiveCalendar" xml:space="preserve">
+    <value>निष्क्रिय कैलेंडर सक्रिय करें</value>
+  </data>
+  <data name="DayActions" xml:space="preserve">
+    <value>दिन की क्रियाएँ</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>प्रारंभ समय</value>
+  </data>
+  <data name="Script" xml:space="preserve">
+    <value>स्क्रिप्ट</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+    <value>चयनकर्ता</value>
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value>क्रिया जोड़ें...</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>प्रारंभ</value>
+  </data>
+  <data name="WeekName" xml:space="preserve">
+    <value>सप्ताह का नाम</value>
+  </data>
+  <data name="DayID" xml:space="preserve">
+    <value>दिन ID</value>
+  </data>
+  <data name="AdvancedCOSEMXML" xml:space="preserve">
+    <value>उन्नत COSEM XML</value>
+  </data>
+  <data name="AddDay" xml:space="preserve">
+    <value>दिन जोड़ें...</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>सोमवार</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>मंगलवार</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>बुधवार</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>गुरुवार</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>शुक्रवार</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>शनिवार</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>रविवार</value>
+  </data>
+  <data name="EnterAnASCIIProfileName" xml:space="preserve">
+    <value>ASCII प्रोफ़ाइल नाम दर्ज करें.</value>
+  </data>
+  <data name="EnterSevenDayIDs" xml:space="preserve">
+    <value>सात दिन ID दर्ज करें.</value>
+  </data>
+  <data name="DayIDsMustBeUnique" xml:space="preserve">
+    <value>दिन ID अद्वितीय होने चाहिए.</value>
+  </data>
+  <data name="SelectADayFirst" xml:space="preserve">
+    <value>पहले एक दिन चुनें.</value>
+  </data>
+  <data name="AScriptLogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>स्क्रिप्ट के तार्किक नाम में छह बाइट मान होने चाहिए.</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>सोम</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>मंगल</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>बुध</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>गुरु</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>शुक्र</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>शनि</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>रवि</value>
+  </data>
+  <data name="DayAction" xml:space="preserve">
+    <value>दिन की क्रिया</value>
+  </data>
+  <data name="TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>लक्ष्य, पहुँच अधिकार या लंबित मान बदल गया है. रद्द करें और संपादक फिर खोलें.</value>
+  </data>
+  <data name="ArbitratorObject" xml:space="preserve">
+    <value>मध्यस्थ ऑब्जेक्ट</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>स्क्रिप्ट</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>अनुमत</value>
+  </data>
+  <data name="Weightings" xml:space="preserve">
+    <value>भारांक</value>
+  </data>
+  <data name="MostRecent" xml:space="preserve">
+    <value>सबसे हाल का</value>
+  </data>
+  <data name="LastOutcome" xml:space="preserve">
+    <value>अंतिम परिणाम</value>
+  </data>
+  <data name="Actor0255" xml:space="preserve">
+    <value>कर्ता (0–255)</value>
+  </data>
+  <data name="ActionsBinaryBitString" xml:space="preserve">
+    <value>क्रियाएँ (बाइनरी बिट स्ट्रिंग)</value>
+  </data>
+  <data name="Methods" xml:space="preserve">
+    <value>विधियाँ</value>
+  </data>
+  <data name="RequestAction" xml:space="preserve">
+    <value>क्रिया का अनुरोध करें</value>
+  </data>
+  <data name="EnterTheRequestedActionsAsABinaryBitString" xml:space="preserve">
+    <value>अनुरोधित क्रियाएँ बाइनरी बिट स्ट्रिंग के रूप में दर्ज करें.</value>
+  </data>
+  <data name="EnterABinaryBitString" xml:space="preserve">
+    <value>बाइनरी बिट स्ट्रिंग दर्ज करें.</value>
+  </data>
+  <data name="ArrayManagerObject" xml:space="preserve">
+    <value>सरणी प्रबंधक ऑब्जेक्ट</value>
+  </data>
+  <data name="Elements" xml:space="preserve">
+    <value>तत्व</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ClassID" xml:space="preserve">
+    <value>वर्ग ID</value>
+  </data>
+  <data name="LogicalName2" xml:space="preserve">
+    <value>तार्किक नाम</value>
+  </data>
+  <data name="AttributeIndex2" xml:space="preserve">
+    <value>विशेषता अनुक्रमांक</value>
+  </data>
+  <data name="ArrayID0255" xml:space="preserve">
+    <value>सरणी ID (0–255)</value>
+  </data>
+  <data name="FromIndex165535" xml:space="preserve">
+    <value>प्रारंभिक अनुक्रमांक (1–65535)</value>
+  </data>
+  <data name="ToIndex165535" xml:space="preserve">
+    <value>अंतिम अनुक्रमांक (1–65535)</value>
+  </data>
+  <data name="EntryIndex165535" xml:space="preserve">
+    <value>प्रविष्टि अनुक्रमांक (1–65535)</value>
+  </data>
+  <data name="EntryDLMSXML" xml:space="preserve">
+    <value>प्रविष्टि (DLMS XML)</value>
+  </data>
+  <data name="Array" xml:space="preserve">
+    <value>सरणी</value>
+  </data>
+  <data name="NumberOfEntries" xml:space="preserve">
+    <value>प्रविष्टियों की संख्या</value>
+  </data>
+  <data name="EntryRange" xml:space="preserve">
+    <value>प्रविष्टि सीमा</value>
+  </data>
+  <data name="RetrieveEntries" xml:space="preserve">
+    <value>प्रविष्टियाँ प्राप्त करें</value>
+  </data>
+  <data name="RemoveEntries" xml:space="preserve">
+    <value>प्रविष्टियाँ हटाएँ</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>प्रविष्टि</value>
+  </data>
+  <data name="InsertEntry" xml:space="preserve">
+    <value>प्रविष्टि डालें</value>
+  </data>
+  <data name="UpdateEntry" xml:space="preserve">
+    <value>प्रविष्टि अद्यतन करें</value>
+  </data>
+  <data name="CorrectTheInvalidParametersBeforeInvokingTheMethod" xml:space="preserve">
+    <value>विधि लागू करने से पहले अमान्य पैरामीटर ठीक करें.</value>
+  </data>
+  <data name="FromIndexMustNotExceedToIndex" xml:space="preserve">
+    <value>प्रारंभिक अनुक्रमांक अंतिम अनुक्रमांक से अधिक नहीं होना चाहिए.</value>
+  </data>
+  <data name="EntryIndicesMustBeBetween1And65535" xml:space="preserve">
+    <value>प्रविष्टि अनुक्रमांक 1 और 65535 के बीच होने चाहिए.</value>
+  </data>
+  <data name="EnterATypedDLMSValue" xml:space="preserve">
+    <value>प्रकार सहित DLMS मान दर्ज करें.</value>
+  </data>
+  <data name="EnterAnArrayIDBetween0And255" xml:space="preserve">
+    <value>0 और 255 के बीच सरणी ID दर्ज करें.</value>
+  </data>
+  <data name="EnterAnIndexBetween1And65535" xml:space="preserve">
+    <value>1 और 65535 के बीच अनुक्रमांक दर्ज करें.</value>
+  </data>
+  <data name="AssociationLogicalNameObject" xml:space="preserve">
+    <value>तार्किक नाम संबद्धता ऑब्जेक्ट</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>संस्करण:</value>
+  </data>
+  <data name="ClassIDLabel" xml:space="preserve">
+    <value>वर्ग ID:</value>
+  </data>
+  <data name="AttributeAccessLabel" xml:space="preserve">
+    <value>विशेषता पहुँच:</value>
+  </data>
+  <data name="MethodAccessLabel" xml:space="preserve">
+    <value>विधि पहुँच:</value>
+  </data>
+  <data name="ChooseAValidCOSEMClass" xml:space="preserve">
+    <value>मान्य COSEM वर्ग चुनें.</value>
+  </data>
+  <data name="LogicalNamesRequireSixBytes" xml:space="preserve">
+    <value>तार्किक नामों में छह बाइट होने चाहिए.</value>
+  </data>
+  <data name="VersionMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>संस्करण शून्य और 255 के बीच होना चाहिए.</value>
+  </data>
+  <data name="AttributeAccessIndexMaskLabel" xml:space="preserve">
+    <value>विशेषता पहुँच (अनुक्रमांक:मास्क):</value>
+  </data>
+  <data name="MethodAccessIndexMaskLabel" xml:space="preserve">
+    <value>विधि पहुँच (अनुक्रमांक:मास्क):</value>
+  </data>
+  <data name="ClientSAPLabel" xml:space="preserve">
+    <value>क्लाइंट SAP:</value>
+  </data>
+  <data name="ServerSAPLabel" xml:space="preserve">
+    <value>सर्वर SAP:</value>
+  </data>
+  <data name="SecretLabel" xml:space="preserve">
+    <value>गुप्त मान:</value>
+  </data>
+  <data name="AssociationStatusLabel" xml:space="preserve">
+    <value>संबद्धता स्थिति:</value>
+  </data>
+  <data name="SecuritySetupLabel" xml:space="preserve">
+    <value>सुरक्षा विन्यास:</value>
+  </data>
+  <data name="NewHighAuthenticationSecretHexLabel" xml:space="preserve">
+    <value>उच्च प्रमाणीकरण का नया गुप्त मान (hex):</value>
+  </data>
+  <data name="ANewSecretIsRequired" xml:space="preserve">
+    <value>नया गुप्त मान आवश्यक है.</value>
+  </data>
+  <data name="XDLMSContextInfo" xml:space="preserve">
+    <value>xDLMS संदर्भ जानकारी</value>
+  </data>
+  <data name="ConformanceLabel" xml:space="preserve">
+    <value>अनुरूपता:</value>
+  </data>
+  <data name="MaxReceivePDUSizeLabel" xml:space="preserve">
+    <value>अधिकतम प्राप्त PDU आकार:</value>
+  </data>
+  <data name="MaxSendPDUSizeLabel" xml:space="preserve">
+    <value>अधिकतम प्रेषित PDU आकार:</value>
+  </data>
+  <data name="DLMSVersionNumberLabel" xml:space="preserve">
+    <value>DLMS संस्करण संख्या:</value>
+  </data>
+  <data name="QualityOfServiceLabel" xml:space="preserve">
+    <value>सेवा गुणवत्ता:</value>
+  </data>
+  <data name="DedicatedKeyLabel" xml:space="preserve">
+    <value>समर्पित कुंजी:</value>
+  </data>
+  <data name="ApplicationContextName" xml:space="preserve">
+    <value>अनुप्रयोग संदर्भ नाम</value>
+  </data>
+  <data name="RegistrationAuthorityLabel" xml:space="preserve">
+    <value>पंजीकरण प्राधिकरण:</value>
+  </data>
+  <data name="JointISOCTTLabel" xml:space="preserve">
+    <value>संयुक्त ISO CTT:</value>
+  </data>
+  <data name="CountryLabel" xml:space="preserve">
+    <value>देश:</value>
+  </data>
+  <data name="CountryNameLabel" xml:space="preserve">
+    <value>देश का नाम:</value>
+  </data>
+  <data name="IdentifiedOrganizationLabel" xml:space="preserve">
+    <value>पहचाना गया संगठन:</value>
+  </data>
+  <data name="DLMSUALabel" xml:space="preserve">
+    <value>DLMS UA:</value>
+  </data>
+  <data name="ApplicationContextLabel" xml:space="preserve">
+    <value>अनुप्रयोग संदर्भ:</value>
+  </data>
+  <data name="ContextIDLabel" xml:space="preserve">
+    <value>संदर्भ ID:</value>
+  </data>
+  <data name="AuthenticationMechanismName" xml:space="preserve">
+    <value>प्रमाणीकरण तंत्र का नाम</value>
+  </data>
+  <data name="AuthenticationNameLabel" xml:space="preserve">
+    <value>प्रमाणीकरण नाम:</value>
+  </data>
+  <data name="MechanismIDLabel" xml:space="preserve">
+    <value>तंत्र ID:</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>उपयोगकर्ता सूची</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>उपयोगकर्ता</value>
+  </data>
+  <data name="IDLabel" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>वर्तमान उपयोगकर्ता</value>
+  </data>
+  <data name="UserIDMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>उपयोगकर्ता ID शून्य और 255 के बीच होना चाहिए.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>नाम:</value>
+  </data>
+  <data name="AUserNameIsRequired" xml:space="preserve">
+    <value>उपयोगकर्ता नाम आवश्यक है.</value>
+  </data>
+  <data name="AssociationObjects" xml:space="preserve">
+    <value>संबद्धता ऑब्जेक्ट</value>
+  </data>
+  <data name="RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied" xml:space="preserve">
+    <value>अधिकार मास्क इस संबद्धता संस्करण के अनुसार हैं. अनिर्दिष्ट अधिकार अस्वीकृत हैं.</value>
+  </data>
+  <data name="Remove2" xml:space="preserve">
+    <value>हटाएँ...</value>
+  </data>
+  <data name="AssociatedPartnersID" xml:space="preserve">
+    <value>संबद्ध पक्षों का ID</value>
+  </data>
+  <data name="AuthenticationSecret" xml:space="preserve">
+    <value>प्रमाणीकरण गुप्त मान</value>
+  </data>
+  <data name="UpdateHighPassword" xml:space="preserve">
+    <value>उच्च प्रमाणीकरण पासवर्ड अद्यतन करें</value>
+  </data>
+  <data name="ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup" xml:space="preserve">
+    <value>निम्न प्रमाणीकरण के लिए गुप्त मान संपादित करें और विशेषता 7 लिखें. GMAC कुंजियाँ सुरक्षा विन्यास का उपयोग करती हैं.</value>
+  </data>
+  <data name="LNSettings" xml:space="preserve">
+    <value>LN सेटिंग</value>
+  </data>
+  <data name="SelectAValidCOSEMClass" xml:space="preserve">
+    <value>मान्य COSEM वर्ग चुनें.</value>
+  </data>
+  <data name="AttributeAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>यह संबद्धता संस्करण विशेषता पहुँच मास्क का समर्थन नहीं करता.</value>
+  </data>
+  <data name="MethodAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>यह संबद्धता संस्करण विधि पहुँच मास्क का समर्थन नहीं करता.</value>
+  </data>
+  <data name="RightsRequireAValidIndexMaskPair" xml:space="preserve">
+    <value>अधिकारों के लिए मान्य अनुक्रमांक:मास्क युग्म आवश्यक है.</value>
+  </data>
+  <data name="EachAccessRightIndexMayAppearOnlyOnce" xml:space="preserve">
+    <value>हर पहुँच अधिकार अनुक्रमांक केवल एक बार आ सकता है.</value>
+  </data>
+  <data name="ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms" xml:space="preserve">
+    <value>इस विधि के लिए उच्च प्रमाणीकरण आवश्यक है; अन्य तंत्रों के लिए विशेषता लेखन या सुरक्षा विन्यास का उपयोग करें.</value>
+  </data>
+  <data name="AssociationShortNameObject" xml:space="preserve">
+    <value>लघु नाम संबद्धता ऑब्जेक्ट</value>
+  </data>
+  <data name="SecretHexLabel" xml:space="preserve">
+    <value>गुप्त मान (hex):</value>
+  </data>
+  <data name="ANonemptySecretIsRequired" xml:space="preserve">
+    <value>गुप्त मान खाली नहीं हो सकता.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>अद्यतन करें</value>
+  </data>
+  <data name="AssociationObject" xml:space="preserve">
+    <value>संबद्धता ऑब्जेक्ट</value>
+  </data>
+  <data name="RemoveTheSelectedAssociationObjectAndItsAccessRights" xml:space="preserve">
+    <value>चुना गया संबद्धता ऑब्जेक्ट और उसके पहुँच अधिकार हटाएँ?</value>
+  </data>
+  <data name="BaseNameLabel" xml:space="preserve">
+    <value>आधार नाम:</value>
+  </data>
+  <data name="AttributeAccesss" xml:space="preserve">
+    <value>विशेषता पहुँच</value>
+  </data>
+  <data name="MethodAccess2" xml:space="preserve">
+    <value>विधि पहुँच</value>
+  </data>
+  <data name="AttributeAccess" xml:space="preserve">
+    <value>विशेषता पहुँच</value>
+  </data>
+  <data name="AttributeIndexLabel" xml:space="preserve">
+    <value>विशेषता अनुक्रमांक:</value>
+  </data>
+  <data name="AccessModeLabel" xml:space="preserve">
+    <value>पहुँच मोड:</value>
+  </data>
+  <data name="MethodIndexLabel" xml:space="preserve">
+    <value>विधि अनुक्रमांक:</value>
+  </data>
+  <data name="CorrectTheInvalidValues" xml:space="preserve">
+    <value>अमान्य मान ठीक करें.</value>
+  </data>
+  <data name="TheAssociationListChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>संबद्धता सूची बदल गई है. रद्द करें और संपादक फिर खोलें.</value>
+  </data>
+  <data name="TheSelectedObjectChangedOpenTheEditorAgain" xml:space="preserve">
+    <value>चुना गया ऑब्जेक्ट बदल गया है. संपादक फिर खोलें.</value>
+  </data>
+  <data name="EachObjectMustHaveAUniqueBaseName" xml:space="preserve">
+    <value>हर ऑब्जेक्ट का आधार नाम अद्वितीय होना चाहिए.</value>
+  </data>
+  <data name="ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights" xml:space="preserve">
+    <value>आधार नाम बदलने के लिए पहुँच अधिकार अद्यतन करने की अनुमति भी आवश्यक है.</value>
+  </data>
+  <data name="AutoAnswerObject" xml:space="preserve">
+    <value>स्वचालित उत्तर ऑब्जेक्ट</value>
+  </data>
+  <data name="ModeLabel" xml:space="preserve">
+    <value>मोड:</value>
+  </data>
+  <data name="ListeningWindowLabel" xml:space="preserve">
+    <value>सुनने की अवधि:</value>
+  </data>
+  <data name="StartTimeLabel" xml:space="preserve">
+    <value>प्रारंभ समय:</value>
+  </data>
+  <data name="EndTimeLabel" xml:space="preserve">
+    <value>समाप्ति समय:</value>
+  </data>
+  <data name="NumberOfCallsLabel" xml:space="preserve">
+    <value>कॉल की संख्या:</value>
+  </data>
+  <data name="RingCountInWindowLabel" xml:space="preserve">
+    <value>अवधि के भीतर घंटियों की संख्या:</value>
+  </data>
+  <data name="RingCountOutOfWindowLabel" xml:space="preserve">
+    <value>अवधि के बाहर घंटियों की संख्या:</value>
+  </data>
+  <data name="AllowedCallers" xml:space="preserve">
+    <value>अनुमत कॉलकर्ता</value>
+  </data>
+  <data name="CallerIdentity" xml:space="preserve">
+    <value>कॉलकर्ता पहचान</value>
+  </data>
+  <data name="CallType" xml:space="preserve">
+    <value>कॉल प्रकार</value>
+  </data>
+  <data name="AutoConnectObject" xml:space="preserve">
+    <value>स्वचालित कनेक्शन ऑब्जेक्ट</value>
+  </data>
+  <data name="RepetitionsLabel" xml:space="preserve">
+    <value>दोहराव:</value>
+  </data>
+  <data name="RepetitionDelayLabel" xml:space="preserve">
+    <value>दोहराव में विलंब:</value>
+  </data>
+  <data name="CallingWindowLabel" xml:space="preserve">
+    <value>कॉल अवधि:</value>
+  </data>
+  <data name="DestinationLabel" xml:space="preserve">
+    <value>गंतव्य:</value>
+  </data>
+  <data name="ChargeObject" xml:space="preserve">
+    <value>शुल्क ऑब्जेक्ट</value>
+  </data>
+  <data name="TotalAmountPaid" xml:space="preserve">
+    <value>कुल भुगतान राशि</value>
+  </data>
+  <data name="ChargeType" xml:space="preserve">
+    <value>शुल्क प्रकार</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>प्राथमिकता</value>
+  </data>
+  <data name="UnitChargeActivationTime" xml:space="preserve">
+    <value>इकाई शुल्क सक्रियण समय</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>अवधि</value>
+  </data>
+  <data name="ChargeConfiguration" xml:space="preserve">
+    <value>शुल्क विन्यास</value>
+  </data>
+  <data name="LastCollectionTime" xml:space="preserve">
+    <value>अंतिम संग्रह समय</value>
+  </data>
+  <data name="LastCollectionAmount" xml:space="preserve">
+    <value>अंतिम संग्रह राशि</value>
+  </data>
+  <data name="TotalAmountRemaining" xml:space="preserve">
+    <value>कुल शेष राशि</value>
+  </data>
+  <data name="Proportion" xml:space="preserve">
+    <value>अनुपात</value>
+  </data>
+  <data name="UnitChargeActive" xml:space="preserve">
+    <value>सक्रिय इकाई शुल्क</value>
+  </data>
+  <data name="CommodityScale" xml:space="preserve">
+    <value>वस्तु पैमाना</value>
+  </data>
+  <data name="PriceScale" xml:space="preserve">
+    <value>मूल्य पैमाना</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>ऑब्जेक्ट प्रकार</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>लक्ष्य</value>
+  </data>
+  <data name="ChargeTables" xml:space="preserve">
+    <value>शुल्क तालिकाएँ</value>
+  </data>
+  <data name="ChargePerUnit" xml:space="preserve">
+    <value>प्रति इकाई शुल्क</value>
+  </data>
+  <data name="ThisActionIsNotAvailable" xml:space="preserve">
+    <value>यह क्रिया उपलब्ध नहीं है.</value>
+  </data>
+  <data name="UnitChargePassive" xml:space="preserve">
+    <value>निष्क्रिय इकाई शुल्क</value>
+  </data>
+  <data name="ChargePerUnitScalingType" xml:space="preserve">
+    <value>प्रति इकाई शुल्क पैमाना प्रकार</value>
+  </data>
+  <data name="CommodityReferenceType" xml:space="preserve">
+    <value>वस्तु संदर्भ प्रकार</value>
+  </data>
+  <data name="Collect" xml:space="preserve">
+    <value>संग्रह करें</value>
+  </data>
+  <data name="UpdateTotal" xml:space="preserve">
+    <value>कुल अद्यतन करें...</value>
+  </data>
+  <data name="SetTotal" xml:space="preserve">
+    <value>कुल निर्धारित करें...</value>
+  </data>
+  <data name="ClockObject" xml:space="preserve">
+    <value>घड़ी ऑब्जेक्ट</value>
+  </data>
+  <data name="TimeLabel" xml:space="preserve">
+    <value>समय:</value>
+  </data>
+  <data name="UseTimeZoneLabel" xml:space="preserve">
+    <value>समय क्षेत्र का उपयोग करें:</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>समय क्षेत्र:</value>
+  </data>
+  <data name="BeginLabel" xml:space="preserve">
+    <value>प्रारंभ:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>समाप्ति:</value>
+  </data>
+  <data name="DeviationLabel" xml:space="preserve">
+    <value>विचलन:</value>
+  </data>
+  <data name="EnabledLabel" xml:space="preserve">
+    <value>सक्षम:</value>
+  </data>
+  <data name="ClockBaseLabel" xml:space="preserve">
+    <value>घड़ी आधार:</value>
+  </data>
+  <data name="Adjustments" xml:space="preserve">
+    <value>समायोजन</value>
+  </data>
+  <data name="PresetTimeLabel" xml:space="preserve">
+    <value>पूर्वनिर्धारित समय:</value>
+  </data>
+  <data name="ValidityStartLabel" xml:space="preserve">
+    <value>वैधता प्रारंभ:</value>
+  </data>
+  <data name="ValidityEndLabel" xml:space="preserve">
+    <value>वैधता समाप्ति:</value>
+  </data>
+  <data name="ShiftSecondsLabel" xml:space="preserve">
+    <value>सेकंड में स्थानांतरण:</value>
+  </data>
+  <data name="CurrentTime" xml:space="preserve">
+    <value>वर्तमान समय</value>
+  </data>
+  <data name="CurrentTimeZone" xml:space="preserve">
+    <value>वर्तमान समय क्षेत्र</value>
+  </data>
+  <data name="DaylightSavings" xml:space="preserve">
+    <value>ग्रीष्मकालीन समय</value>
+  </data>
+  <data name="AdjustTo" xml:space="preserve">
+    <value>इस पर समायोजित करें</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>चौथाई घंटा</value>
+  </data>
+  <data name="MeasuringPeriod" xml:space="preserve">
+    <value>मापन अवधि</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>मिनट</value>
+  </data>
+  <data name="PresetTime" xml:space="preserve">
+    <value>पूर्वनिर्धारित समय</value>
+  </data>
+  <data name="PresetAdjustingTime" xml:space="preserve">
+    <value>पूर्वनिर्धारित समायोजन समय</value>
+  </data>
+  <data name="PresetAdjustingTime2" xml:space="preserve">
+    <value>पूर्वनिर्धारित समायोजन समय...</value>
+  </data>
+  <data name="ShiftTime" xml:space="preserve">
+    <value>समय स्थानांतरित करें...</value>
+  </data>
+  <data name="ShiftSecondsMustBeBetween900And900" xml:space="preserve">
+    <value>स्थानांतरण सेकंड -900 और 900 के बीच होने चाहिए.</value>
+  </data>
+  <data name="TheValidityStartMustNotFollowTheValidityEnd" xml:space="preserve">
+    <value>वैधता प्रारंभ वैधता समाप्ति के बाद नहीं होना चाहिए.</value>
+  </data>
+  <data name="CoAPDiagnosticObject" xml:space="preserve">
+    <value>CoAP निदान ऑब्जेक्ट</value>
+  </data>
+  <data name="TransmittedMessagesLabel" xml:space="preserve">
+    <value>प्रेषित संदेश:</value>
+  </data>
+  <data name="ReceivedMessagesLabel" xml:space="preserve">
+    <value>प्राप्त संदेश:</value>
+  </data>
+  <data name="RetransmittedMessagesLabel" xml:space="preserve">
+    <value>पुनः प्रेषित संदेश:</value>
+  </data>
+  <data name="TransmittedResetsLabel" xml:space="preserve">
+    <value>प्रेषित रीसेट:</value>
+  </data>
+  <data name="ReceivedResetsLabel" xml:space="preserve">
+    <value>प्राप्त रीसेट:</value>
+  </data>
+  <data name="TransmittedAcknowledgementsLabel" xml:space="preserve">
+    <value>प्रेषित पावती:</value>
+  </data>
+  <data name="ReceivedAcknowledgementsLabel" xml:space="preserve">
+    <value>प्राप्त पावती:</value>
+  </data>
+  <data name="DroppedMessagesLabel" xml:space="preserve">
+    <value>छोड़े गए संदेश:</value>
+  </data>
+  <data name="NonPiggybackedResponsesLabel" xml:space="preserve">
+    <value>पावती के साथ न भेजे गए उत्तर:</value>
+  </data>
+  <data name="MaximumRetransmissionsExceededLabel" xml:space="preserve">
+    <value>अधिकतम पुनः प्रेषण सीमा पार:</value>
+  </data>
+  <data name="ReceivedRequestsLabel" xml:space="preserve">
+    <value>प्राप्त अनुरोध:</value>
+  </data>
+  <data name="TransmittedRequestsLabel" xml:space="preserve">
+    <value>प्रेषित अनुरोध:</value>
+  </data>
+  <data name="ReceivedResponsesLabel" xml:space="preserve">
+    <value>प्राप्त उत्तर:</value>
+  </data>
+  <data name="TransmittedResponsesLabel" xml:space="preserve">
+    <value>प्रेषित उत्तर:</value>
+  </data>
+  <data name="TransmittedClientErrorsLabel" xml:space="preserve">
+    <value>प्रेषित क्लाइंट त्रुटियाँ:</value>
+  </data>
+  <data name="ReceivedClientErrorsLabel" xml:space="preserve">
+    <value>प्राप्त क्लाइंट त्रुटियाँ:</value>
+  </data>
+  <data name="TransmittedServerErrorsLabel" xml:space="preserve">
+    <value>प्रेषित सर्वर त्रुटियाँ:</value>
+  </data>
+  <data name="ReceivedServerErrorsLabel" xml:space="preserve">
+    <value>प्राप्त सर्वर त्रुटियाँ:</value>
+  </data>
+  <data name="TransfersStartedLabel" xml:space="preserve">
+    <value>आरंभ किए गए स्थानांतरण:</value>
+  </data>
+  <data name="TransfersCompletedLabel" xml:space="preserve">
+    <value>पूर्ण स्थानांतरण:</value>
+  </data>
+  <data name="TransfersTimedOutLabel" xml:space="preserve">
+    <value>समय समाप्त हुए स्थानांतरण:</value>
+  </data>
+  <data name="AttributeIDLabel" xml:space="preserve">
+    <value>विशेषता ID:</value>
+  </data>
+  <data name="CaptureTimeLabel" xml:space="preserve">
+    <value>कैप्चर समय:</value>
+  </data>
+  <data name="MessagesCounter" xml:space="preserve">
+    <value>संदेश गणक</value>
+  </data>
+  <data name="RequestAndResponseCounter" xml:space="preserve">
+    <value>अनुरोध और उत्तर गणक</value>
+  </data>
+  <data name="BlockWiseTransferCounter" xml:space="preserve">
+    <value>ब्लॉकवार स्थानांतरण गणक</value>
+  </data>
+  <data name="CaptureTime" xml:space="preserve">
+    <value>कैप्चर समय</value>
+  </data>
+  <data name="ResetCounters" xml:space="preserve">
+    <value>गणक रीसेट करें</value>
+  </data>
+  <data name="CoAPSetupObject" xml:space="preserve">
+    <value>CoAP विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="UDPReferenceLabel" xml:space="preserve">
+    <value>UDP संदर्भ:</value>
+  </data>
+  <data name="CoAPURIPathLabel" xml:space="preserve">
+    <value>CoAP URI पथ:</value>
+  </data>
+  <data name="TransportModeLabel" xml:space="preserve">
+    <value>परिवहन मोड:</value>
+  </data>
+  <data name="WrapperVersionLabel" xml:space="preserve">
+    <value>रैपर संस्करण:</value>
+  </data>
+  <data name="TokenLengthLabel" xml:space="preserve">
+    <value>टोकन लंबाई:</value>
+  </data>
+  <data name="ACKTimeoutMsLabel" xml:space="preserve">
+    <value>ACK समय सीमा (ms):</value>
+  </data>
+  <data name="ACKRandomFactorLabel" xml:space="preserve">
+    <value>ACK यादृच्छिक गुणक:</value>
+  </data>
+  <data name="MaximumRetransmissionsLabel" xml:space="preserve">
+    <value>अधिकतम पुनः प्रेषण:</value>
+  </data>
+  <data name="NSTARTLabel" xml:space="preserve">
+    <value>NSTART:</value>
+  </data>
+  <data name="DelayedACKTimeoutMsLabel" xml:space="preserve">
+    <value>विलंबित ACK समय सीमा (ms):</value>
+  </data>
+  <data name="ExponentialBackOffLabel" xml:space="preserve">
+    <value>घातीय प्रतीक्षा:</value>
+  </data>
+  <data name="ProbingRateLabel" xml:space="preserve">
+    <value>जाँच दर:</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>परिवहन</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>प्रेषण</value>
+  </data>
+  <data name="CommunicationPortProtectionObject" xml:space="preserve">
+    <value>संचार पोर्ट सुरक्षा ऑब्जेक्ट</value>
+  </data>
+  <data name="ProtectionModeLabel" xml:space="preserve">
+    <value>सुरक्षा मोड:</value>
+  </data>
+  <data name="AllowedFailedAttemptsLabel" xml:space="preserve">
+    <value>अनुमत विफल प्रयास:</value>
+  </data>
+  <data name="InitialLockoutTimeLabel" xml:space="preserve">
+    <value>प्रारंभिक अवरोध समय:</value>
+  </data>
+  <data name="SteepnessFactorLabel" xml:space="preserve">
+    <value>ढाल गुणक:</value>
+  </data>
+  <data name="MaxLockoutTimeLabel" xml:space="preserve">
+    <value>अधिकतम अवरोध समय:</value>
+  </data>
+  <data name="PortLabel" xml:space="preserve">
+    <value>पोर्ट:</value>
+  </data>
+  <data name="ProtectionStatusLabel" xml:space="preserve">
+    <value>सुरक्षा स्थिति:</value>
+  </data>
+  <data name="FailedAttemptsLabel" xml:space="preserve">
+    <value>विफल प्रयास:</value>
+  </data>
+  <data name="CumulativeFailedAttemptsLabel" xml:space="preserve">
+    <value>संचयी विफल प्रयास:</value>
+  </data>
+  <data name="ResetProtection" xml:space="preserve">
+    <value>सुरक्षा रीसेट करें</value>
+  </data>
+  <data name="CompactData" xml:space="preserve">
+    <value>संक्षिप्त डेटा</value>
+  </data>
+  <data name="Buffer" xml:space="preserve">
+    <value>बफ़र</value>
+  </data>
+  <data name="TemplateID" xml:space="preserve">
+    <value>टेम्पलेट ID</value>
+  </data>
+  <data name="TemplateDescription" xml:space="preserve">
+    <value>टेम्पलेट विवरण</value>
+  </data>
+  <data name="CaptureMethod" xml:space="preserve">
+    <value>कैप्चर विधि</value>
+  </data>
+  <data name="CaptureObjects" xml:space="preserve">
+    <value>कैप्चर ऑब्जेक्ट</value>
+  </data>
+  <data name="ObjectType2" xml:space="preserve">
+    <value>ऑब्जेक्ट प्रकार</value>
+  </data>
+  <data name="DataIndex" xml:space="preserve">
+    <value>डेटा अनुक्रमांक</value>
+  </data>
+  <data name="Capture" xml:space="preserve">
+    <value>कैप्चर करें</value>
+  </data>
+  <data name="CreditObject" xml:space="preserve">
+    <value>क्रेडिट ऑब्जेक्ट</value>
+  </data>
+  <data name="CurrentCreditAmount" xml:space="preserve">
+    <value>वर्तमान क्रेडिट राशि</value>
+  </data>
+  <data name="WarningThreshold" xml:space="preserve">
+    <value>चेतावनी सीमा</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>सीमा</value>
+  </data>
+  <data name="CreditConfiguration" xml:space="preserve">
+    <value>क्रेडिट विन्यास</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>स्थिति</value>
+  </data>
+  <data name="PresetCreditAmount" xml:space="preserve">
+    <value>पूर्वनिर्धारित क्रेडिट राशि</value>
+  </data>
+  <data name="CreditAvailableThreshold" xml:space="preserve">
+    <value>उपलब्ध क्रेडिट सीमा</value>
+  </data>
+  <data name="AmountInt32" xml:space="preserve">
+    <value>राशि (Int32)</value>
+  </data>
+  <data name="RequestedStatus" xml:space="preserve">
+    <value>अनुरोधित स्थिति</value>
+  </data>
+  <data name="UpdateAmount" xml:space="preserve">
+    <value>राशि अद्यतन करें</value>
+  </data>
+  <data name="SetAmount" xml:space="preserve">
+    <value>राशि निर्धारित करें</value>
+  </data>
+  <data name="InvokeCredit" xml:space="preserve">
+    <value>क्रेडिट लागू करें</value>
+  </data>
+  <data name="SelectAValidCreditStatus" xml:space="preserve">
+    <value>मान्य क्रेडिट स्थिति चुनें.</value>
+  </data>
+  <data name="DataObject" xml:space="preserve">
+    <value>डेटा ऑब्जेक्ट</value>
+  </data>
+  <data name="DataObjectUnixTime" xml:space="preserve">
+    <value>डेटा ऑब्जेक्ट — Unix समय</value>
+  </data>
+  <data name="TimeZoneLabel2" xml:space="preserve">
+    <value>समय क्षेत्र:</value>
+  </data>
+  <data name="LocalTimeLabel" xml:space="preserve">
+    <value>स्थानीय समय:</value>
+  </data>
+  <data name="WriteCurrentTime" xml:space="preserve">
+    <value>वर्तमान समय लिखें</value>
+  </data>
+  <data name="ImmediateWritingIsNotAvailableForThisConnection" xml:space="preserve">
+    <value>इस कनेक्शन के लिए तत्काल लेखन उपलब्ध नहीं है.</value>
+  </data>
+  <data name="CurrentTimeWritten" xml:space="preserve">
+    <value>वर्तमान समय लिख दिया गया.</value>
+  </data>
+  <data name="EnterAValidLocalDateAndTime" xml:space="preserve">
+    <value>मान्य स्थानीय तारीख और समय दर्ज करें.</value>
+  </data>
+  <data name="TheDateIsOutsideTheMeterSSupportedRange" xml:space="preserve">
+    <value>तारीख मीटर की समर्थित सीमा के बाहर है.</value>
+  </data>
+  <data name="DataProtectionObject" xml:space="preserve">
+    <value>डेटा सुरक्षा ऑब्जेक्ट</value>
+  </data>
+  <data name="ProtectionBufferLabel" xml:space="preserve">
+    <value>सुरक्षा बफ़र:</value>
+  </data>
+  <data name="RequiredProtectionLabel" xml:space="preserve">
+    <value>आवश्यक सुरक्षा:</value>
+  </data>
+  <data name="ObjectTypeLabel" xml:space="preserve">
+    <value>ऑब्जेक्ट प्रकार:</value>
+  </data>
+  <data name="DataIndexLabel" xml:space="preserve">
+    <value>डेटा अनुक्रमांक:</value>
+  </data>
+  <data name="GetParameters" xml:space="preserve">
+    <value>पैरामीटर प्राप्त करें</value>
+  </data>
+  <data name="ProtectionType" xml:space="preserve">
+    <value>सुरक्षा प्रकार</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>लेनदेन ID</value>
+  </data>
+  <data name="OriginatorSystemTitle" xml:space="preserve">
+    <value>प्रेषक सिस्टम शीर्षक</value>
+  </data>
+  <data name="RecipientSystemTitle" xml:space="preserve">
+    <value>प्राप्तकर्ता सिस्टम शीर्षक</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>अन्य जानकारी</value>
+  </data>
+  <data name="KeyInfo" xml:space="preserve">
+    <value>कुंजी जानकारी</value>
+  </data>
+  <data name="SetParameters" xml:space="preserve">
+    <value>पैरामीटर निर्धारित करें</value>
+  </data>
+  <data name="ProtectionLabel" xml:space="preserve">
+    <value>सुरक्षा:</value>
+  </data>
+  <data name="ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations" xml:space="preserve">
+    <value>Gurux.DLMS 9.0.2609.2201 में सुरक्षित पठन, लेखन और विधि संदेश उपलब्ध नहीं हैं. ऑब्जेक्ट API इन कार्यों को लागू नहीं करता.</value>
+  </data>
+  <data name="GetProtectedAttributes" xml:space="preserve">
+    <value>सुरक्षित विशेषताएँ प्राप्त करें</value>
+  </data>
+  <data name="SetProtectedAttributes" xml:space="preserve">
+    <value>सुरक्षित विशेषताएँ निर्धारित करें</value>
+  </data>
+  <data name="InvokeProtectedMethod" xml:space="preserve">
+    <value>सुरक्षित विधि लागू करें</value>
+  </data>
+  <data name="DemandRegisterObject" xml:space="preserve">
+    <value>माँग रजिस्टर ऑब्जेक्ट</value>
+  </data>
+  <data name="CurrentAverage" xml:space="preserve">
+    <value>वर्तमान औसत</value>
+  </data>
+  <data name="LastAverage" xml:space="preserve">
+    <value>पिछला औसत</value>
+  </data>
+  <data name="Scaler" xml:space="preserve">
+    <value>पैमाना गुणक</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>इकाई</value>
+  </data>
+  <data name="CaptureTime2" xml:space="preserve">
+    <value>कैप्चर समय</value>
+  </data>
+  <data name="CurrentStartTime" xml:space="preserve">
+    <value>वर्तमान प्रारंभ समय</value>
+  </data>
+  <data name="NumberOfPeriods" xml:space="preserve">
+    <value>अवधियों की संख्या</value>
+  </data>
+  <data name="NextPeriod" xml:space="preserve">
+    <value>अगली अवधि</value>
+  </data>
+  <data name="DisconnectControlObject" xml:space="preserve">
+    <value>विच्छेदन नियंत्रण ऑब्जेक्ट</value>
+  </data>
+  <data name="OutputStateLabel" xml:space="preserve">
+    <value>आउटपुट स्थिति:</value>
+  </data>
+  <data name="ControlStateLabel" xml:space="preserve">
+    <value>नियंत्रण स्थिति:</value>
+  </data>
+  <data name="ControlModeLabel" xml:space="preserve">
+    <value>नियंत्रण मोड:</value>
+  </data>
+  <data name="Reconnect" xml:space="preserve">
+    <value>पुनः कनेक्ट करें</value>
+  </data>
+  <data name="ExtendedRegisterObject" xml:space="preserve">
+    <value>विस्तारित रजिस्टर ऑब्जेक्ट</value>
+  </data>
+  <data name="FunctionControlObject" xml:space="preserve">
+    <value>कार्य नियंत्रण ऑब्जेक्ट</value>
+  </data>
+  <data name="FunctionNameLabel" xml:space="preserve">
+    <value>कार्य का नाम:</value>
+  </data>
+  <data name="ANonemptyASCIIFunctionNameIsRequired" xml:space="preserve">
+    <value>कार्य का ASCII नाम आवश्यक है और खाली नहीं हो सकता.</value>
+  </data>
+  <data name="ObjectsClassIdLogicalNamePerLineLabel" xml:space="preserve">
+    <value>ऑब्जेक्ट (प्रति पंक्ति वर्ग-ID,तार्किक-नाम):</value>
+  </data>
+  <data name="ObjectTypeLabel2" xml:space="preserve">
+    <value>ऑब्जेक्ट प्रकार:</value>
+  </data>
+  <data name="FunctionCommands" xml:space="preserve">
+    <value>कार्य आदेश</value>
+  </data>
+  <data name="SetStatus" xml:space="preserve">
+    <value>स्थिति निर्धारित करें...</value>
+  </data>
+  <data name="AddFunction" xml:space="preserve">
+    <value>कार्य जोड़ें...</value>
+  </data>
+  <data name="SelectAtLeastOneObject" xml:space="preserve">
+    <value>कम से कम एक ऑब्जेक्ट चुनें.</value>
+  </data>
+  <data name="EachObjectRequiresClassIdLogicalName" xml:space="preserve">
+    <value>हर ऑब्जेक्ट के लिए वर्ग-ID,तार्किक-नाम आवश्यक है.</value>
+  </data>
+  <data name="G3PLC6LoWPANAdaptationLayerSetupObject" xml:space="preserve">
+    <value>G3-PLC 6LoWPAN अनुकूलन परत विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="MaxHopsLabel" xml:space="preserve">
+    <value>अधिकतम हॉप:</value>
+  </data>
+  <data name="WeakLQIValueLabel" xml:space="preserve">
+    <value>कमज़ोर LQI मान:</value>
+  </data>
+  <data name="SecurityLevelLabel" xml:space="preserve">
+    <value>सुरक्षा स्तर:</value>
+  </data>
+  <data name="BroadcastLogTTLLabel" xml:space="preserve">
+    <value>प्रसारण लॉग TTL:</value>
+  </data>
+  <data name="MaxJoinWaitTLabel" xml:space="preserve">
+    <value>अधिकतम जुड़ने की प्रतीक्षा:</value>
+  </data>
+  <data name="PathDiscoveryTimeLabel" xml:space="preserve">
+    <value>पथ खोज समय:</value>
+  </data>
+  <data name="ActiveKeyIndexLabel" xml:space="preserve">
+    <value>सक्रिय कुंजी अनुक्रमांक:</value>
+  </data>
+  <data name="MetricTypeLabel" xml:space="preserve">
+    <value>मापदंड प्रकार:</value>
+  </data>
+  <data name="CoordAddressLabel" xml:space="preserve">
+    <value>समन्वयक पता:</value>
+  </data>
+  <data name="DisableDefaultRouting" xml:space="preserve">
+    <value>डिफ़ॉल्ट रूटिंग अक्षम करें</value>
+  </data>
+  <data name="DeviceTypeLabel" xml:space="preserve">
+    <value>उपकरण प्रकार:</value>
+  </data>
+  <data name="DefaultCoordRouteEnabled" xml:space="preserve">
+    <value>डिफ़ॉल्ट समन्वयक मार्ग सक्षम</value>
+  </data>
+  <data name="DestinationAddress" xml:space="preserve">
+    <value>गंतव्य पता</value>
+  </data>
+  <data name="LowLQILabel" xml:space="preserve">
+    <value>निम्न LQI:</value>
+  </data>
+  <data name="HighLQILabel" xml:space="preserve">
+    <value>उच्च LQI:</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>उपसर्ग</value>
+  </data>
+  <data name="RoutingConfiguration" xml:space="preserve">
+    <value>रूटिंग विन्यास</value>
+  </data>
+  <data name="NetTraversalTime" xml:space="preserve">
+    <value>नेटवर्क पारगमन समय</value>
+  </data>
+  <data name="TTL" xml:space="preserve">
+    <value>TTL</value>
+  </data>
+  <data name="Kr" xml:space="preserve">
+    <value>Kr</value>
+  </data>
+  <data name="Km" xml:space="preserve">
+    <value>Km</value>
+  </data>
+  <data name="Kc" xml:space="preserve">
+    <value>Kc</value>
+  </data>
+  <data name="Kq" xml:space="preserve">
+    <value>Kq</value>
+  </data>
+  <data name="Kh" xml:space="preserve">
+    <value>Kh</value>
+  </data>
+  <data name="Krt" xml:space="preserve">
+    <value>Krt</value>
+  </data>
+  <data name="RreqRetries" xml:space="preserve">
+    <value>Rreq पुनः प्रयास</value>
+  </data>
+  <data name="RreqRerrWait" xml:space="preserve">
+    <value>Rreq Rerr प्रतीक्षा</value>
+  </data>
+  <data name="BlackListTTL" xml:space="preserve">
+    <value>अवरोध सूची TTL</value>
+  </data>
+  <data name="UnicastRreqGenEnable" xml:space="preserve">
+    <value>यूनिकास्ट Rreq सृजन सक्षम करें</value>
+  </data>
+  <data name="RlcEnabled" xml:space="preserve">
+    <value>Rlc सक्षम</value>
+  </data>
+  <data name="AddRevLinkCost" xml:space="preserve">
+    <value>उल्टे लिंक की लागत जोड़ें</value>
+  </data>
+  <data name="Routing" xml:space="preserve">
+    <value>रूटिंग</value>
+  </data>
+  <data name="NextHopLabel" xml:space="preserve">
+    <value>अगला हॉप:</value>
+  </data>
+  <data name="RouteLabel" xml:space="preserve">
+    <value>मार्ग:</value>
+  </data>
+  <data name="HopCountLabel" xml:space="preserve">
+    <value>हॉप संख्या:</value>
+  </data>
+  <data name="WeakLinkLabel" xml:space="preserve">
+    <value>कमज़ोर लिंक:</value>
+  </data>
+  <data name="ValidTimeLabel" xml:space="preserve">
+    <value>वैधता समय:</value>
+  </data>
+  <data name="ContextInformation" xml:space="preserve">
+    <value>संदर्भ जानकारी</value>
+  </data>
+  <data name="CID" xml:space="preserve">
+    <value>CID</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>संदर्भ</value>
+  </data>
+  <data name="Compression" xml:space="preserve">
+    <value>संपीड़न</value>
+  </data>
+  <data name="ValidLifetime" xml:space="preserve">
+    <value>वैध जीवनकाल</value>
+  </data>
+  <data name="ContextLength" xml:space="preserve">
+    <value>संदर्भ लंबाई</value>
+  </data>
+  <data name="Blacklist" xml:space="preserve">
+    <value>अवरोध सूची</value>
+  </data>
+  <data name="NeighbourAddress" xml:space="preserve">
+    <value>पड़ोसी पता</value>
+  </data>
+  <data name="ValidTime" xml:space="preserve">
+    <value>वैधता समय</value>
+  </data>
+  <data name="BroadcastLog" xml:space="preserve">
+    <value>प्रसारण लॉग</value>
+  </data>
+  <data name="SourceAddress" xml:space="preserve">
+    <value>स्रोत पता</value>
+  </data>
+  <data name="SequenceNumber" xml:space="preserve">
+    <value>अनुक्रम संख्या</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>समूह</value>
+  </data>
+  <data name="GroupAddress" xml:space="preserve">
+    <value>समूह पता</value>
+  </data>
+  <data name="G3PLCMACLayerCountersObject" xml:space="preserve">
+    <value>G3 PLC MAC परत गणक ऑब्जेक्ट</value>
+  </data>
+  <data name="TxDataPacketsLabel" xml:space="preserve">
+    <value>TX डेटा पैकेट:</value>
+  </data>
+  <data name="RxDataPacketsLabel" xml:space="preserve">
+    <value>RX डेटा पैकेट:</value>
+  </data>
+  <data name="TxCmdPacketsLabel" xml:space="preserve">
+    <value>TX आदेश पैकेट:</value>
+  </data>
+  <data name="RxCmdPacketsLabel" xml:space="preserve">
+    <value>RX आदेश पैकेट:</value>
+  </data>
+  <data name="CSMAFailsLabel" xml:space="preserve">
+    <value>CSMA विफलताएँ:</value>
+  </data>
+  <data name="CSMANoAcksLabel" xml:space="preserve">
+    <value>CSMA बिना ACK:</value>
+  </data>
+  <data name="BadCRCsLabel" xml:space="preserve">
+    <value>गलत CRC:</value>
+  </data>
+  <data name="TxDataBroadcastsLabel" xml:space="preserve">
+    <value>TX डेटा प्रसारण:</value>
+  </data>
+  <data name="RxDataBroadcastsLabel" xml:space="preserve">
+    <value>RX डेटा प्रसारण:</value>
+  </data>
+  <data name="G3PLCMACSetupObject" xml:space="preserve">
+    <value>G3-PLC MAC विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="ShortAddressLabel" xml:space="preserve">
+    <value>लघु पता:</value>
+  </data>
+  <data name="RouteCostToCoordLabel" xml:space="preserve">
+    <value>समन्वयक तक मार्ग लागत:</value>
+  </data>
+  <data name="PANIDLabel" xml:space="preserve">
+    <value>PAN ID:</value>
+  </data>
+  <data name="FrameCounterLabel" xml:space="preserve">
+    <value>फ़्रेम गणक:</value>
+  </data>
+  <data name="ToneMaskLabel" xml:space="preserve">
+    <value>टोन मास्क:</value>
+  </data>
+  <data name="ToneMapTTLLabel" xml:space="preserve">
+    <value>टोन मानचित्र TTL:</value>
+  </data>
+  <data name="MaxFrameRetriesLabel" xml:space="preserve">
+    <value>अधिकतम फ़्रेम पुनः प्रयास:</value>
+  </data>
+  <data name="NeighbourTableTTLLabel" xml:space="preserve">
+    <value>पड़ोसी तालिका TTL:</value>
+  </data>
+  <data name="HighPrioritySIzeLabel" xml:space="preserve">
+    <value>उच्च प्राथमिकता आकार:</value>
+  </data>
+  <data name="CSCMFairnessLimitLabel" xml:space="preserve">
+    <value>CSCM निष्पक्षता सीमा:</value>
+  </data>
+  <data name="BeaconRndLabel" xml:space="preserve">
+    <value>बीकन यादृच्छिकता:</value>
+  </data>
+  <data name="ALabel" xml:space="preserve">
+    <value>A:</value>
+  </data>
+  <data name="KLabel" xml:space="preserve">
+    <value>K:</value>
+  </data>
+  <data name="MinCWAttemptsLabel" xml:space="preserve">
+    <value>न्यूनतम CW प्रयास:</value>
+  </data>
+  <data name="CenelecLegacyLabel" xml:space="preserve">
+    <value>पुराना Cenelec:</value>
+  </data>
+  <data name="FCCLegacyModeLabel" xml:space="preserve">
+    <value>पुराना FCC मोड:</value>
+  </data>
+  <data name="MaxBackoffLabel" xml:space="preserve">
+    <value>अधिकतम प्रतीक्षा:</value>
+  </data>
+  <data name="MaxCSMABackoffs" xml:space="preserve">
+    <value>अधिकतम CSMA प्रतीक्षाएँ</value>
+  </data>
+  <data name="MinBackoffLabel" xml:space="preserve">
+    <value>न्यूनतम प्रतीक्षा:</value>
+  </data>
+  <data name="BroadcastMaxCWEnabled" xml:space="preserve">
+    <value>प्रसारण अधिकतम CW सक्षम</value>
+  </data>
+  <data name="TransmitAttenLabel" xml:space="preserve">
+    <value>प्रेषण क्षीणन:</value>
+  </data>
+  <data name="DuplicateDetection" xml:space="preserve">
+    <value>डुप्लिकेट पहचान</value>
+  </data>
+  <data name="KeyTable" xml:space="preserve">
+    <value>कुंजी तालिका</value>
+  </data>
+  <data name="KeyLabel" xml:space="preserve">
+    <value>कुंजी:</value>
+  </data>
+  <data name="NeighbourTable" xml:space="preserve">
+    <value>पड़ोसी तालिका</value>
+  </data>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>पता:</value>
+  </data>
+  <data name="ModulationLabel" xml:space="preserve">
+    <value>मॉड्यूलेशन:</value>
+  </data>
+  <data name="ToneMapLabel" xml:space="preserve">
+    <value>टोन मानचित्र:</value>
+  </data>
+  <data name="TXGain" xml:space="preserve">
+    <value>TX लाभ</value>
+  </data>
+  <data name="TXResolution" xml:space="preserve">
+    <value>TX विभेदन</value>
+  </data>
+  <data name="TXCoefficients" xml:space="preserve">
+    <value>TX गुणांक</value>
+  </data>
+  <data name="LQI" xml:space="preserve">
+    <value>LQI</value>
+  </data>
+  <data name="PhaseDifferential" xml:space="preserve">
+    <value>फेज़ अंतर</value>
+  </data>
+  <data name="TMRValidTime" xml:space="preserve">
+    <value>TMR वैधता समय</value>
+  </data>
+  <data name="NeighbourValidTime" xml:space="preserve">
+    <value>पड़ोसी वैधता समय</value>
+  </data>
+  <data name="POSTable" xml:space="preserve">
+    <value>POS तालिका</value>
+  </data>
+  <data name="ValidTime2" xml:space="preserve">
+    <value>वैधता समय</value>
+  </data>
+  <data name="ShortAddress" xml:space="preserve">
+    <value>लघु पता</value>
+  </data>
+  <data name="EnterAShortAddressFrom0To65535" xml:space="preserve">
+    <value>0 से 65535 तक लघु पता दर्ज करें.</value>
+  </data>
+  <data name="GetNeighbourTableEntry" xml:space="preserve">
+    <value>पड़ोसी तालिका प्रविष्टि प्राप्त करें</value>
+  </data>
+  <data name="GetPOSTableEntry" xml:space="preserve">
+    <value>POS तालिका प्रविष्टि प्राप्त करें</value>
+  </data>
+  <data name="GPRSModemSetupObject" xml:space="preserve">
+    <value>GPRS मॉडेम विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="APNLabel" xml:space="preserve">
+    <value>APN:</value>
+  </data>
+  <data name="PINCodeLabel" xml:space="preserve">
+    <value>PIN कोड:</value>
+  </data>
+  <data name="PrecedenceLabel" xml:space="preserve">
+    <value>अग्रता:</value>
+  </data>
+  <data name="DelayLabel" xml:space="preserve">
+    <value>विलंब:</value>
+  </data>
+  <data name="ReliabilityLabel" xml:space="preserve">
+    <value>विश्वसनीयता:</value>
+  </data>
+  <data name="PeakThroughputLabel" xml:space="preserve">
+    <value>शीर्ष डेटा प्रवाह:</value>
+  </data>
+  <data name="MeanThroughputLabel" xml:space="preserve">
+    <value>औसत डेटा प्रवाह:</value>
+  </data>
+  <data name="DefaultQualityOfService" xml:space="preserve">
+    <value>डिफ़ॉल्ट सेवा गुणवत्ता</value>
+  </data>
+  <data name="RequestedQualityOfService" xml:space="preserve">
+    <value>अनुरोधित सेवा गुणवत्ता</value>
+  </data>
+  <data name="GSMDiagnosticObject" xml:space="preserve">
+    <value>GSM निदान ऑब्जेक्ट</value>
+  </data>
+  <data name="Operator" xml:space="preserve">
+    <value>संचालक</value>
+  </data>
+  <data name="CSAttachmentLabel" xml:space="preserve">
+    <value>CS संबद्धता:</value>
+  </data>
+  <data name="PSStatusLabel" xml:space="preserve">
+    <value>PS स्थिति:</value>
+  </data>
+  <data name="CellIDLabel" xml:space="preserve">
+    <value>सेल ID:</value>
+  </data>
+  <data name="X4" xml:space="preserve">
+    <value>X4</value>
+  </data>
+  <data name="X8" xml:space="preserve">
+    <value>X8</value>
+  </data>
+  <data name="LocationIDLabel" xml:space="preserve">
+    <value>स्थान ID:</value>
+  </data>
+  <data name="SignalQualityLabel" xml:space="preserve">
+    <value>सिग्नल गुणवत्ता:</value>
+  </data>
+  <data name="BERLabel" xml:space="preserve">
+    <value>BER:</value>
+  </data>
+  <data name="MCCLabel" xml:space="preserve">
+    <value>MCC:</value>
+  </data>
+  <data name="MNCLabel" xml:space="preserve">
+    <value>MNC:</value>
+  </data>
+  <data name="ChannelLabel" xml:space="preserve">
+    <value>चैनल:</value>
+  </data>
+  <data name="AdjacentCellsLabel" xml:space="preserve">
+    <value>निकटवर्ती सेल:</value>
+  </data>
+  <data name="CaptureTimeLabel2" xml:space="preserve">
+    <value>कैप्चर समय:</value>
+  </data>
+  <data name="CellInfo" xml:space="preserve">
+    <value>सेल जानकारी</value>
+  </data>
+  <data name="HDLCSetupObject" xml:space="preserve">
+    <value>HDLC विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="SpeedLabel" xml:space="preserve">
+    <value>गति:</value>
+  </data>
+  <data name="WindowSizeLabel" xml:space="preserve">
+    <value>विंडो आकार:</value>
+  </data>
+  <data name="MaximumLengthLabel" xml:space="preserve">
+    <value>अधिकतम लंबाई:</value>
+  </data>
+  <data name="InternalTimeout" xml:space="preserve">
+    <value>आंतरिक समय सीमा</value>
+  </data>
+  <data name="InactivityTimeoutLabel" xml:space="preserve">
+    <value>निष्क्रियता समय सीमा:</value>
+  </data>
+  <data name="DeviceAddressLabel" xml:space="preserve">
+    <value>उपकरण पता:</value>
+  </data>
+  <data name="Transmit" xml:space="preserve">
+    <value>प्रेषित करें</value>
+  </data>
+  <data name="ReceiveLabel" xml:space="preserve">
+    <value>प्राप्त करें:</value>
+  </data>
+  <data name="IECLocalPortSetup" xml:space="preserve">
+    <value>IEC स्थानीय पोर्ट विन्यास</value>
+  </data>
+  <data name="DefaultModeLabel" xml:space="preserve">
+    <value>डिफ़ॉल्ट मोड:</value>
+  </data>
+  <data name="DefaultBaudrateLabel" xml:space="preserve">
+    <value>डिफ़ॉल्ट बॉड दर:</value>
+  </data>
+  <data name="MaximumBaudrateLabel" xml:space="preserve">
+    <value>अधिकतम बॉड दर:</value>
+  </data>
+  <data name="ResponseTimeLabel" xml:space="preserve">
+    <value>उत्तर समय:</value>
+  </data>
+  <data name="Password1Label" xml:space="preserve">
+    <value>पासवर्ड 1:</value>
+  </data>
+  <data name="Password2Label" xml:space="preserve">
+    <value>पासवर्ड 2:</value>
+  </data>
+  <data name="Password5Label" xml:space="preserve">
+    <value>पासवर्ड 5:</value>
+  </data>
+  <data name="IECTwistedPairSetupObject" xml:space="preserve">
+    <value>IEC ट्विस्टेड पेयर विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>मोड</value>
+  </data>
+  <data name="PrimaryAddressesLabel" xml:space="preserve">
+    <value>प्राथमिक पते:</value>
+  </data>
+  <data name="TABI" xml:space="preserve">
+    <value>TAB(i)</value>
+  </data>
+  <data name="ImageTransferObject" xml:space="preserve">
+    <value>इमेज स्थानांतरण ऑब्जेक्ट</value>
+  </data>
+  <data name="ImageBlockSizeLabel" xml:space="preserve">
+    <value>इमेज ब्लॉक आकार:</value>
+  </data>
+  <data name="BlocksStatusLabel" xml:space="preserve">
+    <value>ब्लॉक स्थिति:</value>
+  </data>
+  <data name="FirstBlockLabel" xml:space="preserve">
+    <value>पहला ब्लॉक:</value>
+  </data>
+  <data name="ImagesLabel" xml:space="preserve">
+    <value>इमेज:</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>आकार</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>पहचान</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>हस्ताक्षर</value>
+  </data>
+  <data name="ImageFileLabel" xml:space="preserve">
+    <value>इमेज फ़ाइल:</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>इमेज फ़ाइल</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>चुनी गई फ़ाइल:</value>
+  </data>
+  <data name="IdentifierHexLabel" xml:space="preserve">
+    <value>पहचानकर्ता (hex):</value>
+  </data>
+  <data name="AnImageIdentifierIsRequired" xml:space="preserve">
+    <value>इमेज पहचानकर्ता आवश्यक है.</value>
+  </data>
+  <data name="IdentifierSignatureHexOptionalLabel" xml:space="preserve">
+    <value>पहचानकर्ता हस्ताक्षर (hex, वैकल्पिक):</value>
+  </data>
+  <data name="ImageHexLabel" xml:space="preserve">
+    <value>इमेज (hex):</value>
+  </data>
+  <data name="SelectANonemptyImage" xml:space="preserve">
+    <value>गैर-रिक्त इमेज चुनें.</value>
+  </data>
+  <data name="ResumeBlockIndexLabel" xml:space="preserve">
+    <value>पुनः आरंभ ब्लॉक अनुक्रमांक:</value>
+  </data>
+  <data name="EnterANonnegativeBlockIndex" xml:space="preserve">
+    <value>गैर-ऋणात्मक ब्लॉक अनुक्रमांक दर्ज करें.</value>
+  </data>
+  <data name="ReceivedBlocksBitStringOptionalLabel" xml:space="preserve">
+    <value>प्राप्त ब्लॉक की बिट स्ट्रिंग (वैकल्पिक):</value>
+  </data>
+  <data name="ImageTransfer" xml:space="preserve">
+    <value>इमेज स्थानांतरण</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>ब्राउज़ करें...</value>
+  </data>
+  <data name="ImageLabel" xml:space="preserve">
+    <value>इमेज:</value>
+  </data>
+  <data name="UpdateImage" xml:space="preserve">
+    <value>इमेज अद्यतन करें...</value>
+  </data>
+  <data name="TransferImageBlocks" xml:space="preserve">
+    <value>इमेज ब्लॉक स्थानांतरित करें</value>
+  </data>
+  <data name="VerifyImage" xml:space="preserve">
+    <value>इमेज सत्यापित करें...</value>
+  </data>
+  <data name="ActivateImage" xml:space="preserve">
+    <value>इमेज सक्रिय करें...</value>
+  </data>
+  <data name="ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex" xml:space="preserve">
+    <value>स्थानांतरण, सत्यापन और सक्रियण के बाद स्थिति पढ़ें. पुनः आरंभ में मीटर की ब्लॉक स्थिति या पहले अनुपस्थित ब्लॉक का अनुक्रमांक उपयोग होता है.</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus" xml:space="preserve">
+    <value>ब्लॉक स्थिति दर्ज करने से पहले गैर-शून्य इमेज ब्लॉक आकार पढ़ें.</value>
+  </data>
+  <data name="BlockStatusMustContainOneZeroOrOnePerImageBlock" xml:space="preserve">
+    <value>ब्लॉक स्थिति में हर इमेज ब्लॉक के लिए एक शून्य या एक होना चाहिए.</value>
+  </data>
+  <data name="SelectANonemptyImageFile" xml:space="preserve">
+    <value>गैर-रिक्त इमेज फ़ाइल चुनें.</value>
+  </data>
+  <data name="ImageInitiation" xml:space="preserve">
+    <value>इमेज आरंभीकरण</value>
+  </data>
+  <data name="ImageBlockTransfer" xml:space="preserve">
+    <value>इमेज ब्लॉक स्थानांतरण</value>
+  </data>
+  <data name="ImageVerification" xml:space="preserve">
+    <value>इमेज सत्यापन</value>
+  </data>
+  <data name="ImageActivation" xml:space="preserve">
+    <value>इमेज सक्रियण</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeTransfer" xml:space="preserve">
+    <value>स्थानांतरण से पहले गैर-शून्य इमेज ब्लॉक आकार पढ़ें.</value>
+  </data>
+  <data name="ResumeIndexMustIdentifyAnImageBlock" xml:space="preserve">
+    <value>पुनः आरंभ अनुक्रमांक को किसी इमेज ब्लॉक की पहचान करनी चाहिए.</value>
+  </data>
+  <data name="Ip4SetupObject" xml:space="preserve">
+    <value>IPv4 विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="DataLinkLayerLabel" xml:space="preserve">
+    <value>डेटा लिंक परत:</value>
+  </data>
+  <data name="IPAddressLabel" xml:space="preserve">
+    <value>IP पता:</value>
+  </data>
+  <data name="MulticastIPAddressLabel" xml:space="preserve">
+    <value>मल्टीकास्ट IP पता:</value>
+  </data>
+  <data name="IPOptionsLabel" xml:space="preserve">
+    <value>IP विकल्प:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>लंबाई</value>
+  </data>
+  <data name="SubnetMaskLabel" xml:space="preserve">
+    <value>सबनेट मास्क:</value>
+  </data>
+  <data name="GatewayIPAddressLabel" xml:space="preserve">
+    <value>गेटवे IP पता:</value>
+  </data>
+  <data name="UseDHCPLabel" xml:space="preserve">
+    <value>DHCP उपयोग करें:</value>
+  </data>
+  <data name="PrimaryDNSAddressLabel" xml:space="preserve">
+    <value>प्राथमिक DNS पता:</value>
+  </data>
+  <data name="SecondaryDNSAddressLabel" xml:space="preserve">
+    <value>द्वितीयक DNS पता:</value>
+  </data>
+  <data name="MulticastIPv4Address" xml:space="preserve">
+    <value>मल्टीकास्ट IPv4 पता</value>
+  </data>
+  <data name="EnterAnIPv4MulticastAddress224000239255255255" xml:space="preserve">
+    <value>मल्टीकास्ट IPv4 पता दर्ज करें (224.0.0.0–239.255.255.255).</value>
+  </data>
+  <data name="AddressIndex" xml:space="preserve">
+    <value>पता अनुक्रमांक</value>
+  </data>
+  <data name="EnterAnAddressIndexFrom0To255" xml:space="preserve">
+    <value>0 से 255 तक पता अनुक्रमांक दर्ज करें.</value>
+  </data>
+  <data name="AddMulticastAddress" xml:space="preserve">
+    <value>मल्टीकास्ट पता जोड़ें</value>
+  </data>
+  <data name="DeleteMulticastAddress" xml:space="preserve">
+    <value>मल्टीकास्ट पता हटाएँ</value>
+  </data>
+  <data name="GetMulticastAddressCount" xml:space="preserve">
+    <value>मल्टीकास्ट पतों की संख्या प्राप्त करें</value>
+  </data>
+  <data name="Ip6SetupObject" xml:space="preserve">
+    <value>IPv6 विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="AddressConfigModeLabel" xml:space="preserve">
+    <value>पता विन्यास मोड:</value>
+  </data>
+  <data name="UnicastLabel" xml:space="preserve">
+    <value>यूनिकास्ट:</value>
+  </data>
+  <data name="UnicastIPAddress" xml:space="preserve">
+    <value>यूनिकास्ट IP पता</value>
+  </data>
+  <data name="MulticastLabel" xml:space="preserve">
+    <value>मल्टीकास्ट:</value>
+  </data>
+  <data name="MulticastIPAddress" xml:space="preserve">
+    <value>मल्टीकास्ट IP पता</value>
+  </data>
+  <data name="GatewayLabel" xml:space="preserve">
+    <value>गेटवे:</value>
+  </data>
+  <data name="GatewayIPAddress" xml:space="preserve">
+    <value>गेटवे IP पता</value>
+  </data>
+  <data name="TrafficClassLabel" xml:space="preserve">
+    <value>ट्रैफ़िक वर्ग:</value>
+  </data>
+  <data name="NeighborDiscoverySetup" xml:space="preserve">
+    <value>पड़ोसी खोज विन्यास</value>
+  </data>
+  <data name="RSMaxRetry" xml:space="preserve">
+    <value>अधिकतम RS पुनः प्रयास</value>
+  </data>
+  <data name="RSRetryWaitTime" xml:space="preserve">
+    <value>RS पुनः प्रयास प्रतीक्षा समय</value>
+  </data>
+  <data name="RASendPeriod" xml:space="preserve">
+    <value>RA प्रेषण अवधि</value>
+  </data>
+  <data name="AddressType" xml:space="preserve">
+    <value>पता प्रकार</value>
+  </data>
+  <data name="SelectASupportedAddressType" xml:space="preserve">
+    <value>समर्थित पता प्रकार चुनें.</value>
+  </data>
+  <data name="IPv6Address" xml:space="preserve">
+    <value>IPv6 पता</value>
+  </data>
+  <data name="EnterAnIPv6Address" xml:space="preserve">
+    <value>IPv6 पता दर्ज करें.</value>
+  </data>
+  <data name="AddIPv6Address" xml:space="preserve">
+    <value>IPv6 पता जोड़ें</value>
+  </data>
+  <data name="RemoveIPv6Address" xml:space="preserve">
+    <value>IPv6 पता हटाएँ</value>
+  </data>
+  <data name="LimiterObject" xml:space="preserve">
+    <value>सीमक ऑब्जेक्ट</value>
+  </data>
+  <data name="ThresholdActive" xml:space="preserve">
+    <value>सक्रिय सीमा</value>
+  </data>
+  <data name="ThresholdNormal" xml:space="preserve">
+    <value>सामान्य सीमा</value>
+  </data>
+  <data name="ThresholdEmergency" xml:space="preserve">
+    <value>आपातकालीन सीमा</value>
+  </data>
+  <data name="MinimalOver" xml:space="preserve">
+    <value>न्यूनतम ऊपरी अवधि</value>
+  </data>
+  <data name="MinimalUnder" xml:space="preserve">
+    <value>न्यूनतम निचली अवधि</value>
+  </data>
+  <data name="ActivationTime" xml:space="preserve">
+    <value>सक्रियण समय</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>अवधि</value>
+  </data>
+  <data name="GroupIDs" xml:space="preserve">
+    <value>समूह ID</value>
+  </data>
+  <data name="GroupID" xml:space="preserve">
+    <value>समूह ID</value>
+  </data>
+  <data name="Monitored" xml:space="preserve">
+    <value>निगरानी में</value>
+  </data>
+  <data name="EmergencyProfile" xml:space="preserve">
+    <value>आपातकालीन प्रोफ़ाइल</value>
+  </data>
+  <data name="ActionOver" xml:space="preserve">
+    <value>सीमा के ऊपर क्रिया</value>
+  </data>
+  <data name="ActionUnder" xml:space="preserve">
+    <value>सीमा के नीचे क्रिया</value>
+  </data>
+  <data name="LLCSSCSSetupObject" xml:space="preserve">
+    <value>LLC SSCS विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="ServiceAddressLabel" xml:space="preserve">
+    <value>सेवा पता:</value>
+  </data>
+  <data name="BaseAddressLabel" xml:space="preserve">
+    <value>आधार पता:</value>
+  </data>
+  <data name="MACAddressSetupObject" xml:space="preserve">
+    <value>MAC पता विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="MACAddressLabel" xml:space="preserve">
+    <value>MAC पता:</value>
+  </data>
+  <data name="MBusClientObject" xml:space="preserve">
+    <value>M-Bus क्लाइंट ऑब्जेक्ट</value>
+  </data>
+  <data name="MBusPortReferenceLabel" xml:space="preserve">
+    <value>M-Bus पोर्ट संदर्भ:</value>
+  </data>
+  <data name="CapturePeriodLabel" xml:space="preserve">
+    <value>कैप्चर अवधि:</value>
+  </data>
+  <data name="PrimaryAddressLabel" xml:space="preserve">
+    <value>प्राथमिक पता:</value>
+  </data>
+  <data name="IdentificationNumberLabel" xml:space="preserve">
+    <value>पहचान संख्या:</value>
+  </data>
+  <data name="ManufacturerIDLabel" xml:space="preserve">
+    <value>निर्माता ID:</value>
+  </data>
+  <data name="AccessNumberLabel" xml:space="preserve">
+    <value>पहुँच संख्या:</value>
+  </data>
+  <data name="AlarmLabel" xml:space="preserve">
+    <value>अलार्म:</value>
+  </data>
+  <data name="ConfigurationLabel" xml:space="preserve">
+    <value>विन्यास:</value>
+  </data>
+  <data name="EncryptionKeyStatusLabel" xml:space="preserve">
+    <value>एन्क्रिप्शन कुंजी स्थिति:</value>
+  </data>
+  <data name="CaptureDefinitionLabel" xml:space="preserve">
+    <value>कैप्चर परिभाषा:</value>
+  </data>
+  <data name="DataInformation" xml:space="preserve">
+    <value>डेटा जानकारी</value>
+  </data>
+  <data name="ValueInformation" xml:space="preserve">
+    <value>मान जानकारी</value>
+  </data>
+  <data name="InstallPrimaryAddressLabel" xml:space="preserve">
+    <value>प्राथमिक पता स्थापित करें:</value>
+  </data>
+  <data name="PrimaryAddressMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>प्राथमिक पता शून्य और 255 के बीच होना चाहिए.</value>
+  </data>
+  <data name="DataInformationHexLabel" xml:space="preserve">
+    <value>डेटा जानकारी (hex):</value>
+  </data>
+  <data name="ValueInformationHexLabel" xml:space="preserve">
+    <value>मान जानकारी (hex):</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>डेटा प्रकार:</value>
+  </data>
+  <data name="SelectAScalarDataType" xml:space="preserve">
+    <value>अदिश डेटा प्रकार चुनें.</value>
+  </data>
+  <data name="DataValueLabel" xml:space="preserve">
+    <value>डेटा मान:</value>
+  </data>
+  <data name="EncryptionKey16BytesHexLabel" xml:space="preserve">
+    <value>एन्क्रिप्शन कुंजी (16 बाइट, hex):</value>
+  </data>
+  <data name="AnMBusEncryptionKeyMustContainExactly16Bytes" xml:space="preserve">
+    <value>M-Bus एन्क्रिप्शन कुंजी में ठीक 16 बाइट होने चाहिए.</value>
+  </data>
+  <data name="ClearEncryptionKeyLabel" xml:space="preserve">
+    <value>एन्क्रिप्शन कुंजी साफ़ करें:</value>
+  </data>
+  <data name="Slave" xml:space="preserve">
+    <value>अधीनस्थ</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>स्थापित करें</value>
+  </data>
+  <data name="DeInstall" xml:space="preserve">
+    <value>स्थापना हटाएँ</value>
+  </data>
+  <data name="ResetAlarm" xml:space="preserve">
+    <value>अलार्म रीसेट करें</value>
+  </data>
+  <data name="SynchronizeClock" xml:space="preserve">
+    <value>घड़ी सिंक्रनाइज़ करें</value>
+  </data>
+  <data name="SendData" xml:space="preserve">
+    <value>डेटा भेजें</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>भेजें...</value>
+  </data>
+  <data name="EncryptionKey" xml:space="preserve">
+    <value>एन्क्रिप्शन कुंजी</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>निर्धारित करें...</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>स्थानांतरित करें...</value>
+  </data>
+  <data name="ADataValueIsRequired" xml:space="preserve">
+    <value>डेटा मान आवश्यक है.</value>
+  </data>
+  <data name="MBusDiagnosticObject" xml:space="preserve">
+    <value>M-Bus निदान ऑब्जेक्ट</value>
+  </data>
+  <data name="ReceivedSignalStrengthLabel" xml:space="preserve">
+    <value>प्राप्त सिग्नल शक्ति:</value>
+  </data>
+  <data name="ChannelIDLabel" xml:space="preserve">
+    <value>चैनल ID:</value>
+  </data>
+  <data name="LinkStatusLabel" xml:space="preserve">
+    <value>लिंक स्थिति:</value>
+  </data>
+  <data name="BroadcastFrames" xml:space="preserve">
+    <value>प्रसारण फ़्रेम</value>
+  </data>
+  <data name="ClientID" xml:space="preserve">
+    <value>क्लाइंट ID</value>
+  </data>
+  <data name="Counter" xml:space="preserve">
+    <value>गणक</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>समय मुहर</value>
+  </data>
+  <data name="TransmissionsCounterLabel" xml:space="preserve">
+    <value>प्रेषण गणक:</value>
+  </data>
+  <data name="FCSOKFramesCounterLabel" xml:space="preserve">
+    <value>FCS OK फ़्रेम गणक:</value>
+  </data>
+  <data name="FCSNOKFramesCounterLabel" xml:space="preserve">
+    <value>FCS NOK फ़्रेम गणक:</value>
+  </data>
+  <data name="CaptureIDLabel" xml:space="preserve">
+    <value>कैप्चर ID:</value>
+  </data>
+  <data name="BroadcastFramesCounter" xml:space="preserve">
+    <value>प्रसारण फ़्रेम गणक</value>
+  </data>
+  <data name="MBusMasterPortSetupObject" xml:space="preserve">
+    <value>M-Bus मुख्य पोर्ट विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="CommSpeedLabel" xml:space="preserve">
+    <value>संचार गति:</value>
+  </data>
+  <data name="MBusPortSetupObject" xml:space="preserve">
+    <value>M-Bus पोर्ट विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="ProfileSelectionLabel" xml:space="preserve">
+    <value>प्रोफ़ाइल चयन:</value>
+  </data>
+  <data name="PortCommunicationStatusLabel" xml:space="preserve">
+    <value>पोर्ट संचार स्थिति:</value>
+  </data>
+  <data name="DataHeaderTypeLabel" xml:space="preserve">
+    <value>डेटा हेडर प्रकार:</value>
+  </data>
+  <data name="PrimaryAddressLabel2" xml:space="preserve">
+    <value>प्राथमिक पता:</value>
+  </data>
+  <data name="IdentificationNumberLabel2" xml:space="preserve">
+    <value>पहचान संख्या:</value>
+  </data>
+  <data name="MBusVersionLabel" xml:space="preserve">
+    <value>M-Bus संस्करण:</value>
+  </data>
+  <data name="DeviceTypeLabel2" xml:space="preserve">
+    <value>उपकरण प्रकार:</value>
+  </data>
+  <data name="MaximumPDUSizeLabel" xml:space="preserve">
+    <value>अधिकतम PDU आकार:</value>
+  </data>
+  <data name="ListeningWindows" xml:space="preserve">
+    <value>सुनने की अवधियाँ</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>समाप्ति</value>
+  </data>
+  <data name="PortSettings" xml:space="preserve">
+    <value>पोर्ट सेटिंग</value>
+  </data>
+  <data name="MBusSlavePortSetupObject" xml:space="preserve">
+    <value>M-Bus अधीनस्थ पोर्ट विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="AvailableBaudrateLabel" xml:space="preserve">
+    <value>उपलब्ध बॉड दर:</value>
+  </data>
+  <data name="AddressStateLabel" xml:space="preserve">
+    <value>पता स्थिति:</value>
+  </data>
+  <data name="BusAddressLabel" xml:space="preserve">
+    <value>बस पता:</value>
+  </data>
+  <data name="ModemConfigurationObject" xml:space="preserve">
+    <value>मॉडेम विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="InitialisationLabel" xml:space="preserve">
+    <value>आरंभीकरण:</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>अनुरोध</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>उत्तर:</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>विलंब</value>
+  </data>
+  <data name="ModemProfileLabel" xml:space="preserve">
+    <value>मॉडेम प्रोफ़ाइल:</value>
+  </data>
+  <data name="NTPSetupObject" xml:space="preserve">
+    <value>NTP विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="ActivatedLabel" xml:space="preserve">
+    <value>सक्रिय:</value>
+  </data>
+  <data name="ServerAddressLabel" xml:space="preserve">
+    <value>सर्वर पता:</value>
+  </data>
+  <data name="AuthenticationLabel" xml:space="preserve">
+    <value>प्रमाणीकरण:</value>
+  </data>
+  <data name="KeysLabel" xml:space="preserve">
+    <value>कुंजियाँ:</value>
+  </data>
+  <data name="ClientKeyLabel" xml:space="preserve">
+    <value>क्लाइंट कुंजी:</value>
+  </data>
+  <data name="AuthenticationKeyID" xml:space="preserve">
+    <value>प्रमाणीकरण कुंजी ID</value>
+  </data>
+  <data name="EnterAKeyIDFrom0To4294967295" xml:space="preserve">
+    <value>0 से 4294967295 तक कुंजी ID दर्ज करें.</value>
+  </data>
+  <data name="AuthenticationKeyHexadecimal" xml:space="preserve">
+    <value>प्रमाणीकरण कुंजी (हेक्साडेसिमल)</value>
+  </data>
+  <data name="EnterANonEmptyHexadecimalAuthenticationKey" xml:space="preserve">
+    <value>गैर-रिक्त हेक्साडेसिमल प्रमाणीकरण कुंजी दर्ज करें.</value>
+  </data>
+  <data name="SynchronizeTime" xml:space="preserve">
+    <value>समय सिंक्रनाइज़ करें</value>
+  </data>
+  <data name="AddAuthenticationKey" xml:space="preserve">
+    <value>प्रमाणीकरण कुंजी जोड़ें</value>
+  </data>
+  <data name="DeleteAuthenticationKey" xml:space="preserve">
+    <value>प्रमाणीकरण कुंजी हटाएँ</value>
+  </data>
+  <data name="ParameterMonitorObject" xml:space="preserve">
+    <value>पैरामीटर निगरानी ऑब्जेक्ट</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>पैरामीटर</value>
+  </data>
+  <data name="ObjectClassID" xml:space="preserve">
+    <value>ऑब्जेक्ट वर्ग ID</value>
+  </data>
+  <data name="ObjectLogicalName" xml:space="preserve">
+    <value>ऑब्जेक्ट तार्किक नाम</value>
+  </data>
+  <data name="AttributeIndex1255" xml:space="preserve">
+    <value>विशेषता अनुक्रमांक (1–255)</value>
+  </data>
+  <data name="ChangedParameter" xml:space="preserve">
+    <value>बदला गया पैरामीटर</value>
+  </data>
+  <data name="AddParameter" xml:space="preserve">
+    <value>पैरामीटर जोड़ें</value>
+  </data>
+  <data name="DeleteParameter" xml:space="preserve">
+    <value>पैरामीटर हटाएँ</value>
+  </data>
+  <data name="EnterASupportedObjectClassID" xml:space="preserve">
+    <value>समर्थित ऑब्जेक्ट वर्ग ID दर्ज करें.</value>
+  </data>
+  <data name="AttributeIndexMustBeGreaterThanZero" xml:space="preserve">
+    <value>विशेषता अनुक्रमांक शून्य से अधिक होना चाहिए.</value>
+  </data>
+  <data name="AttributeIndexExceedsTheObjectSAttributeCount" xml:space="preserve">
+    <value>विशेषता अनुक्रमांक ऑब्जेक्ट की विशेषता संख्या से अधिक है.</value>
+  </data>
+  <data name="SelectASupportedObjectClass" xml:space="preserve">
+    <value>समर्थित ऑब्जेक्ट वर्ग चुनें.</value>
+  </data>
+  <data name="PPPSetupObject" xml:space="preserve">
+    <value>PPP विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="PHYReferenceLabel" xml:space="preserve">
+    <value>PHY संदर्भ:</value>
+  </data>
+  <data name="LCPOptionsLabel" xml:space="preserve">
+    <value>LCP विकल्प:</value>
+  </data>
+  <data name="IPCPOptionsLabel" xml:space="preserve">
+    <value>IPCP विकल्प:</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>उपयोगकर्ता नाम:</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>पासवर्ड:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCApplicationIdentificationObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC अनुप्रयोग पहचान ऑब्जेक्ट</value>
+  </data>
+  <data name="FirmwareVersionLabel" xml:space="preserve">
+    <value>फ़र्मवेयर संस्करण:</value>
+  </data>
+  <data name="VendorIDLabel" xml:space="preserve">
+    <value>विक्रेता ID:</value>
+  </data>
+  <data name="ProductIDLabel" xml:space="preserve">
+    <value>उत्पाद ID:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACCountersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC गणक ऑब्जेक्ट</value>
+  </data>
+  <data name="TXDataPacketCounterLabel" xml:space="preserve">
+    <value>TX डेटा पैकेट गणक:</value>
+  </data>
+  <data name="RXDataPacketCounterLabel" xml:space="preserve">
+    <value>RX डेटा पैकेट गणक:</value>
+  </data>
+  <data name="TXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>TX नियंत्रण पैकेट गणक:</value>
+  </data>
+  <data name="RXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>RX नियंत्रण पैकेट गणक:</value>
+  </data>
+  <data name="CSMAFailCounterLabel" xml:space="preserve">
+    <value>CSMA विफलता गणक:</value>
+  </data>
+  <data name="CSMABusyCounterLabel" xml:space="preserve">
+    <value>CSMA व्यस्त गणक:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACFunctionalParametersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC कार्यात्मक पैरामीटर ऑब्जेक्ट</value>
+  </data>
+  <data name="LNIDLabel" xml:space="preserve">
+    <value>LNID:</value>
+  </data>
+  <data name="LSIDLabel" xml:space="preserve">
+    <value>LSID:</value>
+  </data>
+  <data name="SIDLabel" xml:space="preserve">
+    <value>SID:</value>
+  </data>
+  <data name="SNALabel" xml:space="preserve">
+    <value>SNA:</value>
+  </data>
+  <data name="StateLabel" xml:space="preserve">
+    <value>स्थिति:</value>
+  </data>
+  <data name="SCPLengtLabel" xml:space="preserve">
+    <value>SCP लंबाई:</value>
+  </data>
+  <data name="NodeHierarchyLevelLabel" xml:space="preserve">
+    <value>नोड पदानुक्रम स्तर:</value>
+  </data>
+  <data name="BeaconSlotCountLabel" xml:space="preserve">
+    <value>बीकन स्लॉट संख्या:</value>
+  </data>
+  <data name="BeaconRXSlotLabel" xml:space="preserve">
+    <value>बीकन RX स्लॉट:</value>
+  </data>
+  <data name="BeaconTXSlotLabel" xml:space="preserve">
+    <value>बीकन TX स्लॉट:</value>
+  </data>
+  <data name="BeaconRXFrequencyLabel" xml:space="preserve">
+    <value>बीकन RX आवृत्ति:</value>
+  </data>
+  <data name="BeaconTXFrequencyLabel" xml:space="preserve">
+    <value>बीकन TX आवृत्ति:</value>
+  </data>
+  <data name="CapabilitiesLabel" xml:space="preserve">
+    <value>क्षमताएँ:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACNetworkAdministrationDataObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC नेटवर्क प्रशासन डेटा ऑब्जेक्ट</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>सदस्य</value>
+  </data>
+  <data name="SwitchTable" xml:space="preserve">
+    <value>स्विच तालिका</value>
+  </data>
+  <data name="DirectTableLabel" xml:space="preserve">
+    <value>प्रत्यक्ष तालिका:</value>
+  </data>
+  <data name="SrcSID" xml:space="preserve">
+    <value>स्रोत SID</value>
+  </data>
+  <data name="SrcLNID" xml:space="preserve">
+    <value>स्रोत LNID</value>
+  </data>
+  <data name="SrcLCID" xml:space="preserve">
+    <value>स्रोत LCID</value>
+  </data>
+  <data name="DstSID" xml:space="preserve">
+    <value>गंतव्य SID</value>
+  </data>
+  <data name="DstLNID" xml:space="preserve">
+    <value>गंतव्य LNID</value>
+  </data>
+  <data name="DstLCID" xml:space="preserve">
+    <value>गंतव्य LCID</value>
+  </data>
+  <data name="DID" xml:space="preserve">
+    <value>DID</value>
+  </data>
+  <data name="AvailableSwitchesLabel" xml:space="preserve">
+    <value>उपलब्ध स्विच:</value>
+  </data>
+  <data name="SNA" xml:space="preserve">
+    <value>SNA</value>
+  </data>
+  <data name="LSID" xml:space="preserve">
+    <value>LSID</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>स्तर</value>
+  </data>
+  <data name="RXLevel" xml:space="preserve">
+    <value>RX स्तर</value>
+  </data>
+  <data name="RXSNR" xml:space="preserve">
+    <value>RX SNR</value>
+  </data>
+  <data name="PhyCommunicationLabel" xml:space="preserve">
+    <value>भौतिक संचार:</value>
+  </data>
+  <data name="EUI" xml:space="preserve">
+    <value>EUI</value>
+  </data>
+  <data name="TXPwr" xml:space="preserve">
+    <value>TX शक्ति</value>
+  </data>
+  <data name="TXCode" xml:space="preserve">
+    <value>TX कोड</value>
+  </data>
+  <data name="RXCode" xml:space="preserve">
+    <value>RX कोड</value>
+  </data>
+  <data name="RXLvl" xml:space="preserve">
+    <value>RX स्तर</value>
+  </data>
+  <data name="SNR" xml:space="preserve">
+    <value>SNR</value>
+  </data>
+  <data name="TXPwrMod" xml:space="preserve">
+    <value>TX शक्ति मॉड्यूलेशन</value>
+  </data>
+  <data name="TXCodeMod" xml:space="preserve">
+    <value>TX कोड मॉड्यूलेशन</value>
+  </data>
+  <data name="RXCodeMod" xml:space="preserve">
+    <value>RX कोड मॉड्यूलेशन</value>
+  </data>
+  <data name="ResetNetworkAdministrationData" xml:space="preserve">
+    <value>नेटवर्क प्रशासन डेटा रीसेट करें</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACSetupObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="MinSwitchSearchTimeLabel" xml:space="preserve">
+    <value>न्यूनतम स्विच खोज समय:</value>
+  </data>
+  <data name="MaxPromotionPDULabel" xml:space="preserve">
+    <value>अधिकतम पदोन्नयन PDU:</value>
+  </data>
+  <data name="PromotionPDUTXPeriodLabel" xml:space="preserve">
+    <value>पदोन्नयन PDU TX अवधि:</value>
+  </data>
+  <data name="BeaconsPerFrameLabel" xml:space="preserve">
+    <value>प्रति फ़्रेम बीकन:</value>
+  </data>
+  <data name="SCPMaxTXAttempsLabel" xml:space="preserve">
+    <value>SCP अधिकतम TX प्रयास:</value>
+  </data>
+  <data name="CLTReTXTimerLabel" xml:space="preserve">
+    <value>CLT पुनः प्रेषण टाइमर:</value>
+  </data>
+  <data name="MaxCtlReTxLabel" xml:space="preserve">
+    <value>अधिकतम नियंत्रण पुनः प्रेषण:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCPhysicalLayerCountersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC भौतिक परत गणक ऑब्जेक्ट</value>
+  </data>
+  <data name="CRCIncorrectCountLabel" xml:space="preserve">
+    <value>गलत CRC संख्या:</value>
+  </data>
+  <data name="CRCFailedCountLabel" xml:space="preserve">
+    <value>विफल CRC संख्या:</value>
+  </data>
+  <data name="TXDropCountLabel" xml:space="preserve">
+    <value>TX छोड़े गए पैकेट संख्या:</value>
+  </data>
+  <data name="RXDropCountLabel" xml:space="preserve">
+    <value>RX छोड़े गए पैकेट संख्या:</value>
+  </data>
+  <data name="ProfileGeneric" xml:space="preserve">
+    <value>सामान्य प्रोफ़ाइल</value>
+  </data>
+  <data name="EntriesInUse" xml:space="preserve">
+    <value>प्रयुक्त प्रविष्टियाँ</value>
+  </data>
+  <data name="Entries" xml:space="preserve">
+    <value>प्रविष्टियाँ</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>ऑब्जेक्ट</value>
+  </data>
+  <data name="ReadLastDays" xml:space="preserve">
+    <value>पिछले पढ़ें (दिन)</value>
+  </data>
+  <data name="ReadFrom" xml:space="preserve">
+    <value>यहाँ से पढ़ें</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>यहाँ तक</value>
+  </data>
+  <data name="ReadEntry" xml:space="preserve">
+    <value>प्रविष्टि पढ़ें</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>संख्या</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>क्रमबद्ध करें</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>पठन</value>
+  </data>
+  <data name="AddWhiteList" xml:space="preserve">
+    <value>अनुमति सूची में जोड़ें...</value>
+  </data>
+  <data name="AddBlackList" xml:space="preserve">
+    <value>अवरोध सूची में जोड़ें...</value>
+  </data>
+  <data name="EnterAnUnsigned32BitNumber" xml:space="preserve">
+    <value>अहस्ताक्षरित 32-बिट संख्या दर्ज करें.</value>
+  </data>
+  <data name="ChooseAReadingMode" xml:space="preserve">
+    <value>पठन मोड चुनें.</value>
+  </data>
+  <data name="ReadFromMustNotFollowTo" xml:space="preserve">
+    <value>पठन प्रारंभ पठन समाप्ति के बाद नहीं होना चाहिए.</value>
+  </data>
+  <data name="PushObject" xml:space="preserve">
+    <value>पुश ऑब्जेक्ट</value>
+  </data>
+  <data name="ServiceLabel" xml:space="preserve">
+    <value>सेवा:</value>
+  </data>
+  <data name="ChooseASupportedService" xml:space="preserve">
+    <value>समर्थित सेवा चुनें.</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>संदेश:</value>
+  </data>
+  <data name="ChooseASupportedMessage" xml:space="preserve">
+    <value>समर्थित संदेश चुनें.</value>
+  </data>
+  <data name="RandomisationLabel" xml:space="preserve">
+    <value>यादृच्छिकीकरण:</value>
+  </data>
+  <data name="NumberOfRetriesLabel" xml:space="preserve">
+    <value>पुनः प्रयास संख्या:</value>
+  </data>
+  <data name="RepetitionDelayLabel2" xml:space="preserve">
+    <value>दोहराव में विलंब:</value>
+  </data>
+  <data name="MinLabel" xml:space="preserve">
+    <value>न्यूनतम:</value>
+  </data>
+  <data name="ExponentLabel" xml:space="preserve">
+    <value>घातांक:</value>
+  </data>
+  <data name="MaxLabel" xml:space="preserve">
+    <value>अधिकतम:</value>
+  </data>
+  <data name="PortReferenceLabel" xml:space="preserve">
+    <value>पोर्ट संदर्भ:</value>
+  </data>
+  <data name="PushClientSAPLabel" xml:space="preserve">
+    <value>पुश क्लाइंट SAP:</value>
+  </data>
+  <data name="PushProtectionParametersLabel" xml:space="preserve">
+    <value>पुश सुरक्षा पैरामीटर:</value>
+  </data>
+  <data name="OperationMethodLabel" xml:space="preserve">
+    <value>संचालन विधि:</value>
+  </data>
+  <data name="StartDateLabel" xml:space="preserve">
+    <value>प्रारंभ तारीख:</value>
+  </data>
+  <data name="IntervalLabel" xml:space="preserve">
+    <value>अंतराल:</value>
+  </data>
+  <data name="LastConfirmationLabel" xml:space="preserve">
+    <value>अंतिम पुष्टि:</value>
+  </data>
+  <data name="LogicalName3" xml:space="preserve">
+    <value>तार्किक नाम</value>
+  </data>
+  <data name="DataIndex2" xml:space="preserve">
+    <value>डेटा अनुक्रमांक</value>
+  </data>
+  <data name="CommunicationWindow" xml:space="preserve">
+    <value>संचार अवधि</value>
+  </data>
+  <data name="SendDestinationAndMethod" xml:space="preserve">
+    <value>प्रेषण गंतव्य और विधि</value>
+  </data>
+  <data name="ConfirmationParameters" xml:space="preserve">
+    <value>पुष्टि पैरामीटर</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>पुश करें</value>
+  </data>
+  <data name="Restriction" xml:space="preserve">
+    <value>प्रतिबंध</value>
+  </data>
+  <data name="ColumnSelection" xml:space="preserve">
+    <value>स्तंभ चयन</value>
+  </data>
+  <data name="RestrictionType" xml:space="preserve">
+    <value>प्रतिबंध प्रकार</value>
+  </data>
+  <data name="RestrictionRange" xml:space="preserve">
+    <value>प्रतिबंध सीमा</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>स्तंभ</value>
+  </data>
+  <data name="ChooseASupportedServiceAndMessage" xml:space="preserve">
+    <value>समर्थित सेवा और संदेश चुनें.</value>
+  </data>
+  <data name="DestinationMustContainASCIICharacters" xml:space="preserve">
+    <value>गंतव्य में ASCII वर्ण होने चाहिए.</value>
+  </data>
+  <data name="RegisterObject" xml:space="preserve">
+    <value>रजिस्टर ऑब्जेक्ट</value>
+  </data>
+  <data name="ScalerLabel" xml:space="preserve">
+    <value>पैमाना गुणक:</value>
+  </data>
+  <data name="UnitLabel" xml:space="preserve">
+    <value>इकाई:</value>
+  </data>
+  <data name="RegisterActivationObject" xml:space="preserve">
+    <value>रजिस्टर सक्रियण ऑब्जेक्ट</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>आवंटन</value>
+  </data>
+  <data name="RegisterAssignment" xml:space="preserve">
+    <value>रजिस्टर आवंटन</value>
+  </data>
+  <data name="Masks" xml:space="preserve">
+    <value>मास्क</value>
+  </data>
+  <data name="MaskList" xml:space="preserve">
+    <value>मास्क सूची</value>
+  </data>
+  <data name="Indexes" xml:space="preserve">
+    <value>अनुक्रमांक</value>
+  </data>
+  <data name="ActiveMask" xml:space="preserve">
+    <value>सक्रिय मास्क</value>
+  </data>
+  <data name="MaskNameHexadecimal" xml:space="preserve">
+    <value>मास्क नाम (हेक्साडेसिमल)</value>
+  </data>
+  <data name="MaskIndexesCommaSeparatedBytes" xml:space="preserve">
+    <value>मास्क अनुक्रमांक (अल्पविराम से विभाजित बाइट)</value>
+  </data>
+  <data name="AddRegister" xml:space="preserve">
+    <value>रजिस्टर जोड़ें</value>
+  </data>
+  <data name="AddMask" xml:space="preserve">
+    <value>मास्क जोड़ें</value>
+  </data>
+  <data name="RemoveMask" xml:space="preserve">
+    <value>मास्क हटाएँ</value>
+  </data>
+  <data name="EnterAMaskName" xml:space="preserve">
+    <value>मास्क नाम दर्ज करें.</value>
+  </data>
+  <data name="ChooseARegisterExtendedRegisterOrDemandRegister" xml:space="preserve">
+    <value>रजिस्टर, विस्तारित रजिस्टर या माँग रजिस्टर चुनें.</value>
+  </data>
+  <data name="RegisterMonitorObject" xml:space="preserve">
+    <value>रजिस्टर निगरानी ऑब्जेक्ट</value>
+  </data>
+  <data name="Thresholds" xml:space="preserve">
+    <value>सीमाएँ</value>
+  </data>
+  <data name="Threshold" xml:space="preserve">
+    <value>सीमा</value>
+  </data>
+  <data name="UpLogicalName" xml:space="preserve">
+    <value>ऊपरी तार्किक नाम</value>
+  </data>
+  <data name="UpScriptSelector" xml:space="preserve">
+    <value>ऊपरी स्क्रिप्ट चयनकर्ता</value>
+  </data>
+  <data name="DownLogicalName" xml:space="preserve">
+    <value>निचला तार्किक नाम</value>
+  </data>
+  <data name="DownScriptSelector" xml:space="preserve">
+    <value>निचला स्क्रिप्ट चयनकर्ता</value>
+  </data>
+  <data name="MonitoredValue" xml:space="preserve">
+    <value>निगरानी मान</value>
+  </data>
+  <data name="SAPAssignmentObject" xml:space="preserve">
+    <value>SAP आवंटन ऑब्जेक्ट</value>
+  </data>
+  <data name="SapAssignmentList" xml:space="preserve">
+    <value>SAP आवंटन सूची</value>
+  </data>
+  <data name="SAPAddress" xml:space="preserve">
+    <value>SAP पता</value>
+  </data>
+  <data name="LogicalDeviceName" xml:space="preserve">
+    <value>तार्किक उपकरण नाम</value>
+  </data>
+  <data name="SAPID165535" xml:space="preserve">
+    <value>SAP ID (1–65535)</value>
+  </data>
+  <data name="LogicalDeviceName2" xml:space="preserve">
+    <value>तार्किक उपकरण नाम</value>
+  </data>
+  <data name="AddSAP" xml:space="preserve">
+    <value>SAP जोड़ें</value>
+  </data>
+  <data name="RemoveSAP" xml:space="preserve">
+    <value>SAP हटाएँ</value>
+  </data>
+  <data name="EnterALogicalDeviceName" xml:space="preserve">
+    <value>तार्किक उपकरण नाम दर्ज करें.</value>
+  </data>
+  <data name="SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535" xml:space="preserve">
+    <value>शून्य SAP ID आवंटन हटाता है; 1 से 65535 तक ID दर्ज करें.</value>
+  </data>
+  <data name="EnterAnIDFrom1To65535" xml:space="preserve">
+    <value>1 से 65535 तक ID दर्ज करें.</value>
+  </data>
+  <data name="ScheduleObject" xml:space="preserve">
+    <value>अनुसूची ऑब्जेक्ट</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>सक्षम करें</value>
+  </data>
+  <data name="SwitchTime" xml:space="preserve">
+    <value>स्विच समय</value>
+  </data>
+  <data name="ValidityWindow" xml:space="preserve">
+    <value>वैधता अवधि</value>
+  </data>
+  <data name="ExecWeekdays" xml:space="preserve">
+    <value>निष्पादन के सप्ताह दिन</value>
+  </data>
+  <data name="ExecSpecDays" xml:space="preserve">
+    <value>निष्पादन के विशेष दिन</value>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>प्रारंभ</value>
+  </data>
+  <data name="EntryIndex" xml:space="preserve">
+    <value>प्रविष्टि अनुक्रमांक</value>
+  </data>
+  <data name="EntryEnabled" xml:space="preserve">
+    <value>प्रविष्टि सक्षम</value>
+  </data>
+  <data name="EnterTrueOrFalse" xml:space="preserve">
+    <value>True या False दर्ज करें.</value>
+  </data>
+  <data name="ScriptLogicalName" xml:space="preserve">
+    <value>स्क्रिप्ट तार्किक नाम</value>
+  </data>
+  <data name="ScriptSelector2" xml:space="preserve">
+    <value>स्क्रिप्ट चयनकर्ता</value>
+  </data>
+  <data name="SwitchTimeHHMmSs" xml:space="preserve">
+    <value>स्विच समय (HH:mm:ss)</value>
+  </data>
+  <data name="ValidityWindow2" xml:space="preserve">
+    <value>वैधता अवधि</value>
+  </data>
+  <data name="WeekdayFlags0127" xml:space="preserve">
+    <value>सप्ताह दिन फ़्लैग (0–127)</value>
+  </data>
+  <data name="SpecialDayBitString" xml:space="preserve">
+    <value>विशेष दिन बिट स्ट्रिंग</value>
+  </data>
+  <data name="BeginDateYyyyMMDd" xml:space="preserve">
+    <value>प्रारंभ तारीख (yyyy-MM-dd)</value>
+  </data>
+  <data name="EndDateYyyyMMDd" xml:space="preserve">
+    <value>समाप्ति तारीख (yyyy-MM-dd)</value>
+  </data>
+  <data name="ApplyEnableDisable" xml:space="preserve">
+    <value>सक्षम / अक्षम लागू करें</value>
+  </data>
+  <data name="DeleteEntry" xml:space="preserve">
+    <value>प्रविष्टि हटाएँ</value>
+  </data>
+  <data name="WeekdayFlagsMustBeBetween0And127" xml:space="preserve">
+    <value>सप्ताह दिन फ़्लैग 0 और 127 के बीच होने चाहिए.</value>
+  </data>
+  <data name="EnterTheSpecialDayFlagsAsABinaryBitString" xml:space="preserve">
+    <value>विशेष दिन फ़्लैग बाइनरी बिट स्ट्रिंग के रूप में दर्ज करें.</value>
+  </data>
+  <data name="BeginDateMustNotFollowEndDate" xml:space="preserve">
+    <value>प्रारंभ तारीख समाप्ति तारीख के बाद नहीं होनी चाहिए.</value>
+  </data>
+  <data name="ScriptTableObject" xml:space="preserve">
+    <value>स्क्रिप्ट तालिका ऑब्जेक्ट</value>
+  </data>
+  <data name="ScriptId" xml:space="preserve">
+    <value>स्क्रिप्ट ID</value>
+  </data>
+  <data name="ScriptID065535" xml:space="preserve">
+    <value>स्क्रिप्ट ID (0–65535)</value>
+  </data>
+  <data name="ExecuteScript" xml:space="preserve">
+    <value>स्क्रिप्ट निष्पादित करें</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>पहचानकर्ता</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>क्रिया</value>
+  </data>
+  <data name="SecuritySetupObject" xml:space="preserve">
+    <value>सुरक्षा विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="PolicyLabel" xml:space="preserve">
+    <value>नीति:</value>
+  </data>
+  <data name="SuiteLabel" xml:space="preserve">
+    <value>सूट:</value>
+  </data>
+  <data name="ClientSystemTitleLabel" xml:space="preserve">
+    <value>क्लाइंट सिस्टम शीर्षक:</value>
+  </data>
+  <data name="ServerSystemTitleLabel" xml:space="preserve">
+    <value>सर्वर सिस्टम शीर्षक:</value>
+  </data>
+  <data name="SystemTitleDescriptionLabel" xml:space="preserve">
+    <value>सिस्टम शीर्षक विवरण:</value>
+  </data>
+  <data name="SecurityPolicyBitMaskLabel" xml:space="preserve">
+    <value>सुरक्षा नीति बिट मास्क:</value>
+  </data>
+  <data name="SecurityPolicyContainsUnsupportedFlags" xml:space="preserve">
+    <value>सुरक्षा नीति में असमर्थित फ़्लैग हैं.</value>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>प्रकार:</value>
+  </data>
+  <data name="KEKHexLabel" xml:space="preserve">
+    <value>KEK (hex):</value>
+  </data>
+  <data name="KeyHexLabel" xml:space="preserve">
+    <value>कुंजी (hex):</value>
+  </data>
+  <data name="SignedEphemeralPublicKeyHexLabel" xml:space="preserve">
+    <value>हस्ताक्षरित अल्पकालिक सार्वजनिक कुंजी (hex):</value>
+  </data>
+  <data name="EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>सुरक्षा सूट एक या दो के लिए हस्ताक्षरित अल्पकालिक सार्वजनिक कुंजी दर्ज करें.</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>प्रमाणपत्र</value>
+  </data>
+  <data name="CertificateTypeLabel" xml:space="preserve">
+    <value>प्रमाणपत्र प्रकार:</value>
+  </data>
+  <data name="X509CertificateDERHexLabel" xml:space="preserve">
+    <value>X.509 प्रमाणपत्र (DER hex):</value>
+  </data>
+  <data name="IdentifyBySerialNumberAndIssuerLabel" xml:space="preserve">
+    <value>क्रमांक और जारीकर्ता द्वारा पहचानें:</value>
+  </data>
+  <data name="SerialNumberDecimalLabel" xml:space="preserve">
+    <value>क्रमांक (दशमलव):</value>
+  </data>
+  <data name="CertificateSerialNumberMustBePositive" xml:space="preserve">
+    <value>प्रमाणपत्र क्रमांक धनात्मक होना चाहिए.</value>
+  </data>
+  <data name="IssuerDERHexLabel" xml:space="preserve">
+    <value>जारीकर्ता (DER hex):</value>
+  </data>
+  <data name="ADERIssuerIsRequired" xml:space="preserve">
+    <value>DER जारीकर्ता आवश्यक है.</value>
+  </data>
+  <data name="EntityLabel" xml:space="preserve">
+    <value>इकाई:</value>
+  </data>
+  <data name="SystemTitle8BytesHexLabel" xml:space="preserve">
+    <value>सिस्टम शीर्षक (8 बाइट, hex):</value>
+  </data>
+  <data name="SystemTitleMustContainEightBytes" xml:space="preserve">
+    <value>सिस्टम शीर्षक में आठ बाइट होने चाहिए.</value>
+  </data>
+  <data name="SecurityActivation" xml:space="preserve">
+    <value>सुरक्षा सक्रियण</value>
+  </data>
+  <data name="ActivateSecurity" xml:space="preserve">
+    <value>सुरक्षा सक्रिय करें</value>
+  </data>
+  <data name="KeyTransferAndAgreement" xml:space="preserve">
+    <value>कुंजी स्थानांतरण और सहमति</value>
+  </data>
+  <data name="UpdateKey" xml:space="preserve">
+    <value>कुंजी अद्यतन करें...</value>
+  </data>
+  <data name="AgreeKey" xml:space="preserve">
+    <value>कुंजी सहमति करें</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>इकाई</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>क्रमांक</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>जारीकर्ता</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>विषय</value>
+  </data>
+  <data name="SubjectAltName" xml:space="preserve">
+    <value>विषय का वैकल्पिक नाम</value>
+  </data>
+  <data name="KeyPair" xml:space="preserve">
+    <value>कुंजी युग्म...</value>
+  </data>
+  <data name="CertificateRequest" xml:space="preserve">
+    <value>प्रमाणपत्र अनुरोध...</value>
+  </data>
+  <data name="ImportCertificate" xml:space="preserve">
+    <value>प्रमाणपत्र आयात करें</value>
+  </data>
+  <data name="ExportCertificate" xml:space="preserve">
+    <value>प्रमाणपत्र निर्यात करें...</value>
+  </data>
+  <data name="RemoveCertificate" xml:space="preserve">
+    <value>प्रमाणपत्र हटाएँ</value>
+  </data>
+  <data name="CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession" xml:space="preserve">
+    <value>प्रमाणपत्र अनुरोध और निर्यात उत्तर कनेक्शन सत्र को लौटाए जाते हैं.</value>
+  </data>
+  <data name="VersionZeroSecurityPolicyMustBeBetweenZeroAndThree" xml:space="preserve">
+    <value>संस्करण शून्य की सुरक्षा नीति शून्य और तीन के बीच होनी चाहिए.</value>
+  </data>
+  <data name="SelectAKeyTypeSupportedByThisVersion" xml:space="preserve">
+    <value>इस संस्करण द्वारा समर्थित कुंजी प्रकार चुनें.</value>
+  </data>
+  <data name="KeyAgreementRequiresSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>कुंजी सहमति के लिए सुरक्षा सूट एक या दो आवश्यक है.</value>
+  </data>
+  <data name="SFSKActiveInitiatorObject" xml:space="preserve">
+    <value>S-FSK सक्रिय आरंभकर्ता ऑब्जेक्ट</value>
+  </data>
+  <data name="SystemTitleLabel" xml:space="preserve">
+    <value>सिस्टम शीर्षक:</value>
+  </data>
+  <data name="MACAddressLabel2" xml:space="preserve">
+    <value>MAC पता:</value>
+  </data>
+  <data name="LSAPSelectorLabel" xml:space="preserve">
+    <value>L SAP चयनकर्ता:</value>
+  </data>
+  <data name="ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI" xml:space="preserve">
+    <value>रीसेट अनुपलब्ध है: यह Gurux संस्करण विधि का नाम दिखाता है लेकिन समर्थित आदेश API उपलब्ध नहीं कराता.</value>
+  </data>
+  <data name="SFSKMACCountersObject" xml:space="preserve">
+    <value>S-FSK MAC गणक ऑब्जेक्ट</value>
+  </data>
+  <data name="SynchronizationRegisterLabel" xml:space="preserve">
+    <value>सिंक्रनाइज़ेशन रजिस्टर:</value>
+  </data>
+  <data name="SynchronizationRegister" xml:space="preserve">
+    <value>सिंक्रनाइज़ेशन रजिस्टर</value>
+  </data>
+  <data name="PhysicalLayerDesynchronizationLabel" xml:space="preserve">
+    <value>भौतिक परत विसिंक्रनाइज़ेशन:</value>
+  </data>
+  <data name="TimeoutNotAddressedDesynchronizationLabel" xml:space="preserve">
+    <value>पता न मिलने की समय सीमा से विसिंक्रनाइज़ेशन:</value>
+  </data>
+  <data name="TimeoutFrameNotOKDesynchronizationLabel" xml:space="preserve">
+    <value>गलत फ़्रेम की समय सीमा से विसिंक्रनाइज़ेशन:</value>
+  </data>
+  <data name="WriteRequestDesynchronizationLabel" xml:space="preserve">
+    <value>लेखन अनुरोध से विसिंक्रनाइज़ेशन:</value>
+  </data>
+  <data name="WrongInitiatorDesynchronizationLabel" xml:space="preserve">
+    <value>गलत आरंभकर्ता से विसिंक्रनाइज़ेशन:</value>
+  </data>
+  <data name="BroadcastFramesCounterLabel" xml:space="preserve">
+    <value>प्रसारण फ़्रेम गणक:</value>
+  </data>
+  <data name="MACAddress" xml:space="preserve">
+    <value>MAC पता</value>
+  </data>
+  <data name="RepetitionsCounterLabel" xml:space="preserve">
+    <value>दोहराव गणक:</value>
+  </data>
+  <data name="TransmissionsCounterLabel2" xml:space="preserve">
+    <value>प्रेषण गणक:</value>
+  </data>
+  <data name="CRCOKFramesCounterLabel" xml:space="preserve">
+    <value>CRC OK फ़्रेम गणक:</value>
+  </data>
+  <data name="CRCNOKFramesCounterLabel" xml:space="preserve">
+    <value>CRC NOK फ़्रेम गणक:</value>
+  </data>
+  <data name="DesynchronizationListing" xml:space="preserve">
+    <value>विसिंक्रनाइज़ेशन सूची</value>
+  </data>
+  <data name="SFSKMACSynchronizationTimeoutsObject" xml:space="preserve">
+    <value>S-FSK MAC सिंक्रनाइज़ेशन समय सीमा ऑब्जेक्ट</value>
+  </data>
+  <data name="SearchInitiatorTimeoutLabel" xml:space="preserve">
+    <value>आरंभकर्ता खोज समय सीमा:</value>
+  </data>
+  <data name="ConfirmationTimeoutLabel" xml:space="preserve">
+    <value>पुष्टि समय सीमा:</value>
+  </data>
+  <data name="TimeoutNotAddressedLabel" xml:space="preserve">
+    <value>पता न मिलने की समय सीमा:</value>
+  </data>
+  <data name="TimeuoutFrameNotOKLabel" xml:space="preserve">
+    <value>गलत फ़्रेम समय सीमा:</value>
+  </data>
+  <data name="SFSKPhyMACSetupObject" xml:space="preserve">
+    <value>S-FSK भौतिक MAC विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="InitiatorElectricalPhaseLabel" xml:space="preserve">
+    <value>आरंभकर्ता विद्युत फेज़:</value>
+  </data>
+  <data name="DeltaElectricalPhaseLabel" xml:space="preserve">
+    <value>विद्युत फेज़ अंतर:</value>
+  </data>
+  <data name="MaxReceivingGainLabel" xml:space="preserve">
+    <value>अधिकतम प्राप्ति लाभ:</value>
+  </data>
+  <data name="MaxTransmittingGainLabel" xml:space="preserve">
+    <value>अधिकतम प्रेषण लाभ:</value>
+  </data>
+  <data name="SearchInitiatorThresholdLabel" xml:space="preserve">
+    <value>आरंभकर्ता खोज सीमा:</value>
+  </data>
+  <data name="MarkFrequencyHzLabel" xml:space="preserve">
+    <value>मार्क आवृत्ति (Hz):</value>
+  </data>
+  <data name="SpaceFrequencyHzLabel" xml:space="preserve">
+    <value>स्पेस आवृत्ति (Hz):</value>
+  </data>
+  <data name="MACGroupAddressesLabel" xml:space="preserve">
+    <value>MAC समूह पते:</value>
+  </data>
+  <data name="MACGroupAddress" xml:space="preserve">
+    <value>MAC समूह पता</value>
+  </data>
+  <data name="RepeaterLabel" xml:space="preserve">
+    <value>पुनरावर्तक:</value>
+  </data>
+  <data name="RepeaterStatusLabel" xml:space="preserve">
+    <value>पुनरावर्तक स्थिति:</value>
+  </data>
+  <data name="MinDeltaCreditLabel" xml:space="preserve">
+    <value>न्यूनतम क्रेडिट अंतर:</value>
+  </data>
+  <data name="InitiatorMACAddressLabel" xml:space="preserve">
+    <value>आरंभकर्ता MAC पता:</value>
+  </data>
+  <data name="SynchronizationLockedLabel" xml:space="preserve">
+    <value>सिंक्रनाइज़ेशन लॉक:</value>
+  </data>
+  <data name="TransmissionSpeedLabel" xml:space="preserve">
+    <value>प्रेषण गति:</value>
+  </data>
+  <data name="SpecialDaysTableObject" xml:space="preserve">
+    <value>विशेष दिन तालिका ऑब्जेक्ट</value>
+  </data>
+  <data name="SpecialDayDate" xml:space="preserve">
+    <value>विशेष दिन तारीख</value>
+  </data>
+  <data name="DateYyyyMMDd" xml:space="preserve">
+    <value>तारीख (yyyy-MM-dd)</value>
+  </data>
+  <data name="DayID0255" xml:space="preserve">
+    <value>दिन ID (0–255)</value>
+  </data>
+  <data name="InsertDay" xml:space="preserve">
+    <value>दिन डालें</value>
+  </data>
+  <data name="DeleteDay" xml:space="preserve">
+    <value>दिन हटाएँ</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>प्रारंभ घंटा</value>
+  </data>
+  <data name="IntervalTariff" xml:space="preserve">
+    <value>अंतराल टैरिफ़</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>प्रयोग में</value>
+  </data>
+  <data name="StartHourMustBeBetween0And23" xml:space="preserve">
+    <value>प्रारंभ घंटा 0 और 23 के बीच होना चाहिए.</value>
+  </data>
+  <data name="TariffPlanObject" xml:space="preserve">
+    <value>टैरिफ़ योजना ऑब्जेक्ट</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>सक्षम</value>
+  </data>
+  <data name="DefaultTariffBand" xml:space="preserve">
+    <value>डिफ़ॉल्ट टैरिफ़ बैंड</value>
+  </data>
+  <data name="WeeklyActivation" xml:space="preserve">
+    <value>साप्ताहिक सक्रियण</value>
+  </data>
+  <data name="SpecialDays" xml:space="preserve">
+    <value>विशेष दिन</value>
+  </data>
+  <data name="WinterSeason" xml:space="preserve">
+    <value>शीत ऋतु</value>
+  </data>
+  <data name="SummerSeason" xml:space="preserve">
+    <value>ग्रीष्म ऋतु</value>
+  </data>
+  <data name="DayOfMonth" xml:space="preserve">
+    <value>महीने का दिन</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>महीना</value>
+  </data>
+  <data name="WorkingDayIntervals" xml:space="preserve">
+    <value>कार्य दिवस अंतराल</value>
+  </data>
+  <data name="SaturdayIntervals" xml:space="preserve">
+    <value>शनिवार अंतराल</value>
+  </data>
+  <data name="HolidayIntervals" xml:space="preserve">
+    <value>अवकाश अंतराल</value>
+  </data>
+  <data name="TariffPlan" xml:space="preserve">
+    <value>टैरिफ़ योजना</value>
+  </data>
+  <data name="TCPUDPSetupObject" xml:space="preserve">
+    <value>TCP/UDP विन्यास ऑब्जेक्ट</value>
+  </data>
+  <data name="IPReferenceLabel" xml:space="preserve">
+    <value>IP संदर्भ:</value>
+  </data>
+  <data name="MaxSegmentSizeLabel" xml:space="preserve">
+    <value>अधिकतम खंड आकार:</value>
+  </data>
+  <data name="MaxConnectionsLabel" xml:space="preserve">
+    <value>अधिकतम कनेक्शन:</value>
+  </data>
+  <data name="TokenGatewayObject" xml:space="preserve">
+    <value>टोकन गेटवे ऑब्जेक्ट</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>टोकन</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>विवरण</value>
+  </data>
+  <data name="DeliveryMethod" xml:space="preserve">
+    <value>वितरण विधि</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>स्थिति कोड</value>
+  </data>
+  <data name="DataValue" xml:space="preserve">
+    <value>डेटा मान</value>
+  </data>
+  <data name="TokenHexadecimal" xml:space="preserve">
+    <value>टोकन (हेक्साडेसिमल)</value>
+  </data>
+  <data name="TransferToken" xml:space="preserve">
+    <value>टोकन स्थानांतरित करें</value>
+  </data>
+  <data name="EnterAToken" xml:space="preserve">
+    <value>टोकन दर्ज करें.</value>
+  </data>
+  <data name="UtilityTablesObject" xml:space="preserve">
+    <value>उपयोगिता तालिका ऑब्जेक्ट</value>
+  </data>
+  <data name="TableID" xml:space="preserve">
+    <value>तालिका ID</value>
+  </data>
+  <data name="WirelessModeQChannel" xml:space="preserve">
+    <value>वायरलेस मोड Q चैनल</value>
+  </data>
+  <data name="AddressMaskLabel" xml:space="preserve">
+    <value>पता मास्क:</value>
+  </data>
+  <data name="UnableToDisplayAttribute0" xml:space="preserve">
+    <value>विशेषता प्रदर्शित नहीं कर सकते: {0}</value>
+  </data>
+  <data name="CannotDisplayAttribute01" xml:space="preserve">
+    <value>विशेषता {0} प्रदर्शित नहीं कर सकते: {1}.</value>
+  </data>
+  <data name="Text0Items" xml:space="preserve">
+    <value>{0} आइटम</value>
+  </data>
+  <data name="ActionFailed0" xml:space="preserve">
+    <value>क्रिया विफल: {0}</value>
+  </data>
+  <data name="WritingCurrentTimeFailed0" xml:space="preserve">
+    <value>वर्तमान समय लिखना विफल: {0}</value>
+  </data>
+  <data name="ResetFailed0" xml:space="preserve">
+    <value>रीसेट विफल: {0}</value>
+  </data>
+  <data name="Value0" xml:space="preserve">
+    <value>मान {0}</value>
+  </data>
+  <data name="Attribute0" xml:space="preserve">
+    <value>विशेषता {0}</value>
+  </data>
+  <data name="Resize0" xml:space="preserve">
+    <value>आकार बदलें: {0}</value>
+  </data>
+  <data name="Read0" xml:space="preserve">
+    <value>पढ़ें: {0}</value>
+  </data>
+  <data name="Text0RequestCompleted" xml:space="preserve">
+    <value>{0} अनुरोध पूर्ण हुआ.</value>
+  </data>
+  <data name="TheSelectedSecuritySuiteRequires0KeyBytes" xml:space="preserve">
+    <value>चुने गए सुरक्षा सूट के लिए {0} कुंजी बाइट आवश्यक हैं.</value>
+  </data>
+  <data name="ASignedEphemeralPublicKeyRequires0Bytes" xml:space="preserve">
+    <value>हस्ताक्षरित अल्पकालिक सार्वजनिक कुंजी के लिए {0} बाइट आवश्यक हैं.</value>
+  </data>
+  <data name="Text0Object" xml:space="preserve">
+    <value>{0} ऑब्जेक्ट</value>
+  </data>
+  <data name="Text01" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Text012" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="EnterAWholeNumberBetween0And1" xml:space="preserve">
+    <value>इस सीमा में पूर्णांक दर्ज करें: {0} से {1}.</value>
+  </data>
+  <data name="Method0" xml:space="preserve">
+    <value>विधि {0}</value>
+  </data>
+  <data name="RemoveTheSelected0Row" xml:space="preserve">
+    <value>चुनी गई {0} पंक्ति हटाएँ?</value>
+  </data>
+  <data name="AvailableCreditLabel" xml:space="preserve">
+    <value>उपलब्ध क्रेडिट:</value>
+  </data>
+  <data name="AmountToClearLabel" xml:space="preserve">
+    <value>चुकाने की राशि:</value>
+  </data>
+  <data name="ClearanceThresholdLabel" xml:space="preserve">
+    <value>चुकौती सीमा:</value>
+  </data>
+  <data name="AggregatedDebtLabel" xml:space="preserve">
+    <value>संचित ऋण:</value>
+  </data>
+  <data name="LowCreditThresholdLabel" xml:space="preserve">
+    <value>कम क्रेडिट सीमा:</value>
+  </data>
+  <data name="NextCreditAvailableThresholdLabel" xml:space="preserve">
+    <value>अगली उपलब्ध क्रेडिट सीमा:</value>
+  </data>
+  <data name="MaxProvisionLabel" xml:space="preserve">
+    <value>अधिकतम प्रावधान:</value>
+  </data>
+  <data name="MaxProvisionPeriodLabel" xml:space="preserve">
+    <value>अधिकतम प्रावधान अवधि:</value>
+  </data>
+  <data name="Text0Attribute1" xml:space="preserve">
+    <value>{0} / विशेषता {1}</value>
+  </data>
+  <data name="AttributeError" xml:space="preserve">
+    <value>विशेषता {0}: {1}</value>
+  </data>
+  <data name="IntervalNumber" xml:space="preserve">
+    <value>अंतराल {0}</value>
+  </data>
+  <data name="CaptureObjectAttributeAndData" xml:space="preserve">
+    <value>{0} / विशेषता {1} / डेटा {2}</value>
   </data>
 </root>

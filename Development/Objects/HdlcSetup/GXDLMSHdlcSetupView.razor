@@ -40,42 +40,42 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="HDLC Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.HDLCSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Speed:" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.SpeedLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
     }
-<fieldset class="gx-object-fields"><legend>Transmit</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.Transmit</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Window Size:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.WindowSizeLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Maximum Length:" Enabled="CanEditAttribute(5)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaximumLengthLabel" Enabled="CanEditAttribute(5)"  />
     }
 </fieldset>
-<fieldset class="gx-object-fields"><legend>Receive:</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.ReceiveLabel</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Window Size:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.WindowSizeLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Maximum Length:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.MaximumLengthLabel" Enabled="CanEditAttribute(6)"  />
     }
 </fieldset>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Internal Timeout" Enabled="CanEditAttribute(7)"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.InternalTimeout" Enabled="CanEditAttribute(7)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Inactivity Timeout:" Enabled="CanEditAttribute(8)"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.InactivityTimeoutLabel" Enabled="CanEditAttribute(8)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Device Address:" Enabled="CanEditAttribute(9)"  />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.DeviceAddressLabel" Enabled="CanEditAttribute(9)"  />
     }
 </div>
 </section>

@@ -40,48 +40,50 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="MBus diagnostic Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.MBusDiagnosticObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Received Signal Strength:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ReceivedSignalStrengthLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Channel ID:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ChannelIDLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Link Status:" Enabled="CanEditAttribute(4)" EnumType="typeof(MBusLinkStatus)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.LinkStatusLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(MBusLinkStatus)"  />
     }
-<fieldset class="gx-object-fields"><legend>Broadcast Frames Counter</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.BroadcastFramesCounter</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Broadcast frames" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Client ID", "Counter", "Time Stamp" })' CreateRow='@(() => new GXStructure { (byte)0, (uint)0, new GXDateTime() })' />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.BroadcastFrames" Enabled="CanEditAttribute(5)" Columns='@(new[] { Properties.Resources.ClientID, Properties.Resources.Counter, Properties.Resources.TimeStamp })' CreateRow='@(() => new GXStructure { (byte)0, (uint)0, new GXDateTime() })' />
     }
 </fieldset>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Transmissions Counter:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.TransmissionsCounterLabel" Enabled="CanEditAttribute(6)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="FCS OK Frames Counter:" Enabled="CanEditAttribute(7)"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.FCSOKFramesCounterLabel" Enabled="CanEditAttribute(7)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="FCS NOK Frames Counter:" Enabled="CanEditAttribute(8)"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.FCSNOKFramesCounterLabel" Enabled="CanEditAttribute(8)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Capture ID:" Enabled="CanEditAttribute(9)" Part="0" />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.CaptureIDLabel" Enabled="CanEditAttribute(9)" Part="0" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Capture Time:" Enabled="CanEditAttribute(9)" Part="1" />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.CaptureTimeLabel2" Enabled="CanEditAttribute(9)" Part="1" />
     }
 </div>
 </section>
-<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton></section>
+<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton></section>
 @code {
+    /// <summary>Submits the object&apos;s reset method through the host action callback.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
 }

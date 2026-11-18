@@ -34,12 +34,16 @@ namespace Gurux.DLMS.UI.Components.Objects;
 /// <summary>Displays account settings and stages edits and account method invocations.</summary>
 public partial class GXAccountView
 {
+    /// <summary>Provides a unique identifier prefix for account credit-status switches.</summary>
     private readonly string _creditStatusId = $"account-credit-status-{Guid.NewGuid():N}";
-    private static readonly (int Index, string Label)[] CreditFields =
-    [(5, "Available Credit"), (6, "Amount To Clear"), (7, "Clearance Threshold"), (8, "Aggregated Debt")];
-    private static readonly (int Index, string Label)[] ProvisionFields =
-    [(16, "Low Credit Threshold"), (17, "Next Credit Available Threshold"), (18, "Max Provision"), (19, "Max Provision Period")];
+    /// <summary>Maps the account credit attributes to their displayed captions.</summary>
+    private static (int Index, string Label)[] CreditFields => [(5, Properties.Resources.AvailableCreditLabel), (6, Properties.Resources.AmountToClearLabel), (7, Properties.Resources.ClearanceThresholdLabel), (8, Properties.Resources.AggregatedDebtLabel)];
+    /// <summary>Maps the account provision attributes to their displayed captions.</summary>
+    private static (int Index, string Label)[] ProvisionFields => [(16, Properties.Resources.LowCreditThresholdLabel), (17, Properties.Resources.NextCreditAvailableThresholdLabel), (18, Properties.Resources.MaxProvisionLabel), (19, Properties.Resources.MaxProvisionPeriodLabel)];
 
+    /// <summary>Copies the current account structure, preserving other fields from an invalid draft.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>Copies the current account structure, preserving other fields from an invalid draft.</returns>
     private GXStructure Structure(int index)
     {
         // Invalid compound drafts still contain the other edited fields. Keep
@@ -52,6 +56,10 @@ public partial class GXAccountView
         result.AddRange((GXStructure)source!);
         return result;
     }
+    /// <summary>Stages one member of an account structure when the attribute is writable.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <param name="part">The zero-based member index within the attribute structure.</param>
+    /// <param name="value">The input value to convert, format or stage.</param>
     private void ChangePart(int index, int part, object value)
     {
         if (!CanEditAttribute(index))

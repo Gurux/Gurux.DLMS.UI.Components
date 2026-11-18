@@ -39,13 +39,13 @@
 <section class="gx-object-view" @key="Target">
     @if (Edit.Error(2) is { } error) { <p role="alert">@error</p> }
     @if (_writeError is not null) { <p role="alert">@_writeError</p> }
-    <GXObjectViewHeader Target="Target" Edit="Edit" Title="Data Object — Unix time" />
-    <GXValueField Label="Time zone:" Value="@TimeZoneInfo.Local.DisplayName" Enabled="false" />
-    <GXValueField Label="Local time:" Value="@LocalTimeText" Enabled="@(CanEditAttribute(2) && !_writing)" Validate="ValidateLocalTime" OnCommit="EditLocalTime" />
-    <GXButton type="button" Disabled="@(!CanWriteCurrentTime)" OnClick="WriteCurrentTimeAsync">Write current time</GXButton>
-    @if (!OnWriteRequested.HasDelegate) { <p>Immediate writing is not available for this connection.</p> }
-    @if (_written) { <p role="status">Current time written.</p> }
-    @if (Edit.HasChanges) { <p role="status">Value changed</p> }
+    <GXObjectViewHeader Target="Target" Edit="Edit" Title="@Properties.Resources.DataObjectUnixTime" />
+    <GXValueField Label="@Properties.Resources.TimeZoneLabel2" Value="@TimeZoneInfo.Local.DisplayName" Enabled="false" />
+    <GXValueField Label="@Properties.Resources.LocalTimeLabel" Value="@LocalTimeText" Enabled="@(CanEditAttribute(2) && !_writing)" Validate="ValidateLocalTime" OnCommit="EditLocalTime" />
+    <GXButton type="button" Disabled="@(!CanWriteCurrentTime)" OnClick="WriteCurrentTimeAsync">@Properties.Resources.WriteCurrentTime</GXButton>
+    @if (!OnWriteRequested.HasDelegate) { <p>@Properties.Resources.ImmediateWritingIsNotAvailableForThisConnection</p> }
+    @if (_written) { <p role="status">@Properties.Resources.CurrentTimeWritten</p> }
+    @if (Edit.HasChanges) { <p role="status">@Properties.Resources.ValueChanged</p> }
 </section>
 
 @code {
@@ -65,9 +65,13 @@
     /// Whether the current-time write action is offered.
     /// </summary>
     [Parameter] public bool WriteEnabled { get; set; } = true;
+    /// <summary>Retains the previous model to clear operation state when the target changes.</summary>
     private GXDLMSData? _previousTarget;
+    /// <summary>Prevents overlapping requests to write the current meter time.</summary>
     private bool _writing;
+    /// <summary>Tracks whether the current-time write completed successfully.</summary>
     private bool _written;
+    /// <summary>Stores the most recent current-time write failure shown in the view.</summary>
     private string? _writeError;
     /// <summary>
     /// Whether the current time can be written with the current access rights and callback.
@@ -104,7 +108,7 @@
         try
         {
             var date = DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(value, CultureInfo.InvariantCulture)).ToLocalTime();
-            return date.ToString("G", CultureInfo.CurrentCulture) + " " + date.ToString("zzz", CultureInfo.InvariantCulture);
+            return string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text012, date.ToString("G", CultureInfo.CurrentCulture), date.ToString("zzz", CultureInfo.CurrentCulture));
         }
         catch (Exception ex) when (ex is FormatException or InvalidCastException or OverflowException or ArgumentOutOfRangeException)
         {
@@ -112,11 +116,14 @@
         }
     }
 
+    /// <summary>Checks the local date-time input and its representable meter epoch range.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private string? ValidateLocalTime(string text)
     {
         if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date))
         {
-            return "Enter a valid local date and time.";
+            return Properties.Resources.EnterAValidLocalDateAndTime;
         }
         try
         {
@@ -125,6 +132,9 @@
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
+    /// <summary>Converts UTC time to the meter value&apos;s existing integer epoch representation.</summary>
+    /// <param name="utc">The UTC instant to encode as the meter&apos;s epoch value.</param>
+    /// <returns>Converts UTC time to the meter value&apos;s existing integer epoch representation.</returns>
     private object MeterEpoch(DateTime utc)
     {
         var epoch = GXDateTime.ToUnixTime(utc);
@@ -147,7 +157,7 @@
         _writeError = null;
         if (!DateTimeOffset.TryParse(text, CultureInfo.CurrentCulture, DateTimeStyles.AllowWhiteSpaces | DateTimeStyles.AssumeLocal, out var date))
         {
-            Edit.SetValueError("Enter a valid local date and time.");
+            Edit.SetValueError(Properties.Resources.EnterAValidLocalDateAndTime);
             return;
         }
         try
@@ -156,7 +166,7 @@
         }
         catch (Exception ex) when (ex is OverflowException or FormatException or InvalidCastException or ArgumentException)
         {
-            Edit.SetValueError("The date is outside the meter's supported range.");
+            Edit.SetValueError(Properties.Resources.TheDateIsOutsideTheMeterSSupportedRange);
         }
     }
 
@@ -190,7 +200,7 @@
         {
             if (ReferenceEquals(Target, target))
             {
-                _writeError = $"Writing current time failed: {ex.Message}";
+                _writeError = string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.WritingCurrentTimeFailed0, ex.Message);
             }
         }
         finally { _writing = false; }

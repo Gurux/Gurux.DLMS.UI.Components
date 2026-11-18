@@ -57,7 +57,9 @@ public partial class GXAccountTable : IDisposable
     {
         get; set;
     }
+    /// <summary>Prevents callbacks from updating a component after disposal.</summary>
     private bool _disposed;
+    /// <summary>Gets whether the current target and access rights permit editing.</summary>
     private bool CanEditNow => !_disposed && Enabled && (Access is null ? GXDLMSObjectAccess.CanEdit(Edit.Target, Index) : ReferenceEquals(Access.Target, Edit.Target) && Access.CanEdit(Index));
     /// <summary>Gets the zero-based selected row index, or -1 when no row is selected.</summary>
     public int SelectedRow { get; private set; } = -1;
@@ -82,16 +84,28 @@ public partial class GXAccountTable : IDisposable
     }
     /// <summary>Gets or sets the token proportion text for a token gateway configuration row.</summary>
     public string TokenProportionText { get; set; } = "0";
+    /// <summary>Stores the row being edited, with a negative value indicating a new row.</summary>
     private int _editRow = -1;
+    /// <summary>Tracks whether the current dialog confirms row removal.</summary>
     private bool _removing;
+    /// <summary>Supplies the current row indices and total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderResult<int>> ProvideRows(Gurux.UI.Components.GXItemsProviderRequest request)
         => ValueTask.FromResult(new Microsoft.AspNetCore.Components.Web.Virtualization.ItemsProviderResult<int>(Enumerable.Range(0, Rows.Count), Rows.Count));
+    /// <summary>Retains the previously rendered edit state to detect target changes.</summary>
     private GXDLMSObjectEditState? _lastEdit;
+    /// <summary>Retains the previously rendered attribute index.</summary>
     private int _lastIndex;
+    /// <summary>Identifies the datalist containing compatible object references.</summary>
     private readonly string _referenceListId = $"account-references-{Guid.NewGuid():N}";
+    /// <summary>Identifies the datalist containing charge object references.</summary>
     private readonly string _chargeListId = $"account-charges-{Guid.NewGuid():N}";
-    private string Title => Index switch { 9 => "Credit reference", 10 => "Charge Reference", 11 => "Credit Charge", _ => "Token Gateway" };
-    private string[] Headers => Index switch { 9 or 10 => ["Name"], 11 => ["Credit", "Charge", "Configuration"], _ => ["Credit Reference", "Token proportion"] };
+    /// <summary>Gets the title for the current account table attribute.</summary>
+    private string Title => Index switch { 9 => Properties.Resources.CreditReference2, 10 => Properties.Resources.ChargeReference, 11 => Properties.Resources.CreditCharge, _ => Properties.Resources.TokenGateway };
+    /// <summary>Gets the column captions for the current table variant.</summary>
+    private string[] Headers => Index switch { 9 or 10 => [Properties.Resources.Name], 11 => [Properties.Resources.Credit, Properties.Resources.Charge, Properties.Resources.Configuration], _ => [Properties.Resources.CreditReference, Properties.Resources.TokenProportion] };
+    /// <summary>Gets the table entries from the pending or confirmed attribute value.</summary>
     private GXArray Rows
     {
         get
@@ -101,21 +115,36 @@ public partial class GXAccountTable : IDisposable
             return rows;
         }
     }
+    /// <summary>Gets whether the selected row still exists in the current table.</summary>
     private bool HasSelection => SelectedRow >= 0 && SelectedRow < Rows.Count;
+    /// <summary>Gets the logical names of compatible credit or charge objects.</summary>
     private IEnumerable<string> ReferenceOptions => ObjectNames(Index == 10 ? ObjectType.Charge : ObjectType.Credit);
+    /// <summary>Gets the logical names of charge objects in the same object collection.</summary>
     private IEnumerable<string> ChargeOptions => ObjectNames(ObjectType.Charge);
+    /// <summary>Enumerates logical names for objects of the requested COSEM class.</summary>
+    /// <param name="type">The COSEM data type or object class being validated.</param>
+    /// <returns>Enumerates logical names for objects of the requested COSEM class.</returns>
     private IEnumerable<string> ObjectNames(ObjectType type) => Edit.Target.Parent?.GetObjects(type).Select(item => item.LogicalName) ?? [];
+    /// <summary>Formats a byte buffer or scalar as a logical-name string.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private static string LogicalName(object value) => value is byte[] bytes ? string.Join(".", bytes) : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+    /// <summary>Validates and encodes the six components of a logical name.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>Validates and encodes the six components of a logical name.</returns>
     private static byte[] LogicalNameBytes(string text)
     {
         var parts = text.Split('.');
         if (parts.Length != 6 || parts.Any(part => !byte.TryParse(part, NumberStyles.None, CultureInfo.InvariantCulture, out _)))
         {
-            throw new FormatException("Enter a logical name with six numbers between 0 and 255.");
+            throw new FormatException(Properties.Resources.EnterALogicalNameWithSixNumbersBetween0And255);
         }
 
         return parts.Select(part => byte.Parse(part, CultureInfo.InvariantCulture)).ToArray();
     }
+    /// <summary>Formats the selected row into the table&apos;s visible cells.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private IEnumerable<string> Cells(int row)
     {
         var value = Rows[row];
@@ -156,11 +185,16 @@ public partial class GXAccountTable : IDisposable
             SelectedRow = row;
         }
     }
+    /// <summary>Selects a row and opens its edit dialog when editing is permitted.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
     private void EditRow(int row)
     {
         SelectRow(row);
         BeginEdit();
     }
+    /// <summary>Opens the selected row for editing when Enter or Space is pressed.</summary>
+    /// <param name="args">The browser input event received by the component.</param>
+    /// <param name="row">The zero-based row index in the current table.</param>
     private void RowKey(KeyboardEventArgs args, int row)
     {
         if (args.Key is "Enter" or " ")
@@ -264,7 +298,7 @@ public partial class GXAccountTable : IDisposable
             }
             else
             {
-                throw new InvalidOperationException("The selected row no longer exists.");
+                throw new InvalidOperationException(Properties.Resources.TheSelectedRowNoLongerExists);
             }
 
             if (!Save(rows))
@@ -293,6 +327,9 @@ public partial class GXAccountTable : IDisposable
             CancelEdit();
         }
     }
+    /// <summary>Stages the edited account table and reports whether validation succeeded.</summary>
+    /// <param name="rows">The replacement profile or reference rows to stage.</param>
+    /// <returns>True when the requested condition is satisfied; otherwise, false.</returns>
     private bool Save(GXArray rows)
     {
         if (!GXWireValue.TryAttribute(Edit, Index, GXDLMSObjectEditState.Format(rows), out var error))

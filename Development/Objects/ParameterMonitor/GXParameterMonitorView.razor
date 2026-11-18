@@ -38,21 +38,21 @@
 @inherits GXDLMSObjectViewBase<GXDLMSParameterMonitor>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Parameter Monitor Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset><legend>Changed Parameter</legend>
-        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Object Type" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Target" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="Index" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="3" Label="Value" Enabled="CanEditAttribute(2)" />
+    <GXObjectViewHeader Title="@Properties.Resources.ParameterMonitorObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>@Properties.Resources.ChangedParameter</legend>
+        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="@Properties.Resources.ObjectType" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="@Properties.Resources.Target" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="@Properties.Resources.Index" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="3" Label="@Properties.Resources.Value" Enabled="CanEditAttribute(2)" />
     </fieldset>
-    <GXAttributeField Edit="Edit" Index="3" Label="Capture Time" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Parameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Object Type", "Target", "Index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2 })" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Object class ID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
-    <GXValueField Label="Object logical name" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
-    <GXValueField Label="Attribute index (1–255)" Value="@AttributeIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => AttributeIndex = value" Validate="text => ValidateParameter(nameof(AttributeIndex), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">Add parameter</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete parameter</GXButton>
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CaptureTime2" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Parameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.ObjectType, "Target", Properties.Resources.Index })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2 })" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.ObjectClassID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
+    <GXValueField Label="@Properties.Resources.ObjectLogicalName" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
+    <GXValueField Label="@Properties.Resources.AttributeIndex1255" Value="@AttributeIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => AttributeIndex = value" Validate="text => ValidateParameter(nameof(AttributeIndex), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">@Properties.Resources.AddParameter</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">@Properties.Resources.DeleteParameter</GXButton>
     </fieldset>
 </section>
 
@@ -65,17 +65,19 @@
     /// Logical name identifying the object used by the operation.
     /// </summary>
     public string ObjectLogicalName { get; set; } = string.Empty;
+    /// <summary>Validates the class and logical-name inputs and creates the referenced object.</summary>
+    /// <returns>Validates the class and logical-name inputs and creates the referenced object.</returns>
     private GXDLMSObject ReadObject()
     {
         var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
         if (!Enum.IsDefined(type) || type == ObjectType.None)
         {
-            throw new FormatException("Enter a supported object class ID.");
+            throw new FormatException(Properties.Resources.EnterASupportedObjectClassID);
         }
         var parts = ObjectLogicalName.Split('.');
         if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
         {
-            throw new FormatException("A logical name requires six byte values.");
+            throw new FormatException(Properties.Resources.ALogicalNameRequiresSixByteValues);
         }
         var value = GXDLMSClient.CreateObject(type);
         value.LogicalName = ObjectLogicalName;
@@ -85,17 +87,19 @@
     /// Attribute index entered for the monitored parameter.
     /// </summary>
     public string AttributeIndex { get; set; } = string.Empty;
+    /// <summary>Builds a parameter-monitor target from the validated object and attribute inputs.</summary>
+    /// <returns>A parameter-monitor target from the validated object and attribute inputs.</returns>
     private GXDLMSTarget ReadParameter()
     {
         var index = byte.Parse(AttributeIndex, CultureInfo.InvariantCulture);
         if (index == 0)
         {
-            throw new FormatException("Attribute index must be greater than zero.");
+            throw new FormatException(Properties.Resources.AttributeIndexMustBeGreaterThanZero);
         }
         var target = ReadObject();
         if (target is IGXDLMSBase metadata && index > metadata.GetAttributeCount())
         {
-            throw new FormatException("Attribute index exceeds the object's attribute count.");
+            throw new FormatException(Properties.Resources.AttributeIndexExceedsTheObjectSAttributeCount);
         }
         return new GXDLMSTarget(target, index);
     }
@@ -110,6 +114,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task DeleteAsync() => InvokeMethodAsync(2, client => Target.Delete(client, ReadParameter()));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -121,7 +129,7 @@
                         var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture);
                         if (!Enum.IsDefined(type) || type == ObjectType.None)
                         {
-                            throw new FormatException("Select a supported object class.");
+                            throw new FormatException(Properties.Resources.SelectASupportedObjectClass);
                         }
                         break;
                     }
@@ -134,7 +142,7 @@
                     {
                         if (byte.Parse(text, CultureInfo.InvariantCulture) == 0)
                         {
-                            throw new FormatException("Attribute index must be greater than zero.");
+                            throw new FormatException(Properties.Resources.AttributeIndexMustBeGreaterThanZero);
                         }
                         break;
                     }
@@ -144,12 +152,14 @@
         catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
 
+    /// <summary>Rejects logical names that do not contain six byte-valued components.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
     private static void CheckLogicalName(string text)
     {
         var parts = text.Split('.');
         if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
         {
-            throw new FormatException("A logical name requires six byte values.");
+            throw new FormatException(Properties.Resources.ALogicalNameRequiresSixByteValues);
         }
     }
 }

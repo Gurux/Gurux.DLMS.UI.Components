@@ -39,27 +39,27 @@
 @inherits GXDLMSObjectViewBase<GXDLMSActivityCalendar>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Activity Calendar Object" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXObjectViewHeader Title="@Properties.Resources.ActivityCalendarObject" Target="Target" Edit="Edit" Error="@ActionError" />
     <GXTabControl NavigateOnSelection="false">
-        <GXTabPage Text="Active">
-            <GXAttributeField Edit="Edit" Index="2" InputKind="text" Label="Calendar Name" Enabled="CanEditAttribute(2)" />
+        <GXTabPage Text="@Properties.Resources.Active">
+            <GXAttributeField Edit="Edit" Index="2" InputKind="text" Label="@Properties.Resources.CalendarName" Enabled="CanEditAttribute(2)" />
             <GXTabControl NavigateOnSelection="false">
-                <GXTabPage Text="Season Profile"><GXCalendarTable Edit="Edit" Index="3" Label="Season Profile" Enabled="CanEditAttribute(3)" CanEdit="() => CanEditAttribute(3)" /></GXTabPage>
-                <GXTabPage Text="Week Profile"><GXCalendarTable Edit="Edit" Index="4" Label="Week Profile" Enabled="CanEditAttribute(4)" CanEdit="() => CanEditAttribute(4)" /></GXTabPage>
-                <GXTabPage Text="Day Profile"><GXCalendarTable Edit="Edit" Index="5" Label="Day Profile" Enabled="CanEditAttribute(5)" CanEdit="() => CanEditAttribute(5)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.SeasonProfile"><GXCalendarTable Edit="Edit" Index="3" Label="@Properties.Resources.SeasonProfile" Enabled="CanEditAttribute(3)" CanEdit="() => CanEditAttribute(3)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.WeekProfile"><GXCalendarTable Edit="Edit" Index="4" Label="@Properties.Resources.WeekProfile" Enabled="CanEditAttribute(4)" CanEdit="() => CanEditAttribute(4)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.DayProfile"><GXCalendarTable Edit="Edit" Index="5" Label="@Properties.Resources.DayProfile" Enabled="CanEditAttribute(5)" CanEdit="() => CanEditAttribute(5)" /></GXTabPage>
             </GXTabControl>
         </GXTabPage>
-        <GXTabPage Text="Passive">
-            <GXAttributeField Edit="Edit" Index="6" InputKind="text" Label="Calendar Name" Enabled="CanEditAttribute(6)" />
+        <GXTabPage Text="@Properties.Resources.Passive">
+            <GXAttributeField Edit="Edit" Index="6" InputKind="text" Label="@Properties.Resources.CalendarName" Enabled="CanEditAttribute(6)" />
             <GXTabControl NavigateOnSelection="false">
-                <GXTabPage Text="Season Profile"><GXCalendarTable Edit="Edit" Index="7" Label="Season Profile" Enabled="CanEditAttribute(7)" CanEdit="() => CanEditAttribute(7)" /></GXTabPage>
-                <GXTabPage Text="Week Profile"><GXCalendarTable Edit="Edit" Index="8" Label="Week Profile" Enabled="CanEditAttribute(8)" CanEdit="() => CanEditAttribute(8)" /></GXTabPage>
-                <GXTabPage Text="Day Profile"><GXCalendarTable Edit="Edit" Index="9" Label="Day Profile" Enabled="CanEditAttribute(9)" CanEdit="() => CanEditAttribute(9)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.SeasonProfile"><GXCalendarTable Edit="Edit" Index="7" Label="@Properties.Resources.SeasonProfile" Enabled="CanEditAttribute(7)" CanEdit="() => CanEditAttribute(7)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.WeekProfile"><GXCalendarTable Edit="Edit" Index="8" Label="@Properties.Resources.WeekProfile" Enabled="CanEditAttribute(8)" CanEdit="() => CanEditAttribute(8)" /></GXTabPage>
+                <GXTabPage Text="@Properties.Resources.DayProfile"><GXCalendarTable Edit="Edit" Index="9" Label="@Properties.Resources.DayProfile" Enabled="CanEditAttribute(9)" CanEdit="() => CanEditAttribute(9)" /></GXTabPage>
             </GXTabControl>
-            <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivatePassiveCalendarAsync">Activate</GXButton>
+            <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivatePassiveCalendarAsync">@Properties.Resources.Activate</GXButton>
         </GXTabPage>
     </GXTabControl>
-    <GXAttributeField Edit="Edit" Index="10" Label="Activate passive calendar" Enabled="CanEditAttribute(10)" />
+    <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.ActivatePassiveCalendar" Enabled="CanEditAttribute(10)" />
 </section>
 
 @code {

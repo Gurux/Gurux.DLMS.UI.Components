@@ -25,4 +25,3373 @@
   <data name="CosemHelpLoadFailed" xml:space="preserve">
     <value>Det gick inte att läsa in hjälpen för COSEM-objektet.</value>
   </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Åtgärder</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Lägg till...</value>
+  </data>
+  <data name="AddDevice" xml:space="preserve">
+    <value>+ Lägg till enhet</value>
+  </data>
+  <data name="AddDevice2" xml:space="preserve">
+    <value>Lägg till enhet</value>
+  </data>
+  <data name="ALogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Ett logiskt namn kräver sex bytevärden.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Anslut</value>
+  </data>
+  <data name="CorrectTheInvalidFieldsBeforeAccepting" xml:space="preserve">
+    <value>Korrigera de ogiltiga fälten innan du godkänner.</value>
+  </data>
+  <data name="COSEMObjects" xml:space="preserve">
+    <value>COSEM-objekt</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Data</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="DeviceCommands" xml:space="preserve">
+    <value>Enhetskommandon</value>
+  </data>
+  <data name="DeviceGeneralInformation" xml:space="preserve">
+    <value>Allmän enhetsinformation</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Enheter</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>Koppla från</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Redigera...</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Allmänt</value>
+  </data>
+  <data name="InvalidValueForTheSelectedDataType" xml:space="preserve">
+    <value>Ogiltigt värde för den valda datatypen.</value>
+  </data>
+  <data name="LoadValues" xml:space="preserve">
+    <value>Läs in värden</value>
+  </data>
+  <data name="NoDevicesLoaded" xml:space="preserve">
+    <value>Inga enheter har lästs in.</value>
+  </data>
+  <data name="NoObjectsLoaded" xml:space="preserve">
+    <value>Inga objekt har lästs in.</value>
+  </data>
+  <data name="Objects" xml:space="preserve">
+    <value>Objekt</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Egenskaper</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Läs</value>
+  </data>
+  <data name="ReadObject" xml:space="preserve">
+    <value>Läs objekt</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Ta bort</value>
+  </data>
+  <data name="SaveValuesAs" xml:space="preserve">
+    <value>Spara värden som...</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTen" xml:space="preserve">
+    <value>Skalfaktorn måste vara en positiv tiopotens.</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTenForExample0011Or100" xml:space="preserve">
+    <value>Skalfaktorn måste vara en positiv tiopotens (till exempel 0,01, 1 eller 100).</value>
+  </data>
+  <data name="TheValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Värdet har ändrats. Avbryt och öppna redigeraren igen.</value>
+  </data>
+  <data name="WrongIPAddressFamily" xml:space="preserve">
+    <value>Fel IP-adressfamilj.</value>
+  </data>
+  <data name="XMLRootDoesNotMatchTheCOSEMDataType" xml:space="preserve">
+    <value>XML-rotelementet matchar inte COSEM-datatypen.</value>
+  </data>
+  <data name="AccessRights" xml:space="preserve">
+    <value>Åtkomsträttigheter</value>
+  </data>
+  <data name="AccessSelector" xml:space="preserve">
+    <value>Åtkomstväljare</value>
+  </data>
+  <data name="Add2" xml:space="preserve">
+    <value>Lägg till</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="AttributeIndex" xml:space="preserve">
+    <value>Attributindex</value>
+  </data>
+  <data name="CreditReference" xml:space="preserve">
+    <value>Kreditreferens</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beskrivning</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Beskrivning:</value>
+  </data>
+  <data name="Edit2" xml:space="preserve">
+    <value>Redigera</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbers" xml:space="preserve">
+    <value>Ange ett logiskt namn med sex tal.</value>
+  </data>
+  <data name="EnterAValidDateAndTime" xml:space="preserve">
+    <value>Ange ett giltigt datum och klockslag.</value>
+  </data>
+  <data name="EnterAValidIPAddress" xml:space="preserve">
+    <value>Ange en giltig IP-adress.</value>
+  </data>
+  <data name="EnterAValidNumber" xml:space="preserve">
+    <value>Ange ett giltigt tal.</value>
+  </data>
+  <data name="Hexadecimal" xml:space="preserve">
+    <value>Hexadecimal</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="LogicalName" xml:space="preserve">
+    <value>Logiskt namn</value>
+  </data>
+  <data name="LogicalNameLabel" xml:space="preserve">
+    <value>Logiskt namn:</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Metod</value>
+  </data>
+  <data name="MethodAccess" xml:space="preserve">
+    <value>Metodåtkomst</value>
+  </data>
+  <data name="MethodAccessRights" xml:space="preserve">
+    <value>Åtkomsträttigheter för metoden</value>
+  </data>
+  <data name="MethodIndex" xml:space="preserve">
+    <value>Metodindex</value>
+  </data>
+  <data name="MethodResult" xml:space="preserve">
+    <value>Metodresultat</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Namn</value>
+  </data>
+  <data name="ReadAll" xml:space="preserve">
+    <value>Läs alla</value>
+  </data>
+  <data name="ReadAutomaticallyOnObjectSelection" xml:space="preserve">
+    <value>Läs automatiskt vid val av objekt</value>
+  </data>
+  <data name="RefreshValues" xml:space="preserve">
+    <value>Uppdatera värden</value>
+  </data>
+  <data name="Static" xml:space="preserve">
+    <value>Statisk</value>
+  </data>
+  <data name="TheInstalledValueCodecCannotPreserveThisParameterDataType" xml:space="preserve">
+    <value>Den installerade värdekodeken kan inte bevara den här parameterns datatyp.</value>
+  </data>
+  <data name="TheSelectedObjectChangedBeforeTheActionStarted" xml:space="preserve">
+    <value>Det valda objektet ändrades innan åtgärden startade.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="UIType" xml:space="preserve">
+    <value>Typ i användargränssnittet</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Värde</value>
+  </data>
+  <data name="ValueChanged" xml:space="preserve">
+    <value>Värdet har ändrats</value>
+  </data>
+  <data name="TokenProportion" xml:space="preserve">
+    <value>Andel polletter</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="CreditReference2" xml:space="preserve">
+    <value>Kreditreferens</value>
+  </data>
+  <data name="CreditCharge" xml:space="preserve">
+    <value>Kreditdebitering</value>
+  </data>
+  <data name="TokenGateway" xml:space="preserve">
+    <value>Pollettgateway</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Kredit</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>Debitering</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbersBetween0And255" xml:space="preserve">
+    <value>Ange ett logiskt namn med sex tal mellan 0 och 255.</value>
+  </data>
+  <data name="TheSelectedRowNoLongerExists" xml:space="preserve">
+    <value>Den valda raden finns inte längre.</value>
+  </data>
+  <data name="AccountObject" xml:space="preserve">
+    <value>Kontoobjekt</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>Betalningssätt:</value>
+  </data>
+  <data name="StatusLabel" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="CurrentCreditInUseLabel" xml:space="preserve">
+    <value>Kredit som används:</value>
+  </data>
+  <data name="CurrentCreditStatusLabel" xml:space="preserve">
+    <value>Aktuell kreditstatus:</value>
+  </data>
+  <data name="AccountActivationTimeLabel" xml:space="preserve">
+    <value>Tid för kontoaktivering:</value>
+  </data>
+  <data name="AccountClosureTimeLabel" xml:space="preserve">
+    <value>Tid för kontostängning:</value>
+  </data>
+  <data name="CurrencyNameLabel" xml:space="preserve">
+    <value>Valutanamn:</value>
+  </data>
+  <data name="CurrencyScaleLabel" xml:space="preserve">
+    <value>Valutaskala:</value>
+  </data>
+  <data name="CurrencyUnitLabel" xml:space="preserve">
+    <value>Valutaenhet:</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivera</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Återställ</value>
+  </data>
+  <data name="ActionScheduleObject" xml:space="preserve">
+    <value>Objekt för åtgärdsschema</value>
+  </data>
+  <data name="ScriptName" xml:space="preserve">
+    <value>Skriptnamn</value>
+  </data>
+  <data name="ScriptSelector" xml:space="preserve">
+    <value>Skriptväljare</value>
+  </data>
+  <data name="ScriptType" xml:space="preserve">
+    <value>Skripttyp</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Tid</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Körningstid</value>
+  </data>
+  <data name="ExecutedScript" xml:space="preserve">
+    <value>Kört skript</value>
+  </data>
+  <data name="ActivityCalendarObject" xml:space="preserve">
+    <value>Aktivitetskalenderobjekt</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="CalendarName" xml:space="preserve">
+    <value>Kalendernamn</value>
+  </data>
+  <data name="SeasonProfile" xml:space="preserve">
+    <value>Säsongsprofil</value>
+  </data>
+  <data name="WeekProfile" xml:space="preserve">
+    <value>Veckoprofil</value>
+  </data>
+  <data name="DayProfile" xml:space="preserve">
+    <value>Dagsprofil</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>Passiv</value>
+  </data>
+  <data name="ActivatePassiveCalendar" xml:space="preserve">
+    <value>Aktivera passiv kalender</value>
+  </data>
+  <data name="DayActions" xml:space="preserve">
+    <value>Dagens åtgärder</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Starttid</value>
+  </data>
+  <data name="Script" xml:space="preserve">
+    <value>Skript</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+    <value>Väljare</value>
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value>Lägg till åtgärd...</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="WeekName" xml:space="preserve">
+    <value>Veckonamn</value>
+  </data>
+  <data name="DayID" xml:space="preserve">
+    <value>Dags-ID</value>
+  </data>
+  <data name="AdvancedCOSEMXML" xml:space="preserve">
+    <value>Avancerad COSEM XML</value>
+  </data>
+  <data name="AddDay" xml:space="preserve">
+    <value>Lägg till dag...</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Måndag</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tisdag</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Onsdag</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Torsdag</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Fredag</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Lördag</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Söndag</value>
+  </data>
+  <data name="EnterAnASCIIProfileName" xml:space="preserve">
+    <value>Ange ett profilnamn i ASCII.</value>
+  </data>
+  <data name="EnterSevenDayIDs" xml:space="preserve">
+    <value>Ange sju dags-ID:n.</value>
+  </data>
+  <data name="DayIDsMustBeUnique" xml:space="preserve">
+    <value>Dags-ID:n måste vara unika.</value>
+  </data>
+  <data name="SelectADayFirst" xml:space="preserve">
+    <value>Välj först en dag.</value>
+  </data>
+  <data name="AScriptLogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Skriptets logiska namn kräver sex bytevärden.</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Mån</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Tis</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Ons</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Tor</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Fre</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Lör</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Sön</value>
+  </data>
+  <data name="DayAction" xml:space="preserve">
+    <value>Dagsåtgärd</value>
+  </data>
+  <data name="TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Målet, åtkomsträttigheterna eller det väntande värdet ändrades. Avbryt och öppna redigeraren igen.</value>
+  </data>
+  <data name="ArbitratorObject" xml:space="preserve">
+    <value>Skiljedomsobjekt</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Skript</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Tillåtet</value>
+  </data>
+  <data name="Weightings" xml:space="preserve">
+    <value>Viktningar</value>
+  </data>
+  <data name="MostRecent" xml:space="preserve">
+    <value>Senaste</value>
+  </data>
+  <data name="LastOutcome" xml:space="preserve">
+    <value>Senaste resultat</value>
+  </data>
+  <data name="Actor0255" xml:space="preserve">
+    <value>Aktör (0–255)</value>
+  </data>
+  <data name="ActionsBinaryBitString" xml:space="preserve">
+    <value>Åtgärder (binär bitsträng)</value>
+  </data>
+  <data name="Methods" xml:space="preserve">
+    <value>Metoder</value>
+  </data>
+  <data name="RequestAction" xml:space="preserve">
+    <value>Begär åtgärd</value>
+  </data>
+  <data name="EnterTheRequestedActionsAsABinaryBitString" xml:space="preserve">
+    <value>Ange de begärda åtgärderna som en binär bitsträng.</value>
+  </data>
+  <data name="EnterABinaryBitString" xml:space="preserve">
+    <value>Ange en binär bitsträng.</value>
+  </data>
+  <data name="ArrayManagerObject" xml:space="preserve">
+    <value>Objekt för arrayhantering</value>
+  </data>
+  <data name="Elements" xml:space="preserve">
+    <value>Element</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ClassID" xml:space="preserve">
+    <value>Klass-ID</value>
+  </data>
+  <data name="LogicalName2" xml:space="preserve">
+    <value>Logiskt namn</value>
+  </data>
+  <data name="AttributeIndex2" xml:space="preserve">
+    <value>Attributindex</value>
+  </data>
+  <data name="ArrayID0255" xml:space="preserve">
+    <value>Array-ID (0–255)</value>
+  </data>
+  <data name="FromIndex165535" xml:space="preserve">
+    <value>Från index (1–65535)</value>
+  </data>
+  <data name="ToIndex165535" xml:space="preserve">
+    <value>Till index (1–65535)</value>
+  </data>
+  <data name="EntryIndex165535" xml:space="preserve">
+    <value>Postindex (1–65535)</value>
+  </data>
+  <data name="EntryDLMSXML" xml:space="preserve">
+    <value>Post (DLMS XML)</value>
+  </data>
+  <data name="Array" xml:space="preserve">
+    <value>Array</value>
+  </data>
+  <data name="NumberOfEntries" xml:space="preserve">
+    <value>Antal poster</value>
+  </data>
+  <data name="EntryRange" xml:space="preserve">
+    <value>Postintervall</value>
+  </data>
+  <data name="RetrieveEntries" xml:space="preserve">
+    <value>Hämta poster</value>
+  </data>
+  <data name="RemoveEntries" xml:space="preserve">
+    <value>Ta bort poster</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Post</value>
+  </data>
+  <data name="InsertEntry" xml:space="preserve">
+    <value>Infoga post</value>
+  </data>
+  <data name="UpdateEntry" xml:space="preserve">
+    <value>Uppdatera post</value>
+  </data>
+  <data name="CorrectTheInvalidParametersBeforeInvokingTheMethod" xml:space="preserve">
+    <value>Korrigera de ogiltiga parametrarna innan metoden anropas.</value>
+  </data>
+  <data name="FromIndexMustNotExceedToIndex" xml:space="preserve">
+    <value>Startindex får inte överstiga slutindex.</value>
+  </data>
+  <data name="EntryIndicesMustBeBetween1And65535" xml:space="preserve">
+    <value>Postindex måste vara mellan 1 och 65535.</value>
+  </data>
+  <data name="EnterATypedDLMSValue" xml:space="preserve">
+    <value>Ange ett typat DLMS-värde.</value>
+  </data>
+  <data name="EnterAnArrayIDBetween0And255" xml:space="preserve">
+    <value>Ange ett array-ID mellan 0 och 255.</value>
+  </data>
+  <data name="EnterAnIndexBetween1And65535" xml:space="preserve">
+    <value>Ange ett index mellan 1 och 65535.</value>
+  </data>
+  <data name="AssociationLogicalNameObject" xml:space="preserve">
+    <value>Associationsobjekt med logiskt namn</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="ClassIDLabel" xml:space="preserve">
+    <value>Klass-ID:</value>
+  </data>
+  <data name="AttributeAccessLabel" xml:space="preserve">
+    <value>Attributåtkomst:</value>
+  </data>
+  <data name="MethodAccessLabel" xml:space="preserve">
+    <value>Metodåtkomst:</value>
+  </data>
+  <data name="ChooseAValidCOSEMClass" xml:space="preserve">
+    <value>Välj en giltig COSEM-klass.</value>
+  </data>
+  <data name="LogicalNamesRequireSixBytes" xml:space="preserve">
+    <value>Logiska namn kräver sex byte.</value>
+  </data>
+  <data name="VersionMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Versionen måste vara mellan noll och 255.</value>
+  </data>
+  <data name="AttributeAccessIndexMaskLabel" xml:space="preserve">
+    <value>Attributåtkomst (index:mask):</value>
+  </data>
+  <data name="MethodAccessIndexMaskLabel" xml:space="preserve">
+    <value>Metodåtkomst (index:mask):</value>
+  </data>
+  <data name="ClientSAPLabel" xml:space="preserve">
+    <value>Klientens SAP:</value>
+  </data>
+  <data name="ServerSAPLabel" xml:space="preserve">
+    <value>Serverns SAP:</value>
+  </data>
+  <data name="SecretLabel" xml:space="preserve">
+    <value>Hemlighet:</value>
+  </data>
+  <data name="AssociationStatusLabel" xml:space="preserve">
+    <value>Associationsstatus:</value>
+  </data>
+  <data name="SecuritySetupLabel" xml:space="preserve">
+    <value>Säkerhetsinställningar:</value>
+  </data>
+  <data name="NewHighAuthenticationSecretHexLabel" xml:space="preserve">
+    <value>Ny hemlighet för hög autentisering (hex):</value>
+  </data>
+  <data name="ANewSecretIsRequired" xml:space="preserve">
+    <value>En ny hemlighet krävs.</value>
+  </data>
+  <data name="XDLMSContextInfo" xml:space="preserve">
+    <value>xDLMS-kontextinformation</value>
+  </data>
+  <data name="ConformanceLabel" xml:space="preserve">
+    <value>Överensstämmelse:</value>
+  </data>
+  <data name="MaxReceivePDUSizeLabel" xml:space="preserve">
+    <value>Maximal storlek på mottagen PDU:</value>
+  </data>
+  <data name="MaxSendPDUSizeLabel" xml:space="preserve">
+    <value>Maximal storlek på skickad PDU:</value>
+  </data>
+  <data name="DLMSVersionNumberLabel" xml:space="preserve">
+    <value>DLMS-versionsnummer:</value>
+  </data>
+  <data name="QualityOfServiceLabel" xml:space="preserve">
+    <value>Tjänstekvalitet:</value>
+  </data>
+  <data name="DedicatedKeyLabel" xml:space="preserve">
+    <value>Dedikerad nyckel:</value>
+  </data>
+  <data name="ApplicationContextName" xml:space="preserve">
+    <value>Applikationskontextens namn</value>
+  </data>
+  <data name="RegistrationAuthorityLabel" xml:space="preserve">
+    <value>Registreringsmyndighet:</value>
+  </data>
+  <data name="JointISOCTTLabel" xml:space="preserve">
+    <value>Gemensam ISO CTT:</value>
+  </data>
+  <data name="CountryLabel" xml:space="preserve">
+    <value>Land:</value>
+  </data>
+  <data name="CountryNameLabel" xml:space="preserve">
+    <value>Landsnamn:</value>
+  </data>
+  <data name="IdentifiedOrganizationLabel" xml:space="preserve">
+    <value>Identifierad organisation:</value>
+  </data>
+  <data name="DLMSUALabel" xml:space="preserve">
+    <value>DLMS UA:</value>
+  </data>
+  <data name="ApplicationContextLabel" xml:space="preserve">
+    <value>Applikationskontext:</value>
+  </data>
+  <data name="ContextIDLabel" xml:space="preserve">
+    <value>Kontext-ID:</value>
+  </data>
+  <data name="AuthenticationMechanismName" xml:space="preserve">
+    <value>Autentiseringsmekanismens namn</value>
+  </data>
+  <data name="AuthenticationNameLabel" xml:space="preserve">
+    <value>Autentiseringsnamn:</value>
+  </data>
+  <data name="MechanismIDLabel" xml:space="preserve">
+    <value>Mekanism-ID:</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Användarlista</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Användare</value>
+  </data>
+  <data name="IDLabel" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>Aktuell användare</value>
+  </data>
+  <data name="UserIDMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Användar-ID måste vara mellan noll och 255.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Namn:</value>
+  </data>
+  <data name="AUserNameIsRequired" xml:space="preserve">
+    <value>Ett användarnamn krävs.</value>
+  </data>
+  <data name="AssociationObjects" xml:space="preserve">
+    <value>Associationsobjekt</value>
+  </data>
+  <data name="RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied" xml:space="preserve">
+    <value>Rättighetsmaskerna följer denna associationsversion. Ospecificerade rättigheter nekas.</value>
+  </data>
+  <data name="Remove2" xml:space="preserve">
+    <value>Ta bort...</value>
+  </data>
+  <data name="AssociatedPartnersID" xml:space="preserve">
+    <value>Associerade parters ID</value>
+  </data>
+  <data name="AuthenticationSecret" xml:space="preserve">
+    <value>Autentiseringshemlighet</value>
+  </data>
+  <data name="UpdateHighPassword" xml:space="preserve">
+    <value>Uppdatera lösenord för hög autentisering</value>
+  </data>
+  <data name="ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup" xml:space="preserve">
+    <value>För låg autentisering, redigera hemligheten och skriv attribut 7. GMAC-nycklar använder säkerhetsinställningarna.</value>
+  </data>
+  <data name="LNSettings" xml:space="preserve">
+    <value>LN-inställningar</value>
+  </data>
+  <data name="SelectAValidCOSEMClass" xml:space="preserve">
+    <value>Välj en giltig COSEM-klass.</value>
+  </data>
+  <data name="AttributeAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Denna associationsversion stöder inte attributets åtkomstmask.</value>
+  </data>
+  <data name="MethodAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Denna associationsversion stöder inte metodens åtkomstmask.</value>
+  </data>
+  <data name="RightsRequireAValidIndexMaskPair" xml:space="preserve">
+    <value>Rättigheter kräver ett giltigt index:mask-par.</value>
+  </data>
+  <data name="EachAccessRightIndexMayAppearOnlyOnce" xml:space="preserve">
+    <value>Varje åtkomsträttighetsindex får förekomma endast en gång.</value>
+  </data>
+  <data name="ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms" xml:space="preserve">
+    <value>Denna metod kräver hög autentisering; använd attributskrivning eller säkerhetsinställningar för andra mekanismer.</value>
+  </data>
+  <data name="AssociationShortNameObject" xml:space="preserve">
+    <value>Associationsobjekt med kort namn</value>
+  </data>
+  <data name="SecretHexLabel" xml:space="preserve">
+    <value>Hemlighet (hex):</value>
+  </data>
+  <data name="ANonemptySecretIsRequired" xml:space="preserve">
+    <value>Hemligheten får inte vara tom.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Uppdatera</value>
+  </data>
+  <data name="AssociationObject" xml:space="preserve">
+    <value>Associationsobjekt</value>
+  </data>
+  <data name="RemoveTheSelectedAssociationObjectAndItsAccessRights" xml:space="preserve">
+    <value>Ta bort det valda associationsobjektet och dess åtkomsträttigheter?</value>
+  </data>
+  <data name="BaseNameLabel" xml:space="preserve">
+    <value>Basnamn:</value>
+  </data>
+  <data name="AttributeAccesss" xml:space="preserve">
+    <value>Attributåtkomst</value>
+  </data>
+  <data name="MethodAccess2" xml:space="preserve">
+    <value>Metodåtkomst</value>
+  </data>
+  <data name="AttributeAccess" xml:space="preserve">
+    <value>Attributåtkomst</value>
+  </data>
+  <data name="AttributeIndexLabel" xml:space="preserve">
+    <value>Attributindex:</value>
+  </data>
+  <data name="AccessModeLabel" xml:space="preserve">
+    <value>Åtkomstläge:</value>
+  </data>
+  <data name="MethodIndexLabel" xml:space="preserve">
+    <value>Metodindex:</value>
+  </data>
+  <data name="CorrectTheInvalidValues" xml:space="preserve">
+    <value>Korrigera de ogiltiga värdena.</value>
+  </data>
+  <data name="TheAssociationListChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Associationslistan ändrades. Avbryt och öppna redigeraren igen.</value>
+  </data>
+  <data name="TheSelectedObjectChangedOpenTheEditorAgain" xml:space="preserve">
+    <value>Det valda objektet ändrades. Öppna redigeraren igen.</value>
+  </data>
+  <data name="EachObjectMustHaveAUniqueBaseName" xml:space="preserve">
+    <value>Varje objekt måste ha ett unikt basnamn.</value>
+  </data>
+  <data name="ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights" xml:space="preserve">
+    <value>Ändring av basnamnet kräver även behörighet att uppdatera åtkomsträttigheter.</value>
+  </data>
+  <data name="AutoAnswerObject" xml:space="preserve">
+    <value>Objekt för automatiskt svar</value>
+  </data>
+  <data name="ModeLabel" xml:space="preserve">
+    <value>Läge:</value>
+  </data>
+  <data name="ListeningWindowLabel" xml:space="preserve">
+    <value>Lyssningsfönster:</value>
+  </data>
+  <data name="StartTimeLabel" xml:space="preserve">
+    <value>Starttid:</value>
+  </data>
+  <data name="EndTimeLabel" xml:space="preserve">
+    <value>Sluttid:</value>
+  </data>
+  <data name="NumberOfCallsLabel" xml:space="preserve">
+    <value>Antal samtal:</value>
+  </data>
+  <data name="RingCountInWindowLabel" xml:space="preserve">
+    <value>Antal ringsignaler inom fönstret:</value>
+  </data>
+  <data name="RingCountOutOfWindowLabel" xml:space="preserve">
+    <value>Antal ringsignaler utanför fönstret:</value>
+  </data>
+  <data name="AllowedCallers" xml:space="preserve">
+    <value>Tillåtna uppringare</value>
+  </data>
+  <data name="CallerIdentity" xml:space="preserve">
+    <value>Uppringarens identitet</value>
+  </data>
+  <data name="CallType" xml:space="preserve">
+    <value>Samtalstyp</value>
+  </data>
+  <data name="AutoConnectObject" xml:space="preserve">
+    <value>Objekt för automatisk anslutning</value>
+  </data>
+  <data name="RepetitionsLabel" xml:space="preserve">
+    <value>Upprepningar:</value>
+  </data>
+  <data name="RepetitionDelayLabel" xml:space="preserve">
+    <value>Upprepningsfördröjning:</value>
+  </data>
+  <data name="CallingWindowLabel" xml:space="preserve">
+    <value>Uppringningsfönster:</value>
+  </data>
+  <data name="DestinationLabel" xml:space="preserve">
+    <value>Destination:</value>
+  </data>
+  <data name="ChargeObject" xml:space="preserve">
+    <value>Debiteringsobjekt</value>
+  </data>
+  <data name="TotalAmountPaid" xml:space="preserve">
+    <value>Totalt betalt belopp</value>
+  </data>
+  <data name="ChargeType" xml:space="preserve">
+    <value>Debiteringstyp</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Prioritet</value>
+  </data>
+  <data name="UnitChargeActivationTime" xml:space="preserve">
+    <value>Aktiveringstid för enhetsdebitering</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Period</value>
+  </data>
+  <data name="ChargeConfiguration" xml:space="preserve">
+    <value>Debiteringskonfiguration</value>
+  </data>
+  <data name="LastCollectionTime" xml:space="preserve">
+    <value>Senaste uppbördstid</value>
+  </data>
+  <data name="LastCollectionAmount" xml:space="preserve">
+    <value>Senast uppburet belopp</value>
+  </data>
+  <data name="TotalAmountRemaining" xml:space="preserve">
+    <value>Totalt återstående belopp</value>
+  </data>
+  <data name="Proportion" xml:space="preserve">
+    <value>Andel</value>
+  </data>
+  <data name="UnitChargeActive" xml:space="preserve">
+    <value>Aktiv enhetsdebitering</value>
+  </data>
+  <data name="CommodityScale" xml:space="preserve">
+    <value>Varuskala</value>
+  </data>
+  <data name="PriceScale" xml:space="preserve">
+    <value>Prisskala</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>Objekttyp</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Mål</value>
+  </data>
+  <data name="ChargeTables" xml:space="preserve">
+    <value>Debiteringstabeller</value>
+  </data>
+  <data name="ChargePerUnit" xml:space="preserve">
+    <value>Debitering per enhet</value>
+  </data>
+  <data name="ThisActionIsNotAvailable" xml:space="preserve">
+    <value>Denna åtgärd är inte tillgänglig.</value>
+  </data>
+  <data name="UnitChargePassive" xml:space="preserve">
+    <value>Passiv enhetsdebitering</value>
+  </data>
+  <data name="ChargePerUnitScalingType" xml:space="preserve">
+    <value>Skalningstyp för enhetsdebitering</value>
+  </data>
+  <data name="CommodityReferenceType" xml:space="preserve">
+    <value>Typ av varureferens</value>
+  </data>
+  <data name="Collect" xml:space="preserve">
+    <value>Driv in</value>
+  </data>
+  <data name="UpdateTotal" xml:space="preserve">
+    <value>Uppdatera totalbelopp...</value>
+  </data>
+  <data name="SetTotal" xml:space="preserve">
+    <value>Ange totalbelopp...</value>
+  </data>
+  <data name="ClockObject" xml:space="preserve">
+    <value>Klockobjekt</value>
+  </data>
+  <data name="TimeLabel" xml:space="preserve">
+    <value>Tid:</value>
+  </data>
+  <data name="UseTimeZoneLabel" xml:space="preserve">
+    <value>Använd tidszon:</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>Tidszon:</value>
+  </data>
+  <data name="BeginLabel" xml:space="preserve">
+    <value>Början:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>Slut:</value>
+  </data>
+  <data name="DeviationLabel" xml:space="preserve">
+    <value>Avvikelse:</value>
+  </data>
+  <data name="EnabledLabel" xml:space="preserve">
+    <value>Aktiverad:</value>
+  </data>
+  <data name="ClockBaseLabel" xml:space="preserve">
+    <value>Klockbas:</value>
+  </data>
+  <data name="Adjustments" xml:space="preserve">
+    <value>Justeringar</value>
+  </data>
+  <data name="PresetTimeLabel" xml:space="preserve">
+    <value>Förinställd tid:</value>
+  </data>
+  <data name="ValidityStartLabel" xml:space="preserve">
+    <value>Giltighetens början:</value>
+  </data>
+  <data name="ValidityEndLabel" xml:space="preserve">
+    <value>Giltighetens slut:</value>
+  </data>
+  <data name="ShiftSecondsLabel" xml:space="preserve">
+    <value>Förskjutning i sekunder:</value>
+  </data>
+  <data name="CurrentTime" xml:space="preserve">
+    <value>Aktuell tid</value>
+  </data>
+  <data name="CurrentTimeZone" xml:space="preserve">
+    <value>Aktuell tidszon</value>
+  </data>
+  <data name="DaylightSavings" xml:space="preserve">
+    <value>Sommartid</value>
+  </data>
+  <data name="AdjustTo" xml:space="preserve">
+    <value>Justera till</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>Kvart</value>
+  </data>
+  <data name="MeasuringPeriod" xml:space="preserve">
+    <value>Mätperiod</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minut</value>
+  </data>
+  <data name="PresetTime" xml:space="preserve">
+    <value>Förinställd tid</value>
+  </data>
+  <data name="PresetAdjustingTime" xml:space="preserve">
+    <value>Förinställ justeringstid</value>
+  </data>
+  <data name="PresetAdjustingTime2" xml:space="preserve">
+    <value>Förinställ justeringstid...</value>
+  </data>
+  <data name="ShiftTime" xml:space="preserve">
+    <value>Förskjut tid...</value>
+  </data>
+  <data name="ShiftSecondsMustBeBetween900And900" xml:space="preserve">
+    <value>Förskjutningen måste vara mellan -900 och 900 sekunder.</value>
+  </data>
+  <data name="TheValidityStartMustNotFollowTheValidityEnd" xml:space="preserve">
+    <value>Giltighetens början får inte vara efter dess slut.</value>
+  </data>
+  <data name="CoAPDiagnosticObject" xml:space="preserve">
+    <value>CoAP-diagnostikobjekt</value>
+  </data>
+  <data name="TransmittedMessagesLabel" xml:space="preserve">
+    <value>Skickade meddelanden:</value>
+  </data>
+  <data name="ReceivedMessagesLabel" xml:space="preserve">
+    <value>Mottagna meddelanden:</value>
+  </data>
+  <data name="RetransmittedMessagesLabel" xml:space="preserve">
+    <value>Omsända meddelanden:</value>
+  </data>
+  <data name="TransmittedResetsLabel" xml:space="preserve">
+    <value>Skickade återställningar:</value>
+  </data>
+  <data name="ReceivedResetsLabel" xml:space="preserve">
+    <value>Mottagna återställningar:</value>
+  </data>
+  <data name="TransmittedAcknowledgementsLabel" xml:space="preserve">
+    <value>Skickade kvittenser:</value>
+  </data>
+  <data name="ReceivedAcknowledgementsLabel" xml:space="preserve">
+    <value>Mottagna kvittenser:</value>
+  </data>
+  <data name="DroppedMessagesLabel" xml:space="preserve">
+    <value>Kasserade meddelanden:</value>
+  </data>
+  <data name="NonPiggybackedResponsesLabel" xml:space="preserve">
+    <value>Separata svar:</value>
+  </data>
+  <data name="MaximumRetransmissionsExceededLabel" xml:space="preserve">
+    <value>Överskridet maximalt antal omsändningar:</value>
+  </data>
+  <data name="ReceivedRequestsLabel" xml:space="preserve">
+    <value>Mottagna begäranden:</value>
+  </data>
+  <data name="TransmittedRequestsLabel" xml:space="preserve">
+    <value>Skickade begäranden:</value>
+  </data>
+  <data name="ReceivedResponsesLabel" xml:space="preserve">
+    <value>Mottagna svar:</value>
+  </data>
+  <data name="TransmittedResponsesLabel" xml:space="preserve">
+    <value>Skickade svar:</value>
+  </data>
+  <data name="TransmittedClientErrorsLabel" xml:space="preserve">
+    <value>Skickade klientfel:</value>
+  </data>
+  <data name="ReceivedClientErrorsLabel" xml:space="preserve">
+    <value>Mottagna klientfel:</value>
+  </data>
+  <data name="TransmittedServerErrorsLabel" xml:space="preserve">
+    <value>Skickade serverfel:</value>
+  </data>
+  <data name="ReceivedServerErrorsLabel" xml:space="preserve">
+    <value>Mottagna serverfel:</value>
+  </data>
+  <data name="TransfersStartedLabel" xml:space="preserve">
+    <value>Startade överföringar:</value>
+  </data>
+  <data name="TransfersCompletedLabel" xml:space="preserve">
+    <value>Slutförda överföringar:</value>
+  </data>
+  <data name="TransfersTimedOutLabel" xml:space="preserve">
+    <value>Överföringar med tidsgränsöverskridande:</value>
+  </data>
+  <data name="AttributeIDLabel" xml:space="preserve">
+    <value>Attribut-ID:</value>
+  </data>
+  <data name="CaptureTimeLabel" xml:space="preserve">
+    <value>Registreringstid:</value>
+  </data>
+  <data name="MessagesCounter" xml:space="preserve">
+    <value>Meddelanderäknare</value>
+  </data>
+  <data name="RequestAndResponseCounter" xml:space="preserve">
+    <value>Räknare för begäranden och svar</value>
+  </data>
+  <data name="BlockWiseTransferCounter" xml:space="preserve">
+    <value>Räknare för blocköverföringar</value>
+  </data>
+  <data name="CaptureTime" xml:space="preserve">
+    <value>Registreringstid</value>
+  </data>
+  <data name="ResetCounters" xml:space="preserve">
+    <value>Nollställ räknare</value>
+  </data>
+  <data name="CoAPSetupObject" xml:space="preserve">
+    <value>CoAP-inställningsobjekt</value>
+  </data>
+  <data name="UDPReferenceLabel" xml:space="preserve">
+    <value>UDP-referens:</value>
+  </data>
+  <data name="CoAPURIPathLabel" xml:space="preserve">
+    <value>CoAP URI-sökväg:</value>
+  </data>
+  <data name="TransportModeLabel" xml:space="preserve">
+    <value>Transportläge:</value>
+  </data>
+  <data name="WrapperVersionLabel" xml:space="preserve">
+    <value>Omslagsversion:</value>
+  </data>
+  <data name="TokenLengthLabel" xml:space="preserve">
+    <value>Pollettlängd:</value>
+  </data>
+  <data name="ACKTimeoutMsLabel" xml:space="preserve">
+    <value>ACK-tidsgräns (ms):</value>
+  </data>
+  <data name="ACKRandomFactorLabel" xml:space="preserve">
+    <value>ACK-slumpfaktor:</value>
+  </data>
+  <data name="MaximumRetransmissionsLabel" xml:space="preserve">
+    <value>Maximalt antal omsändningar:</value>
+  </data>
+  <data name="NSTARTLabel" xml:space="preserve">
+    <value>NSTART:</value>
+  </data>
+  <data name="DelayedACKTimeoutMsLabel" xml:space="preserve">
+    <value>Tidsgräns för fördröjd ACK (ms):</value>
+  </data>
+  <data name="ExponentialBackOffLabel" xml:space="preserve">
+    <value>Exponentiell väntetid:</value>
+  </data>
+  <data name="ProbingRateLabel" xml:space="preserve">
+    <value>Avsökningshastighet:</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Transport</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Sändning</value>
+  </data>
+  <data name="CommunicationPortProtectionObject" xml:space="preserve">
+    <value>Skyddsobjekt för kommunikationsport</value>
+  </data>
+  <data name="ProtectionModeLabel" xml:space="preserve">
+    <value>Skyddsläge:</value>
+  </data>
+  <data name="AllowedFailedAttemptsLabel" xml:space="preserve">
+    <value>Tillåtna misslyckade försök:</value>
+  </data>
+  <data name="InitialLockoutTimeLabel" xml:space="preserve">
+    <value>Inledande spärrtid:</value>
+  </data>
+  <data name="SteepnessFactorLabel" xml:space="preserve">
+    <value>Branthetsfaktor:</value>
+  </data>
+  <data name="MaxLockoutTimeLabel" xml:space="preserve">
+    <value>Maximal spärrtid:</value>
+  </data>
+  <data name="PortLabel" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="ProtectionStatusLabel" xml:space="preserve">
+    <value>Skyddsstatus:</value>
+  </data>
+  <data name="FailedAttemptsLabel" xml:space="preserve">
+    <value>Misslyckade försök:</value>
+  </data>
+  <data name="CumulativeFailedAttemptsLabel" xml:space="preserve">
+    <value>Sammanlagt antal misslyckade försök:</value>
+  </data>
+  <data name="ResetProtection" xml:space="preserve">
+    <value>Återställ skydd</value>
+  </data>
+  <data name="CompactData" xml:space="preserve">
+    <value>Kompakta data</value>
+  </data>
+  <data name="Buffer" xml:space="preserve">
+    <value>Buffert</value>
+  </data>
+  <data name="TemplateID" xml:space="preserve">
+    <value>Mall-ID</value>
+  </data>
+  <data name="TemplateDescription" xml:space="preserve">
+    <value>Mallbeskrivning</value>
+  </data>
+  <data name="CaptureMethod" xml:space="preserve">
+    <value>Registreringsmetod</value>
+  </data>
+  <data name="CaptureObjects" xml:space="preserve">
+    <value>Registreringsobjekt</value>
+  </data>
+  <data name="ObjectType2" xml:space="preserve">
+    <value>Objekttyp</value>
+  </data>
+  <data name="DataIndex" xml:space="preserve">
+    <value>Dataindex</value>
+  </data>
+  <data name="Capture" xml:space="preserve">
+    <value>Registrera</value>
+  </data>
+  <data name="CreditObject" xml:space="preserve">
+    <value>Kreditobjekt</value>
+  </data>
+  <data name="CurrentCreditAmount" xml:space="preserve">
+    <value>Aktuellt kreditbelopp</value>
+  </data>
+  <data name="WarningThreshold" xml:space="preserve">
+    <value>Varningsgräns</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>Gräns</value>
+  </data>
+  <data name="CreditConfiguration" xml:space="preserve">
+    <value>Kreditkonfiguration</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="PresetCreditAmount" xml:space="preserve">
+    <value>Förinställt kreditbelopp</value>
+  </data>
+  <data name="CreditAvailableThreshold" xml:space="preserve">
+    <value>Gräns för tillgänglig kredit</value>
+  </data>
+  <data name="AmountInt32" xml:space="preserve">
+    <value>Belopp (Int32)</value>
+  </data>
+  <data name="RequestedStatus" xml:space="preserve">
+    <value>Begärd status</value>
+  </data>
+  <data name="UpdateAmount" xml:space="preserve">
+    <value>Uppdatera belopp</value>
+  </data>
+  <data name="SetAmount" xml:space="preserve">
+    <value>Ange belopp</value>
+  </data>
+  <data name="InvokeCredit" xml:space="preserve">
+    <value>Aktivera kredit</value>
+  </data>
+  <data name="SelectAValidCreditStatus" xml:space="preserve">
+    <value>Välj en giltig kreditstatus.</value>
+  </data>
+  <data name="DataObject" xml:space="preserve">
+    <value>Dataobjekt</value>
+  </data>
+  <data name="DataObjectUnixTime" xml:space="preserve">
+    <value>Dataobjekt — Unix-tid</value>
+  </data>
+  <data name="TimeZoneLabel2" xml:space="preserve">
+    <value>Tidszon:</value>
+  </data>
+  <data name="LocalTimeLabel" xml:space="preserve">
+    <value>Lokal tid:</value>
+  </data>
+  <data name="WriteCurrentTime" xml:space="preserve">
+    <value>Skriv aktuell tid</value>
+  </data>
+  <data name="ImmediateWritingIsNotAvailableForThisConnection" xml:space="preserve">
+    <value>Omedelbar skrivning är inte tillgänglig för denna anslutning.</value>
+  </data>
+  <data name="CurrentTimeWritten" xml:space="preserve">
+    <value>Aktuell tid har skrivits.</value>
+  </data>
+  <data name="EnterAValidLocalDateAndTime" xml:space="preserve">
+    <value>Ange ett giltigt lokalt datum och klockslag.</value>
+  </data>
+  <data name="TheDateIsOutsideTheMeterSSupportedRange" xml:space="preserve">
+    <value>Datumet ligger utanför mätarens stödda intervall.</value>
+  </data>
+  <data name="DataProtectionObject" xml:space="preserve">
+    <value>Dataskyddsobjekt</value>
+  </data>
+  <data name="ProtectionBufferLabel" xml:space="preserve">
+    <value>Skyddsbuffert:</value>
+  </data>
+  <data name="RequiredProtectionLabel" xml:space="preserve">
+    <value>Krävt skydd:</value>
+  </data>
+  <data name="ObjectTypeLabel" xml:space="preserve">
+    <value>Objekttyp:</value>
+  </data>
+  <data name="DataIndexLabel" xml:space="preserve">
+    <value>Dataindex:</value>
+  </data>
+  <data name="GetParameters" xml:space="preserve">
+    <value>Hämta parametrar</value>
+  </data>
+  <data name="ProtectionType" xml:space="preserve">
+    <value>Skyddstyp</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>Transaktions-ID</value>
+  </data>
+  <data name="OriginatorSystemTitle" xml:space="preserve">
+    <value>Avsändarens systemtitel</value>
+  </data>
+  <data name="RecipientSystemTitle" xml:space="preserve">
+    <value>Mottagarens systemtitel</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>Övrig information</value>
+  </data>
+  <data name="KeyInfo" xml:space="preserve">
+    <value>Nyckelinformation</value>
+  </data>
+  <data name="SetParameters" xml:space="preserve">
+    <value>Ange parametrar</value>
+  </data>
+  <data name="ProtectionLabel" xml:space="preserve">
+    <value>Skydd:</value>
+  </data>
+  <data name="ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations" xml:space="preserve">
+    <value>Skyddade hämtnings-, inställnings- och metodmeddelanden är inte tillgängliga i Gurux.DLMS 9.0.2609.2201. Objektets API implementerar inte dessa åtgärder.</value>
+  </data>
+  <data name="GetProtectedAttributes" xml:space="preserve">
+    <value>Hämta skyddade attribut</value>
+  </data>
+  <data name="SetProtectedAttributes" xml:space="preserve">
+    <value>Ange skyddade attribut</value>
+  </data>
+  <data name="InvokeProtectedMethod" xml:space="preserve">
+    <value>Anropa skyddad metod</value>
+  </data>
+  <data name="DemandRegisterObject" xml:space="preserve">
+    <value>Belastningsregisterobjekt</value>
+  </data>
+  <data name="CurrentAverage" xml:space="preserve">
+    <value>Aktuellt medelvärde</value>
+  </data>
+  <data name="LastAverage" xml:space="preserve">
+    <value>Senaste medelvärde</value>
+  </data>
+  <data name="Scaler" xml:space="preserve">
+    <value>Skalfaktor</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Enhet</value>
+  </data>
+  <data name="CaptureTime2" xml:space="preserve">
+    <value>Registreringstid</value>
+  </data>
+  <data name="CurrentStartTime" xml:space="preserve">
+    <value>Aktuell starttid</value>
+  </data>
+  <data name="NumberOfPeriods" xml:space="preserve">
+    <value>Antal perioder</value>
+  </data>
+  <data name="NextPeriod" xml:space="preserve">
+    <value>Nästa period</value>
+  </data>
+  <data name="DisconnectControlObject" xml:space="preserve">
+    <value>Frånkopplingsstyrningsobjekt</value>
+  </data>
+  <data name="OutputStateLabel" xml:space="preserve">
+    <value>Utgångsstatus:</value>
+  </data>
+  <data name="ControlStateLabel" xml:space="preserve">
+    <value>Styrstatus:</value>
+  </data>
+  <data name="ControlModeLabel" xml:space="preserve">
+    <value>Styrläge:</value>
+  </data>
+  <data name="Reconnect" xml:space="preserve">
+    <value>Återanslut</value>
+  </data>
+  <data name="ExtendedRegisterObject" xml:space="preserve">
+    <value>Utökat registerobjekt</value>
+  </data>
+  <data name="FunctionControlObject" xml:space="preserve">
+    <value>Funktionsstyrningsobjekt</value>
+  </data>
+  <data name="FunctionNameLabel" xml:space="preserve">
+    <value>Funktionsnamn:</value>
+  </data>
+  <data name="ANonemptyASCIIFunctionNameIsRequired" xml:space="preserve">
+    <value>Ett icke-tomt funktionsnamn i ASCII krävs.</value>
+  </data>
+  <data name="ObjectsClassIdLogicalNamePerLineLabel" xml:space="preserve">
+    <value>Objekt (klass-ID,logiskt namn per rad):</value>
+  </data>
+  <data name="ObjectTypeLabel2" xml:space="preserve">
+    <value>Objekttyp:</value>
+  </data>
+  <data name="FunctionCommands" xml:space="preserve">
+    <value>Funktionskommandon</value>
+  </data>
+  <data name="SetStatus" xml:space="preserve">
+    <value>Ange status...</value>
+  </data>
+  <data name="AddFunction" xml:space="preserve">
+    <value>Lägg till funktion...</value>
+  </data>
+  <data name="SelectAtLeastOneObject" xml:space="preserve">
+    <value>Välj minst ett objekt.</value>
+  </data>
+  <data name="EachObjectRequiresClassIdLogicalName" xml:space="preserve">
+    <value>Varje objekt kräver klass-ID,logiskt namn.</value>
+  </data>
+  <data name="G3PLC6LoWPANAdaptationLayerSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för G3-PLC 6LoWPAN-anpassningslager</value>
+  </data>
+  <data name="MaxHopsLabel" xml:space="preserve">
+    <value>Maximalt antal hopp:</value>
+  </data>
+  <data name="WeakLQIValueLabel" xml:space="preserve">
+    <value>Svagt LQI-värde:</value>
+  </data>
+  <data name="SecurityLevelLabel" xml:space="preserve">
+    <value>Säkerhetsnivå:</value>
+  </data>
+  <data name="BroadcastLogTTLLabel" xml:space="preserve">
+    <value>TTL för broadcastlogg:</value>
+  </data>
+  <data name="MaxJoinWaitTLabel" xml:space="preserve">
+    <value>Maximal väntetid för anslutning:</value>
+  </data>
+  <data name="PathDiscoveryTimeLabel" xml:space="preserve">
+    <value>Tid för sökvägsupptäckt:</value>
+  </data>
+  <data name="ActiveKeyIndexLabel" xml:space="preserve">
+    <value>Aktivt nyckelindex:</value>
+  </data>
+  <data name="MetricTypeLabel" xml:space="preserve">
+    <value>Metriktyp:</value>
+  </data>
+  <data name="CoordAddressLabel" xml:space="preserve">
+    <value>Koordinatoradress:</value>
+  </data>
+  <data name="DisableDefaultRouting" xml:space="preserve">
+    <value>Inaktivera standardruttning</value>
+  </data>
+  <data name="DeviceTypeLabel" xml:space="preserve">
+    <value>Enhetstyp:</value>
+  </data>
+  <data name="DefaultCoordRouteEnabled" xml:space="preserve">
+    <value>Standardrutt till koordinator aktiverad</value>
+  </data>
+  <data name="DestinationAddress" xml:space="preserve">
+    <value>Destinationsadress</value>
+  </data>
+  <data name="LowLQILabel" xml:space="preserve">
+    <value>Låg LQI:</value>
+  </data>
+  <data name="HighLQILabel" xml:space="preserve">
+    <value>Hög LQI:</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Prefix</value>
+  </data>
+  <data name="RoutingConfiguration" xml:space="preserve">
+    <value>Ruttningskonfiguration</value>
+  </data>
+  <data name="NetTraversalTime" xml:space="preserve">
+    <value>Nätverkets genomloppstid</value>
+  </data>
+  <data name="TTL" xml:space="preserve">
+    <value>TTL</value>
+  </data>
+  <data name="Kr" xml:space="preserve">
+    <value>Kr</value>
+  </data>
+  <data name="Km" xml:space="preserve">
+    <value>Km</value>
+  </data>
+  <data name="Kc" xml:space="preserve">
+    <value>Kc</value>
+  </data>
+  <data name="Kq" xml:space="preserve">
+    <value>Kq</value>
+  </data>
+  <data name="Kh" xml:space="preserve">
+    <value>Kh</value>
+  </data>
+  <data name="Krt" xml:space="preserve">
+    <value>Krt</value>
+  </data>
+  <data name="RreqRetries" xml:space="preserve">
+    <value>Rreq-omförsök</value>
+  </data>
+  <data name="RreqRerrWait" xml:space="preserve">
+    <value>Rreq Rerr-väntetid</value>
+  </data>
+  <data name="BlackListTTL" xml:space="preserve">
+    <value>Spärrlistans TTL</value>
+  </data>
+  <data name="UnicastRreqGenEnable" xml:space="preserve">
+    <value>Generering av unicast Rreq aktiverad</value>
+  </data>
+  <data name="RlcEnabled" xml:space="preserve">
+    <value>Rlc aktiverad</value>
+  </data>
+  <data name="AddRevLinkCost" xml:space="preserve">
+    <value>Lägg till kostnad för omvänd länk</value>
+  </data>
+  <data name="Routing" xml:space="preserve">
+    <value>Ruttning</value>
+  </data>
+  <data name="NextHopLabel" xml:space="preserve">
+    <value>Nästa hopp:</value>
+  </data>
+  <data name="RouteLabel" xml:space="preserve">
+    <value>Rutt:</value>
+  </data>
+  <data name="HopCountLabel" xml:space="preserve">
+    <value>Antal hopp:</value>
+  </data>
+  <data name="WeakLinkLabel" xml:space="preserve">
+    <value>Svag länk:</value>
+  </data>
+  <data name="ValidTimeLabel" xml:space="preserve">
+    <value>Giltighetstid:</value>
+  </data>
+  <data name="ContextInformation" xml:space="preserve">
+    <value>Kontextinformation</value>
+  </data>
+  <data name="CID" xml:space="preserve">
+    <value>CID</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Kontext</value>
+  </data>
+  <data name="Compression" xml:space="preserve">
+    <value>Komprimering</value>
+  </data>
+  <data name="ValidLifetime" xml:space="preserve">
+    <value>Giltig livslängd</value>
+  </data>
+  <data name="ContextLength" xml:space="preserve">
+    <value>Kontextlängd</value>
+  </data>
+  <data name="Blacklist" xml:space="preserve">
+    <value>Spärrlista</value>
+  </data>
+  <data name="NeighbourAddress" xml:space="preserve">
+    <value>Grannadress</value>
+  </data>
+  <data name="ValidTime" xml:space="preserve">
+    <value>Giltighetstid</value>
+  </data>
+  <data name="BroadcastLog" xml:space="preserve">
+    <value>Broadcastlogg</value>
+  </data>
+  <data name="SourceAddress" xml:space="preserve">
+    <value>Källadress</value>
+  </data>
+  <data name="SequenceNumber" xml:space="preserve">
+    <value>Sekvensnummer</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Grupp</value>
+  </data>
+  <data name="GroupAddress" xml:space="preserve">
+    <value>Gruppadress</value>
+  </data>
+  <data name="G3PLCMACLayerCountersObject" xml:space="preserve">
+    <value>Räknarobjekt för G3 PLC MAC-lager</value>
+  </data>
+  <data name="TxDataPacketsLabel" xml:space="preserve">
+    <value>Skickade datapaket:</value>
+  </data>
+  <data name="RxDataPacketsLabel" xml:space="preserve">
+    <value>Mottagna datapaket:</value>
+  </data>
+  <data name="TxCmdPacketsLabel" xml:space="preserve">
+    <value>Skickade kommandopaket:</value>
+  </data>
+  <data name="RxCmdPacketsLabel" xml:space="preserve">
+    <value>Mottagna kommandopaket:</value>
+  </data>
+  <data name="CSMAFailsLabel" xml:space="preserve">
+    <value>CSMA-fel:</value>
+  </data>
+  <data name="CSMANoAcksLabel" xml:space="preserve">
+    <value>Uteblivna CSMA-kvittenser:</value>
+  </data>
+  <data name="BadCRCsLabel" xml:space="preserve">
+    <value>Felaktiga CRC:</value>
+  </data>
+  <data name="TxDataBroadcastsLabel" xml:space="preserve">
+    <value>Skickade databroadcast:</value>
+  </data>
+  <data name="RxDataBroadcastsLabel" xml:space="preserve">
+    <value>Mottagna databroadcast:</value>
+  </data>
+  <data name="G3PLCMACSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för G3-PLC MAC</value>
+  </data>
+  <data name="ShortAddressLabel" xml:space="preserve">
+    <value>Kort adress:</value>
+  </data>
+  <data name="RouteCostToCoordLabel" xml:space="preserve">
+    <value>Ruttkostnad till koordinator:</value>
+  </data>
+  <data name="PANIDLabel" xml:space="preserve">
+    <value>PAN-ID:</value>
+  </data>
+  <data name="FrameCounterLabel" xml:space="preserve">
+    <value>Ramräknare:</value>
+  </data>
+  <data name="ToneMaskLabel" xml:space="preserve">
+    <value>Tonmask:</value>
+  </data>
+  <data name="ToneMapTTLLabel" xml:space="preserve">
+    <value>Tonkartans TTL:</value>
+  </data>
+  <data name="MaxFrameRetriesLabel" xml:space="preserve">
+    <value>Maximalt antal ramomförsök:</value>
+  </data>
+  <data name="NeighbourTableTTLLabel" xml:space="preserve">
+    <value>Granntabellens TTL:</value>
+  </data>
+  <data name="HighPrioritySIzeLabel" xml:space="preserve">
+    <value>Storlek för hög prioritet:</value>
+  </data>
+  <data name="CSCMFairnessLimitLabel" xml:space="preserve">
+    <value>CSCM-rättvisegräns:</value>
+  </data>
+  <data name="BeaconRndLabel" xml:space="preserve">
+    <value>Slumpning för beacon:</value>
+  </data>
+  <data name="ALabel" xml:space="preserve">
+    <value>A:</value>
+  </data>
+  <data name="KLabel" xml:space="preserve">
+    <value>K:</value>
+  </data>
+  <data name="MinCWAttemptsLabel" xml:space="preserve">
+    <value>Minsta antal CW-försök:</value>
+  </data>
+  <data name="CenelecLegacyLabel" xml:space="preserve">
+    <value>Äldre Cenelec-läge:</value>
+  </data>
+  <data name="FCCLegacyModeLabel" xml:space="preserve">
+    <value>Äldre FCC-läge:</value>
+  </data>
+  <data name="MaxBackoffLabel" xml:space="preserve">
+    <value>Maximal väntetid:</value>
+  </data>
+  <data name="MaxCSMABackoffs" xml:space="preserve">
+    <value>Maximalt antal CSMA-väntetider</value>
+  </data>
+  <data name="MinBackoffLabel" xml:space="preserve">
+    <value>Minimal väntetid:</value>
+  </data>
+  <data name="BroadcastMaxCWEnabled" xml:space="preserve">
+    <value>Maximal CW för broadcast aktiverad</value>
+  </data>
+  <data name="TransmitAttenLabel" xml:space="preserve">
+    <value>Sändningsdämpning:</value>
+  </data>
+  <data name="DuplicateDetection" xml:space="preserve">
+    <value>Dubblettdetektering</value>
+  </data>
+  <data name="KeyTable" xml:space="preserve">
+    <value>Nyckeltabell</value>
+  </data>
+  <data name="KeyLabel" xml:space="preserve">
+    <value>Nyckel:</value>
+  </data>
+  <data name="NeighbourTable" xml:space="preserve">
+    <value>Granntabell</value>
+  </data>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>Adress:</value>
+  </data>
+  <data name="ModulationLabel" xml:space="preserve">
+    <value>Modulering:</value>
+  </data>
+  <data name="ToneMapLabel" xml:space="preserve">
+    <value>Tonkarta:</value>
+  </data>
+  <data name="TXGain" xml:space="preserve">
+    <value>Sändningsförstärkning</value>
+  </data>
+  <data name="TXResolution" xml:space="preserve">
+    <value>Sändningsupplösning</value>
+  </data>
+  <data name="TXCoefficients" xml:space="preserve">
+    <value>Sändningskoefficienter</value>
+  </data>
+  <data name="LQI" xml:space="preserve">
+    <value>LQI</value>
+  </data>
+  <data name="PhaseDifferential" xml:space="preserve">
+    <value>Fasskillnad</value>
+  </data>
+  <data name="TMRValidTime" xml:space="preserve">
+    <value>TMR-giltighetstid</value>
+  </data>
+  <data name="NeighbourValidTime" xml:space="preserve">
+    <value>Grannens giltighetstid</value>
+  </data>
+  <data name="POSTable" xml:space="preserve">
+    <value>POS-tabell</value>
+  </data>
+  <data name="ValidTime2" xml:space="preserve">
+    <value>Giltighetstid</value>
+  </data>
+  <data name="ShortAddress" xml:space="preserve">
+    <value>Kort adress</value>
+  </data>
+  <data name="EnterAShortAddressFrom0To65535" xml:space="preserve">
+    <value>Ange en kort adress mellan 0 och 65535.</value>
+  </data>
+  <data name="GetNeighbourTableEntry" xml:space="preserve">
+    <value>Hämta post i granntabellen</value>
+  </data>
+  <data name="GetPOSTableEntry" xml:space="preserve">
+    <value>Hämta post i POS-tabellen</value>
+  </data>
+  <data name="GPRSModemSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för GPRS-modem</value>
+  </data>
+  <data name="APNLabel" xml:space="preserve">
+    <value>APN:</value>
+  </data>
+  <data name="PINCodeLabel" xml:space="preserve">
+    <value>PIN-kod:</value>
+  </data>
+  <data name="PrecedenceLabel" xml:space="preserve">
+    <value>Prioritet:</value>
+  </data>
+  <data name="DelayLabel" xml:space="preserve">
+    <value>Fördröjning:</value>
+  </data>
+  <data name="ReliabilityLabel" xml:space="preserve">
+    <value>Tillförlitlighet:</value>
+  </data>
+  <data name="PeakThroughputLabel" xml:space="preserve">
+    <value>Maximal genomströmning:</value>
+  </data>
+  <data name="MeanThroughputLabel" xml:space="preserve">
+    <value>Genomsnittlig genomströmning:</value>
+  </data>
+  <data name="DefaultQualityOfService" xml:space="preserve">
+    <value>Standardtjänstekvalitet</value>
+  </data>
+  <data name="RequestedQualityOfService" xml:space="preserve">
+    <value>Begärd tjänstekvalitet</value>
+  </data>
+  <data name="GSMDiagnosticObject" xml:space="preserve">
+    <value>GSM-diagnostikobjekt</value>
+  </data>
+  <data name="Operator" xml:space="preserve">
+    <value>Operatör</value>
+  </data>
+  <data name="CSAttachmentLabel" xml:space="preserve">
+    <value>CS-anslutning:</value>
+  </data>
+  <data name="PSStatusLabel" xml:space="preserve">
+    <value>PS-status:</value>
+  </data>
+  <data name="CellIDLabel" xml:space="preserve">
+    <value>Cell-ID:</value>
+  </data>
+  <data name="X4" xml:space="preserve">
+    <value>X4</value>
+  </data>
+  <data name="X8" xml:space="preserve">
+    <value>X8</value>
+  </data>
+  <data name="LocationIDLabel" xml:space="preserve">
+    <value>Plats-ID:</value>
+  </data>
+  <data name="SignalQualityLabel" xml:space="preserve">
+    <value>Signalkvalitet:</value>
+  </data>
+  <data name="BERLabel" xml:space="preserve">
+    <value>BER:</value>
+  </data>
+  <data name="MCCLabel" xml:space="preserve">
+    <value>MCC:</value>
+  </data>
+  <data name="MNCLabel" xml:space="preserve">
+    <value>MNC:</value>
+  </data>
+  <data name="ChannelLabel" xml:space="preserve">
+    <value>Kanal:</value>
+  </data>
+  <data name="AdjacentCellsLabel" xml:space="preserve">
+    <value>Angränsande celler:</value>
+  </data>
+  <data name="CaptureTimeLabel2" xml:space="preserve">
+    <value>Registreringstid:</value>
+  </data>
+  <data name="CellInfo" xml:space="preserve">
+    <value>Cellinformation</value>
+  </data>
+  <data name="HDLCSetupObject" xml:space="preserve">
+    <value>HDLC-inställningsobjekt</value>
+  </data>
+  <data name="SpeedLabel" xml:space="preserve">
+    <value>Hastighet:</value>
+  </data>
+  <data name="WindowSizeLabel" xml:space="preserve">
+    <value>Fönsterstorlek:</value>
+  </data>
+  <data name="MaximumLengthLabel" xml:space="preserve">
+    <value>Maximal längd:</value>
+  </data>
+  <data name="InternalTimeout" xml:space="preserve">
+    <value>Intern tidsgräns</value>
+  </data>
+  <data name="InactivityTimeoutLabel" xml:space="preserve">
+    <value>Tidsgräns för inaktivitet:</value>
+  </data>
+  <data name="DeviceAddressLabel" xml:space="preserve">
+    <value>Enhetsadress:</value>
+  </data>
+  <data name="Transmit" xml:space="preserve">
+    <value>Sändning</value>
+  </data>
+  <data name="ReceiveLabel" xml:space="preserve">
+    <value>Mottagning:</value>
+  </data>
+  <data name="IECLocalPortSetup" xml:space="preserve">
+    <value>Inställningar för lokal IEC-port</value>
+  </data>
+  <data name="DefaultModeLabel" xml:space="preserve">
+    <value>Standardläge:</value>
+  </data>
+  <data name="DefaultBaudrateLabel" xml:space="preserve">
+    <value>Standardbaudhastighet:</value>
+  </data>
+  <data name="MaximumBaudrateLabel" xml:space="preserve">
+    <value>Maximal baudhastighet:</value>
+  </data>
+  <data name="ResponseTimeLabel" xml:space="preserve">
+    <value>Svarstid:</value>
+  </data>
+  <data name="Password1Label" xml:space="preserve">
+    <value>Lösenord 1:</value>
+  </data>
+  <data name="Password2Label" xml:space="preserve">
+    <value>Lösenord 2:</value>
+  </data>
+  <data name="Password5Label" xml:space="preserve">
+    <value>Lösenord 5:</value>
+  </data>
+  <data name="IECTwistedPairSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för IEC partvinnad kabel</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Läge</value>
+  </data>
+  <data name="PrimaryAddressesLabel" xml:space="preserve">
+    <value>Primäradresser:</value>
+  </data>
+  <data name="TABI" xml:space="preserve">
+    <value>TAB(i)</value>
+  </data>
+  <data name="ImageTransferObject" xml:space="preserve">
+    <value>Objekt för programavbildsöverföring</value>
+  </data>
+  <data name="ImageBlockSizeLabel" xml:space="preserve">
+    <value>Avbildsblockstorlek:</value>
+  </data>
+  <data name="BlocksStatusLabel" xml:space="preserve">
+    <value>Blockstatus:</value>
+  </data>
+  <data name="FirstBlockLabel" xml:space="preserve">
+    <value>Första blocket:</value>
+  </data>
+  <data name="ImagesLabel" xml:space="preserve">
+    <value>Programavbilder:</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Storlek</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identifiering</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Signatur</value>
+  </data>
+  <data name="ImageFileLabel" xml:space="preserve">
+    <value>Avbildsfil:</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>Avbildsfil</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>Vald fil:</value>
+  </data>
+  <data name="IdentifierHexLabel" xml:space="preserve">
+    <value>Identifierare (hex):</value>
+  </data>
+  <data name="AnImageIdentifierIsRequired" xml:space="preserve">
+    <value>En avbildsidentifierare krävs.</value>
+  </data>
+  <data name="IdentifierSignatureHexOptionalLabel" xml:space="preserve">
+    <value>Identifierarens signatur (hex, valfri):</value>
+  </data>
+  <data name="ImageHexLabel" xml:space="preserve">
+    <value>Programavbild (hex):</value>
+  </data>
+  <data name="SelectANonemptyImage" xml:space="preserve">
+    <value>Välj en avbild som inte är tom.</value>
+  </data>
+  <data name="ResumeBlockIndexLabel" xml:space="preserve">
+    <value>Blockindex för återupptagning:</value>
+  </data>
+  <data name="EnterANonnegativeBlockIndex" xml:space="preserve">
+    <value>Ange ett icke-negativt blockindex.</value>
+  </data>
+  <data name="ReceivedBlocksBitStringOptionalLabel" xml:space="preserve">
+    <value>Bitsträng för mottagna block (valfri):</value>
+  </data>
+  <data name="ImageTransfer" xml:space="preserve">
+    <value>Avbildsöverföring</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Bläddra...</value>
+  </data>
+  <data name="ImageLabel" xml:space="preserve">
+    <value>Programavbild:</value>
+  </data>
+  <data name="UpdateImage" xml:space="preserve">
+    <value>Uppdatera programavbild...</value>
+  </data>
+  <data name="TransferImageBlocks" xml:space="preserve">
+    <value>Överför avbildsblock</value>
+  </data>
+  <data name="VerifyImage" xml:space="preserve">
+    <value>Verifiera programavbild...</value>
+  </data>
+  <data name="ActivateImage" xml:space="preserve">
+    <value>Aktivera programavbild...</value>
+  </data>
+  <data name="ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex" xml:space="preserve">
+    <value>Läs status efter överföring, verifiering och aktivering. Återupptagning använder mätarens blockstatus eller index för första saknade blocket.</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus" xml:space="preserve">
+    <value>Läs en avbildsblockstorlek som inte är noll innan blockstatus anges.</value>
+  </data>
+  <data name="BlockStatusMustContainOneZeroOrOnePerImageBlock" xml:space="preserve">
+    <value>Blockstatus måste innehålla en nolla eller etta per avbildsblock.</value>
+  </data>
+  <data name="SelectANonemptyImageFile" xml:space="preserve">
+    <value>Välj en avbildsfil som inte är tom.</value>
+  </data>
+  <data name="ImageInitiation" xml:space="preserve">
+    <value>Initiering av programavbild</value>
+  </data>
+  <data name="ImageBlockTransfer" xml:space="preserve">
+    <value>Överföring av avbildsblock</value>
+  </data>
+  <data name="ImageVerification" xml:space="preserve">
+    <value>Verifiering av programavbild</value>
+  </data>
+  <data name="ImageActivation" xml:space="preserve">
+    <value>Aktivering av programavbild</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeTransfer" xml:space="preserve">
+    <value>Läs en avbildsblockstorlek som inte är noll före överföring.</value>
+  </data>
+  <data name="ResumeIndexMustIdentifyAnImageBlock" xml:space="preserve">
+    <value>Återupptagningsindex måste identifiera ett avbildsblock.</value>
+  </data>
+  <data name="Ip4SetupObject" xml:space="preserve">
+    <value>IPv4-inställningsobjekt</value>
+  </data>
+  <data name="DataLinkLayerLabel" xml:space="preserve">
+    <value>Datalänklager:</value>
+  </data>
+  <data name="IPAddressLabel" xml:space="preserve">
+    <value>IP-adress:</value>
+  </data>
+  <data name="MulticastIPAddressLabel" xml:space="preserve">
+    <value>Multicast-IP-adress:</value>
+  </data>
+  <data name="IPOptionsLabel" xml:space="preserve">
+    <value>IP-alternativ:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Längd</value>
+  </data>
+  <data name="SubnetMaskLabel" xml:space="preserve">
+    <value>Nätmask:</value>
+  </data>
+  <data name="GatewayIPAddressLabel" xml:space="preserve">
+    <value>Gatewayens IP-adress:</value>
+  </data>
+  <data name="UseDHCPLabel" xml:space="preserve">
+    <value>Använd DHCP:</value>
+  </data>
+  <data name="PrimaryDNSAddressLabel" xml:space="preserve">
+    <value>Primär DNS-adress:</value>
+  </data>
+  <data name="SecondaryDNSAddressLabel" xml:space="preserve">
+    <value>Sekundär DNS-adress:</value>
+  </data>
+  <data name="MulticastIPv4Address" xml:space="preserve">
+    <value>IPv4-multicastadress</value>
+  </data>
+  <data name="EnterAnIPv4MulticastAddress224000239255255255" xml:space="preserve">
+    <value>Ange en IPv4-multicastadress (224.0.0.0–239.255.255.255).</value>
+  </data>
+  <data name="AddressIndex" xml:space="preserve">
+    <value>Adressindex</value>
+  </data>
+  <data name="EnterAnAddressIndexFrom0To255" xml:space="preserve">
+    <value>Ange ett adressindex mellan 0 och 255.</value>
+  </data>
+  <data name="AddMulticastAddress" xml:space="preserve">
+    <value>Lägg till multicastadress</value>
+  </data>
+  <data name="DeleteMulticastAddress" xml:space="preserve">
+    <value>Ta bort multicastadress</value>
+  </data>
+  <data name="GetMulticastAddressCount" xml:space="preserve">
+    <value>Hämta antal multicastadresser</value>
+  </data>
+  <data name="Ip6SetupObject" xml:space="preserve">
+    <value>IPv6-inställningsobjekt</value>
+  </data>
+  <data name="AddressConfigModeLabel" xml:space="preserve">
+    <value>Adresskonfigurationsläge:</value>
+  </data>
+  <data name="UnicastLabel" xml:space="preserve">
+    <value>Unicast:</value>
+  </data>
+  <data name="UnicastIPAddress" xml:space="preserve">
+    <value>Unicast-IP-adress</value>
+  </data>
+  <data name="MulticastLabel" xml:space="preserve">
+    <value>Multicast:</value>
+  </data>
+  <data name="MulticastIPAddress" xml:space="preserve">
+    <value>Multicast-IP-adress</value>
+  </data>
+  <data name="GatewayLabel" xml:space="preserve">
+    <value>Gateway:</value>
+  </data>
+  <data name="GatewayIPAddress" xml:space="preserve">
+    <value>Gatewayens IP-adress</value>
+  </data>
+  <data name="TrafficClassLabel" xml:space="preserve">
+    <value>Trafikklass:</value>
+  </data>
+  <data name="NeighborDiscoverySetup" xml:space="preserve">
+    <value>Inställningar för grannupptäckt</value>
+  </data>
+  <data name="RSMaxRetry" xml:space="preserve">
+    <value>Maximalt antal RS-omförsök</value>
+  </data>
+  <data name="RSRetryWaitTime" xml:space="preserve">
+    <value>Väntetid för RS-omförsök</value>
+  </data>
+  <data name="RASendPeriod" xml:space="preserve">
+    <value>RA-sändningsperiod</value>
+  </data>
+  <data name="AddressType" xml:space="preserve">
+    <value>Adresstyp</value>
+  </data>
+  <data name="SelectASupportedAddressType" xml:space="preserve">
+    <value>Välj en stödd adresstyp.</value>
+  </data>
+  <data name="IPv6Address" xml:space="preserve">
+    <value>IPv6-adress</value>
+  </data>
+  <data name="EnterAnIPv6Address" xml:space="preserve">
+    <value>Ange en IPv6-adress.</value>
+  </data>
+  <data name="AddIPv6Address" xml:space="preserve">
+    <value>Lägg till IPv6-adress</value>
+  </data>
+  <data name="RemoveIPv6Address" xml:space="preserve">
+    <value>Ta bort IPv6-adress</value>
+  </data>
+  <data name="LimiterObject" xml:space="preserve">
+    <value>Begränsarobjekt</value>
+  </data>
+  <data name="ThresholdActive" xml:space="preserve">
+    <value>Aktivt tröskelvärde</value>
+  </data>
+  <data name="ThresholdNormal" xml:space="preserve">
+    <value>Normalt tröskelvärde</value>
+  </data>
+  <data name="ThresholdEmergency" xml:space="preserve">
+    <value>Nödtröskelvärde</value>
+  </data>
+  <data name="MinimalOver" xml:space="preserve">
+    <value>Minsta överskridningstid</value>
+  </data>
+  <data name="MinimalUnder" xml:space="preserve">
+    <value>Minsta underskridningstid</value>
+  </data>
+  <data name="ActivationTime" xml:space="preserve">
+    <value>Aktiveringstid</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Varaktighet</value>
+  </data>
+  <data name="GroupIDs" xml:space="preserve">
+    <value>Grupp-ID:n</value>
+  </data>
+  <data name="GroupID" xml:space="preserve">
+    <value>Grupp-ID</value>
+  </data>
+  <data name="Monitored" xml:space="preserve">
+    <value>Övervakad</value>
+  </data>
+  <data name="EmergencyProfile" xml:space="preserve">
+    <value>Nödprofil</value>
+  </data>
+  <data name="ActionOver" xml:space="preserve">
+    <value>Åtgärd vid överskridande</value>
+  </data>
+  <data name="ActionUnder" xml:space="preserve">
+    <value>Åtgärd vid underskridande</value>
+  </data>
+  <data name="LLCSSCSSetupObject" xml:space="preserve">
+    <value>LLC SSCS-inställningsobjekt</value>
+  </data>
+  <data name="ServiceAddressLabel" xml:space="preserve">
+    <value>Tjänsteadress:</value>
+  </data>
+  <data name="BaseAddressLabel" xml:space="preserve">
+    <value>Basadress:</value>
+  </data>
+  <data name="MACAddressSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för MAC-adress</value>
+  </data>
+  <data name="MACAddressLabel" xml:space="preserve">
+    <value>MAC-adress:</value>
+  </data>
+  <data name="MBusClientObject" xml:space="preserve">
+    <value>M-Bus-klientobjekt</value>
+  </data>
+  <data name="MBusPortReferenceLabel" xml:space="preserve">
+    <value>M-Bus-portreferens:</value>
+  </data>
+  <data name="CapturePeriodLabel" xml:space="preserve">
+    <value>Registreringsperiod:</value>
+  </data>
+  <data name="PrimaryAddressLabel" xml:space="preserve">
+    <value>Primäradress:</value>
+  </data>
+  <data name="IdentificationNumberLabel" xml:space="preserve">
+    <value>Identifikationsnummer:</value>
+  </data>
+  <data name="ManufacturerIDLabel" xml:space="preserve">
+    <value>Tillverkar-ID:</value>
+  </data>
+  <data name="AccessNumberLabel" xml:space="preserve">
+    <value>Åtkomstnummer:</value>
+  </data>
+  <data name="AlarmLabel" xml:space="preserve">
+    <value>Larm:</value>
+  </data>
+  <data name="ConfigurationLabel" xml:space="preserve">
+    <value>Konfiguration:</value>
+  </data>
+  <data name="EncryptionKeyStatusLabel" xml:space="preserve">
+    <value>Krypteringsnyckelns status:</value>
+  </data>
+  <data name="CaptureDefinitionLabel" xml:space="preserve">
+    <value>Registreringsdefinition:</value>
+  </data>
+  <data name="DataInformation" xml:space="preserve">
+    <value>Datainformation</value>
+  </data>
+  <data name="ValueInformation" xml:space="preserve">
+    <value>Värdeinformation</value>
+  </data>
+  <data name="InstallPrimaryAddressLabel" xml:space="preserve">
+    <value>Primäradress att installera:</value>
+  </data>
+  <data name="PrimaryAddressMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Primäradressen måste vara mellan noll och 255.</value>
+  </data>
+  <data name="DataInformationHexLabel" xml:space="preserve">
+    <value>Datainformation (hex):</value>
+  </data>
+  <data name="ValueInformationHexLabel" xml:space="preserve">
+    <value>Värdeinformation (hex):</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Datatyp:</value>
+  </data>
+  <data name="SelectAScalarDataType" xml:space="preserve">
+    <value>Välj en skalär datatyp.</value>
+  </data>
+  <data name="DataValueLabel" xml:space="preserve">
+    <value>Datavärde:</value>
+  </data>
+  <data name="EncryptionKey16BytesHexLabel" xml:space="preserve">
+    <value>Krypteringsnyckel (16 byte, hex):</value>
+  </data>
+  <data name="AnMBusEncryptionKeyMustContainExactly16Bytes" xml:space="preserve">
+    <value>En M-Bus-krypteringsnyckel måste innehålla exakt 16 byte.</value>
+  </data>
+  <data name="ClearEncryptionKeyLabel" xml:space="preserve">
+    <value>Rensa krypteringsnyckel:</value>
+  </data>
+  <data name="Slave" xml:space="preserve">
+    <value>Slavenhet</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Installera</value>
+  </data>
+  <data name="DeInstall" xml:space="preserve">
+    <value>Avinstallera</value>
+  </data>
+  <data name="ResetAlarm" xml:space="preserve">
+    <value>Återställ larm</value>
+  </data>
+  <data name="SynchronizeClock" xml:space="preserve">
+    <value>Synkronisera klocka</value>
+  </data>
+  <data name="SendData" xml:space="preserve">
+    <value>Skicka data</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Skicka...</value>
+  </data>
+  <data name="EncryptionKey" xml:space="preserve">
+    <value>Krypteringsnyckel</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Ange...</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Överför...</value>
+  </data>
+  <data name="ADataValueIsRequired" xml:space="preserve">
+    <value>Ett datavärde krävs.</value>
+  </data>
+  <data name="MBusDiagnosticObject" xml:space="preserve">
+    <value>M-Bus-diagnostikobjekt</value>
+  </data>
+  <data name="ReceivedSignalStrengthLabel" xml:space="preserve">
+    <value>Mottagen signalstyrka:</value>
+  </data>
+  <data name="ChannelIDLabel" xml:space="preserve">
+    <value>Kanal-ID:</value>
+  </data>
+  <data name="LinkStatusLabel" xml:space="preserve">
+    <value>Länkstatus:</value>
+  </data>
+  <data name="BroadcastFrames" xml:space="preserve">
+    <value>Broadcastramar</value>
+  </data>
+  <data name="ClientID" xml:space="preserve">
+    <value>Klient-ID</value>
+  </data>
+  <data name="Counter" xml:space="preserve">
+    <value>Räknare</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Tidsstämpel</value>
+  </data>
+  <data name="TransmissionsCounterLabel" xml:space="preserve">
+    <value>Sändningsräknare:</value>
+  </data>
+  <data name="FCSOKFramesCounterLabel" xml:space="preserve">
+    <value>Räknare för ramar med FCS OK:</value>
+  </data>
+  <data name="FCSNOKFramesCounterLabel" xml:space="preserve">
+    <value>Räknare för ramar med FCS NOK:</value>
+  </data>
+  <data name="CaptureIDLabel" xml:space="preserve">
+    <value>Registrerings-ID:</value>
+  </data>
+  <data name="BroadcastFramesCounter" xml:space="preserve">
+    <value>Räknare för broadcastramar</value>
+  </data>
+  <data name="MBusMasterPortSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för M-Bus-masterport</value>
+  </data>
+  <data name="CommSpeedLabel" xml:space="preserve">
+    <value>Kommunikationshastighet:</value>
+  </data>
+  <data name="MBusPortSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för M-Bus-port</value>
+  </data>
+  <data name="ProfileSelectionLabel" xml:space="preserve">
+    <value>Profilval:</value>
+  </data>
+  <data name="PortCommunicationStatusLabel" xml:space="preserve">
+    <value>Portens kommunikationsstatus:</value>
+  </data>
+  <data name="DataHeaderTypeLabel" xml:space="preserve">
+    <value>Datahuvudtyp:</value>
+  </data>
+  <data name="PrimaryAddressLabel2" xml:space="preserve">
+    <value>Primäradress:</value>
+  </data>
+  <data name="IdentificationNumberLabel2" xml:space="preserve">
+    <value>Identifikationsnummer:</value>
+  </data>
+  <data name="MBusVersionLabel" xml:space="preserve">
+    <value>M-Bus-version:</value>
+  </data>
+  <data name="DeviceTypeLabel2" xml:space="preserve">
+    <value>Enhetstyp:</value>
+  </data>
+  <data name="MaximumPDUSizeLabel" xml:space="preserve">
+    <value>Maximal PDU-storlek:</value>
+  </data>
+  <data name="ListeningWindows" xml:space="preserve">
+    <value>Lyssningsfönster</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Slut</value>
+  </data>
+  <data name="PortSettings" xml:space="preserve">
+    <value>Portinställningar</value>
+  </data>
+  <data name="MBusSlavePortSetupObject" xml:space="preserve">
+    <value>Inställningsobjekt för M-Bus-slavport</value>
+  </data>
+  <data name="AvailableBaudrateLabel" xml:space="preserve">
+    <value>Tillgänglig baudhastighet:</value>
+  </data>
+  <data name="AddressStateLabel" xml:space="preserve">
+    <value>Adresstatus:</value>
+  </data>
+  <data name="BusAddressLabel" xml:space="preserve">
+    <value>Bussadress:</value>
+  </data>
+  <data name="ModemConfigurationObject" xml:space="preserve">
+    <value>Modemkonfigurationsobjekt</value>
+  </data>
+  <data name="InitialisationLabel" xml:space="preserve">
+    <value>Initiering:</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Begäran</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Svar:</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Fördröjning</value>
+  </data>
+  <data name="ModemProfileLabel" xml:space="preserve">
+    <value>Modemprofil:</value>
+  </data>
+  <data name="NTPSetupObject" xml:space="preserve">
+    <value>NTP-inställningsobjekt</value>
+  </data>
+  <data name="ActivatedLabel" xml:space="preserve">
+    <value>Aktiverad:</value>
+  </data>
+  <data name="ServerAddressLabel" xml:space="preserve">
+    <value>Serveradress:</value>
+  </data>
+  <data name="AuthenticationLabel" xml:space="preserve">
+    <value>Autentisering:</value>
+  </data>
+  <data name="KeysLabel" xml:space="preserve">
+    <value>Nycklar:</value>
+  </data>
+  <data name="ClientKeyLabel" xml:space="preserve">
+    <value>Klientnyckel:</value>
+  </data>
+  <data name="AuthenticationKeyID" xml:space="preserve">
+    <value>Autentiseringsnyckelns ID</value>
+  </data>
+  <data name="EnterAKeyIDFrom0To4294967295" xml:space="preserve">
+    <value>Ange ett nyckel-ID mellan 0 och 4294967295.</value>
+  </data>
+  <data name="AuthenticationKeyHexadecimal" xml:space="preserve">
+    <value>Autentiseringsnyckel (hexadecimal)</value>
+  </data>
+  <data name="EnterANonEmptyHexadecimalAuthenticationKey" xml:space="preserve">
+    <value>Ange en autentiseringsnyckel i hexadecimal form som inte är tom.</value>
+  </data>
+  <data name="SynchronizeTime" xml:space="preserve">
+    <value>Synkronisera tid</value>
+  </data>
+  <data name="AddAuthenticationKey" xml:space="preserve">
+    <value>Lägg till autentiseringsnyckel</value>
+  </data>
+  <data name="DeleteAuthenticationKey" xml:space="preserve">
+    <value>Ta bort autentiseringsnyckel</value>
+  </data>
+  <data name="ParameterMonitorObject" xml:space="preserve">
+    <value>Parameterövervakningsobjekt</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parametrar</value>
+  </data>
+  <data name="ObjectClassID" xml:space="preserve">
+    <value>Objektets klass-ID</value>
+  </data>
+  <data name="ObjectLogicalName" xml:space="preserve">
+    <value>Objektets logiska namn</value>
+  </data>
+  <data name="AttributeIndex1255" xml:space="preserve">
+    <value>Attributindex (1–255)</value>
+  </data>
+  <data name="ChangedParameter" xml:space="preserve">
+    <value>Ändrad parameter</value>
+  </data>
+  <data name="AddParameter" xml:space="preserve">
+    <value>Lägg till parameter</value>
+  </data>
+  <data name="DeleteParameter" xml:space="preserve">
+    <value>Ta bort parameter</value>
+  </data>
+  <data name="EnterASupportedObjectClassID" xml:space="preserve">
+    <value>Ange ett stött objektklass-ID.</value>
+  </data>
+  <data name="AttributeIndexMustBeGreaterThanZero" xml:space="preserve">
+    <value>Attributindex måste vara större än noll.</value>
+  </data>
+  <data name="AttributeIndexExceedsTheObjectSAttributeCount" xml:space="preserve">
+    <value>Attributindex överstiger objektets antal attribut.</value>
+  </data>
+  <data name="SelectASupportedObjectClass" xml:space="preserve">
+    <value>Välj en stödd objektklass.</value>
+  </data>
+  <data name="PPPSetupObject" xml:space="preserve">
+    <value>PPP-inställningsobjekt</value>
+  </data>
+  <data name="PHYReferenceLabel" xml:space="preserve">
+    <value>PHY-referens:</value>
+  </data>
+  <data name="LCPOptionsLabel" xml:space="preserve">
+    <value>LCP-alternativ:</value>
+  </data>
+  <data name="IPCPOptionsLabel" xml:space="preserve">
+    <value>IPCP-alternativ:</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Användarnamn:</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Lösenord:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCApplicationIdentificationObject" xml:space="preserve">
+    <value>Applikationsidentifieringsobjekt för PRIME NB OFDM PLC</value>
+  </data>
+  <data name="FirmwareVersionLabel" xml:space="preserve">
+    <value>Version av inbyggd programvara:</value>
+  </data>
+  <data name="VendorIDLabel" xml:space="preserve">
+    <value>Leverantörs-ID:</value>
+  </data>
+  <data name="ProductIDLabel" xml:space="preserve">
+    <value>Produkt-ID:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACCountersObject" xml:space="preserve">
+    <value>MAC-räknarobjekt för PRIME NB OFDM PLC</value>
+  </data>
+  <data name="TXDataPacketCounterLabel" xml:space="preserve">
+    <value>Räknare för skickade datapaket:</value>
+  </data>
+  <data name="RXDataPacketCounterLabel" xml:space="preserve">
+    <value>Räknare för mottagna datapaket:</value>
+  </data>
+  <data name="TXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Räknare för skickade styrpaket:</value>
+  </data>
+  <data name="RXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Räknare för mottagna styrpaket:</value>
+  </data>
+  <data name="CSMAFailCounterLabel" xml:space="preserve">
+    <value>CSMA-felräknare:</value>
+  </data>
+  <data name="CSMABusyCounterLabel" xml:space="preserve">
+    <value>CSMA-upptageträknare:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACFunctionalParametersObject" xml:space="preserve">
+    <value>Objekt för funktionella MAC-parametrar i PRIME NB OFDM PLC</value>
+  </data>
+  <data name="LNIDLabel" xml:space="preserve">
+    <value>LNID:</value>
+  </data>
+  <data name="LSIDLabel" xml:space="preserve">
+    <value>LSID:</value>
+  </data>
+  <data name="SIDLabel" xml:space="preserve">
+    <value>SID:</value>
+  </data>
+  <data name="SNALabel" xml:space="preserve">
+    <value>SNA:</value>
+  </data>
+  <data name="StateLabel" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="SCPLengtLabel" xml:space="preserve">
+    <value>SCP-längd:</value>
+  </data>
+  <data name="NodeHierarchyLevelLabel" xml:space="preserve">
+    <value>Nodens hierarkinivå:</value>
+  </data>
+  <data name="BeaconSlotCountLabel" xml:space="preserve">
+    <value>Antal beacon-tidsluckor:</value>
+  </data>
+  <data name="BeaconRXSlotLabel" xml:space="preserve">
+    <value>Beacon-mottagningslucka:</value>
+  </data>
+  <data name="BeaconTXSlotLabel" xml:space="preserve">
+    <value>Beacon-sändningslucka:</value>
+  </data>
+  <data name="BeaconRXFrequencyLabel" xml:space="preserve">
+    <value>Beacon-mottagningsfrekvens:</value>
+  </data>
+  <data name="BeaconTXFrequencyLabel" xml:space="preserve">
+    <value>Beacon-sändningsfrekvens:</value>
+  </data>
+  <data name="CapabilitiesLabel" xml:space="preserve">
+    <value>Funktioner:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACNetworkAdministrationDataObject" xml:space="preserve">
+    <value>Objekt för MAC-nätverksadministrationsdata i PRIME NB OFDM PLC</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Medlemmar</value>
+  </data>
+  <data name="SwitchTable" xml:space="preserve">
+    <value>Switchtabell</value>
+  </data>
+  <data name="DirectTableLabel" xml:space="preserve">
+    <value>Direkttabell:</value>
+  </data>
+  <data name="SrcSID" xml:space="preserve">
+    <value>Källans SID</value>
+  </data>
+  <data name="SrcLNID" xml:space="preserve">
+    <value>Källans LNID</value>
+  </data>
+  <data name="SrcLCID" xml:space="preserve">
+    <value>Källans LCID</value>
+  </data>
+  <data name="DstSID" xml:space="preserve">
+    <value>Destinationens SID</value>
+  </data>
+  <data name="DstLNID" xml:space="preserve">
+    <value>Destinationens LNID</value>
+  </data>
+  <data name="DstLCID" xml:space="preserve">
+    <value>Destinationens LCID</value>
+  </data>
+  <data name="DID" xml:space="preserve">
+    <value>DID</value>
+  </data>
+  <data name="AvailableSwitchesLabel" xml:space="preserve">
+    <value>Tillgängliga switchar:</value>
+  </data>
+  <data name="SNA" xml:space="preserve">
+    <value>SNA</value>
+  </data>
+  <data name="LSID" xml:space="preserve">
+    <value>LSID</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Nivå</value>
+  </data>
+  <data name="RXLevel" xml:space="preserve">
+    <value>Mottagningsnivå</value>
+  </data>
+  <data name="RXSNR" xml:space="preserve">
+    <value>Mottagningens SNR</value>
+  </data>
+  <data name="PhyCommunicationLabel" xml:space="preserve">
+    <value>Fysisk kommunikation:</value>
+  </data>
+  <data name="EUI" xml:space="preserve">
+    <value>EUI</value>
+  </data>
+  <data name="TXPwr" xml:space="preserve">
+    <value>Sändningseffekt</value>
+  </data>
+  <data name="TXCode" xml:space="preserve">
+    <value>Sändningskod</value>
+  </data>
+  <data name="RXCode" xml:space="preserve">
+    <value>Mottagningskod</value>
+  </data>
+  <data name="RXLvl" xml:space="preserve">
+    <value>Mottagningsnivå</value>
+  </data>
+  <data name="SNR" xml:space="preserve">
+    <value>SNR</value>
+  </data>
+  <data name="TXPwrMod" xml:space="preserve">
+    <value>Ändring av sändningseffekt</value>
+  </data>
+  <data name="TXCodeMod" xml:space="preserve">
+    <value>Ändring av sändningskod</value>
+  </data>
+  <data name="RXCodeMod" xml:space="preserve">
+    <value>Ändring av mottagningskod</value>
+  </data>
+  <data name="ResetNetworkAdministrationData" xml:space="preserve">
+    <value>Återställ nätverksadministrationsdata</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACSetupObject" xml:space="preserve">
+    <value>MAC-inställningsobjekt för PRIME NB OFDM PLC</value>
+  </data>
+  <data name="MinSwitchSearchTimeLabel" xml:space="preserve">
+    <value>Minsta tid för switchsökning:</value>
+  </data>
+  <data name="MaxPromotionPDULabel" xml:space="preserve">
+    <value>Maximalt antal befordrings-PDU:</value>
+  </data>
+  <data name="PromotionPDUTXPeriodLabel" xml:space="preserve">
+    <value>Sändningsperiod för befordrings-PDU:</value>
+  </data>
+  <data name="BeaconsPerFrameLabel" xml:space="preserve">
+    <value>Beacon per ram:</value>
+  </data>
+  <data name="SCPMaxTXAttempsLabel" xml:space="preserve">
+    <value>Maximalt antal SCP-sändningsförsök:</value>
+  </data>
+  <data name="CLTReTXTimerLabel" xml:space="preserve">
+    <value>CLT-omsändningstimer:</value>
+  </data>
+  <data name="MaxCtlReTxLabel" xml:space="preserve">
+    <value>Maximalt antal styromsändningar:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCPhysicalLayerCountersObject" xml:space="preserve">
+    <value>Räknarobjekt för det fysiska lagret i PRIME NB OFDM PLC</value>
+  </data>
+  <data name="CRCIncorrectCountLabel" xml:space="preserve">
+    <value>Antal felaktiga CRC:</value>
+  </data>
+  <data name="CRCFailedCountLabel" xml:space="preserve">
+    <value>Antal misslyckade CRC:</value>
+  </data>
+  <data name="TXDropCountLabel" xml:space="preserve">
+    <value>Antal kasserade sändningar:</value>
+  </data>
+  <data name="RXDropCountLabel" xml:space="preserve">
+    <value>Antal kasserade mottagningar:</value>
+  </data>
+  <data name="ProfileGeneric" xml:space="preserve">
+    <value>Generisk profil</value>
+  </data>
+  <data name="EntriesInUse" xml:space="preserve">
+    <value>Poster som används</value>
+  </data>
+  <data name="Entries" xml:space="preserve">
+    <value>Poster</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Objekt</value>
+  </data>
+  <data name="ReadLastDays" xml:space="preserve">
+    <value>Läs senaste (dagar)</value>
+  </data>
+  <data name="ReadFrom" xml:space="preserve">
+    <value>Läs från</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Till</value>
+  </data>
+  <data name="ReadEntry" xml:space="preserve">
+    <value>Läs post</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Antal</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sortera</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>Läsning</value>
+  </data>
+  <data name="AddWhiteList" xml:space="preserve">
+    <value>Lägg till i tillåtelselista...</value>
+  </data>
+  <data name="AddBlackList" xml:space="preserve">
+    <value>Lägg till i spärrlista...</value>
+  </data>
+  <data name="EnterAnUnsigned32BitNumber" xml:space="preserve">
+    <value>Ange ett osignerat 32-bitars tal.</value>
+  </data>
+  <data name="ChooseAReadingMode" xml:space="preserve">
+    <value>Välj ett läsläge.</value>
+  </data>
+  <data name="ReadFromMustNotFollowTo" xml:space="preserve">
+    <value>Läsningens början får inte vara efter slutet.</value>
+  </data>
+  <data name="PushObject" xml:space="preserve">
+    <value>Push-objekt</value>
+  </data>
+  <data name="ServiceLabel" xml:space="preserve">
+    <value>Tjänst:</value>
+  </data>
+  <data name="ChooseASupportedService" xml:space="preserve">
+    <value>Välj en stödd tjänst.</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Meddelande:</value>
+  </data>
+  <data name="ChooseASupportedMessage" xml:space="preserve">
+    <value>Välj ett stött meddelande.</value>
+  </data>
+  <data name="RandomisationLabel" xml:space="preserve">
+    <value>Slumpning:</value>
+  </data>
+  <data name="NumberOfRetriesLabel" xml:space="preserve">
+    <value>Antal omförsök:</value>
+  </data>
+  <data name="RepetitionDelayLabel2" xml:space="preserve">
+    <value>Upprepningsfördröjning:</value>
+  </data>
+  <data name="MinLabel" xml:space="preserve">
+    <value>Min:</value>
+  </data>
+  <data name="ExponentLabel" xml:space="preserve">
+    <value>Exponent:</value>
+  </data>
+  <data name="MaxLabel" xml:space="preserve">
+    <value>Max:</value>
+  </data>
+  <data name="PortReferenceLabel" xml:space="preserve">
+    <value>Portreferens:</value>
+  </data>
+  <data name="PushClientSAPLabel" xml:space="preserve">
+    <value>Push-klientens SAP:</value>
+  </data>
+  <data name="PushProtectionParametersLabel" xml:space="preserve">
+    <value>Skyddsparametrar för push:</value>
+  </data>
+  <data name="OperationMethodLabel" xml:space="preserve">
+    <value>Åtgärdsmetod:</value>
+  </data>
+  <data name="StartDateLabel" xml:space="preserve">
+    <value>Startdatum:</value>
+  </data>
+  <data name="IntervalLabel" xml:space="preserve">
+    <value>Intervall:</value>
+  </data>
+  <data name="LastConfirmationLabel" xml:space="preserve">
+    <value>Senaste bekräftelse:</value>
+  </data>
+  <data name="LogicalName3" xml:space="preserve">
+    <value>Logiskt namn</value>
+  </data>
+  <data name="DataIndex2" xml:space="preserve">
+    <value>Dataindex</value>
+  </data>
+  <data name="CommunicationWindow" xml:space="preserve">
+    <value>Kommunikationsfönster</value>
+  </data>
+  <data name="SendDestinationAndMethod" xml:space="preserve">
+    <value>Sändningsdestination och metod</value>
+  </data>
+  <data name="ConfirmationParameters" xml:space="preserve">
+    <value>Bekräftelseparametrar</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Skicka push</value>
+  </data>
+  <data name="Restriction" xml:space="preserve">
+    <value>Begränsning</value>
+  </data>
+  <data name="ColumnSelection" xml:space="preserve">
+    <value>Kolumnval</value>
+  </data>
+  <data name="RestrictionType" xml:space="preserve">
+    <value>Begränsningstyp</value>
+  </data>
+  <data name="RestrictionRange" xml:space="preserve">
+    <value>Begränsningsintervall</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>Kolumn</value>
+  </data>
+  <data name="ChooseASupportedServiceAndMessage" xml:space="preserve">
+    <value>Välj en stödd tjänst och ett stött meddelande.</value>
+  </data>
+  <data name="DestinationMustContainASCIICharacters" xml:space="preserve">
+    <value>Destinationen måste innehålla ASCII-tecken.</value>
+  </data>
+  <data name="RegisterObject" xml:space="preserve">
+    <value>Registerobjekt</value>
+  </data>
+  <data name="ScalerLabel" xml:space="preserve">
+    <value>Skalfaktor:</value>
+  </data>
+  <data name="UnitLabel" xml:space="preserve">
+    <value>Enhet:</value>
+  </data>
+  <data name="RegisterActivationObject" xml:space="preserve">
+    <value>Registeraktiveringsobjekt</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Tilldelningar</value>
+  </data>
+  <data name="RegisterAssignment" xml:space="preserve">
+    <value>Registertilldelning</value>
+  </data>
+  <data name="Masks" xml:space="preserve">
+    <value>Masker</value>
+  </data>
+  <data name="MaskList" xml:space="preserve">
+    <value>Masklista</value>
+  </data>
+  <data name="Indexes" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="ActiveMask" xml:space="preserve">
+    <value>Aktiv mask</value>
+  </data>
+  <data name="MaskNameHexadecimal" xml:space="preserve">
+    <value>Masknamn (hexadecimal)</value>
+  </data>
+  <data name="MaskIndexesCommaSeparatedBytes" xml:space="preserve">
+    <value>Maskindex (kommaseparerade byte)</value>
+  </data>
+  <data name="AddRegister" xml:space="preserve">
+    <value>Lägg till register</value>
+  </data>
+  <data name="AddMask" xml:space="preserve">
+    <value>Lägg till mask</value>
+  </data>
+  <data name="RemoveMask" xml:space="preserve">
+    <value>Ta bort mask</value>
+  </data>
+  <data name="EnterAMaskName" xml:space="preserve">
+    <value>Ange ett masknamn.</value>
+  </data>
+  <data name="ChooseARegisterExtendedRegisterOrDemandRegister" xml:space="preserve">
+    <value>Välj ett register, utökat register eller belastningsregister.</value>
+  </data>
+  <data name="RegisterMonitorObject" xml:space="preserve">
+    <value>Registerövervakningsobjekt</value>
+  </data>
+  <data name="Thresholds" xml:space="preserve">
+    <value>Tröskelvärden</value>
+  </data>
+  <data name="Threshold" xml:space="preserve">
+    <value>Tröskelvärde</value>
+  </data>
+  <data name="UpLogicalName" xml:space="preserve">
+    <value>Logiskt namn vid överskridande</value>
+  </data>
+  <data name="UpScriptSelector" xml:space="preserve">
+    <value>Skriptväljare vid överskridande</value>
+  </data>
+  <data name="DownLogicalName" xml:space="preserve">
+    <value>Logiskt namn vid underskridande</value>
+  </data>
+  <data name="DownScriptSelector" xml:space="preserve">
+    <value>Skriptväljare vid underskridande</value>
+  </data>
+  <data name="MonitoredValue" xml:space="preserve">
+    <value>Övervakat värde</value>
+  </data>
+  <data name="SAPAssignmentObject" xml:space="preserve">
+    <value>SAP-tilldelningsobjekt</value>
+  </data>
+  <data name="SapAssignmentList" xml:space="preserve">
+    <value>SAP-tilldelningslista</value>
+  </data>
+  <data name="SAPAddress" xml:space="preserve">
+    <value>SAP-adress</value>
+  </data>
+  <data name="LogicalDeviceName" xml:space="preserve">
+    <value>Logiskt enhetsnamn</value>
+  </data>
+  <data name="SAPID165535" xml:space="preserve">
+    <value>SAP-ID (1–65535)</value>
+  </data>
+  <data name="LogicalDeviceName2" xml:space="preserve">
+    <value>Logiskt enhetsnamn</value>
+  </data>
+  <data name="AddSAP" xml:space="preserve">
+    <value>Lägg till SAP</value>
+  </data>
+  <data name="RemoveSAP" xml:space="preserve">
+    <value>Ta bort SAP</value>
+  </data>
+  <data name="EnterALogicalDeviceName" xml:space="preserve">
+    <value>Ange ett logiskt enhetsnamn.</value>
+  </data>
+  <data name="SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535" xml:space="preserve">
+    <value>SAP-ID noll tar bort en tilldelning; ange ett ID mellan 1 och 65535.</value>
+  </data>
+  <data name="EnterAnIDFrom1To65535" xml:space="preserve">
+    <value>Ange ett ID mellan 1 och 65535.</value>
+  </data>
+  <data name="ScheduleObject" xml:space="preserve">
+    <value>Schemaobjekt</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Aktivera</value>
+  </data>
+  <data name="SwitchTime" xml:space="preserve">
+    <value>Växlingstid</value>
+  </data>
+  <data name="ValidityWindow" xml:space="preserve">
+    <value>Giltighetsfönster</value>
+  </data>
+  <data name="ExecWeekdays" xml:space="preserve">
+    <value>Veckodagar för körning</value>
+  </data>
+  <data name="ExecSpecDays" xml:space="preserve">
+    <value>Specialdagar för körning</value>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>Början</value>
+  </data>
+  <data name="EntryIndex" xml:space="preserve">
+    <value>Postindex</value>
+  </data>
+  <data name="EntryEnabled" xml:space="preserve">
+    <value>Post aktiverad</value>
+  </data>
+  <data name="EnterTrueOrFalse" xml:space="preserve">
+    <value>Ange True eller False.</value>
+  </data>
+  <data name="ScriptLogicalName" xml:space="preserve">
+    <value>Skriptets logiska namn</value>
+  </data>
+  <data name="ScriptSelector2" xml:space="preserve">
+    <value>Skriptväljare</value>
+  </data>
+  <data name="SwitchTimeHHMmSs" xml:space="preserve">
+    <value>Växlingstid (HH:mm:ss)</value>
+  </data>
+  <data name="ValidityWindow2" xml:space="preserve">
+    <value>Giltighetsfönster</value>
+  </data>
+  <data name="WeekdayFlags0127" xml:space="preserve">
+    <value>Veckodagsflaggor (0–127)</value>
+  </data>
+  <data name="SpecialDayBitString" xml:space="preserve">
+    <value>Bitsträng för specialdagar</value>
+  </data>
+  <data name="BeginDateYyyyMMDd" xml:space="preserve">
+    <value>Startdatum (yyyy-MM-dd)</value>
+  </data>
+  <data name="EndDateYyyyMMDd" xml:space="preserve">
+    <value>Slutdatum (yyyy-MM-dd)</value>
+  </data>
+  <data name="ApplyEnableDisable" xml:space="preserve">
+    <value>Tillämpa aktivering / inaktivering</value>
+  </data>
+  <data name="DeleteEntry" xml:space="preserve">
+    <value>Ta bort post</value>
+  </data>
+  <data name="WeekdayFlagsMustBeBetween0And127" xml:space="preserve">
+    <value>Veckodagsflaggor måste vara mellan 0 och 127.</value>
+  </data>
+  <data name="EnterTheSpecialDayFlagsAsABinaryBitString" xml:space="preserve">
+    <value>Ange specialdagsflaggorna som en binär bitsträng.</value>
+  </data>
+  <data name="BeginDateMustNotFollowEndDate" xml:space="preserve">
+    <value>Startdatum får inte vara efter slutdatum.</value>
+  </data>
+  <data name="ScriptTableObject" xml:space="preserve">
+    <value>Skripttabellsobjekt</value>
+  </data>
+  <data name="ScriptId" xml:space="preserve">
+    <value>Skript-ID</value>
+  </data>
+  <data name="ScriptID065535" xml:space="preserve">
+    <value>Skript-ID (0–65535)</value>
+  </data>
+  <data name="ExecuteScript" xml:space="preserve">
+    <value>Kör skript</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Identifierare</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Åtgärd</value>
+  </data>
+  <data name="SecuritySetupObject" xml:space="preserve">
+    <value>Säkerhetsinställningsobjekt</value>
+  </data>
+  <data name="PolicyLabel" xml:space="preserve">
+    <value>Policy:</value>
+  </data>
+  <data name="SuiteLabel" xml:space="preserve">
+    <value>Säkerhetssvit:</value>
+  </data>
+  <data name="ClientSystemTitleLabel" xml:space="preserve">
+    <value>Klientens systemtitel:</value>
+  </data>
+  <data name="ServerSystemTitleLabel" xml:space="preserve">
+    <value>Serverns systemtitel:</value>
+  </data>
+  <data name="SystemTitleDescriptionLabel" xml:space="preserve">
+    <value>Beskrivning av systemtitel:</value>
+  </data>
+  <data name="SecurityPolicyBitMaskLabel" xml:space="preserve">
+    <value>Säkerhetspolicyns bitmask:</value>
+  </data>
+  <data name="SecurityPolicyContainsUnsupportedFlags" xml:space="preserve">
+    <value>Säkerhetspolicyn innehåller flaggor som inte stöds.</value>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>Typ:</value>
+  </data>
+  <data name="KEKHexLabel" xml:space="preserve">
+    <value>KEK (hex):</value>
+  </data>
+  <data name="KeyHexLabel" xml:space="preserve">
+    <value>Nyckel (hex):</value>
+  </data>
+  <data name="SignedEphemeralPublicKeyHexLabel" xml:space="preserve">
+    <value>Signerad tillfällig offentlig nyckel (hex):</value>
+  </data>
+  <data name="EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Ange en signerad tillfällig offentlig nyckel för säkerhetssvit ett eller två.</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Certifikat</value>
+  </data>
+  <data name="CertificateTypeLabel" xml:space="preserve">
+    <value>Certifikattyp:</value>
+  </data>
+  <data name="X509CertificateDERHexLabel" xml:space="preserve">
+    <value>X.509-certifikat (DER hex):</value>
+  </data>
+  <data name="IdentifyBySerialNumberAndIssuerLabel" xml:space="preserve">
+    <value>Identifiera med serienummer och utfärdare:</value>
+  </data>
+  <data name="SerialNumberDecimalLabel" xml:space="preserve">
+    <value>Serienummer (decimalt):</value>
+  </data>
+  <data name="CertificateSerialNumberMustBePositive" xml:space="preserve">
+    <value>Certifikatets serienummer måste vara positivt.</value>
+  </data>
+  <data name="IssuerDERHexLabel" xml:space="preserve">
+    <value>Utfärdare (DER hex):</value>
+  </data>
+  <data name="ADERIssuerIsRequired" xml:space="preserve">
+    <value>En DER-utfärdare krävs.</value>
+  </data>
+  <data name="EntityLabel" xml:space="preserve">
+    <value>Entitet:</value>
+  </data>
+  <data name="SystemTitle8BytesHexLabel" xml:space="preserve">
+    <value>Systemtitel (8 byte, hex):</value>
+  </data>
+  <data name="SystemTitleMustContainEightBytes" xml:space="preserve">
+    <value>Systemtiteln måste innehålla åtta byte.</value>
+  </data>
+  <data name="SecurityActivation" xml:space="preserve">
+    <value>Säkerhetsaktivering</value>
+  </data>
+  <data name="ActivateSecurity" xml:space="preserve">
+    <value>Aktivera säkerhet</value>
+  </data>
+  <data name="KeyTransferAndAgreement" xml:space="preserve">
+    <value>Nyckelöverföring och nyckelöverenskommelse</value>
+  </data>
+  <data name="UpdateKey" xml:space="preserve">
+    <value>Uppdatera nyckel...</value>
+  </data>
+  <data name="AgreeKey" xml:space="preserve">
+    <value>Kom överens om nyckel</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entitet</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Serienummer</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Utfärdare</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Innehavare</value>
+  </data>
+  <data name="SubjectAltName" xml:space="preserve">
+    <value>Alternativt innehavarnamn</value>
+  </data>
+  <data name="KeyPair" xml:space="preserve">
+    <value>Nyckelpar...</value>
+  </data>
+  <data name="CertificateRequest" xml:space="preserve">
+    <value>Certifikatbegäran...</value>
+  </data>
+  <data name="ImportCertificate" xml:space="preserve">
+    <value>Importera certifikat</value>
+  </data>
+  <data name="ExportCertificate" xml:space="preserve">
+    <value>Exportera certifikat...</value>
+  </data>
+  <data name="RemoveCertificate" xml:space="preserve">
+    <value>Ta bort certifikat</value>
+  </data>
+  <data name="CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession" xml:space="preserve">
+    <value>Certifikatbegäranden och exportsvar returneras till anslutningssessionen.</value>
+  </data>
+  <data name="VersionZeroSecurityPolicyMustBeBetweenZeroAndThree" xml:space="preserve">
+    <value>Säkerhetspolicyn för version noll måste vara mellan noll och tre.</value>
+  </data>
+  <data name="SelectAKeyTypeSupportedByThisVersion" xml:space="preserve">
+    <value>Välj en nyckeltyp som stöds av denna version.</value>
+  </data>
+  <data name="KeyAgreementRequiresSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Nyckelöverenskommelse kräver säkerhetssvit ett eller två.</value>
+  </data>
+  <data name="SFSKActiveInitiatorObject" xml:space="preserve">
+    <value>Objekt för aktiv S-FSK-initiator</value>
+  </data>
+  <data name="SystemTitleLabel" xml:space="preserve">
+    <value>Systemtitel:</value>
+  </data>
+  <data name="MACAddressLabel2" xml:space="preserve">
+    <value>MAC-adress:</value>
+  </data>
+  <data name="LSAPSelectorLabel" xml:space="preserve">
+    <value>L SAP-väljare:</value>
+  </data>
+  <data name="ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI" xml:space="preserve">
+    <value>Återställning är inte tillgänglig: denna Gurux-version visar metodnamnet men saknar ett stött kommando-API.</value>
+  </data>
+  <data name="SFSKMACCountersObject" xml:space="preserve">
+    <value>S-FSK MAC-räknarobjekt</value>
+  </data>
+  <data name="SynchronizationRegisterLabel" xml:space="preserve">
+    <value>Synkroniseringsregister:</value>
+  </data>
+  <data name="SynchronizationRegister" xml:space="preserve">
+    <value>Synkroniseringsregister</value>
+  </data>
+  <data name="PhysicalLayerDesynchronizationLabel" xml:space="preserve">
+    <value>Förlorad synkronisering i det fysiska lagret:</value>
+  </data>
+  <data name="TimeoutNotAddressedDesynchronizationLabel" xml:space="preserve">
+    <value>Förlorad synkronisering vid tidsgräns utan adressering:</value>
+  </data>
+  <data name="TimeoutFrameNotOKDesynchronizationLabel" xml:space="preserve">
+    <value>Förlorad synkronisering vid tidsgräns för felaktig ram:</value>
+  </data>
+  <data name="WriteRequestDesynchronizationLabel" xml:space="preserve">
+    <value>Förlorad synkronisering vid skrivbegäran:</value>
+  </data>
+  <data name="WrongInitiatorDesynchronizationLabel" xml:space="preserve">
+    <value>Förlorad synkronisering vid fel initiator:</value>
+  </data>
+  <data name="BroadcastFramesCounterLabel" xml:space="preserve">
+    <value>Räknare för broadcastramar:</value>
+  </data>
+  <data name="MACAddress" xml:space="preserve">
+    <value>MAC-adress</value>
+  </data>
+  <data name="RepetitionsCounterLabel" xml:space="preserve">
+    <value>Upprepningsräknare:</value>
+  </data>
+  <data name="TransmissionsCounterLabel2" xml:space="preserve">
+    <value>Sändningsräknare:</value>
+  </data>
+  <data name="CRCOKFramesCounterLabel" xml:space="preserve">
+    <value>Räknare för ramar med CRC OK:</value>
+  </data>
+  <data name="CRCNOKFramesCounterLabel" xml:space="preserve">
+    <value>Räknare för ramar med CRC NOK:</value>
+  </data>
+  <data name="DesynchronizationListing" xml:space="preserve">
+    <value>Lista över förlorad synkronisering</value>
+  </data>
+  <data name="SFSKMACSynchronizationTimeoutsObject" xml:space="preserve">
+    <value>Objekt för S-FSK MAC-synkroniseringstidsgränser</value>
+  </data>
+  <data name="SearchInitiatorTimeoutLabel" xml:space="preserve">
+    <value>Tidsgräns för initiatorsökning:</value>
+  </data>
+  <data name="ConfirmationTimeoutLabel" xml:space="preserve">
+    <value>Tidsgräns för bekräftelse:</value>
+  </data>
+  <data name="TimeoutNotAddressedLabel" xml:space="preserve">
+    <value>Tidsgräns utan adressering:</value>
+  </data>
+  <data name="TimeuoutFrameNotOKLabel" xml:space="preserve">
+    <value>Tidsgräns för felaktig ram:</value>
+  </data>
+  <data name="SFSKPhyMACSetupObject" xml:space="preserve">
+    <value>S-FSK Phy MAC-inställningsobjekt</value>
+  </data>
+  <data name="InitiatorElectricalPhaseLabel" xml:space="preserve">
+    <value>Initiatorns elektriska fas:</value>
+  </data>
+  <data name="DeltaElectricalPhaseLabel" xml:space="preserve">
+    <value>Elektrisk fasskillnad:</value>
+  </data>
+  <data name="MaxReceivingGainLabel" xml:space="preserve">
+    <value>Maximal mottagningsförstärkning:</value>
+  </data>
+  <data name="MaxTransmittingGainLabel" xml:space="preserve">
+    <value>Maximal sändningsförstärkning:</value>
+  </data>
+  <data name="SearchInitiatorThresholdLabel" xml:space="preserve">
+    <value>Tröskelvärde för initiatorsökning:</value>
+  </data>
+  <data name="MarkFrequencyHzLabel" xml:space="preserve">
+    <value>Markfrekvens (Hz):</value>
+  </data>
+  <data name="SpaceFrequencyHzLabel" xml:space="preserve">
+    <value>Spacefrekvens (Hz):</value>
+  </data>
+  <data name="MACGroupAddressesLabel" xml:space="preserve">
+    <value>MAC-gruppadresser:</value>
+  </data>
+  <data name="MACGroupAddress" xml:space="preserve">
+    <value>MAC-gruppadress</value>
+  </data>
+  <data name="RepeaterLabel" xml:space="preserve">
+    <value>Repeater:</value>
+  </data>
+  <data name="RepeaterStatusLabel" xml:space="preserve">
+    <value>Repeaterstatus:</value>
+  </data>
+  <data name="MinDeltaCreditLabel" xml:space="preserve">
+    <value>Minsta kreditdifferens:</value>
+  </data>
+  <data name="InitiatorMACAddressLabel" xml:space="preserve">
+    <value>Initiatorns MAC-adress:</value>
+  </data>
+  <data name="SynchronizationLockedLabel" xml:space="preserve">
+    <value>Synkronisering låst:</value>
+  </data>
+  <data name="TransmissionSpeedLabel" xml:space="preserve">
+    <value>Överföringshastighet:</value>
+  </data>
+  <data name="SpecialDaysTableObject" xml:space="preserve">
+    <value>Specialdagstabellsobjekt</value>
+  </data>
+  <data name="SpecialDayDate" xml:space="preserve">
+    <value>Specialdagens datum</value>
+  </data>
+  <data name="DateYyyyMMDd" xml:space="preserve">
+    <value>Datum (yyyy-MM-dd)</value>
+  </data>
+  <data name="DayID0255" xml:space="preserve">
+    <value>Dags-ID (0–255)</value>
+  </data>
+  <data name="InsertDay" xml:space="preserve">
+    <value>Infoga dag</value>
+  </data>
+  <data name="DeleteDay" xml:space="preserve">
+    <value>Ta bort dag</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Starttimme</value>
+  </data>
+  <data name="IntervalTariff" xml:space="preserve">
+    <value>Intervalltariff</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>Används</value>
+  </data>
+  <data name="StartHourMustBeBetween0And23" xml:space="preserve">
+    <value>Starttimmen måste vara mellan 0 och 23.</value>
+  </data>
+  <data name="TariffPlanObject" xml:space="preserve">
+    <value>Tariffplansobjekt</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktiverad</value>
+  </data>
+  <data name="DefaultTariffBand" xml:space="preserve">
+    <value>Standardtariffband</value>
+  </data>
+  <data name="WeeklyActivation" xml:space="preserve">
+    <value>Veckoaktivering</value>
+  </data>
+  <data name="SpecialDays" xml:space="preserve">
+    <value>Specialdagar</value>
+  </data>
+  <data name="WinterSeason" xml:space="preserve">
+    <value>Vintersäsong</value>
+  </data>
+  <data name="SummerSeason" xml:space="preserve">
+    <value>Sommarsäsong</value>
+  </data>
+  <data name="DayOfMonth" xml:space="preserve">
+    <value>Dag i månaden</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Månad</value>
+  </data>
+  <data name="WorkingDayIntervals" xml:space="preserve">
+    <value>Arbetsdagsintervall</value>
+  </data>
+  <data name="SaturdayIntervals" xml:space="preserve">
+    <value>Lördagsintervall</value>
+  </data>
+  <data name="HolidayIntervals" xml:space="preserve">
+    <value>Helgdagsintervall</value>
+  </data>
+  <data name="TariffPlan" xml:space="preserve">
+    <value>Tariffplan</value>
+  </data>
+  <data name="TCPUDPSetupObject" xml:space="preserve">
+    <value>TCP/UDP-inställningsobjekt</value>
+  </data>
+  <data name="IPReferenceLabel" xml:space="preserve">
+    <value>IP-referens:</value>
+  </data>
+  <data name="MaxSegmentSizeLabel" xml:space="preserve">
+    <value>Maximal segmentstorlek:</value>
+  </data>
+  <data name="MaxConnectionsLabel" xml:space="preserve">
+    <value>Maximalt antal anslutningar:</value>
+  </data>
+  <data name="TokenGatewayObject" xml:space="preserve">
+    <value>Pollettgatewayobjekt</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Pollett</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Beskrivningar</value>
+  </data>
+  <data name="DeliveryMethod" xml:space="preserve">
+    <value>Leveransmetod</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>Statuskod</value>
+  </data>
+  <data name="DataValue" xml:space="preserve">
+    <value>Datavärde</value>
+  </data>
+  <data name="TokenHexadecimal" xml:space="preserve">
+    <value>Pollett (hexadecimal)</value>
+  </data>
+  <data name="TransferToken" xml:space="preserve">
+    <value>Överför pollett</value>
+  </data>
+  <data name="EnterAToken" xml:space="preserve">
+    <value>Ange en pollett.</value>
+  </data>
+  <data name="UtilityTablesObject" xml:space="preserve">
+    <value>Hjälptabellsobjekt</value>
+  </data>
+  <data name="TableID" xml:space="preserve">
+    <value>Tabell-ID</value>
+  </data>
+  <data name="WirelessModeQChannel" xml:space="preserve">
+    <value>Trådlöst läge för Q-kanal</value>
+  </data>
+  <data name="AddressMaskLabel" xml:space="preserve">
+    <value>Adressmask:</value>
+  </data>
+  <data name="UnableToDisplayAttribute0" xml:space="preserve">
+    <value>Det går inte att visa attribut: {0}</value>
+  </data>
+  <data name="CannotDisplayAttribute01" xml:space="preserve">
+    <value>Det går inte att visa attribut {0}: {1}.</value>
+  </data>
+  <data name="Text0Items" xml:space="preserve">
+    <value>{0} objekt</value>
+  </data>
+  <data name="ActionFailed0" xml:space="preserve">
+    <value>Åtgärden misslyckades: {0}</value>
+  </data>
+  <data name="WritingCurrentTimeFailed0" xml:space="preserve">
+    <value>Skrivning av aktuell tid misslyckades: {0}</value>
+  </data>
+  <data name="ResetFailed0" xml:space="preserve">
+    <value>Återställning misslyckades: {0}</value>
+  </data>
+  <data name="Value0" xml:space="preserve">
+    <value>Värde {0}</value>
+  </data>
+  <data name="Attribute0" xml:space="preserve">
+    <value>Attribut {0}</value>
+  </data>
+  <data name="Resize0" xml:space="preserve">
+    <value>Ändra storlek {0}</value>
+  </data>
+  <data name="Read0" xml:space="preserve">
+    <value>Läs {0}</value>
+  </data>
+  <data name="Text0RequestCompleted" xml:space="preserve">
+    <value>Begäran {0} slutförd.</value>
+  </data>
+  <data name="TheSelectedSecuritySuiteRequires0KeyBytes" xml:space="preserve">
+    <value>Den valda säkerhetssviten kräver {0} nyckelbyte.</value>
+  </data>
+  <data name="ASignedEphemeralPublicKeyRequires0Bytes" xml:space="preserve">
+    <value>En signerad tillfällig offentlig nyckel kräver {0} byte.</value>
+  </data>
+  <data name="Text0Object" xml:space="preserve">
+    <value>{0}-objekt</value>
+  </data>
+  <data name="Text01" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Text012" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="EnterAWholeNumberBetween0And1" xml:space="preserve">
+    <value>Ange ett heltal mellan {0} och {1}.</value>
+  </data>
+  <data name="Method0" xml:space="preserve">
+    <value>Metod {0}</value>
+  </data>
+  <data name="RemoveTheSelected0Row" xml:space="preserve">
+    <value>Ta bort den valda {0}-raden?</value>
+  </data>
+  <data name="AvailableCreditLabel" xml:space="preserve">
+    <value>Tillgänglig kredit:</value>
+  </data>
+  <data name="AmountToClearLabel" xml:space="preserve">
+    <value>Belopp att avräkna:</value>
+  </data>
+  <data name="ClearanceThresholdLabel" xml:space="preserve">
+    <value>Avräkningsgräns:</value>
+  </data>
+  <data name="AggregatedDebtLabel" xml:space="preserve">
+    <value>Sammanlagd skuld:</value>
+  </data>
+  <data name="LowCreditThresholdLabel" xml:space="preserve">
+    <value>Gräns för låg kredit:</value>
+  </data>
+  <data name="NextCreditAvailableThresholdLabel" xml:space="preserve">
+    <value>Gräns för nästa tillgängliga kredit:</value>
+  </data>
+  <data name="MaxProvisionLabel" xml:space="preserve">
+    <value>Maximal avsättning:</value>
+  </data>
+  <data name="MaxProvisionPeriodLabel" xml:space="preserve">
+    <value>Maximal avsättningsperiod:</value>
+  </data>
+  <data name="Text0Attribute1" xml:space="preserve">
+    <value>{0} / attribut {1}</value>
+  </data>
+  <data name="AttributeError" xml:space="preserve">
+    <value>Attribut {0}: {1}</value>
+  </data>
+  <data name="IntervalNumber" xml:space="preserve">
+    <value>Intervall {0}</value>
+  </data>
+  <data name="CaptureObjectAttributeAndData" xml:space="preserve">
+    <value>{0} / attribut {1} / data {2}</value>
+  </data>
+  <data name="ChargeReference" xml:space="preserve">
+    <value>Debiteringsreferens</value>
+  </data>
 </root>

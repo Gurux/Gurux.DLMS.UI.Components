@@ -40,10 +40,10 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="MAC Address Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.MACAddressSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="MAC Address:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.MACAddressLabel" Enabled="CanEditAttribute(2)"  />
     }
 </div>
 </section>

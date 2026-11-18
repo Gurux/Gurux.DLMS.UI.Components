@@ -31,8 +31,12 @@ using Gurux.DLMS.Objects;
 
 namespace Gurux.DLMS.UI.Components.Objects;
 
+/// <summary>Copies, formats and parses DLMS wire values without flattening their collection types.</summary>
 internal static class GXWireValue
 {
+    /// <summary>Recursively copies DLMS collections and byte buffers while retaining scalar values.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     public static object? Copy(object? value)
     {
         if (value is GXStructure structure)
@@ -49,8 +53,15 @@ internal static class GXWireValue
         }
         return value is byte[] bytes ? bytes.ToArray() : value;
     }
+    /// <summary>Copies the pending attribute value, falling back to the confirmed wire representation.</summary>
+    /// <param name="edit">The edit state containing the model and its pending attribute values.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     public static object? Read(GXDLMSObjectEditState edit, int index)
         => Copy(edit.Target.GetDirty(index, out var pending) ? pending : GXDLMSAttributeCodec.Read(edit.Target, index));
+    /// <summary>Formats logical names, collection cells and scalar wire values for display.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     public static string Display(object? value) => value switch
     {
         byte[] { Length: 6 } bytes => string.Join(".", bytes),
@@ -58,6 +69,10 @@ internal static class GXWireValue
         GXArray array => string.Join("; ", array.Select(Display)),
         _ => GXDLMSObjectEditState.Format(value)
     };
+    /// <summary>Parses invariant input using the original value&apos;s wire or CLR type.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="original">The original value whose type determines how input is parsed.</param>
+    /// <returns>The parsed value, retaining the required DLMS or CLR data type.</returns>
     public static object Parse(string text, object? original)
     {
         if (original is GXEnum)
@@ -77,7 +92,7 @@ internal static class GXWireValue
                 var parts = text.Split('.');
                 if (parts.Length != 6)
                 {
-                    throw new FormatException("Enter a logical name with six numbers.");
+                    throw new FormatException(Properties.Resources.EnterALogicalNameWithSixNumbers);
                 }
 
                 return parts.Select(part => byte.Parse(part, NumberStyles.None, CultureInfo.InvariantCulture)).ToArray();
@@ -111,13 +126,25 @@ internal static class GXWireValue
 
         return text;
     }
+    /// <summary>Parses an ISO date or a meter date with invariant formatting.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     public static GXDate ParseDate(string text)
         => DateTime.TryParseExact(text, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)
             ? new GXDate(date) : new GXDate(text, CultureInfo.InvariantCulture);
 
+    /// <summary>Formats bit strings and enum values for an editable scalar input.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     public static string Editable(object? value) => value is GXBitString bits ? bits.ToString()
         : value is GXEnum e ? Convert.ToByte(e, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Display(value);
 
+    /// <summary>Validates attribute input against an isolated model clone without staging changes on the source.</summary>
+    /// <param name="source">The edit state containing the model and its pending attribute values.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="error">Receives the validation error, or null when the input is valid.</param>
+    /// <returns>True when validation or lookup succeeds; otherwise, false.</returns>
     public static bool TryAttribute(GXDLMSObjectEditState source, int index, string text, out string? error)
     {
         try

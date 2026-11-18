@@ -31,7 +31,8 @@ namespace Gurux.DLMS.UI.Components.Objects;
 /// <summary>Explicit view references also preserve components in trimmed mobile applications.</summary>
 public static class GXDLMSObjectViewRegistry
 {
-    private static readonly IReadOnlyDictionary<Type, Type> Views = new Dictionary<Type, Type>
+    /// <summary>Maps supported DLMS object types to their editor component types.</summary>
+    private static readonly IReadOnlyDictionary<Type, Type> _views = new Dictionary<Type, Type>
     {
         [typeof(GXDLMSAccount)] = typeof(GXAccountView),
         [typeof(GXDLMSActionSchedule)] = typeof(GXActionScheduleView),
@@ -114,6 +115,6 @@ public static class GXDLMSObjectViewRegistry
             return typeof(GXDLMSUnixTimeView);
         }
 
-        return Views.GetValueOrDefault(target.GetType()) ?? (target is IGXDLMSBase ? typeof(GXGenericObjectView) : null);
+        return _views.GetValueOrDefault(target.GetType()) ?? (target is IGXDLMSBase ? typeof(GXGenericObjectView) : null);
     }
 }

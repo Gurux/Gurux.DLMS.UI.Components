@@ -38,14 +38,14 @@
 @inherits GXDLMSObjectViewBase<GXDLMSSpecialDaysTable>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Special Days Table Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "datetime", "number" })" Label="Entries" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Index", "Special Day Date", "Day ID" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, (byte)1 })" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Entry index" Value="@EntryIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => EntryIndex = value" Validate="text => ValidateParameter(nameof(EntryIndex), text)" />
-    <GXValueField Label="Date (yyyy-MM-dd)" Value="@EntryDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="date" OnCommit="value => EntryDate = value" Validate="text => ValidateParameter(nameof(EntryDate), text)" />
-    <GXValueField Label="Day ID (0–255)" Value="@DayId" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => DayId = value" Validate="text => ValidateParameter(nameof(DayId), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">Insert day</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">Delete day</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.SpecialDaysTableObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "datetime", "number" })" Label="@Properties.Resources.Entries" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.Index, Properties.Resources.SpecialDayDate, Properties.Resources.DayID })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF }, (byte)1 })" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.EntryIndex" Value="@EntryIndex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => EntryIndex = value" Validate="text => ValidateParameter(nameof(EntryIndex), text)" />
+    <GXValueField Label="@Properties.Resources.DateYyyyMMDd" Value="@EntryDate" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="date" OnCommit="value => EntryDate = value" Validate="text => ValidateParameter(nameof(EntryDate), text)" />
+    <GXValueField Label="@Properties.Resources.DayID0255" Value="@DayId" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="number" OnCommit="value => DayId = value" Validate="text => ValidateParameter(nameof(DayId), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InsertAsync">@Properties.Resources.InsertDay</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="DeleteAsync">@Properties.Resources.DeleteDay</GXButton>
     </fieldset>
 </section>
 
@@ -78,6 +78,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task DeleteAsync() => InvokeMethodAsync(2, client => Target.Delete(client, new GXDLMSSpecialDay { Index = ushort.Parse(EntryIndex, CultureInfo.InvariantCulture) }));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try

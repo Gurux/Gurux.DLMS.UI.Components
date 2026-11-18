@@ -41,52 +41,52 @@
 @inherits GXDLMSObjectViewBase<GXDLMSSecuritySetup>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Security Setup Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.SecuritySetupObject" />
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="General">
+<GXTabPage Text="@Properties.Resources.General">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Policy:" Enabled="CanEditAttribute(2)" EnumType="@(Target.Version == 0 ? typeof(VersionZeroSecurityPolicy) : typeof(SecurityPolicy))" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.PolicyLabel" Enabled="CanEditAttribute(2)" EnumType="@(Target.Version == 0 ? typeof(VersionZeroSecurityPolicy) : typeof(SecurityPolicy))" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
 {
-<GXAttributeField Edit="Edit" Index="3" Label="Suite:" Enabled="CanEditAttribute(3)" EnumType="typeof(SecuritySuite)" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.SuiteLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(SecuritySuite)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
 {
-<GXAttributeField Edit="Edit" Index="4" Label="Client System Title:" Enabled="CanEditAttribute(4)" InputKind="hex" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ClientSystemTitleLabel" Enabled="CanEditAttribute(4)" InputKind="hex" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
 {
-<GXAttributeField Edit="Edit" Index="5" Label="Server System Title:" Enabled="CanEditAttribute(5)" InputKind="hex" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.ServerSystemTitleLabel" Enabled="CanEditAttribute(5)" InputKind="hex" />
 }
-<GXValueField Label="System title description:" Value="@SystemTitleDescription" Enabled="false" />
-<fieldset><legend>Security activation</legend>
-<GXValueField Label="Security policy bit mask:" Value="@PolicyText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { PolicyText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out var policy) && (Target.Version == 0 ? policy <= 3 : (policy & ~252) == 0) ? null : "Security policy contains unsupported flags.")" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivateAsync">Activate Security</GXButton>
+<GXValueField Label="@Properties.Resources.SystemTitleDescriptionLabel" Value="@SystemTitleDescription" Enabled="false" />
+<fieldset><legend>@Properties.Resources.SecurityActivation</legend>
+<GXValueField Label="@Properties.Resources.SecurityPolicyBitMaskLabel" Value="@PolicyText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { PolicyText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out var policy) && (Target.Version == 0 ? policy <= 3 : (policy & ~252) == 0) ? null : Properties.Resources.SecurityPolicyContainsUnsupportedFlags)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivateAsync">@Properties.Resources.ActivateSecurity</GXButton>
 </fieldset>
-<fieldset><legend>Key transfer and agreement</legend>
-<GXValueField Label="Type:" Value="@KeyType.ToString()" Enabled="@(CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(2) || CanInvokeMethod(3)) { KeyType = Enum.Parse<GlobalKeyType>(value); } })" EnumType="typeof(GlobalKeyType)" />
-<GXValueField Label="KEK (hex):" Value="@KekText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { KekText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => KeyValue(value)))" />
-<GXValueField Label="Key (hex):" Value="@KeyText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { KeyText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => KeyValue(value)))" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="TransferKeyAsync">Update Key...</GXButton>
+<fieldset><legend>@Properties.Resources.KeyTransferAndAgreement</legend>
+<GXValueField Label="@Properties.Resources.TypeLabel" Value="@KeyType.ToString()" Enabled="@(CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(2) || CanInvokeMethod(3)) { KeyType = Enum.Parse<GlobalKeyType>(value); } })" EnumType="typeof(GlobalKeyType)" />
+<GXValueField Label="@Properties.Resources.KEKHexLabel" Value="@KekText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { KekText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => KeyValue(value)))" />
+<GXValueField Label="@Properties.Resources.KeyHexLabel" Value="@KeyText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { KeyText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => KeyValue(value)))" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="TransferKeyAsync">@Properties.Resources.UpdateKey</GXButton>
 @if (Target.Version > 0)
 {
-<GXValueField Label="Signed ephemeral public key (hex):" Value="@AgreementText" Enabled="@(CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(3)) { AgreementText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Target.SecuritySuite != SecuritySuite.Suite0 && Hex(value).Length == (Target.SecuritySuite == SecuritySuite.Suite2 ? 192 : 128), "Enter a signed ephemeral public key for security suite one or two.")))" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AgreeAsync">Agree key</GXButton>
+<GXValueField Label="@Properties.Resources.SignedEphemeralPublicKeyHexLabel" Value="@AgreementText" Enabled="@(CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(3)) { AgreementText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Target.SecuritySuite != SecuritySuite.Suite0 && Hex(value).Length == (Target.SecuritySuite == SecuritySuite.Suite2 ? 192 : 128), Properties.Resources.EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo)))" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AgreeAsync">@Properties.Resources.AgreeKey</GXButton>
 }
 </fieldset>
 </GXTabPage>
 @if (Target.Version > 0)
 {
-<GXTabPage Text="Certificates">
+<GXTabPage Text="@Properties.Resources.Certificates">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
 {
 <GXTable @key="CertificateTableKey" TItem="GXDLMSCertificateInfo" ItemsProvider="CertificateItems" Filter="false" Menu="false" Total="false" ShowAllData="true" Save="false" AllowColumnCustomization="false">
 <HeaderContent>
-    <GXTh TItem="GXDLMSCertificateInfo">Entity</GXTh><GXTh TItem="GXDLMSCertificateInfo">Type</GXTh>
-    <GXTh TItem="GXDLMSCertificateInfo">Serial Number</GXTh><GXTh TItem="GXDLMSCertificateInfo">Issuer</GXTh>
-    <GXTh TItem="GXDLMSCertificateInfo">Subject</GXTh><GXTh TItem="GXDLMSCertificateInfo">Subject Alt Name</GXTh>
+    <GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.Entity</GXTh><GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.Type</GXTh>
+    <GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.SerialNumber</GXTh><GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.Issuer</GXTh>
+    <GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.Subject</GXTh><GXTh TItem="GXDLMSCertificateInfo">@Properties.Resources.SubjectAltName</GXTh>
 </HeaderContent>
 <ItemContent Context="certificate">
     <GXTd>@certificate.Entity</GXTd><GXTd>@certificate.Type</GXTd><GXTd>@certificate.SerialNumber</GXTd>
@@ -94,39 +94,46 @@
 </ItemContent>
 </GXTable>
 }
-<GXValueField Label="Certificate type:" Value="@SelectedCertificateType.ToString()" Enabled="@(CanInvokeMethod(4) || CanInvokeMethod(5) || CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(4) || CanInvokeMethod(5) || CanInvokeMethod(7) || CanInvokeMethod(8)) { SelectedCertificateType = Enum.Parse<CertificateType>(value); } })" EnumType="typeof(CertificateType)" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="GenerateKeyAsync">Key pair...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="GenerateRequestAsync">Certificate request...</GXButton>
-<GXValueField Label="X.509 certificate (DER hex):" Value="@CertificateText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { CertificateText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => { _ = new Gurux.DLMS.ASN.GXx509Certificate(Hex(value)); }))" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="ImportAsync">Import Certificate</GXButton>
-<GXValueField Label="Identify by serial number and issuer:" Value="@UseSerial.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { UseSerial = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
+<GXValueField Label="@Properties.Resources.CertificateTypeLabel" Value="@SelectedCertificateType.ToString()" Enabled="@(CanInvokeMethod(4) || CanInvokeMethod(5) || CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(4) || CanInvokeMethod(5) || CanInvokeMethod(7) || CanInvokeMethod(8)) { SelectedCertificateType = Enum.Parse<CertificateType>(value); } })" EnumType="typeof(CertificateType)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="GenerateKeyAsync">@Properties.Resources.KeyPair</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="GenerateRequestAsync">@Properties.Resources.CertificateRequest</GXButton>
+<GXValueField Label="@Properties.Resources.X509CertificateDERHexLabel" Value="@CertificateText" Enabled="@(CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(6)) { CertificateText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => { _ = new Gurux.DLMS.ASN.GXx509Certificate(Hex(value)); }))" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="ImportAsync">@Properties.Resources.ImportCertificate</GXButton>
+<GXValueField Label="@Properties.Resources.IdentifyBySerialNumberAndIssuerLabel" Value="@UseSerial.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { UseSerial = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
 @if (UseSerial)
 {
-<GXValueField Label="Serial Number (decimal):" Value="@SerialText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { SerialText = value; } })" InputKind="number" Validate="@(value => System.Numerics.BigInteger.TryParse(value, out var number) && number > 0 ? null : "Certificate serial number must be positive.")" />
-<GXValueField Label="Issuer (DER hex):" Value="@IssuerText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { IssuerText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "A DER issuer is required.")))" />
+<GXValueField Label="@Properties.Resources.SerialNumberDecimalLabel" Value="@SerialText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { SerialText = value; } })" InputKind="number" Validate="@(value => System.Numerics.BigInteger.TryParse(value, out var number) && number > 0 ? null : Properties.Resources.CertificateSerialNumberMustBePositive)" />
+<GXValueField Label="@Properties.Resources.IssuerDERHexLabel" Value="@IssuerText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { IssuerText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, Properties.Resources.ADERIssuerIsRequired)))" />
 }
 else
 {
-<GXValueField Label="Entity:" Value="@Entity.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { Entity = Enum.Parse<CertificateEntity>(value); } })" EnumType="typeof(CertificateEntity)" />
-<GXValueField Label="System title (8 bytes, hex):" Value="@SystemTitleText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { SystemTitleText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length == 8, "System title must contain eight bytes.")))" />
+<GXValueField Label="@Properties.Resources.EntityLabel" Value="@Entity.ToString()" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { Entity = Enum.Parse<CertificateEntity>(value); } })" EnumType="typeof(CertificateEntity)" />
+<GXValueField Label="@Properties.Resources.SystemTitle8BytesHexLabel" Value="@SystemTitleText" Enabled="@(CanInvokeMethod(7) || CanInvokeMethod(8))" OnCommit="@((string value) => { if (CanInvokeMethod(7) || CanInvokeMethod(8)) { SystemTitleText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length == 8, Properties.Resources.SystemTitleMustContainEightBytes)))" />
 }
-<GXButton type="button" Disabled="@(!CanInvokeMethod(7))" OnClick="ExportAsync">Export certificate...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(8))" OnClick="RemoveAsync">Remove certificate</GXButton>
-<p>Certificate requests and export responses are returned to the connection session.</p>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(7))" OnClick="ExportAsync">@Properties.Resources.ExportCertificate</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(8))" OnClick="RemoveAsync">@Properties.Resources.RemoveCertificate</GXButton>
+<p>@Properties.Resources.CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession</p>
 </GXTabPage>
 }
 </GXTabControl>
 </section>
 
 @code {
+    /// <summary>Gets a render key that changes when certificate table contents change.</summary>
     private string CertificateTableKey => string.Join("\n", Target.Certificates.Select(certificate =>
         $"{certificate.Entity}\t{certificate.Type}\t{certificate.SerialNumber}\t{certificate.Issuer}\t{certificate.Subject}\t{certificate.SubjectAltName}"));
+    /// <summary>Supplies the object&apos;s certificate rows and their total count.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<GXDLMSCertificateInfo>> CertificateItems(GXItemsProviderRequest request)
     {
         var rows = Target.Certificates.ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<GXDLMSCertificateInfo>(rows, rows.Length));
     }
 
+    /// <summary>Runs parameter validation and converts validation exceptions into input error text.</summary>
+    /// <param name="validate">The validation callback whose input exceptions become error text.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? CheckParameter(Action validate)
     {
         try
@@ -136,6 +143,9 @@ else
         }
         catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
+    /// <summary>Throws an argument exception when a method parameter condition is not satisfied.</summary>
+    /// <param name="valid">Whether the required parameter condition is satisfied.</param>
+    /// <param name="message">The error shown when the required condition is not satisfied.</param>
     private static void RequireParameter(bool valid, string message)
     {
         if (!valid)
@@ -144,6 +154,7 @@ else
         }
     }
 
+    /// <summary>Gets the human-readable description of the configured system title.</summary>
     private string SystemTitleDescription
     {
         get
@@ -156,9 +167,13 @@ else
         }
     }
 
+    /// <summary>Represents the Boolean choices accepted by method parameter editors.</summary>
     private enum BooleanChoice
     {
-        False, True
+        /// <summary>Represents the disabled or false method parameter value.</summary>
+        False,
+        /// <summary>Represents the enabled or true method parameter value.</summary>
+        True
     }
 
     // The pinned API exposes both versions through SecurityPolicy, but version zero is a four-value enum.
@@ -236,41 +251,53 @@ else
     /// Hexadecimal DER issuer name entered for export or removal.
     /// </summary>
     public string IssuerText { get; set; } = "";
+    /// <summary>Decodes hexadecimal input after removing whitespace.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The decoded bytes after validation.</returns>
     private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+    /// <summary>Decodes a security key and checks its byte length against the selected suite.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The decoded bytes after validation.</returns>
     private byte[] KeyValue(string text)
     {
         var value = Hex(text);
         var length = Target.SecuritySuite == SecuritySuite.Suite2 ? 32 : 16;
         if (value.Length != length)
         {
-            throw new ArgumentException($"The selected security suite requires {length} key bytes.");
+            throw new ArgumentException(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.TheSelectedSecuritySuiteRequires0KeyBytes, length));
         }
         return value;
     }
+    /// <summary>Decodes and validates the eight-byte system title supplied to certificate methods.</summary>
+    /// <returns>The title for the current account table attribute.</returns>
     private byte[] Title()
     {
         var value = Hex(SystemTitleText);
         if (value.Length != 8)
         {
-            throw new ArgumentException("System title must contain eight bytes.");
+            throw new ArgumentException(Properties.Resources.SystemTitleMustContainEightBytes);
         }
         return value;
     }
+    /// <summary>Parses and validates the positive certificate serial number.</summary>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     private System.Numerics.BigInteger Serial()
     {
         var value = System.Numerics.BigInteger.Parse(SerialText, System.Globalization.CultureInfo.InvariantCulture);
         if (value <= 0)
         {
-            throw new ArgumentException("Certificate serial number must be positive.");
+            throw new ArgumentException(Properties.Resources.CertificateSerialNumberMustBePositive);
         }
         return value;
     }
+    /// <summary>Decodes the required DER-encoded certificate issuer.</summary>
+    /// <returns>The decoded bytes after validation.</returns>
     private byte[] Issuer()
     {
         var value = Hex(IssuerText);
         if (value.Length == 0)
         {
-            throw new ArgumentException("A DER issuer is required.");
+            throw new ArgumentException(Properties.Resources.ADERIssuerIsRequired);
         }
         return value;
     }
@@ -285,12 +312,12 @@ else
         {
             if (policy > 3)
             {
-                throw new ArgumentException("Version zero security policy must be between zero and three.");
+                throw new ArgumentException(Properties.Resources.VersionZeroSecurityPolicyMustBeBetweenZeroAndThree);
             }
         }
         else if ((policy & ~252) != 0)
         {
-            throw new ArgumentException("Security policy contains unsupported flags.");
+            throw new ArgumentException(Properties.Resources.SecurityPolicyContainsUnsupportedFlags);
         }
         return Target.Activate(client, (SecurityPolicy)policy);
     });
@@ -302,7 +329,7 @@ else
     {
         if (!Enum.IsDefined(KeyType) || Target.Version == 0 && KeyType == GlobalKeyType.Kek)
         {
-            throw new ArgumentException("Select a key type supported by this version.");
+            throw new ArgumentException(Properties.Resources.SelectAKeyTypeSupportedByThisVersion);
         }
         return Target.GlobalKeyTransfer(client, KeyValue(KekText), new List<KeyValuePair<GlobalKeyType, byte[]>> { new(KeyType, KeyValue(KeyText)) });
     });
@@ -314,13 +341,13 @@ else
     {
         if (Target.SecuritySuite == SecuritySuite.Suite0)
         {
-            throw new ArgumentException("Key agreement requires security suite one or two.");
+            throw new ArgumentException(Properties.Resources.KeyAgreementRequiresSecuritySuiteOneOrTwo);
         }
         var data = Hex(AgreementText);
         var expected = Target.SecuritySuite == SecuritySuite.Suite2 ? 192 : 128;
         if (data.Length != expected)
         {
-            throw new ArgumentException($"A signed ephemeral public key requires {expected} bytes.");
+            throw new ArgumentException(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.ASignedEphemeralPublicKeyRequires0Bytes, expected));
         }
         return Target.KeyAgreement(client, new List<KeyValuePair<GlobalKeyType, byte[]>> { new(KeyType, data) });
     });

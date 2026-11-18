@@ -35,7 +35,7 @@
 
 <section class="gx-object-view">
     @if (Edit.Error(2) is { } error) { <p role="alert">@error</p> }
-    <GXObjectViewHeader Target="Target" Edit="Edit" Title="Data Object" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Value" Enabled="CanEditAttribute(2)" Rows="@(Edit.IsXml ? 10 : 2)" />
-    @if (Edit.HasChanges) { <p role="status">Value changed</p> }
+    <GXObjectViewHeader Target="Target" Edit="Edit" Title="@Properties.Resources.DataObject" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Value" Enabled="CanEditAttribute(2)" Rows="@(Edit.IsXml ? 10 : 2)" />
+    @if (Edit.HasChanges) { <p role="status">@Properties.Resources.ValueChanged</p> }
 </section>

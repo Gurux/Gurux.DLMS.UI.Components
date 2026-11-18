@@ -42,14 +42,14 @@
                 <GXTable @key="(Edit, Index, CurrentPath)" @ref="_table" TItem="int" ItemsProvider="ProvideRows" Filter="false" Menu="false" Total="false" ShowAllData="true" AllowColumnCustomization="false">
                     <HeaderContent Context="unused">
                         @foreach (var name in Columns ?? [Label]) { <GXTh TItem="int" Name="@name">@name</GXTh> }
-                        <GXTh TItem="int" Name="Actions">Actions</GXTh>
+                        <GXTh TItem="int" Name="Actions">@Properties.Resources.Actions</GXTh>
                     </HeaderContent>
                     <ItemContent Context="row">
                         @foreach (var cell in Cells(row)) { <GXTd>@cell</GXTd> }
-                        <GXTd><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRow(row)">Edit...</GXButton><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRemove(row)">Remove</GXButton></GXTd>
+                        <GXTd><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRow(row)">@Properties.Resources.Edit</GXButton><GXButton type="button" Disabled="@(!Enabled)" OnClick="() => BeginRemove(row)">@Properties.Resources.Remove</GXButton></GXTd>
                     </ItemContent>
                 </GXTable>
-                <GXButton type="button" Disabled="@(!Enabled || CreateRow is null && ((Gurux.DLMS.GXArray)CurrentValue!).Count == 0)" OnClick="BeginAdd">Add...</GXButton>
+                <GXButton type="button" Disabled="@(!Enabled || CreateRow is null && ((Gurux.DLMS.GXArray)CurrentValue!).Count == 0)" OnClick="BeginAdd">@Properties.Resources.Add</GXButton>
             </div>
         }
         else if (IsSimple)
@@ -62,7 +62,7 @@
         else
         {
             <GXInputText id="@(_id + "-display")" Value="@Display" readonly aria-label="@Label" />
-            <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginEdit">Edit...</GXButton>
+            <GXButton type="button" Disabled="@(!Enabled)" OnClick="BeginEdit">@Properties.Resources.Edit</GXButton>
         }
     </div>
 </div>
@@ -84,6 +84,6 @@
                 </div>
             }
         </ChildContent>
-        <FooterContent><GXButton type="button" Disabled="@(!Enabled)" OnClick="AcceptAsync">OK</GXButton></FooterContent>
+        <FooterContent><GXButton type="button" Disabled="@(!Enabled)" OnClick="AcceptAsync">@Properties.Resources.OK</GXButton></FooterContent>
     </GXDialog>
 }

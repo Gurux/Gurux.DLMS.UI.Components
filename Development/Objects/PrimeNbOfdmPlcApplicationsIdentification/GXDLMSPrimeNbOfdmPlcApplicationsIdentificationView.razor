@@ -40,18 +40,18 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="PRIME NB OFDM PLC Application identification Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.PRIMENBOFDMPLCApplicationIdentificationObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Firmware Version:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.FirmwareVersionLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Vendor ID:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.VendorIDLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Product ID:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ProductIDLabel" Enabled="CanEditAttribute(4)"  />
     }
 </div>
 </section>

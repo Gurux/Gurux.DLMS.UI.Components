@@ -70,10 +70,15 @@ public partial class GXValueField
     {
         get; private set;
     }
+    /// <summary>Prevents callbacks from updating a component after disposal. Prevents overlapping dialog acceptance callbacks.</summary>
     private bool _disposed, _accepting;
+    /// <summary>Retains the value shown when the dialog opened for stale-edit detection.</summary>
     private string? _openedValue;
+    /// <summary>Identifies the field&apos;s display input for its associated label.</summary>
     private readonly string _displayId = $"gx-value-{Guid.NewGuid():N}";
+    /// <summary>Identifies this field&apos;s edit dialog.</summary>
     private readonly string _dialogId = $"gx-value-dialog-{Guid.NewGuid():N}";
+    /// <summary>Gets the field display text, masking passwords and applying the configured format.</summary>
     private string DisplayValue => InputKind == "password" && !string.IsNullOrEmpty(Value) ? "••••••••"
         : EnumType?.IsEnum == true && Enum.TryParse(EnumType, Value, out var parsed) ? parsed.ToString() ?? Value : Value;
     /// <summary>Starts editing a copy of the current value.</summary>
@@ -125,7 +130,7 @@ public partial class GXValueField
 
         if (Value != _openedValue)
         {
-            Error = "The value changed. Cancel and open the editor again.";
+            Error = Properties.Resources.TheValueChangedCancelAndOpenTheEditorAgain;
             return;
         }
         try
@@ -137,17 +142,17 @@ public partial class GXValueField
 
             if (InputKind == "number" && !decimal.TryParse(Draft, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out _))
             {
-                throw new FormatException("Enter a valid number.");
+                throw new FormatException(Properties.Resources.EnterAValidNumber);
             }
 
             if (InputKind == "ip" && !System.Net.IPAddress.TryParse(Draft, out _))
             {
-                throw new FormatException("Enter a valid IP address.");
+                throw new FormatException(Properties.Resources.EnterAValidIPAddress);
             }
 
             if (InputKind == "datetime" && !DateTime.TryParse(Draft, System.Globalization.CultureInfo.InvariantCulture, System.Globalization.DateTimeStyles.None, out _))
             {
-                throw new FormatException("Enter a valid date and time.");
+                throw new FormatException(Properties.Resources.EnterAValidDateAndTime);
             }
 
             Error = Validate?.Invoke(Draft);

@@ -40,22 +40,22 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="MBus Slave Port Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.MBusSlavePortSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Default Baudrate:" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.DefaultBaudrateLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Available Baudrate:" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.AvailableBaudrateLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Address State:" Enabled="CanEditAttribute(4)" EnumType="typeof(Gurux.DLMS.Objects.AddressState)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.AddressStateLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(Gurux.DLMS.Objects.AddressState)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Bus Address:" Enabled="CanEditAttribute(5)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.BusAddressLabel" Enabled="CanEditAttribute(5)"  />
     }
 </div>
 </section>

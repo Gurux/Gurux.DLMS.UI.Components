@@ -38,14 +38,14 @@
 @inherits GXDLMSObjectViewBase<GXDLMSExtendedRegister>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Extended Register Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Value" Enabled="CanEditAttribute(2)" />
-    <GXAttributeField Edit="Edit" Index="3" Part="0" InputKind="scaler" Label="Scaler" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="3" Part="1" Label="Unit" Enabled="CanEditAttribute(3)" EnumType="typeof(Unit)" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Status" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Capture Time" Enabled="CanEditAttribute(5)" />
-    <fieldset><legend>Methods</legend>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.ExtendedRegisterObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Value" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Part="0" InputKind="scaler" Label="@Properties.Resources.Scaler" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="3" Part="1" Label="@Properties.Resources.Unit" Enabled="CanEditAttribute(3)" EnumType="typeof(Unit)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Status" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.CaptureTime2" Enabled="CanEditAttribute(5)" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
     </fieldset>
 </section>
 

@@ -41,28 +41,31 @@
 @inherits GXDLMSObjectViewBase<GXDLMSFunctionControl>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Function control Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.FunctionControlObject" />
 <div class="gx-function-tables">
 <GXTable TItem="FunctionStatusRow" @key="Target" ItemsProvider="StatusItems" ActiveChanged="SelectFunction" Filter="false" Menu="false" ShowAllData="true" Total="false" Save="false" AllowColumnCustomization="false">
-<HeaderContent><GXTh TItem="FunctionStatusRow">Function Name:</GXTh><GXTh TItem="FunctionStatusRow">Status:</GXTh></HeaderContent>
+<HeaderContent><GXTh TItem="FunctionStatusRow">@Properties.Resources.FunctionNameLabel</GXTh><GXTh TItem="FunctionStatusRow">@Properties.Resources.StatusLabel</GXTh></HeaderContent>
 <ItemContent Context="row"><GXTd>@row.Name</GXTd><GXTd>@row.Enabled</GXTd></ItemContent>
 </GXTable>
 <GXTable TItem="GXDLMSObject" @key="FunctionName" ItemsProvider="FunctionItems" Filter="false" Menu="false" ShowAllData="true" Total="false" Save="false" AllowColumnCustomization="false">
-<HeaderContent><GXTh TItem="GXDLMSObject">Object Type:</GXTh><GXTh TItem="GXDLMSObject">Logical Name:</GXTh></HeaderContent>
+<HeaderContent><GXTh TItem="GXDLMSObject">@Properties.Resources.ObjectTypeLabel2</GXTh><GXTh TItem="GXDLMSObject">@Properties.Resources.LogicalNameLabel</GXTh></HeaderContent>
 <ItemContent Context="row"><GXTd>@row.ObjectType</GXTd><GXTd>@row.LogicalName</GXTd></ItemContent>
 </GXTable>
 </div>
-<fieldset><legend>Function commands</legend>
-<GXValueField Label="Function Name:" Value="@FunctionName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3)) { FunctionName = value; } })" Validate="@(value => !string.IsNullOrWhiteSpace(value) && value.All(c => c <= 127) ? null : "A nonempty ASCII function name is required.")" />
-<GXValueField Label="Status:" Value="@FunctionEnabled.ToString()" Enabled="@(CanInvokeMethod(1))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { FunctionEnabled = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
-<GXValueField Label="Objects (class-id,logical-name per line):" Value="@ObjectsText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ObjectsText = value; } })" InputKind="textarea" Validate="@(ValidateObjectReferences)" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SetStatusAsync">Set status...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddAsync">Add function...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveAsync">Remove...</GXButton>
+<fieldset><legend>@Properties.Resources.FunctionCommands</legend>
+<GXValueField Label="@Properties.Resources.FunctionNameLabel" Value="@FunctionName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3)) { FunctionName = value; } })" Validate="@(value => !string.IsNullOrWhiteSpace(value) && value.All(c => c <= 127) ? null : Properties.Resources.ANonemptyASCIIFunctionNameIsRequired)" />
+<GXValueField Label="@Properties.Resources.StatusLabel" Value="@FunctionEnabled.ToString()" Enabled="@(CanInvokeMethod(1))" EnumType="typeof(BooleanChoice)" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { FunctionEnabled = Enum.Parse<BooleanChoice>(value) == BooleanChoice.True; } })" />
+<GXValueField Label="@Properties.Resources.ObjectsClassIdLogicalNamePerLineLabel" Value="@ObjectsText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ObjectsText = value; } })" InputKind="textarea" Validate="@(ValidateObjectReferences)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SetStatusAsync">@Properties.Resources.SetStatus</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddAsync">@Properties.Resources.AddFunction</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveAsync">@Properties.Resources.Remove2</GXButton>
 </fieldset>
 </section>
 
 @code {
+    /// <summary>Runs parameter validation and converts validation exceptions into input error text.</summary>
+    /// <param name="validate">The validation callback whose input exceptions become error text.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? CheckParameter(Action validate)
     {
         try
@@ -72,6 +75,9 @@
         }
         catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
+    /// <summary>Throws an argument exception when a method parameter condition is not satisfied.</summary>
+    /// <param name="valid">Whether the required parameter condition is satisfied.</param>
+    /// <param name="message">The error shown when the required condition is not satisfied.</param>
     private static void RequireParameter(bool valid, string message)
     {
         if (!valid)
@@ -80,40 +86,57 @@
         }
     }
 
+    /// <summary>Checks the list of COSEM class and logical-name references.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateObjectReferences(string text) => CheckParameter(() =>
     {
         var lines = text.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-        RequireParameter(lines.Length > 0, "Select at least one object.");
+        RequireParameter(lines.Length > 0, Properties.Resources.SelectAtLeastOneObject);
         foreach (var line in lines)
         {
             var parts = line.Split(',', StringSplitOptions.TrimEntries);
-            RequireParameter(parts.Length == 2, "Each object requires class-id,logical-name.");
-            RequireParameter(ushort.TryParse(parts[0], out var id) && id != 0 && Enum.IsDefined((ObjectType)id), "Choose a valid COSEM class.");
+            RequireParameter(parts.Length == 2, Properties.Resources.EachObjectRequiresClassIdLogicalName);
+            RequireParameter(ushort.TryParse(parts[0], out var id) && id != 0 && Enum.IsDefined((ObjectType)id), Properties.Resources.ChooseAValidCOSEMClass);
             var logicalName = parts[1].Split('.');
-            RequireParameter(logicalName.Length == 6 && logicalName.All(part => byte.TryParse(part, out _)), "Logical names require six bytes.");
+            RequireParameter(logicalName.Length == 6 && logicalName.All(part => byte.TryParse(part, out _)), Properties.Resources.LogicalNamesRequireSixBytes);
         }
     });
 
+    /// <summary>Represents the Boolean choices accepted by method parameter editors.</summary>
     private enum BooleanChoice
     {
-        False, True
+        /// <summary>Represents the disabled or false method parameter value.</summary>
+        False,
+        /// <summary>Represents the enabled or true method parameter value.</summary>
+        True
     }
+    /// <summary>Carries the function name and activation status for a table row.</summary>
+    /// <param name="Name">The function name displayed by the status row.</param>
+    /// <param name="Enabled">Whether the function is currently active.</param>
     private sealed record FunctionStatusRow(string Name, bool Enabled);
+    /// <summary>Supplies function activation status rows and their total count.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<FunctionStatusRow>> StatusItems(GXItemsProviderRequest request)
     {
         var rows = Target.ActivationStatus.Select(item => new FunctionStatusRow(item.Key, item.Value)).ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<FunctionStatusRow>(rows, rows.Length));
     }
+    /// <summary>Supplies the objects referenced by the selected function.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<GXDLMSObject>> FunctionItems(GXItemsProviderRequest request)
     {
         var rows = Target.FunctionList.FirstOrDefault(item => item.Key == FunctionName).Value?.ToArray() ?? Array.Empty<GXDLMSObject>();
         return ValueTask.FromResult(new ItemsProviderResult<GXDLMSObject>(rows, rows.Length));
     }
+    /// <summary>Selects a function and loads its name and object references into the method inputs.</summary>
+    /// <param name="row">The selected table row and its associated values.</param>
     private void SelectFunction(FunctionStatusRow row)
     {
         FunctionName = row.Name;
         FunctionEnabled = row.Enabled;
-        StateHasChanged();
     }
 
     /// <summary>
@@ -131,14 +154,18 @@
     /// Object definitions entered for the function's object list.
     /// </summary>
     public string ObjectsText { get; set; } = "";
+    /// <summary>Validates and returns the nonempty ASCII function name.</summary>
+    /// <returns>Validates and returns the nonempty ASCII function name.</returns>
     private string NameValue()
     {
         if (string.IsNullOrWhiteSpace(FunctionName) || FunctionName.Any(c => c > 127))
         {
-            throw new ArgumentException("A nonempty ASCII function name is required.");
+            throw new ArgumentException(Properties.Resources.ANonemptyASCIIFunctionNameIsRequired);
         }
         return FunctionName;
     }
+    /// <summary>Parses the method&apos;s object references and creates the corresponding COSEM objects.</summary>
+    /// <returns>The objects referenced by the current pending or confirmed configuration.</returns>
     private List<GXDLMSObject> Objects()
     {
         var result = new List<GXDLMSObject>();
@@ -147,17 +174,17 @@
             var parts = line.Split(',', StringSplitOptions.TrimEntries);
             if (parts.Length != 2)
             {
-                throw new ArgumentException("Each object requires class-id,logical-name.");
+                throw new ArgumentException(Properties.Resources.EachObjectRequiresClassIdLogicalName);
             }
             var type = (ObjectType)ushort.Parse(parts[0], System.Globalization.CultureInfo.InvariantCulture);
             if (!Enum.IsDefined(type) || (int)type == 0)
             {
-                throw new ArgumentException("Select a valid COSEM class.");
+                throw new ArgumentException(Properties.Resources.SelectAValidCOSEMClass);
             }
             var ln = parts[1].Split('.');
             if (ln.Length != 6 || ln.Any(x => !byte.TryParse(x, out _)))
             {
-                throw new ArgumentException("Logical names require six bytes.");
+                throw new ArgumentException(Properties.Resources.LogicalNamesRequireSixBytes);
             }
             var obj = Target.Parent?.FindByLN(type, parts[1]) ?? GXDLMSClient.CreateObject(type);
             obj.LogicalName = parts[1];
@@ -165,7 +192,7 @@
         }
         if (result.Count == 0)
         {
-            throw new ArgumentException("Select at least one object.");
+            throw new ArgumentException(Properties.Resources.SelectAtLeastOneObject);
         }
         return result;
     }

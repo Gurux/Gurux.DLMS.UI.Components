@@ -69,11 +69,17 @@
 @code {
     /// <summary>The object whose class help is registered and displayed.</summary>
     [Parameter, EditorRequired] public GXDLMSObject Target { get; set; } = default!;
-    private static readonly IGXHelpProvider Provider = new GXDLMSObjectHelpProvider();
+    /// <summary>Supplies COSEM help content for the current object.</summary>
+    private static readonly IGXHelpProvider _provider = new GXDLMSObjectHelpProvider();
+    /// <summary>Stores the help topic, version and culture selected for the current object.</summary>
     private GXHelpRequest _request = new(string.Empty);
+    /// <summary>Stores the help content returned by the current article request.</summary>
     private string? _markdown;
+    /// <summary>Stores the most recent validation or loading error shown by the component.</summary>
     private string? _error;
+    /// <summary>Tracks whether the help dialog is open.</summary>
     private bool _visible;
+    /// <summary>Cancels the in-progress help article request.</summary>
     private CancellationTokenSource? _loading;
 
     /// <inheritdoc />
@@ -88,6 +94,8 @@
         }
     }
 
+    /// <summary>Opens the help dialog and loads the article for the current object.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private async Task OpenAsync()
     {
         if (_visible)
@@ -102,7 +110,7 @@
         {
             var help = Services.GetService<GXHelpService>();
             GXHelpContent? content = help == null
-                ? await Provider.GetHelpAsync(_request, loading.Token)
+                ? await _provider.GetHelpAsync(_request, loading.Token)
                 : await help.GetHelpAsync(_request, loading.Token);
             string? markdown = content?.Value;
             if (!loading.IsCancellationRequested)
@@ -134,6 +142,7 @@
         }
     }
 
+    /// <summary>Closes the help dialog and cancels any pending article load.</summary>
     private void Close()
     {
         _visible = false;

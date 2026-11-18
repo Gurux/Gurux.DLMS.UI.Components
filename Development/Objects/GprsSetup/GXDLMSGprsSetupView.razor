@@ -40,57 +40,57 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="GPRS Modem Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.GPRSModemSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="APN:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.APNLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="PIN Code:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.PINCodeLabel" Enabled="CanEditAttribute(3)"  />
     }
-<fieldset class="gx-object-fields"><legend>Default Quality of Service</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.DefaultQualityOfService</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Precedence:" Enabled="CanEditAttribute(4)" Path="0.0" />
-    }
-    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
-    {
-        <GXAttributeField Edit="Edit" Index="4" Label="Delay:" Enabled="CanEditAttribute(4)" Path="0.1" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PrecedenceLabel" Enabled="CanEditAttribute(4)" Path="0.0" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Reliability:" Enabled="CanEditAttribute(4)" Path="0.2" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.DelayLabel" Enabled="CanEditAttribute(4)" Path="0.1" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Peak Throughput:" Enabled="CanEditAttribute(4)" Path="0.3" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ReliabilityLabel" Enabled="CanEditAttribute(4)" Path="0.2" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Mean Throughput:" Enabled="CanEditAttribute(4)" Path="0.4" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PeakThroughputLabel" Enabled="CanEditAttribute(4)" Path="0.3" />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
+    {
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MeanThroughputLabel" Enabled="CanEditAttribute(4)" Path="0.4" />
     }
 </fieldset>
-<fieldset class="gx-object-fields"><legend>Requested Quality of Service</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.RequestedQualityOfService</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Precedence:" Enabled="CanEditAttribute(4)" Path="1.0" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PrecedenceLabel" Enabled="CanEditAttribute(4)" Path="1.0" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Delay:" Enabled="CanEditAttribute(4)" Path="1.1" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.DelayLabel" Enabled="CanEditAttribute(4)" Path="1.1" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Reliability:" Enabled="CanEditAttribute(4)" Path="1.2" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ReliabilityLabel" Enabled="CanEditAttribute(4)" Path="1.2" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Peak Throughput:" Enabled="CanEditAttribute(4)" Path="1.3" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PeakThroughputLabel" Enabled="CanEditAttribute(4)" Path="1.3" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Mean Throughput:" Enabled="CanEditAttribute(4)" Path="1.4" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MeanThroughputLabel" Enabled="CanEditAttribute(4)" Path="1.4" />
     }
 </fieldset>
 </div>

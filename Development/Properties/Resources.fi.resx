@@ -25,4 +25,3373 @@
   <data name="CosemHelpLoadFailed" xml:space="preserve">
     <value>COSEM-objektin ohjetta ei voitu ladata.</value>
   </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Toiminnot</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Lisää...</value>
+  </data>
+  <data name="AddDevice" xml:space="preserve">
+    <value>+ Lisää laite</value>
+  </data>
+  <data name="AddDevice2" xml:space="preserve">
+    <value>Lisää laite</value>
+  </data>
+  <data name="ALogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Looginen nimi edellyttää kuutta tavuarvoa.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attribuutit</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Yhdistä</value>
+  </data>
+  <data name="CorrectTheInvalidFieldsBeforeAccepting" xml:space="preserve">
+    <value>Korjaa virheelliset kentät ennen hyväksymistä.</value>
+  </data>
+  <data name="COSEMObjects" xml:space="preserve">
+    <value>COSEM-objektit</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Tiedot</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="DeviceCommands" xml:space="preserve">
+    <value>Laitekomennot</value>
+  </data>
+  <data name="DeviceGeneralInformation" xml:space="preserve">
+    <value>Laitteen yleiset tiedot</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Laitteet</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>Katkaise yhteys</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Muokkaa...</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Yleiset</value>
+  </data>
+  <data name="InvalidValueForTheSelectedDataType" xml:space="preserve">
+    <value>Valitulle tietotyypille virheellinen arvo.</value>
+  </data>
+  <data name="LoadValues" xml:space="preserve">
+    <value>Lataa arvot</value>
+  </data>
+  <data name="NoDevicesLoaded" xml:space="preserve">
+    <value>Laitteita ei ole ladattu.</value>
+  </data>
+  <data name="NoObjectsLoaded" xml:space="preserve">
+    <value>Objekteja ei ole ladattu.</value>
+  </data>
+  <data name="Objects" xml:space="preserve">
+    <value>Objektit</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Ominaisuudet</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Lue</value>
+  </data>
+  <data name="ReadObject" xml:space="preserve">
+    <value>Lue objekti</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Poista</value>
+  </data>
+  <data name="SaveValuesAs" xml:space="preserve">
+    <value>Tallenna arvot nimellä...</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTen" xml:space="preserve">
+    <value>Skaalauskertoimen on oltava positiivinen kymmenen potenssi.</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTenForExample0011Or100" xml:space="preserve">
+    <value>Skaalauskertoimen on oltava positiivinen kymmenen potenssi (esimerkiksi 0,01, 1 tai 100).</value>
+  </data>
+  <data name="TheValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Arvo on muuttunut. Peruuta ja avaa muokkain uudelleen.</value>
+  </data>
+  <data name="WrongIPAddressFamily" xml:space="preserve">
+    <value>Väärä IP-osoiteperhe.</value>
+  </data>
+  <data name="XMLRootDoesNotMatchTheCOSEMDataType" xml:space="preserve">
+    <value>XML-juurielementti ei vastaa COSEM-tietotyyppiä.</value>
+  </data>
+  <data name="AccessRights" xml:space="preserve">
+    <value>Käyttöoikeudet</value>
+  </data>
+  <data name="AccessSelector" xml:space="preserve">
+    <value>Käyttöoikeusvalitsin</value>
+  </data>
+  <data name="Add2" xml:space="preserve">
+    <value>Lisää</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribuutti</value>
+  </data>
+  <data name="AttributeIndex" xml:space="preserve">
+    <value>Attribuutin indeksi</value>
+  </data>
+  <data name="ChargeReference" xml:space="preserve">
+    <value>Veloitusviite</value>
+  </data>
+  <data name="CreditReference" xml:space="preserve">
+    <value>Luottoviite</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Kuvaus</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Kuvaus:</value>
+  </data>
+  <data name="Edit2" xml:space="preserve">
+    <value>Muokkaa</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbers" xml:space="preserve">
+    <value>Anna looginen nimi, joka koostuu kuudesta luvusta.</value>
+  </data>
+  <data name="EnterAValidDateAndTime" xml:space="preserve">
+    <value>Anna kelvollinen päivämäärä ja kellonaika.</value>
+  </data>
+  <data name="EnterAValidIPAddress" xml:space="preserve">
+    <value>Anna kelvollinen IP-osoite.</value>
+  </data>
+  <data name="EnterAValidNumber" xml:space="preserve">
+    <value>Anna kelvollinen luku.</value>
+  </data>
+  <data name="Hexadecimal" xml:space="preserve">
+    <value>Heksadesimaali</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Indeksi</value>
+  </data>
+  <data name="LogicalName" xml:space="preserve">
+    <value>Looginen nimi</value>
+  </data>
+  <data name="LogicalNameLabel" xml:space="preserve">
+    <value>Looginen nimi:</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Menetelmä</value>
+  </data>
+  <data name="MethodAccess" xml:space="preserve">
+    <value>Menetelmän käyttöoikeus</value>
+  </data>
+  <data name="MethodAccessRights" xml:space="preserve">
+    <value>Menetelmän käyttöoikeudet</value>
+  </data>
+  <data name="MethodIndex" xml:space="preserve">
+    <value>Menetelmän indeksi</value>
+  </data>
+  <data name="MethodResult" xml:space="preserve">
+    <value>Menetelmän tulos</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Nimi</value>
+  </data>
+  <data name="ReadAll" xml:space="preserve">
+    <value>Lue kaikki</value>
+  </data>
+  <data name="ReadAutomaticallyOnObjectSelection" xml:space="preserve">
+    <value>Lue automaattisesti objektia valittaessa</value>
+  </data>
+  <data name="RefreshValues" xml:space="preserve">
+    <value>Päivitä arvot</value>
+  </data>
+  <data name="Static" xml:space="preserve">
+    <value>Staattinen</value>
+  </data>
+  <data name="TheInstalledValueCodecCannotPreserveThisParameterDataType" xml:space="preserve">
+    <value>Asennettu arvokoodekki ei pysty säilyttämään tämän parametrin tietotyyppiä.</value>
+  </data>
+  <data name="TheSelectedObjectChangedBeforeTheActionStarted" xml:space="preserve">
+    <value>Valittu objekti muuttui ennen toiminnon alkamista.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Tyyppi</value>
+  </data>
+  <data name="UIType" xml:space="preserve">
+    <value>Käyttöliittymän tyyppi</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Arvo</value>
+  </data>
+  <data name="ValueChanged" xml:space="preserve">
+    <value>Arvo muuttunut</value>
+  </data>
+  <data name="TokenProportion" xml:space="preserve">
+    <value>Polettien osuus</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Määritykset</value>
+  </data>
+  <data name="CreditReference2" xml:space="preserve">
+    <value>Luottoviite</value>
+  </data>
+  <data name="CreditCharge" xml:space="preserve">
+    <value>Luottoveloitus</value>
+  </data>
+  <data name="TokenGateway" xml:space="preserve">
+    <value>Polettiyhdyskäytävä</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Luotto</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>Veloitus</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbersBetween0And255" xml:space="preserve">
+    <value>Anna looginen nimi, jossa on kuusi lukua väliltä 0–255.</value>
+  </data>
+  <data name="TheSelectedRowNoLongerExists" xml:space="preserve">
+    <value>Valittua riviä ei enää ole.</value>
+  </data>
+  <data name="AccountObject" xml:space="preserve">
+    <value>Tiliobjekti</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>Maksutapa:</value>
+  </data>
+  <data name="StatusLabel" xml:space="preserve">
+    <value>Tila:</value>
+  </data>
+  <data name="CurrentCreditInUseLabel" xml:space="preserve">
+    <value>Käytössä oleva luotto:</value>
+  </data>
+  <data name="CurrentCreditStatusLabel" xml:space="preserve">
+    <value>Nykyisen luoton tila:</value>
+  </data>
+  <data name="AccountActivationTimeLabel" xml:space="preserve">
+    <value>Tilin aktivointiaika:</value>
+  </data>
+  <data name="AccountClosureTimeLabel" xml:space="preserve">
+    <value>Tilin sulkemisaika:</value>
+  </data>
+  <data name="CurrencyNameLabel" xml:space="preserve">
+    <value>Valuutan nimi:</value>
+  </data>
+  <data name="CurrencyScaleLabel" xml:space="preserve">
+    <value>Valuutan skaala:</value>
+  </data>
+  <data name="CurrencyUnitLabel" xml:space="preserve">
+    <value>Valuuttayksikkö:</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivoi</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Nollaa</value>
+  </data>
+  <data name="ActionScheduleObject" xml:space="preserve">
+    <value>Toimintoaikatauluobjekti</value>
+  </data>
+  <data name="ScriptName" xml:space="preserve">
+    <value>Komentosarjan nimi</value>
+  </data>
+  <data name="ScriptSelector" xml:space="preserve">
+    <value>Komentosarjan valitsin</value>
+  </data>
+  <data name="ScriptType" xml:space="preserve">
+    <value>Komentosarjan tyyppi</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Aika</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Päivämäärä</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Suoritusaika</value>
+  </data>
+  <data name="ExecutedScript" xml:space="preserve">
+    <value>Suoritettu komentosarja</value>
+  </data>
+  <data name="ActivityCalendarObject" xml:space="preserve">
+    <value>Toimintakalenteriobjekti</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiivinen</value>
+  </data>
+  <data name="CalendarName" xml:space="preserve">
+    <value>Kalenterin nimi</value>
+  </data>
+  <data name="SeasonProfile" xml:space="preserve">
+    <value>Kausiprofiili</value>
+  </data>
+  <data name="WeekProfile" xml:space="preserve">
+    <value>Viikkoprofiili</value>
+  </data>
+  <data name="DayProfile" xml:space="preserve">
+    <value>Päiväprofiili</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>Passiivinen</value>
+  </data>
+  <data name="ActivatePassiveCalendar" xml:space="preserve">
+    <value>Aktivoi passiivinen kalenteri</value>
+  </data>
+  <data name="DayActions" xml:space="preserve">
+    <value>Päivän toiminnot</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Aloitusaika</value>
+  </data>
+  <data name="Script" xml:space="preserve">
+    <value>Komentosarja</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+    <value>Valitsin</value>
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value>Lisää toiminto...</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Aloitus</value>
+  </data>
+  <data name="WeekName" xml:space="preserve">
+    <value>Viikon nimi</value>
+  </data>
+  <data name="DayID" xml:space="preserve">
+    <value>Päivän tunnus</value>
+  </data>
+  <data name="AdvancedCOSEMXML" xml:space="preserve">
+    <value>Edistynyt COSEM XML</value>
+  </data>
+  <data name="AddDay" xml:space="preserve">
+    <value>Lisää päivä...</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Maanantai</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Tiistai</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Keskiviikko</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Torstai</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Perjantai</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Lauantai</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sunnuntai</value>
+  </data>
+  <data name="EnterAnASCIIProfileName" xml:space="preserve">
+    <value>Anna ASCII-profiilinimi.</value>
+  </data>
+  <data name="EnterSevenDayIDs" xml:space="preserve">
+    <value>Anna seitsemän päivätunnusta.</value>
+  </data>
+  <data name="DayIDsMustBeUnique" xml:space="preserve">
+    <value>Päivätunnusten on oltava yksilöllisiä.</value>
+  </data>
+  <data name="SelectADayFirst" xml:space="preserve">
+    <value>Valitse ensin päivä.</value>
+  </data>
+  <data name="AScriptLogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Komentosarjan looginen nimi vaatii kuusi tavuarvoa.</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Ma</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Ti</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Ke</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Pe</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>La</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Su</value>
+  </data>
+  <data name="DayAction" xml:space="preserve">
+    <value>Päivän toiminto</value>
+  </data>
+  <data name="TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Kohde, käyttöoikeudet tai odottava arvo muuttui. Peruuta ja avaa muokkain uudelleen.</value>
+  </data>
+  <data name="ArbitratorObject" xml:space="preserve">
+    <value>Sovitteluobjekti</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Komentosarjat</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Sallittu</value>
+  </data>
+  <data name="Weightings" xml:space="preserve">
+    <value>Painotukset</value>
+  </data>
+  <data name="MostRecent" xml:space="preserve">
+    <value>Viimeisin</value>
+  </data>
+  <data name="LastOutcome" xml:space="preserve">
+    <value>Viimeisin tulos</value>
+  </data>
+  <data name="Actor0255" xml:space="preserve">
+    <value>Toimija (0–255)</value>
+  </data>
+  <data name="ActionsBinaryBitString" xml:space="preserve">
+    <value>Toiminnot (binääribittijono)</value>
+  </data>
+  <data name="Methods" xml:space="preserve">
+    <value>Metodit</value>
+  </data>
+  <data name="RequestAction" xml:space="preserve">
+    <value>Pyydä toimintoa</value>
+  </data>
+  <data name="EnterTheRequestedActionsAsABinaryBitString" xml:space="preserve">
+    <value>Anna pyydetyt toiminnot binääribittijonona.</value>
+  </data>
+  <data name="EnterABinaryBitString" xml:space="preserve">
+    <value>Anna binääribittijono.</value>
+  </data>
+  <data name="ArrayManagerObject" xml:space="preserve">
+    <value>Taulukonhallintaobjekti</value>
+  </data>
+  <data name="Elements" xml:space="preserve">
+    <value>Alkiot</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>Tunnus</value>
+  </data>
+  <data name="ClassID" xml:space="preserve">
+    <value>Luokkatunnus</value>
+  </data>
+  <data name="LogicalName2" xml:space="preserve">
+    <value>Looginen nimi</value>
+  </data>
+  <data name="AttributeIndex2" xml:space="preserve">
+    <value>Attribuutin indeksi</value>
+  </data>
+  <data name="ArrayID0255" xml:space="preserve">
+    <value>Taulukon tunnus (0–255)</value>
+  </data>
+  <data name="FromIndex165535" xml:space="preserve">
+    <value>Alkuindeksi (1–65535)</value>
+  </data>
+  <data name="ToIndex165535" xml:space="preserve">
+    <value>Loppuindeksi (1–65535)</value>
+  </data>
+  <data name="EntryIndex165535" xml:space="preserve">
+    <value>Merkinnän indeksi (1–65535)</value>
+  </data>
+  <data name="EntryDLMSXML" xml:space="preserve">
+    <value>Merkintä (DLMS XML)</value>
+  </data>
+  <data name="Array" xml:space="preserve">
+    <value>Taulukko</value>
+  </data>
+  <data name="NumberOfEntries" xml:space="preserve">
+    <value>Merkintöjen määrä</value>
+  </data>
+  <data name="EntryRange" xml:space="preserve">
+    <value>Merkintäväli</value>
+  </data>
+  <data name="RetrieveEntries" xml:space="preserve">
+    <value>Hae merkinnät</value>
+  </data>
+  <data name="RemoveEntries" xml:space="preserve">
+    <value>Poista merkinnät</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Merkintä</value>
+  </data>
+  <data name="InsertEntry" xml:space="preserve">
+    <value>Lisää merkintä</value>
+  </data>
+  <data name="UpdateEntry" xml:space="preserve">
+    <value>Päivitä merkintä</value>
+  </data>
+  <data name="CorrectTheInvalidParametersBeforeInvokingTheMethod" xml:space="preserve">
+    <value>Korjaa virheelliset parametrit ennen metodin kutsumista.</value>
+  </data>
+  <data name="FromIndexMustNotExceedToIndex" xml:space="preserve">
+    <value>Alkuindeksi ei saa ylittää loppuindeksiä.</value>
+  </data>
+  <data name="EntryIndicesMustBeBetween1And65535" xml:space="preserve">
+    <value>Merkintöjen indeksien on oltava väliltä 1–65535.</value>
+  </data>
+  <data name="EnterATypedDLMSValue" xml:space="preserve">
+    <value>Anna tyypitetty DLMS-arvo.</value>
+  </data>
+  <data name="EnterAnArrayIDBetween0And255" xml:space="preserve">
+    <value>Anna taulukon tunnus väliltä 0–255.</value>
+  </data>
+  <data name="EnterAnIndexBetween1And65535" xml:space="preserve">
+    <value>Anna indeksi väliltä 1–65535.</value>
+  </data>
+  <data name="AssociationLogicalNameObject" xml:space="preserve">
+    <value>Loogisen nimen assosiaatio-objekti</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>Versio:</value>
+  </data>
+  <data name="ClassIDLabel" xml:space="preserve">
+    <value>Luokkatunnus:</value>
+  </data>
+  <data name="AttributeAccessLabel" xml:space="preserve">
+    <value>Attribuutin käyttöoikeus:</value>
+  </data>
+  <data name="MethodAccessLabel" xml:space="preserve">
+    <value>Metodin käyttöoikeus:</value>
+  </data>
+  <data name="ChooseAValidCOSEMClass" xml:space="preserve">
+    <value>Valitse kelvollinen COSEM-luokka.</value>
+  </data>
+  <data name="LogicalNamesRequireSixBytes" xml:space="preserve">
+    <value>Loogiset nimet vaativat kuusi tavua.</value>
+  </data>
+  <data name="VersionMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Version on oltava nollan ja 255:n välillä.</value>
+  </data>
+  <data name="AttributeAccessIndexMaskLabel" xml:space="preserve">
+    <value>Attribuutin käyttöoikeus (indeksi:maski):</value>
+  </data>
+  <data name="MethodAccessIndexMaskLabel" xml:space="preserve">
+    <value>Metodin käyttöoikeus (indeksi:maski):</value>
+  </data>
+  <data name="ClientSAPLabel" xml:space="preserve">
+    <value>Asiakkaan SAP:</value>
+  </data>
+  <data name="ServerSAPLabel" xml:space="preserve">
+    <value>Palvelimen SAP:</value>
+  </data>
+  <data name="SecretLabel" xml:space="preserve">
+    <value>Salaisuus:</value>
+  </data>
+  <data name="AssociationStatusLabel" xml:space="preserve">
+    <value>Assosiaation tila:</value>
+  </data>
+  <data name="SecuritySetupLabel" xml:space="preserve">
+    <value>Suojausasetukset:</value>
+  </data>
+  <data name="NewHighAuthenticationSecretHexLabel" xml:space="preserve">
+    <value>Uusi korkean tason todennussalaisuus (hex):</value>
+  </data>
+  <data name="ANewSecretIsRequired" xml:space="preserve">
+    <value>Uusi salaisuus vaaditaan.</value>
+  </data>
+  <data name="XDLMSContextInfo" xml:space="preserve">
+    <value>xDLMS-kontekstitiedot</value>
+  </data>
+  <data name="ConformanceLabel" xml:space="preserve">
+    <value>Vaatimustenmukaisuus:</value>
+  </data>
+  <data name="MaxReceivePDUSizeLabel" xml:space="preserve">
+    <value>Vastaanotettavan PDU:n enimmäiskoko:</value>
+  </data>
+  <data name="MaxSendPDUSizeLabel" xml:space="preserve">
+    <value>Lähetettävän PDU:n enimmäiskoko:</value>
+  </data>
+  <data name="DLMSVersionNumberLabel" xml:space="preserve">
+    <value>DLMS-versionumero:</value>
+  </data>
+  <data name="QualityOfServiceLabel" xml:space="preserve">
+    <value>Palvelun laatu:</value>
+  </data>
+  <data name="DedicatedKeyLabel" xml:space="preserve">
+    <value>Erillinen avain:</value>
+  </data>
+  <data name="ApplicationContextName" xml:space="preserve">
+    <value>Sovelluskontekstin nimi</value>
+  </data>
+  <data name="RegistrationAuthorityLabel" xml:space="preserve">
+    <value>Rekisteröintiviranomainen:</value>
+  </data>
+  <data name="JointISOCTTLabel" xml:space="preserve">
+    <value>Yhteinen ISO CTT:</value>
+  </data>
+  <data name="CountryLabel" xml:space="preserve">
+    <value>Maa:</value>
+  </data>
+  <data name="CountryNameLabel" xml:space="preserve">
+    <value>Maan nimi:</value>
+  </data>
+  <data name="IdentifiedOrganizationLabel" xml:space="preserve">
+    <value>Tunnistettu organisaatio:</value>
+  </data>
+  <data name="DLMSUALabel" xml:space="preserve">
+    <value>DLMS UA:</value>
+  </data>
+  <data name="ApplicationContextLabel" xml:space="preserve">
+    <value>Sovelluskonteksti:</value>
+  </data>
+  <data name="ContextIDLabel" xml:space="preserve">
+    <value>Kontekstin tunnus:</value>
+  </data>
+  <data name="AuthenticationMechanismName" xml:space="preserve">
+    <value>Todennusmekanismin nimi</value>
+  </data>
+  <data name="AuthenticationNameLabel" xml:space="preserve">
+    <value>Todennuksen nimi:</value>
+  </data>
+  <data name="MechanismIDLabel" xml:space="preserve">
+    <value>Mekanismin tunnus:</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Käyttäjäluettelo</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Käyttäjät</value>
+  </data>
+  <data name="IDLabel" xml:space="preserve">
+    <value>Tunnus:</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>Nykyinen käyttäjä</value>
+  </data>
+  <data name="UserIDMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Käyttäjätunnuksen on oltava nollan ja 255:n välillä.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Nimi:</value>
+  </data>
+  <data name="AUserNameIsRequired" xml:space="preserve">
+    <value>Käyttäjänimi vaaditaan.</value>
+  </data>
+  <data name="AssociationObjects" xml:space="preserve">
+    <value>Assosiaatio-objektit</value>
+  </data>
+  <data name="RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied" xml:space="preserve">
+    <value>Oikeusmaskit noudattavat tätä assosiaatioversiota. Määrittämättömät oikeudet evätään.</value>
+  </data>
+  <data name="Remove2" xml:space="preserve">
+    <value>Poista...</value>
+  </data>
+  <data name="AssociatedPartnersID" xml:space="preserve">
+    <value>Assosioitujen osapuolten tunnus</value>
+  </data>
+  <data name="AuthenticationSecret" xml:space="preserve">
+    <value>Todennussalaisuus</value>
+  </data>
+  <data name="UpdateHighPassword" xml:space="preserve">
+    <value>Päivitä korkean tason salasana</value>
+  </data>
+  <data name="ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup" xml:space="preserve">
+    <value>Matalan tason todennuksessa muokkaa salaisuutta ja kirjoita attribuutti 7. GMAC-avaimet käyttävät suojausasetuksia.</value>
+  </data>
+  <data name="LNSettings" xml:space="preserve">
+    <value>LN-asetukset</value>
+  </data>
+  <data name="SelectAValidCOSEMClass" xml:space="preserve">
+    <value>Valitse kelvollinen COSEM-luokka.</value>
+  </data>
+  <data name="AttributeAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Tämä assosiaatioversio ei tue attribuutin käyttöoikeusmaskia.</value>
+  </data>
+  <data name="MethodAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Tämä assosiaatioversio ei tue metodin käyttöoikeusmaskia.</value>
+  </data>
+  <data name="RightsRequireAValidIndexMaskPair" xml:space="preserve">
+    <value>Oikeudet vaativat kelvollisen indeksi:maski-parin.</value>
+  </data>
+  <data name="EachAccessRightIndexMayAppearOnlyOnce" xml:space="preserve">
+    <value>Kukin käyttöoikeusindeksi saa esiintyä vain kerran.</value>
+  </data>
+  <data name="ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms" xml:space="preserve">
+    <value>Tämä metodi vaatii korkean tason todennuksen; käytä muissa mekanismeissa attribuutin kirjoitusta tai suojausasetuksia.</value>
+  </data>
+  <data name="AssociationShortNameObject" xml:space="preserve">
+    <value>Lyhyen nimen assosiaatio-objekti</value>
+  </data>
+  <data name="SecretHexLabel" xml:space="preserve">
+    <value>Salaisuus (hex):</value>
+  </data>
+  <data name="ANonemptySecretIsRequired" xml:space="preserve">
+    <value>Salaisuus ei saa olla tyhjä.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Päivitä</value>
+  </data>
+  <data name="AssociationObject" xml:space="preserve">
+    <value>Assosiaatio-objekti</value>
+  </data>
+  <data name="RemoveTheSelectedAssociationObjectAndItsAccessRights" xml:space="preserve">
+    <value>Poistetaanko valittu assosiaatio-objekti ja sen käyttöoikeudet?</value>
+  </data>
+  <data name="BaseNameLabel" xml:space="preserve">
+    <value>Perusnimi:</value>
+  </data>
+  <data name="AttributeAccesss" xml:space="preserve">
+    <value>Attribuutin käyttöoikeus</value>
+  </data>
+  <data name="MethodAccess2" xml:space="preserve">
+    <value>Metodin käyttöoikeus</value>
+  </data>
+  <data name="AttributeAccess" xml:space="preserve">
+    <value>Attribuutin käyttöoikeus</value>
+  </data>
+  <data name="AttributeIndexLabel" xml:space="preserve">
+    <value>Attribuutin indeksi:</value>
+  </data>
+  <data name="AccessModeLabel" xml:space="preserve">
+    <value>Käyttötila:</value>
+  </data>
+  <data name="MethodIndexLabel" xml:space="preserve">
+    <value>Metodin indeksi:</value>
+  </data>
+  <data name="CorrectTheInvalidValues" xml:space="preserve">
+    <value>Korjaa virheelliset arvot.</value>
+  </data>
+  <data name="TheAssociationListChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Assosiaatioluettelo muuttui. Peruuta ja avaa muokkain uudelleen.</value>
+  </data>
+  <data name="TheSelectedObjectChangedOpenTheEditorAgain" xml:space="preserve">
+    <value>Valittu objekti muuttui. Avaa muokkain uudelleen.</value>
+  </data>
+  <data name="EachObjectMustHaveAUniqueBaseName" xml:space="preserve">
+    <value>Jokaisella objektilla on oltava yksilöllinen perusnimi.</value>
+  </data>
+  <data name="ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights" xml:space="preserve">
+    <value>Perusnimen muuttaminen vaatii myös oikeuden päivittää käyttöoikeudet.</value>
+  </data>
+  <data name="AutoAnswerObject" xml:space="preserve">
+    <value>Automaattivastausobjekti</value>
+  </data>
+  <data name="ModeLabel" xml:space="preserve">
+    <value>Tila:</value>
+  </data>
+  <data name="ListeningWindowLabel" xml:space="preserve">
+    <value>Kuunteluikkuna:</value>
+  </data>
+  <data name="StartTimeLabel" xml:space="preserve">
+    <value>Aloitusaika:</value>
+  </data>
+  <data name="EndTimeLabel" xml:space="preserve">
+    <value>Lopetusaika:</value>
+  </data>
+  <data name="NumberOfCallsLabel" xml:space="preserve">
+    <value>Puhelujen määrä:</value>
+  </data>
+  <data name="RingCountInWindowLabel" xml:space="preserve">
+    <value>Soittojen määrä ikkunassa:</value>
+  </data>
+  <data name="RingCountOutOfWindowLabel" xml:space="preserve">
+    <value>Soittojen määrä ikkunan ulkopuolella:</value>
+  </data>
+  <data name="AllowedCallers" xml:space="preserve">
+    <value>Sallitut soittajat</value>
+  </data>
+  <data name="CallerIdentity" xml:space="preserve">
+    <value>Soittajan tunniste</value>
+  </data>
+  <data name="CallType" xml:space="preserve">
+    <value>Puhelun tyyppi</value>
+  </data>
+  <data name="AutoConnectObject" xml:space="preserve">
+    <value>Automaattiyhteysobjekti</value>
+  </data>
+  <data name="RepetitionsLabel" xml:space="preserve">
+    <value>Toistot:</value>
+  </data>
+  <data name="RepetitionDelayLabel" xml:space="preserve">
+    <value>Toistoviive:</value>
+  </data>
+  <data name="CallingWindowLabel" xml:space="preserve">
+    <value>Soittoikkuna:</value>
+  </data>
+  <data name="DestinationLabel" xml:space="preserve">
+    <value>Kohde:</value>
+  </data>
+  <data name="ChargeObject" xml:space="preserve">
+    <value>Veloitusobjekti</value>
+  </data>
+  <data name="TotalAmountPaid" xml:space="preserve">
+    <value>Maksettu yhteensä</value>
+  </data>
+  <data name="ChargeType" xml:space="preserve">
+    <value>Veloitustyyppi</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Prioriteetti</value>
+  </data>
+  <data name="UnitChargeActivationTime" xml:space="preserve">
+    <value>Yksikköveloituksen aktivointiaika</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Jakso</value>
+  </data>
+  <data name="ChargeConfiguration" xml:space="preserve">
+    <value>Veloitusasetukset</value>
+  </data>
+  <data name="LastCollectionTime" xml:space="preserve">
+    <value>Viimeisin perintäaika</value>
+  </data>
+  <data name="LastCollectionAmount" xml:space="preserve">
+    <value>Viimeisin peritty määrä</value>
+  </data>
+  <data name="TotalAmountRemaining" xml:space="preserve">
+    <value>Jäljellä oleva kokonaismäärä</value>
+  </data>
+  <data name="Proportion" xml:space="preserve">
+    <value>Osuus</value>
+  </data>
+  <data name="UnitChargeActive" xml:space="preserve">
+    <value>Aktiivinen yksikköveloitus</value>
+  </data>
+  <data name="CommodityScale" xml:space="preserve">
+    <value>Hyödykkeen skaala</value>
+  </data>
+  <data name="PriceScale" xml:space="preserve">
+    <value>Hintaskaala</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>Objektityyppi</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Kohde</value>
+  </data>
+  <data name="ChargeTables" xml:space="preserve">
+    <value>Veloitustaulukot</value>
+  </data>
+  <data name="ChargePerUnit" xml:space="preserve">
+    <value>Yksikköveloitus</value>
+  </data>
+  <data name="ThisActionIsNotAvailable" xml:space="preserve">
+    <value>Tämä toiminto ei ole käytettävissä.</value>
+  </data>
+  <data name="UnitChargePassive" xml:space="preserve">
+    <value>Passiivinen yksikköveloitus</value>
+  </data>
+  <data name="ChargePerUnitScalingType" xml:space="preserve">
+    <value>Yksikköveloituksen skaalaustyyppi</value>
+  </data>
+  <data name="CommodityReferenceType" xml:space="preserve">
+    <value>Hyödykeviitteen tyyppi</value>
+  </data>
+  <data name="Collect" xml:space="preserve">
+    <value>Peri</value>
+  </data>
+  <data name="UpdateTotal" xml:space="preserve">
+    <value>Päivitä kokonaismäärä...</value>
+  </data>
+  <data name="SetTotal" xml:space="preserve">
+    <value>Aseta kokonaismäärä...</value>
+  </data>
+  <data name="ClockObject" xml:space="preserve">
+    <value>Kello-objekti</value>
+  </data>
+  <data name="TimeLabel" xml:space="preserve">
+    <value>Aika:</value>
+  </data>
+  <data name="UseTimeZoneLabel" xml:space="preserve">
+    <value>Käytä aikavyöhykettä:</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>Aikavyöhyke:</value>
+  </data>
+  <data name="BeginLabel" xml:space="preserve">
+    <value>Alku:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>Loppu:</value>
+  </data>
+  <data name="DeviationLabel" xml:space="preserve">
+    <value>Poikkeama:</value>
+  </data>
+  <data name="EnabledLabel" xml:space="preserve">
+    <value>Käytössä:</value>
+  </data>
+  <data name="ClockBaseLabel" xml:space="preserve">
+    <value>Kellon perusta:</value>
+  </data>
+  <data name="Adjustments" xml:space="preserve">
+    <value>Säädöt</value>
+  </data>
+  <data name="PresetTimeLabel" xml:space="preserve">
+    <value>Esiasetettu aika:</value>
+  </data>
+  <data name="ValidityStartLabel" xml:space="preserve">
+    <value>Voimassaolon alku:</value>
+  </data>
+  <data name="ValidityEndLabel" xml:space="preserve">
+    <value>Voimassaolon loppu:</value>
+  </data>
+  <data name="ShiftSecondsLabel" xml:space="preserve">
+    <value>Siirto sekunteina:</value>
+  </data>
+  <data name="CurrentTime" xml:space="preserve">
+    <value>Nykyinen aika</value>
+  </data>
+  <data name="CurrentTimeZone" xml:space="preserve">
+    <value>Nykyinen aikavyöhyke</value>
+  </data>
+  <data name="DaylightSavings" xml:space="preserve">
+    <value>Kesäaika</value>
+  </data>
+  <data name="AdjustTo" xml:space="preserve">
+    <value>Säädä kohteeseen</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>Neljännestunti</value>
+  </data>
+  <data name="MeasuringPeriod" xml:space="preserve">
+    <value>Mittausjakso</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minuutti</value>
+  </data>
+  <data name="PresetTime" xml:space="preserve">
+    <value>Esiasetettu aika</value>
+  </data>
+  <data name="PresetAdjustingTime" xml:space="preserve">
+    <value>Esiaseta säätöaika</value>
+  </data>
+  <data name="PresetAdjustingTime2" xml:space="preserve">
+    <value>Esiaseta säätöaika...</value>
+  </data>
+  <data name="ShiftTime" xml:space="preserve">
+    <value>Siirrä aikaa...</value>
+  </data>
+  <data name="ShiftSecondsMustBeBetween900And900" xml:space="preserve">
+    <value>Siirron on oltava väliltä -900–900 sekuntia.</value>
+  </data>
+  <data name="TheValidityStartMustNotFollowTheValidityEnd" xml:space="preserve">
+    <value>Voimassaolon alku ei saa olla lopun jälkeen.</value>
+  </data>
+  <data name="CoAPDiagnosticObject" xml:space="preserve">
+    <value>CoAP-diagnostiikkaobjekti</value>
+  </data>
+  <data name="TransmittedMessagesLabel" xml:space="preserve">
+    <value>Lähetetyt viestit:</value>
+  </data>
+  <data name="ReceivedMessagesLabel" xml:space="preserve">
+    <value>Vastaanotetut viestit:</value>
+  </data>
+  <data name="RetransmittedMessagesLabel" xml:space="preserve">
+    <value>Uudelleenlähetetyt viestit:</value>
+  </data>
+  <data name="TransmittedResetsLabel" xml:space="preserve">
+    <value>Lähetetyt nollaukset:</value>
+  </data>
+  <data name="ReceivedResetsLabel" xml:space="preserve">
+    <value>Vastaanotetut nollaukset:</value>
+  </data>
+  <data name="TransmittedAcknowledgementsLabel" xml:space="preserve">
+    <value>Lähetetyt kuittaukset:</value>
+  </data>
+  <data name="ReceivedAcknowledgementsLabel" xml:space="preserve">
+    <value>Vastaanotetut kuittaukset:</value>
+  </data>
+  <data name="DroppedMessagesLabel" xml:space="preserve">
+    <value>Hylätyt viestit:</value>
+  </data>
+  <data name="NonPiggybackedResponsesLabel" xml:space="preserve">
+    <value>Erilliset vastaukset:</value>
+  </data>
+  <data name="MaximumRetransmissionsExceededLabel" xml:space="preserve">
+    <value>Uudelleenlähetysten enimmäismäärän ylitykset:</value>
+  </data>
+  <data name="ReceivedRequestsLabel" xml:space="preserve">
+    <value>Vastaanotetut pyynnöt:</value>
+  </data>
+  <data name="TransmittedRequestsLabel" xml:space="preserve">
+    <value>Lähetetyt pyynnöt:</value>
+  </data>
+  <data name="ReceivedResponsesLabel" xml:space="preserve">
+    <value>Vastaanotetut vastaukset:</value>
+  </data>
+  <data name="TransmittedResponsesLabel" xml:space="preserve">
+    <value>Lähetetyt vastaukset:</value>
+  </data>
+  <data name="TransmittedClientErrorsLabel" xml:space="preserve">
+    <value>Lähetetyt asiakasvirheet:</value>
+  </data>
+  <data name="ReceivedClientErrorsLabel" xml:space="preserve">
+    <value>Vastaanotetut asiakasvirheet:</value>
+  </data>
+  <data name="TransmittedServerErrorsLabel" xml:space="preserve">
+    <value>Lähetetyt palvelinvirheet:</value>
+  </data>
+  <data name="ReceivedServerErrorsLabel" xml:space="preserve">
+    <value>Vastaanotetut palvelinvirheet:</value>
+  </data>
+  <data name="TransfersStartedLabel" xml:space="preserve">
+    <value>Aloitetut siirrot:</value>
+  </data>
+  <data name="TransfersCompletedLabel" xml:space="preserve">
+    <value>Valmistuneet siirrot:</value>
+  </data>
+  <data name="TransfersTimedOutLabel" xml:space="preserve">
+    <value>Aikakatkaistut siirrot:</value>
+  </data>
+  <data name="AttributeIDLabel" xml:space="preserve">
+    <value>Attribuutin tunnus:</value>
+  </data>
+  <data name="CaptureTimeLabel" xml:space="preserve">
+    <value>Tallennusaika:</value>
+  </data>
+  <data name="MessagesCounter" xml:space="preserve">
+    <value>Viestilaskuri</value>
+  </data>
+  <data name="RequestAndResponseCounter" xml:space="preserve">
+    <value>Pyyntö- ja vastauslaskuri</value>
+  </data>
+  <data name="BlockWiseTransferCounter" xml:space="preserve">
+    <value>Lohkosiirtolaskuri</value>
+  </data>
+  <data name="CaptureTime" xml:space="preserve">
+    <value>Tallennusaika</value>
+  </data>
+  <data name="ResetCounters" xml:space="preserve">
+    <value>Nollaa laskurit</value>
+  </data>
+  <data name="CoAPSetupObject" xml:space="preserve">
+    <value>CoAP-asetusobjekti</value>
+  </data>
+  <data name="UDPReferenceLabel" xml:space="preserve">
+    <value>UDP-viite:</value>
+  </data>
+  <data name="CoAPURIPathLabel" xml:space="preserve">
+    <value>CoAP URI -polku:</value>
+  </data>
+  <data name="TransportModeLabel" xml:space="preserve">
+    <value>Siirtotila:</value>
+  </data>
+  <data name="WrapperVersionLabel" xml:space="preserve">
+    <value>Kääreversio:</value>
+  </data>
+  <data name="TokenLengthLabel" xml:space="preserve">
+    <value>Poletin pituus:</value>
+  </data>
+  <data name="ACKTimeoutMsLabel" xml:space="preserve">
+    <value>ACK-aikakatkaisu (ms):</value>
+  </data>
+  <data name="ACKRandomFactorLabel" xml:space="preserve">
+    <value>ACK-satunnaiskerroin:</value>
+  </data>
+  <data name="MaximumRetransmissionsLabel" xml:space="preserve">
+    <value>Uudelleenlähetysten enimmäismäärä:</value>
+  </data>
+  <data name="NSTARTLabel" xml:space="preserve">
+    <value>NSTART:</value>
+  </data>
+  <data name="DelayedACKTimeoutMsLabel" xml:space="preserve">
+    <value>Viivästetyn ACK:n aikakatkaisu (ms):</value>
+  </data>
+  <data name="ExponentialBackOffLabel" xml:space="preserve">
+    <value>Eksponentiaalinen odotus:</value>
+  </data>
+  <data name="ProbingRateLabel" xml:space="preserve">
+    <value>Tunnustelunopeus:</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Siirto</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Lähetys</value>
+  </data>
+  <data name="CommunicationPortProtectionObject" xml:space="preserve">
+    <value>Tietoliikenneportin suojausobjekti</value>
+  </data>
+  <data name="ProtectionModeLabel" xml:space="preserve">
+    <value>Suojaustila:</value>
+  </data>
+  <data name="AllowedFailedAttemptsLabel" xml:space="preserve">
+    <value>Sallitut epäonnistuneet yritykset:</value>
+  </data>
+  <data name="InitialLockoutTimeLabel" xml:space="preserve">
+    <value>Alkuperäinen lukitusaika:</value>
+  </data>
+  <data name="SteepnessFactorLabel" xml:space="preserve">
+    <value>Jyrkkyyskerroin:</value>
+  </data>
+  <data name="MaxLockoutTimeLabel" xml:space="preserve">
+    <value>Lukituksen enimmäisaika:</value>
+  </data>
+  <data name="PortLabel" xml:space="preserve">
+    <value>Portti:</value>
+  </data>
+  <data name="ProtectionStatusLabel" xml:space="preserve">
+    <value>Suojauksen tila:</value>
+  </data>
+  <data name="FailedAttemptsLabel" xml:space="preserve">
+    <value>Epäonnistuneet yritykset:</value>
+  </data>
+  <data name="CumulativeFailedAttemptsLabel" xml:space="preserve">
+    <value>Epäonnistuneiden yritysten kokonaismäärä:</value>
+  </data>
+  <data name="ResetProtection" xml:space="preserve">
+    <value>Nollaa suojaus</value>
+  </data>
+  <data name="CompactData" xml:space="preserve">
+    <value>Tiivistetty tieto</value>
+  </data>
+  <data name="Buffer" xml:space="preserve">
+    <value>Puskuri</value>
+  </data>
+  <data name="TemplateID" xml:space="preserve">
+    <value>Mallin tunnus</value>
+  </data>
+  <data name="TemplateDescription" xml:space="preserve">
+    <value>Mallin kuvaus</value>
+  </data>
+  <data name="CaptureMethod" xml:space="preserve">
+    <value>Tallennusmenetelmä</value>
+  </data>
+  <data name="CaptureObjects" xml:space="preserve">
+    <value>Tallennettavat objektit</value>
+  </data>
+  <data name="ObjectType2" xml:space="preserve">
+    <value>Objektityyppi</value>
+  </data>
+  <data name="DataIndex" xml:space="preserve">
+    <value>Tietoindeksi</value>
+  </data>
+  <data name="Capture" xml:space="preserve">
+    <value>Tallenna</value>
+  </data>
+  <data name="CreditObject" xml:space="preserve">
+    <value>Luotto-objekti</value>
+  </data>
+  <data name="CurrentCreditAmount" xml:space="preserve">
+    <value>Nykyinen luottomäärä</value>
+  </data>
+  <data name="WarningThreshold" xml:space="preserve">
+    <value>Varoitusraja</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>Raja</value>
+  </data>
+  <data name="CreditConfiguration" xml:space="preserve">
+    <value>Luottoasetukset</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Tila</value>
+  </data>
+  <data name="PresetCreditAmount" xml:space="preserve">
+    <value>Esiasetettu luottomäärä</value>
+  </data>
+  <data name="CreditAvailableThreshold" xml:space="preserve">
+    <value>Saatavilla olevan luoton raja</value>
+  </data>
+  <data name="AmountInt32" xml:space="preserve">
+    <value>Määrä (Int32)</value>
+  </data>
+  <data name="RequestedStatus" xml:space="preserve">
+    <value>Pyydetty tila</value>
+  </data>
+  <data name="UpdateAmount" xml:space="preserve">
+    <value>Päivitä määrä</value>
+  </data>
+  <data name="SetAmount" xml:space="preserve">
+    <value>Aseta määrä</value>
+  </data>
+  <data name="InvokeCredit" xml:space="preserve">
+    <value>Ota luotto käyttöön</value>
+  </data>
+  <data name="SelectAValidCreditStatus" xml:space="preserve">
+    <value>Valitse kelvollinen luottotila.</value>
+  </data>
+  <data name="DataObject" xml:space="preserve">
+    <value>Tieto-objekti</value>
+  </data>
+  <data name="DataObjectUnixTime" xml:space="preserve">
+    <value>Tieto-objekti — Unix-aika</value>
+  </data>
+  <data name="TimeZoneLabel2" xml:space="preserve">
+    <value>Aikavyöhyke:</value>
+  </data>
+  <data name="LocalTimeLabel" xml:space="preserve">
+    <value>Paikallinen aika:</value>
+  </data>
+  <data name="WriteCurrentTime" xml:space="preserve">
+    <value>Kirjoita nykyinen aika</value>
+  </data>
+  <data name="ImmediateWritingIsNotAvailableForThisConnection" xml:space="preserve">
+    <value>Välitön kirjoitus ei ole käytettävissä tässä yhteydessä.</value>
+  </data>
+  <data name="CurrentTimeWritten" xml:space="preserve">
+    <value>Nykyinen aika kirjoitettu.</value>
+  </data>
+  <data name="EnterAValidLocalDateAndTime" xml:space="preserve">
+    <value>Anna kelvollinen paikallinen päivämäärä ja aika.</value>
+  </data>
+  <data name="TheDateIsOutsideTheMeterSSupportedRange" xml:space="preserve">
+    <value>Päivämäärä on mittarin tukeman alueen ulkopuolella.</value>
+  </data>
+  <data name="DataProtectionObject" xml:space="preserve">
+    <value>Tietosuojaobjekti</value>
+  </data>
+  <data name="ProtectionBufferLabel" xml:space="preserve">
+    <value>Suojauspuskuri:</value>
+  </data>
+  <data name="RequiredProtectionLabel" xml:space="preserve">
+    <value>Vaadittu suojaus:</value>
+  </data>
+  <data name="ObjectTypeLabel" xml:space="preserve">
+    <value>Objektityyppi:</value>
+  </data>
+  <data name="DataIndexLabel" xml:space="preserve">
+    <value>Tietoindeksi:</value>
+  </data>
+  <data name="GetParameters" xml:space="preserve">
+    <value>Hae parametrit</value>
+  </data>
+  <data name="ProtectionType" xml:space="preserve">
+    <value>Suojaustyyppi</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>Tapahtumatunnus</value>
+  </data>
+  <data name="OriginatorSystemTitle" xml:space="preserve">
+    <value>Lähettäjän järjestelmätunnus</value>
+  </data>
+  <data name="RecipientSystemTitle" xml:space="preserve">
+    <value>Vastaanottajan järjestelmätunnus</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>Muut tiedot</value>
+  </data>
+  <data name="KeyInfo" xml:space="preserve">
+    <value>Avaintiedot</value>
+  </data>
+  <data name="SetParameters" xml:space="preserve">
+    <value>Aseta parametrit</value>
+  </data>
+  <data name="ProtectionLabel" xml:space="preserve">
+    <value>Suojaus:</value>
+  </data>
+  <data name="ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations" xml:space="preserve">
+    <value>Suojatut haku-, asetus- ja metodiviestit eivät ole käytettävissä Gurux.DLMS-versiossa 9.0.2609.2201. Objektirajapinta ei toteuta näitä toimintoja.</value>
+  </data>
+  <data name="GetProtectedAttributes" xml:space="preserve">
+    <value>Hae suojatut attribuutit</value>
+  </data>
+  <data name="SetProtectedAttributes" xml:space="preserve">
+    <value>Aseta suojatut attribuutit</value>
+  </data>
+  <data name="InvokeProtectedMethod" xml:space="preserve">
+    <value>Kutsu suojattua metodia</value>
+  </data>
+  <data name="DemandRegisterObject" xml:space="preserve">
+    <value>Kysyntärekisteriobjekti</value>
+  </data>
+  <data name="CurrentAverage" xml:space="preserve">
+    <value>Nykyinen keskiarvo</value>
+  </data>
+  <data name="LastAverage" xml:space="preserve">
+    <value>Edellinen keskiarvo</value>
+  </data>
+  <data name="Scaler" xml:space="preserve">
+    <value>Skaalauskerroin</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Yksikkö</value>
+  </data>
+  <data name="CaptureTime2" xml:space="preserve">
+    <value>Tallennusaika</value>
+  </data>
+  <data name="CurrentStartTime" xml:space="preserve">
+    <value>Nykyinen aloitusaika</value>
+  </data>
+  <data name="NumberOfPeriods" xml:space="preserve">
+    <value>Jaksojen määrä</value>
+  </data>
+  <data name="NextPeriod" xml:space="preserve">
+    <value>Seuraava jakso</value>
+  </data>
+  <data name="DisconnectControlObject" xml:space="preserve">
+    <value>Katkaisuohjausobjekti</value>
+  </data>
+  <data name="OutputStateLabel" xml:space="preserve">
+    <value>Lähdön tila:</value>
+  </data>
+  <data name="ControlStateLabel" xml:space="preserve">
+    <value>Ohjauksen tila:</value>
+  </data>
+  <data name="ControlModeLabel" xml:space="preserve">
+    <value>Ohjaustila:</value>
+  </data>
+  <data name="Reconnect" xml:space="preserve">
+    <value>Kytke uudelleen</value>
+  </data>
+  <data name="ExtendedRegisterObject" xml:space="preserve">
+    <value>Laajennettu rekisteriobjekti</value>
+  </data>
+  <data name="FunctionControlObject" xml:space="preserve">
+    <value>Toiminnonohjausobjekti</value>
+  </data>
+  <data name="FunctionNameLabel" xml:space="preserve">
+    <value>Toiminnon nimi:</value>
+  </data>
+  <data name="ANonemptyASCIIFunctionNameIsRequired" xml:space="preserve">
+    <value>Toiminnon ASCII-nimi ei saa olla tyhjä.</value>
+  </data>
+  <data name="ObjectsClassIdLogicalNamePerLineLabel" xml:space="preserve">
+    <value>Objektit (luokkatunnus,looginen nimi riveittäin):</value>
+  </data>
+  <data name="ObjectTypeLabel2" xml:space="preserve">
+    <value>Objektityyppi:</value>
+  </data>
+  <data name="FunctionCommands" xml:space="preserve">
+    <value>Toimintokomennot</value>
+  </data>
+  <data name="SetStatus" xml:space="preserve">
+    <value>Aseta tila...</value>
+  </data>
+  <data name="AddFunction" xml:space="preserve">
+    <value>Lisää toiminto...</value>
+  </data>
+  <data name="SelectAtLeastOneObject" xml:space="preserve">
+    <value>Valitse vähintään yksi objekti.</value>
+  </data>
+  <data name="EachObjectRequiresClassIdLogicalName" xml:space="preserve">
+    <value>Jokainen objekti vaatii luokkatunnuksen ja loogisen nimen pilkulla erotettuna.</value>
+  </data>
+  <data name="G3PLC6LoWPANAdaptationLayerSetupObject" xml:space="preserve">
+    <value>G3-PLC 6LoWPAN -sovituskerroksen asetusobjekti</value>
+  </data>
+  <data name="MaxHopsLabel" xml:space="preserve">
+    <value>Hyppyjen enimmäismäärä:</value>
+  </data>
+  <data name="WeakLQIValueLabel" xml:space="preserve">
+    <value>Heikko LQI-arvo:</value>
+  </data>
+  <data name="SecurityLevelLabel" xml:space="preserve">
+    <value>Suojaustaso:</value>
+  </data>
+  <data name="BroadcastLogTTLLabel" xml:space="preserve">
+    <value>Yleislähetyslokin TTL:</value>
+  </data>
+  <data name="MaxJoinWaitTLabel" xml:space="preserve">
+    <value>Liittymisen enimmäisodotusaika:</value>
+  </data>
+  <data name="PathDiscoveryTimeLabel" xml:space="preserve">
+    <value>Polun etsintäaika:</value>
+  </data>
+  <data name="ActiveKeyIndexLabel" xml:space="preserve">
+    <value>Aktiivisen avaimen indeksi:</value>
+  </data>
+  <data name="MetricTypeLabel" xml:space="preserve">
+    <value>Metriikan tyyppi:</value>
+  </data>
+  <data name="CoordAddressLabel" xml:space="preserve">
+    <value>Koordinaattorin osoite:</value>
+  </data>
+  <data name="DisableDefaultRouting" xml:space="preserve">
+    <value>Poista oletusreititys käytöstä</value>
+  </data>
+  <data name="DeviceTypeLabel" xml:space="preserve">
+    <value>Laitetyyppi:</value>
+  </data>
+  <data name="DefaultCoordRouteEnabled" xml:space="preserve">
+    <value>Koordinaattorin oletusreitti käytössä</value>
+  </data>
+  <data name="DestinationAddress" xml:space="preserve">
+    <value>Kohdeosoite</value>
+  </data>
+  <data name="LowLQILabel" xml:space="preserve">
+    <value>Matala LQI:</value>
+  </data>
+  <data name="HighLQILabel" xml:space="preserve">
+    <value>Korkea LQI:</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Etuliite</value>
+  </data>
+  <data name="RoutingConfiguration" xml:space="preserve">
+    <value>Reititysasetukset</value>
+  </data>
+  <data name="NetTraversalTime" xml:space="preserve">
+    <value>Verkon läpikulkuaika</value>
+  </data>
+  <data name="TTL" xml:space="preserve">
+    <value>TTL</value>
+  </data>
+  <data name="Kr" xml:space="preserve">
+    <value>Kr</value>
+  </data>
+  <data name="Km" xml:space="preserve">
+    <value>Km</value>
+  </data>
+  <data name="Kc" xml:space="preserve">
+    <value>Kc</value>
+  </data>
+  <data name="Kq" xml:space="preserve">
+    <value>Kq</value>
+  </data>
+  <data name="Kh" xml:space="preserve">
+    <value>Kh</value>
+  </data>
+  <data name="Krt" xml:space="preserve">
+    <value>Krt</value>
+  </data>
+  <data name="RreqRetries" xml:space="preserve">
+    <value>Rreq-uusintayritykset</value>
+  </data>
+  <data name="RreqRerrWait" xml:space="preserve">
+    <value>Rreq Rerr -odotus</value>
+  </data>
+  <data name="BlackListTTL" xml:space="preserve">
+    <value>Estolistan TTL</value>
+  </data>
+  <data name="UnicastRreqGenEnable" xml:space="preserve">
+    <value>Unicast Rreq -luonti käytössä</value>
+  </data>
+  <data name="RlcEnabled" xml:space="preserve">
+    <value>Rlc käytössä</value>
+  </data>
+  <data name="AddRevLinkCost" xml:space="preserve">
+    <value>Lisää paluulinkin kustannus</value>
+  </data>
+  <data name="Routing" xml:space="preserve">
+    <value>Reititys</value>
+  </data>
+  <data name="NextHopLabel" xml:space="preserve">
+    <value>Seuraava hyppy:</value>
+  </data>
+  <data name="RouteLabel" xml:space="preserve">
+    <value>Reitti:</value>
+  </data>
+  <data name="HopCountLabel" xml:space="preserve">
+    <value>Hyppyjen määrä:</value>
+  </data>
+  <data name="WeakLinkLabel" xml:space="preserve">
+    <value>Heikko linkki:</value>
+  </data>
+  <data name="ValidTimeLabel" xml:space="preserve">
+    <value>Voimassaoloaika:</value>
+  </data>
+  <data name="ContextInformation" xml:space="preserve">
+    <value>Kontekstitiedot</value>
+  </data>
+  <data name="CID" xml:space="preserve">
+    <value>CID</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Konteksti</value>
+  </data>
+  <data name="Compression" xml:space="preserve">
+    <value>Pakkaus</value>
+  </data>
+  <data name="ValidLifetime" xml:space="preserve">
+    <value>Voimassaoloaika</value>
+  </data>
+  <data name="ContextLength" xml:space="preserve">
+    <value>Kontekstin pituus</value>
+  </data>
+  <data name="Blacklist" xml:space="preserve">
+    <value>Estolista</value>
+  </data>
+  <data name="NeighbourAddress" xml:space="preserve">
+    <value>Naapurin osoite</value>
+  </data>
+  <data name="ValidTime" xml:space="preserve">
+    <value>Voimassaoloaika</value>
+  </data>
+  <data name="BroadcastLog" xml:space="preserve">
+    <value>Yleislähetysloki</value>
+  </data>
+  <data name="SourceAddress" xml:space="preserve">
+    <value>Lähdeosoite</value>
+  </data>
+  <data name="SequenceNumber" xml:space="preserve">
+    <value>Järjestysnumero</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Ryhmä</value>
+  </data>
+  <data name="GroupAddress" xml:space="preserve">
+    <value>Ryhmäosoite</value>
+  </data>
+  <data name="G3PLCMACLayerCountersObject" xml:space="preserve">
+    <value>G3 PLC MAC -kerroksen laskuriobjekti</value>
+  </data>
+  <data name="TxDataPacketsLabel" xml:space="preserve">
+    <value>Lähetetyt datapaketit:</value>
+  </data>
+  <data name="RxDataPacketsLabel" xml:space="preserve">
+    <value>Vastaanotetut datapaketit:</value>
+  </data>
+  <data name="TxCmdPacketsLabel" xml:space="preserve">
+    <value>Lähetetyt komentopaketit:</value>
+  </data>
+  <data name="RxCmdPacketsLabel" xml:space="preserve">
+    <value>Vastaanotetut komentopaketit:</value>
+  </data>
+  <data name="CSMAFailsLabel" xml:space="preserve">
+    <value>CSMA-epäonnistumiset:</value>
+  </data>
+  <data name="CSMANoAcksLabel" xml:space="preserve">
+    <value>Puuttuvat CSMA-kuittaukset:</value>
+  </data>
+  <data name="BadCRCsLabel" xml:space="preserve">
+    <value>Virheelliset CRC:t:</value>
+  </data>
+  <data name="TxDataBroadcastsLabel" xml:space="preserve">
+    <value>Lähetetyt datayleislähetykset:</value>
+  </data>
+  <data name="RxDataBroadcastsLabel" xml:space="preserve">
+    <value>Vastaanotetut datayleislähetykset:</value>
+  </data>
+  <data name="G3PLCMACSetupObject" xml:space="preserve">
+    <value>G3-PLC MAC -asetusobjekti</value>
+  </data>
+  <data name="ShortAddressLabel" xml:space="preserve">
+    <value>Lyhyt osoite:</value>
+  </data>
+  <data name="RouteCostToCoordLabel" xml:space="preserve">
+    <value>Reittikustannus koordinaattorille:</value>
+  </data>
+  <data name="PANIDLabel" xml:space="preserve">
+    <value>PAN-tunnus:</value>
+  </data>
+  <data name="FrameCounterLabel" xml:space="preserve">
+    <value>Kehyslaskuri:</value>
+  </data>
+  <data name="ToneMaskLabel" xml:space="preserve">
+    <value>Taajuusmaski:</value>
+  </data>
+  <data name="ToneMapTTLLabel" xml:space="preserve">
+    <value>Taajuuskartan TTL:</value>
+  </data>
+  <data name="MaxFrameRetriesLabel" xml:space="preserve">
+    <value>Kehyksen uusintayritysten enimmäismäärä:</value>
+  </data>
+  <data name="NeighbourTableTTLLabel" xml:space="preserve">
+    <value>Naapuritaulukon TTL:</value>
+  </data>
+  <data name="HighPrioritySIzeLabel" xml:space="preserve">
+    <value>Korkean prioriteetin koko:</value>
+  </data>
+  <data name="CSCMFairnessLimitLabel" xml:space="preserve">
+    <value>CSCM-tasapuolisuusraja:</value>
+  </data>
+  <data name="BeaconRndLabel" xml:space="preserve">
+    <value>Merkkisignaalin satunnaistus:</value>
+  </data>
+  <data name="ALabel" xml:space="preserve">
+    <value>A:</value>
+  </data>
+  <data name="KLabel" xml:space="preserve">
+    <value>K:</value>
+  </data>
+  <data name="MinCWAttemptsLabel" xml:space="preserve">
+    <value>CW-yritysten vähimmäismäärä:</value>
+  </data>
+  <data name="CenelecLegacyLabel" xml:space="preserve">
+    <value>Vanha Cenelec-tila:</value>
+  </data>
+  <data name="FCCLegacyModeLabel" xml:space="preserve">
+    <value>Vanha FCC-tila:</value>
+  </data>
+  <data name="MaxBackoffLabel" xml:space="preserve">
+    <value>Enimmäisodotus:</value>
+  </data>
+  <data name="MaxCSMABackoffs" xml:space="preserve">
+    <value>CSMA-odotusten enimmäismäärä</value>
+  </data>
+  <data name="MinBackoffLabel" xml:space="preserve">
+    <value>Vähimmäisodotus:</value>
+  </data>
+  <data name="BroadcastMaxCWEnabled" xml:space="preserve">
+    <value>Yleislähetyksen enimmäis-CW käytössä</value>
+  </data>
+  <data name="TransmitAttenLabel" xml:space="preserve">
+    <value>Lähetyksen vaimennus:</value>
+  </data>
+  <data name="DuplicateDetection" xml:space="preserve">
+    <value>Kaksoiskappaleiden tunnistus</value>
+  </data>
+  <data name="KeyTable" xml:space="preserve">
+    <value>Avaintaulukko</value>
+  </data>
+  <data name="KeyLabel" xml:space="preserve">
+    <value>Avain:</value>
+  </data>
+  <data name="NeighbourTable" xml:space="preserve">
+    <value>Naapuritaulukko</value>
+  </data>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>Osoite:</value>
+  </data>
+  <data name="ModulationLabel" xml:space="preserve">
+    <value>Modulaatio:</value>
+  </data>
+  <data name="ToneMapLabel" xml:space="preserve">
+    <value>Taajuuskartta:</value>
+  </data>
+  <data name="TXGain" xml:space="preserve">
+    <value>Lähetysvahvistus</value>
+  </data>
+  <data name="TXResolution" xml:space="preserve">
+    <value>Lähetystarkkuus</value>
+  </data>
+  <data name="TXCoefficients" xml:space="preserve">
+    <value>Lähetyskertoimet</value>
+  </data>
+  <data name="LQI" xml:space="preserve">
+    <value>LQI</value>
+  </data>
+  <data name="PhaseDifferential" xml:space="preserve">
+    <value>Vaihe-ero</value>
+  </data>
+  <data name="TMRValidTime" xml:space="preserve">
+    <value>TMR-voimassaoloaika</value>
+  </data>
+  <data name="NeighbourValidTime" xml:space="preserve">
+    <value>Naapurin voimassaoloaika</value>
+  </data>
+  <data name="POSTable" xml:space="preserve">
+    <value>POS-taulukko</value>
+  </data>
+  <data name="ValidTime2" xml:space="preserve">
+    <value>Voimassaoloaika</value>
+  </data>
+  <data name="ShortAddress" xml:space="preserve">
+    <value>Lyhyt osoite</value>
+  </data>
+  <data name="EnterAShortAddressFrom0To65535" xml:space="preserve">
+    <value>Anna lyhyt osoite väliltä 0–65535.</value>
+  </data>
+  <data name="GetNeighbourTableEntry" xml:space="preserve">
+    <value>Hae naapuritaulukon merkintä</value>
+  </data>
+  <data name="GetPOSTableEntry" xml:space="preserve">
+    <value>Hae POS-taulukon merkintä</value>
+  </data>
+  <data name="GPRSModemSetupObject" xml:space="preserve">
+    <value>GPRS-modeemin asetusobjekti</value>
+  </data>
+  <data name="APNLabel" xml:space="preserve">
+    <value>APN:</value>
+  </data>
+  <data name="PINCodeLabel" xml:space="preserve">
+    <value>PIN-koodi:</value>
+  </data>
+  <data name="PrecedenceLabel" xml:space="preserve">
+    <value>Etusija:</value>
+  </data>
+  <data name="DelayLabel" xml:space="preserve">
+    <value>Viive:</value>
+  </data>
+  <data name="ReliabilityLabel" xml:space="preserve">
+    <value>Luotettavuus:</value>
+  </data>
+  <data name="PeakThroughputLabel" xml:space="preserve">
+    <value>Huippuläpimeno:</value>
+  </data>
+  <data name="MeanThroughputLabel" xml:space="preserve">
+    <value>Keskimääräinen läpimeno:</value>
+  </data>
+  <data name="DefaultQualityOfService" xml:space="preserve">
+    <value>Palvelun oletuslaatu</value>
+  </data>
+  <data name="RequestedQualityOfService" xml:space="preserve">
+    <value>Pyydetty palvelun laatu</value>
+  </data>
+  <data name="GSMDiagnosticObject" xml:space="preserve">
+    <value>GSM-diagnostiikkaobjekti</value>
+  </data>
+  <data name="Operator" xml:space="preserve">
+    <value>Operaattori</value>
+  </data>
+  <data name="CSAttachmentLabel" xml:space="preserve">
+    <value>CS-liittyminen:</value>
+  </data>
+  <data name="PSStatusLabel" xml:space="preserve">
+    <value>PS-tila:</value>
+  </data>
+  <data name="CellIDLabel" xml:space="preserve">
+    <value>Solutunnus:</value>
+  </data>
+  <data name="X4" xml:space="preserve">
+    <value>X4</value>
+  </data>
+  <data name="X8" xml:space="preserve">
+    <value>X8</value>
+  </data>
+  <data name="LocationIDLabel" xml:space="preserve">
+    <value>Sijaintitunnus:</value>
+  </data>
+  <data name="SignalQualityLabel" xml:space="preserve">
+    <value>Signaalin laatu:</value>
+  </data>
+  <data name="BERLabel" xml:space="preserve">
+    <value>BER:</value>
+  </data>
+  <data name="MCCLabel" xml:space="preserve">
+    <value>MCC:</value>
+  </data>
+  <data name="MNCLabel" xml:space="preserve">
+    <value>MNC:</value>
+  </data>
+  <data name="ChannelLabel" xml:space="preserve">
+    <value>Kanava:</value>
+  </data>
+  <data name="AdjacentCellsLabel" xml:space="preserve">
+    <value>Viereiset solut:</value>
+  </data>
+  <data name="CaptureTimeLabel2" xml:space="preserve">
+    <value>Tallennusaika:</value>
+  </data>
+  <data name="CellInfo" xml:space="preserve">
+    <value>Solutiedot</value>
+  </data>
+  <data name="HDLCSetupObject" xml:space="preserve">
+    <value>HDLC-asetusobjekti</value>
+  </data>
+  <data name="SpeedLabel" xml:space="preserve">
+    <value>Nopeus:</value>
+  </data>
+  <data name="WindowSizeLabel" xml:space="preserve">
+    <value>Ikkunan koko:</value>
+  </data>
+  <data name="MaximumLengthLabel" xml:space="preserve">
+    <value>Enimmäispituus:</value>
+  </data>
+  <data name="InternalTimeout" xml:space="preserve">
+    <value>Sisäinen aikakatkaisu</value>
+  </data>
+  <data name="InactivityTimeoutLabel" xml:space="preserve">
+    <value>Toimettomuuden aikakatkaisu:</value>
+  </data>
+  <data name="DeviceAddressLabel" xml:space="preserve">
+    <value>Laiteosoite:</value>
+  </data>
+  <data name="Transmit" xml:space="preserve">
+    <value>Lähetys</value>
+  </data>
+  <data name="ReceiveLabel" xml:space="preserve">
+    <value>Vastaanotto:</value>
+  </data>
+  <data name="IECLocalPortSetup" xml:space="preserve">
+    <value>IEC-paikallisportin asetukset</value>
+  </data>
+  <data name="DefaultModeLabel" xml:space="preserve">
+    <value>Oletustila:</value>
+  </data>
+  <data name="DefaultBaudrateLabel" xml:space="preserve">
+    <value>Oletusbaudinopeus:</value>
+  </data>
+  <data name="MaximumBaudrateLabel" xml:space="preserve">
+    <value>Enimmäisbaudinopeus:</value>
+  </data>
+  <data name="ResponseTimeLabel" xml:space="preserve">
+    <value>Vasteaika:</value>
+  </data>
+  <data name="Password1Label" xml:space="preserve">
+    <value>Salasana 1:</value>
+  </data>
+  <data name="Password2Label" xml:space="preserve">
+    <value>Salasana 2:</value>
+  </data>
+  <data name="Password5Label" xml:space="preserve">
+    <value>Salasana 5:</value>
+  </data>
+  <data name="IECTwistedPairSetupObject" xml:space="preserve">
+    <value>IEC-kierretyn parin asetusobjekti</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Tila</value>
+  </data>
+  <data name="PrimaryAddressesLabel" xml:space="preserve">
+    <value>Ensisijaiset osoitteet:</value>
+  </data>
+  <data name="TABI" xml:space="preserve">
+    <value>TAB(i)</value>
+  </data>
+  <data name="ImageTransferObject" xml:space="preserve">
+    <value>Laiteohjelmiston siirto-objekti</value>
+  </data>
+  <data name="ImageBlockSizeLabel" xml:space="preserve">
+    <value>Laiteohjelmistolohkon koko:</value>
+  </data>
+  <data name="BlocksStatusLabel" xml:space="preserve">
+    <value>Lohkojen tila:</value>
+  </data>
+  <data name="FirstBlockLabel" xml:space="preserve">
+    <value>Ensimmäinen lohko:</value>
+  </data>
+  <data name="ImagesLabel" xml:space="preserve">
+    <value>Laiteohjelmistot:</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Koko</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Tunniste</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Allekirjoitus</value>
+  </data>
+  <data name="ImageFileLabel" xml:space="preserve">
+    <value>Laiteohjelmistotiedosto:</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>Laiteohjelmistotiedosto</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>Valittu tiedosto:</value>
+  </data>
+  <data name="IdentifierHexLabel" xml:space="preserve">
+    <value>Tunniste (hex):</value>
+  </data>
+  <data name="AnImageIdentifierIsRequired" xml:space="preserve">
+    <value>Laiteohjelmiston tunniste vaaditaan.</value>
+  </data>
+  <data name="IdentifierSignatureHexOptionalLabel" xml:space="preserve">
+    <value>Tunnisteen allekirjoitus (hex, valinnainen):</value>
+  </data>
+  <data name="ImageHexLabel" xml:space="preserve">
+    <value>Laiteohjelmisto (hex):</value>
+  </data>
+  <data name="SelectANonemptyImage" xml:space="preserve">
+    <value>Valitse laiteohjelmisto, joka ei ole tyhjä.</value>
+  </data>
+  <data name="ResumeBlockIndexLabel" xml:space="preserve">
+    <value>Jatkamisen lohkoindeksi:</value>
+  </data>
+  <data name="EnterANonnegativeBlockIndex" xml:space="preserve">
+    <value>Anna ei-negatiivinen lohkoindeksi.</value>
+  </data>
+  <data name="ReceivedBlocksBitStringOptionalLabel" xml:space="preserve">
+    <value>Vastaanotettujen lohkojen bittijono (valinnainen):</value>
+  </data>
+  <data name="ImageTransfer" xml:space="preserve">
+    <value>Laiteohjelmiston siirto</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Selaa...</value>
+  </data>
+  <data name="ImageLabel" xml:space="preserve">
+    <value>Laiteohjelmisto:</value>
+  </data>
+  <data name="UpdateImage" xml:space="preserve">
+    <value>Päivitä laiteohjelmisto...</value>
+  </data>
+  <data name="TransferImageBlocks" xml:space="preserve">
+    <value>Siirrä laiteohjelmistolohkot</value>
+  </data>
+  <data name="VerifyImage" xml:space="preserve">
+    <value>Tarkista laiteohjelmisto...</value>
+  </data>
+  <data name="ActivateImage" xml:space="preserve">
+    <value>Aktivoi laiteohjelmisto...</value>
+  </data>
+  <data name="ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex" xml:space="preserve">
+    <value>Lue tila siirron, tarkistuksen ja aktivoinnin jälkeen. Jatkaminen käyttää mittarin lohkotilaa tai ensimmäisen puuttuvan lohkon indeksiä.</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus" xml:space="preserve">
+    <value>Lue nollasta poikkeava laiteohjelmistolohkon koko ennen lohkotilan antamista.</value>
+  </data>
+  <data name="BlockStatusMustContainOneZeroOrOnePerImageBlock" xml:space="preserve">
+    <value>Lohkotilassa on oltava yksi nolla tai ykkönen jokaista laiteohjelmistolohkoa kohti.</value>
+  </data>
+  <data name="SelectANonemptyImageFile" xml:space="preserve">
+    <value>Valitse laiteohjelmistotiedosto, joka ei ole tyhjä.</value>
+  </data>
+  <data name="ImageInitiation" xml:space="preserve">
+    <value>Laiteohjelmiston alustaminen</value>
+  </data>
+  <data name="ImageBlockTransfer" xml:space="preserve">
+    <value>Laiteohjelmistolohkojen siirto</value>
+  </data>
+  <data name="ImageVerification" xml:space="preserve">
+    <value>Laiteohjelmiston tarkistus</value>
+  </data>
+  <data name="ImageActivation" xml:space="preserve">
+    <value>Laiteohjelmiston aktivointi</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeTransfer" xml:space="preserve">
+    <value>Lue nollasta poikkeava laiteohjelmistolohkon koko ennen siirtoa.</value>
+  </data>
+  <data name="ResumeIndexMustIdentifyAnImageBlock" xml:space="preserve">
+    <value>Jatkoindeksin on osoitettava laiteohjelmistolohkoon.</value>
+  </data>
+  <data name="Ip4SetupObject" xml:space="preserve">
+    <value>IPv4-asetusobjekti</value>
+  </data>
+  <data name="DataLinkLayerLabel" xml:space="preserve">
+    <value>Siirtokerros:</value>
+  </data>
+  <data name="IPAddressLabel" xml:space="preserve">
+    <value>IP-osoite:</value>
+  </data>
+  <data name="MulticastIPAddressLabel" xml:space="preserve">
+    <value>Monilähetyksen IP-osoite:</value>
+  </data>
+  <data name="IPOptionsLabel" xml:space="preserve">
+    <value>IP-asetukset:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Pituus</value>
+  </data>
+  <data name="SubnetMaskLabel" xml:space="preserve">
+    <value>Aliverkon peite:</value>
+  </data>
+  <data name="GatewayIPAddressLabel" xml:space="preserve">
+    <value>Yhdyskäytävän IP-osoite:</value>
+  </data>
+  <data name="UseDHCPLabel" xml:space="preserve">
+    <value>Käytä DHCP:tä:</value>
+  </data>
+  <data name="PrimaryDNSAddressLabel" xml:space="preserve">
+    <value>Ensisijainen DNS-osoite:</value>
+  </data>
+  <data name="SecondaryDNSAddressLabel" xml:space="preserve">
+    <value>Toissijainen DNS-osoite:</value>
+  </data>
+  <data name="MulticastIPv4Address" xml:space="preserve">
+    <value>Monilähetyksen IPv4-osoite</value>
+  </data>
+  <data name="EnterAnIPv4MulticastAddress224000239255255255" xml:space="preserve">
+    <value>Anna IPv4-monilähetysosoite (224.0.0.0–239.255.255.255).</value>
+  </data>
+  <data name="AddressIndex" xml:space="preserve">
+    <value>Osoiteindeksi</value>
+  </data>
+  <data name="EnterAnAddressIndexFrom0To255" xml:space="preserve">
+    <value>Anna osoiteindeksi väliltä 0–255.</value>
+  </data>
+  <data name="AddMulticastAddress" xml:space="preserve">
+    <value>Lisää monilähetysosoite</value>
+  </data>
+  <data name="DeleteMulticastAddress" xml:space="preserve">
+    <value>Poista monilähetysosoite</value>
+  </data>
+  <data name="GetMulticastAddressCount" xml:space="preserve">
+    <value>Hae monilähetysosoitteiden määrä</value>
+  </data>
+  <data name="Ip6SetupObject" xml:space="preserve">
+    <value>IPv6-asetusobjekti</value>
+  </data>
+  <data name="AddressConfigModeLabel" xml:space="preserve">
+    <value>Osoitteen määritystila:</value>
+  </data>
+  <data name="UnicastLabel" xml:space="preserve">
+    <value>Yksittäislähetys:</value>
+  </data>
+  <data name="UnicastIPAddress" xml:space="preserve">
+    <value>Yksittäislähetyksen IP-osoite</value>
+  </data>
+  <data name="MulticastLabel" xml:space="preserve">
+    <value>Monilähetys:</value>
+  </data>
+  <data name="MulticastIPAddress" xml:space="preserve">
+    <value>Monilähetyksen IP-osoite</value>
+  </data>
+  <data name="GatewayLabel" xml:space="preserve">
+    <value>Yhdyskäytävä:</value>
+  </data>
+  <data name="GatewayIPAddress" xml:space="preserve">
+    <value>Yhdyskäytävän IP-osoite</value>
+  </data>
+  <data name="TrafficClassLabel" xml:space="preserve">
+    <value>Liikenneluokka:</value>
+  </data>
+  <data name="NeighborDiscoverySetup" xml:space="preserve">
+    <value>Naapurinhaun asetukset</value>
+  </data>
+  <data name="RSMaxRetry" xml:space="preserve">
+    <value>RS-yritysten enimmäismäärä</value>
+  </data>
+  <data name="RSRetryWaitTime" xml:space="preserve">
+    <value>RS-uusintayrityksen odotusaika</value>
+  </data>
+  <data name="RASendPeriod" xml:space="preserve">
+    <value>RA-lähetysjakso</value>
+  </data>
+  <data name="AddressType" xml:space="preserve">
+    <value>Osoitetyyppi</value>
+  </data>
+  <data name="SelectASupportedAddressType" xml:space="preserve">
+    <value>Valitse tuettu osoitetyyppi.</value>
+  </data>
+  <data name="IPv6Address" xml:space="preserve">
+    <value>IPv6-osoite</value>
+  </data>
+  <data name="EnterAnIPv6Address" xml:space="preserve">
+    <value>Anna IPv6-osoite.</value>
+  </data>
+  <data name="AddIPv6Address" xml:space="preserve">
+    <value>Lisää IPv6-osoite</value>
+  </data>
+  <data name="RemoveIPv6Address" xml:space="preserve">
+    <value>Poista IPv6-osoite</value>
+  </data>
+  <data name="LimiterObject" xml:space="preserve">
+    <value>Rajoitinobjekti</value>
+  </data>
+  <data name="ThresholdActive" xml:space="preserve">
+    <value>Aktiivinen kynnysarvo</value>
+  </data>
+  <data name="ThresholdNormal" xml:space="preserve">
+    <value>Normaali kynnysarvo</value>
+  </data>
+  <data name="ThresholdEmergency" xml:space="preserve">
+    <value>Hätätilan kynnysarvo</value>
+  </data>
+  <data name="MinimalOver" xml:space="preserve">
+    <value>Vähimmäisylitysaika</value>
+  </data>
+  <data name="MinimalUnder" xml:space="preserve">
+    <value>Vähimmäisalitusaika</value>
+  </data>
+  <data name="ActivationTime" xml:space="preserve">
+    <value>Aktivointiaika</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Kesto</value>
+  </data>
+  <data name="GroupIDs" xml:space="preserve">
+    <value>Ryhmätunnukset</value>
+  </data>
+  <data name="GroupID" xml:space="preserve">
+    <value>Ryhmätunnus</value>
+  </data>
+  <data name="Monitored" xml:space="preserve">
+    <value>Valvottava</value>
+  </data>
+  <data name="EmergencyProfile" xml:space="preserve">
+    <value>Hätätilaprofiili</value>
+  </data>
+  <data name="ActionOver" xml:space="preserve">
+    <value>Ylitystoiminto</value>
+  </data>
+  <data name="ActionUnder" xml:space="preserve">
+    <value>Alitustoiminto</value>
+  </data>
+  <data name="LLCSSCSSetupObject" xml:space="preserve">
+    <value>LLC SSCS -asetusobjekti</value>
+  </data>
+  <data name="ServiceAddressLabel" xml:space="preserve">
+    <value>Palveluosoite:</value>
+  </data>
+  <data name="BaseAddressLabel" xml:space="preserve">
+    <value>Perusosoite:</value>
+  </data>
+  <data name="MACAddressSetupObject" xml:space="preserve">
+    <value>MAC-osoitteen asetusobjekti</value>
+  </data>
+  <data name="MACAddressLabel" xml:space="preserve">
+    <value>MAC-osoite:</value>
+  </data>
+  <data name="MBusClientObject" xml:space="preserve">
+    <value>M-Bus-asiakasobjekti</value>
+  </data>
+  <data name="MBusPortReferenceLabel" xml:space="preserve">
+    <value>M-Bus-portin viite:</value>
+  </data>
+  <data name="CapturePeriodLabel" xml:space="preserve">
+    <value>Tallennusjakso:</value>
+  </data>
+  <data name="PrimaryAddressLabel" xml:space="preserve">
+    <value>Ensisijainen osoite:</value>
+  </data>
+  <data name="IdentificationNumberLabel" xml:space="preserve">
+    <value>Tunnistenumero:</value>
+  </data>
+  <data name="ManufacturerIDLabel" xml:space="preserve">
+    <value>Valmistajan tunnus:</value>
+  </data>
+  <data name="AccessNumberLabel" xml:space="preserve">
+    <value>Käyttönumero:</value>
+  </data>
+  <data name="AlarmLabel" xml:space="preserve">
+    <value>Hälytys:</value>
+  </data>
+  <data name="ConfigurationLabel" xml:space="preserve">
+    <value>Määritykset:</value>
+  </data>
+  <data name="EncryptionKeyStatusLabel" xml:space="preserve">
+    <value>Salausavaimen tila:</value>
+  </data>
+  <data name="CaptureDefinitionLabel" xml:space="preserve">
+    <value>Tallennusmääritys:</value>
+  </data>
+  <data name="DataInformation" xml:space="preserve">
+    <value>Tietotiedot</value>
+  </data>
+  <data name="ValueInformation" xml:space="preserve">
+    <value>Arvotiedot</value>
+  </data>
+  <data name="InstallPrimaryAddressLabel" xml:space="preserve">
+    <value>Asetettava ensisijainen osoite:</value>
+  </data>
+  <data name="PrimaryAddressMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Ensisijaisen osoitteen on oltava nollan ja 255:n välillä.</value>
+  </data>
+  <data name="DataInformationHexLabel" xml:space="preserve">
+    <value>Tietotiedot (hex):</value>
+  </data>
+  <data name="ValueInformationHexLabel" xml:space="preserve">
+    <value>Arvotiedot (hex):</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Tietotyyppi:</value>
+  </data>
+  <data name="SelectAScalarDataType" xml:space="preserve">
+    <value>Valitse skalaarinen tietotyyppi.</value>
+  </data>
+  <data name="DataValueLabel" xml:space="preserve">
+    <value>Tietoarvo:</value>
+  </data>
+  <data name="EncryptionKey16BytesHexLabel" xml:space="preserve">
+    <value>Salausavain (16 tavua, hex):</value>
+  </data>
+  <data name="AnMBusEncryptionKeyMustContainExactly16Bytes" xml:space="preserve">
+    <value>M-Bus-salausavaimen on sisällettävä täsmälleen 16 tavua.</value>
+  </data>
+  <data name="ClearEncryptionKeyLabel" xml:space="preserve">
+    <value>Tyhjennä salausavain:</value>
+  </data>
+  <data name="Slave" xml:space="preserve">
+    <value>Orjalaite</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Asenna</value>
+  </data>
+  <data name="DeInstall" xml:space="preserve">
+    <value>Poista asennus</value>
+  </data>
+  <data name="ResetAlarm" xml:space="preserve">
+    <value>Nollaa hälytys</value>
+  </data>
+  <data name="SynchronizeClock" xml:space="preserve">
+    <value>Synkronoi kello</value>
+  </data>
+  <data name="SendData" xml:space="preserve">
+    <value>Lähetä tiedot</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Lähetä...</value>
+  </data>
+  <data name="EncryptionKey" xml:space="preserve">
+    <value>Salausavain</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Aseta...</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Siirrä...</value>
+  </data>
+  <data name="ADataValueIsRequired" xml:space="preserve">
+    <value>Tietoarvo vaaditaan.</value>
+  </data>
+  <data name="MBusDiagnosticObject" xml:space="preserve">
+    <value>M-Bus-diagnostiikkaobjekti</value>
+  </data>
+  <data name="ReceivedSignalStrengthLabel" xml:space="preserve">
+    <value>Vastaanotetun signaalin voimakkuus:</value>
+  </data>
+  <data name="ChannelIDLabel" xml:space="preserve">
+    <value>Kanavatunnus:</value>
+  </data>
+  <data name="LinkStatusLabel" xml:space="preserve">
+    <value>Linkin tila:</value>
+  </data>
+  <data name="BroadcastFrames" xml:space="preserve">
+    <value>Yleislähetyskehykset</value>
+  </data>
+  <data name="ClientID" xml:space="preserve">
+    <value>Asiakastunnus</value>
+  </data>
+  <data name="Counter" xml:space="preserve">
+    <value>Laskuri</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Aikaleima</value>
+  </data>
+  <data name="TransmissionsCounterLabel" xml:space="preserve">
+    <value>Lähetyslaskuri:</value>
+  </data>
+  <data name="FCSOKFramesCounterLabel" xml:space="preserve">
+    <value>Kelvollisten FCS-kehysten laskuri:</value>
+  </data>
+  <data name="FCSNOKFramesCounterLabel" xml:space="preserve">
+    <value>Virheellisten FCS-kehysten laskuri:</value>
+  </data>
+  <data name="CaptureIDLabel" xml:space="preserve">
+    <value>Tallennustunnus:</value>
+  </data>
+  <data name="BroadcastFramesCounter" xml:space="preserve">
+    <value>Yleislähetyskehysten laskuri</value>
+  </data>
+  <data name="MBusMasterPortSetupObject" xml:space="preserve">
+    <value>M-Bus-isäntäportin asetusobjekti</value>
+  </data>
+  <data name="CommSpeedLabel" xml:space="preserve">
+    <value>Tiedonsiirtonopeus:</value>
+  </data>
+  <data name="MBusPortSetupObject" xml:space="preserve">
+    <value>M-Bus-portin asetusobjekti</value>
+  </data>
+  <data name="ProfileSelectionLabel" xml:space="preserve">
+    <value>Profiilin valinta:</value>
+  </data>
+  <data name="PortCommunicationStatusLabel" xml:space="preserve">
+    <value>Portin tiedonsiirron tila:</value>
+  </data>
+  <data name="DataHeaderTypeLabel" xml:space="preserve">
+    <value>Tieto-otsakkeen tyyppi:</value>
+  </data>
+  <data name="PrimaryAddressLabel2" xml:space="preserve">
+    <value>Ensisijainen osoite:</value>
+  </data>
+  <data name="IdentificationNumberLabel2" xml:space="preserve">
+    <value>Tunnistenumero:</value>
+  </data>
+  <data name="MBusVersionLabel" xml:space="preserve">
+    <value>M-Bus-versio:</value>
+  </data>
+  <data name="DeviceTypeLabel2" xml:space="preserve">
+    <value>Laitetyyppi:</value>
+  </data>
+  <data name="MaximumPDUSizeLabel" xml:space="preserve">
+    <value>PDU:n enimmäiskoko:</value>
+  </data>
+  <data name="ListeningWindows" xml:space="preserve">
+    <value>Kuunteluikkunat</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Loppu</value>
+  </data>
+  <data name="PortSettings" xml:space="preserve">
+    <value>Porttiasetukset</value>
+  </data>
+  <data name="MBusSlavePortSetupObject" xml:space="preserve">
+    <value>M-Bus-orjaportin asetusobjekti</value>
+  </data>
+  <data name="AvailableBaudrateLabel" xml:space="preserve">
+    <value>Käytettävissä oleva baudinopeus:</value>
+  </data>
+  <data name="AddressStateLabel" xml:space="preserve">
+    <value>Osoitteen tila:</value>
+  </data>
+  <data name="BusAddressLabel" xml:space="preserve">
+    <value>Väyläosoite:</value>
+  </data>
+  <data name="ModemConfigurationObject" xml:space="preserve">
+    <value>Modeemin määritysobjekti</value>
+  </data>
+  <data name="InitialisationLabel" xml:space="preserve">
+    <value>Alustus:</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Pyyntö</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Vastaus:</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Viive</value>
+  </data>
+  <data name="ModemProfileLabel" xml:space="preserve">
+    <value>Modeemiprofiili:</value>
+  </data>
+  <data name="NTPSetupObject" xml:space="preserve">
+    <value>NTP-asetusobjekti</value>
+  </data>
+  <data name="ActivatedLabel" xml:space="preserve">
+    <value>Aktivoitu:</value>
+  </data>
+  <data name="ServerAddressLabel" xml:space="preserve">
+    <value>Palvelimen osoite:</value>
+  </data>
+  <data name="AuthenticationLabel" xml:space="preserve">
+    <value>Todennus:</value>
+  </data>
+  <data name="KeysLabel" xml:space="preserve">
+    <value>Avaimet:</value>
+  </data>
+  <data name="ClientKeyLabel" xml:space="preserve">
+    <value>Asiakkaan avain:</value>
+  </data>
+  <data name="AuthenticationKeyID" xml:space="preserve">
+    <value>Todennusavaimen tunnus</value>
+  </data>
+  <data name="EnterAKeyIDFrom0To4294967295" xml:space="preserve">
+    <value>Anna avaintunnus väliltä 0–4294967295.</value>
+  </data>
+  <data name="AuthenticationKeyHexadecimal" xml:space="preserve">
+    <value>Todennusavain (heksadesimaalinen)</value>
+  </data>
+  <data name="EnterANonEmptyHexadecimalAuthenticationKey" xml:space="preserve">
+    <value>Anna todennusavain heksadesimaaleina; arvo ei saa olla tyhjä.</value>
+  </data>
+  <data name="SynchronizeTime" xml:space="preserve">
+    <value>Synkronoi aika</value>
+  </data>
+  <data name="AddAuthenticationKey" xml:space="preserve">
+    <value>Lisää todennusavain</value>
+  </data>
+  <data name="DeleteAuthenticationKey" xml:space="preserve">
+    <value>Poista todennusavain</value>
+  </data>
+  <data name="ParameterMonitorObject" xml:space="preserve">
+    <value>Parametrien valvontaobjekti</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parametrit</value>
+  </data>
+  <data name="ObjectClassID" xml:space="preserve">
+    <value>Objektin luokkatunnus</value>
+  </data>
+  <data name="ObjectLogicalName" xml:space="preserve">
+    <value>Objektin looginen nimi</value>
+  </data>
+  <data name="AttributeIndex1255" xml:space="preserve">
+    <value>Attribuutin indeksi (1–255)</value>
+  </data>
+  <data name="ChangedParameter" xml:space="preserve">
+    <value>Muuttunut parametri</value>
+  </data>
+  <data name="AddParameter" xml:space="preserve">
+    <value>Lisää parametri</value>
+  </data>
+  <data name="DeleteParameter" xml:space="preserve">
+    <value>Poista parametri</value>
+  </data>
+  <data name="EnterASupportedObjectClassID" xml:space="preserve">
+    <value>Anna tuettu objektin luokkatunnus.</value>
+  </data>
+  <data name="AttributeIndexMustBeGreaterThanZero" xml:space="preserve">
+    <value>Attribuutin indeksin on oltava nollaa suurempi.</value>
+  </data>
+  <data name="AttributeIndexExceedsTheObjectSAttributeCount" xml:space="preserve">
+    <value>Attribuutin indeksi ylittää objektin attribuuttien määrän.</value>
+  </data>
+  <data name="SelectASupportedObjectClass" xml:space="preserve">
+    <value>Valitse tuettu objektiluokka.</value>
+  </data>
+  <data name="PPPSetupObject" xml:space="preserve">
+    <value>PPP-asetusobjekti</value>
+  </data>
+  <data name="PHYReferenceLabel" xml:space="preserve">
+    <value>PHY-viite:</value>
+  </data>
+  <data name="LCPOptionsLabel" xml:space="preserve">
+    <value>LCP-asetukset:</value>
+  </data>
+  <data name="IPCPOptionsLabel" xml:space="preserve">
+    <value>IPCP-asetukset:</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Käyttäjänimi:</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Salasana:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCApplicationIdentificationObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC -sovelluksen tunnistusobjekti</value>
+  </data>
+  <data name="FirmwareVersionLabel" xml:space="preserve">
+    <value>Laiteohjelmiston versio:</value>
+  </data>
+  <data name="VendorIDLabel" xml:space="preserve">
+    <value>Toimittajan tunnus:</value>
+  </data>
+  <data name="ProductIDLabel" xml:space="preserve">
+    <value>Tuotetunnus:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACCountersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC -laskuriobjekti</value>
+  </data>
+  <data name="TXDataPacketCounterLabel" xml:space="preserve">
+    <value>Lähetettyjen datapakettien laskuri:</value>
+  </data>
+  <data name="RXDataPacketCounterLabel" xml:space="preserve">
+    <value>Vastaanotettujen datapakettien laskuri:</value>
+  </data>
+  <data name="TXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Lähetettyjen ohjauspakettien laskuri:</value>
+  </data>
+  <data name="RXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Vastaanotettujen ohjauspakettien laskuri:</value>
+  </data>
+  <data name="CSMAFailCounterLabel" xml:space="preserve">
+    <value>CSMA-virhelaskuri:</value>
+  </data>
+  <data name="CSMABusyCounterLabel" xml:space="preserve">
+    <value>CSMA-varattu-laskuri:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACFunctionalParametersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC -toimintaparametriobjekti</value>
+  </data>
+  <data name="LNIDLabel" xml:space="preserve">
+    <value>LNID:</value>
+  </data>
+  <data name="LSIDLabel" xml:space="preserve">
+    <value>LSID:</value>
+  </data>
+  <data name="SIDLabel" xml:space="preserve">
+    <value>SID:</value>
+  </data>
+  <data name="SNALabel" xml:space="preserve">
+    <value>SNA:</value>
+  </data>
+  <data name="StateLabel" xml:space="preserve">
+    <value>Tila:</value>
+  </data>
+  <data name="SCPLengtLabel" xml:space="preserve">
+    <value>SCP-pituus:</value>
+  </data>
+  <data name="NodeHierarchyLevelLabel" xml:space="preserve">
+    <value>Solmun hierarkiataso:</value>
+  </data>
+  <data name="BeaconSlotCountLabel" xml:space="preserve">
+    <value>Merkkisignaalin aikavälien määrä:</value>
+  </data>
+  <data name="BeaconRXSlotLabel" xml:space="preserve">
+    <value>Merkkisignaalin vastaanottoaikaväli:</value>
+  </data>
+  <data name="BeaconTXSlotLabel" xml:space="preserve">
+    <value>Merkkisignaalin lähetysaikaväli:</value>
+  </data>
+  <data name="BeaconRXFrequencyLabel" xml:space="preserve">
+    <value>Merkkisignaalin vastaanottotaajuus:</value>
+  </data>
+  <data name="BeaconTXFrequencyLabel" xml:space="preserve">
+    <value>Merkkisignaalin lähetystaajuus:</value>
+  </data>
+  <data name="CapabilitiesLabel" xml:space="preserve">
+    <value>Ominaisuudet:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACNetworkAdministrationDataObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC -verkonhallintatieto-objekti</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Jäsenet</value>
+  </data>
+  <data name="SwitchTable" xml:space="preserve">
+    <value>Kytkintaulukko</value>
+  </data>
+  <data name="DirectTableLabel" xml:space="preserve">
+    <value>Suora taulukko:</value>
+  </data>
+  <data name="SrcSID" xml:space="preserve">
+    <value>Lähteen SID</value>
+  </data>
+  <data name="SrcLNID" xml:space="preserve">
+    <value>Lähteen LNID</value>
+  </data>
+  <data name="SrcLCID" xml:space="preserve">
+    <value>Lähteen LCID</value>
+  </data>
+  <data name="DstSID" xml:space="preserve">
+    <value>Kohteen SID</value>
+  </data>
+  <data name="DstLNID" xml:space="preserve">
+    <value>Kohteen LNID</value>
+  </data>
+  <data name="DstLCID" xml:space="preserve">
+    <value>Kohteen LCID</value>
+  </data>
+  <data name="DID" xml:space="preserve">
+    <value>DID</value>
+  </data>
+  <data name="AvailableSwitchesLabel" xml:space="preserve">
+    <value>Käytettävissä olevat kytkimet:</value>
+  </data>
+  <data name="SNA" xml:space="preserve">
+    <value>SNA</value>
+  </data>
+  <data name="LSID" xml:space="preserve">
+    <value>LSID</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Taso</value>
+  </data>
+  <data name="RXLevel" xml:space="preserve">
+    <value>Vastaanottotaso</value>
+  </data>
+  <data name="RXSNR" xml:space="preserve">
+    <value>Vastaanoton SNR</value>
+  </data>
+  <data name="PhyCommunicationLabel" xml:space="preserve">
+    <value>Fyysinen tiedonsiirto:</value>
+  </data>
+  <data name="EUI" xml:space="preserve">
+    <value>EUI</value>
+  </data>
+  <data name="TXPwr" xml:space="preserve">
+    <value>Lähetysteho</value>
+  </data>
+  <data name="TXCode" xml:space="preserve">
+    <value>Lähetyskoodi</value>
+  </data>
+  <data name="RXCode" xml:space="preserve">
+    <value>Vastaanottokoodi</value>
+  </data>
+  <data name="RXLvl" xml:space="preserve">
+    <value>Vastaanottotaso</value>
+  </data>
+  <data name="SNR" xml:space="preserve">
+    <value>SNR</value>
+  </data>
+  <data name="TXPwrMod" xml:space="preserve">
+    <value>Lähetystehon muutos</value>
+  </data>
+  <data name="TXCodeMod" xml:space="preserve">
+    <value>Lähetyskoodin muutos</value>
+  </data>
+  <data name="RXCodeMod" xml:space="preserve">
+    <value>Vastaanottokoodin muutos</value>
+  </data>
+  <data name="ResetNetworkAdministrationData" xml:space="preserve">
+    <value>Nollaa verkonhallintatiedot</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACSetupObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC MAC -asetusobjekti</value>
+  </data>
+  <data name="MinSwitchSearchTimeLabel" xml:space="preserve">
+    <value>Kytkimen haun vähimmäisaika:</value>
+  </data>
+  <data name="MaxPromotionPDULabel" xml:space="preserve">
+    <value>Ylennyksen PDU-enimmäismäärä:</value>
+  </data>
+  <data name="PromotionPDUTXPeriodLabel" xml:space="preserve">
+    <value>Ylennyksen PDU-lähetysjakso:</value>
+  </data>
+  <data name="BeaconsPerFrameLabel" xml:space="preserve">
+    <value>Merkkisignaaleja kehyksessä:</value>
+  </data>
+  <data name="SCPMaxTXAttempsLabel" xml:space="preserve">
+    <value>SCP-lähetysyritysten enimmäismäärä:</value>
+  </data>
+  <data name="CLTReTXTimerLabel" xml:space="preserve">
+    <value>CLT-uudelleenlähetysajastin:</value>
+  </data>
+  <data name="MaxCtlReTxLabel" xml:space="preserve">
+    <value>Ohjauksen uudelleenlähetysten enimmäismäärä:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCPhysicalLayerCountersObject" xml:space="preserve">
+    <value>PRIME NB OFDM PLC -fyysisen kerroksen laskuriobjekti</value>
+  </data>
+  <data name="CRCIncorrectCountLabel" xml:space="preserve">
+    <value>Virheellisten CRC-tarkistusten määrä:</value>
+  </data>
+  <data name="CRCFailedCountLabel" xml:space="preserve">
+    <value>Epäonnistuneiden CRC-tarkistusten määrä:</value>
+  </data>
+  <data name="TXDropCountLabel" xml:space="preserve">
+    <value>Hylättyjen lähetysten määrä:</value>
+  </data>
+  <data name="RXDropCountLabel" xml:space="preserve">
+    <value>Hylättyjen vastaanottojen määrä:</value>
+  </data>
+  <data name="ProfileGeneric" xml:space="preserve">
+    <value>Yleinen profiili</value>
+  </data>
+  <data name="EntriesInUse" xml:space="preserve">
+    <value>Käytössä olevat merkinnät</value>
+  </data>
+  <data name="Entries" xml:space="preserve">
+    <value>Merkinnät</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Objekti</value>
+  </data>
+  <data name="ReadLastDays" xml:space="preserve">
+    <value>Lue viimeiset (päivää)</value>
+  </data>
+  <data name="ReadFrom" xml:space="preserve">
+    <value>Lue alkaen</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Asti</value>
+  </data>
+  <data name="ReadEntry" xml:space="preserve">
+    <value>Lue merkintä</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Määrä</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Lajittele</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>Lukeminen</value>
+  </data>
+  <data name="AddWhiteList" xml:space="preserve">
+    <value>Lisää sallittujen luetteloon...</value>
+  </data>
+  <data name="AddBlackList" xml:space="preserve">
+    <value>Lisää estolistaan...</value>
+  </data>
+  <data name="EnterAnUnsigned32BitNumber" xml:space="preserve">
+    <value>Anna etumerkitön 32-bittinen luku.</value>
+  </data>
+  <data name="ChooseAReadingMode" xml:space="preserve">
+    <value>Valitse lukutila.</value>
+  </data>
+  <data name="ReadFromMustNotFollowTo" xml:space="preserve">
+    <value>Lukemisen alku ei saa olla lopun jälkeen.</value>
+  </data>
+  <data name="PushObject" xml:space="preserve">
+    <value>Push-objekti</value>
+  </data>
+  <data name="ServiceLabel" xml:space="preserve">
+    <value>Palvelu:</value>
+  </data>
+  <data name="ChooseASupportedService" xml:space="preserve">
+    <value>Valitse tuettu palvelu.</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Viesti:</value>
+  </data>
+  <data name="ChooseASupportedMessage" xml:space="preserve">
+    <value>Valitse tuettu viesti.</value>
+  </data>
+  <data name="RandomisationLabel" xml:space="preserve">
+    <value>Satunnaistus:</value>
+  </data>
+  <data name="NumberOfRetriesLabel" xml:space="preserve">
+    <value>Uusintayritysten määrä:</value>
+  </data>
+  <data name="RepetitionDelayLabel2" xml:space="preserve">
+    <value>Toistoviive:</value>
+  </data>
+  <data name="MinLabel" xml:space="preserve">
+    <value>Vähintään:</value>
+  </data>
+  <data name="ExponentLabel" xml:space="preserve">
+    <value>Eksponentti:</value>
+  </data>
+  <data name="MaxLabel" xml:space="preserve">
+    <value>Enintään:</value>
+  </data>
+  <data name="PortReferenceLabel" xml:space="preserve">
+    <value>Porttiviite:</value>
+  </data>
+  <data name="PushClientSAPLabel" xml:space="preserve">
+    <value>Push-asiakkaan SAP:</value>
+  </data>
+  <data name="PushProtectionParametersLabel" xml:space="preserve">
+    <value>Push-suojausparametrit:</value>
+  </data>
+  <data name="OperationMethodLabel" xml:space="preserve">
+    <value>Toimintamenetelmä:</value>
+  </data>
+  <data name="StartDateLabel" xml:space="preserve">
+    <value>Aloituspäivä:</value>
+  </data>
+  <data name="IntervalLabel" xml:space="preserve">
+    <value>Aikaväli:</value>
+  </data>
+  <data name="LastConfirmationLabel" xml:space="preserve">
+    <value>Viimeisin vahvistus:</value>
+  </data>
+  <data name="LogicalName3" xml:space="preserve">
+    <value>Looginen nimi</value>
+  </data>
+  <data name="DataIndex2" xml:space="preserve">
+    <value>Tietoindeksi</value>
+  </data>
+  <data name="CommunicationWindow" xml:space="preserve">
+    <value>Tiedonsiirtoikkuna</value>
+  </data>
+  <data name="SendDestinationAndMethod" xml:space="preserve">
+    <value>Lähetyksen kohde ja menetelmä</value>
+  </data>
+  <data name="ConfirmationParameters" xml:space="preserve">
+    <value>Vahvistusparametrit</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Lähetä push</value>
+  </data>
+  <data name="Restriction" xml:space="preserve">
+    <value>Rajoitus</value>
+  </data>
+  <data name="ColumnSelection" xml:space="preserve">
+    <value>Sarakkeen valinta</value>
+  </data>
+  <data name="RestrictionType" xml:space="preserve">
+    <value>Rajoitustyyppi</value>
+  </data>
+  <data name="RestrictionRange" xml:space="preserve">
+    <value>Rajoitusväli</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>Sarake</value>
+  </data>
+  <data name="ChooseASupportedServiceAndMessage" xml:space="preserve">
+    <value>Valitse tuettu palvelu ja viesti.</value>
+  </data>
+  <data name="DestinationMustContainASCIICharacters" xml:space="preserve">
+    <value>Kohteen on sisällettävä ASCII-merkkejä.</value>
+  </data>
+  <data name="RegisterObject" xml:space="preserve">
+    <value>Rekisteriobjekti</value>
+  </data>
+  <data name="ScalerLabel" xml:space="preserve">
+    <value>Skaalauskerroin:</value>
+  </data>
+  <data name="UnitLabel" xml:space="preserve">
+    <value>Yksikkö:</value>
+  </data>
+  <data name="RegisterActivationObject" xml:space="preserve">
+    <value>Rekisterin aktivointiobjekti</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Määritykset</value>
+  </data>
+  <data name="RegisterAssignment" xml:space="preserve">
+    <value>Rekisterimääritys</value>
+  </data>
+  <data name="Masks" xml:space="preserve">
+    <value>Maskit</value>
+  </data>
+  <data name="MaskList" xml:space="preserve">
+    <value>Maskiluettelo</value>
+  </data>
+  <data name="Indexes" xml:space="preserve">
+    <value>Indeksit</value>
+  </data>
+  <data name="ActiveMask" xml:space="preserve">
+    <value>Aktiivinen maski</value>
+  </data>
+  <data name="MaskNameHexadecimal" xml:space="preserve">
+    <value>Maskin nimi (heksadesimaalinen)</value>
+  </data>
+  <data name="MaskIndexesCommaSeparatedBytes" xml:space="preserve">
+    <value>Maskin indeksit (pilkuin erotetut tavut)</value>
+  </data>
+  <data name="AddRegister" xml:space="preserve">
+    <value>Lisää rekisteri</value>
+  </data>
+  <data name="AddMask" xml:space="preserve">
+    <value>Lisää maski</value>
+  </data>
+  <data name="RemoveMask" xml:space="preserve">
+    <value>Poista maski</value>
+  </data>
+  <data name="EnterAMaskName" xml:space="preserve">
+    <value>Anna maskin nimi.</value>
+  </data>
+  <data name="ChooseARegisterExtendedRegisterOrDemandRegister" xml:space="preserve">
+    <value>Valitse rekisteri, laajennettu rekisteri tai kysyntärekisteri.</value>
+  </data>
+  <data name="RegisterMonitorObject" xml:space="preserve">
+    <value>Rekisterin valvontaobjekti</value>
+  </data>
+  <data name="Thresholds" xml:space="preserve">
+    <value>Kynnysarvot</value>
+  </data>
+  <data name="Threshold" xml:space="preserve">
+    <value>Kynnysarvo</value>
+  </data>
+  <data name="UpLogicalName" xml:space="preserve">
+    <value>Ylityksen looginen nimi</value>
+  </data>
+  <data name="UpScriptSelector" xml:space="preserve">
+    <value>Ylityksen komentosarjavalitsin</value>
+  </data>
+  <data name="DownLogicalName" xml:space="preserve">
+    <value>Alituksen looginen nimi</value>
+  </data>
+  <data name="DownScriptSelector" xml:space="preserve">
+    <value>Alituksen komentosarjavalitsin</value>
+  </data>
+  <data name="MonitoredValue" xml:space="preserve">
+    <value>Valvottava arvo</value>
+  </data>
+  <data name="SAPAssignmentObject" xml:space="preserve">
+    <value>SAP-määritysobjekti</value>
+  </data>
+  <data name="SapAssignmentList" xml:space="preserve">
+    <value>SAP-määritysluettelo</value>
+  </data>
+  <data name="SAPAddress" xml:space="preserve">
+    <value>SAP-osoite</value>
+  </data>
+  <data name="LogicalDeviceName" xml:space="preserve">
+    <value>Loogisen laitteen nimi</value>
+  </data>
+  <data name="SAPID165535" xml:space="preserve">
+    <value>SAP-tunnus (1–65535)</value>
+  </data>
+  <data name="LogicalDeviceName2" xml:space="preserve">
+    <value>Loogisen laitteen nimi</value>
+  </data>
+  <data name="AddSAP" xml:space="preserve">
+    <value>Lisää SAP</value>
+  </data>
+  <data name="RemoveSAP" xml:space="preserve">
+    <value>Poista SAP</value>
+  </data>
+  <data name="EnterALogicalDeviceName" xml:space="preserve">
+    <value>Anna loogisen laitteen nimi.</value>
+  </data>
+  <data name="SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535" xml:space="preserve">
+    <value>SAP-tunnus nolla poistaa määrityksen; anna tunnus väliltä 1–65535.</value>
+  </data>
+  <data name="EnterAnIDFrom1To65535" xml:space="preserve">
+    <value>Anna tunnus väliltä 1–65535.</value>
+  </data>
+  <data name="ScheduleObject" xml:space="preserve">
+    <value>Aikatauluobjekti</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Ota käyttöön</value>
+  </data>
+  <data name="SwitchTime" xml:space="preserve">
+    <value>Vaihtoaika</value>
+  </data>
+  <data name="ValidityWindow" xml:space="preserve">
+    <value>Voimassaoloikkuna</value>
+  </data>
+  <data name="ExecWeekdays" xml:space="preserve">
+    <value>Suoritusviikonpäivät</value>
+  </data>
+  <data name="ExecSpecDays" xml:space="preserve">
+    <value>Suorituksen erikoispäivät</value>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>Alku</value>
+  </data>
+  <data name="EntryIndex" xml:space="preserve">
+    <value>Merkinnän indeksi</value>
+  </data>
+  <data name="EntryEnabled" xml:space="preserve">
+    <value>Merkintä käytössä</value>
+  </data>
+  <data name="EnterTrueOrFalse" xml:space="preserve">
+    <value>Anna True tai False.</value>
+  </data>
+  <data name="ScriptLogicalName" xml:space="preserve">
+    <value>Komentosarjan looginen nimi</value>
+  </data>
+  <data name="ScriptSelector2" xml:space="preserve">
+    <value>Komentosarjan valitsin</value>
+  </data>
+  <data name="SwitchTimeHHMmSs" xml:space="preserve">
+    <value>Vaihtoaika (HH:mm:ss)</value>
+  </data>
+  <data name="ValidityWindow2" xml:space="preserve">
+    <value>Voimassaoloikkuna</value>
+  </data>
+  <data name="WeekdayFlags0127" xml:space="preserve">
+    <value>Viikonpäiväliput (0–127)</value>
+  </data>
+  <data name="SpecialDayBitString" xml:space="preserve">
+    <value>Erikoispäivien bittijono</value>
+  </data>
+  <data name="BeginDateYyyyMMDd" xml:space="preserve">
+    <value>Aloituspäivä (yyyy-MM-dd)</value>
+  </data>
+  <data name="EndDateYyyyMMDd" xml:space="preserve">
+    <value>Lopetuspäivä (yyyy-MM-dd)</value>
+  </data>
+  <data name="ApplyEnableDisable" xml:space="preserve">
+    <value>Ota käyttöön / poista käytöstä</value>
+  </data>
+  <data name="DeleteEntry" xml:space="preserve">
+    <value>Poista merkintä</value>
+  </data>
+  <data name="WeekdayFlagsMustBeBetween0And127" xml:space="preserve">
+    <value>Viikonpäivälippujen on oltava väliltä 0–127.</value>
+  </data>
+  <data name="EnterTheSpecialDayFlagsAsABinaryBitString" xml:space="preserve">
+    <value>Anna erikoispäiväliput binääribittijonona.</value>
+  </data>
+  <data name="BeginDateMustNotFollowEndDate" xml:space="preserve">
+    <value>Aloituspäivä ei saa olla lopetuspäivän jälkeen.</value>
+  </data>
+  <data name="ScriptTableObject" xml:space="preserve">
+    <value>Komentosarjataulukko-objekti</value>
+  </data>
+  <data name="ScriptId" xml:space="preserve">
+    <value>Komentosarjan tunnus</value>
+  </data>
+  <data name="ScriptID065535" xml:space="preserve">
+    <value>Komentosarjan tunnus (0–65535)</value>
+  </data>
+  <data name="ExecuteScript" xml:space="preserve">
+    <value>Suorita komentosarja</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Tunniste</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Toiminto</value>
+  </data>
+  <data name="SecuritySetupObject" xml:space="preserve">
+    <value>Suojausasetusobjekti</value>
+  </data>
+  <data name="PolicyLabel" xml:space="preserve">
+    <value>Käytäntö:</value>
+  </data>
+  <data name="SuiteLabel" xml:space="preserve">
+    <value>Suojauspaketti:</value>
+  </data>
+  <data name="ClientSystemTitleLabel" xml:space="preserve">
+    <value>Asiakkaan järjestelmätunnus:</value>
+  </data>
+  <data name="ServerSystemTitleLabel" xml:space="preserve">
+    <value>Palvelimen järjestelmätunnus:</value>
+  </data>
+  <data name="SystemTitleDescriptionLabel" xml:space="preserve">
+    <value>Järjestelmätunnuksen kuvaus:</value>
+  </data>
+  <data name="SecurityPolicyBitMaskLabel" xml:space="preserve">
+    <value>Suojauskäytännön bittimaski:</value>
+  </data>
+  <data name="SecurityPolicyContainsUnsupportedFlags" xml:space="preserve">
+    <value>Suojauskäytäntö sisältää lippuja, joita ei tueta.</value>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>Tyyppi:</value>
+  </data>
+  <data name="KEKHexLabel" xml:space="preserve">
+    <value>KEK (hex):</value>
+  </data>
+  <data name="KeyHexLabel" xml:space="preserve">
+    <value>Avain (hex):</value>
+  </data>
+  <data name="SignedEphemeralPublicKeyHexLabel" xml:space="preserve">
+    <value>Allekirjoitettu tilapäinen julkinen avain (hex):</value>
+  </data>
+  <data name="EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Anna allekirjoitettu tilapäinen julkinen avain suojauspaketille yksi tai kaksi.</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Varmenteet</value>
+  </data>
+  <data name="CertificateTypeLabel" xml:space="preserve">
+    <value>Varmenteen tyyppi:</value>
+  </data>
+  <data name="X509CertificateDERHexLabel" xml:space="preserve">
+    <value>X.509-varmenne (DER hex):</value>
+  </data>
+  <data name="IdentifyBySerialNumberAndIssuerLabel" xml:space="preserve">
+    <value>Tunnista sarjanumerolla ja myöntäjällä:</value>
+  </data>
+  <data name="SerialNumberDecimalLabel" xml:space="preserve">
+    <value>Sarjanumero (desimaalinen):</value>
+  </data>
+  <data name="CertificateSerialNumberMustBePositive" xml:space="preserve">
+    <value>Varmenteen sarjanumeron on oltava positiivinen.</value>
+  </data>
+  <data name="IssuerDERHexLabel" xml:space="preserve">
+    <value>Myöntäjä (DER hex):</value>
+  </data>
+  <data name="ADERIssuerIsRequired" xml:space="preserve">
+    <value>DER-myöntäjä vaaditaan.</value>
+  </data>
+  <data name="EntityLabel" xml:space="preserve">
+    <value>Osapuoli:</value>
+  </data>
+  <data name="SystemTitle8BytesHexLabel" xml:space="preserve">
+    <value>Järjestelmätunnus (8 tavua, hex):</value>
+  </data>
+  <data name="SystemTitleMustContainEightBytes" xml:space="preserve">
+    <value>Järjestelmätunnuksen on sisällettävä kahdeksan tavua.</value>
+  </data>
+  <data name="SecurityActivation" xml:space="preserve">
+    <value>Suojauksen aktivointi</value>
+  </data>
+  <data name="ActivateSecurity" xml:space="preserve">
+    <value>Aktivoi suojaus</value>
+  </data>
+  <data name="KeyTransferAndAgreement" xml:space="preserve">
+    <value>Avaimen siirto ja sopiminen</value>
+  </data>
+  <data name="UpdateKey" xml:space="preserve">
+    <value>Päivitä avain...</value>
+  </data>
+  <data name="AgreeKey" xml:space="preserve">
+    <value>Sovi avain</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Osapuoli</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Sarjanumero</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Myöntäjä</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Kohde</value>
+  </data>
+  <data name="SubjectAltName" xml:space="preserve">
+    <value>Kohteen vaihtoehtoinen nimi</value>
+  </data>
+  <data name="KeyPair" xml:space="preserve">
+    <value>Avainpari...</value>
+  </data>
+  <data name="CertificateRequest" xml:space="preserve">
+    <value>Varmennepyyntö...</value>
+  </data>
+  <data name="ImportCertificate" xml:space="preserve">
+    <value>Tuo varmenne</value>
+  </data>
+  <data name="ExportCertificate" xml:space="preserve">
+    <value>Vie varmenne...</value>
+  </data>
+  <data name="RemoveCertificate" xml:space="preserve">
+    <value>Poista varmenne</value>
+  </data>
+  <data name="CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession" xml:space="preserve">
+    <value>Varmennepyynnöt ja vientivastaukset palautetaan yhteysistuntoon.</value>
+  </data>
+  <data name="VersionZeroSecurityPolicyMustBeBetweenZeroAndThree" xml:space="preserve">
+    <value>Version nolla suojauskäytännön on oltava nollan ja kolmen välillä.</value>
+  </data>
+  <data name="SelectAKeyTypeSupportedByThisVersion" xml:space="preserve">
+    <value>Valitse tämän version tukema avaintyyppi.</value>
+  </data>
+  <data name="KeyAgreementRequiresSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Avaimesta sopiminen vaatii suojauspaketin yksi tai kaksi.</value>
+  </data>
+  <data name="SFSKActiveInitiatorObject" xml:space="preserve">
+    <value>S-FSK-aktiivialoittajaobjekti</value>
+  </data>
+  <data name="SystemTitleLabel" xml:space="preserve">
+    <value>Järjestelmätunnus:</value>
+  </data>
+  <data name="MACAddressLabel2" xml:space="preserve">
+    <value>MAC-osoite:</value>
+  </data>
+  <data name="LSAPSelectorLabel" xml:space="preserve">
+    <value>L SAP -valitsin:</value>
+  </data>
+  <data name="ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI" xml:space="preserve">
+    <value>Nollaus ei ole käytettävissä: tämä Gurux-versio tarjoaa metodin nimen mutta ei tuettua komentorajapintaa.</value>
+  </data>
+  <data name="SFSKMACCountersObject" xml:space="preserve">
+    <value>S-FSK MAC -laskuriobjekti</value>
+  </data>
+  <data name="SynchronizationRegisterLabel" xml:space="preserve">
+    <value>Synkronointirekisteri:</value>
+  </data>
+  <data name="SynchronizationRegister" xml:space="preserve">
+    <value>Synkronointirekisteri</value>
+  </data>
+  <data name="PhysicalLayerDesynchronizationLabel" xml:space="preserve">
+    <value>Fyysisen kerroksen synkronoinnin menetys:</value>
+  </data>
+  <data name="TimeoutNotAddressedDesynchronizationLabel" xml:space="preserve">
+    <value>Osoittamattoman aikakatkaisun synkronoinnin menetys:</value>
+  </data>
+  <data name="TimeoutFrameNotOKDesynchronizationLabel" xml:space="preserve">
+    <value>Virheellisen kehyksen aikakatkaisun synkronoinnin menetys:</value>
+  </data>
+  <data name="WriteRequestDesynchronizationLabel" xml:space="preserve">
+    <value>Kirjoituspyynnön synkronoinnin menetys:</value>
+  </data>
+  <data name="WrongInitiatorDesynchronizationLabel" xml:space="preserve">
+    <value>Väärän aloittajan synkronoinnin menetys:</value>
+  </data>
+  <data name="BroadcastFramesCounterLabel" xml:space="preserve">
+    <value>Yleislähetyskehysten laskuri:</value>
+  </data>
+  <data name="MACAddress" xml:space="preserve">
+    <value>MAC-osoite</value>
+  </data>
+  <data name="RepetitionsCounterLabel" xml:space="preserve">
+    <value>Toistolaskuri:</value>
+  </data>
+  <data name="TransmissionsCounterLabel2" xml:space="preserve">
+    <value>Lähetyslaskuri:</value>
+  </data>
+  <data name="CRCOKFramesCounterLabel" xml:space="preserve">
+    <value>Kelvollisten CRC-kehysten laskuri:</value>
+  </data>
+  <data name="CRCNOKFramesCounterLabel" xml:space="preserve">
+    <value>Virheellisten CRC-kehysten laskuri:</value>
+  </data>
+  <data name="DesynchronizationListing" xml:space="preserve">
+    <value>Synkronoinnin menetysluettelo</value>
+  </data>
+  <data name="SFSKMACSynchronizationTimeoutsObject" xml:space="preserve">
+    <value>S-FSK MAC -synkronoinnin aikakatkaisuobjekti</value>
+  </data>
+  <data name="SearchInitiatorTimeoutLabel" xml:space="preserve">
+    <value>Aloittajan haun aikakatkaisu:</value>
+  </data>
+  <data name="ConfirmationTimeoutLabel" xml:space="preserve">
+    <value>Vahvistuksen aikakatkaisu:</value>
+  </data>
+  <data name="TimeoutNotAddressedLabel" xml:space="preserve">
+    <value>Osoittamattoman aikakatkaisu:</value>
+  </data>
+  <data name="TimeuoutFrameNotOKLabel" xml:space="preserve">
+    <value>Virheellisen kehyksen aikakatkaisu:</value>
+  </data>
+  <data name="SFSKPhyMACSetupObject" xml:space="preserve">
+    <value>S-FSK Phy MAC -asetusobjekti</value>
+  </data>
+  <data name="InitiatorElectricalPhaseLabel" xml:space="preserve">
+    <value>Aloittajan sähkövaihe:</value>
+  </data>
+  <data name="DeltaElectricalPhaseLabel" xml:space="preserve">
+    <value>Sähkövaihe-ero:</value>
+  </data>
+  <data name="MaxReceivingGainLabel" xml:space="preserve">
+    <value>Vastaanottovahvistuksen enimmäismäärä:</value>
+  </data>
+  <data name="MaxTransmittingGainLabel" xml:space="preserve">
+    <value>Lähetysvahvistuksen enimmäismäärä:</value>
+  </data>
+  <data name="SearchInitiatorThresholdLabel" xml:space="preserve">
+    <value>Aloittajan haun kynnysarvo:</value>
+  </data>
+  <data name="MarkFrequencyHzLabel" xml:space="preserve">
+    <value>Merkkitaajuus (Hz):</value>
+  </data>
+  <data name="SpaceFrequencyHzLabel" xml:space="preserve">
+    <value>Välitaajuus (Hz):</value>
+  </data>
+  <data name="MACGroupAddressesLabel" xml:space="preserve">
+    <value>MAC-ryhmäosoitteet:</value>
+  </data>
+  <data name="MACGroupAddress" xml:space="preserve">
+    <value>MAC-ryhmäosoite</value>
+  </data>
+  <data name="RepeaterLabel" xml:space="preserve">
+    <value>Toistin:</value>
+  </data>
+  <data name="RepeaterStatusLabel" xml:space="preserve">
+    <value>Toistimen tila:</value>
+  </data>
+  <data name="MinDeltaCreditLabel" xml:space="preserve">
+    <value>Vähimmäisluottoero:</value>
+  </data>
+  <data name="InitiatorMACAddressLabel" xml:space="preserve">
+    <value>Aloittajan MAC-osoite:</value>
+  </data>
+  <data name="SynchronizationLockedLabel" xml:space="preserve">
+    <value>Synkronointi lukittu:</value>
+  </data>
+  <data name="TransmissionSpeedLabel" xml:space="preserve">
+    <value>Siirtonopeus:</value>
+  </data>
+  <data name="SpecialDaysTableObject" xml:space="preserve">
+    <value>Erikoispäivätaulukko-objekti</value>
+  </data>
+  <data name="SpecialDayDate" xml:space="preserve">
+    <value>Erikoispäivän päivämäärä</value>
+  </data>
+  <data name="DateYyyyMMDd" xml:space="preserve">
+    <value>Päivämäärä (yyyy-MM-dd)</value>
+  </data>
+  <data name="DayID0255" xml:space="preserve">
+    <value>Päivän tunnus (0–255)</value>
+  </data>
+  <data name="InsertDay" xml:space="preserve">
+    <value>Lisää päivä</value>
+  </data>
+  <data name="DeleteDay" xml:space="preserve">
+    <value>Poista päivä</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Aloitustunti</value>
+  </data>
+  <data name="IntervalTariff" xml:space="preserve">
+    <value>Jakson tariffi</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>Käytössä</value>
+  </data>
+  <data name="StartHourMustBeBetween0And23" xml:space="preserve">
+    <value>Aloitustunnin on oltava väliltä 0–23.</value>
+  </data>
+  <data name="TariffPlanObject" xml:space="preserve">
+    <value>Tariffisuunnitelmaobjekti</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Käytössä</value>
+  </data>
+  <data name="DefaultTariffBand" xml:space="preserve">
+    <value>Oletustariffivyöhyke</value>
+  </data>
+  <data name="WeeklyActivation" xml:space="preserve">
+    <value>Viikoittainen aktivointi</value>
+  </data>
+  <data name="SpecialDays" xml:space="preserve">
+    <value>Erikoispäivät</value>
+  </data>
+  <data name="WinterSeason" xml:space="preserve">
+    <value>Talvikausi</value>
+  </data>
+  <data name="SummerSeason" xml:space="preserve">
+    <value>Kesäkausi</value>
+  </data>
+  <data name="DayOfMonth" xml:space="preserve">
+    <value>Kuukauden päivä</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Kuukausi</value>
+  </data>
+  <data name="WorkingDayIntervals" xml:space="preserve">
+    <value>Arkipäivän aikavälit</value>
+  </data>
+  <data name="SaturdayIntervals" xml:space="preserve">
+    <value>Lauantain aikavälit</value>
+  </data>
+  <data name="HolidayIntervals" xml:space="preserve">
+    <value>Pyhäpäivän aikavälit</value>
+  </data>
+  <data name="TariffPlan" xml:space="preserve">
+    <value>Tariffisuunnitelma</value>
+  </data>
+  <data name="TCPUDPSetupObject" xml:space="preserve">
+    <value>TCP/UDP-asetusobjekti</value>
+  </data>
+  <data name="IPReferenceLabel" xml:space="preserve">
+    <value>IP-viite:</value>
+  </data>
+  <data name="MaxSegmentSizeLabel" xml:space="preserve">
+    <value>Segmentin enimmäiskoko:</value>
+  </data>
+  <data name="MaxConnectionsLabel" xml:space="preserve">
+    <value>Yhteyksien enimmäismäärä:</value>
+  </data>
+  <data name="TokenGatewayObject" xml:space="preserve">
+    <value>Polettiyhdyskäytäväobjekti</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Poletti</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Kuvaukset</value>
+  </data>
+  <data name="DeliveryMethod" xml:space="preserve">
+    <value>Toimitustapa</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>Tilakoodi</value>
+  </data>
+  <data name="DataValue" xml:space="preserve">
+    <value>Tietoarvo</value>
+  </data>
+  <data name="TokenHexadecimal" xml:space="preserve">
+    <value>Poletti (heksadesimaalinen)</value>
+  </data>
+  <data name="TransferToken" xml:space="preserve">
+    <value>Siirrä poletti</value>
+  </data>
+  <data name="EnterAToken" xml:space="preserve">
+    <value>Anna poletti.</value>
+  </data>
+  <data name="UtilityTablesObject" xml:space="preserve">
+    <value>Aputaulukko-objekti</value>
+  </data>
+  <data name="TableID" xml:space="preserve">
+    <value>Taulukon tunnus</value>
+  </data>
+  <data name="WirelessModeQChannel" xml:space="preserve">
+    <value>Langaton Q-kanavan tila</value>
+  </data>
+  <data name="AddressMaskLabel" xml:space="preserve">
+    <value>Osoitemaski:</value>
+  </data>
+  <data name="UnableToDisplayAttribute0" xml:space="preserve">
+    <value>Attribuuttia ei voi näyttää: {0}</value>
+  </data>
+  <data name="CannotDisplayAttribute01" xml:space="preserve">
+    <value>Attribuuttia {0} ei voi näyttää: {1}.</value>
+  </data>
+  <data name="Text0Items" xml:space="preserve">
+    <value>{0} kohdetta</value>
+  </data>
+  <data name="ActionFailed0" xml:space="preserve">
+    <value>Toiminto epäonnistui: {0}</value>
+  </data>
+  <data name="WritingCurrentTimeFailed0" xml:space="preserve">
+    <value>Nykyisen ajan kirjoittaminen epäonnistui: {0}</value>
+  </data>
+  <data name="ResetFailed0" xml:space="preserve">
+    <value>Nollaus epäonnistui: {0}</value>
+  </data>
+  <data name="Value0" xml:space="preserve">
+    <value>Arvo {0}</value>
+  </data>
+  <data name="Attribute0" xml:space="preserve">
+    <value>Attribuutti {0}</value>
+  </data>
+  <data name="Resize0" xml:space="preserve">
+    <value>Muuta kokoa {0}</value>
+  </data>
+  <data name="Read0" xml:space="preserve">
+    <value>Lue {0}</value>
+  </data>
+  <data name="Text0RequestCompleted" xml:space="preserve">
+    <value>{0}-pyyntö valmis.</value>
+  </data>
+  <data name="TheSelectedSecuritySuiteRequires0KeyBytes" xml:space="preserve">
+    <value>Valittu suojauspaketti vaatii {0} avaintavua.</value>
+  </data>
+  <data name="ASignedEphemeralPublicKeyRequires0Bytes" xml:space="preserve">
+    <value>Allekirjoitettu tilapäinen julkinen avain vaatii {0} tavua.</value>
+  </data>
+  <data name="Text0Object" xml:space="preserve">
+    <value>{0}-objekti</value>
+  </data>
+  <data name="Text01" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Text012" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="EnterAWholeNumberBetween0And1" xml:space="preserve">
+    <value>Anna kokonaisluku väliltä {0}–{1}.</value>
+  </data>
+  <data name="Method0" xml:space="preserve">
+    <value>Metodi {0}</value>
+  </data>
+  <data name="RemoveTheSelected0Row" xml:space="preserve">
+    <value>Poistetaanko valittu {0}-rivi?</value>
+  </data>
+  <data name="AvailableCreditLabel" xml:space="preserve">
+    <value>Käytettävissä oleva luotto:</value>
+  </data>
+  <data name="AmountToClearLabel" xml:space="preserve">
+    <value>Selvitettävä määrä:</value>
+  </data>
+  <data name="ClearanceThresholdLabel" xml:space="preserve">
+    <value>Selvitysraja:</value>
+  </data>
+  <data name="AggregatedDebtLabel" xml:space="preserve">
+    <value>Kokonaisvelka:</value>
+  </data>
+  <data name="LowCreditThresholdLabel" xml:space="preserve">
+    <value>Vähäisen luoton raja:</value>
+  </data>
+  <data name="NextCreditAvailableThresholdLabel" xml:space="preserve">
+    <value>Seuraavan saatavilla olevan luoton raja:</value>
+  </data>
+  <data name="MaxProvisionLabel" xml:space="preserve">
+    <value>Varauksen enimmäismäärä:</value>
+  </data>
+  <data name="MaxProvisionPeriodLabel" xml:space="preserve">
+    <value>Varauksen enimmäisjakso:</value>
+  </data>
+  <data name="Text0Attribute1" xml:space="preserve">
+    <value>{0} / attribuutti {1}</value>
+  </data>
+  <data name="AttributeError" xml:space="preserve">
+    <value>Attribuutti {0}: {1}</value>
+  </data>
+  <data name="IntervalNumber" xml:space="preserve">
+    <value>Aikaväli {0}</value>
+  </data>
+  <data name="CaptureObjectAttributeAndData" xml:space="preserve">
+    <value>{0} / attribuutti {1} / tieto {2}</value>
+  </data>
 </root>

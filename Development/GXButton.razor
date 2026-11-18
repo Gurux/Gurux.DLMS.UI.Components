@@ -110,10 +110,20 @@
         get; set;
     }
 
+    /// <summary>Gets the button CSS classes, including the caller-supplied class attribute.</summary>
     private string CssClass => AdditionalAttributes?.TryGetValue("class", out var value) == true
         ? "gx-button " + value : "gx-button";
 
+    /// <summary>Forwards a click to the consumer when the button is enabled.</summary>
+    /// <param name="args">The browser input event received by the component.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task HandleClick(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnClick.InvokeAsync(args);
+    /// <summary>Forwards a double-click to the consumer when the button is enabled.</summary>
+    /// <param name="args">The browser input event received by the component.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task HandleDoubleClick(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnDoubleClick.InvokeAsync(args);
+    /// <summary>Forwards a context-menu request when the button is enabled.</summary>
+    /// <param name="args">The browser input event received by the component.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task HandleContextMenu(MouseEventArgs args) => Disabled ? Task.CompletedTask : OnContextMenu.InvokeAsync(args);
 }

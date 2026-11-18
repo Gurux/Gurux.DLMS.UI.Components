@@ -38,23 +38,23 @@
 @inherits GXDLMSObjectViewBase<GXDLMSCredit>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Credit Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Current Credit Amount" Enabled="CanEditAttribute(2)" />
-    <GXAttributeField Edit="Edit" Index="3" Label="Type" Enabled="CanEditAttribute(3)" EnumType="typeof(CreditType)" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Priority" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Warning Threshold" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="6" Label="Limit" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="7" Label="Credit Configuration" Enabled="CanEditAttribute(7)" EnumType="typeof(CreditConfiguration)" />
-    <GXAttributeField Edit="Edit" Index="8" Label="Status" Enabled="CanEditAttribute(8)" EnumType="typeof(CreditStatus)" />
-    <GXAttributeField Edit="Edit" Index="9" Label="Preset Credit Amount" Enabled="CanEditAttribute(9)" />
-    <GXAttributeField Edit="Edit" Index="10" Label="Credit Available Threshold" Enabled="CanEditAttribute(10)" />
-    <GXAttributeField Edit="Edit" Index="11" Label="Period" Enabled="CanEditAttribute(11)" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Amount (Int32)" Value="@Amount" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => Amount = value" Validate="text => ValidateParameter(nameof(Amount), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="UpdateAmountAsync">Update amount</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="SetAmountAsync">Set amount</GXButton>
-    <GXValueField Label="Requested status" Value="@RequestedStatus" Enabled="CanInvokeMethod(3)" EnumType="typeof(CreditStatus)" OnCommit="value => RequestedStatus = value" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="InvokeCreditAsync">Invoke credit</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.CreditObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.CurrentCreditAmount" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.Type" Enabled="CanEditAttribute(3)" EnumType="typeof(CreditType)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Priority" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.WarningThreshold" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.Limit" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.CreditConfiguration" Enabled="CanEditAttribute(7)" EnumType="typeof(CreditConfiguration)" />
+    <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Status" Enabled="CanEditAttribute(8)" EnumType="typeof(CreditStatus)" />
+    <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.PresetCreditAmount" Enabled="CanEditAttribute(9)" />
+    <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.CreditAvailableThreshold" Enabled="CanEditAttribute(10)" />
+    <GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.Period" Enabled="CanEditAttribute(11)" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.AmountInt32" Value="@Amount" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => Amount = value" Validate="text => ValidateParameter(nameof(Amount), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="UpdateAmountAsync">@Properties.Resources.UpdateAmount</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="SetAmountAsync">@Properties.Resources.SetAmount</GXButton>
+    <GXValueField Label="@Properties.Resources.RequestedStatus" Value="@RequestedStatus" Enabled="CanInvokeMethod(3)" EnumType="typeof(CreditStatus)" OnCommit="value => RequestedStatus = value" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="InvokeCreditAsync">@Properties.Resources.InvokeCredit</GXButton>
     </fieldset>
 </section>
 
@@ -86,11 +86,15 @@
         var status = Enum.Parse<CreditStatus>(RequestedStatus);
         if (!Enum.IsDefined(status))
         {
-            throw new FormatException("Select a valid credit status.");
+            throw new FormatException(Properties.Resources.SelectAValidCreditStatus);
         }
         return Target.InvokeCredit(client, status);
     });
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try

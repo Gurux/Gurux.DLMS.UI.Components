@@ -38,11 +38,11 @@
 @inherits GXDLMSObjectViewBase<GXDLMSActionSchedule>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Action Schedule Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset><legend>Executed Script</legend>
-        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Script Name" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Script Selector" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="3" Label="Script Type" Enabled="CanEditAttribute(3)" EnumType="typeof(SingleActionScheduleType)" />
+    <GXObjectViewHeader Title="@Properties.Resources.ActionScheduleObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>@Properties.Resources.ExecutedScript</legend>
+        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="@Properties.Resources.ScriptName" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="@Properties.Resources.ScriptSelector" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ScriptType" Enabled="CanEditAttribute(3)" EnumType="typeof(SingleActionScheduleType)" />
     </fieldset>
-    <GXAttributeField Edit="Edit" Index="4" EditorLabels="@(new[] { "Time", "Date" })" EditorKinds="@(new[] { "datetime", "datetime" })" Label="Execution time" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Time" })" CreateRow="@(() => new GXStructure { new byte[4], new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } })" />
+    <GXAttributeField Edit="Edit" Index="4" EditorLabels="@(new[] { Properties.Resources.Time, Properties.Resources.Date })" EditorKinds="@(new[] { "datetime", "datetime" })" Label="@Properties.Resources.ExecutionTime" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.Time })" CreateRow="@(() => new GXStructure { new byte[4], new byte[] { 0xFF, 0xFF, 0xFF, 0xFF, 0xFF } })" />
 </section>

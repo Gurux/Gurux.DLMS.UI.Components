@@ -37,38 +37,38 @@
 
 <section class="gx-account-view" @key="Target">
     <div class="gx-view-content account-object">
-        <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Account Object" />
+        <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.AccountObject" />
         <GXTabControl NavigateOnSelection="false">
-            <GXTabPage Text="General">
+            <GXTabPage Text="@Properties.Resources.General">
                 <div class="account-general">
-                    <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Payment Mode:" EnumType="typeof(PaymentMode)" Enabled="CanEditAttribute(2)" />
-                    <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Status:" EnumType="typeof(AccountStatus)" Enabled="CanEditAttribute(2)" />
-                    <GXAttributeField Edit="Edit" Index="3" Label="Current Credit In Use:" Enabled="CanEditAttribute(3)" />
-                    <GXAttributeField Edit="Edit" Index="4" Label="Current Credit Status:" EnumType="typeof(AccountCreditStatus)" Enabled="CanEditAttribute(4)" />
+                    <GXAttributeField Edit="Edit" Index="2" Part="0" Label="@Properties.Resources.PaymentModeLabel" EnumType="typeof(PaymentMode)" Enabled="CanEditAttribute(2)" />
+                    <GXAttributeField Edit="Edit" Index="2" Part="1" Label="@Properties.Resources.StatusLabel" EnumType="typeof(AccountStatus)" Enabled="CanEditAttribute(2)" />
+                    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CurrentCreditInUseLabel" Enabled="CanEditAttribute(3)" />
+                    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.CurrentCreditStatusLabel" EnumType="typeof(AccountCreditStatus)" Enabled="CanEditAttribute(4)" />
                     @foreach (var field in CreditFields)
                     {
-                        <GXAttributeField Edit="Edit" Index="field.Index" Label="@(field.Label + ":")" Enabled="CanEditAttribute(field.Index)" />
+                        <GXAttributeField Edit="Edit" Index="field.Index" Label="@field.Label" Enabled="CanEditAttribute(field.Index)" />
                     }
-                    <GXAttributeField Edit="Edit" Index="13" Label="Account Activation Time:" Enabled="CanEditAttribute(13)" />
-                    <GXAttributeField Edit="Edit" Index="14" Label="Account Closure Time:" Enabled="CanEditAttribute(14)" />
-                    <GXAttributeField Edit="Edit" Index="15" Part="0" Label="Currency Name:" Enabled="CanEditAttribute(15)" />
-                    <GXAttributeField Edit="Edit" Index="15" Part="1" Label="Currency Scale:" Enabled="CanEditAttribute(15)" />
-                    <GXAttributeField Edit="Edit" Index="15" Part="2" Label="Currency Unit:" EnumType="typeof(Currency)" Enabled="CanEditAttribute(15)" />
+                    <GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.AccountActivationTimeLabel" Enabled="CanEditAttribute(13)" />
+                    <GXAttributeField Edit="Edit" Index="14" Label="@Properties.Resources.AccountClosureTimeLabel" Enabled="CanEditAttribute(14)" />
+                    <GXAttributeField Edit="Edit" Index="15" Part="0" Label="@Properties.Resources.CurrencyNameLabel" Enabled="CanEditAttribute(15)" />
+                    <GXAttributeField Edit="Edit" Index="15" Part="1" Label="@Properties.Resources.CurrencyScaleLabel" Enabled="CanEditAttribute(15)" />
+                    <GXAttributeField Edit="Edit" Index="15" Part="2" Label="@Properties.Resources.CurrencyUnitLabel" EnumType="typeof(Currency)" Enabled="CanEditAttribute(15)" />
                     @foreach (var field in ProvisionFields)
                     {
-                        <GXAttributeField Edit="Edit" Index="field.Index" Label="@(field.Label + ":")" Enabled="CanEditAttribute(field.Index)" />
+                        <GXAttributeField Edit="Edit" Index="field.Index" Label="@field.Label" Enabled="CanEditAttribute(field.Index)" />
                     }
                     <div class="account-actions">
-                        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivateAsync">Activate</GXButton>
-                        <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CloseAsync">Close</GXButton>
-                        <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="ResetAsync">Reset</GXButton>
+                        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ActivateAsync">@Properties.Resources.Activate</GXButton>
+                        <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CloseAsync">@Properties.Resources.Close</GXButton>
+                        <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
                     </div>
                 </div>
             </GXTabPage>
-            <GXTabPage Text="Credit reference"><GXAccountTable Edit="Edit" Index="9" Enabled="CanEditAttribute(9)" /></GXTabPage>
-            <GXTabPage Text="Charge Reference"><GXAccountTable Edit="Edit" Index="10" Enabled="CanEditAttribute(10)" /></GXTabPage>
-            <GXTabPage Text="Credit Charge"><GXAccountTable Edit="Edit" Index="11" Enabled="CanEditAttribute(11)" /></GXTabPage>
-            <GXTabPage Text="Token Gateway"><GXAccountTable Edit="Edit" Index="12" Enabled="CanEditAttribute(12)" /></GXTabPage>
+            <GXTabPage Text="@Properties.Resources.CreditReference2"><GXAccountTable Edit="Edit" Index="9" Enabled="CanEditAttribute(9)" /></GXTabPage>
+            <GXTabPage Text="@Properties.Resources.ChargeReference"><GXAccountTable Edit="Edit" Index="10" Enabled="CanEditAttribute(10)" /></GXTabPage>
+            <GXTabPage Text="@Properties.Resources.CreditCharge"><GXAccountTable Edit="Edit" Index="11" Enabled="CanEditAttribute(11)" /></GXTabPage>
+            <GXTabPage Text="@Properties.Resources.TokenGateway"><GXAccountTable Edit="Edit" Index="12" Enabled="CanEditAttribute(12)" /></GXTabPage>
         </GXTabControl>
     </div>
 </section>

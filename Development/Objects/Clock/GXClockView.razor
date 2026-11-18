@@ -39,52 +39,54 @@
 @inherits GXDLMSObjectViewBase<GXDLMSClock>
 
 <section class="gx-clock-view" @key="Target">
-    <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Clock Object" />
+    <GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.ClockObject" />
     <GXTabControl NavigateOnSelection="false">
-        <GXTabPage Text="General">
+        <GXTabPage Text="@Properties.Resources.General">
             <div class="clock-inline-action clock-time-action">
-                <GXAttributeField @ref="_timeField" Edit="Edit" Index="2" Label="Time:" Enabled="CanEditAttribute(2)" InputKind="datetime" />
-                <GXButton type="button" Disabled="@(!CanEditAttribute(2))" OnClick="ConfirmCurrentTime">Current time</GXButton>
+                <GXAttributeField @ref="_timeField" Edit="Edit" Index="2" Label="@Properties.Resources.TimeLabel" Enabled="CanEditAttribute(2)" InputKind="datetime" />
+                <GXButton type="button" Disabled="@(!CanEditAttribute(2))" OnClick="ConfirmCurrentTime">@Properties.Resources.CurrentTime</GXButton>
             </div>
-            <GXValueField Label="Use time zone:" Value="@TimeZoneEnabled.ToString()" Enabled="CanEditAttribute(3)" InputKind="bool" OnCommit="text => EnableTimeZone(bool.Parse(text))" />
+            <GXValueField Label="@Properties.Resources.UseTimeZoneLabel" Value="@TimeZoneEnabled.ToString()" Enabled="CanEditAttribute(3)" InputKind="bool" OnCommit="text => EnableTimeZone(bool.Parse(text))" />
             <div class="clock-inline-action clock-number-action">
-                <GXAttributeField @ref="_timeZoneField" Edit="Edit" Index="3" Label="Time Zone:" Enabled="@(CanEditAttribute(3) && TimeZoneEnabled)" />
-                <GXButton type="button" Disabled="@(!CanEditAttribute(3) || !TimeZoneEnabled)" OnClick="ConfirmCurrentTimeZone">Current time Zone</GXButton>
+                <GXAttributeField @ref="_timeZoneField" Edit="Edit" Index="3" Label="@Properties.Resources.TimeZoneLabel" Enabled="@(CanEditAttribute(3) && TimeZoneEnabled)" />
+                <GXButton type="button" Disabled="@(!CanEditAttribute(3) || !TimeZoneEnabled)" OnClick="ConfirmCurrentTimeZone">@Properties.Resources.CurrentTimeZone</GXButton>
             </div>
-            <GXAttributeField Edit="Edit" Index="4" Label="Status:" Enabled="CanEditAttribute(4)" EnumType="typeof(ClockStatus)" />
+            <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.StatusLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(ClockStatus)" />
             <fieldset>
-                <legend>Daylight Savings</legend>
-                <GXAttributeField Edit="Edit" Index="5" Label="Begin:" Enabled="@(CanEditAttribute(5) && DaylightEnabled)" InputKind="datetime" />
-                <GXAttributeField Edit="Edit" Index="6" Label="End:" Enabled="@(CanEditAttribute(6) && DaylightEnabled)" InputKind="datetime" />
-                <GXAttributeField Edit="Edit" Index="7" Label="Deviation:" Enabled="@(CanEditAttribute(7) && DaylightEnabled)" />
-                <GXAttributeField Edit="Edit" Index="8" Label="Enabled:" Enabled="CanEditAttribute(8)" InputKind="bool" />
+                <legend>@Properties.Resources.DaylightSavings</legend>
+                <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.BeginLabel" Enabled="@(CanEditAttribute(5) && DaylightEnabled)" InputKind="datetime" />
+                <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.EndLabel" Enabled="@(CanEditAttribute(6) && DaylightEnabled)" InputKind="datetime" />
+                <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.DeviationLabel" Enabled="@(CanEditAttribute(7) && DaylightEnabled)" />
+                <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.EnabledLabel" Enabled="CanEditAttribute(8)" InputKind="bool" />
             </fieldset>
-            <GXAttributeField Edit="Edit" Index="9" Label="Clock Base:" Enabled="CanEditAttribute(9)" EnumType="typeof(ClockBase)" />
+            <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.ClockBaseLabel" Enabled="CanEditAttribute(9)" EnumType="typeof(ClockBase)" />
         </GXTabPage>
-        <GXTabPage Text="Adjustments">
+        <GXTabPage Text="@Properties.Resources.Adjustments">
             <fieldset>
-                <legend>Adjust to</legend>
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AdjustToQuarterAsync">Quarter</GXButton>
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AdjustToMeasuringPeriodAsync">Measuring period</GXButton>
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AdjustToMinuteAsync">Minute</GXButton>
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="AdjustToPresetTimeAsync">Preset time</GXButton>
+                <legend>@Properties.Resources.AdjustTo</legend>
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AdjustToQuarterAsync">@Properties.Resources.Quarter</GXButton>
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AdjustToMeasuringPeriodAsync">@Properties.Resources.MeasuringPeriod</GXButton>
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AdjustToMinuteAsync">@Properties.Resources.Minute</GXButton>
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="AdjustToPresetTimeAsync">@Properties.Resources.PresetTime</GXButton>
             </fieldset>
             <fieldset>
-                <legend>Preset Adjusting Time</legend>
-                <GXValueField Label="Preset time:" Value="@PresetTimeText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => PresetTimeText = text" />
-                <GXValueField Label="Validity start:" Value="@ValidityStartText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => ValidityStartText = text" />
-                <GXValueField Label="Validity end:" Value="@ValidityEndText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => ValidityEndText = text" />
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="PresetAdjustingTimeAsync">Preset Adjusting Time...</GXButton>
+                <legend>@Properties.Resources.PresetAdjustingTime</legend>
+                <GXValueField Label="@Properties.Resources.PresetTimeLabel" Value="@PresetTimeText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => PresetTimeText = text" />
+                <GXValueField Label="@Properties.Resources.ValidityStartLabel" Value="@ValidityStartText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => ValidityStartText = text" />
+                <GXValueField Label="@Properties.Resources.ValidityEndLabel" Value="@ValidityEndText" Enabled="CanInvokeMethod(5)" InputKind="datetime" OnCommit="text => ValidityEndText = text" />
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="PresetAdjustingTimeAsync">@Properties.Resources.PresetAdjustingTime2</GXButton>
             </fieldset>
             <div class="clock-inline-action clock-number-action">
-                <GXValueField Label="Shift seconds:" Value="@ShiftSeconds" Enabled="CanInvokeMethod(6)" InputKind="number" Validate="ValidateShift" OnCommit="text => ShiftSeconds = text" />
-                <GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="ShiftTimeAsync">Shift Time...</GXButton>
+                <GXValueField Label="@Properties.Resources.ShiftSecondsLabel" Value="@ShiftSeconds" Enabled="CanInvokeMethod(6)" InputKind="number" Validate="ValidateShift" OnCommit="text => ShiftSeconds = text" />
+                <GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="ShiftTimeAsync">@Properties.Resources.ShiftTime</GXButton>
             </div>
         </GXTabPage>
     </GXTabControl>
 </section>
 @code {
+    /// <summary>References the clock time editor used to stage the current time. References the time-zone editor used to stage the local offset.</summary>
     private GXAttributeField? _timeField, _timeZoneField;
+    /// <summary>Opens the time field and fills its draft with the current local time.</summary>
     private void ConfirmCurrentTime()
     {
         if (_timeField is null || !CanEditAttribute(2))
@@ -94,6 +96,7 @@
         _timeField.BeginEdit();
         _timeField.Draft = new GXDateTime(DateTime.Now).ToFormatMeterString(CultureInfo.InvariantCulture);
     }
+    /// <summary>Opens the time-zone field and fills its draft with the current local offset.</summary>
     private void ConfirmCurrentTimeZone()
     {
         if (_timeZoneField is null || !CanEditAttribute(3))
@@ -103,6 +106,7 @@
         _timeZoneField.BeginEdit();
         _timeZoneField.Draft = (-(int)TimeZoneInfo.Local.BaseUtcOffset.TotalMinutes).ToString(CultureInfo.InvariantCulture);
     }
+    /// <summary>Gets the clock&apos;s current date-time value when it can be converted.</summary>
     private DateTime? TimeValue
     {
         get => Edit.AttributeValue(2) switch
@@ -116,7 +120,10 @@
             ? new GXDateTime(value.Value).ToFormatMeterString(CultureInfo.InvariantCulture)
             : string.Empty);
     }
-    private static string? ValidateShift(string text) => int.TryParse(text, out var value) && value is >= -900 and <= 900 ? null : "Shift seconds must be between -900 and 900.";
+    /// <summary>Validates that the requested time shift is between -900 and 900 seconds.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
+    private static string? ValidateShift(string text) => int.TryParse(text, out var value) && value is >= -900 and <= 900 ? null : Properties.Resources.ShiftSecondsMustBeBetween900And900;
     /// <summary>
     /// Meter date and time entered for the preset-adjustment request.
     /// </summary>
@@ -165,7 +172,7 @@
         var end = DateTime.ParseExact(ValidityEndText, formats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         if (start > end)
         {
-            throw new FormatException("The validity start must not follow the validity end.");
+            throw new FormatException(Properties.Resources.TheValidityStartMustNotFollowTheValidityEnd);
         }
         return Target.PresetAdjustingTime(client, preset, start, end);
     });
@@ -178,7 +185,7 @@
         var seconds = int.Parse(ShiftSeconds, CultureInfo.InvariantCulture);
         if (seconds < -900 || seconds > 900)
         {
-            throw new FormatException("Shift seconds must be between -900 and 900.");
+            throw new FormatException(Properties.Resources.ShiftSecondsMustBeBetween900And900);
         }
         return Target.ShiftTime(client, seconds);
     });

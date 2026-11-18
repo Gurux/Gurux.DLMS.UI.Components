@@ -40,10 +40,15 @@ namespace Gurux.DLMS.UI.Components.Objects;
 /// attributes without sending messages or updating confirmed model values.</remarks>
 public sealed class GXDLMSObjectEditState
 {
-    private static readonly ConditionalWeakTable<GXDLMSObject, GXDLMSObjectEditState> Sessions = new();
+    /// <summary>Associates shared edit state with each model instance without keeping the model alive.</summary>
+    private static readonly ConditionalWeakTable<GXDLMSObject, GXDLMSObjectEditState> _sessions = new();
+    /// <summary>Stores validation errors by one-based attribute index.</summary>
     private readonly Dictionary<int, string> _errors = new();
+    /// <summary>Retains unaccepted attribute input, including invalid text.</summary>
     private readonly Dictionary<int, string> _drafts = new();
+    /// <summary>Stores copies of admitted wire values before CLR model conversion.</summary>
     private readonly Dictionary<int, object?> _confirmedAttributes = new();
+    /// <summary>Retains nested editor input by its attribute and path identifier.</summary>
     private readonly Dictionary<string, string> _editorTexts = new();
     /// <summary>Gets the model whose dirty attributes hold pending writes.</summary>
     public GXDLMSObject Target
@@ -72,7 +77,9 @@ public sealed class GXDLMSObjectEditState
     /// <param name="target">Model instance; equal logical names do not share state.</param>
     /// <returns>The state associated with this instance.</returns>
     /// <exception cref="ArgumentNullException">The target is null.</exception>
-    public static GXDLMSObjectEditState For(GXDLMSObject target) => Sessions.GetValue(target, item => new(item));
+    public static GXDLMSObjectEditState For(GXDLMSObject target) => _sessions.GetValue(target, item => new(item));
+    /// <summary>Initializes the shared editing state for one model instance.</summary>
+    /// <param name="target">The DLMS object whose attribute or method is selected.</param>
     private GXDLMSObjectEditState(GXDLMSObject target) => Target = target;
     /// <summary>Keep a received value before CLR object conversion can normalize it.
     /// The host calls this for each admitted read, alongside updating the target.
@@ -89,6 +96,10 @@ public sealed class GXDLMSObjectEditState
         ArgumentOutOfRangeException.ThrowIfGreaterThan(index, ((IGXDLMSBase)Target).GetAttributeCount());
         _confirmedAttributes[index] = GXWireValue.Copy(value);
     }
+    /// <summary>Copies a confirmed wire value when one has been recorded for the attribute.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>True when validation or lookup succeeds; otherwise, false.</returns>
     internal bool TryGetConfirmedAttribute(int index, out object? value)
     {
         if (_confirmedAttributes.TryGetValue(index, out var stored))
@@ -99,6 +110,7 @@ public sealed class GXDLMSObjectEditState
         value = null;
         return false;
     }
+    /// <summary>Gets the model&apos;s confirmed value attribute before pending edits are applied.</summary>
     private object? OriginalValue => Target.GetValues().ElementAtOrDefault(1);
     /// <summary>Gets a pending value, falling back to the CLR model value without copying.</summary>
     /// <param name="index">One-based COSEM attribute index.</param>
@@ -118,7 +130,7 @@ public sealed class GXDLMSObjectEditState
         {
             return Format(ToUI(GXDLMSAttributeCodec.Read(Target, index), index));
         }
-        catch (Exception ex) when (ex is not OutOfMemoryException) { return $"Unable to display attribute: {ex.Message}"; }
+        catch (Exception ex) when (ex is not OutOfMemoryException) { return string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.UnableToDisplayAttribute0, ex.Message); }
     }
     /// <summary>Checks whether the wire or UI type requires collection XML.</summary>
     /// <param name="index">One-based COSEM attribute index.</param>
@@ -234,6 +246,7 @@ public sealed class GXDLMSObjectEditState
     public string ValueText => AttributeText(2);
     /// <summary>Gets draft or invariant scaler text. Requires a GXDLMSRegister target.</summary>
     public string ScalerText => _drafts.GetValueOrDefault(3) ?? ((GXDLMSRegister)Target).Scaler.ToString(CultureInfo.InvariantCulture);
+    /// <summary>Stores a staged register unit independently of the scaler text draft.</summary>
     private Unit? _unit;
     /// <summary>Gets the draft unit, register model unit, or None for other objects.</summary>
     public Unit Unit => _unit ?? (Target is GXDLMSRegister register ? register.Unit : Enums.Unit.None);
@@ -241,6 +254,10 @@ public sealed class GXDLMSObjectEditState
     public bool IsXml => Target.GetDataType(2) is DataType.Array or DataType.Structure
         || Target.GetUIDataType(2) is DataType.Array or DataType.Structure || OriginalValue is GXArray or GXStructure;
 
+    /// <summary>Converts a wire value to the attribute&apos;s configured UI data type.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>Converts a wire value to the attribute&apos;s configured UI data type.</returns>
     private object? ToUI(object? value, int index = 2)
     {
         var ui = Target.GetUIDataType(index);
@@ -269,7 +286,7 @@ public sealed class GXDLMSObjectEditState
         ArgumentOutOfRangeException.ThrowIfLessThan(index, 1);
         ArgumentOutOfRangeException.ThrowIfGreaterThan(index, originalValues.Length);
         _drafts[index] = text;
-        const string defaultError = "Invalid value for the selected data type.";
+        string defaultError = Properties.Resources.InvalidValueForTheSelectedDataType;
         var validationError = defaultError;
         try
         {
@@ -292,7 +309,7 @@ public sealed class GXDLMSObjectEditState
                 var family = Target is GXDLMSIp4Setup ? System.Net.Sockets.AddressFamily.InterNetwork : System.Net.Sockets.AddressFamily.InterNetworkV6;
                 if (address.AddressFamily != family)
                 {
-                    throw new FormatException("Wrong IP address family.");
+                    throw new FormatException(Properties.Resources.WrongIPAddressFamily);
                 }
 
                 value = address.ToString();
@@ -302,7 +319,7 @@ public sealed class GXDLMSObjectEditState
                 var parts = text.Split('.');
                 if (parts.Length != 6)
                 {
-                    throw new FormatException("A logical name requires six byte values.");
+                    throw new FormatException(Properties.Resources.ALogicalNameRequiresSixByteValues);
                 }
                 value = parts.Select(part => byte.Parse(part, NumberStyles.None, CultureInfo.InvariantCulture)).ToArray();
             }
@@ -323,7 +340,7 @@ public sealed class GXDLMSObjectEditState
                 var expected = wire is DataType.Array or DataType.Structure ? wire : type;
                 if (expected == DataType.Array && value is not GXArray || expected == DataType.Structure && value is not GXStructure)
                 {
-                    throw new FormatException("XML root does not match the COSEM data type.");
+                    throw new FormatException(Properties.Resources.XMLRootDoesNotMatchTheCOSEMDataType);
                 }
             }
             else
@@ -370,21 +387,24 @@ public sealed class GXDLMSObjectEditState
         Changed?.Invoke();
     }
 
+    /// <summary>Builds the validation message for the range of an integer COSEM data type.</summary>
+    /// <param name="type">The COSEM data type or object class being validated.</param>
+    /// <returns>The validation message for the range of an integer COSEM data type.</returns>
     private static string? IntegerInputError(DataType type)
     {
-        var range = type switch
+        (decimal Minimum, decimal Maximum)? range = type switch
         {
-            DataType.Int8 => "-128 and 127",
-            DataType.UInt8 => "0 and 255",
-            DataType.Int16 => "-32768 and 32767",
-            DataType.UInt16 => "0 and 65535",
-            DataType.Int32 => "-2147483648 and 2147483647",
-            DataType.UInt32 => "0 and 4294967295",
-            DataType.Int64 => "-9223372036854775808 and 9223372036854775807",
-            DataType.UInt64 => "0 and 18446744073709551615",
+            DataType.Int8 => (sbyte.MinValue, sbyte.MaxValue),
+            DataType.UInt8 => (byte.MinValue, byte.MaxValue),
+            DataType.Int16 => (short.MinValue, short.MaxValue),
+            DataType.UInt16 => (ushort.MinValue, ushort.MaxValue),
+            DataType.Int32 => (int.MinValue, int.MaxValue),
+            DataType.UInt32 => (uint.MinValue, uint.MaxValue),
+            DataType.Int64 => (long.MinValue, long.MaxValue),
+            DataType.UInt64 => (ulong.MinValue, ulong.MaxValue),
             _ => null
         };
-        return range is null ? null : $"Enter a whole number between {range}.";
+        return range is null ? null : string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.EnterAWholeNumberBetween0And1, range.Value.Minimum, range.Value.Maximum);
     }
 
     /// <summary>Stages a register scaler, validating its signed-byte base-ten exponent.</summary>
@@ -401,6 +421,7 @@ public sealed class GXDLMSObjectEditState
         _unit = unit;
         UpdateScalerUnit();
     }
+    /// <summary>Validates the scaler draft and stages the scaler and unit as one structure.</summary>
     private void UpdateScalerUnit()
     {
         try
@@ -427,11 +448,14 @@ public sealed class GXDLMSObjectEditState
         catch (Exception ex) when (ex is FormatException or OverflowException)
         {
             Target.ClearDirty(3);
-            _errors[3] = "Scaler must be a positive power of ten (for example 0.01, 1 or 100).";
+            _errors[3] = Properties.Resources.ScalerMustBeAPositivePowerOfTenForExample0011Or100;
         }
         Changed?.Invoke();
     }
 
+    /// <summary>Formats values for comparison, normalizing enum values to their numeric representation.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private static string Comparable(object? value) => value is Enum enumValue
         ? Convert.ToInt64(enumValue, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture) : Format(value);
 

@@ -29,6 +29,7 @@
 
 @* <summary>Lists selectable devices and offers an add-device action.</summary> *@
 
+@* <typeparam name="TDevice">The device model displayed and selected by the list.</typeparam> *@
 @typeparam TDevice
 
 <section class="gx-device-list" aria-label="@Title">
@@ -107,13 +108,13 @@
     /// <summary>
     /// Heading displayed above the component content.
     /// </summary>
-    [Parameter] public string Title { get; set; } = "Devices";
+    [Parameter] public string Title { get; set; } = Properties.Resources.Devices;
     /// <summary>
     /// Message displayed when the collection is empty.
     /// </summary>
-    [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
+    [Parameter] public string EmptyText { get; set; } = Properties.Resources.NoDevicesLoaded;
     /// <summary>
     /// Caption of the add-device action.
     /// </summary>
-    [Parameter] public string CreateText { get; set; } = "+ Add Device";
+    [Parameter] public string CreateText { get; set; } = Properties.Resources.AddDevice;
 }

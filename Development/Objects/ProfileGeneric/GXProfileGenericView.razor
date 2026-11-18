@@ -42,49 +42,53 @@
 @inherits GXDLMSObjectViewBase<GXDLMSProfileGeneric>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Profile Generic" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Period" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="7" Label="Entries In Use" Enabled="CanEditAttribute(7)" />
-    <GXAttributeField Edit="Edit" Index="8" Label="Entries" Enabled="CanEditAttribute(8)" />
-    <fieldset><legend>Sort</legend>
-        <GXAttributeField Edit="Edit" Index="5" Label="Mode" Enabled="CanEditAttribute(5)" EnumType="typeof(SortMethod)" />
-        <GXAttributeField Edit="Edit" Index="6" EditorLabels="@(new[] { "Object Type", "Logical Name", "Attribute Index", "Data index" })" Label="Object" Enabled="CanEditAttribute(6)" />
+    <GXObjectViewHeader Title="@Properties.Resources.ProfileGeneric" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Period" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.EntriesInUse" Enabled="CanEditAttribute(7)" />
+    <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Entries" Enabled="CanEditAttribute(8)" />
+    <fieldset><legend>@Properties.Resources.Sort</legend>
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.Mode" Enabled="CanEditAttribute(5)" EnumType="typeof(SortMethod)" />
+        <GXAttributeField Edit="Edit" Index="6" EditorLabels="@(new[] { Properties.Resources.ObjectType, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" Label="@Properties.Resources.Object" Enabled="CanEditAttribute(6)" />
     </fieldset>
-    <fieldset><legend>Reading</legend>
-        <GXValueField Label="Read" Value="@ReadingMode" Enabled="CanRead" EnumType="typeof(GXProfileReadMode)" OnCommit="value => ReadingMode = value" />
-        <GXValueField Label="Read last (Days)" Value="@LastDays" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => LastDays = value" />
-        <GXValueField Label="Read From" Value="@From" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => From = value" />
-        <GXValueField Label="To" Value="@To" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => To = value" />
-        <GXValueField Label="Read Entry" Value="@EntryStart" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryStart = value" />
-        <GXValueField Label="Count" Value="@EntryCount" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryCount = value" />
-        <GXButton type="button" Disabled="@(!CanRead)" OnClick="ReadAsync">Read</GXButton>
+    <fieldset><legend>@Properties.Resources.Reading</legend>
+        <GXValueField Label="@Properties.Resources.Read" Value="@ReadingMode" Enabled="CanRead" EnumType="typeof(GXProfileReadMode)" OnCommit="value => ReadingMode = value" />
+        <GXValueField Label="@Properties.Resources.ReadLastDays" Value="@LastDays" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => LastDays = value" />
+        <GXValueField Label="@Properties.Resources.ReadFrom" Value="@From" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => From = value" />
+        <GXValueField Label="@Properties.Resources.To" Value="@To" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => To = value" />
+        <GXValueField Label="@Properties.Resources.ReadEntry" Value="@EntryStart" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryStart = value" />
+        <GXValueField Label="@Properties.Resources.Count" Value="@EntryCount" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryCount = value" />
+        <GXButton type="button" Disabled="@(!CanRead)" OnClick="ReadAsync">@Properties.Resources.Read</GXButton>
     </fieldset>
     <GXTabControl NavigateOnSelection="false">
-    <GXTabPage Text="Data">
+    <GXTabPage Text="@Properties.Resources.Data">
     <div class="gx-profile-scroll">
     <GXTable @key="Edit.AttributeText(2)" TItem="IReadOnlyList<string>" ItemsProvider="GetBufferRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
         <HeaderContent>
         @foreach (var capture in CaptureObjects())
         {
-            <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@CaptureLabel(capture.Key, capture.Value.AttributeIndex)<br />@capture.Key.LogicalName / attribute @capture.Value.AttributeIndex@if (capture.Value.DataIndex != 0) { <span> / data @capture.Value.DataIndex</span> }</GXTh>
+            <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@CaptureLabel(capture.Key, capture.Value.AttributeIndex)<br />@(capture.Value.DataIndex == 0
+                ? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0Attribute1, capture.Key.LogicalName, capture.Value.AttributeIndex)
+                : string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.CaptureObjectAttributeAndData, capture.Key.LogicalName, capture.Value.AttributeIndex, capture.Value.DataIndex))</GXTh>
         }
         </HeaderContent>
         <ItemContent Context="row">@foreach (var cell in row) { <GXTd>@cell</GXTd> }</ItemContent>
     </GXTable></div>
-    <GXAttributeField Edit="Edit" Index="2" Label="Buffer" Enabled="CanEditAttribute(2)" Columns="@CaptureObjects().Select(c => CaptureLabel(c.Key, c.Value.AttributeIndex)).ToArray()" />
-    <GXButton type="button" Disabled="true" title="This action is not available.">Add White list...</GXButton>
-    <GXButton type="button" Disabled="true" title="This action is not available.">Add Black list...</GXButton>
-    <GXButton type="button" Disabled="true" title="This action is not available.">Remove...</GXButton>
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Buffer" Enabled="CanEditAttribute(2)" Columns="@CaptureObjects().Select(c => CaptureLabel(c.Key, c.Value.AttributeIndex)).ToArray()" />
+    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.AddWhiteList</GXButton>
+    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.AddBlackList</GXButton>
+    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.Remove2</GXButton>
     </GXTabPage>
-    <GXTabPage Text="Capture Objects">
-        <GXAttributeField Edit="Edit" Index="3" Label="Capture Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type", "Logical Name", "Attribute Index", "Data index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" />
+    <GXTabPage Text="@Properties.Resources.CaptureObjects">
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CaptureObjects" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.ObjectType2, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" />
     </GXTabPage>
     </GXTabControl>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">Capture</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">@Properties.Resources.Capture</GXButton>
 </section>
 
 @code {
+    /// <summary>Enumerates the profile&apos;s pending or confirmed capture-object descriptors.</summary>
+    /// <returns>Enumerates the profile&apos;s pending or confirmed capture-object descriptors.</returns>
     private IEnumerable<GXKeyValuePair<GXDLMSObject, GXDLMSCaptureObject>> CaptureObjects()
     {
         if (!Target.GetDirty(3, out var pending))
@@ -95,11 +99,15 @@
         ((IGXDLMSBase)current).SetValue(new GXDLMSSettings(), new ValueEventArgs(current, 3, 0, null) { Value = pending, User = true });
         return current.CaptureObjects;
     }
+    /// <summary>Builds a readable object-and-attribute caption for a profile capture column.</summary>
+    /// <param name="target">The DLMS object whose attribute or method is selected.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>A readable object-and-attribute caption for a profile capture column.</returns>
     private static string CaptureLabel(GXDLMSObject target, int index)
     {
         var names = (target as IGXDLMSBase)?.GetNames();
-        var attribute = names is not null && index > 0 && index <= names.Length ? names[index - 1] : $"Attribute {index}";
-        return $"{(string.IsNullOrEmpty(target.Description) ? target.ObjectType.ToString() : target.Description)}: {attribute}";
+        var attribute = names is not null && index > 0 && index <= names.Length ? names[index - 1] : string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Attribute0, index);
+        return string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text01, string.IsNullOrEmpty(target.Description) ? target.ObjectType.ToString() : target.Description, attribute);
     }
     /// <summary>
     /// Requests execution of the target object's reset method.
@@ -143,10 +151,21 @@
     /// Number of profile entries requested; zero requests the remaining entries.
     /// </summary>
     public string EntryCount { get; set; } = "0";
+    /// <summary>Prevents overlapping read requests while a host callback is running.</summary>
     private bool _reading;
+    /// <summary>Gets whether the current state permits a host-managed profile read.</summary>
     private bool CanRead => !IsDisposed && !_reading && !ReadOnly && ActionsEnabled && OnReadRequested.HasDelegate;
-    private static string? ValidateUnsigned(string value) => uint.TryParse(value, NumberStyles.None, CultureInfo.InvariantCulture, out _) ? null : "Enter an unsigned 32-bit number.";
-    private static string? ValidateDate(string value) => DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out _) ? null : "Enter a valid date and time.";
+    /// <summary>Checks that the input represents an unsigned 32-bit number.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
+    private static string? ValidateUnsigned(string value) => uint.TryParse(value, NumberStyles.None, CultureInfo.InvariantCulture, out _) ? null : Properties.Resources.EnterAnUnsigned32BitNumber;
+    /// <summary>Checks that the input represents an invariant date and time.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
+    private static string? ValidateDate(string value) => DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.None, out _) ? null : Properties.Resources.EnterAValidDateAndTime;
+    /// <summary>Supplies the profile&apos;s buffered rows and their total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetBufferRows(GXItemsProviderRequest request)
     {
         var rows = Edit.AttributeRows(2).ToArray();
@@ -170,13 +189,13 @@
             var mode = Enum.Parse<GXProfileReadMode>(ReadingMode);
             if (!Enum.IsDefined(mode))
             {
-                throw new FormatException("Choose a reading mode.");
+                throw new FormatException(Properties.Resources.ChooseAReadingMode);
             }
             var start = DateTime.Parse(From, CultureInfo.InvariantCulture);
             var end = DateTime.Parse(To, CultureInfo.InvariantCulture);
             if (mode == GXProfileReadMode.Range && start > end)
             {
-                throw new FormatException("Read From must not follow To.");
+                throw new FormatException(Properties.Resources.ReadFromMustNotFollowTo);
             }
             await OnReadRequested.InvokeAsync(new GXProfileReadRequest(target, mode, uint.Parse(LastDays, CultureInfo.InvariantCulture), start, end, uint.Parse(EntryStart, CultureInfo.InvariantCulture), uint.Parse(EntryCount, CultureInfo.InvariantCulture)));
         }

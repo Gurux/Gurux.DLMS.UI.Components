@@ -25,4 +25,3373 @@
   <data name="CosemHelpLoadFailed" xml:space="preserve">
     <value>Die Hilfe zum COSEM-Objekt konnte nicht geladen werden.</value>
   </data>
+  <data name="Actions" xml:space="preserve">
+    <value>Aktionen</value>
+  </data>
+  <data name="Add" xml:space="preserve">
+    <value>Hinzufügen...</value>
+  </data>
+  <data name="AddDevice" xml:space="preserve">
+    <value>+ Gerät hinzufügen</value>
+  </data>
+  <data name="AddDevice2" xml:space="preserve">
+    <value>Gerät hinzufügen</value>
+  </data>
+  <data name="ALogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Ein logischer Name erfordert sechs Bytewerte.</value>
+  </data>
+  <data name="Attributes" xml:space="preserve">
+    <value>Attribute</value>
+  </data>
+  <data name="Connect" xml:space="preserve">
+    <value>Verbinden</value>
+  </data>
+  <data name="CorrectTheInvalidFieldsBeforeAccepting" xml:space="preserve">
+    <value>Korrigieren Sie die ungültigen Felder vor dem Bestätigen.</value>
+  </data>
+  <data name="COSEMObjects" xml:space="preserve">
+    <value>COSEM-Objekte</value>
+  </data>
+  <data name="Data" xml:space="preserve">
+    <value>Daten</value>
+  </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Löschen</value>
+  </data>
+  <data name="DeviceCommands" xml:space="preserve">
+    <value>Gerätebefehle</value>
+  </data>
+  <data name="DeviceGeneralInformation" xml:space="preserve">
+    <value>Allgemeine Geräteinformationen</value>
+  </data>
+  <data name="Devices" xml:space="preserve">
+    <value>Geräte</value>
+  </data>
+  <data name="Disconnect" xml:space="preserve">
+    <value>Trennen</value>
+  </data>
+  <data name="Edit" xml:space="preserve">
+    <value>Bearbeiten...</value>
+  </data>
+  <data name="General" xml:space="preserve">
+    <value>Allgemein</value>
+  </data>
+  <data name="InvalidValueForTheSelectedDataType" xml:space="preserve">
+    <value>Ungültiger Wert für den ausgewählten Datentyp.</value>
+  </data>
+  <data name="LoadValues" xml:space="preserve">
+    <value>Werte laden</value>
+  </data>
+  <data name="NoDevicesLoaded" xml:space="preserve">
+    <value>Keine Geräte geladen.</value>
+  </data>
+  <data name="NoObjectsLoaded" xml:space="preserve">
+    <value>Keine Objekte geladen.</value>
+  </data>
+  <data name="Objects" xml:space="preserve">
+    <value>Objekte</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="Properties" xml:space="preserve">
+    <value>Eigenschaften</value>
+  </data>
+  <data name="Read" xml:space="preserve">
+    <value>Lesen</value>
+  </data>
+  <data name="ReadObject" xml:space="preserve">
+    <value>Objekt lesen</value>
+  </data>
+  <data name="Remove" xml:space="preserve">
+    <value>Entfernen</value>
+  </data>
+  <data name="SaveValuesAs" xml:space="preserve">
+    <value>Werte speichern unter...</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTen" xml:space="preserve">
+    <value>Der Skalierungsfaktor muss eine positive Zehnerpotenz sein.</value>
+  </data>
+  <data name="ScalerMustBeAPositivePowerOfTenForExample0011Or100" xml:space="preserve">
+    <value>Der Skalierungsfaktor muss eine positive Zehnerpotenz sein (zum Beispiel 0,01, 1 oder 100).</value>
+  </data>
+  <data name="TheValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Der Wert hat sich geändert. Brechen Sie ab und öffnen Sie den Editor erneut.</value>
+  </data>
+  <data name="WrongIPAddressFamily" xml:space="preserve">
+    <value>Falsche IP-Adressfamilie.</value>
+  </data>
+  <data name="XMLRootDoesNotMatchTheCOSEMDataType" xml:space="preserve">
+    <value>Das XML-Wurzelelement entspricht nicht dem COSEM-Datentyp.</value>
+  </data>
+  <data name="AccessRights" xml:space="preserve">
+    <value>Zugriffsrechte</value>
+  </data>
+  <data name="AccessSelector" xml:space="preserve">
+    <value>Zugriffsselektor</value>
+  </data>
+  <data name="Add2" xml:space="preserve">
+    <value>Hinzufügen</value>
+  </data>
+  <data name="Attribute" xml:space="preserve">
+    <value>Attribut</value>
+  </data>
+  <data name="AttributeIndex" xml:space="preserve">
+    <value>Attributindex</value>
+  </data>
+  <data name="CreditReference" xml:space="preserve">
+    <value>Guthabenreferenz</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Beschreibung</value>
+  </data>
+  <data name="DescriptionLabel" xml:space="preserve">
+    <value>Beschreibung:</value>
+  </data>
+  <data name="Edit2" xml:space="preserve">
+    <value>Bearbeiten</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbers" xml:space="preserve">
+    <value>Geben Sie einen logischen Namen mit sechs Zahlen ein.</value>
+  </data>
+  <data name="EnterAValidDateAndTime" xml:space="preserve">
+    <value>Geben Sie ein gültiges Datum und eine gültige Uhrzeit ein.</value>
+  </data>
+  <data name="EnterAValidIPAddress" xml:space="preserve">
+    <value>Geben Sie eine gültige IP-Adresse ein.</value>
+  </data>
+  <data name="EnterAValidNumber" xml:space="preserve">
+    <value>Geben Sie eine gültige Zahl ein.</value>
+  </data>
+  <data name="Hexadecimal" xml:space="preserve">
+    <value>Hexadezimal</value>
+  </data>
+  <data name="Index" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="LogicalName" xml:space="preserve">
+    <value>Logischer Name</value>
+  </data>
+  <data name="LogicalNameLabel" xml:space="preserve">
+    <value>Logischer Name:</value>
+  </data>
+  <data name="Method" xml:space="preserve">
+    <value>Methode</value>
+  </data>
+  <data name="MethodAccess" xml:space="preserve">
+    <value>Methodenzugriff</value>
+  </data>
+  <data name="MethodAccessRights" xml:space="preserve">
+    <value>Methodenzugriffsrechte</value>
+  </data>
+  <data name="MethodIndex" xml:space="preserve">
+    <value>Methodenindex</value>
+  </data>
+  <data name="MethodResult" xml:space="preserve">
+    <value>Methodenergebnis</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="ReadAll" xml:space="preserve">
+    <value>Alle lesen</value>
+  </data>
+  <data name="ReadAutomaticallyOnObjectSelection" xml:space="preserve">
+    <value>Bei Objektauswahl automatisch lesen</value>
+  </data>
+  <data name="RefreshValues" xml:space="preserve">
+    <value>Werte aktualisieren</value>
+  </data>
+  <data name="Static" xml:space="preserve">
+    <value>Statisch</value>
+  </data>
+  <data name="TheInstalledValueCodecCannotPreserveThisParameterDataType" xml:space="preserve">
+    <value>Der installierte Wertecodec kann den Datentyp dieses Parameters nicht beibehalten.</value>
+  </data>
+  <data name="TheSelectedObjectChangedBeforeTheActionStarted" xml:space="preserve">
+    <value>Das ausgewählte Objekt hat sich vor Beginn der Aktion geändert.</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Typ</value>
+  </data>
+  <data name="UIType" xml:space="preserve">
+    <value>Benutzeroberflächentyp</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Wert</value>
+  </data>
+  <data name="ValueChanged" xml:space="preserve">
+    <value>Wert geändert</value>
+  </data>
+  <data name="ChargeReference" xml:space="preserve">
+    <value>Gebührenreferenz</value>
+  </data>
+  <data name="TokenProportion" xml:space="preserve">
+    <value>Tokenanteil</value>
+  </data>
+  <data name="Configuration" xml:space="preserve">
+    <value>Konfiguration</value>
+  </data>
+  <data name="CreditReference2" xml:space="preserve">
+    <value>Guthabenreferenz</value>
+  </data>
+  <data name="CreditCharge" xml:space="preserve">
+    <value>Guthabengebühr</value>
+  </data>
+  <data name="TokenGateway" xml:space="preserve">
+    <value>Token-Gateway</value>
+  </data>
+  <data name="Credit" xml:space="preserve">
+    <value>Guthaben</value>
+  </data>
+  <data name="Charge" xml:space="preserve">
+    <value>Gebühr</value>
+  </data>
+  <data name="EnterALogicalNameWithSixNumbersBetween0And255" xml:space="preserve">
+    <value>Geben Sie einen logischen Namen mit sechs Zahlen zwischen 0 und 255 ein.</value>
+  </data>
+  <data name="TheSelectedRowNoLongerExists" xml:space="preserve">
+    <value>Die ausgewählte Zeile existiert nicht mehr.</value>
+  </data>
+  <data name="AccountObject" xml:space="preserve">
+    <value>Kontoobjekt</value>
+  </data>
+  <data name="PaymentModeLabel" xml:space="preserve">
+    <value>Zahlungsmodus:</value>
+  </data>
+  <data name="StatusLabel" xml:space="preserve">
+    <value>Status:</value>
+  </data>
+  <data name="CurrentCreditInUseLabel" xml:space="preserve">
+    <value>Derzeit verwendetes Guthaben:</value>
+  </data>
+  <data name="CurrentCreditStatusLabel" xml:space="preserve">
+    <value>Aktueller Guthabenstatus:</value>
+  </data>
+  <data name="AccountActivationTimeLabel" xml:space="preserve">
+    <value>Aktivierungszeit des Kontos:</value>
+  </data>
+  <data name="AccountClosureTimeLabel" xml:space="preserve">
+    <value>Schließungszeit des Kontos:</value>
+  </data>
+  <data name="CurrencyNameLabel" xml:space="preserve">
+    <value>Währungsname:</value>
+  </data>
+  <data name="CurrencyScaleLabel" xml:space="preserve">
+    <value>Währungsskalierung:</value>
+  </data>
+  <data name="CurrencyUnitLabel" xml:space="preserve">
+    <value>Währungseinheit:</value>
+  </data>
+  <data name="Activate" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="Reset" xml:space="preserve">
+    <value>Zurücksetzen</value>
+  </data>
+  <data name="ActionScheduleObject" xml:space="preserve">
+    <value>Aktionszeitplanobjekt</value>
+  </data>
+  <data name="ScriptName" xml:space="preserve">
+    <value>Skriptname</value>
+  </data>
+  <data name="ScriptSelector" xml:space="preserve">
+    <value>Skriptselektor</value>
+  </data>
+  <data name="ScriptType" xml:space="preserve">
+    <value>Skripttyp</value>
+  </data>
+  <data name="Time" xml:space="preserve">
+    <value>Uhrzeit</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Datum</value>
+  </data>
+  <data name="ExecutionTime" xml:space="preserve">
+    <value>Ausführungszeit</value>
+  </data>
+  <data name="ExecutedScript" xml:space="preserve">
+    <value>Ausgeführtes Skript</value>
+  </data>
+  <data name="ActivityCalendarObject" xml:space="preserve">
+    <value>Aktivitätskalenderobjekt</value>
+  </data>
+  <data name="Active" xml:space="preserve">
+    <value>Aktiv</value>
+  </data>
+  <data name="CalendarName" xml:space="preserve">
+    <value>Kalendername</value>
+  </data>
+  <data name="SeasonProfile" xml:space="preserve">
+    <value>Saisonprofil</value>
+  </data>
+  <data name="WeekProfile" xml:space="preserve">
+    <value>Wochenprofil</value>
+  </data>
+  <data name="DayProfile" xml:space="preserve">
+    <value>Tagesprofil</value>
+  </data>
+  <data name="Passive" xml:space="preserve">
+    <value>Passiv</value>
+  </data>
+  <data name="ActivatePassiveCalendar" xml:space="preserve">
+    <value>Passiven Kalender aktivieren</value>
+  </data>
+  <data name="DayActions" xml:space="preserve">
+    <value>Tagesaktionen</value>
+  </data>
+  <data name="StartTime" xml:space="preserve">
+    <value>Startzeit</value>
+  </data>
+  <data name="Script" xml:space="preserve">
+    <value>Skript</value>
+  </data>
+  <data name="Selector" xml:space="preserve">
+    <value>Selektor</value>
+  </data>
+  <data name="AddAction" xml:space="preserve">
+    <value>Aktion hinzufügen...</value>
+  </data>
+  <data name="Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="WeekName" xml:space="preserve">
+    <value>Wochenname</value>
+  </data>
+  <data name="DayID" xml:space="preserve">
+    <value>Tages-ID</value>
+  </data>
+  <data name="AdvancedCOSEMXML" xml:space="preserve">
+    <value>Erweitertes COSEM-XML</value>
+  </data>
+  <data name="AddDay" xml:space="preserve">
+    <value>Tag hinzufügen...</value>
+  </data>
+  <data name="Monday" xml:space="preserve">
+    <value>Montag</value>
+  </data>
+  <data name="Tuesday" xml:space="preserve">
+    <value>Dienstag</value>
+  </data>
+  <data name="Wednesday" xml:space="preserve">
+    <value>Mittwoch</value>
+  </data>
+  <data name="Thursday" xml:space="preserve">
+    <value>Donnerstag</value>
+  </data>
+  <data name="Friday" xml:space="preserve">
+    <value>Freitag</value>
+  </data>
+  <data name="Saturday" xml:space="preserve">
+    <value>Samstag</value>
+  </data>
+  <data name="Sunday" xml:space="preserve">
+    <value>Sonntag</value>
+  </data>
+  <data name="EnterAnASCIIProfileName" xml:space="preserve">
+    <value>Geben Sie einen ASCII-Profilnamen ein.</value>
+  </data>
+  <data name="EnterSevenDayIDs" xml:space="preserve">
+    <value>Geben Sie sieben Tages-IDs ein.</value>
+  </data>
+  <data name="DayIDsMustBeUnique" xml:space="preserve">
+    <value>Tages-IDs müssen eindeutig sein.</value>
+  </data>
+  <data name="SelectADayFirst" xml:space="preserve">
+    <value>Wählen Sie zuerst einen Tag aus.</value>
+  </data>
+  <data name="AScriptLogicalNameRequiresSixByteValues" xml:space="preserve">
+    <value>Ein logischer Skriptname erfordert sechs Bytewerte.</value>
+  </data>
+  <data name="Mon" xml:space="preserve">
+    <value>Mo</value>
+  </data>
+  <data name="Tue" xml:space="preserve">
+    <value>Di</value>
+  </data>
+  <data name="Wed" xml:space="preserve">
+    <value>Mi</value>
+  </data>
+  <data name="Thu" xml:space="preserve">
+    <value>Do</value>
+  </data>
+  <data name="Fri" xml:space="preserve">
+    <value>Fr</value>
+  </data>
+  <data name="Sat" xml:space="preserve">
+    <value>Sa</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>So</value>
+  </data>
+  <data name="DayAction" xml:space="preserve">
+    <value>Tagesaktion</value>
+  </data>
+  <data name="TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Das Ziel, die Zugriffsrechte oder der ausstehende Wert wurden geändert. Brechen Sie ab und öffnen Sie den Editor erneut.</value>
+  </data>
+  <data name="ArbitratorObject" xml:space="preserve">
+    <value>Arbitratorobjekt</value>
+  </data>
+  <data name="Scripts" xml:space="preserve">
+    <value>Skripte</value>
+  </data>
+  <data name="Allowed" xml:space="preserve">
+    <value>Zulässig</value>
+  </data>
+  <data name="Weightings" xml:space="preserve">
+    <value>Gewichtungen</value>
+  </data>
+  <data name="MostRecent" xml:space="preserve">
+    <value>Neuester</value>
+  </data>
+  <data name="LastOutcome" xml:space="preserve">
+    <value>Letztes Ergebnis</value>
+  </data>
+  <data name="Actor0255" xml:space="preserve">
+    <value>Akteur (0–255)</value>
+  </data>
+  <data name="ActionsBinaryBitString" xml:space="preserve">
+    <value>Aktionen (binäre Bitfolge)</value>
+  </data>
+  <data name="Methods" xml:space="preserve">
+    <value>Methoden</value>
+  </data>
+  <data name="RequestAction" xml:space="preserve">
+    <value>Aktion anfordern</value>
+  </data>
+  <data name="EnterTheRequestedActionsAsABinaryBitString" xml:space="preserve">
+    <value>Geben Sie die angeforderten Aktionen als binäre Bitfolge ein.</value>
+  </data>
+  <data name="EnterABinaryBitString" xml:space="preserve">
+    <value>Geben Sie eine binäre Bitfolge ein.</value>
+  </data>
+  <data name="ArrayManagerObject" xml:space="preserve">
+    <value>Array-Verwaltungsobjekt</value>
+  </data>
+  <data name="Elements" xml:space="preserve">
+    <value>Elemente</value>
+  </data>
+  <data name="ID" xml:space="preserve">
+    <value>ID</value>
+  </data>
+  <data name="ClassID" xml:space="preserve">
+    <value>Klassen-ID</value>
+  </data>
+  <data name="LogicalName2" xml:space="preserve">
+    <value>Logischer Name</value>
+  </data>
+  <data name="AttributeIndex2" xml:space="preserve">
+    <value>Attributindex</value>
+  </data>
+  <data name="ArrayID0255" xml:space="preserve">
+    <value>Array-ID (0–255)</value>
+  </data>
+  <data name="FromIndex165535" xml:space="preserve">
+    <value>Anfangsindex (1–65535)</value>
+  </data>
+  <data name="ToIndex165535" xml:space="preserve">
+    <value>Endindex (1–65535)</value>
+  </data>
+  <data name="EntryIndex165535" xml:space="preserve">
+    <value>Eintragsindex (1–65535)</value>
+  </data>
+  <data name="EntryDLMSXML" xml:space="preserve">
+    <value>Eintrag (DLMS-XML)</value>
+  </data>
+  <data name="Array" xml:space="preserve">
+    <value>Array</value>
+  </data>
+  <data name="NumberOfEntries" xml:space="preserve">
+    <value>Anzahl der Einträge</value>
+  </data>
+  <data name="EntryRange" xml:space="preserve">
+    <value>Eintragsbereich</value>
+  </data>
+  <data name="RetrieveEntries" xml:space="preserve">
+    <value>Einträge abrufen</value>
+  </data>
+  <data name="RemoveEntries" xml:space="preserve">
+    <value>Einträge entfernen</value>
+  </data>
+  <data name="Entry" xml:space="preserve">
+    <value>Eintrag</value>
+  </data>
+  <data name="InsertEntry" xml:space="preserve">
+    <value>Eintrag einfügen</value>
+  </data>
+  <data name="UpdateEntry" xml:space="preserve">
+    <value>Eintrag aktualisieren</value>
+  </data>
+  <data name="CorrectTheInvalidParametersBeforeInvokingTheMethod" xml:space="preserve">
+    <value>Korrigieren Sie die ungültigen Parameter vor dem Aufrufen der Methode.</value>
+  </data>
+  <data name="FromIndexMustNotExceedToIndex" xml:space="preserve">
+    <value>Der Anfangsindex darf den Endindex nicht überschreiten.</value>
+  </data>
+  <data name="EntryIndicesMustBeBetween1And65535" xml:space="preserve">
+    <value>Eintragsindizes müssen zwischen 1 und 65535 liegen.</value>
+  </data>
+  <data name="EnterATypedDLMSValue" xml:space="preserve">
+    <value>Geben Sie einen typisierten DLMS-Wert ein.</value>
+  </data>
+  <data name="EnterAnArrayIDBetween0And255" xml:space="preserve">
+    <value>Geben Sie eine Array-ID zwischen 0 und 255 ein.</value>
+  </data>
+  <data name="EnterAnIndexBetween1And65535" xml:space="preserve">
+    <value>Geben Sie einen Index zwischen 1 und 65535 ein.</value>
+  </data>
+  <data name="AssociationLogicalNameObject" xml:space="preserve">
+    <value>Assoziationsobjekt mit logischem Namen</value>
+  </data>
+  <data name="VersionLabel" xml:space="preserve">
+    <value>Version:</value>
+  </data>
+  <data name="ClassIDLabel" xml:space="preserve">
+    <value>Klassen-ID:</value>
+  </data>
+  <data name="AttributeAccessLabel" xml:space="preserve">
+    <value>Attributzugriff:</value>
+  </data>
+  <data name="MethodAccessLabel" xml:space="preserve">
+    <value>Methodenzugriff:</value>
+  </data>
+  <data name="ChooseAValidCOSEMClass" xml:space="preserve">
+    <value>Wählen Sie eine gültige COSEM-Klasse aus.</value>
+  </data>
+  <data name="LogicalNamesRequireSixBytes" xml:space="preserve">
+    <value>Logische Namen erfordern sechs Bytes.</value>
+  </data>
+  <data name="VersionMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Die Version muss zwischen null und 255 liegen.</value>
+  </data>
+  <data name="AttributeAccessIndexMaskLabel" xml:space="preserve">
+    <value>Attributzugriff (Index:Maske):</value>
+  </data>
+  <data name="MethodAccessIndexMaskLabel" xml:space="preserve">
+    <value>Methodenzugriff (Index:Maske):</value>
+  </data>
+  <data name="ClientSAPLabel" xml:space="preserve">
+    <value>Client-SAP:</value>
+  </data>
+  <data name="ServerSAPLabel" xml:space="preserve">
+    <value>Server-SAP:</value>
+  </data>
+  <data name="SecretLabel" xml:space="preserve">
+    <value>Geheimnis:</value>
+  </data>
+  <data name="AssociationStatusLabel" xml:space="preserve">
+    <value>Assoziationsstatus:</value>
+  </data>
+  <data name="SecuritySetupLabel" xml:space="preserve">
+    <value>Sicherheitseinstellungen:</value>
+  </data>
+  <data name="NewHighAuthenticationSecretHexLabel" xml:space="preserve">
+    <value>Neues Geheimnis für hohe Authentifizierung (hex):</value>
+  </data>
+  <data name="ANewSecretIsRequired" xml:space="preserve">
+    <value>Ein neues Geheimnis ist erforderlich.</value>
+  </data>
+  <data name="XDLMSContextInfo" xml:space="preserve">
+    <value>xDLMS-Kontextinformationen</value>
+  </data>
+  <data name="ConformanceLabel" xml:space="preserve">
+    <value>Konformität:</value>
+  </data>
+  <data name="MaxReceivePDUSizeLabel" xml:space="preserve">
+    <value>Maximale Empfangs-PDU-Größe:</value>
+  </data>
+  <data name="MaxSendPDUSizeLabel" xml:space="preserve">
+    <value>Maximale Sende-PDU-Größe:</value>
+  </data>
+  <data name="DLMSVersionNumberLabel" xml:space="preserve">
+    <value>DLMS-Versionsnummer:</value>
+  </data>
+  <data name="QualityOfServiceLabel" xml:space="preserve">
+    <value>Dienstqualität:</value>
+  </data>
+  <data name="DedicatedKeyLabel" xml:space="preserve">
+    <value>Dedizierter Schlüssel:</value>
+  </data>
+  <data name="ApplicationContextName" xml:space="preserve">
+    <value>Name des Anwendungskontexts</value>
+  </data>
+  <data name="RegistrationAuthorityLabel" xml:space="preserve">
+    <value>Registrierungsstelle:</value>
+  </data>
+  <data name="JointISOCTTLabel" xml:space="preserve">
+    <value>Gemeinsames ISO CTT:</value>
+  </data>
+  <data name="CountryLabel" xml:space="preserve">
+    <value>Land:</value>
+  </data>
+  <data name="CountryNameLabel" xml:space="preserve">
+    <value>Ländername:</value>
+  </data>
+  <data name="IdentifiedOrganizationLabel" xml:space="preserve">
+    <value>Identifizierte Organisation:</value>
+  </data>
+  <data name="DLMSUALabel" xml:space="preserve">
+    <value>DLMS UA:</value>
+  </data>
+  <data name="ApplicationContextLabel" xml:space="preserve">
+    <value>Anwendungskontext:</value>
+  </data>
+  <data name="ContextIDLabel" xml:space="preserve">
+    <value>Kontext-ID:</value>
+  </data>
+  <data name="AuthenticationMechanismName" xml:space="preserve">
+    <value>Name des Authentifizierungsmechanismus</value>
+  </data>
+  <data name="AuthenticationNameLabel" xml:space="preserve">
+    <value>Authentifizierungsname:</value>
+  </data>
+  <data name="MechanismIDLabel" xml:space="preserve">
+    <value>Mechanismus-ID:</value>
+  </data>
+  <data name="UserList" xml:space="preserve">
+    <value>Benutzerliste</value>
+  </data>
+  <data name="Users" xml:space="preserve">
+    <value>Benutzer</value>
+  </data>
+  <data name="IDLabel" xml:space="preserve">
+    <value>ID:</value>
+  </data>
+  <data name="CurrentUser" xml:space="preserve">
+    <value>Aktueller Benutzer</value>
+  </data>
+  <data name="UserIDMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Die Benutzer-ID muss zwischen null und 255 liegen.</value>
+  </data>
+  <data name="NameLabel" xml:space="preserve">
+    <value>Name:</value>
+  </data>
+  <data name="AUserNameIsRequired" xml:space="preserve">
+    <value>Ein Benutzername ist erforderlich.</value>
+  </data>
+  <data name="AssociationObjects" xml:space="preserve">
+    <value>Assoziationsobjekte</value>
+  </data>
+  <data name="RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied" xml:space="preserve">
+    <value>Die Rechtemasken folgen dieser Assoziationsversion. Nicht angegebene Rechte werden verweigert.</value>
+  </data>
+  <data name="Remove2" xml:space="preserve">
+    <value>Entfernen...</value>
+  </data>
+  <data name="AssociatedPartnersID" xml:space="preserve">
+    <value>ID der zugeordneten Partner</value>
+  </data>
+  <data name="AuthenticationSecret" xml:space="preserve">
+    <value>Authentifizierungsgeheimnis</value>
+  </data>
+  <data name="UpdateHighPassword" xml:space="preserve">
+    <value>Passwort für hohe Authentifizierung aktualisieren</value>
+  </data>
+  <data name="ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup" xml:space="preserve">
+    <value>Bearbeiten Sie für niedrige Authentifizierung das Geheimnis und schreiben Sie Attribut 7. GMAC-Schlüssel verwenden die Sicherheitseinstellungen.</value>
+  </data>
+  <data name="LNSettings" xml:space="preserve">
+    <value>LN-Einstellungen</value>
+  </data>
+  <data name="SelectAValidCOSEMClass" xml:space="preserve">
+    <value>Wählen Sie eine gültige COSEM-Klasse aus.</value>
+  </data>
+  <data name="AttributeAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Die Attributzugriffsmaske wird von dieser Assoziationsversion nicht unterstützt.</value>
+  </data>
+  <data name="MethodAccessMaskIsNotSupportedByThisAssociationVersion" xml:space="preserve">
+    <value>Die Methodenzugriffsmaske wird von dieser Assoziationsversion nicht unterstützt.</value>
+  </data>
+  <data name="RightsRequireAValidIndexMaskPair" xml:space="preserve">
+    <value>Rechte erfordern ein gültiges Paar aus Index:Maske.</value>
+  </data>
+  <data name="EachAccessRightIndexMayAppearOnlyOnce" xml:space="preserve">
+    <value>Jeder Zugriffsrechtsindex darf nur einmal vorkommen.</value>
+  </data>
+  <data name="ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms" xml:space="preserve">
+    <value>Diese Methode erfordert hohe Authentifizierung; verwenden Sie für andere Mechanismen das Schreiben von Attributen oder die Sicherheitseinstellungen.</value>
+  </data>
+  <data name="AssociationShortNameObject" xml:space="preserve">
+    <value>Assoziationsobjekt mit Kurznamen</value>
+  </data>
+  <data name="SecretHexLabel" xml:space="preserve">
+    <value>Geheimnis (hex):</value>
+  </data>
+  <data name="ANonemptySecretIsRequired" xml:space="preserve">
+    <value>Ein nicht leeres Geheimnis ist erforderlich.</value>
+  </data>
+  <data name="Update" xml:space="preserve">
+    <value>Aktualisieren</value>
+  </data>
+  <data name="AssociationObject" xml:space="preserve">
+    <value>Assoziationsobjekt</value>
+  </data>
+  <data name="RemoveTheSelectedAssociationObjectAndItsAccessRights" xml:space="preserve">
+    <value>Ausgewähltes Assoziationsobjekt und seine Zugriffsrechte entfernen?</value>
+  </data>
+  <data name="BaseNameLabel" xml:space="preserve">
+    <value>Basisname:</value>
+  </data>
+  <data name="AttributeAccesss" xml:space="preserve">
+    <value>Attributzugriff</value>
+  </data>
+  <data name="MethodAccess2" xml:space="preserve">
+    <value>Methodenzugriff</value>
+  </data>
+  <data name="AttributeAccess" xml:space="preserve">
+    <value>Attributzugriff</value>
+  </data>
+  <data name="AttributeIndexLabel" xml:space="preserve">
+    <value>Attributindex:</value>
+  </data>
+  <data name="AccessModeLabel" xml:space="preserve">
+    <value>Zugriffsmodus:</value>
+  </data>
+  <data name="MethodIndexLabel" xml:space="preserve">
+    <value>Methodenindex:</value>
+  </data>
+  <data name="CorrectTheInvalidValues" xml:space="preserve">
+    <value>Korrigieren Sie die ungültigen Werte.</value>
+  </data>
+  <data name="TheAssociationListChangedCancelAndOpenTheEditorAgain" xml:space="preserve">
+    <value>Die Assoziationsliste wurde geändert. Brechen Sie ab und öffnen Sie den Editor erneut.</value>
+  </data>
+  <data name="TheSelectedObjectChangedOpenTheEditorAgain" xml:space="preserve">
+    <value>Das ausgewählte Objekt wurde geändert. Öffnen Sie den Editor erneut.</value>
+  </data>
+  <data name="EachObjectMustHaveAUniqueBaseName" xml:space="preserve">
+    <value>Jedes Objekt muss einen eindeutigen Basisnamen haben.</value>
+  </data>
+  <data name="ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights" xml:space="preserve">
+    <value>Das Ändern des Basisnamens erfordert auch die Berechtigung zum Aktualisieren der Zugriffsrechte.</value>
+  </data>
+  <data name="AutoAnswerObject" xml:space="preserve">
+    <value>Objekt für automatische Rufannahme</value>
+  </data>
+  <data name="ModeLabel" xml:space="preserve">
+    <value>Modus:</value>
+  </data>
+  <data name="ListeningWindowLabel" xml:space="preserve">
+    <value>Empfangszeitfenster:</value>
+  </data>
+  <data name="StartTimeLabel" xml:space="preserve">
+    <value>Startzeit:</value>
+  </data>
+  <data name="EndTimeLabel" xml:space="preserve">
+    <value>Endzeit:</value>
+  </data>
+  <data name="NumberOfCallsLabel" xml:space="preserve">
+    <value>Anzahl der Anrufe:</value>
+  </data>
+  <data name="RingCountInWindowLabel" xml:space="preserve">
+    <value>Anzahl der Klingelzeichen im Zeitfenster:</value>
+  </data>
+  <data name="RingCountOutOfWindowLabel" xml:space="preserve">
+    <value>Anzahl der Klingelzeichen außerhalb des Zeitfensters:</value>
+  </data>
+  <data name="AllowedCallers" xml:space="preserve">
+    <value>Zulässige Anrufer</value>
+  </data>
+  <data name="CallerIdentity" xml:space="preserve">
+    <value>Anruferidentität</value>
+  </data>
+  <data name="CallType" xml:space="preserve">
+    <value>Anruftyp</value>
+  </data>
+  <data name="AutoConnectObject" xml:space="preserve">
+    <value>Objekt für automatische Verbindung</value>
+  </data>
+  <data name="RepetitionsLabel" xml:space="preserve">
+    <value>Wiederholungen:</value>
+  </data>
+  <data name="RepetitionDelayLabel" xml:space="preserve">
+    <value>Wiederholungsverzögerung:</value>
+  </data>
+  <data name="CallingWindowLabel" xml:space="preserve">
+    <value>Anrufzeitfenster:</value>
+  </data>
+  <data name="DestinationLabel" xml:space="preserve">
+    <value>Ziel:</value>
+  </data>
+  <data name="ChargeObject" xml:space="preserve">
+    <value>Gebührenobjekt</value>
+  </data>
+  <data name="TotalAmountPaid" xml:space="preserve">
+    <value>Gezahlter Gesamtbetrag</value>
+  </data>
+  <data name="ChargeType" xml:space="preserve">
+    <value>Gebührenart</value>
+  </data>
+  <data name="Priority" xml:space="preserve">
+    <value>Priorität</value>
+  </data>
+  <data name="UnitChargeActivationTime" xml:space="preserve">
+    <value>Aktivierungszeit der Einheitsgebühr</value>
+  </data>
+  <data name="Period" xml:space="preserve">
+    <value>Zeitraum</value>
+  </data>
+  <data name="ChargeConfiguration" xml:space="preserve">
+    <value>Gebührenkonfiguration</value>
+  </data>
+  <data name="LastCollectionTime" xml:space="preserve">
+    <value>Zeitpunkt des letzten Einzugs</value>
+  </data>
+  <data name="LastCollectionAmount" xml:space="preserve">
+    <value>Betrag des letzten Einzugs</value>
+  </data>
+  <data name="TotalAmountRemaining" xml:space="preserve">
+    <value>Verbleibender Gesamtbetrag</value>
+  </data>
+  <data name="Proportion" xml:space="preserve">
+    <value>Anteil</value>
+  </data>
+  <data name="UnitChargeActive" xml:space="preserve">
+    <value>Aktive Einheitsgebühr</value>
+  </data>
+  <data name="CommodityScale" xml:space="preserve">
+    <value>Mengenskalierung</value>
+  </data>
+  <data name="PriceScale" xml:space="preserve">
+    <value>Preisskalierung</value>
+  </data>
+  <data name="ObjectType" xml:space="preserve">
+    <value>Objekttyp</value>
+  </data>
+  <data name="Target" xml:space="preserve">
+    <value>Ziel</value>
+  </data>
+  <data name="ChargeTables" xml:space="preserve">
+    <value>Gebührentabellen</value>
+  </data>
+  <data name="ChargePerUnit" xml:space="preserve">
+    <value>Gebühr pro Einheit</value>
+  </data>
+  <data name="ThisActionIsNotAvailable" xml:space="preserve">
+    <value>Diese Aktion ist nicht verfügbar.</value>
+  </data>
+  <data name="UnitChargePassive" xml:space="preserve">
+    <value>Passive Einheitsgebühr</value>
+  </data>
+  <data name="ChargePerUnitScalingType" xml:space="preserve">
+    <value>Skalierungstyp der Einheitsgebühr</value>
+  </data>
+  <data name="CommodityReferenceType" xml:space="preserve">
+    <value>Mengenreferenztyp</value>
+  </data>
+  <data name="Collect" xml:space="preserve">
+    <value>Einziehen</value>
+  </data>
+  <data name="UpdateTotal" xml:space="preserve">
+    <value>Gesamtbetrag aktualisieren...</value>
+  </data>
+  <data name="SetTotal" xml:space="preserve">
+    <value>Gesamtbetrag festlegen...</value>
+  </data>
+  <data name="ClockObject" xml:space="preserve">
+    <value>Uhrenobjekt</value>
+  </data>
+  <data name="TimeLabel" xml:space="preserve">
+    <value>Uhrzeit:</value>
+  </data>
+  <data name="UseTimeZoneLabel" xml:space="preserve">
+    <value>Zeitzone verwenden:</value>
+  </data>
+  <data name="TimeZoneLabel" xml:space="preserve">
+    <value>Zeitzone:</value>
+  </data>
+  <data name="BeginLabel" xml:space="preserve">
+    <value>Beginn:</value>
+  </data>
+  <data name="EndLabel" xml:space="preserve">
+    <value>Ende:</value>
+  </data>
+  <data name="DeviationLabel" xml:space="preserve">
+    <value>Abweichung:</value>
+  </data>
+  <data name="EnabledLabel" xml:space="preserve">
+    <value>Aktiviert:</value>
+  </data>
+  <data name="ClockBaseLabel" xml:space="preserve">
+    <value>Taktbasis:</value>
+  </data>
+  <data name="Adjustments" xml:space="preserve">
+    <value>Anpassungen</value>
+  </data>
+  <data name="PresetTimeLabel" xml:space="preserve">
+    <value>Voreingestellte Uhrzeit:</value>
+  </data>
+  <data name="ValidityStartLabel" xml:space="preserve">
+    <value>Gültigkeitsbeginn:</value>
+  </data>
+  <data name="ValidityEndLabel" xml:space="preserve">
+    <value>Gültigkeitsende:</value>
+  </data>
+  <data name="ShiftSecondsLabel" xml:space="preserve">
+    <value>Verschiebung in Sekunden:</value>
+  </data>
+  <data name="CurrentTime" xml:space="preserve">
+    <value>Aktuelle Uhrzeit</value>
+  </data>
+  <data name="CurrentTimeZone" xml:space="preserve">
+    <value>Aktuelle Zeitzone</value>
+  </data>
+  <data name="DaylightSavings" xml:space="preserve">
+    <value>Sommerzeit</value>
+  </data>
+  <data name="AdjustTo" xml:space="preserve">
+    <value>Anpassen an</value>
+  </data>
+  <data name="Quarter" xml:space="preserve">
+    <value>Viertelstunde</value>
+  </data>
+  <data name="MeasuringPeriod" xml:space="preserve">
+    <value>Messperiode</value>
+  </data>
+  <data name="Minute" xml:space="preserve">
+    <value>Minute</value>
+  </data>
+  <data name="PresetTime" xml:space="preserve">
+    <value>Voreingestellte Uhrzeit</value>
+  </data>
+  <data name="PresetAdjustingTime" xml:space="preserve">
+    <value>Anpassungszeit voreinstellen</value>
+  </data>
+  <data name="PresetAdjustingTime2" xml:space="preserve">
+    <value>Anpassungszeit voreinstellen...</value>
+  </data>
+  <data name="ShiftTime" xml:space="preserve">
+    <value>Uhrzeit verschieben...</value>
+  </data>
+  <data name="ShiftSecondsMustBeBetween900And900" xml:space="preserve">
+    <value>Die Verschiebung in Sekunden muss zwischen -900 und 900 liegen.</value>
+  </data>
+  <data name="TheValidityStartMustNotFollowTheValidityEnd" xml:space="preserve">
+    <value>Der Gültigkeitsbeginn darf nicht nach dem Gültigkeitsende liegen.</value>
+  </data>
+  <data name="CoAPDiagnosticObject" xml:space="preserve">
+    <value>CoAP-Diagnoseobjekt</value>
+  </data>
+  <data name="TransmittedMessagesLabel" xml:space="preserve">
+    <value>Gesendete Nachrichten:</value>
+  </data>
+  <data name="ReceivedMessagesLabel" xml:space="preserve">
+    <value>Empfangene Nachrichten:</value>
+  </data>
+  <data name="RetransmittedMessagesLabel" xml:space="preserve">
+    <value>Erneut gesendete Nachrichten:</value>
+  </data>
+  <data name="TransmittedResetsLabel" xml:space="preserve">
+    <value>Gesendete Zurücksetzungen:</value>
+  </data>
+  <data name="ReceivedResetsLabel" xml:space="preserve">
+    <value>Empfangene Zurücksetzungen:</value>
+  </data>
+  <data name="TransmittedAcknowledgementsLabel" xml:space="preserve">
+    <value>Gesendete Bestätigungen:</value>
+  </data>
+  <data name="ReceivedAcknowledgementsLabel" xml:space="preserve">
+    <value>Empfangene Bestätigungen:</value>
+  </data>
+  <data name="DroppedMessagesLabel" xml:space="preserve">
+    <value>Verworfene Nachrichten:</value>
+  </data>
+  <data name="NonPiggybackedResponsesLabel" xml:space="preserve">
+    <value>Separat gesendete Antworten:</value>
+  </data>
+  <data name="MaximumRetransmissionsExceededLabel" xml:space="preserve">
+    <value>Maximale Anzahl an Wiederholungen überschritten:</value>
+  </data>
+  <data name="ReceivedRequestsLabel" xml:space="preserve">
+    <value>Empfangene Anfragen:</value>
+  </data>
+  <data name="TransmittedRequestsLabel" xml:space="preserve">
+    <value>Gesendete Anfragen:</value>
+  </data>
+  <data name="ReceivedResponsesLabel" xml:space="preserve">
+    <value>Empfangene Antworten:</value>
+  </data>
+  <data name="TransmittedResponsesLabel" xml:space="preserve">
+    <value>Gesendete Antworten:</value>
+  </data>
+  <data name="TransmittedClientErrorsLabel" xml:space="preserve">
+    <value>Gesendete Clientfehler:</value>
+  </data>
+  <data name="ReceivedClientErrorsLabel" xml:space="preserve">
+    <value>Empfangene Clientfehler:</value>
+  </data>
+  <data name="TransmittedServerErrorsLabel" xml:space="preserve">
+    <value>Gesendete Serverfehler:</value>
+  </data>
+  <data name="ReceivedServerErrorsLabel" xml:space="preserve">
+    <value>Empfangene Serverfehler:</value>
+  </data>
+  <data name="TransfersStartedLabel" xml:space="preserve">
+    <value>Gestartete Übertragungen:</value>
+  </data>
+  <data name="TransfersCompletedLabel" xml:space="preserve">
+    <value>Abgeschlossene Übertragungen:</value>
+  </data>
+  <data name="TransfersTimedOutLabel" xml:space="preserve">
+    <value>Übertragungen mit Zeitüberschreitung:</value>
+  </data>
+  <data name="AttributeIDLabel" xml:space="preserve">
+    <value>Attribut-ID:</value>
+  </data>
+  <data name="CaptureTimeLabel" xml:space="preserve">
+    <value>Erfassungszeit:</value>
+  </data>
+  <data name="MessagesCounter" xml:space="preserve">
+    <value>Nachrichtenzähler</value>
+  </data>
+  <data name="RequestAndResponseCounter" xml:space="preserve">
+    <value>Anfrage- und Antwortzähler</value>
+  </data>
+  <data name="BlockWiseTransferCounter" xml:space="preserve">
+    <value>Zähler für blockweise Übertragungen</value>
+  </data>
+  <data name="CaptureTime" xml:space="preserve">
+    <value>Erfassungszeit</value>
+  </data>
+  <data name="ResetCounters" xml:space="preserve">
+    <value>Zähler zurücksetzen</value>
+  </data>
+  <data name="CoAPSetupObject" xml:space="preserve">
+    <value>CoAP-Konfigurationsobjekt</value>
+  </data>
+  <data name="UDPReferenceLabel" xml:space="preserve">
+    <value>UDP-Referenz:</value>
+  </data>
+  <data name="CoAPURIPathLabel" xml:space="preserve">
+    <value>CoAP-URI-Pfad:</value>
+  </data>
+  <data name="TransportModeLabel" xml:space="preserve">
+    <value>Transportmodus:</value>
+  </data>
+  <data name="WrapperVersionLabel" xml:space="preserve">
+    <value>Wrapper-Version:</value>
+  </data>
+  <data name="TokenLengthLabel" xml:space="preserve">
+    <value>Tokenlänge:</value>
+  </data>
+  <data name="ACKTimeoutMsLabel" xml:space="preserve">
+    <value>ACK-Zeitüberschreitung (ms):</value>
+  </data>
+  <data name="ACKRandomFactorLabel" xml:space="preserve">
+    <value>ACK-Zufallsfaktor:</value>
+  </data>
+  <data name="MaximumRetransmissionsLabel" xml:space="preserve">
+    <value>Maximale Anzahl an Wiederholungen:</value>
+  </data>
+  <data name="NSTARTLabel" xml:space="preserve">
+    <value>NSTART:</value>
+  </data>
+  <data name="DelayedACKTimeoutMsLabel" xml:space="preserve">
+    <value>Zeitüberschreitung für verzögertes ACK (ms):</value>
+  </data>
+  <data name="ExponentialBackOffLabel" xml:space="preserve">
+    <value>Exponentielle Wartezeit:</value>
+  </data>
+  <data name="ProbingRateLabel" xml:space="preserve">
+    <value>Sondierungsrate:</value>
+  </data>
+  <data name="Transport" xml:space="preserve">
+    <value>Transport</value>
+  </data>
+  <data name="Transmission" xml:space="preserve">
+    <value>Übertragung</value>
+  </data>
+  <data name="CommunicationPortProtectionObject" xml:space="preserve">
+    <value>Kommunikationsportschutzobjekt</value>
+  </data>
+  <data name="ProtectionModeLabel" xml:space="preserve">
+    <value>Schutzmodus:</value>
+  </data>
+  <data name="AllowedFailedAttemptsLabel" xml:space="preserve">
+    <value>Zulässige Fehlversuche:</value>
+  </data>
+  <data name="InitialLockoutTimeLabel" xml:space="preserve">
+    <value>Anfängliche Sperrdauer:</value>
+  </data>
+  <data name="SteepnessFactorLabel" xml:space="preserve">
+    <value>Steigungsfaktor:</value>
+  </data>
+  <data name="MaxLockoutTimeLabel" xml:space="preserve">
+    <value>Maximale Sperrdauer:</value>
+  </data>
+  <data name="PortLabel" xml:space="preserve">
+    <value>Port:</value>
+  </data>
+  <data name="ProtectionStatusLabel" xml:space="preserve">
+    <value>Schutzstatus:</value>
+  </data>
+  <data name="FailedAttemptsLabel" xml:space="preserve">
+    <value>Fehlversuche:</value>
+  </data>
+  <data name="CumulativeFailedAttemptsLabel" xml:space="preserve">
+    <value>Kumulierte Fehlversuche:</value>
+  </data>
+  <data name="ResetProtection" xml:space="preserve">
+    <value>Schutz zurücksetzen</value>
+  </data>
+  <data name="CompactData" xml:space="preserve">
+    <value>Kompakte Daten</value>
+  </data>
+  <data name="Buffer" xml:space="preserve">
+    <value>Puffer</value>
+  </data>
+  <data name="TemplateID" xml:space="preserve">
+    <value>Vorlagen-ID</value>
+  </data>
+  <data name="TemplateDescription" xml:space="preserve">
+    <value>Vorlagenbeschreibung</value>
+  </data>
+  <data name="CaptureMethod" xml:space="preserve">
+    <value>Erfassungsmethode</value>
+  </data>
+  <data name="CaptureObjects" xml:space="preserve">
+    <value>Erfassungsobjekte</value>
+  </data>
+  <data name="ObjectType2" xml:space="preserve">
+    <value>Objekttyp</value>
+  </data>
+  <data name="DataIndex" xml:space="preserve">
+    <value>Datenindex</value>
+  </data>
+  <data name="Capture" xml:space="preserve">
+    <value>Erfassen</value>
+  </data>
+  <data name="CreditObject" xml:space="preserve">
+    <value>Guthabenobjekt</value>
+  </data>
+  <data name="CurrentCreditAmount" xml:space="preserve">
+    <value>Aktueller Guthabenbetrag</value>
+  </data>
+  <data name="WarningThreshold" xml:space="preserve">
+    <value>Warnschwelle</value>
+  </data>
+  <data name="Limit" xml:space="preserve">
+    <value>Grenzwert</value>
+  </data>
+  <data name="CreditConfiguration" xml:space="preserve">
+    <value>Guthabenkonfiguration</value>
+  </data>
+  <data name="Status" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="PresetCreditAmount" xml:space="preserve">
+    <value>Voreingestellter Guthabenbetrag</value>
+  </data>
+  <data name="CreditAvailableThreshold" xml:space="preserve">
+    <value>Schwelle für verfügbares Guthaben</value>
+  </data>
+  <data name="AmountInt32" xml:space="preserve">
+    <value>Betrag (Int32)</value>
+  </data>
+  <data name="RequestedStatus" xml:space="preserve">
+    <value>Angeforderter Status</value>
+  </data>
+  <data name="UpdateAmount" xml:space="preserve">
+    <value>Betrag aktualisieren</value>
+  </data>
+  <data name="SetAmount" xml:space="preserve">
+    <value>Betrag festlegen</value>
+  </data>
+  <data name="InvokeCredit" xml:space="preserve">
+    <value>Guthaben aufrufen</value>
+  </data>
+  <data name="SelectAValidCreditStatus" xml:space="preserve">
+    <value>Wählen Sie einen gültigen Guthabenstatus aus.</value>
+  </data>
+  <data name="DataObject" xml:space="preserve">
+    <value>Datenobjekt</value>
+  </data>
+  <data name="DataObjectUnixTime" xml:space="preserve">
+    <value>Datenobjekt — Unix-Zeit</value>
+  </data>
+  <data name="TimeZoneLabel2" xml:space="preserve">
+    <value>Zeitzone:</value>
+  </data>
+  <data name="LocalTimeLabel" xml:space="preserve">
+    <value>Ortszeit:</value>
+  </data>
+  <data name="WriteCurrentTime" xml:space="preserve">
+    <value>Aktuelle Uhrzeit schreiben</value>
+  </data>
+  <data name="ImmediateWritingIsNotAvailableForThisConnection" xml:space="preserve">
+    <value>Sofortiges Schreiben ist für diese Verbindung nicht verfügbar.</value>
+  </data>
+  <data name="CurrentTimeWritten" xml:space="preserve">
+    <value>Aktuelle Uhrzeit geschrieben.</value>
+  </data>
+  <data name="EnterAValidLocalDateAndTime" xml:space="preserve">
+    <value>Geben Sie ein gültiges lokales Datum und eine gültige Ortszeit ein.</value>
+  </data>
+  <data name="TheDateIsOutsideTheMeterSSupportedRange" xml:space="preserve">
+    <value>Das Datum liegt außerhalb des vom Zähler unterstützten Bereichs.</value>
+  </data>
+  <data name="DataProtectionObject" xml:space="preserve">
+    <value>Datenschutzobjekt</value>
+  </data>
+  <data name="ProtectionBufferLabel" xml:space="preserve">
+    <value>Schutzpuffer:</value>
+  </data>
+  <data name="RequiredProtectionLabel" xml:space="preserve">
+    <value>Erforderlicher Schutz:</value>
+  </data>
+  <data name="ObjectTypeLabel" xml:space="preserve">
+    <value>Objekttyp:</value>
+  </data>
+  <data name="DataIndexLabel" xml:space="preserve">
+    <value>Datenindex:</value>
+  </data>
+  <data name="GetParameters" xml:space="preserve">
+    <value>Parameter abrufen</value>
+  </data>
+  <data name="ProtectionType" xml:space="preserve">
+    <value>Schutztyp</value>
+  </data>
+  <data name="TransactionID" xml:space="preserve">
+    <value>Transaktions-ID</value>
+  </data>
+  <data name="OriginatorSystemTitle" xml:space="preserve">
+    <value>Systemtitel des Absenders</value>
+  </data>
+  <data name="RecipientSystemTitle" xml:space="preserve">
+    <value>Systemtitel des Empfängers</value>
+  </data>
+  <data name="OtherInformation" xml:space="preserve">
+    <value>Weitere Informationen</value>
+  </data>
+  <data name="KeyInfo" xml:space="preserve">
+    <value>Schlüsselinformationen</value>
+  </data>
+  <data name="SetParameters" xml:space="preserve">
+    <value>Parameter festlegen</value>
+  </data>
+  <data name="ProtectionLabel" xml:space="preserve">
+    <value>Schutz:</value>
+  </data>
+  <data name="ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations" xml:space="preserve">
+    <value>Geschützte Lese-, Schreib- und Methodennachrichten sind in Gurux.DLMS 9.0.2609.2201 nicht verfügbar. Die Objekt-API implementiert diese Vorgänge nicht.</value>
+  </data>
+  <data name="GetProtectedAttributes" xml:space="preserve">
+    <value>Geschützte Attribute abrufen</value>
+  </data>
+  <data name="SetProtectedAttributes" xml:space="preserve">
+    <value>Geschützte Attribute festlegen</value>
+  </data>
+  <data name="InvokeProtectedMethod" xml:space="preserve">
+    <value>Geschützte Methode aufrufen</value>
+  </data>
+  <data name="DemandRegisterObject" xml:space="preserve">
+    <value>Lastregisterobjekt</value>
+  </data>
+  <data name="CurrentAverage" xml:space="preserve">
+    <value>Aktueller Mittelwert</value>
+  </data>
+  <data name="LastAverage" xml:space="preserve">
+    <value>Letzter Mittelwert</value>
+  </data>
+  <data name="Scaler" xml:space="preserve">
+    <value>Skalierungsfaktor</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Einheit</value>
+  </data>
+  <data name="CaptureTime2" xml:space="preserve">
+    <value>Erfassungszeit</value>
+  </data>
+  <data name="CurrentStartTime" xml:space="preserve">
+    <value>Aktuelle Startzeit</value>
+  </data>
+  <data name="NumberOfPeriods" xml:space="preserve">
+    <value>Anzahl der Perioden</value>
+  </data>
+  <data name="NextPeriod" xml:space="preserve">
+    <value>Nächste Periode</value>
+  </data>
+  <data name="DisconnectControlObject" xml:space="preserve">
+    <value>Trennsteuerungsobjekt</value>
+  </data>
+  <data name="OutputStateLabel" xml:space="preserve">
+    <value>Ausgangszustand:</value>
+  </data>
+  <data name="ControlStateLabel" xml:space="preserve">
+    <value>Steuerungszustand:</value>
+  </data>
+  <data name="ControlModeLabel" xml:space="preserve">
+    <value>Steuerungsmodus:</value>
+  </data>
+  <data name="Reconnect" xml:space="preserve">
+    <value>Wiederverbinden</value>
+  </data>
+  <data name="ExtendedRegisterObject" xml:space="preserve">
+    <value>Erweitertes Registerobjekt</value>
+  </data>
+  <data name="FunctionControlObject" xml:space="preserve">
+    <value>Funktionssteuerungsobjekt</value>
+  </data>
+  <data name="FunctionNameLabel" xml:space="preserve">
+    <value>Funktionsname:</value>
+  </data>
+  <data name="ANonemptyASCIIFunctionNameIsRequired" xml:space="preserve">
+    <value>Ein nicht leerer ASCII-Funktionsname ist erforderlich.</value>
+  </data>
+  <data name="ObjectsClassIdLogicalNamePerLineLabel" xml:space="preserve">
+    <value>Objekte (Klassen-ID,logischer Name pro Zeile):</value>
+  </data>
+  <data name="ObjectTypeLabel2" xml:space="preserve">
+    <value>Objekttyp:</value>
+  </data>
+  <data name="FunctionCommands" xml:space="preserve">
+    <value>Funktionsbefehle</value>
+  </data>
+  <data name="SetStatus" xml:space="preserve">
+    <value>Status festlegen...</value>
+  </data>
+  <data name="AddFunction" xml:space="preserve">
+    <value>Funktion hinzufügen...</value>
+  </data>
+  <data name="SelectAtLeastOneObject" xml:space="preserve">
+    <value>Wählen Sie mindestens ein Objekt aus.</value>
+  </data>
+  <data name="EachObjectRequiresClassIdLogicalName" xml:space="preserve">
+    <value>Jedes Objekt erfordert Klassen-ID,logischer Name.</value>
+  </data>
+  <data name="G3PLC6LoWPANAdaptationLayerSetupObject" xml:space="preserve">
+    <value>Konfigurationsobjekt der G3-PLC-6LoWPAN-Anpassungsschicht</value>
+  </data>
+  <data name="MaxHopsLabel" xml:space="preserve">
+    <value>Maximale Anzahl an Hops:</value>
+  </data>
+  <data name="WeakLQIValueLabel" xml:space="preserve">
+    <value>Schwacher LQI-Wert:</value>
+  </data>
+  <data name="SecurityLevelLabel" xml:space="preserve">
+    <value>Sicherheitsstufe:</value>
+  </data>
+  <data name="BroadcastLogTTLLabel" xml:space="preserve">
+    <value>TTL des Broadcast-Protokolls:</value>
+  </data>
+  <data name="MaxJoinWaitTLabel" xml:space="preserve">
+    <value>Maximale Beitrittswartezeit:</value>
+  </data>
+  <data name="PathDiscoveryTimeLabel" xml:space="preserve">
+    <value>Pfaderkennungszeit:</value>
+  </data>
+  <data name="ActiveKeyIndexLabel" xml:space="preserve">
+    <value>Index des aktiven Schlüssels:</value>
+  </data>
+  <data name="MetricTypeLabel" xml:space="preserve">
+    <value>Metriktyp:</value>
+  </data>
+  <data name="CoordAddressLabel" xml:space="preserve">
+    <value>Koordinatoradresse:</value>
+  </data>
+  <data name="DisableDefaultRouting" xml:space="preserve">
+    <value>Standardrouting deaktivieren</value>
+  </data>
+  <data name="DeviceTypeLabel" xml:space="preserve">
+    <value>Gerätetyp:</value>
+  </data>
+  <data name="DefaultCoordRouteEnabled" xml:space="preserve">
+    <value>Standardroute zum Koordinator aktiviert</value>
+  </data>
+  <data name="DestinationAddress" xml:space="preserve">
+    <value>Zieladresse</value>
+  </data>
+  <data name="LowLQILabel" xml:space="preserve">
+    <value>Unterer LQI:</value>
+  </data>
+  <data name="HighLQILabel" xml:space="preserve">
+    <value>Oberer LQI:</value>
+  </data>
+  <data name="Prefix" xml:space="preserve">
+    <value>Präfix</value>
+  </data>
+  <data name="RoutingConfiguration" xml:space="preserve">
+    <value>Routingkonfiguration</value>
+  </data>
+  <data name="NetTraversalTime" xml:space="preserve">
+    <value>Netzdurchlaufzeit</value>
+  </data>
+  <data name="TTL" xml:space="preserve">
+    <value>TTL</value>
+  </data>
+  <data name="Kr" xml:space="preserve">
+    <value>Kr</value>
+  </data>
+  <data name="Km" xml:space="preserve">
+    <value>Km</value>
+  </data>
+  <data name="Kc" xml:space="preserve">
+    <value>Kc</value>
+  </data>
+  <data name="Kq" xml:space="preserve">
+    <value>Kq</value>
+  </data>
+  <data name="Kh" xml:space="preserve">
+    <value>Kh</value>
+  </data>
+  <data name="Krt" xml:space="preserve">
+    <value>Krt</value>
+  </data>
+  <data name="RreqRetries" xml:space="preserve">
+    <value>Rreq-Wiederholungen</value>
+  </data>
+  <data name="RreqRerrWait" xml:space="preserve">
+    <value>Rreq-Rerr-Wartezeit</value>
+  </data>
+  <data name="BlackListTTL" xml:space="preserve">
+    <value>TTL der Sperrliste</value>
+  </data>
+  <data name="UnicastRreqGenEnable" xml:space="preserve">
+    <value>Unicast-Rreq-Erzeugung aktivieren</value>
+  </data>
+  <data name="RlcEnabled" xml:space="preserve">
+    <value>Rlc aktiviert</value>
+  </data>
+  <data name="AddRevLinkCost" xml:space="preserve">
+    <value>Kosten der Rückverbindung hinzufügen</value>
+  </data>
+  <data name="Routing" xml:space="preserve">
+    <value>Routing</value>
+  </data>
+  <data name="NextHopLabel" xml:space="preserve">
+    <value>Nächster Hop:</value>
+  </data>
+  <data name="RouteLabel" xml:space="preserve">
+    <value>Route:</value>
+  </data>
+  <data name="HopCountLabel" xml:space="preserve">
+    <value>Hop-Anzahl:</value>
+  </data>
+  <data name="WeakLinkLabel" xml:space="preserve">
+    <value>Schwache Verbindung:</value>
+  </data>
+  <data name="ValidTimeLabel" xml:space="preserve">
+    <value>Gültigkeitsdauer:</value>
+  </data>
+  <data name="ContextInformation" xml:space="preserve">
+    <value>Kontextinformationen</value>
+  </data>
+  <data name="CID" xml:space="preserve">
+    <value>CID</value>
+  </data>
+  <data name="Context" xml:space="preserve">
+    <value>Kontext</value>
+  </data>
+  <data name="Compression" xml:space="preserve">
+    <value>Komprimierung</value>
+  </data>
+  <data name="ValidLifetime" xml:space="preserve">
+    <value>Gültige Lebensdauer</value>
+  </data>
+  <data name="ContextLength" xml:space="preserve">
+    <value>Kontextlänge</value>
+  </data>
+  <data name="Blacklist" xml:space="preserve">
+    <value>Sperrliste</value>
+  </data>
+  <data name="NeighbourAddress" xml:space="preserve">
+    <value>Nachbaradresse</value>
+  </data>
+  <data name="ValidTime" xml:space="preserve">
+    <value>Gültigkeitsdauer</value>
+  </data>
+  <data name="BroadcastLog" xml:space="preserve">
+    <value>Broadcast-Protokoll</value>
+  </data>
+  <data name="SourceAddress" xml:space="preserve">
+    <value>Quelladresse</value>
+  </data>
+  <data name="SequenceNumber" xml:space="preserve">
+    <value>Sequenznummer</value>
+  </data>
+  <data name="Group" xml:space="preserve">
+    <value>Gruppe</value>
+  </data>
+  <data name="GroupAddress" xml:space="preserve">
+    <value>Gruppenadresse</value>
+  </data>
+  <data name="G3PLCMACLayerCountersObject" xml:space="preserve">
+    <value>G3-PLC-MAC-Schichtzählerobjekt</value>
+  </data>
+  <data name="TxDataPacketsLabel" xml:space="preserve">
+    <value>Gesendete Datenpakete:</value>
+  </data>
+  <data name="RxDataPacketsLabel" xml:space="preserve">
+    <value>Empfangene Datenpakete:</value>
+  </data>
+  <data name="TxCmdPacketsLabel" xml:space="preserve">
+    <value>Gesendete Befehlspakete:</value>
+  </data>
+  <data name="RxCmdPacketsLabel" xml:space="preserve">
+    <value>Empfangene Befehlspakete:</value>
+  </data>
+  <data name="CSMAFailsLabel" xml:space="preserve">
+    <value>CSMA-Fehler:</value>
+  </data>
+  <data name="CSMANoAcksLabel" xml:space="preserve">
+    <value>Fehlende CSMA-Bestätigungen:</value>
+  </data>
+  <data name="BadCRCsLabel" xml:space="preserve">
+    <value>Fehlerhafte CRCs:</value>
+  </data>
+  <data name="TxDataBroadcastsLabel" xml:space="preserve">
+    <value>Gesendete Daten-Broadcasts:</value>
+  </data>
+  <data name="RxDataBroadcastsLabel" xml:space="preserve">
+    <value>Empfangene Daten-Broadcasts:</value>
+  </data>
+  <data name="G3PLCMACSetupObject" xml:space="preserve">
+    <value>G3-PLC-MAC-Konfigurationsobjekt</value>
+  </data>
+  <data name="ShortAddressLabel" xml:space="preserve">
+    <value>Kurzadresse:</value>
+  </data>
+  <data name="RouteCostToCoordLabel" xml:space="preserve">
+    <value>Routenkosten zum Koordinator:</value>
+  </data>
+  <data name="PANIDLabel" xml:space="preserve">
+    <value>PAN-ID:</value>
+  </data>
+  <data name="FrameCounterLabel" xml:space="preserve">
+    <value>Rahmenzähler:</value>
+  </data>
+  <data name="ToneMaskLabel" xml:space="preserve">
+    <value>Tonmaske:</value>
+  </data>
+  <data name="ToneMapTTLLabel" xml:space="preserve">
+    <value>TTL der Tonbelegung:</value>
+  </data>
+  <data name="MaxFrameRetriesLabel" xml:space="preserve">
+    <value>Maximale Rahmenwiederholungen:</value>
+  </data>
+  <data name="NeighbourTableTTLLabel" xml:space="preserve">
+    <value>TTL der Nachbartabelle:</value>
+  </data>
+  <data name="HighPrioritySIzeLabel" xml:space="preserve">
+    <value>Größe für hohe Priorität:</value>
+  </data>
+  <data name="CSCMFairnessLimitLabel" xml:space="preserve">
+    <value>CSCM-Fairness-Grenze:</value>
+  </data>
+  <data name="BeaconRndLabel" xml:space="preserve">
+    <value>Zufallswert der Beacons:</value>
+  </data>
+  <data name="ALabel" xml:space="preserve">
+    <value>A:</value>
+  </data>
+  <data name="KLabel" xml:space="preserve">
+    <value>K:</value>
+  </data>
+  <data name="MinCWAttemptsLabel" xml:space="preserve">
+    <value>Minimale CW-Versuche:</value>
+  </data>
+  <data name="CenelecLegacyLabel" xml:space="preserve">
+    <value>Cenelec-Legacymodus:</value>
+  </data>
+  <data name="FCCLegacyModeLabel" xml:space="preserve">
+    <value>FCC-Legacymodus:</value>
+  </data>
+  <data name="MaxBackoffLabel" xml:space="preserve">
+    <value>Maximale Wartezeit:</value>
+  </data>
+  <data name="MaxCSMABackoffs" xml:space="preserve">
+    <value>Maximale CSMA-Wartevorgänge</value>
+  </data>
+  <data name="MinBackoffLabel" xml:space="preserve">
+    <value>Minimale Wartezeit:</value>
+  </data>
+  <data name="BroadcastMaxCWEnabled" xml:space="preserve">
+    <value>Maximales Broadcast-CW aktiviert</value>
+  </data>
+  <data name="TransmitAttenLabel" xml:space="preserve">
+    <value>Sendedämpfung:</value>
+  </data>
+  <data name="DuplicateDetection" xml:space="preserve">
+    <value>Duplikaterkennung</value>
+  </data>
+  <data name="KeyTable" xml:space="preserve">
+    <value>Schlüsseltabelle</value>
+  </data>
+  <data name="KeyLabel" xml:space="preserve">
+    <value>Schlüssel:</value>
+  </data>
+  <data name="NeighbourTable" xml:space="preserve">
+    <value>Nachbartabelle</value>
+  </data>
+  <data name="AddressLabel" xml:space="preserve">
+    <value>Adresse:</value>
+  </data>
+  <data name="ModulationLabel" xml:space="preserve">
+    <value>Modulation:</value>
+  </data>
+  <data name="ToneMapLabel" xml:space="preserve">
+    <value>Tonbelegung:</value>
+  </data>
+  <data name="TXGain" xml:space="preserve">
+    <value>TX-Verstärkung</value>
+  </data>
+  <data name="TXResolution" xml:space="preserve">
+    <value>TX-Auflösung</value>
+  </data>
+  <data name="TXCoefficients" xml:space="preserve">
+    <value>TX-Koeffizienten</value>
+  </data>
+  <data name="LQI" xml:space="preserve">
+    <value>LQI</value>
+  </data>
+  <data name="PhaseDifferential" xml:space="preserve">
+    <value>Phasendifferenz</value>
+  </data>
+  <data name="TMRValidTime" xml:space="preserve">
+    <value>TMR-Gültigkeitsdauer</value>
+  </data>
+  <data name="NeighbourValidTime" xml:space="preserve">
+    <value>Nachbargültigkeitsdauer</value>
+  </data>
+  <data name="POSTable" xml:space="preserve">
+    <value>POS-Tabelle</value>
+  </data>
+  <data name="ValidTime2" xml:space="preserve">
+    <value>Gültigkeitsdauer</value>
+  </data>
+  <data name="ShortAddress" xml:space="preserve">
+    <value>Kurzadresse</value>
+  </data>
+  <data name="EnterAShortAddressFrom0To65535" xml:space="preserve">
+    <value>Geben Sie eine Kurzadresse von 0 bis 65535 ein.</value>
+  </data>
+  <data name="GetNeighbourTableEntry" xml:space="preserve">
+    <value>Nachbartabelleneintrag abrufen</value>
+  </data>
+  <data name="GetPOSTableEntry" xml:space="preserve">
+    <value>POS-Tabelleneintrag abrufen</value>
+  </data>
+  <data name="GPRSModemSetupObject" xml:space="preserve">
+    <value>GPRS-Modemkonfigurationsobjekt</value>
+  </data>
+  <data name="APNLabel" xml:space="preserve">
+    <value>APN:</value>
+  </data>
+  <data name="PINCodeLabel" xml:space="preserve">
+    <value>PIN-Code:</value>
+  </data>
+  <data name="PrecedenceLabel" xml:space="preserve">
+    <value>Vorrang:</value>
+  </data>
+  <data name="DelayLabel" xml:space="preserve">
+    <value>Verzögerung:</value>
+  </data>
+  <data name="ReliabilityLabel" xml:space="preserve">
+    <value>Zuverlässigkeit:</value>
+  </data>
+  <data name="PeakThroughputLabel" xml:space="preserve">
+    <value>Spitzendurchsatz:</value>
+  </data>
+  <data name="MeanThroughputLabel" xml:space="preserve">
+    <value>Mittlerer Durchsatz:</value>
+  </data>
+  <data name="DefaultQualityOfService" xml:space="preserve">
+    <value>Standarddienstqualität</value>
+  </data>
+  <data name="RequestedQualityOfService" xml:space="preserve">
+    <value>Angeforderte Dienstqualität</value>
+  </data>
+  <data name="GSMDiagnosticObject" xml:space="preserve">
+    <value>GSM-Diagnoseobjekt</value>
+  </data>
+  <data name="Operator" xml:space="preserve">
+    <value>Netzbetreiber</value>
+  </data>
+  <data name="CSAttachmentLabel" xml:space="preserve">
+    <value>CS-Anbindung:</value>
+  </data>
+  <data name="PSStatusLabel" xml:space="preserve">
+    <value>PS-Status:</value>
+  </data>
+  <data name="CellIDLabel" xml:space="preserve">
+    <value>Zellen-ID:</value>
+  </data>
+  <data name="X4" xml:space="preserve">
+    <value>X4</value>
+  </data>
+  <data name="X8" xml:space="preserve">
+    <value>X8</value>
+  </data>
+  <data name="LocationIDLabel" xml:space="preserve">
+    <value>Standort-ID:</value>
+  </data>
+  <data name="SignalQualityLabel" xml:space="preserve">
+    <value>Signalqualität:</value>
+  </data>
+  <data name="BERLabel" xml:space="preserve">
+    <value>BER:</value>
+  </data>
+  <data name="MCCLabel" xml:space="preserve">
+    <value>MCC:</value>
+  </data>
+  <data name="MNCLabel" xml:space="preserve">
+    <value>MNC:</value>
+  </data>
+  <data name="ChannelLabel" xml:space="preserve">
+    <value>Kanal:</value>
+  </data>
+  <data name="AdjacentCellsLabel" xml:space="preserve">
+    <value>Benachbarte Zellen:</value>
+  </data>
+  <data name="CaptureTimeLabel2" xml:space="preserve">
+    <value>Erfassungszeit:</value>
+  </data>
+  <data name="CellInfo" xml:space="preserve">
+    <value>Zelleninformationen</value>
+  </data>
+  <data name="HDLCSetupObject" xml:space="preserve">
+    <value>HDLC-Konfigurationsobjekt</value>
+  </data>
+  <data name="SpeedLabel" xml:space="preserve">
+    <value>Geschwindigkeit:</value>
+  </data>
+  <data name="WindowSizeLabel" xml:space="preserve">
+    <value>Fenstergröße:</value>
+  </data>
+  <data name="MaximumLengthLabel" xml:space="preserve">
+    <value>Maximale Länge:</value>
+  </data>
+  <data name="InternalTimeout" xml:space="preserve">
+    <value>Interne Zeitüberschreitung</value>
+  </data>
+  <data name="InactivityTimeoutLabel" xml:space="preserve">
+    <value>Inaktivitätszeitüberschreitung:</value>
+  </data>
+  <data name="DeviceAddressLabel" xml:space="preserve">
+    <value>Geräteadresse:</value>
+  </data>
+  <data name="Transmit" xml:space="preserve">
+    <value>Senden</value>
+  </data>
+  <data name="ReceiveLabel" xml:space="preserve">
+    <value>Empfangen:</value>
+  </data>
+  <data name="IECLocalPortSetup" xml:space="preserve">
+    <value>IEC-Konfiguration des lokalen Ports</value>
+  </data>
+  <data name="DefaultModeLabel" xml:space="preserve">
+    <value>Standardmodus:</value>
+  </data>
+  <data name="DefaultBaudrateLabel" xml:space="preserve">
+    <value>Standardbaudrate:</value>
+  </data>
+  <data name="MaximumBaudrateLabel" xml:space="preserve">
+    <value>Maximale Baudrate:</value>
+  </data>
+  <data name="ResponseTimeLabel" xml:space="preserve">
+    <value>Antwortzeit:</value>
+  </data>
+  <data name="Password1Label" xml:space="preserve">
+    <value>Passwort 1:</value>
+  </data>
+  <data name="Password2Label" xml:space="preserve">
+    <value>Passwort 2:</value>
+  </data>
+  <data name="Password5Label" xml:space="preserve">
+    <value>Passwort 5:</value>
+  </data>
+  <data name="IECTwistedPairSetupObject" xml:space="preserve">
+    <value>IEC-Konfigurationsobjekt für verdrillte Leitungen</value>
+  </data>
+  <data name="Mode" xml:space="preserve">
+    <value>Modus</value>
+  </data>
+  <data name="PrimaryAddressesLabel" xml:space="preserve">
+    <value>Primäradressen:</value>
+  </data>
+  <data name="TABI" xml:space="preserve">
+    <value>TAB(i)</value>
+  </data>
+  <data name="ImageTransferObject" xml:space="preserve">
+    <value>Imageübertragungsobjekt</value>
+  </data>
+  <data name="ImageBlockSizeLabel" xml:space="preserve">
+    <value>Imageblockgröße:</value>
+  </data>
+  <data name="BlocksStatusLabel" xml:space="preserve">
+    <value>Blockstatus:</value>
+  </data>
+  <data name="FirstBlockLabel" xml:space="preserve">
+    <value>Erster Block:</value>
+  </data>
+  <data name="ImagesLabel" xml:space="preserve">
+    <value>Images:</value>
+  </data>
+  <data name="Size" xml:space="preserve">
+    <value>Größe</value>
+  </data>
+  <data name="Identification" xml:space="preserve">
+    <value>Identifikation</value>
+  </data>
+  <data name="Signature" xml:space="preserve">
+    <value>Signatur</value>
+  </data>
+  <data name="ImageFileLabel" xml:space="preserve">
+    <value>Imagedatei:</value>
+  </data>
+  <data name="ImageFile" xml:space="preserve">
+    <value>Imagedatei</value>
+  </data>
+  <data name="SelectedFileLabel" xml:space="preserve">
+    <value>Ausgewählte Datei:</value>
+  </data>
+  <data name="IdentifierHexLabel" xml:space="preserve">
+    <value>Kennung (hex):</value>
+  </data>
+  <data name="AnImageIdentifierIsRequired" xml:space="preserve">
+    <value>Eine Imagekennung ist erforderlich.</value>
+  </data>
+  <data name="IdentifierSignatureHexOptionalLabel" xml:space="preserve">
+    <value>Signatur der Kennung (hex, optional):</value>
+  </data>
+  <data name="ImageHexLabel" xml:space="preserve">
+    <value>Image (hex):</value>
+  </data>
+  <data name="SelectANonemptyImage" xml:space="preserve">
+    <value>Wählen Sie ein nicht leeres Image aus.</value>
+  </data>
+  <data name="ResumeBlockIndexLabel" xml:space="preserve">
+    <value>Blockindex für die Fortsetzung:</value>
+  </data>
+  <data name="EnterANonnegativeBlockIndex" xml:space="preserve">
+    <value>Geben Sie einen nicht negativen Blockindex ein.</value>
+  </data>
+  <data name="ReceivedBlocksBitStringOptionalLabel" xml:space="preserve">
+    <value>Bitfolge der empfangenen Blöcke (optional):</value>
+  </data>
+  <data name="ImageTransfer" xml:space="preserve">
+    <value>Imageübertragung</value>
+  </data>
+  <data name="Browse" xml:space="preserve">
+    <value>Durchsuchen...</value>
+  </data>
+  <data name="ImageLabel" xml:space="preserve">
+    <value>Image:</value>
+  </data>
+  <data name="UpdateImage" xml:space="preserve">
+    <value>Image aktualisieren...</value>
+  </data>
+  <data name="TransferImageBlocks" xml:space="preserve">
+    <value>Imageblöcke übertragen</value>
+  </data>
+  <data name="VerifyImage" xml:space="preserve">
+    <value>Image überprüfen...</value>
+  </data>
+  <data name="ActivateImage" xml:space="preserve">
+    <value>Image aktivieren...</value>
+  </data>
+  <data name="ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex" xml:space="preserve">
+    <value>Lesen Sie den Status nach Übertragung, Überprüfung und Aktivierung. Die Fortsetzung verwendet den Blockstatus des Zählers oder den Index des ersten fehlenden Blocks.</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus" xml:space="preserve">
+    <value>Lesen Sie vor der Eingabe des Blockstatus eine Imageblockgröße ungleich null.</value>
+  </data>
+  <data name="BlockStatusMustContainOneZeroOrOnePerImageBlock" xml:space="preserve">
+    <value>Der Blockstatus muss für jeden Imageblock eine Null oder Eins enthalten.</value>
+  </data>
+  <data name="SelectANonemptyImageFile" xml:space="preserve">
+    <value>Wählen Sie eine nicht leere Imagedatei aus.</value>
+  </data>
+  <data name="ImageInitiation" xml:space="preserve">
+    <value>Imageinitialisierung</value>
+  </data>
+  <data name="ImageBlockTransfer" xml:space="preserve">
+    <value>Imageblockübertragung</value>
+  </data>
+  <data name="ImageVerification" xml:space="preserve">
+    <value>Imageüberprüfung</value>
+  </data>
+  <data name="ImageActivation" xml:space="preserve">
+    <value>Imageaktivierung</value>
+  </data>
+  <data name="ReadANonzeroImageBlockSizeBeforeTransfer" xml:space="preserve">
+    <value>Lesen Sie vor der Übertragung eine Imageblockgröße ungleich null.</value>
+  </data>
+  <data name="ResumeIndexMustIdentifyAnImageBlock" xml:space="preserve">
+    <value>Der Fortsetzungsindex muss einen Imageblock bezeichnen.</value>
+  </data>
+  <data name="Ip4SetupObject" xml:space="preserve">
+    <value>IPv4-Konfigurationsobjekt</value>
+  </data>
+  <data name="DataLinkLayerLabel" xml:space="preserve">
+    <value>Sicherungsschicht:</value>
+  </data>
+  <data name="IPAddressLabel" xml:space="preserve">
+    <value>IP-Adresse:</value>
+  </data>
+  <data name="MulticastIPAddressLabel" xml:space="preserve">
+    <value>Multicast-IP-Adresse:</value>
+  </data>
+  <data name="IPOptionsLabel" xml:space="preserve">
+    <value>IP-Optionen:</value>
+  </data>
+  <data name="Length" xml:space="preserve">
+    <value>Länge</value>
+  </data>
+  <data name="SubnetMaskLabel" xml:space="preserve">
+    <value>Subnetzmaske:</value>
+  </data>
+  <data name="GatewayIPAddressLabel" xml:space="preserve">
+    <value>Gateway-IP-Adresse:</value>
+  </data>
+  <data name="UseDHCPLabel" xml:space="preserve">
+    <value>DHCP verwenden:</value>
+  </data>
+  <data name="PrimaryDNSAddressLabel" xml:space="preserve">
+    <value>Primäre DNS-Adresse:</value>
+  </data>
+  <data name="SecondaryDNSAddressLabel" xml:space="preserve">
+    <value>Sekundäre DNS-Adresse:</value>
+  </data>
+  <data name="MulticastIPv4Address" xml:space="preserve">
+    <value>Multicast-IPv4-Adresse</value>
+  </data>
+  <data name="EnterAnIPv4MulticastAddress224000239255255255" xml:space="preserve">
+    <value>Geben Sie eine IPv4-Multicast-Adresse ein (224.0.0.0–239.255.255.255).</value>
+  </data>
+  <data name="AddressIndex" xml:space="preserve">
+    <value>Adressindex</value>
+  </data>
+  <data name="EnterAnAddressIndexFrom0To255" xml:space="preserve">
+    <value>Geben Sie einen Adressindex von 0 bis 255 ein.</value>
+  </data>
+  <data name="AddMulticastAddress" xml:space="preserve">
+    <value>Multicast-Adresse hinzufügen</value>
+  </data>
+  <data name="DeleteMulticastAddress" xml:space="preserve">
+    <value>Multicast-Adresse löschen</value>
+  </data>
+  <data name="GetMulticastAddressCount" xml:space="preserve">
+    <value>Anzahl der Multicast-Adressen abrufen</value>
+  </data>
+  <data name="Ip6SetupObject" xml:space="preserve">
+    <value>IPv6-Konfigurationsobjekt</value>
+  </data>
+  <data name="AddressConfigModeLabel" xml:space="preserve">
+    <value>Adresskonfigurationsmodus:</value>
+  </data>
+  <data name="UnicastLabel" xml:space="preserve">
+    <value>Unicast:</value>
+  </data>
+  <data name="UnicastIPAddress" xml:space="preserve">
+    <value>Unicast-IP-Adresse</value>
+  </data>
+  <data name="MulticastLabel" xml:space="preserve">
+    <value>Multicast:</value>
+  </data>
+  <data name="MulticastIPAddress" xml:space="preserve">
+    <value>Multicast-IP-Adresse</value>
+  </data>
+  <data name="GatewayLabel" xml:space="preserve">
+    <value>Gateway:</value>
+  </data>
+  <data name="GatewayIPAddress" xml:space="preserve">
+    <value>Gateway-IP-Adresse</value>
+  </data>
+  <data name="TrafficClassLabel" xml:space="preserve">
+    <value>Verkehrsklasse:</value>
+  </data>
+  <data name="NeighborDiscoverySetup" xml:space="preserve">
+    <value>Nachbarerkennungseinstellungen</value>
+  </data>
+  <data name="RSMaxRetry" xml:space="preserve">
+    <value>Maximale RS-Wiederholungen</value>
+  </data>
+  <data name="RSRetryWaitTime" xml:space="preserve">
+    <value>RS-Wiederholungswartezeit</value>
+  </data>
+  <data name="RASendPeriod" xml:space="preserve">
+    <value>RA-Sendeintervall</value>
+  </data>
+  <data name="AddressType" xml:space="preserve">
+    <value>Adresstyp</value>
+  </data>
+  <data name="SelectASupportedAddressType" xml:space="preserve">
+    <value>Wählen Sie einen unterstützten Adresstyp aus.</value>
+  </data>
+  <data name="IPv6Address" xml:space="preserve">
+    <value>IPv6-Adresse</value>
+  </data>
+  <data name="EnterAnIPv6Address" xml:space="preserve">
+    <value>Geben Sie eine IPv6-Adresse ein.</value>
+  </data>
+  <data name="AddIPv6Address" xml:space="preserve">
+    <value>IPv6-Adresse hinzufügen</value>
+  </data>
+  <data name="RemoveIPv6Address" xml:space="preserve">
+    <value>IPv6-Adresse entfernen</value>
+  </data>
+  <data name="LimiterObject" xml:space="preserve">
+    <value>Begrenzerobjekt</value>
+  </data>
+  <data name="ThresholdActive" xml:space="preserve">
+    <value>Aktive Schwelle</value>
+  </data>
+  <data name="ThresholdNormal" xml:space="preserve">
+    <value>Normale Schwelle</value>
+  </data>
+  <data name="ThresholdEmergency" xml:space="preserve">
+    <value>Notfallschwelle</value>
+  </data>
+  <data name="MinimalOver" xml:space="preserve">
+    <value>Minimale Überschreitungsdauer</value>
+  </data>
+  <data name="MinimalUnder" xml:space="preserve">
+    <value>Minimale Unterschreitungsdauer</value>
+  </data>
+  <data name="ActivationTime" xml:space="preserve">
+    <value>Aktivierungszeit</value>
+  </data>
+  <data name="Duration" xml:space="preserve">
+    <value>Dauer</value>
+  </data>
+  <data name="GroupIDs" xml:space="preserve">
+    <value>Gruppen-IDs</value>
+  </data>
+  <data name="GroupID" xml:space="preserve">
+    <value>Gruppen-ID</value>
+  </data>
+  <data name="Monitored" xml:space="preserve">
+    <value>Überwacht</value>
+  </data>
+  <data name="EmergencyProfile" xml:space="preserve">
+    <value>Notfallprofil</value>
+  </data>
+  <data name="ActionOver" xml:space="preserve">
+    <value>Aktion bei Überschreitung</value>
+  </data>
+  <data name="ActionUnder" xml:space="preserve">
+    <value>Aktion bei Unterschreitung</value>
+  </data>
+  <data name="LLCSSCSSetupObject" xml:space="preserve">
+    <value>LLC-SSCS-Konfigurationsobjekt</value>
+  </data>
+  <data name="ServiceAddressLabel" xml:space="preserve">
+    <value>Dienstadresse:</value>
+  </data>
+  <data name="BaseAddressLabel" xml:space="preserve">
+    <value>Basisadresse:</value>
+  </data>
+  <data name="MACAddressSetupObject" xml:space="preserve">
+    <value>MAC-Adresskonfigurationsobjekt</value>
+  </data>
+  <data name="MACAddressLabel" xml:space="preserve">
+    <value>MAC-Adresse:</value>
+  </data>
+  <data name="MBusClientObject" xml:space="preserve">
+    <value>M-Bus-Clientobjekt</value>
+  </data>
+  <data name="MBusPortReferenceLabel" xml:space="preserve">
+    <value>M-Bus-Portreferenz:</value>
+  </data>
+  <data name="CapturePeriodLabel" xml:space="preserve">
+    <value>Erfassungsintervall:</value>
+  </data>
+  <data name="PrimaryAddressLabel" xml:space="preserve">
+    <value>Primäradresse:</value>
+  </data>
+  <data name="IdentificationNumberLabel" xml:space="preserve">
+    <value>Identifikationsnummer:</value>
+  </data>
+  <data name="ManufacturerIDLabel" xml:space="preserve">
+    <value>Hersteller-ID:</value>
+  </data>
+  <data name="AccessNumberLabel" xml:space="preserve">
+    <value>Zugriffsnummer:</value>
+  </data>
+  <data name="AlarmLabel" xml:space="preserve">
+    <value>Alarm:</value>
+  </data>
+  <data name="ConfigurationLabel" xml:space="preserve">
+    <value>Konfiguration:</value>
+  </data>
+  <data name="EncryptionKeyStatusLabel" xml:space="preserve">
+    <value>Verschlüsselungsschlüsselstatus:</value>
+  </data>
+  <data name="CaptureDefinitionLabel" xml:space="preserve">
+    <value>Erfassungsdefinition:</value>
+  </data>
+  <data name="DataInformation" xml:space="preserve">
+    <value>Dateninformationen</value>
+  </data>
+  <data name="ValueInformation" xml:space="preserve">
+    <value>Wertinformationen</value>
+  </data>
+  <data name="InstallPrimaryAddressLabel" xml:space="preserve">
+    <value>Primäradresse installieren:</value>
+  </data>
+  <data name="PrimaryAddressMustBeBetweenZeroAnd255" xml:space="preserve">
+    <value>Die Primäradresse muss zwischen null und 255 liegen.</value>
+  </data>
+  <data name="DataInformationHexLabel" xml:space="preserve">
+    <value>Dateninformationen (hex):</value>
+  </data>
+  <data name="ValueInformationHexLabel" xml:space="preserve">
+    <value>Wertinformationen (hex):</value>
+  </data>
+  <data name="DataTypeLabel" xml:space="preserve">
+    <value>Datentyp:</value>
+  </data>
+  <data name="SelectAScalarDataType" xml:space="preserve">
+    <value>Wählen Sie einen skalaren Datentyp aus.</value>
+  </data>
+  <data name="DataValueLabel" xml:space="preserve">
+    <value>Datenwert:</value>
+  </data>
+  <data name="EncryptionKey16BytesHexLabel" xml:space="preserve">
+    <value>Verschlüsselungsschlüssel (16 Bytes, hex):</value>
+  </data>
+  <data name="AnMBusEncryptionKeyMustContainExactly16Bytes" xml:space="preserve">
+    <value>Ein M-Bus-Verschlüsselungsschlüssel muss genau 16 Bytes enthalten.</value>
+  </data>
+  <data name="ClearEncryptionKeyLabel" xml:space="preserve">
+    <value>Verschlüsselungsschlüssel löschen:</value>
+  </data>
+  <data name="Slave" xml:space="preserve">
+    <value>Slave</value>
+  </data>
+  <data name="Install" xml:space="preserve">
+    <value>Installieren</value>
+  </data>
+  <data name="DeInstall" xml:space="preserve">
+    <value>Deinstallieren</value>
+  </data>
+  <data name="ResetAlarm" xml:space="preserve">
+    <value>Alarm zurücksetzen</value>
+  </data>
+  <data name="SynchronizeClock" xml:space="preserve">
+    <value>Uhr synchronisieren</value>
+  </data>
+  <data name="SendData" xml:space="preserve">
+    <value>Daten senden</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Senden...</value>
+  </data>
+  <data name="EncryptionKey" xml:space="preserve">
+    <value>Verschlüsselungsschlüssel</value>
+  </data>
+  <data name="Set" xml:space="preserve">
+    <value>Festlegen...</value>
+  </data>
+  <data name="Transfer" xml:space="preserve">
+    <value>Übertragen...</value>
+  </data>
+  <data name="ADataValueIsRequired" xml:space="preserve">
+    <value>Ein Datenwert ist erforderlich.</value>
+  </data>
+  <data name="MBusDiagnosticObject" xml:space="preserve">
+    <value>M-Bus-Diagnoseobjekt</value>
+  </data>
+  <data name="ReceivedSignalStrengthLabel" xml:space="preserve">
+    <value>Empfangssignalstärke:</value>
+  </data>
+  <data name="ChannelIDLabel" xml:space="preserve">
+    <value>Kanal-ID:</value>
+  </data>
+  <data name="LinkStatusLabel" xml:space="preserve">
+    <value>Verbindungsstatus:</value>
+  </data>
+  <data name="BroadcastFrames" xml:space="preserve">
+    <value>Broadcast-Rahmen</value>
+  </data>
+  <data name="ClientID" xml:space="preserve">
+    <value>Client-ID</value>
+  </data>
+  <data name="Counter" xml:space="preserve">
+    <value>Zähler</value>
+  </data>
+  <data name="TimeStamp" xml:space="preserve">
+    <value>Zeitstempel</value>
+  </data>
+  <data name="TransmissionsCounterLabel" xml:space="preserve">
+    <value>Übertragungszähler:</value>
+  </data>
+  <data name="FCSOKFramesCounterLabel" xml:space="preserve">
+    <value>Zähler für Rahmen mit korrektem FCS:</value>
+  </data>
+  <data name="FCSNOKFramesCounterLabel" xml:space="preserve">
+    <value>Zähler für Rahmen mit fehlerhaftem FCS:</value>
+  </data>
+  <data name="CaptureIDLabel" xml:space="preserve">
+    <value>Erfassungs-ID:</value>
+  </data>
+  <data name="BroadcastFramesCounter" xml:space="preserve">
+    <value>Broadcast-Rahmenzähler</value>
+  </data>
+  <data name="MBusMasterPortSetupObject" xml:space="preserve">
+    <value>M-Bus-Masterportkonfigurationsobjekt</value>
+  </data>
+  <data name="CommSpeedLabel" xml:space="preserve">
+    <value>Kommunikationsgeschwindigkeit:</value>
+  </data>
+  <data name="MBusPortSetupObject" xml:space="preserve">
+    <value>M-Bus-Portkonfigurationsobjekt</value>
+  </data>
+  <data name="ProfileSelectionLabel" xml:space="preserve">
+    <value>Profilauswahl:</value>
+  </data>
+  <data name="PortCommunicationStatusLabel" xml:space="preserve">
+    <value>Kommunikationsstatus des Ports:</value>
+  </data>
+  <data name="DataHeaderTypeLabel" xml:space="preserve">
+    <value>Datenkopftyp:</value>
+  </data>
+  <data name="PrimaryAddressLabel2" xml:space="preserve">
+    <value>Primäradresse:</value>
+  </data>
+  <data name="IdentificationNumberLabel2" xml:space="preserve">
+    <value>Identifikationsnummer:</value>
+  </data>
+  <data name="MBusVersionLabel" xml:space="preserve">
+    <value>M-Bus-Version:</value>
+  </data>
+  <data name="DeviceTypeLabel2" xml:space="preserve">
+    <value>Gerätetyp:</value>
+  </data>
+  <data name="MaximumPDUSizeLabel" xml:space="preserve">
+    <value>Maximale PDU-Größe:</value>
+  </data>
+  <data name="ListeningWindows" xml:space="preserve">
+    <value>Empfangszeitfenster</value>
+  </data>
+  <data name="End" xml:space="preserve">
+    <value>Ende</value>
+  </data>
+  <data name="PortSettings" xml:space="preserve">
+    <value>Porteinstellungen</value>
+  </data>
+  <data name="MBusSlavePortSetupObject" xml:space="preserve">
+    <value>M-Bus-Slaveportkonfigurationsobjekt</value>
+  </data>
+  <data name="AvailableBaudrateLabel" xml:space="preserve">
+    <value>Verfügbare Baudrate:</value>
+  </data>
+  <data name="AddressStateLabel" xml:space="preserve">
+    <value>Adressstatus:</value>
+  </data>
+  <data name="BusAddressLabel" xml:space="preserve">
+    <value>Busadresse:</value>
+  </data>
+  <data name="ModemConfigurationObject" xml:space="preserve">
+    <value>Modemkonfigurationsobjekt</value>
+  </data>
+  <data name="InitialisationLabel" xml:space="preserve">
+    <value>Initialisierung:</value>
+  </data>
+  <data name="Request" xml:space="preserve">
+    <value>Anfrage</value>
+  </data>
+  <data name="ResponseLabel" xml:space="preserve">
+    <value>Antwort:</value>
+  </data>
+  <data name="Delay" xml:space="preserve">
+    <value>Verzögerung</value>
+  </data>
+  <data name="ModemProfileLabel" xml:space="preserve">
+    <value>Modemprofil:</value>
+  </data>
+  <data name="NTPSetupObject" xml:space="preserve">
+    <value>NTP-Konfigurationsobjekt</value>
+  </data>
+  <data name="ActivatedLabel" xml:space="preserve">
+    <value>Aktiviert:</value>
+  </data>
+  <data name="ServerAddressLabel" xml:space="preserve">
+    <value>Serveradresse:</value>
+  </data>
+  <data name="AuthenticationLabel" xml:space="preserve">
+    <value>Authentifizierung:</value>
+  </data>
+  <data name="KeysLabel" xml:space="preserve">
+    <value>Schlüssel:</value>
+  </data>
+  <data name="ClientKeyLabel" xml:space="preserve">
+    <value>Clientschlüssel:</value>
+  </data>
+  <data name="AuthenticationKeyID" xml:space="preserve">
+    <value>Authentifizierungsschlüssel-ID</value>
+  </data>
+  <data name="EnterAKeyIDFrom0To4294967295" xml:space="preserve">
+    <value>Geben Sie eine Schlüssel-ID von 0 bis 4294967295 ein.</value>
+  </data>
+  <data name="AuthenticationKeyHexadecimal" xml:space="preserve">
+    <value>Authentifizierungsschlüssel (hexadezimal)</value>
+  </data>
+  <data name="EnterANonEmptyHexadecimalAuthenticationKey" xml:space="preserve">
+    <value>Geben Sie einen nicht leeren hexadezimalen Authentifizierungsschlüssel ein.</value>
+  </data>
+  <data name="SynchronizeTime" xml:space="preserve">
+    <value>Uhrzeit synchronisieren</value>
+  </data>
+  <data name="AddAuthenticationKey" xml:space="preserve">
+    <value>Authentifizierungsschlüssel hinzufügen</value>
+  </data>
+  <data name="DeleteAuthenticationKey" xml:space="preserve">
+    <value>Authentifizierungsschlüssel löschen</value>
+  </data>
+  <data name="ParameterMonitorObject" xml:space="preserve">
+    <value>Parameterüberwachungsobjekt</value>
+  </data>
+  <data name="Parameters" xml:space="preserve">
+    <value>Parameter</value>
+  </data>
+  <data name="ObjectClassID" xml:space="preserve">
+    <value>Objektklassen-ID</value>
+  </data>
+  <data name="ObjectLogicalName" xml:space="preserve">
+    <value>Logischer Objektname</value>
+  </data>
+  <data name="AttributeIndex1255" xml:space="preserve">
+    <value>Attributindex (1–255)</value>
+  </data>
+  <data name="ChangedParameter" xml:space="preserve">
+    <value>Geänderter Parameter</value>
+  </data>
+  <data name="AddParameter" xml:space="preserve">
+    <value>Parameter hinzufügen</value>
+  </data>
+  <data name="DeleteParameter" xml:space="preserve">
+    <value>Parameter löschen</value>
+  </data>
+  <data name="EnterASupportedObjectClassID" xml:space="preserve">
+    <value>Geben Sie eine unterstützte Objektklassen-ID ein.</value>
+  </data>
+  <data name="AttributeIndexMustBeGreaterThanZero" xml:space="preserve">
+    <value>Der Attributindex muss größer als null sein.</value>
+  </data>
+  <data name="AttributeIndexExceedsTheObjectSAttributeCount" xml:space="preserve">
+    <value>Der Attributindex überschreitet die Attributanzahl des Objekts.</value>
+  </data>
+  <data name="SelectASupportedObjectClass" xml:space="preserve">
+    <value>Wählen Sie eine unterstützte Objektklasse aus.</value>
+  </data>
+  <data name="PPPSetupObject" xml:space="preserve">
+    <value>PPP-Konfigurationsobjekt</value>
+  </data>
+  <data name="PHYReferenceLabel" xml:space="preserve">
+    <value>PHY-Referenz:</value>
+  </data>
+  <data name="LCPOptionsLabel" xml:space="preserve">
+    <value>LCP-Optionen:</value>
+  </data>
+  <data name="IPCPOptionsLabel" xml:space="preserve">
+    <value>IPCP-Optionen:</value>
+  </data>
+  <data name="UserNameLabel" xml:space="preserve">
+    <value>Benutzername:</value>
+  </data>
+  <data name="PasswordLabel" xml:space="preserve">
+    <value>Passwort:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCApplicationIdentificationObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-Anwendungsidentifikationsobjekt</value>
+  </data>
+  <data name="FirmwareVersionLabel" xml:space="preserve">
+    <value>Firmwareversion:</value>
+  </data>
+  <data name="VendorIDLabel" xml:space="preserve">
+    <value>Anbieter-ID:</value>
+  </data>
+  <data name="ProductIDLabel" xml:space="preserve">
+    <value>Produkt-ID:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACCountersObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-MAC-Zählerobjekt</value>
+  </data>
+  <data name="TXDataPacketCounterLabel" xml:space="preserve">
+    <value>Zähler gesendeter Datenpakete:</value>
+  </data>
+  <data name="RXDataPacketCounterLabel" xml:space="preserve">
+    <value>Zähler empfangener Datenpakete:</value>
+  </data>
+  <data name="TXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Zähler gesendeter Steuerpakete:</value>
+  </data>
+  <data name="RXCtrlPacketCounterLabel" xml:space="preserve">
+    <value>Zähler empfangener Steuerpakete:</value>
+  </data>
+  <data name="CSMAFailCounterLabel" xml:space="preserve">
+    <value>CSMA-Fehlerzähler:</value>
+  </data>
+  <data name="CSMABusyCounterLabel" xml:space="preserve">
+    <value>CSMA-Belegtzähler:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACFunctionalParametersObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-MAC-Funktionsparameterobjekt</value>
+  </data>
+  <data name="LNIDLabel" xml:space="preserve">
+    <value>LNID:</value>
+  </data>
+  <data name="LSIDLabel" xml:space="preserve">
+    <value>LSID:</value>
+  </data>
+  <data name="SIDLabel" xml:space="preserve">
+    <value>SID:</value>
+  </data>
+  <data name="SNALabel" xml:space="preserve">
+    <value>SNA:</value>
+  </data>
+  <data name="StateLabel" xml:space="preserve">
+    <value>Zustand:</value>
+  </data>
+  <data name="SCPLengtLabel" xml:space="preserve">
+    <value>SCP-Länge:</value>
+  </data>
+  <data name="NodeHierarchyLevelLabel" xml:space="preserve">
+    <value>Knotenhierarchieebene:</value>
+  </data>
+  <data name="BeaconSlotCountLabel" xml:space="preserve">
+    <value>Anzahl der Beacon-Zeitschlitze:</value>
+  </data>
+  <data name="BeaconRXSlotLabel" xml:space="preserve">
+    <value>Beacon-Empfangszeitschlitz:</value>
+  </data>
+  <data name="BeaconTXSlotLabel" xml:space="preserve">
+    <value>Beacon-Sendezeitschlitz:</value>
+  </data>
+  <data name="BeaconRXFrequencyLabel" xml:space="preserve">
+    <value>Beacon-Empfangsfrequenz:</value>
+  </data>
+  <data name="BeaconTXFrequencyLabel" xml:space="preserve">
+    <value>Beacon-Sendefrequenz:</value>
+  </data>
+  <data name="CapabilitiesLabel" xml:space="preserve">
+    <value>Fähigkeiten:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACNetworkAdministrationDataObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-MAC-Netzverwaltungsdatenobjekt</value>
+  </data>
+  <data name="Members" xml:space="preserve">
+    <value>Mitglieder</value>
+  </data>
+  <data name="SwitchTable" xml:space="preserve">
+    <value>Switch-Tabelle</value>
+  </data>
+  <data name="DirectTableLabel" xml:space="preserve">
+    <value>Direkttabelle:</value>
+  </data>
+  <data name="SrcSID" xml:space="preserve">
+    <value>Quell-SID</value>
+  </data>
+  <data name="SrcLNID" xml:space="preserve">
+    <value>Quell-LNID</value>
+  </data>
+  <data name="SrcLCID" xml:space="preserve">
+    <value>Quell-LCID</value>
+  </data>
+  <data name="DstSID" xml:space="preserve">
+    <value>Ziel-SID</value>
+  </data>
+  <data name="DstLNID" xml:space="preserve">
+    <value>Ziel-LNID</value>
+  </data>
+  <data name="DstLCID" xml:space="preserve">
+    <value>Ziel-LCID</value>
+  </data>
+  <data name="DID" xml:space="preserve">
+    <value>DID</value>
+  </data>
+  <data name="AvailableSwitchesLabel" xml:space="preserve">
+    <value>Verfügbare Switches:</value>
+  </data>
+  <data name="SNA" xml:space="preserve">
+    <value>SNA</value>
+  </data>
+  <data name="LSID" xml:space="preserve">
+    <value>LSID</value>
+  </data>
+  <data name="Level" xml:space="preserve">
+    <value>Ebene</value>
+  </data>
+  <data name="RXLevel" xml:space="preserve">
+    <value>Empfangspegel</value>
+  </data>
+  <data name="RXSNR" xml:space="preserve">
+    <value>Empfangs-SNR</value>
+  </data>
+  <data name="PhyCommunicationLabel" xml:space="preserve">
+    <value>Physikalische Kommunikation:</value>
+  </data>
+  <data name="EUI" xml:space="preserve">
+    <value>EUI</value>
+  </data>
+  <data name="TXPwr" xml:space="preserve">
+    <value>Sendeleistung</value>
+  </data>
+  <data name="TXCode" xml:space="preserve">
+    <value>Sendecode</value>
+  </data>
+  <data name="RXCode" xml:space="preserve">
+    <value>Empfangscode</value>
+  </data>
+  <data name="RXLvl" xml:space="preserve">
+    <value>Empfangspegel</value>
+  </data>
+  <data name="SNR" xml:space="preserve">
+    <value>SNR</value>
+  </data>
+  <data name="TXPwrMod" xml:space="preserve">
+    <value>Sendeleistungsmodulation</value>
+  </data>
+  <data name="TXCodeMod" xml:space="preserve">
+    <value>Sendecodemodulation</value>
+  </data>
+  <data name="RXCodeMod" xml:space="preserve">
+    <value>Empfangscodemodulation</value>
+  </data>
+  <data name="ResetNetworkAdministrationData" xml:space="preserve">
+    <value>Netzverwaltungsdaten zurücksetzen</value>
+  </data>
+  <data name="PRIMENBOFDMPLCMACSetupObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-MAC-Konfigurationsobjekt</value>
+  </data>
+  <data name="MinSwitchSearchTimeLabel" xml:space="preserve">
+    <value>Minimale Switch-Suchzeit:</value>
+  </data>
+  <data name="MaxPromotionPDULabel" xml:space="preserve">
+    <value>Maximale Anzahl an Promotion-PDUs:</value>
+  </data>
+  <data name="PromotionPDUTXPeriodLabel" xml:space="preserve">
+    <value>Sendeintervall der Promotion-PDUs:</value>
+  </data>
+  <data name="BeaconsPerFrameLabel" xml:space="preserve">
+    <value>Beacons pro Rahmen:</value>
+  </data>
+  <data name="SCPMaxTXAttempsLabel" xml:space="preserve">
+    <value>Maximale SCP-Sendeversuche:</value>
+  </data>
+  <data name="CLTReTXTimerLabel" xml:space="preserve">
+    <value>CLT-Wiederholungszeitgeber:</value>
+  </data>
+  <data name="MaxCtlReTxLabel" xml:space="preserve">
+    <value>Maximale Steuerungswiederholungen:</value>
+  </data>
+  <data name="PRIMENBOFDMPLCPhysicalLayerCountersObject" xml:space="preserve">
+    <value>PRIME-NB-OFDM-PLC-Zählerobjekt der physikalischen Schicht</value>
+  </data>
+  <data name="CRCIncorrectCountLabel" xml:space="preserve">
+    <value>Anzahl falscher CRCs:</value>
+  </data>
+  <data name="CRCFailedCountLabel" xml:space="preserve">
+    <value>Anzahl fehlgeschlagener CRC-Prüfungen:</value>
+  </data>
+  <data name="TXDropCountLabel" xml:space="preserve">
+    <value>Anzahl verworfener Sendungen:</value>
+  </data>
+  <data name="RXDropCountLabel" xml:space="preserve">
+    <value>Anzahl verworfener Empfänge:</value>
+  </data>
+  <data name="ProfileGeneric" xml:space="preserve">
+    <value>Generisches Profil</value>
+  </data>
+  <data name="EntriesInUse" xml:space="preserve">
+    <value>Verwendete Einträge</value>
+  </data>
+  <data name="Entries" xml:space="preserve">
+    <value>Einträge</value>
+  </data>
+  <data name="Object" xml:space="preserve">
+    <value>Objekt</value>
+  </data>
+  <data name="ReadLastDays" xml:space="preserve">
+    <value>Letzte lesen (Tage)</value>
+  </data>
+  <data name="ReadFrom" xml:space="preserve">
+    <value>Lesen von</value>
+  </data>
+  <data name="To" xml:space="preserve">
+    <value>Bis</value>
+  </data>
+  <data name="ReadEntry" xml:space="preserve">
+    <value>Eintrag lesen</value>
+  </data>
+  <data name="Count" xml:space="preserve">
+    <value>Anzahl</value>
+  </data>
+  <data name="Sort" xml:space="preserve">
+    <value>Sortierung</value>
+  </data>
+  <data name="Reading" xml:space="preserve">
+    <value>Lesen</value>
+  </data>
+  <data name="AddWhiteList" xml:space="preserve">
+    <value>Zulassungsliste hinzufügen...</value>
+  </data>
+  <data name="AddBlackList" xml:space="preserve">
+    <value>Sperrliste hinzufügen...</value>
+  </data>
+  <data name="EnterAnUnsigned32BitNumber" xml:space="preserve">
+    <value>Geben Sie eine vorzeichenlose 32-Bit-Zahl ein.</value>
+  </data>
+  <data name="ChooseAReadingMode" xml:space="preserve">
+    <value>Wählen Sie einen Lesemodus aus.</value>
+  </data>
+  <data name="ReadFromMustNotFollowTo" xml:space="preserve">
+    <value>Der Lesebeginn darf nicht nach dem Leseende liegen.</value>
+  </data>
+  <data name="PushObject" xml:space="preserve">
+    <value>Push-Objekt</value>
+  </data>
+  <data name="ServiceLabel" xml:space="preserve">
+    <value>Dienst:</value>
+  </data>
+  <data name="ChooseASupportedService" xml:space="preserve">
+    <value>Wählen Sie einen unterstützten Dienst aus.</value>
+  </data>
+  <data name="MessageLabel" xml:space="preserve">
+    <value>Nachricht:</value>
+  </data>
+  <data name="ChooseASupportedMessage" xml:space="preserve">
+    <value>Wählen Sie eine unterstützte Nachricht aus.</value>
+  </data>
+  <data name="RandomisationLabel" xml:space="preserve">
+    <value>Zufallsverteilung:</value>
+  </data>
+  <data name="NumberOfRetriesLabel" xml:space="preserve">
+    <value>Anzahl der Wiederholungen:</value>
+  </data>
+  <data name="RepetitionDelayLabel2" xml:space="preserve">
+    <value>Wiederholungsverzögerung:</value>
+  </data>
+  <data name="MinLabel" xml:space="preserve">
+    <value>Min:</value>
+  </data>
+  <data name="ExponentLabel" xml:space="preserve">
+    <value>Exponent:</value>
+  </data>
+  <data name="MaxLabel" xml:space="preserve">
+    <value>Max:</value>
+  </data>
+  <data name="PortReferenceLabel" xml:space="preserve">
+    <value>Portreferenz:</value>
+  </data>
+  <data name="PushClientSAPLabel" xml:space="preserve">
+    <value>Push-Client-SAP:</value>
+  </data>
+  <data name="PushProtectionParametersLabel" xml:space="preserve">
+    <value>Push-Schutzparameter:</value>
+  </data>
+  <data name="OperationMethodLabel" xml:space="preserve">
+    <value>Betriebsmethode:</value>
+  </data>
+  <data name="StartDateLabel" xml:space="preserve">
+    <value>Startdatum:</value>
+  </data>
+  <data name="IntervalLabel" xml:space="preserve">
+    <value>Intervall:</value>
+  </data>
+  <data name="LastConfirmationLabel" xml:space="preserve">
+    <value>Letzte Bestätigung:</value>
+  </data>
+  <data name="LogicalName3" xml:space="preserve">
+    <value>Logischer Name</value>
+  </data>
+  <data name="DataIndex2" xml:space="preserve">
+    <value>Datenindex</value>
+  </data>
+  <data name="CommunicationWindow" xml:space="preserve">
+    <value>Kommunikationszeitfenster</value>
+  </data>
+  <data name="SendDestinationAndMethod" xml:space="preserve">
+    <value>Sendeziel und Sendemethode</value>
+  </data>
+  <data name="ConfirmationParameters" xml:space="preserve">
+    <value>Bestätigungsparameter</value>
+  </data>
+  <data name="Push" xml:space="preserve">
+    <value>Push senden</value>
+  </data>
+  <data name="Restriction" xml:space="preserve">
+    <value>Einschränkung</value>
+  </data>
+  <data name="ColumnSelection" xml:space="preserve">
+    <value>Spaltenauswahl</value>
+  </data>
+  <data name="RestrictionType" xml:space="preserve">
+    <value>Einschränkungstyp</value>
+  </data>
+  <data name="RestrictionRange" xml:space="preserve">
+    <value>Einschränkungsbereich</value>
+  </data>
+  <data name="Column" xml:space="preserve">
+    <value>Spalte</value>
+  </data>
+  <data name="ChooseASupportedServiceAndMessage" xml:space="preserve">
+    <value>Wählen Sie einen unterstützten Dienst und eine unterstützte Nachricht aus.</value>
+  </data>
+  <data name="DestinationMustContainASCIICharacters" xml:space="preserve">
+    <value>Das Ziel muss ASCII-Zeichen enthalten.</value>
+  </data>
+  <data name="RegisterObject" xml:space="preserve">
+    <value>Registerobjekt</value>
+  </data>
+  <data name="ScalerLabel" xml:space="preserve">
+    <value>Skalierungsfaktor:</value>
+  </data>
+  <data name="UnitLabel" xml:space="preserve">
+    <value>Einheit:</value>
+  </data>
+  <data name="RegisterActivationObject" xml:space="preserve">
+    <value>Registeraktivierungsobjekt</value>
+  </data>
+  <data name="Assignments" xml:space="preserve">
+    <value>Zuordnungen</value>
+  </data>
+  <data name="RegisterAssignment" xml:space="preserve">
+    <value>Registerzuordnung</value>
+  </data>
+  <data name="Masks" xml:space="preserve">
+    <value>Masken</value>
+  </data>
+  <data name="MaskList" xml:space="preserve">
+    <value>Maskenliste</value>
+  </data>
+  <data name="Indexes" xml:space="preserve">
+    <value>Indizes</value>
+  </data>
+  <data name="ActiveMask" xml:space="preserve">
+    <value>Aktive Maske</value>
+  </data>
+  <data name="MaskNameHexadecimal" xml:space="preserve">
+    <value>Maskenname (hexadezimal)</value>
+  </data>
+  <data name="MaskIndexesCommaSeparatedBytes" xml:space="preserve">
+    <value>Maskenindizes (durch Kommas getrennte Bytes)</value>
+  </data>
+  <data name="AddRegister" xml:space="preserve">
+    <value>Register hinzufügen</value>
+  </data>
+  <data name="AddMask" xml:space="preserve">
+    <value>Maske hinzufügen</value>
+  </data>
+  <data name="RemoveMask" xml:space="preserve">
+    <value>Maske entfernen</value>
+  </data>
+  <data name="EnterAMaskName" xml:space="preserve">
+    <value>Geben Sie einen Maskennamen ein.</value>
+  </data>
+  <data name="ChooseARegisterExtendedRegisterOrDemandRegister" xml:space="preserve">
+    <value>Wählen Sie ein Register, ein erweitertes Register oder ein Lastregister aus.</value>
+  </data>
+  <data name="RegisterMonitorObject" xml:space="preserve">
+    <value>Registerüberwachungsobjekt</value>
+  </data>
+  <data name="Thresholds" xml:space="preserve">
+    <value>Schwellenwerte</value>
+  </data>
+  <data name="Threshold" xml:space="preserve">
+    <value>Schwellenwert</value>
+  </data>
+  <data name="UpLogicalName" xml:space="preserve">
+    <value>Logischer Name bei Überschreitung</value>
+  </data>
+  <data name="UpScriptSelector" xml:space="preserve">
+    <value>Skriptselektor bei Überschreitung</value>
+  </data>
+  <data name="DownLogicalName" xml:space="preserve">
+    <value>Logischer Name bei Unterschreitung</value>
+  </data>
+  <data name="DownScriptSelector" xml:space="preserve">
+    <value>Skriptselektor bei Unterschreitung</value>
+  </data>
+  <data name="MonitoredValue" xml:space="preserve">
+    <value>Überwachter Wert</value>
+  </data>
+  <data name="SAPAssignmentObject" xml:space="preserve">
+    <value>SAP-Zuordnungsobjekt</value>
+  </data>
+  <data name="SapAssignmentList" xml:space="preserve">
+    <value>SAP-Zuordnungsliste</value>
+  </data>
+  <data name="SAPAddress" xml:space="preserve">
+    <value>SAP-Adresse</value>
+  </data>
+  <data name="LogicalDeviceName" xml:space="preserve">
+    <value>Logischer Gerätename</value>
+  </data>
+  <data name="SAPID165535" xml:space="preserve">
+    <value>SAP-ID (1–65535)</value>
+  </data>
+  <data name="LogicalDeviceName2" xml:space="preserve">
+    <value>Logischer Gerätename</value>
+  </data>
+  <data name="AddSAP" xml:space="preserve">
+    <value>SAP hinzufügen</value>
+  </data>
+  <data name="RemoveSAP" xml:space="preserve">
+    <value>SAP entfernen</value>
+  </data>
+  <data name="EnterALogicalDeviceName" xml:space="preserve">
+    <value>Geben Sie einen logischen Gerätenamen ein.</value>
+  </data>
+  <data name="SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535" xml:space="preserve">
+    <value>Die SAP-ID null entfernt eine Zuordnung; geben Sie eine ID von 1 bis 65535 ein.</value>
+  </data>
+  <data name="EnterAnIDFrom1To65535" xml:space="preserve">
+    <value>Geben Sie eine ID von 1 bis 65535 ein.</value>
+  </data>
+  <data name="ScheduleObject" xml:space="preserve">
+    <value>Zeitplanobjekt</value>
+  </data>
+  <data name="Enable" xml:space="preserve">
+    <value>Aktivieren</value>
+  </data>
+  <data name="SwitchTime" xml:space="preserve">
+    <value>Schaltzeit</value>
+  </data>
+  <data name="ValidityWindow" xml:space="preserve">
+    <value>Gültigkeitszeitfenster</value>
+  </data>
+  <data name="ExecWeekdays" xml:space="preserve">
+    <value>Ausführungswochentage</value>
+  </data>
+  <data name="ExecSpecDays" xml:space="preserve">
+    <value>Besondere Ausführungstage</value>
+  </data>
+  <data name="Begin" xml:space="preserve">
+    <value>Beginn</value>
+  </data>
+  <data name="EntryIndex" xml:space="preserve">
+    <value>Eintragsindex</value>
+  </data>
+  <data name="EntryEnabled" xml:space="preserve">
+    <value>Eintrag aktiviert</value>
+  </data>
+  <data name="EnterTrueOrFalse" xml:space="preserve">
+    <value>Geben Sie True oder False ein.</value>
+  </data>
+  <data name="ScriptLogicalName" xml:space="preserve">
+    <value>Logischer Skriptname</value>
+  </data>
+  <data name="ScriptSelector2" xml:space="preserve">
+    <value>Skriptselektor</value>
+  </data>
+  <data name="SwitchTimeHHMmSs" xml:space="preserve">
+    <value>Schaltzeit (HH:mm:ss)</value>
+  </data>
+  <data name="ValidityWindow2" xml:space="preserve">
+    <value>Gültigkeitszeitfenster</value>
+  </data>
+  <data name="WeekdayFlags0127" xml:space="preserve">
+    <value>Wochentagsflags (0–127)</value>
+  </data>
+  <data name="SpecialDayBitString" xml:space="preserve">
+    <value>Bitfolge für besondere Tage</value>
+  </data>
+  <data name="BeginDateYyyyMMDd" xml:space="preserve">
+    <value>Anfangsdatum (yyyy-MM-dd)</value>
+  </data>
+  <data name="EndDateYyyyMMDd" xml:space="preserve">
+    <value>Enddatum (yyyy-MM-dd)</value>
+  </data>
+  <data name="ApplyEnableDisable" xml:space="preserve">
+    <value>Aktivierung / Deaktivierung anwenden</value>
+  </data>
+  <data name="DeleteEntry" xml:space="preserve">
+    <value>Eintrag löschen</value>
+  </data>
+  <data name="WeekdayFlagsMustBeBetween0And127" xml:space="preserve">
+    <value>Wochentagsflags müssen zwischen 0 und 127 liegen.</value>
+  </data>
+  <data name="EnterTheSpecialDayFlagsAsABinaryBitString" xml:space="preserve">
+    <value>Geben Sie die Flags für besondere Tage als binäre Bitfolge ein.</value>
+  </data>
+  <data name="BeginDateMustNotFollowEndDate" xml:space="preserve">
+    <value>Das Anfangsdatum darf nicht nach dem Enddatum liegen.</value>
+  </data>
+  <data name="ScriptTableObject" xml:space="preserve">
+    <value>Skripttabellenobjekt</value>
+  </data>
+  <data name="ScriptId" xml:space="preserve">
+    <value>Skript-ID</value>
+  </data>
+  <data name="ScriptID065535" xml:space="preserve">
+    <value>Skript-ID (0–65535)</value>
+  </data>
+  <data name="ExecuteScript" xml:space="preserve">
+    <value>Skript ausführen</value>
+  </data>
+  <data name="Identifier" xml:space="preserve">
+    <value>Kennung</value>
+  </data>
+  <data name="Action" xml:space="preserve">
+    <value>Aktion</value>
+  </data>
+  <data name="SecuritySetupObject" xml:space="preserve">
+    <value>Sicherheitskonfigurationsobjekt</value>
+  </data>
+  <data name="PolicyLabel" xml:space="preserve">
+    <value>Richtlinie:</value>
+  </data>
+  <data name="SuiteLabel" xml:space="preserve">
+    <value>Suite:</value>
+  </data>
+  <data name="ClientSystemTitleLabel" xml:space="preserve">
+    <value>Client-Systemtitel:</value>
+  </data>
+  <data name="ServerSystemTitleLabel" xml:space="preserve">
+    <value>Server-Systemtitel:</value>
+  </data>
+  <data name="SystemTitleDescriptionLabel" xml:space="preserve">
+    <value>Systemtitelbeschreibung:</value>
+  </data>
+  <data name="SecurityPolicyBitMaskLabel" xml:space="preserve">
+    <value>Bitmaske der Sicherheitsrichtlinie:</value>
+  </data>
+  <data name="SecurityPolicyContainsUnsupportedFlags" xml:space="preserve">
+    <value>Die Sicherheitsrichtlinie enthält nicht unterstützte Flags.</value>
+  </data>
+  <data name="TypeLabel" xml:space="preserve">
+    <value>Typ:</value>
+  </data>
+  <data name="KEKHexLabel" xml:space="preserve">
+    <value>KEK (hex):</value>
+  </data>
+  <data name="KeyHexLabel" xml:space="preserve">
+    <value>Schlüssel (hex):</value>
+  </data>
+  <data name="SignedEphemeralPublicKeyHexLabel" xml:space="preserve">
+    <value>Signierter kurzlebiger öffentlicher Schlüssel (hex):</value>
+  </data>
+  <data name="EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Geben Sie einen signierten kurzlebigen öffentlichen Schlüssel für die Sicherheitssuite eins oder zwei ein.</value>
+  </data>
+  <data name="Certificates" xml:space="preserve">
+    <value>Zertifikate</value>
+  </data>
+  <data name="CertificateTypeLabel" xml:space="preserve">
+    <value>Zertifikatstyp:</value>
+  </data>
+  <data name="X509CertificateDERHexLabel" xml:space="preserve">
+    <value>X.509-Zertifikat (DER hex):</value>
+  </data>
+  <data name="IdentifyBySerialNumberAndIssuerLabel" xml:space="preserve">
+    <value>Anhand von Seriennummer und Aussteller identifizieren:</value>
+  </data>
+  <data name="SerialNumberDecimalLabel" xml:space="preserve">
+    <value>Seriennummer (dezimal):</value>
+  </data>
+  <data name="CertificateSerialNumberMustBePositive" xml:space="preserve">
+    <value>Die Seriennummer des Zertifikats muss positiv sein.</value>
+  </data>
+  <data name="IssuerDERHexLabel" xml:space="preserve">
+    <value>Aussteller (DER hex):</value>
+  </data>
+  <data name="ADERIssuerIsRequired" xml:space="preserve">
+    <value>Ein Aussteller im DER-Format ist erforderlich.</value>
+  </data>
+  <data name="EntityLabel" xml:space="preserve">
+    <value>Entität:</value>
+  </data>
+  <data name="SystemTitle8BytesHexLabel" xml:space="preserve">
+    <value>Systemtitel (8 Bytes, hex):</value>
+  </data>
+  <data name="SystemTitleMustContainEightBytes" xml:space="preserve">
+    <value>Der Systemtitel muss acht Bytes enthalten.</value>
+  </data>
+  <data name="SecurityActivation" xml:space="preserve">
+    <value>Sicherheitsaktivierung</value>
+  </data>
+  <data name="ActivateSecurity" xml:space="preserve">
+    <value>Sicherheit aktivieren</value>
+  </data>
+  <data name="KeyTransferAndAgreement" xml:space="preserve">
+    <value>Schlüsselübertragung und -vereinbarung</value>
+  </data>
+  <data name="UpdateKey" xml:space="preserve">
+    <value>Schlüssel aktualisieren...</value>
+  </data>
+  <data name="AgreeKey" xml:space="preserve">
+    <value>Schlüssel vereinbaren</value>
+  </data>
+  <data name="Entity" xml:space="preserve">
+    <value>Entität</value>
+  </data>
+  <data name="SerialNumber" xml:space="preserve">
+    <value>Seriennummer</value>
+  </data>
+  <data name="Issuer" xml:space="preserve">
+    <value>Aussteller</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Inhaber</value>
+  </data>
+  <data name="SubjectAltName" xml:space="preserve">
+    <value>Alternativer Inhabername</value>
+  </data>
+  <data name="KeyPair" xml:space="preserve">
+    <value>Schlüsselpaar...</value>
+  </data>
+  <data name="CertificateRequest" xml:space="preserve">
+    <value>Zertifikatsanforderung...</value>
+  </data>
+  <data name="ImportCertificate" xml:space="preserve">
+    <value>Zertifikat importieren</value>
+  </data>
+  <data name="ExportCertificate" xml:space="preserve">
+    <value>Zertifikat exportieren...</value>
+  </data>
+  <data name="RemoveCertificate" xml:space="preserve">
+    <value>Zertifikat entfernen</value>
+  </data>
+  <data name="CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession" xml:space="preserve">
+    <value>Zertifikatsanforderungen und Exportantworten werden an die Verbindungssitzung zurückgegeben.</value>
+  </data>
+  <data name="VersionZeroSecurityPolicyMustBeBetweenZeroAndThree" xml:space="preserve">
+    <value>Die Sicherheitsrichtlinie für Version null muss zwischen null und drei liegen.</value>
+  </data>
+  <data name="SelectAKeyTypeSupportedByThisVersion" xml:space="preserve">
+    <value>Wählen Sie einen von dieser Version unterstützten Schlüsseltyp aus.</value>
+  </data>
+  <data name="KeyAgreementRequiresSecuritySuiteOneOrTwo" xml:space="preserve">
+    <value>Die Schlüsselvereinbarung erfordert die Sicherheitssuite eins oder zwei.</value>
+  </data>
+  <data name="SFSKActiveInitiatorObject" xml:space="preserve">
+    <value>S-FSK-Objekt für aktiven Initiator</value>
+  </data>
+  <data name="SystemTitleLabel" xml:space="preserve">
+    <value>Systemtitel:</value>
+  </data>
+  <data name="MACAddressLabel2" xml:space="preserve">
+    <value>MAC-Adresse:</value>
+  </data>
+  <data name="LSAPSelectorLabel" xml:space="preserve">
+    <value>L-SAP-Selektor:</value>
+  </data>
+  <data name="ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI" xml:space="preserve">
+    <value>Zurücksetzen ist nicht verfügbar: Diese Gurux-Version stellt den Methodennamen bereit, bietet jedoch keine unterstützte Befehls-API.</value>
+  </data>
+  <data name="SFSKMACCountersObject" xml:space="preserve">
+    <value>S-FSK-MAC-Zählerobjekt</value>
+  </data>
+  <data name="SynchronizationRegisterLabel" xml:space="preserve">
+    <value>Synchronisationsregister:</value>
+  </data>
+  <data name="SynchronizationRegister" xml:space="preserve">
+    <value>Synchronisationsregister</value>
+  </data>
+  <data name="PhysicalLayerDesynchronizationLabel" xml:space="preserve">
+    <value>Desynchronisation der physikalischen Schicht:</value>
+  </data>
+  <data name="TimeoutNotAddressedDesynchronizationLabel" xml:space="preserve">
+    <value>Desynchronisation durch Zeitüberschreitung ohne Adressierung:</value>
+  </data>
+  <data name="TimeoutFrameNotOKDesynchronizationLabel" xml:space="preserve">
+    <value>Desynchronisation durch Zeitüberschreitung bei fehlerhaftem Rahmen:</value>
+  </data>
+  <data name="WriteRequestDesynchronizationLabel" xml:space="preserve">
+    <value>Desynchronisation durch Schreibanforderung:</value>
+  </data>
+  <data name="WrongInitiatorDesynchronizationLabel" xml:space="preserve">
+    <value>Desynchronisation durch falschen Initiator:</value>
+  </data>
+  <data name="BroadcastFramesCounterLabel" xml:space="preserve">
+    <value>Broadcast-Rahmenzähler:</value>
+  </data>
+  <data name="MACAddress" xml:space="preserve">
+    <value>MAC-Adresse</value>
+  </data>
+  <data name="RepetitionsCounterLabel" xml:space="preserve">
+    <value>Wiederholungszähler:</value>
+  </data>
+  <data name="TransmissionsCounterLabel2" xml:space="preserve">
+    <value>Übertragungszähler:</value>
+  </data>
+  <data name="CRCOKFramesCounterLabel" xml:space="preserve">
+    <value>Zähler für Rahmen mit korrektem CRC:</value>
+  </data>
+  <data name="CRCNOKFramesCounterLabel" xml:space="preserve">
+    <value>Zähler für Rahmen mit fehlerhaftem CRC:</value>
+  </data>
+  <data name="DesynchronizationListing" xml:space="preserve">
+    <value>Desynchronisationsliste</value>
+  </data>
+  <data name="SFSKMACSynchronizationTimeoutsObject" xml:space="preserve">
+    <value>S-FSK-MAC-Objekt für Synchronisationszeitüberschreitungen</value>
+  </data>
+  <data name="SearchInitiatorTimeoutLabel" xml:space="preserve">
+    <value>Zeitüberschreitung bei Initiatorsuche:</value>
+  </data>
+  <data name="ConfirmationTimeoutLabel" xml:space="preserve">
+    <value>Bestätigungszeitüberschreitung:</value>
+  </data>
+  <data name="TimeoutNotAddressedLabel" xml:space="preserve">
+    <value>Zeitüberschreitung ohne Adressierung:</value>
+  </data>
+  <data name="TimeuoutFrameNotOKLabel" xml:space="preserve">
+    <value>Zeitüberschreitung bei fehlerhaftem Rahmen:</value>
+  </data>
+  <data name="SFSKPhyMACSetupObject" xml:space="preserve">
+    <value>S-FSK-Phy-MAC-Konfigurationsobjekt</value>
+  </data>
+  <data name="InitiatorElectricalPhaseLabel" xml:space="preserve">
+    <value>Elektrische Phase des Initiators:</value>
+  </data>
+  <data name="DeltaElectricalPhaseLabel" xml:space="preserve">
+    <value>Elektrische Phasendifferenz:</value>
+  </data>
+  <data name="MaxReceivingGainLabel" xml:space="preserve">
+    <value>Maximale Empfangsverstärkung:</value>
+  </data>
+  <data name="MaxTransmittingGainLabel" xml:space="preserve">
+    <value>Maximale Sendeverstärkung:</value>
+  </data>
+  <data name="SearchInitiatorThresholdLabel" xml:space="preserve">
+    <value>Schwelle für Initiatorsuche:</value>
+  </data>
+  <data name="MarkFrequencyHzLabel" xml:space="preserve">
+    <value>Mark-Frequenz (Hz):</value>
+  </data>
+  <data name="SpaceFrequencyHzLabel" xml:space="preserve">
+    <value>Space-Frequenz (Hz):</value>
+  </data>
+  <data name="MACGroupAddressesLabel" xml:space="preserve">
+    <value>MAC-Gruppenadressen:</value>
+  </data>
+  <data name="MACGroupAddress" xml:space="preserve">
+    <value>MAC-Gruppenadresse</value>
+  </data>
+  <data name="RepeaterLabel" xml:space="preserve">
+    <value>Repeater:</value>
+  </data>
+  <data name="RepeaterStatusLabel" xml:space="preserve">
+    <value>Repeaterstatus:</value>
+  </data>
+  <data name="MinDeltaCreditLabel" xml:space="preserve">
+    <value>Minimale Guthabendifferenz:</value>
+  </data>
+  <data name="InitiatorMACAddressLabel" xml:space="preserve">
+    <value>MAC-Adresse des Initiators:</value>
+  </data>
+  <data name="SynchronizationLockedLabel" xml:space="preserve">
+    <value>Synchronisation gesperrt:</value>
+  </data>
+  <data name="TransmissionSpeedLabel" xml:space="preserve">
+    <value>Übertragungsgeschwindigkeit:</value>
+  </data>
+  <data name="SpecialDaysTableObject" xml:space="preserve">
+    <value>Sondertagstabellenobjekt</value>
+  </data>
+  <data name="SpecialDayDate" xml:space="preserve">
+    <value>Sondertagsdatum</value>
+  </data>
+  <data name="DateYyyyMMDd" xml:space="preserve">
+    <value>Datum (yyyy-MM-dd)</value>
+  </data>
+  <data name="DayID0255" xml:space="preserve">
+    <value>Tages-ID (0–255)</value>
+  </data>
+  <data name="InsertDay" xml:space="preserve">
+    <value>Tag einfügen</value>
+  </data>
+  <data name="DeleteDay" xml:space="preserve">
+    <value>Tag löschen</value>
+  </data>
+  <data name="StartHour" xml:space="preserve">
+    <value>Startstunde</value>
+  </data>
+  <data name="IntervalTariff" xml:space="preserve">
+    <value>Intervalltarif</value>
+  </data>
+  <data name="InUse" xml:space="preserve">
+    <value>In Verwendung</value>
+  </data>
+  <data name="StartHourMustBeBetween0And23" xml:space="preserve">
+    <value>Die Startstunde muss zwischen 0 und 23 liegen.</value>
+  </data>
+  <data name="TariffPlanObject" xml:space="preserve">
+    <value>Tarifplanobjekt</value>
+  </data>
+  <data name="Enabled" xml:space="preserve">
+    <value>Aktiviert</value>
+  </data>
+  <data name="DefaultTariffBand" xml:space="preserve">
+    <value>Standardtarifband</value>
+  </data>
+  <data name="WeeklyActivation" xml:space="preserve">
+    <value>Wöchentliche Aktivierung</value>
+  </data>
+  <data name="SpecialDays" xml:space="preserve">
+    <value>Sondertage</value>
+  </data>
+  <data name="WinterSeason" xml:space="preserve">
+    <value>Wintersaison</value>
+  </data>
+  <data name="SummerSeason" xml:space="preserve">
+    <value>Sommersaison</value>
+  </data>
+  <data name="DayOfMonth" xml:space="preserve">
+    <value>Tag des Monats</value>
+  </data>
+  <data name="Month" xml:space="preserve">
+    <value>Monat</value>
+  </data>
+  <data name="WorkingDayIntervals" xml:space="preserve">
+    <value>Werktagsintervalle</value>
+  </data>
+  <data name="SaturdayIntervals" xml:space="preserve">
+    <value>Samstagsintervalle</value>
+  </data>
+  <data name="HolidayIntervals" xml:space="preserve">
+    <value>Feiertagsintervalle</value>
+  </data>
+  <data name="TariffPlan" xml:space="preserve">
+    <value>Tarifplan</value>
+  </data>
+  <data name="TCPUDPSetupObject" xml:space="preserve">
+    <value>TCP/UDP-Konfigurationsobjekt</value>
+  </data>
+  <data name="IPReferenceLabel" xml:space="preserve">
+    <value>IP-Referenz:</value>
+  </data>
+  <data name="MaxSegmentSizeLabel" xml:space="preserve">
+    <value>Maximale Segmentgröße:</value>
+  </data>
+  <data name="MaxConnectionsLabel" xml:space="preserve">
+    <value>Maximale Verbindungen:</value>
+  </data>
+  <data name="TokenGatewayObject" xml:space="preserve">
+    <value>Token-Gateway-Objekt</value>
+  </data>
+  <data name="Token" xml:space="preserve">
+    <value>Token</value>
+  </data>
+  <data name="Descriptions" xml:space="preserve">
+    <value>Beschreibungen</value>
+  </data>
+  <data name="DeliveryMethod" xml:space="preserve">
+    <value>Zustellmethode</value>
+  </data>
+  <data name="StatusCode" xml:space="preserve">
+    <value>Statuscode</value>
+  </data>
+  <data name="DataValue" xml:space="preserve">
+    <value>Datenwert</value>
+  </data>
+  <data name="TokenHexadecimal" xml:space="preserve">
+    <value>Token (hexadezimal)</value>
+  </data>
+  <data name="TransferToken" xml:space="preserve">
+    <value>Token übertragen</value>
+  </data>
+  <data name="EnterAToken" xml:space="preserve">
+    <value>Geben Sie ein Token ein.</value>
+  </data>
+  <data name="UtilityTablesObject" xml:space="preserve">
+    <value>Diensttabellenobjekt</value>
+  </data>
+  <data name="TableID" xml:space="preserve">
+    <value>Tabellen-ID</value>
+  </data>
+  <data name="WirelessModeQChannel" xml:space="preserve">
+    <value>Q-Kanal im Funkmodus</value>
+  </data>
+  <data name="AddressMaskLabel" xml:space="preserve">
+    <value>Adressmaske:</value>
+  </data>
+  <data name="UnableToDisplayAttribute0" xml:space="preserve">
+    <value>Attribut kann nicht angezeigt werden: {0}</value>
+  </data>
+  <data name="CannotDisplayAttribute01" xml:space="preserve">
+    <value>Attribut {0} kann nicht angezeigt werden: {1}.</value>
+  </data>
+  <data name="Text0Items" xml:space="preserve">
+    <value>{0} Elemente</value>
+  </data>
+  <data name="ActionFailed0" xml:space="preserve">
+    <value>Aktion fehlgeschlagen: {0}</value>
+  </data>
+  <data name="WritingCurrentTimeFailed0" xml:space="preserve">
+    <value>Schreiben der aktuellen Uhrzeit fehlgeschlagen: {0}</value>
+  </data>
+  <data name="ResetFailed0" xml:space="preserve">
+    <value>Zurücksetzen fehlgeschlagen: {0}</value>
+  </data>
+  <data name="Value0" xml:space="preserve">
+    <value>Wert {0}</value>
+  </data>
+  <data name="Attribute0" xml:space="preserve">
+    <value>Attribut {0}</value>
+  </data>
+  <data name="Resize0" xml:space="preserve">
+    <value>Größe ändern: {0}</value>
+  </data>
+  <data name="Read0" xml:space="preserve">
+    <value>Lesen: {0}</value>
+  </data>
+  <data name="Text0RequestCompleted" xml:space="preserve">
+    <value>Anforderung {0} abgeschlossen.</value>
+  </data>
+  <data name="TheSelectedSecuritySuiteRequires0KeyBytes" xml:space="preserve">
+    <value>Die ausgewählte Sicherheitssuite erfordert {0} Schlüsselbytes.</value>
+  </data>
+  <data name="ASignedEphemeralPublicKeyRequires0Bytes" xml:space="preserve">
+    <value>Ein signierter kurzlebiger öffentlicher Schlüssel erfordert {0} Bytes.</value>
+  </data>
+  <data name="Text0Object" xml:space="preserve">
+    <value>{0}-Objekt</value>
+  </data>
+  <data name="Text01" xml:space="preserve">
+    <value>{0}: {1}</value>
+  </data>
+  <data name="Text012" xml:space="preserve">
+    <value>{0} {1}</value>
+  </data>
+  <data name="EnterAWholeNumberBetween0And1" xml:space="preserve">
+    <value>Bitte eine ganze Zahl zwischen {0} und {1}.</value>
+  </data>
+  <data name="Method0" xml:space="preserve">
+    <value>Methode {0}</value>
+  </data>
+  <data name="RemoveTheSelected0Row" xml:space="preserve">
+    <value>Ausgewählte Zeile {0} entfernen?</value>
+  </data>
+  <data name="AvailableCreditLabel" xml:space="preserve">
+    <value>Verfügbares Guthaben:</value>
+  </data>
+  <data name="AmountToClearLabel" xml:space="preserve">
+    <value>Auszugleichender Betrag:</value>
+  </data>
+  <data name="ClearanceThresholdLabel" xml:space="preserve">
+    <value>Ausgleichsschwelle:</value>
+  </data>
+  <data name="AggregatedDebtLabel" xml:space="preserve">
+    <value>Gesamtschuld:</value>
+  </data>
+  <data name="LowCreditThresholdLabel" xml:space="preserve">
+    <value>Schwelle für niedriges Guthaben:</value>
+  </data>
+  <data name="NextCreditAvailableThresholdLabel" xml:space="preserve">
+    <value>Verfügbarkeitsschwelle des nächsten Guthabens:</value>
+  </data>
+  <data name="MaxProvisionLabel" xml:space="preserve">
+    <value>Maximale Bereitstellung:</value>
+  </data>
+  <data name="MaxProvisionPeriodLabel" xml:space="preserve">
+    <value>Maximale Bereitstellungsdauer:</value>
+  </data>
+  <data name="Text0Attribute1" xml:space="preserve">
+    <value>{0} / Attribut {1}</value>
+  </data>
+  <data name="AttributeError" xml:space="preserve">
+    <value>Attribut {0}: {1}</value>
+  </data>
+  <data name="IntervalNumber" xml:space="preserve">
+    <value>Intervall {0}</value>
+  </data>
+  <data name="CaptureObjectAttributeAndData" xml:space="preserve">
+    <value>{0} / Attribut {1} / Daten {2}</value>
+  </data>
 </root>

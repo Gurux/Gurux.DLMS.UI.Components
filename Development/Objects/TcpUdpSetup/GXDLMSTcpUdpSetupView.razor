@@ -40,26 +40,26 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="TCP/UDP Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.TCPUDPSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Port:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.PortLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="IP Reference:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.IPReferenceLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Max Segment Size:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MaxSegmentSizeLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Max Connections:" Enabled="CanEditAttribute(5)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaxConnectionsLabel" Enabled="CanEditAttribute(5)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Inactivity Timeout:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.InactivityTimeoutLabel" Enabled="CanEditAttribute(6)"  />
     }
 </div>
 </section>

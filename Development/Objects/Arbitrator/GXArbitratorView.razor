@@ -41,23 +41,23 @@
 @inherits GXDLMSObjectViewBase<GXDLMSArbitrator>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Arbitrator Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset><legend>Actions</legend>
+    <GXObjectViewHeader Title="@Properties.Resources.ArbitratorObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset><legend>@Properties.Resources.Actions</legend>
     <GXTable @key="ArbitratorKey" TItem="int" ItemsProvider="GetActionRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
-        <HeaderContent><GXTh TItem="int" Name="Script">Script</GXTh><GXTh TItem="int" Name="Selector">Selector</GXTh><GXTh TItem="int" Name="Allowed">Allowed</GXTh><GXTh TItem="int" Name="Weightings">Weightings</GXTh><GXTh TItem="int" Name="Recent">Most Recent</GXTh></HeaderContent>
+        <HeaderContent><GXTh TItem="int" Name="Script">@Properties.Resources.Script</GXTh><GXTh TItem="int" Name="Selector">@Properties.Resources.Selector</GXTh><GXTh TItem="int" Name="Allowed">@Properties.Resources.Allowed</GXTh><GXTh TItem="int" Name="Weightings">@Properties.Resources.Weightings</GXTh><GXTh TItem="int" Name="Recent">@Properties.Resources.MostRecent</GXTh></HeaderContent>
         <ItemContent Context="row">@foreach (var cell in ActionCells(row)) { <GXTd>@cell</GXTd> }</ItemContent>
     </GXTable>
-    <GXAttributeField Edit="Edit" Index="2" Label="Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Script", "Selector" })" CreateRow="@(() => new GXStructure { new byte[6], (ushort)0 })" />
-    <GXAttributeField Edit="Edit" Index="3" Label="Allowed" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Allowed" })" CreateRow="@(() => new GXBitString("0"))" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Weightings" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Weightings" })" CreateRow="@(() => new GXArray { (ushort)0 })" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Most Recent" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Most Recent" })" CreateRow="@(() => new GXBitString("0"))" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.Script, Properties.Resources.Selector })" CreateRow="@(() => new GXStructure { new byte[6], (ushort)0 })" />
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.Allowed" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.Allowed })" CreateRow="@(() => new GXBitString("0"))" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Weightings" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.Weightings })" CreateRow="@(() => new GXArray { (ushort)0 })" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MostRecent" Enabled="CanEditAttribute(5)" Columns="@(new[] { Properties.Resources.MostRecent })" CreateRow="@(() => new GXBitString("0"))" />
     </fieldset>
-    <GXAttributeField Edit="Edit" Index="6" Label="Last Outcome" Enabled="CanEditAttribute(6)" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Actor (0–255)" Value="@Actor" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => Actor = value" Validate="text => ValidateParameter(nameof(Actor), text)" />
-    <GXValueField Label="Actions (binary bit string)" Value="@RequestedActions" Enabled="@(CanInvokeMethod(1))" InputKind="text" OnCommit="value => RequestedActions = value" Validate="text => ValidateParameter(nameof(RequestedActions), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="RequestAsync">Request Action</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ResetAsync">Reset</GXButton>
+    <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.LastOutcome" Enabled="CanEditAttribute(6)" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.Actor0255" Value="@Actor" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => Actor = value" Validate="text => ValidateParameter(nameof(Actor), text)" />
+    <GXValueField Label="@Properties.Resources.ActionsBinaryBitString" Value="@RequestedActions" Enabled="@(CanInvokeMethod(1))" InputKind="text" OnCommit="value => RequestedActions = value" Validate="text => ValidateParameter(nameof(RequestedActions), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="RequestAsync">@Properties.Resources.RequestAction</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
     </fieldset>
 </section>
 
@@ -78,7 +78,7 @@
     {
         if (string.IsNullOrEmpty(RequestedActions) || RequestedActions.Any(c => c != '0' && c != '1'))
         {
-            throw new FormatException("Enter the requested actions as a binary bit string.");
+            throw new FormatException(Properties.Resources.EnterTheRequestedActionsAsABinaryBitString);
         }
         return Target.RequestAction(client, byte.Parse(Actor, CultureInfo.InvariantCulture), RequestedActions);
     });
@@ -88,6 +88,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task ResetAsync() => InvokeMethodAsync(2, client => Target.Reset(client));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -110,16 +114,26 @@
         catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
 
+    /// <summary>Rejects input containing characters other than binary zero and one.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
     private static void CheckBits(string text)
     {
         if (string.IsNullOrEmpty(text) || text.Any(c => c != '0' && c != '1'))
         {
-            throw new FormatException("Enter a binary bit string.");
+            throw new FormatException(Properties.Resources.EnterABinaryBitString);
         }
     }
+    /// <summary>Gets a render key covering the arbitrator&apos;s pending action attributes.</summary>
     private string ArbitratorKey => string.Join("|", Enumerable.Range(2, 4).Select(Edit.AttributeText));
+    /// <summary>Gets the maximum row count across the related arbitrator action tables.</summary>
     private int ActionRowCount => Enumerable.Range(2, 4).Select(i => Edit.AttributeRows(i).Count()).DefaultIfEmpty(0).Max();
+    /// <summary>Supplies arbitrator action row indices and their total count.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<int>> GetActionRows(GXItemsProviderRequest request) => ValueTask.FromResult(new ItemsProviderResult<int>(Enumerable.Range(0, ActionRowCount), ActionRowCount));
+    /// <summary>Formats one arbitrator action row across the related attribute tables.</summary>
+    /// <param name="row">The zero-based row index in the current table.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private IEnumerable<string> ActionCells(int row)
     {
         var action = Edit.AttributeRows(2).ElementAtOrDefault(row);

@@ -30,8 +30,10 @@ using System.Globalization;
 namespace Gurux.DLMS.UI.Components.Objects;
 
 // Registration authority names and OIDs from the matching WinForms Country.txt resource.
+/// <summary>Resolves registration authority country identifiers to their registered names.</summary>
 internal static class GXAssociationRegistrationAuthorities
 {
+    /// <summary>Contains the registration authority country and OID mappings used by the lookup.</summary>
     private const string CountryData = """
 #Registration Authority.
 #http://oid-info.com/get/2.16
@@ -107,7 +109,10 @@ United States of America;1.2.us(840)
 United States of America;2.16.us(840)
 Uruguay;2.16.uy(858)
 """;
-    private static readonly Dictionary<string, string> Names = CreateNames();
+    /// <summary>Maps registration authority identifiers to their registered country names.</summary>
+    private static readonly Dictionary<string, string> _names = CreateNames();
+    /// <summary>Builds the registration authority lookup from the embedded country table.</summary>
+    /// <returns>The registration authority lookup from the embedded country table.</returns>
     private static Dictionary<string, string> CreateNames()
     {
         var names = new Dictionary<string, string>(StringComparer.Ordinal);
@@ -126,6 +131,11 @@ Uruguay;2.16.uy(858)
         }
         return names;
     }
+    /// <summary>Returns the registered country name for an authority OID, or an empty string.</summary>
+    /// <param name="jointIsoCtt">The first arc of the registration authority OID.</param>
+    /// <param name="country">The second arc of the registration authority OID.</param>
+    /// <param name="countryName">The numeric country identifier in the authority OID.</param>
+    /// <returns>The registered country name, or an empty string for an unknown authority.</returns>
     public static string Find(byte jointIsoCtt, byte country, ushort countryName)
-        => Names.GetValueOrDefault($"{jointIsoCtt}.{country}.{countryName}", string.Empty);
+        => _names.GetValueOrDefault($"{jointIsoCtt}.{country}.{countryName}", string.Empty);
 }

@@ -27,18 +27,6 @@
 
 using Gurux.DLMS.Objects;
 namespace Gurux.DLMS.UI.Components.Objects;
-/// <summary>Specifies how profile generic buffer entries are selected for reading.</summary>
-public enum GXProfileReadMode
-{
-    /// <summary>Reads all buffer entries.</summary>
-    All,
-    /// <summary>Reads entries from the specified number of recent days.</summary>
-    LastDays,
-    /// <summary>Reads entries within a specified date and time range.</summary>
-    Range,
-    /// <summary>Reads a specified sequence of buffer entries.</summary>
-    Entry
-}
 /// <summary>Describes a request to read a profile generic buffer.</summary>
 /// <param name="Target">The profile generic object to read.</param>
 /// <param name="Mode">The method used to select buffer entries.</param>

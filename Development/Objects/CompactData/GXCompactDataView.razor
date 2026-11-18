@@ -42,22 +42,22 @@
 @inherits GXDLMSObjectViewBase<GXDLMSCompactData>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Compact Data" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" InputKind="hex" Label="Buffer" Enabled="CanEditAttribute(2)" />
-    <GXAttributeField Edit="Edit" Index="4" Label="Template ID" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="5" InputKind="hex" Label="Template Description" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="6" Label="Capture Method" Enabled="CanEditAttribute(6)" EnumType="typeof(CaptureMethod)" />
+    <GXObjectViewHeader Title="@Properties.Resources.CompactData" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" InputKind="hex" Label="@Properties.Resources.Buffer" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.TemplateID" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="5" InputKind="hex" Label="@Properties.Resources.TemplateDescription" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CaptureMethod" Enabled="CanEditAttribute(6)" EnumType="typeof(CaptureMethod)" />
     <GXTabControl NavigateOnSelection="false">
-        <GXTabPage Text="Data">
+        <GXTabPage Text="@Properties.Resources.Data">
             <GXTable @key="CompactKey" TItem="IReadOnlyList<string>" ItemsProvider="GetDataRows" Save="false" ShowAllData="true" Total="false" Filter="false" Menu="false" CanEdit="false">
-                <HeaderContent>@foreach (var capture in CurrentCompact().CaptureObjects) { <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@capture.Key.LogicalName / attribute @capture.Value.AttributeIndex</GXTh> }</HeaderContent>
+                <HeaderContent>@foreach (var capture in CurrentCompact().CaptureObjects) { <GXTh TItem="IReadOnlyList<string>" Name="@($"{capture.Key.LogicalName}/{capture.Value.AttributeIndex}/{capture.Value.DataIndex}")">@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0Attribute1, capture.Key.LogicalName, capture.Value.AttributeIndex))</GXTh> }</HeaderContent>
                 <ItemContent Context="row">@foreach (var cell in row) { <GXTd>@cell</GXTd> }</ItemContent>
             </GXTable>
         </GXTabPage>
-        <GXTabPage Text="Capture Objects"><GXAttributeField Edit="Edit" Index="3" Label="Capture Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type", "Logical Name", "Attribute Index", "Data index" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" /></GXTabPage>
+        <GXTabPage Text="@Properties.Resources.CaptureObjects"><GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CaptureObjects" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.ObjectType2, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" /></GXTabPage>
     </GXTabControl>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">Capture</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">@Properties.Resources.Capture</GXButton>
 </section>
 
 @code {
@@ -72,7 +72,10 @@
     /// </summary>
     /// <returns>A task representing completion of the operation.</returns>
     public Task CaptureAsync() => InvokeMethodAsync(2, client => client.Method(Target, 2, (sbyte)0, DataType.Int8));
+    /// <summary>Gets a render key covering the compact buffer, captures and template.</summary>
     private string CompactKey => $"{Edit.AttributeText(2)}:{Edit.AttributeText(3)}:{Edit.AttributeText(5)}";
+    /// <summary>Clones the compact-data object and applies its pending capture and buffer attributes.</summary>
+    /// <returns>Clones the compact-data object and applies its pending capture and buffer attributes.</returns>
     private GXDLMSCompactData CurrentCompact()
     {
         if (!new[] { 2, 3, 5 }.Any(i => Target.GetDirty(i, out _)))
@@ -89,6 +92,9 @@
         }
         return current;
     }
+    /// <summary>Supplies decoded compact-data rows and their total count to the table.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetDataRows(GXItemsProviderRequest request)
     {
         IReadOnlyList<string>[] rows = [];

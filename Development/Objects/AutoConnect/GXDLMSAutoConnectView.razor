@@ -40,31 +40,33 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="Auto Connect Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.AutoConnectObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Mode:" Enabled="CanEditAttribute(2)" EnumType="typeof(AutoConnectMode)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ModeLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(AutoConnectMode)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Repetitions:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.RepetitionsLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Repetition Delay:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.RepetitionDelayLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Calling Window:" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Start Time:", "End Time:" })' CreateRow='@(() => new GXStructure { new byte[] { 255, 255, 1, 1, 255, 0, 0, 0, 0, 128, 0, 0 }, new byte[] { 255, 255, 1, 1, 255, 0, 0, 0, 0, 128, 0, 0 } })' />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.CallingWindowLabel" Enabled="CanEditAttribute(5)" Columns='@(new[] { Properties.Resources.StartTimeLabel, Properties.Resources.EndTimeLabel })' CreateRow='@(() => new GXStructure { new byte[] { 255, 255, 1, 1, 255, 0, 0, 0, 0, 128, 0, 0 }, new byte[] { 255, 255, 1, 1, 255, 0, 0, 0, 0, 128, 0, 0 } })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Destination:" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Destination:" })' CreateRow='@(() => Target.Version == 0 ? (object)string.Empty : Array.Empty<byte>())' />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.DestinationLabel" Enabled="CanEditAttribute(6)" Columns='@(new[] { Properties.Resources.DestinationLabel })' CreateRow='@(() => Target.Version == 0 ? (object)string.Empty : Array.Empty<byte>())' />
     }
 </div>
 </section>
-<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ConnectAsync">Connect</GXButton></section>
+<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ConnectAsync">@Properties.Resources.Connect</GXButton></section>
 @code {
+    /// <summary>Requests a connection using the auto-connect object&apos;s configured destinations.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task ConnectAsync() => InvokeMethodAsync(1, client => Target.Connect(client));
 }
 

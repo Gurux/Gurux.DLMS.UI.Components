@@ -38,99 +38,102 @@
 @inherits GXDLMSObjectViewBase<GXDLMSAssociationLogicalName>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Association Logical  Name Object" />
-<GXValueField Label="Version:" Value="@Target.Version.ToString()" Enabled="false" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.AssociationLogicalNameObject" />
+<GXValueField Label="@Properties.Resources.VersionLabel" Value="@Target.Version.ToString()" Enabled="false" />
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="Objects">
+<GXTabPage Text="@Properties.Resources.Objects">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Objects" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Class ID:", "Version:", "Logical Name:", "Attribute Access:", "Method Access:" })" ColumnPaths="@(new[] { "0", "1", "2", "3.0", "3.1" })" EditorKinds="@(new[] { "number", "number", "logicalname", "text", "text" })" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Objects" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.ClassIDLabel, Properties.Resources.VersionLabel, Properties.Resources.LogicalNameLabel, Properties.Resources.AttributeAccessLabel, Properties.Resources.MethodAccessLabel })" ColumnPaths="@(new[] { "0", "1", "2", "3.0", "3.1" })" EditorKinds="@(new[] { "number", "number", "logicalname", "text", "text" })" />
 }
-<fieldset><legend>Association objects</legend>
-<GXValueField Label="Class ID:" Value="@ClassIdText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ClassIdText = value; } })" InputKind="number" Validate="@(value => ushort.TryParse(value, out var id) && id != 0 && Enum.IsDefined((ObjectType)id) ? null : "Choose a valid COSEM class.")" />
-<GXValueField Label="Logical Name:" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectLogicalName = value; } })" Validate="@(value => value.Split('.').Length == 6 && value.Split('.').All(part => byte.TryParse(part, out _)) ? null : "Logical names require six bytes.")" />
-<GXValueField Label="Version:" Value="@ObjectVersionText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectVersionText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "Version must be between zero and 255.")" />
-<GXValueField Label="Attribute Access (index:mask):" Value="@AttributeRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { AttributeRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
-<GXValueField Label="Method Access (index:mask):" Value="@MethodRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { MethodRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
-<p>Rights masks follow this association version. Unspecified rights are denied.</p>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AddObjectAsync">Add...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="RemoveObjectAsync">Remove...</GXButton>
+<fieldset><legend>@Properties.Resources.AssociationObjects</legend>
+<GXValueField Label="@Properties.Resources.ClassIDLabel" Value="@ClassIdText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ClassIdText = value; } })" InputKind="number" Validate="@(value => ushort.TryParse(value, out var id) && id != 0 && Enum.IsDefined((ObjectType)id) ? null : Properties.Resources.ChooseAValidCOSEMClass)" />
+<GXValueField Label="@Properties.Resources.LogicalNameLabel" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectLogicalName = value; } })" Validate="@(value => value.Split('.').Length == 6 && value.Split('.').All(part => byte.TryParse(part, out _)) ? null : Properties.Resources.LogicalNamesRequireSixBytes)" />
+<GXValueField Label="@Properties.Resources.VersionLabel" Value="@ObjectVersionText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { ObjectVersionText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : Properties.Resources.VersionMustBeBetweenZeroAnd255)" />
+<GXValueField Label="@Properties.Resources.AttributeAccessIndexMaskLabel" Value="@AttributeRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { AttributeRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
+<GXValueField Label="@Properties.Resources.MethodAccessIndexMaskLabel" Value="@MethodRightsText" Enabled="@(CanInvokeMethod(3) || CanInvokeMethod(4))" OnCommit="@((string value) => { if (CanInvokeMethod(3) || CanInvokeMethod(4)) { MethodRightsText = value; } })" InputKind="textarea" Validate="@(value => CheckParameter(() => Rights(value, 255).ToArray()))" />
+<p>@Properties.Resources.RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied</p>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="AddObjectAsync">@Properties.Resources.Add</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="RemoveObjectAsync">@Properties.Resources.Remove2</GXButton>
 </fieldset>
 </GXTabPage>
-<GXTabPage Text="General">
-<fieldset><legend>Associated partners ID</legend>
-<GXAttributeField Edit="Edit" Index="3" Label="Client SAP:" Enabled="CanEditAttribute(3)" Part="0" />
-<GXAttributeField Edit="Edit" Index="3" Label="Server SAP:" Enabled="CanEditAttribute(3)" Part="1" />
+<GXTabPage Text="@Properties.Resources.General">
+<fieldset><legend>@Properties.Resources.AssociatedPartnersID</legend>
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ClientSAPLabel" Enabled="CanEditAttribute(3)" Part="0" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ServerSAPLabel" Enabled="CanEditAttribute(3)" Part="1" />
 </fieldset>
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
 {
-<GXAttributeField Edit="Edit" Index="7" Label="Secret:" Enabled="CanEditAttribute(7)" InputKind="hex" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.SecretLabel" Enabled="CanEditAttribute(7)" InputKind="hex" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
 {
-<GXAttributeField Edit="Edit" Index="8" Label="Association Status:" Enabled="CanEditAttribute(8)" EnumType="typeof(AssociationStatus)" />
+<GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.AssociationStatusLabel" Enabled="CanEditAttribute(8)" EnumType="typeof(AssociationStatus)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
 {
-<GXAttributeField Edit="Edit" Index="9" Label="Security setup:" Enabled="CanEditAttribute(9)" />
+<GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.SecuritySetupLabel" Enabled="CanEditAttribute(9)" />
 }
-<fieldset><legend>Authentication secret</legend>
-<GXValueField Label="New high authentication secret (hex):" Value="@SecretText" Enabled="@(CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC))" OnCommit="@((string value) => { if (CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC)) { SecretText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, "A new secret is required.")))" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(2) || Target.AuthenticationMechanismName.MechanismId is Authentication.None or Authentication.Low or Authentication.HighGMAC)" OnClick="UpdateSecretAsync">Update High password</GXButton>
-<p>For low authentication, edit Secret and write attribute 7. GMAC keys use Security setup.</p>
+<fieldset><legend>@Properties.Resources.AuthenticationSecret</legend>
+<GXValueField Label="@Properties.Resources.NewHighAuthenticationSecretHexLabel" Value="@SecretText" Enabled="@(CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC))" OnCommit="@((string value) => { if (CanInvokeMethod(2) && Target.AuthenticationMechanismName.MechanismId is not (Authentication.None or Authentication.Low or Authentication.HighGMAC)) { SecretText = value; } })" InputKind="password" Validate="@(value => CheckParameter(() => RequireParameter(Convert.FromHexString(new string(value.Where(c => !char.IsWhiteSpace(c)).ToArray())).Length > 0, Properties.Resources.ANewSecretIsRequired)))" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2) || Target.AuthenticationMechanismName.MechanismId is Authentication.None or Authentication.Low or Authentication.HighGMAC)" OnClick="UpdateSecretAsync">@Properties.Resources.UpdateHighPassword</GXButton>
+<p>@Properties.Resources.ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup</p>
 </fieldset>
 </GXTabPage>
-<GXTabPage Text="xDLMS Context Info">
-<fieldset><legend>LN settings</legend>
-<GXAttributeField Edit="Edit" Index="5" Label="Conformance:" Enabled="CanEditAttribute(5)" Part="0" EnumType="typeof(Conformance)" />
+<GXTabPage Text="@Properties.Resources.XDLMSContextInfo">
+<fieldset><legend>@Properties.Resources.LNSettings</legend>
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.ConformanceLabel" Enabled="CanEditAttribute(5)" Part="0" EnumType="typeof(Conformance)" />
 </fieldset>
-<GXAttributeField Edit="Edit" Index="5" Label="Max receive PDU size:" Enabled="CanEditAttribute(5)" Part="1" />
-<GXAttributeField Edit="Edit" Index="5" Label="Max send PDU size:" Enabled="CanEditAttribute(5)" Part="2" />
-<GXAttributeField Edit="Edit" Index="5" Label="DLMS version number:" Enabled="CanEditAttribute(5)" Part="3" />
-<GXAttributeField Edit="Edit" Index="5" Label="Quality of service:" Enabled="CanEditAttribute(5)" Part="4" />
-<GXAttributeField Edit="Edit" Index="5" Label="Dedicated key:" Enabled="CanEditAttribute(5)" Part="5" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaxReceivePDUSizeLabel" Enabled="CanEditAttribute(5)" Part="1" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaxSendPDUSizeLabel" Enabled="CanEditAttribute(5)" Part="2" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.DLMSVersionNumberLabel" Enabled="CanEditAttribute(5)" Part="3" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.QualityOfServiceLabel" Enabled="CanEditAttribute(5)" Part="4" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.DedicatedKeyLabel" Enabled="CanEditAttribute(5)" Part="5" />
 </GXTabPage>
-<GXTabPage Text="Application Context Name">
-<GXValueField Label="Registration Authority:" Value="@RegistrationAuthority(4)" Enabled="false" />
-<GXAttributeField Edit="Edit" Index="4" Label="Joint ISO CTT:" Enabled="CanEditAttribute(4)" Part="0" />
-<GXAttributeField Edit="Edit" Index="4" Label="Country:" Enabled="CanEditAttribute(4)" Part="1" />
-<GXAttributeField Edit="Edit" Index="4" Label="Country name:" Enabled="CanEditAttribute(4)" Part="2" />
-<GXAttributeField Edit="Edit" Index="4" Label="Identified organization:" Enabled="CanEditAttribute(4)" Part="3" />
-<GXAttributeField Edit="Edit" Index="4" Label="DLMS UA:" Enabled="CanEditAttribute(4)" Part="4" />
-<GXAttributeField Edit="Edit" Index="4" Label="Application context:" Enabled="CanEditAttribute(4)" Part="5" />
-<GXAttributeField Edit="Edit" Index="4" Label="Context ID:" Enabled="CanEditAttribute(4)" Part="6" EnumType="typeof(ApplicationContextName)" />
+<GXTabPage Text="@Properties.Resources.ApplicationContextName">
+<GXValueField Label="@Properties.Resources.RegistrationAuthorityLabel" Value="@RegistrationAuthority(4)" Enabled="false" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.JointISOCTTLabel" Enabled="CanEditAttribute(4)" Part="0" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.CountryLabel" Enabled="CanEditAttribute(4)" Part="1" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.CountryNameLabel" Enabled="CanEditAttribute(4)" Part="2" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.IdentifiedOrganizationLabel" Enabled="CanEditAttribute(4)" Part="3" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.DLMSUALabel" Enabled="CanEditAttribute(4)" Part="4" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ApplicationContextLabel" Enabled="CanEditAttribute(4)" Part="5" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ContextIDLabel" Enabled="CanEditAttribute(4)" Part="6" EnumType="typeof(ApplicationContextName)" />
 </GXTabPage>
-<GXTabPage Text="Authentication Mechanism Name">
-<GXValueField Label="Registration Authority:" Value="@RegistrationAuthority(6)" Enabled="false" />
-<GXAttributeField Edit="Edit" Index="6" Label="Joint ISO CTT:" Enabled="CanEditAttribute(6)" Part="0" />
-<GXAttributeField Edit="Edit" Index="6" Label="Country:" Enabled="CanEditAttribute(6)" Part="1" />
-<GXAttributeField Edit="Edit" Index="6" Label="Country name:" Enabled="CanEditAttribute(6)" Part="2" />
-<GXAttributeField Edit="Edit" Index="6" Label="Identified organization:" Enabled="CanEditAttribute(6)" Part="3" />
-<GXAttributeField Edit="Edit" Index="6" Label="DLMS UA:" Enabled="CanEditAttribute(6)" Part="4" />
-<GXAttributeField Edit="Edit" Index="6" Label="Authentication Name:" Enabled="CanEditAttribute(6)" Part="5" />
-<GXAttributeField Edit="Edit" Index="6" Label="Mechanism ID:" Enabled="CanEditAttribute(6)" Part="6" EnumType="typeof(Authentication)" />
+<GXTabPage Text="@Properties.Resources.AuthenticationMechanismName">
+<GXValueField Label="@Properties.Resources.RegistrationAuthorityLabel" Value="@RegistrationAuthority(6)" Enabled="false" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.JointISOCTTLabel" Enabled="CanEditAttribute(6)" Part="0" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CountryLabel" Enabled="CanEditAttribute(6)" Part="1" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CountryNameLabel" Enabled="CanEditAttribute(6)" Part="2" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.IdentifiedOrganizationLabel" Enabled="CanEditAttribute(6)" Part="3" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.DLMSUALabel" Enabled="CanEditAttribute(6)" Part="4" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.AuthenticationNameLabel" Enabled="CanEditAttribute(6)" Part="5" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.MechanismIDLabel" Enabled="CanEditAttribute(6)" Part="6" EnumType="typeof(Authentication)" />
 </GXTabPage>
 @if (Target.Version > 1)
 {
-<GXTabPage Text="User List">
+<GXTabPage Text="@Properties.Resources.UserList">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
 {
-<GXAttributeField Edit="Edit" Index="10" Label="Users" Enabled="CanEditAttribute(10)" Columns="@(new[] { "ID:", "Name" })" CreateRow="@(() => new GXStructure { (byte)0, string.Empty })" EditorKinds="@(new[] { "number", "text" })" />
+<GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.Users" Enabled="CanEditAttribute(10)" Columns="@(new[] { Properties.Resources.IDLabel, Properties.Resources.Name })" CreateRow="@(() => new GXStructure { (byte)0, string.Empty })" EditorKinds="@(new[] { "number", "text" })" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
 {
-<GXAttributeField Edit="Edit" Index="11" Label="Current user" Enabled="CanEditAttribute(11)" Columns="@(new[] { "ID:", "Name" })" />
+<GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.CurrentUser" Enabled="CanEditAttribute(11)" Columns="@(new[] { Properties.Resources.IDLabel, Properties.Resources.Name })" />
 }
-<GXValueField Label="ID:" Value="@UserIdText" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserIdText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : "User ID must be between zero and 255.")" />
-<GXValueField Label="Name:" Value="@UserName" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserName = value; } })" Validate="@(value => string.IsNullOrWhiteSpace(value) ? "A user name is required." : null)" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="AddUserAsync">Add</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="RemoveUserAsync">Remove</GXButton>
+<GXValueField Label="@Properties.Resources.IDLabel" Value="@UserIdText" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserIdText = value; } })" InputKind="number" Validate="@(value => byte.TryParse(value, out _) ? null : Properties.Resources.UserIDMustBeBetweenZeroAnd255)" />
+<GXValueField Label="@Properties.Resources.NameLabel" Value="@UserName" Enabled="@(CanInvokeMethod(5) || CanInvokeMethod(6))" OnCommit="@((string value) => { if (CanInvokeMethod(5) || CanInvokeMethod(6)) { UserName = value; } })" Validate="@(value => string.IsNullOrWhiteSpace(value) ? Properties.Resources.AUserNameIsRequired : null)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="AddUserAsync">@Properties.Resources.Add2</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(6))" OnClick="RemoveUserAsync">@Properties.Resources.Remove</GXButton>
 </GXTabPage>
 }
 </GXTabControl>
 </section>
 
 @code {
+    /// <summary>Runs parameter validation and converts validation exceptions into input error text.</summary>
+    /// <param name="validate">The validation callback whose input exceptions become error text.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? CheckParameter(Action validate)
     {
         try
@@ -140,6 +143,9 @@
         }
         catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
+    /// <summary>Throws an argument exception when a method parameter condition is not satisfied.</summary>
+    /// <param name="valid">Whether the required parameter condition is satisfied.</param>
+    /// <param name="message">The error shown when the required condition is not satisfied.</param>
     private static void RequireParameter(bool valid, string message)
     {
         if (!valid)
@@ -148,6 +154,9 @@
         }
     }
 
+    /// <summary>Looks up the country name encoded in an association registration authority.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>Looks up the country name encoded in an association registration authority.</returns>
     private string RegistrationAuthority(int index)
     {
         var oid = (GXStructure)GXWireValue.Read(Edit, index)!;
@@ -186,17 +195,19 @@
     /// Name entered for the association user.
     /// </summary>
     public string UserName { get; set; } = "";
+    /// <summary>Validates the method inputs and creates the referenced COSEM object.</summary>
+    /// <returns>Validates the method inputs and creates the referenced COSEM object.</returns>
     private GXDLMSObject ObjectValue()
     {
         var type = (ObjectType)ushort.Parse(ClassIdText, System.Globalization.CultureInfo.InvariantCulture);
         if (!Enum.IsDefined(type) || (int)type == 0)
         {
-            throw new ArgumentException("Select a valid COSEM class.");
+            throw new ArgumentException(Properties.Resources.SelectAValidCOSEMClass);
         }
         var parts = ObjectLogicalName.Split('.');
         if (parts.Length != 6 || parts.Any(x => !byte.TryParse(x, out _)))
         {
-            throw new ArgumentException("Logical names require six bytes.");
+            throw new ArgumentException(Properties.Resources.LogicalNamesRequireSixBytes);
         }
         var obj = GXDLMSClient.CreateObject(type, byte.Parse(ObjectVersionText, System.Globalization.CultureInfo.InvariantCulture));
         obj.LogicalName = ObjectLogicalName;
@@ -216,7 +227,7 @@
         {
             if (Target.Version < 3 && !Enum.IsDefined((AccessMode)pair.Value) || Target.Version == 0 && pair.Value > 3)
             {
-                throw new ArgumentException("Attribute access mask is not supported by this association version.");
+                throw new ArgumentException(Properties.Resources.AttributeAccessMaskIsNotSupportedByThisAssociationVersion);
             }
             if (Target.Version >= 3)
             {
@@ -231,7 +242,7 @@
         {
             if (Target.Version < 3 && !Enum.IsDefined((MethodAccessMode)pair.Value) || Target.Version >= 3 && (pair.Value & 2) != 0)
             {
-                throw new ArgumentException("Method access mask is not supported by this association version.");
+                throw new ArgumentException(Properties.Resources.MethodAccessMaskIsNotSupportedByThisAssociationVersion);
             }
             if (Target.Version >= 3)
             {
@@ -244,6 +255,10 @@
         }
         return obj;
     }
+    /// <summary>Parses and validates the association&apos;s index-and-access-mask pairs.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <param name="maximum">The largest supported attribute or method index.</param>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     private static IEnumerable<KeyValuePair<int, int>> Rights(string text, int maximum)
     {
         var seen = new HashSet<int>();
@@ -252,16 +267,18 @@
             var parts = line.Split(':');
             if (parts.Length != 2 || !int.TryParse(parts[0], out var index) || index < 1 || index > maximum || !int.TryParse(parts[1], out var mask) || mask < 0 || mask > 255)
             {
-                throw new ArgumentException("Rights require a valid index:mask pair.");
+                throw new ArgumentException(Properties.Resources.RightsRequireAValidIndexMaskPair);
             }
             if (!seen.Add(index))
             {
-                throw new ArgumentException("Each access-right index may appear only once.");
+                throw new ArgumentException(Properties.Resources.EachAccessRightIndexMayAppearOnlyOnce);
             }
             yield return new(index, mask);
         }
     }
-    private string UserValue() => string.IsNullOrWhiteSpace(UserName) ? throw new ArgumentException("A user name is required.") : UserName;
+    /// <summary>Returns the required nonempty user name for an association method.</summary>
+    /// <returns>The required nonempty user name for an association method.</returns>
+    private string UserValue() => string.IsNullOrWhiteSpace(UserName) ? throw new ArgumentException(Properties.Resources.AUserNameIsRequired) : UserName;
     /// <summary>
     /// Requests adding the entered object and access rights to the association.
     /// </summary>
@@ -291,12 +308,12 @@
         var auth = Target.AuthenticationMechanismName.MechanismId;
         if (auth is Authentication.None or Authentication.Low or Authentication.HighGMAC)
         {
-            throw new ArgumentException("This method requires high authentication; use attribute write or Security setup for other mechanisms.");
+            throw new ArgumentException(Properties.Resources.ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms);
         }
         var secret = Convert.FromHexString(new string(SecretText.Where(c => !char.IsWhiteSpace(c)).ToArray()));
         if (secret.Length == 0)
         {
-            throw new ArgumentException("A new secret is required.");
+            throw new ArgumentException(Properties.Resources.ANewSecretIsRequired);
         }
         var requestTarget = new GXDLMSAssociationLogicalName(Target.LogicalName) { ShortName = Target.ShortName, Version = Target.Version, AuthenticationMechanismName = Target.AuthenticationMechanismName, Secret = secret };
         return requestTarget.UpdateSecret(client);

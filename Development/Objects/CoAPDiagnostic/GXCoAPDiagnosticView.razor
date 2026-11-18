@@ -34,43 +34,45 @@
 @inherits GXDLMSObjectViewBase<GXDLMSCoAPDiagnostic>
 
 <section class="gx-object-view" @key="Target">
-    <GXObjectViewHeader Title="CoAP Diagnostic Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset class="gx-object-fields"><legend>Messages counter</legend>
-        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="Transmitted messages:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="Received messages:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="Retransmitted messages:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="3" Label="Transmitted resets:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="4" Label="Received resets:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="5" Label="Transmitted acknowledgements:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="6" Label="Received acknowledgements:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="7" Label="Dropped messages:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="8" Label="Non-piggybacked responses:" Enabled="CanEditAttribute(2)" />
-        <GXAttributeField Edit="Edit" Index="2" Part="9" Label="Maximum retransmissions exceeded:" Enabled="CanEditAttribute(2)" />
+    <GXObjectViewHeader Title="@Properties.Resources.CoAPDiagnosticObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.MessagesCounter</legend>
+        <GXAttributeField Edit="Edit" Index="2" Part="0" Label="@Properties.Resources.TransmittedMessagesLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="1" Label="@Properties.Resources.ReceivedMessagesLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="2" Label="@Properties.Resources.RetransmittedMessagesLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="3" Label="@Properties.Resources.TransmittedResetsLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="4" Label="@Properties.Resources.ReceivedResetsLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="5" Label="@Properties.Resources.TransmittedAcknowledgementsLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="6" Label="@Properties.Resources.ReceivedAcknowledgementsLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="7" Label="@Properties.Resources.DroppedMessagesLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="8" Label="@Properties.Resources.NonPiggybackedResponsesLabel" Enabled="CanEditAttribute(2)" />
+        <GXAttributeField Edit="Edit" Index="2" Part="9" Label="@Properties.Resources.MaximumRetransmissionsExceededLabel" Enabled="CanEditAttribute(2)" />
     </fieldset>
-    <fieldset class="gx-object-fields"><legend>Request and response counter</legend>
-        <GXAttributeField Edit="Edit" Index="3" Part="0" Label="Received requests:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="1" Label="Transmitted requests:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="2" Label="Received responses:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="3" Label="Transmitted responses:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="4" Label="Transmitted client errors:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="5" Label="Received client errors:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="6" Label="Transmitted server errors:" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="3" Part="7" Label="Received server errors:" Enabled="CanEditAttribute(3)" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.RequestAndResponseCounter</legend>
+        <GXAttributeField Edit="Edit" Index="3" Part="0" Label="@Properties.Resources.ReceivedRequestsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="1" Label="@Properties.Resources.TransmittedRequestsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="2" Label="@Properties.Resources.ReceivedResponsesLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="3" Label="@Properties.Resources.TransmittedResponsesLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="4" Label="@Properties.Resources.TransmittedClientErrorsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="5" Label="@Properties.Resources.ReceivedClientErrorsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="6" Label="@Properties.Resources.TransmittedServerErrorsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="3" Part="7" Label="@Properties.Resources.ReceivedServerErrorsLabel" Enabled="CanEditAttribute(3)" />
     </fieldset>
-    <fieldset class="gx-object-fields"><legend>Block-wise transfer counter</legend>
-        <GXAttributeField Edit="Edit" Index="4" Part="0" Label="Transfers started:" Enabled="CanEditAttribute(4)" />
-        <GXAttributeField Edit="Edit" Index="4" Part="1" Label="Transfers completed:" Enabled="CanEditAttribute(4)" />
-        <GXAttributeField Edit="Edit" Index="4" Part="2" Label="Transfers timed out:" Enabled="CanEditAttribute(4)" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.BlockWiseTransferCounter</legend>
+        <GXAttributeField Edit="Edit" Index="4" Part="0" Label="@Properties.Resources.TransfersStartedLabel" Enabled="CanEditAttribute(4)" />
+        <GXAttributeField Edit="Edit" Index="4" Part="1" Label="@Properties.Resources.TransfersCompletedLabel" Enabled="CanEditAttribute(4)" />
+        <GXAttributeField Edit="Edit" Index="4" Part="2" Label="@Properties.Resources.TransfersTimedOutLabel" Enabled="CanEditAttribute(4)" />
     </fieldset>
-    <fieldset class="gx-object-fields"><legend>Capture time</legend>
-        <GXAttributeField Edit="Edit" Index="5" Part="0" Label="Attribute ID:" Enabled="CanEditAttribute(5)" />
-        <GXAttributeField Edit="Edit" Index="5" Part="1" Label="Capture time:" Enabled="CanEditAttribute(5)" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.CaptureTime</legend>
+        <GXAttributeField Edit="Edit" Index="5" Part="0" Label="@Properties.Resources.AttributeIDLabel" Enabled="CanEditAttribute(5)" />
+        <GXAttributeField Edit="Edit" Index="5" Part="1" Label="@Properties.Resources.CaptureTimeLabel" Enabled="CanEditAttribute(5)" />
     </fieldset>
     <section class="gx-object-actions">
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset counters</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.ResetCounters</GXButton>
     </section>
 </section>
 
 @code {
+    /// <summary>Submits the object&apos;s reset method through the host action callback.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
 }

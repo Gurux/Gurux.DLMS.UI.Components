@@ -38,10 +38,10 @@
 {
     var position = row;
     var packed = Interval(position);
-    <fieldset><legend>Interval @(position + 1)</legend>
-        <GXValueField @key="(Edit, position, 0)" Label="Start Hour" Value="@((packed & 31).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" InputKind="number" Validate="ValidateHour" OnCommit="value => SetInterval(position, 0, value)" />
-        <GXValueField @key="(Edit, position, 1)" Label="Interval Tariff" Value="@(((packed >> 5) & 3).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" EnumType="typeof(DefaultTariffBand)" OnCommit="value => SetInterval(position, 1, value)" />
-        <GXValueField @key="(Edit, position, 2)" Label="In use" InputKind="bool" Value="@(((packed & 128) != 0).ToString())" Enabled="Enabled" Validate="ValidateBool" OnCommit="value => SetInterval(position, 2, value)" />
+    <fieldset><legend>@string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.IntervalNumber, position + 1)</legend>
+        <GXValueField @key="(Edit, position, 0)" Label="@Properties.Resources.StartHour" Value="@((packed & 31).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" InputKind="number" Validate="ValidateHour" OnCommit="value => SetInterval(position, 0, value)" />
+        <GXValueField @key="(Edit, position, 1)" Label="@Properties.Resources.IntervalTariff" Value="@(((packed >> 5) & 3).ToString(CultureInfo.InvariantCulture))" Enabled="Enabled" EnumType="typeof(DefaultTariffBand)" OnCommit="value => SetInterval(position, 1, value)" />
+        <GXValueField @key="(Edit, position, 2)" Label="@Properties.Resources.InUse" InputKind="bool" Value="@(((packed & 128) != 0).ToString())" Enabled="Enabled" Validate="ValidateBool" OnCommit="value => SetInterval(position, 2, value)" />
     </fieldset>
 }
 @if (Error is not null) { <p role="alert">@Error</p> }
@@ -82,10 +82,24 @@
     {
         get; private set;
     }
+    /// <summary>Gets the pending or confirmed tariff-plan structure used by the interval editor.</summary>
+    /// <returns>The pending or confirmed tariff-plan structure used by the interval editor.</returns>
     private object Root() => Edit.Target.GetDirty(4, out var value) ? value : GXDLMSAttributeCodec.Read(Edit.Target, 4)!;
+    /// <summary>Gets the encoded tariff interval byte at the specified position.</summary>
+    /// <param name="position">The zero-based interval position in the selected tariff table.</param>
+    /// <returns>The encoded tariff interval byte at the specified position.</returns>
     private byte Interval(int position) => Convert.ToByte(((IList<object>)((IList<object>)((IList<object>)Root())[1])[Season])[Kind + 2] is IList<object> intervals ? intervals[position] : (byte)0, CultureInfo.InvariantCulture);
-    private static string? ValidateHour(string text) => byte.TryParse(text, out var value) && value < 24 ? null : "Start hour must be between 0 and 23.";
-    private static string? ValidateBool(string text) => bool.TryParse(text, out _) ? null : "Enter True or False.";
+    /// <summary>Checks that a tariff interval starts between hour zero and hour 23.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
+    private static string? ValidateHour(string text) => byte.TryParse(text, out var value) && value < 24 ? null : Properties.Resources.StartHourMustBeBetween0And23;
+    /// <summary>Checks whether an input is a valid Boolean value.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
+    private static string? ValidateBool(string text) => bool.TryParse(text, out _) ? null : Properties.Resources.EnterTrueOrFalse;
+    /// <summary>Recursively copies tariff collections while retaining their scalar values.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Recursively copies tariff collections while retaining their scalar values.</returns>
     private static object CloneValue(object value) => value switch
     {
         GXStructure structure => CloneStructure(structure),
@@ -93,12 +107,18 @@
         byte[] bytes => bytes.ToArray(),
         _ => value
     };
+    /// <summary>Copies a tariff structure and recursively clones its nested collections.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Copies a tariff structure and recursively clones its nested collections.</returns>
     private static GXStructure CloneStructure(GXStructure value)
     {
         var copy = new GXStructure();
         copy.AddRange(value.Select(CloneValue));
         return copy;
     }
+    /// <summary>Copies a tariff array and recursively clones its nested collections.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>Copies a tariff array and recursively clones its nested collections.</returns>
     private static GXArray CloneArray(GXArray value)
     {
         var copy = new GXArray();
@@ -127,7 +147,7 @@
                 0 when ValidateHour(text) is null => (byte)((original & 224) | byte.Parse(text, CultureInfo.InvariantCulture)),
                 1 => (byte)((original & 159) | ((byte)Enum.Parse<DefaultTariffBand>(text) << 5)),
                 2 => (byte)((original & 127) | (bool.Parse(text) ? 128 : 0)),
-                _ => throw new FormatException("Start hour must be between 0 and 23.")
+                _ => throw new FormatException(Properties.Resources.StartHourMustBeBetween0And23)
             };
             intervals[position] = value;
             var xml = GXDLMSObjectEditState.Format(root);

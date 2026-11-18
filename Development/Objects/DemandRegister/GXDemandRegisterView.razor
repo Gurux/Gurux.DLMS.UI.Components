@@ -38,19 +38,19 @@
 @inherits GXDLMSObjectViewBase<GXDLMSDemandRegister>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Demand Register Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Current Average" Enabled="CanEditAttribute(2)" />
-    <GXAttributeField Edit="Edit" Index="3" Label="Last Average" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="4" Part="0" InputKind="scaler" Label="Scaler" Enabled="CanEditAttribute(4)" />
-    <GXAttributeField Edit="Edit" Index="4" Part="1" Label="Unit" Enabled="CanEditAttribute(4)" EnumType="typeof(Unit)" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Status" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="6" Label="Capture Time" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="7" Label="Current Start Time" Enabled="CanEditAttribute(7)" />
-    <GXAttributeField Edit="Edit" Index="8" Label="Period" Enabled="CanEditAttribute(8)" />
-    <GXAttributeField Edit="Edit" Index="9" Label="Number of Periods" Enabled="CanEditAttribute(9)" />
-    <fieldset><legend>Methods</legend>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="NextPeriodAsync">Next Period</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.DemandRegisterObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.CurrentAverage" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.LastAverage" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" Part="0" InputKind="scaler" Label="@Properties.Resources.Scaler" Enabled="CanEditAttribute(4)" />
+    <GXAttributeField Edit="Edit" Index="4" Part="1" Label="@Properties.Resources.Unit" Enabled="CanEditAttribute(4)" EnumType="typeof(Unit)" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.Status" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CaptureTime2" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.CurrentStartTime" Enabled="CanEditAttribute(7)" />
+    <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Period" Enabled="CanEditAttribute(8)" />
+    <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.NumberOfPeriods" Enabled="CanEditAttribute(9)" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="NextPeriodAsync">@Properties.Resources.NextPeriod</GXButton>
     </fieldset>
 </section>
 

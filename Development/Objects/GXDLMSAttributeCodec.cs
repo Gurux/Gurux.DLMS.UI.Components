@@ -33,6 +33,10 @@ namespace Gurux.DLMS.UI.Components.Objects;
 /// <summary>Uses the object's wire representation for collections whose CLR model is not GXArray/GXStructure.</summary>
 internal static class GXDLMSAttributeCodec
 {
+    /// <summary>Returns the pending or confirmed wire representation of an attribute.</summary>
+    /// <param name="target">The DLMS object whose attribute or method is selected.</param>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     public static object? Read(GXDLMSObject target, int index)
     {
         if (GXDLMSObjectEditState.For(target).TryGetConfirmedAttribute(index, out var confirmed))
@@ -146,7 +150,7 @@ internal static class GXDLMSAttributeCodec
         var value = details.GetValue(new GXDLMSSettings(), args);
         if (args.Error != ErrorCode.Ok)
         {
-            throw new InvalidOperationException($"Cannot display attribute {index}: {args.Error}.");
+            throw new InvalidOperationException(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.CannotDisplayAttribute01, index, args.Error));
         }
 
         if (value is not byte[] bytes)

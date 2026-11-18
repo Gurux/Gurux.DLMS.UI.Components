@@ -34,13 +34,13 @@
 @inherits GXDLMSObjectViewBase<GXDLMSObject>
 
 <section class="gx-object-view">
-    <GXObjectViewHeader Target="Target" Edit="Edit" Title="@(Target.ObjectType + " Object")" />
+    <GXObjectViewHeader Target="Target" Edit="Edit" Title="@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0Object, Target.ObjectType))" />
     @if (Target is IGXDLMSBase details)
     {
         var names = details.GetNames();
         @for (var index = 2; index <= details.GetAttributeCount(); ++index)
         {
-            <GXAttributeField @key="index" Edit="Edit" Index="index" Label="@(names.ElementAtOrDefault(index - 1) ?? $"Attribute {index}")" Enabled="CanEditAttribute(index)" />
+            <GXAttributeField @key="index" Edit="Edit" Index="index" Label="@(names.ElementAtOrDefault(index - 1) ?? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Attribute0, index))" Enabled="CanEditAttribute(index)" />
         }
     }
 </section>

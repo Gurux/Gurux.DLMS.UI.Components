@@ -25,6 +25,7 @@
 // SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
 // --------------------------------------------------------------------------
 
+using System.Diagnostics;
 using Microsoft.JSInterop;
 
 namespace Gurux.DLMS.UI.Components
@@ -39,33 +40,61 @@ namespace Gurux.DLMS.UI.Components
     /// <summary>Wraps the example JavaScript module for use by Blazor components.</summary>
     public class ExampleJsInterop : IAsyncDisposable
     {
-        private readonly Lazy<Task<IJSObjectReference>> moduleTask;
+        /// <summary>Lazily imports the JavaScript module on the first interop request.</summary>
+        private readonly Lazy<Task<IJSObjectReference>> _moduleTask;
 
         /// <summary>Initializes the JavaScript module wrapper.</summary>
         /// <param name="jsRuntime">The runtime used to import and invoke the JavaScript module.</param>
         public ExampleJsInterop(IJSRuntime jsRuntime)
         {
-            moduleTask = new(() => jsRuntime.InvokeAsync<IJSObjectReference>(
-                "import", "./_content/Gurux.DLMS.UI.Components/exampleJsInterop.js").AsTask());
+            _moduleTask = new(async () =>
+            {
+                try
+                {
+                    return await jsRuntime.InvokeAsync<IJSObjectReference>(
+                        "import", "./_content/Gurux.DLMS.UI.Components/exampleJsInterop.js");
+                }
+                catch (JSException ex)
+                {
+                    Trace.TraceError("Failed to import the example JavaScript module: {0}", ex);
+                    throw;
+                }
+            });
         }
 
         /// <summary>Displays a browser prompt with the specified message.</summary>
         /// <param name="message">The message displayed in the prompt.</param>
         /// <returns>The text returned by the JavaScript prompt.</returns>
+        /// <exception cref="JSException">The JavaScript module cannot be imported or the prompt invocation fails.</exception>
         public async ValueTask<string> Prompt(string message)
         {
-            var module = await moduleTask.Value;
-            return await module.InvokeAsync<string>("showPrompt", message);
+            try
+            {
+                var module = await _moduleTask.Value;
+                return await module.InvokeAsync<string>("showPrompt", message);
+            }
+            catch (JSException ex)
+            {
+                Trace.TraceError("Failed to display the JavaScript prompt: {0}", ex);
+                throw;
+            }
         }
 
         /// <summary>Releases the JavaScript module if it has been loaded.</summary>
         /// <returns>A task that completes when the module is released.</returns>
         public async ValueTask DisposeAsync()
         {
-            if (moduleTask.IsValueCreated)
+            if (_moduleTask.IsValueCreated)
             {
-                var module = await moduleTask.Value;
-                await module.DisposeAsync();
+                try
+                {
+                    var module = await _moduleTask.Value;
+                    await module.DisposeAsync();
+                }
+                catch (JSDisconnectedException)
+                {
+                    // The browser connection is already closed, so the module cannot be released.
+                }
             }
         }
     }

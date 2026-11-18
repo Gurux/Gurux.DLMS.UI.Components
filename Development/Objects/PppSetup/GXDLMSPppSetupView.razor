@@ -40,26 +40,26 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="PPP Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.PPPSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="PHY Reference:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.PHYReferenceLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="LCP Options:" Enabled="CanEditAttribute(3)" Columns='@(new[] { "Type", "Length", "Data" })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.LCPOptionsLabel" Enabled="CanEditAttribute(3)" Columns='@(new[] { Properties.Resources.Type, Properties.Resources.Length, Properties.Resources.Data })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="IPCP Options:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Type", "Length", "Data" })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.IPCPOptionsLabel" Enabled="CanEditAttribute(4)" Columns='@(new[] { Properties.Resources.Type, Properties.Resources.Length, Properties.Resources.Data })' CreateRow='@(() => new GXStructure { (byte)0, (byte)0, Array.Empty<byte>() })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="User Name:" Enabled="CanEditAttribute(5)" Part="0" InputKind="ascii" />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.UserNameLabel" Enabled="CanEditAttribute(5)" Part="0" InputKind="ascii" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Password:" Enabled="CanEditAttribute(5)" Part="1" InputKind="password" />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.PasswordLabel" Enabled="CanEditAttribute(5)" Part="1" InputKind="password" />
     }
 </div>
 </section>

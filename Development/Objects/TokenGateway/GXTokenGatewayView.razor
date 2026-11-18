@@ -38,16 +38,16 @@
 @inherits GXDLMSObjectViewBase<GXDLMSTokenGateway>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Token Gateway Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" InputKind="hex" Label="Token" Enabled="CanEditAttribute(2)" />
-    <GXAttributeField Edit="Edit" Index="3" Label="Time" Enabled="CanEditAttribute(3)" />
-    <GXAttributeField Edit="Edit" Index="4" InputKind="text" Label="Descriptions" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Name" })" CreateRow="@(() => Array.Empty<byte>())" />
-    <GXAttributeField Edit="Edit" Index="5" Label="Delivery Method" Enabled="CanEditAttribute(5)" EnumType="typeof(TokenDelivery)" />
-    <GXAttributeField Edit="Edit" Index="6" Part="0" Label="Status code" Enabled="CanEditAttribute(6)" EnumType="typeof(TokenStatusCode)" />
-    <GXAttributeField Edit="Edit" Index="6" Part="1" Label="Data Value" Enabled="CanEditAttribute(6)" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Token (hexadecimal)" Value="@TokenHex" Enabled="@(CanInvokeMethod(1))" InputKind="hex" OnCommit="value => TokenHex = value" Validate="text => ValidateParameter(nameof(TokenHex), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="EnterAsync">Transfer token</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.TokenGatewayObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" InputKind="hex" Label="@Properties.Resources.Token" Enabled="CanEditAttribute(2)" />
+    <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.Time" Enabled="CanEditAttribute(3)" />
+    <GXAttributeField Edit="Edit" Index="4" InputKind="text" Label="@Properties.Resources.Descriptions" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.Name })" CreateRow="@(() => Array.Empty<byte>())" />
+    <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.DeliveryMethod" Enabled="CanEditAttribute(5)" EnumType="typeof(TokenDelivery)" />
+    <GXAttributeField Edit="Edit" Index="6" Part="0" Label="@Properties.Resources.StatusCode" Enabled="CanEditAttribute(6)" EnumType="typeof(TokenStatusCode)" />
+    <GXAttributeField Edit="Edit" Index="6" Part="1" Label="@Properties.Resources.DataValue" Enabled="CanEditAttribute(6)" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.TokenHexadecimal" Value="@TokenHex" Enabled="@(CanInvokeMethod(1))" InputKind="hex" OnCommit="value => TokenHex = value" Validate="text => ValidateParameter(nameof(TokenHex), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="EnterAsync">@Properties.Resources.TransferToken</GXButton>
     </fieldset>
 </section>
 
@@ -65,11 +65,15 @@
         var bytes = Convert.FromHexString(TokenHex.Replace(" ", string.Empty));
         if (bytes.Length == 0)
         {
-            throw new FormatException("Enter a token.");
+            throw new FormatException(Properties.Resources.EnterAToken);
         }
         return Target.Enter(client, bytes);
     });
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -80,7 +84,7 @@
                     {
                         if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0)
                         {
-                            throw new FormatException("Enter a token.");
+                            throw new FormatException(Properties.Resources.EnterAToken);
                         }
                         break;
                     }

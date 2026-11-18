@@ -38,13 +38,13 @@
 @inherits GXDLMSObjectViewBase<GXDLMSSapAssignment>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="SAP Assignment Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "text" })" Label="Sap Assignment List" Enabled="CanEditAttribute(2)" Columns="@(new[] { "SAP address", "Logical Device Name" })" CreateRow="@(() => new GXStructure { (ushort)1, Array.Empty<byte>() })" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="SAP ID (1–65535)" Value="@SapId" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => SapId = value" Validate="text => ValidateParameter(nameof(SapId), text)" />
-    <GXValueField Label="Logical device name" Value="@DeviceName" Enabled="@(CanInvokeMethod(1))" InputKind="text" OnCommit="value => DeviceName = value" Validate="text => ValidateParameter(nameof(DeviceName), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">Add SAP</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="RemoveAsync">Remove SAP</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.SAPAssignmentObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" EditorKinds="@(new[] { "number", "text" })" Label="@Properties.Resources.SapAssignmentList" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.SAPAddress, Properties.Resources.LogicalDeviceName })" CreateRow="@(() => new GXStructure { (ushort)1, Array.Empty<byte>() })" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.SAPID165535" Value="@SapId" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => SapId = value" Validate="text => ValidateParameter(nameof(SapId), text)" />
+    <GXValueField Label="@Properties.Resources.LogicalDeviceName2" Value="@DeviceName" Enabled="@(CanInvokeMethod(1))" InputKind="text" OnCommit="value => DeviceName = value" Validate="text => ValidateParameter(nameof(DeviceName), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">@Properties.Resources.AddSAP</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="RemoveAsync">@Properties.Resources.RemoveSAP</GXButton>
     </fieldset>
 </section>
 
@@ -57,7 +57,9 @@
     /// Device name entered for the SAP assignment operation.
     /// </summary>
     public string DeviceName { get; set; } = string.Empty;
-    private string RequireName() => !string.IsNullOrWhiteSpace(DeviceName) ? DeviceName : throw new FormatException("Enter a logical device name.");
+    /// <summary>Returns the required logical device name for a SAP assignment.</summary>
+    /// <returns>The required logical device name for a SAP assignment.</returns>
+    private string RequireName() => !string.IsNullOrWhiteSpace(DeviceName) ? DeviceName : throw new FormatException(Properties.Resources.EnterALogicalDeviceName);
     /// <summary>
     /// Requests adding the entered SAP identifier and device name.
     /// </summary>
@@ -67,7 +69,7 @@
         var id = ushort.Parse(SapId, CultureInfo.InvariantCulture);
         if (id == 0)
         {
-            throw new FormatException("SAP ID zero removes an assignment; enter an ID from 1 to 65535.");
+            throw new FormatException(Properties.Resources.SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535);
         }
         return Target.AddSap(client, id, RequireName());
     });
@@ -77,6 +79,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveAsync() => InvokeMethodAsync(1, client => Target.RemoveSap(client, RequireName()));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -87,7 +93,7 @@
                     {
                         if (ushort.Parse(text, CultureInfo.InvariantCulture) == 0)
                         {
-                            throw new FormatException("Enter an ID from 1 to 65535.");
+                            throw new FormatException(Properties.Resources.EnterAnIDFrom1To65535);
                         }
                         break;
                     }
@@ -95,7 +101,7 @@
                     {
                         if (string.IsNullOrWhiteSpace(text))
                         {
-                            throw new FormatException("Enter a logical device name.");
+                            throw new FormatException(Properties.Resources.EnterALogicalDeviceName);
                         }
                         break;
                     }

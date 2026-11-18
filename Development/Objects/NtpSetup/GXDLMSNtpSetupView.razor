@@ -40,52 +40,60 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="NTP Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.NTPSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Activated:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ActivatedLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Server Address:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ServerAddressLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Port:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PortLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Authentication:" Enabled="CanEditAttribute(5)" EnumType="typeof(NtpAuthenticationMethod)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.AuthenticationLabel" Enabled="CanEditAttribute(5)" EnumType="typeof(NtpAuthenticationMethod)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Keys:" Enabled="CanEditAttribute(6)" Columns='@(new[] { "ID:", "Key:" })' CreateRow='@(() => new GXStructure { (uint)0, Array.Empty<byte>() })' />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.KeysLabel" Enabled="CanEditAttribute(6)" Columns='@(new[] { Properties.Resources.IDLabel, Properties.Resources.KeyLabel })' CreateRow='@(() => new GXStructure { (uint)0, Array.Empty<byte>() })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Client Key:" Enabled="CanEditAttribute(7)" InputKind="hex"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.ClientKeyLabel" Enabled="CanEditAttribute(7)" InputKind="hex"  />
     }
 </div>
 </section>
 <section class="gx-object-actions">
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SynchronizeAsync">Synchronize time</GXButton>
-    <GXValueField @key='@((Target, "Authentication key ID"))' Label="Authentication key ID" Value="@KeyId" Enabled="@(CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => KeyId = value)" Validate='@(value => uint.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : "Enter a key ID from 0 to 4294967295.")' />
-    <GXValueField @key='@((Target, "Authentication key (hexadecimal)"))' Label="Authentication key (hexadecimal)" Value="@KeyHex" Enabled="@(CanInvokeMethod(2))" InputKind="hex" OnCommit="@(value => KeyHex = value)" Validate='@(value => System.Text.RegularExpressions.Regex.IsMatch(value.Replace(" ", string.Empty), "\\A(?:[0-9A-Fa-f]{2})+\\z") ? null : "Enter a non-empty hexadecimal authentication key.")' />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddKeyAsync">Add authentication key</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="DeleteKeyAsync">Delete authentication key</GXButton></section>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="SynchronizeAsync">@Properties.Resources.SynchronizeTime</GXButton>
+    <GXValueField @key='@((Target, Properties.Resources.AuthenticationKeyID))' Label="@Properties.Resources.AuthenticationKeyID" Value="@_keyId" Enabled="@(CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="@(value => _keyId = value)" Validate='@(value => uint.TryParse(value, System.Globalization.NumberStyles.None, System.Globalization.CultureInfo.InvariantCulture, out _) ? null : Properties.Resources.EnterAKeyIDFrom0To4294967295)' />
+    <GXValueField @key='@((Target, Properties.Resources.AuthenticationKeyHexadecimal))' Label="@Properties.Resources.AuthenticationKeyHexadecimal" Value="@_keyHex" Enabled="@(CanInvokeMethod(2))" InputKind="hex" OnCommit="@(value => _keyHex = value)" Validate='@(value => System.Text.RegularExpressions.Regex.IsMatch(value.Replace(" ", string.Empty), "\\A(?:[0-9A-Fa-f]{2})+\\z") ? null : Properties.Resources.EnterANonEmptyHexadecimalAuthenticationKey)' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddKeyAsync">@Properties.Resources.AddAuthenticationKey</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="DeleteKeyAsync">@Properties.Resources.DeleteAuthenticationKey</GXButton></section>
 @code {
-    private string KeyId = "";
-    private string KeyHex = "";
+    /// <summary>Retains the NTP authentication-key identifier input.</summary>
+    private string _keyId = "";
+    /// <summary>Retains the hexadecimal NTP authentication-key input.</summary>
+    private string _keyHex = "";
+    /// <summary>Requests clock synchronization using the configured NTP server.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task SynchronizeAsync() => InvokeMethodAsync(1, client => Target.Synchronize(client));
+    /// <summary>Validates the identifier and key bytes before requesting an NTP key addition.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task AddKeyAsync() => InvokeMethodAsync(2, client =>
     {
-        var id = uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture);
-        var key = Convert.FromHexString(KeyHex.Replace(" ", ""));
+        var id = uint.Parse(_keyId, System.Globalization.CultureInfo.InvariantCulture);
+        var key = Convert.FromHexString(_keyHex.Replace(" ", ""));
         if (key.Length == 0)
         {
-            throw new FormatException("Enter a non-empty hexadecimal authentication key.");
+            throw new FormatException(Properties.Resources.EnterANonEmptyHexadecimalAuthenticationKey);
         }
         return Target.AddAuthenticationKey(client, id, key);
     });
-    private Task DeleteKeyAsync() => InvokeMethodAsync(3, client => Target.DeleteAuthenticationKey(client, uint.Parse(KeyId, System.Globalization.CultureInfo.InvariantCulture)));
+    /// <summary>Requests removal of the NTP authentication key with the specified identifier.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
+    private Task DeleteKeyAsync() => InvokeMethodAsync(3, client => Target.DeleteAuthenticationKey(client, uint.Parse(_keyId, System.Globalization.CultureInfo.InvariantCulture)));
 }
 

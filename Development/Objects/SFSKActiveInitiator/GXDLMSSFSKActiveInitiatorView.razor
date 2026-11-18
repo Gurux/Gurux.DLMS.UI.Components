@@ -40,19 +40,19 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="S-FSK Active initiator Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.SFSKActiveInitiatorObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="System Title:" Enabled="CanEditAttribute(2)" Part="0" InputKind="hex" />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.SystemTitleLabel" Enabled="CanEditAttribute(2)" Part="0" InputKind="hex" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="MAC address:" Enabled="CanEditAttribute(2)" Part="1" />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.MACAddressLabel2" Enabled="CanEditAttribute(2)" Part="1" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="L SAP Selector:" Enabled="CanEditAttribute(2)" Part="2" />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.LSAPSelectorLabel" Enabled="CanEditAttribute(2)" Part="2" />
     }
 </div>
 </section>
-<p role="status">Reset is unavailable: this Gurux version exposes the method name but provides no supported command API.</p>
+<p role="status">@Properties.Resources.ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI</p>

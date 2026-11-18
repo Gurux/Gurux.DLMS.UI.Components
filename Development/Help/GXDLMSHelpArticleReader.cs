@@ -33,15 +33,20 @@ namespace Gurux.DLMS.UI.Components.Help;
 /// <remarks>The host owns the supplied HTTP client. Disable automatic redirects; only official article URLs are requested.</remarks>
 public sealed class GXDLMSHelpArticleReader : IDisposable
 {
+    /// <summary>Reads and sanitizes official Gurux help articles.</summary>
     private readonly GXHelpArticleReader _reader;
 
     /// <summary>Creates an article reader using the caller-owned HTTP client.</summary>
+    /// <param name="http">The HTTP client used to load official Gurux help articles.</param>
     public GXDLMSHelpArticleReader(HttpClient http)
     {
         _reader = new GXHelpArticleReader(http, IsOfficialArticle);
     }
 
     /// <summary>Loads the requested language, falling back to English when a translation is absent.</summary>
+    /// <param name="request">The help topic, version and culture to load.</param>
+    /// <param name="cancellationToken">Cancels the pending article load.</param>
+    /// <returns></returns>
     public async Task<string?> LoadHtmlAsync(GXHelpRequest request, CancellationToken cancellationToken = default)
     {
         cancellationToken.ThrowIfCancellationRequested();
@@ -56,6 +61,9 @@ public sealed class GXDLMSHelpArticleReader : IDisposable
         return await _reader.LoadHtmlAsync(address, fallbackAddress, cancellationToken).ConfigureAwait(false);
     }
 
+    /// <summary>Determines whether a URL identifies an official Gurux object help article.</summary>
+    /// <param name="address">The article URL to check against the official host and object paths.</param>
+    /// <returns>True when the requested condition is satisfied; otherwise, false.</returns>
     private static bool IsOfficialArticle(Uri address)
     {
         return address.IsAbsoluteUri

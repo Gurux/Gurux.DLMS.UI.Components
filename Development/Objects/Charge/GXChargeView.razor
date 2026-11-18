@@ -39,37 +39,37 @@
 @inherits GXDLMSObjectViewBase<GXDLMSCharge>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Charge Object" Target="Target" Edit="Edit" Error="@ActionError" />
-<GXTabControl NavigateOnSelection="false"><GXTabPage Text="General"><GXAttributeField Edit="Edit" Index="2" Label="Total Amount Paid" Enabled="CanEditAttribute(2)" />
-<GXAttributeField Edit="Edit" Index="3" Label="Charge Type" Enabled="CanEditAttribute(3)" EnumType="typeof(ChargeType)" />
-<GXAttributeField Edit="Edit" Index="4" Label="Priority" Enabled="CanEditAttribute(4)" />
-<GXAttributeField Edit="Edit" Index="7" Label="Unit Charge Activation Time" Enabled="CanEditAttribute(7)" />
-<GXAttributeField Edit="Edit" Index="8" Label="Period" Enabled="CanEditAttribute(8)" />
-<GXAttributeField Edit="Edit" Index="9" Label="Charge Configuration" Enabled="CanEditAttribute(9)" EnumType="typeof(ChargeConfiguration)" />
-<GXAttributeField Edit="Edit" Index="10" Label="Last Collection Time" Enabled="CanEditAttribute(10)" />
-<GXAttributeField Edit="Edit" Index="11" Label="Last Collection Amount" Enabled="CanEditAttribute(11)" />
-<GXAttributeField Edit="Edit" Index="12" Label="Total Amount Remaining" Enabled="CanEditAttribute(12)" />
-<GXAttributeField Edit="Edit" Index="13" Label="Proportion" Enabled="CanEditAttribute(13)" /></GXTabPage><GXTabPage Text="Unit Charge Active">
-<fieldset><legend>Charge Per Unit Scaling Type</legend>
-    <GXAttributeField Edit="Edit" Index="5" Path="0.0" Label="Commodity Scale" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="5" Path="0.1" Label="Price Scale" Enabled="CanEditAttribute(5)" />
+    <GXObjectViewHeader Title="@Properties.Resources.ChargeObject" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXTabControl NavigateOnSelection="false"><GXTabPage Text="@Properties.Resources.General"><GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.TotalAmountPaid" Enabled="CanEditAttribute(2)" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ChargeType" Enabled="CanEditAttribute(3)" EnumType="typeof(ChargeType)" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.Priority" Enabled="CanEditAttribute(4)" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.UnitChargeActivationTime" Enabled="CanEditAttribute(7)" />
+<GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Period" Enabled="CanEditAttribute(8)" />
+<GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.ChargeConfiguration" Enabled="CanEditAttribute(9)" EnumType="typeof(ChargeConfiguration)" />
+<GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.LastCollectionTime" Enabled="CanEditAttribute(10)" />
+<GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.LastCollectionAmount" Enabled="CanEditAttribute(11)" />
+<GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.TotalAmountRemaining" Enabled="CanEditAttribute(12)" />
+<GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.Proportion" Enabled="CanEditAttribute(13)" /></GXTabPage><GXTabPage Text="@Properties.Resources.UnitChargeActive">
+<fieldset><legend>@Properties.Resources.ChargePerUnitScalingType</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="0.0" Label="@Properties.Resources.CommodityScale" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="0.1" Label="@Properties.Resources.PriceScale" Enabled="CanEditAttribute(5)" />
 </fieldset>
-<fieldset><legend>Commodity Reference Type</legend>
-    <GXAttributeField Edit="Edit" Index="5" Path="1.0" Label="Object Type" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="5" Path="1.1" Label="Target" Enabled="CanEditAttribute(5)" />
-    <GXAttributeField Edit="Edit" Index="5" Path="1.2" Label="Index" Enabled="CanEditAttribute(5)" />
+<fieldset><legend>@Properties.Resources.CommodityReferenceType</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="1.0" Label="@Properties.Resources.ObjectType" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="1.1" Label="@Properties.Resources.Target" Enabled="CanEditAttribute(5)" />
+    <GXAttributeField Edit="Edit" Index="5" Path="1.2" Label="@Properties.Resources.Index" Enabled="CanEditAttribute(5)" />
 </fieldset>
-<fieldset><legend>Charge Tables</legend>
-    <GXAttributeField Edit="Edit" Index="5" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="Charge Tables" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Index", "Charge Per Unit" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true" title="This action is not available.">Collect</GXButton><GXButton type="button" Disabled="true">Update Total...</GXButton><GXButton type="button" Disabled="true">Set Total...</GXButton></fieldset></GXTabPage><GXTabPage Text="Unit Charge Passive">
-<fieldset><legend>Charge Per Unit Scaling Type</legend>
-    <GXAttributeField Edit="Edit" Index="6" Path="0.0" Label="Commodity Scale" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="6" Path="0.1" Label="Price Scale" Enabled="CanEditAttribute(6)" />
+<fieldset><legend>@Properties.Resources.ChargeTables</legend>
+    <GXAttributeField Edit="Edit" Index="5" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="@Properties.Resources.ChargeTables" Enabled="CanEditAttribute(5)" Columns="@(new[] { Properties.Resources.Index, Properties.Resources.ChargePerUnit })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.Collect</GXButton><GXButton type="button" Disabled="true">@Properties.Resources.UpdateTotal</GXButton><GXButton type="button" Disabled="true">@Properties.Resources.SetTotal</GXButton></fieldset></GXTabPage><GXTabPage Text="@Properties.Resources.UnitChargePassive">
+<fieldset><legend>@Properties.Resources.ChargePerUnitScalingType</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="0.0" Label="@Properties.Resources.CommodityScale" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="0.1" Label="@Properties.Resources.PriceScale" Enabled="CanEditAttribute(6)" />
 </fieldset>
-<fieldset><legend>Commodity Reference Type</legend>
-    <GXAttributeField Edit="Edit" Index="6" Path="1.0" Label="Object Type" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="6" Path="1.1" Label="Target" Enabled="CanEditAttribute(6)" />
-    <GXAttributeField Edit="Edit" Index="6" Path="1.2" Label="Index" Enabled="CanEditAttribute(6)" />
+<fieldset><legend>@Properties.Resources.CommodityReferenceType</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="1.0" Label="@Properties.Resources.ObjectType" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="1.1" Label="@Properties.Resources.Target" Enabled="CanEditAttribute(6)" />
+    <GXAttributeField Edit="Edit" Index="6" Path="1.2" Label="@Properties.Resources.Index" Enabled="CanEditAttribute(6)" />
 </fieldset>
-<fieldset><legend>Charge Tables</legend>
-    <GXAttributeField Edit="Edit" Index="6" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="Charge Tables" Enabled="CanEditAttribute(6)" Columns="@(new[] { "Index", "Charge Per Unit" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true">Update</GXButton><GXButton type="button" Disabled="true">Activate</GXButton></fieldset></GXTabPage></GXTabControl>
+<fieldset><legend>@Properties.Resources.ChargeTables</legend>
+    <GXAttributeField Edit="Edit" Index="6" Path="2" EditorKinds="@(new[] { "hex", "number" })" Label="@Properties.Resources.ChargeTables" Enabled="CanEditAttribute(6)" Columns="@(new[] { Properties.Resources.Index, Properties.Resources.ChargePerUnit })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), (short)0 })" /><GXButton type="button" Disabled="true">@Properties.Resources.Update</GXButton><GXButton type="button" Disabled="true">@Properties.Resources.Activate</GXButton></fieldset></GXTabPage></GXTabControl>
 </section>

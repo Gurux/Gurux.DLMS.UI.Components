@@ -39,63 +39,63 @@
 
 <section class="gx-network-view" @key="Target">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="S-FSK Phy MAC Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.SFSKPhyMACSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Initiator Electrical Phase:" Enabled="CanEditAttribute(2)" EnumType="typeof(InitiatorElectricalPhase)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.InitiatorElectricalPhaseLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(InitiatorElectricalPhase)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Delta Electrical Phase:" Enabled="CanEditAttribute(3)" EnumType="typeof(DeltaElectricalPhase)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.DeltaElectricalPhaseLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(DeltaElectricalPhase)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Max Receiving Gain:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.MaxReceivingGainLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Max Transmitting Gain:" Enabled="CanEditAttribute(5)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaxTransmittingGainLabel" Enabled="CanEditAttribute(5)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Search initiator threshold:" Enabled="CanEditAttribute(6)"  />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.SearchInitiatorThresholdLabel" Enabled="CanEditAttribute(6)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Part="0" Label="Mark frequency (Hz):" Enabled="CanEditAttribute(7)" />
-        <GXAttributeField Edit="Edit" Index="7" Part="1" Label="Space frequency (Hz):" Enabled="CanEditAttribute(7)" />
+        <GXAttributeField Edit="Edit" Index="7" Part="0" Label="@Properties.Resources.MarkFrequencyHzLabel" Enabled="CanEditAttribute(7)" />
+        <GXAttributeField Edit="Edit" Index="7" Part="1" Label="@Properties.Resources.SpaceFrequencyHzLabel" Enabled="CanEditAttribute(7)" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="MAC Address:" Enabled="CanEditAttribute(8)"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.MACAddressLabel" Enabled="CanEditAttribute(8)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="MAC Group Addresses:" Enabled="CanEditAttribute(9)" Columns='@(new[] { "MAC Group Address" })' CreateRow='@(() => (ushort)0)' />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.MACGroupAddressesLabel" Enabled="CanEditAttribute(9)" Columns='@(new[] { Properties.Resources.MACGroupAddress })' CreateRow='@(() => (ushort)0)' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
     {
-        <GXAttributeField Edit="Edit" Index="10" Label="Repeater:" Enabled="CanEditAttribute(10)" EnumType="typeof(Repeater)"  />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.RepeaterLabel" Enabled="CanEditAttribute(10)" EnumType="typeof(Repeater)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
     {
-        <GXAttributeField Edit="Edit" Index="11" Label="Repeater status:" InputKind="bool" Enabled="CanEditAttribute(11)"  />
+        <GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.RepeaterStatusLabel" InputKind="bool" Enabled="CanEditAttribute(11)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
     {
-        <GXAttributeField Edit="Edit" Index="12" Label="Min Delta Credit:" Enabled="CanEditAttribute(12)"  />
+        <GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.MinDeltaCreditLabel" Enabled="CanEditAttribute(12)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
     {
-        <GXAttributeField Edit="Edit" Index="13" Label="Initiator MAC Address:" Enabled="CanEditAttribute(13)"  />
+        <GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.InitiatorMACAddressLabel" Enabled="CanEditAttribute(13)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
     {
-        <GXAttributeField Edit="Edit" Index="14" Label="Synchronization locked:" InputKind="bool" Enabled="CanEditAttribute(14)"  />
+        <GXAttributeField Edit="Edit" Index="14" Label="@Properties.Resources.SynchronizationLockedLabel" InputKind="bool" Enabled="CanEditAttribute(14)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
     {
-        <GXAttributeField Edit="Edit" Index="15" Label="Transmission speed:" Enabled="CanEditAttribute(15)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="15" Label="@Properties.Resources.TransmissionSpeedLabel" Enabled="CanEditAttribute(15)" EnumType="typeof(BaudRate)"  />
     }
 </div>
 </section>

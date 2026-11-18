@@ -41,66 +41,69 @@
 @inherits GXDLMSObjectViewBase<GXDLMSImageTransfer>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Image Transfer Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.ImageTransferObject" />
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Image Block Size:" Enabled="CanEditAttribute(2)" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ImageBlockSizeLabel" Enabled="CanEditAttribute(2)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
 {
-<GXAttributeField Edit="Edit" Index="3" Label="Blocks Status:" Enabled="CanEditAttribute(3)" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.BlocksStatusLabel" Enabled="CanEditAttribute(3)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
 {
-<GXAttributeField Edit="Edit" Index="4" Label="First Block:" Enabled="CanEditAttribute(4)" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.FirstBlockLabel" Enabled="CanEditAttribute(4)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
 {
-<GXAttributeField Edit="Edit" Index="5" Label="Enabled:" Enabled="CanEditAttribute(5)" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.EnabledLabel" Enabled="CanEditAttribute(5)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
 {
-<GXAttributeField Edit="Edit" Index="6" Label="Status:" Enabled="CanEditAttribute(6)" EnumType="typeof(ImageTransferStatus)" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.StatusLabel" Enabled="CanEditAttribute(6)" EnumType="typeof(ImageTransferStatus)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
 {
-<GXAttributeField Edit="Edit" Index="7" Label="Images:" Enabled="CanEditAttribute(7)" Columns="@(new[] { "Size", "Identification", "Signature" })" EditorKinds="@(new[] { "number", "hex", "hex" })" />
+<GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.ImagesLabel" Enabled="CanEditAttribute(7)" Columns="@(new[] { Properties.Resources.Size, Properties.Resources.Identification, Properties.Resources.Signature })" EditorKinds="@(new[] { "number", "hex", "hex" })" />
 }
-<fieldset><legend>Image transfer</legend>
-<GXValueField Label="Image file:" Value="@ImageFileName" Enabled="false" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1) && !CanInvokeMethod(2))" OnClick="BeginImageFile">Browse...</GXButton>
+<fieldset><legend>@Properties.Resources.ImageTransfer</legend>
+<GXValueField Label="@Properties.Resources.ImageFileLabel" Value="@ImageFileName" Enabled="false" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1) && !CanInvokeMethod(2))" OnClick="BeginImageFile">@Properties.Resources.Browse</GXButton>
 @if (EditingImageFile)
 {
-    <GXDialog Id="@_fileDialogId" Title="Image file" Save="false" ManageFocus="true" OkButtonTitle="" OnOk="AcceptImageFile" OnCancel="CancelImageFile" class="gx-object-editor-dialog">
+    <GXDialog Id="@_fileDialogId" Title="@Properties.Resources.ImageFile" Save="false" ManageFocus="true" OkButtonTitle="" OnOk="AcceptImageFile" OnCancel="CancelImageFile" class="gx-object-editor-dialog">
         <ChildContent>
             @if (_fileError is not null) { <p role="alert">@_fileError</p> }
-            <div class="gx-dialog-field"><GXLabel>Image:</GXLabel>
+            <div class="gx-dialog-field"><GXLabel>@Properties.Resources.ImageLabel</GXLabel>
                 <GXFileSelector TType="byte[]" MaxFileSize="int.MaxValue" OnLoaded="LoadImageFile" Disabled="@(!CanInvokeMethod(1) && !CanInvokeMethod(2))" />
             </div>
-            <GXValueField Label="Selected file:" Value="@_draftFileName" Enabled="false" />
+            <GXValueField Label="@Properties.Resources.SelectedFileLabel" Value="@_draftFileName" Enabled="false" />
         </ChildContent>
-        <FooterContent><GXButton type="button" Disabled="@(!CanInvokeMethod(1) && !CanInvokeMethod(2))" OnClick="AcceptImageFile">OK</GXButton></FooterContent>
+        <FooterContent><GXButton type="button" Disabled="@(!CanInvokeMethod(1) && !CanInvokeMethod(2))" OnClick="AcceptImageFile">@Properties.Resources.OK</GXButton></FooterContent>
     </GXDialog>
 }
 
-<GXValueField Label="Identifier (hex):" Value="@IdentifierText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { IdentifierText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "An image identifier is required.")))" />
-<GXValueField Label="Identifier signature (hex, optional):" Value="@SignatureText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { SignatureText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
-<GXValueField Label="Image (hex):" Value="@ImageText" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2)) { ImageText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, "Select a nonempty image.")))" />
-<GXValueField Label="Resume block index:" Value="@ResumeIndexText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ResumeIndexText = value; } })" InputKind="number" Validate="@(value => int.TryParse(value, out var index) && index >= 0 ? null : "Enter a nonnegative block index.")" />
-<GXValueField Label="Received blocks bit string (optional):" Value="@BlocksStatusText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { BlocksStatusText = value; } })" Validate="@(ValidateBlocksStatus)" />
-<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InitiateAsync">Update Image...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="TransferAsync">Transfer image blocks</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="VerifyAsync">Verify Image...</GXButton>
-<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="ActivateAsync">Activate Image...</GXButton>
-<p>Read status after transfer, verification and activation. Resume uses the meter's block status or first missing block index.</p>
+<GXValueField Label="@Properties.Resources.IdentifierHexLabel" Value="@IdentifierText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { IdentifierText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, Properties.Resources.AnImageIdentifierIsRequired)))" />
+<GXValueField Label="@Properties.Resources.IdentifierSignatureHexOptionalLabel" Value="@SignatureText" Enabled="@(CanInvokeMethod(1))" OnCommit="@((string value) => { if (CanInvokeMethod(1)) { SignatureText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => Hex(value)))" />
+<GXValueField Label="@Properties.Resources.ImageHexLabel" Value="@ImageText" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(1) || CanInvokeMethod(2)) { ImageText = value; } })" InputKind="hex" Validate="@(value => CheckParameter(() => RequireParameter(Hex(value).Length > 0, Properties.Resources.SelectANonemptyImage)))" />
+<GXValueField Label="@Properties.Resources.ResumeBlockIndexLabel" Value="@ResumeIndexText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { ResumeIndexText = value; } })" InputKind="number" Validate="@(value => int.TryParse(value, out var index) && index >= 0 ? null : Properties.Resources.EnterANonnegativeBlockIndex)" />
+<GXValueField Label="@Properties.Resources.ReceivedBlocksBitStringOptionalLabel" Value="@BlocksStatusText" Enabled="@(CanInvokeMethod(2))" OnCommit="@((string value) => { if (CanInvokeMethod(2)) { BlocksStatusText = value; } })" Validate="@(ValidateBlocksStatus)" />
+<GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="InitiateAsync">@Properties.Resources.UpdateImage</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="TransferAsync">@Properties.Resources.TransferImageBlocks</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="VerifyAsync">@Properties.Resources.VerifyImage</GXButton>
+<GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="ActivateAsync">@Properties.Resources.ActivateImage</GXButton>
+<p>@Properties.Resources.ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex</p>
 </fieldset>
 <GXTable @key="Target" @ref="_logTable" TItem="ImageLogEntry" ItemsProvider="ImageLogItems" Filter="false" Menu="false" Total="false" ShowAllData="true" Save="false" AllowColumnCustomization="false">
-<HeaderContent><GXTh TItem="ImageLogEntry">Time</GXTh><GXTh TItem="ImageLogEntry">Description</GXTh></HeaderContent>
+<HeaderContent><GXTh TItem="ImageLogEntry">@Properties.Resources.Time</GXTh><GXTh TItem="ImageLogEntry">@Properties.Resources.Description</GXTh></HeaderContent>
 <ItemContent Context="row"><GXTd>@row.Time.ToString("T")</GXTd><GXTd>@row.Description</GXTd></ItemContent>
 </GXTable>
 </section>
 
 @code {
+    /// <summary>Runs parameter validation and converts validation exceptions into input error text.</summary>
+    /// <param name="validate">The validation callback whose input exceptions become error text.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? CheckParameter(Action validate)
     {
         try
@@ -110,6 +113,9 @@
         }
         catch (Exception error) when (error is not OutOfMemoryException) { return error.Message; }
     }
+    /// <summary>Throws an argument exception when a method parameter condition is not satisfied.</summary>
+    /// <param name="valid">Whether the required parameter condition is satisfied.</param>
+    /// <param name="message">The error shown when the required condition is not satisfied.</param>
     private static void RequireParameter(bool valid, string message)
     {
         if (!valid)
@@ -118,15 +124,18 @@
         }
     }
 
+    /// <summary>Checks that the image block-status bit string matches the image block count.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private string? ValidateBlocksStatus(string text) => CheckParameter(() =>
     {
         if (string.IsNullOrWhiteSpace(text))
         {
             return;
         }
-        RequireParameter(Target.ImageBlockSize > 0, "Read a nonzero image block size before entering block status.");
+        RequireParameter(Target.ImageBlockSize > 0, Properties.Resources.ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus);
         var count = (Image().LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
-        RequireParameter(text.Length == count && text.All(c => c is '0' or '1'), "Block status must contain one zero or one per image block.");
+        RequireParameter(text.Length == count && text.All(c => c is '0' or '1'), Properties.Resources.BlockStatusMustContainOneZeroOrOnePerImageBlock);
     });
 
     /// <summary>
@@ -140,13 +149,23 @@
     {
         get; private set;
     }
+    /// <summary>Identifies the image-transfer model associated with the selected file. Retains the previous image-transfer model to detect target changes.</summary>
     private GXDLMSImageTransfer? _fileTarget, _lastTarget;
+    /// <summary>Holds the selected image bytes until a transfer request consumes them.</summary>
     private byte[]? _draftImage;
+    /// <summary>Stores the selected image file&apos;s display name.</summary>
     private string _draftFileName = string.Empty;
+    /// <summary>Stores the file-selection validation error displayed in the image view.</summary>
     private string? _fileError;
+    /// <summary>Identifies the image-file selection dialog for focus management.</summary>
     private readonly string _fileDialogId = $"gx-image-file-{Guid.NewGuid():N}";
+    /// <summary>Carries a local timestamp and the outcome of an image-transfer request.</summary>
+    /// <param name="Time">The local time at which the request completed.</param>
+    /// <param name="Description">The result or error recorded for the request.</param>
     private sealed record ImageLogEntry(DateTime Time, string Description);
+    /// <summary>Stores the timestamped outcomes of image-transfer method requests.</summary>
     private readonly List<ImageLogEntry> _imageLog = new();
+    /// <summary>References the image-transfer log table for refresh after a request.</summary>
     private GXTable<ImageLogEntry>? _logTable;
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -199,7 +218,7 @@
         }
         if (_draftImage is not { Length: > 0 })
         {
-            _fileError = "Select a nonempty image file.";
+            _fileError = Properties.Resources.SelectANonemptyImageFile;
             return;
         }
         ImageText = Convert.ToHexString(_draftImage);
@@ -217,8 +236,15 @@
         _draftFileName = string.Empty;
         _fileError = null;
     }
+    /// <summary>Supplies the image-transfer request log and its total count.</summary>
+    /// <param name="request">The table request; this provider returns the complete current row set.</param>
+    /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<ImageLogEntry>> ImageLogItems(GXItemsProviderRequest request)
         => ValueTask.FromResult(new ItemsProviderResult<ImageLogEntry>(_imageLog.ToArray(), _imageLog.Count));
+    /// <summary>Executes an image-transfer method and appends its outcome to the local log.</summary>
+    /// <param name="method">The one-based COSEM method index to request.</param>
+    /// <param name="messages">Creates the protocol messages using the host-supplied client.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private async Task RunImageMethodAsync(int method, Func<GXDLMSClient, byte[][]> messages)
     {
         if (!CanInvokeMethod(method))
@@ -233,12 +259,12 @@
         }
         var operation = method switch
         {
-            1 => "Image initiation",
-            2 => "Image block transfer",
-            3 => "Image verification",
-            _ => "Image activation"
+            1 => Properties.Resources.ImageInitiation,
+            2 => Properties.Resources.ImageBlockTransfer,
+            3 => Properties.Resources.ImageVerification,
+            _ => Properties.Resources.ImageActivation
         };
-        _imageLog.Add(new ImageLogEntry(DateTime.Now, ActionError ?? $"{operation} request completed."));
+        _imageLog.Add(new ImageLogEntry(DateTime.Now, ActionError ?? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0RequestCompleted, operation)));
         if (_logTable is not null)
         {
             await _logTable.RefreshDataAsync(false);
@@ -265,13 +291,18 @@
     /// Transferred-block status bit string used to resume transfer.
     /// </summary>
     public string BlocksStatusText { get; set; } = "";
+    /// <summary>Decodes hexadecimal input after removing whitespace.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The decoded bytes after validation.</returns>
     private static byte[] Hex(string text) => Convert.FromHexString(new string(text.Where(c => !char.IsWhiteSpace(c)).ToArray()));
+    /// <summary>Returns the selected image bytes or decodes the hexadecimal image input.</summary>
+    /// <returns>The selected image bytes or decodes the hexadecimal image input.</returns>
     private byte[] Image()
     {
         var image = Hex(ImageText);
         if (image.Length == 0)
         {
-            throw new ArgumentException("Select a nonempty image.");
+            throw new ArgumentException(Properties.Resources.SelectANonemptyImage);
         }
         return image;
     }
@@ -284,7 +315,7 @@
         var identifier = Hex(IdentifierText);
         if (identifier.Length == 0)
         {
-            throw new ArgumentException("An image identifier is required.");
+            throw new ArgumentException(Properties.Resources.AnImageIdentifierIsRequired);
         }
         return Target.ImageTransferInitiate(client, identifier.Concat(Hex(SignatureText)).ToArray(), Image().LongLength);
     });
@@ -297,21 +328,21 @@
         var image = Image();
         if (Target.ImageBlockSize == 0)
         {
-            throw new ArgumentException("Read a nonzero image block size before transfer.");
+            throw new ArgumentException(Properties.Resources.ReadANonzeroImageBlockSizeBeforeTransfer);
         }
         var count = (image.LongLength + Target.ImageBlockSize - 1) / Target.ImageBlockSize;
         if (!string.IsNullOrWhiteSpace(BlocksStatusText))
         {
             if (BlocksStatusText.Length != count || BlocksStatusText.Any(c => c != '0' && c != '1'))
             {
-                throw new ArgumentException("Block status must contain one zero or one per image block.");
+                throw new ArgumentException(Properties.Resources.BlockStatusMustContainOneZeroOrOnePerImageBlock);
             }
             return Target.ImageBlockTransfer(client, image, BlocksStatusText, out _);
         }
         var index = int.Parse(ResumeIndexText, System.Globalization.CultureInfo.InvariantCulture);
         if (index < 0 || index >= count)
         {
-            throw new ArgumentException("Resume index must identify an image block.");
+            throw new ArgumentException(Properties.Resources.ResumeIndexMustIdentifyAnImageBlock);
         }
         return Target.ImageBlockTransfer(client, image, index, out _);
     });

@@ -38,49 +38,53 @@
 @inherits GXDLMSObjectViewBase<GXDLMSDataProtection>
 
 <section class="gx-object-view" @key="Target">
-<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="Data Protection Object" />
+<GXObjectViewHeader Target="Target" Edit="Edit" Error="@ActionError" Title="@Properties.Resources.DataProtectionObject" />
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
 {
-<GXAttributeField Edit="Edit" Index="2" Label="Protection Buffer:" Enabled="CanEditAttribute(2)" />
+<GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ProtectionBufferLabel" Enabled="CanEditAttribute(2)" />
 }
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
 {
-<GXAttributeField Edit="Edit" Index="6" Label="Required Protection:" Enabled="CanEditAttribute(6)" />
+<GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.RequiredProtectionLabel" Enabled="CanEditAttribute(6)" />
 }
-<fieldset><legend>Protection:</legend>
+<fieldset><legend>@Properties.Resources.ProtectionLabel</legend>
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="Objects">
+<GXTabPage Text="@Properties.Resources.Objects">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
 {
-<GXAttributeField Edit="Edit" Index="3" Label="Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Object type:", "Logical Name:", "Attribute Index:", "Data index:" })" ColumnIndices="@(new[] { 0, 1, 2, 3 })" CreateRow="CreateProtectedObject" EditorKinds="@(new[] { "number", "logicalname", "number", "number" })" />
+<GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.Objects" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.ObjectTypeLabel, Properties.Resources.LogicalNameLabel, Properties.Resources.AttributeIndexLabel, Properties.Resources.DataIndexLabel })" ColumnIndices="@(new[] { 0, 1, 2, 3 })" CreateRow="CreateProtectedObject" EditorKinds="@(new[] { "number", "logicalname", "number", "number" })" />
 }
 </GXTabPage>
-<GXTabPage Text="Get Parameters">
+<GXTabPage Text="@Properties.Resources.GetParameters">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
 {
-<GXAttributeField Edit="Edit" Index="4" Label="Get Parameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { "Protection Type", "Transaction ID", "Originator System Title", "Recipient System Title", "Other Information", "Key Info" })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
+<GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.GetParameters" Enabled="CanEditAttribute(4)" Columns="@(new[] { Properties.Resources.ProtectionType, Properties.Resources.TransactionID, Properties.Resources.OriginatorSystemTitle, Properties.Resources.RecipientSystemTitle, Properties.Resources.OtherInformation, Properties.Resources.KeyInfo })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
 }
 </GXTabPage>
-<GXTabPage Text="Set Parameters">
+<GXTabPage Text="@Properties.Resources.SetParameters">
 @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
 {
-<GXAttributeField Edit="Edit" Index="5" Label="Set Parameters" Enabled="CanEditAttribute(5)" Columns="@(new[] { "Protection Type", "Transaction ID", "Originator System Title", "Recipient System Title", "Other Information", "Key Info" })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
+<GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.SetParameters" Enabled="CanEditAttribute(5)" Columns="@(new[] { Properties.Resources.ProtectionType, Properties.Resources.TransactionID, Properties.Resources.OriginatorSystemTitle, Properties.Resources.RecipientSystemTitle, Properties.Resources.OtherInformation, Properties.Resources.KeyInfo })" ColumnPaths="@(new[] { "0", "1.0", "1.1", "1.2", "1.3", "1.4" })" CreateRow="CreateProtectionParameter" EditorKinds="@(new[] { "number", "hex", "hex", "hex", "hex", "text" })" />
 }
 </GXTabPage>
 </GXTabControl>
 </fieldset>
-<p role="status">Protected get, set and method messages are unavailable in Gurux.DLMS 9.0.2609.2201. The object API does not implement these operations.</p>
-<GXButton type="button" Disabled="true">Get protected attributes</GXButton>
-<GXButton type="button" Disabled="true">Set protected attributes</GXButton>
-<GXButton type="button" Disabled="true">Invoke protected method</GXButton>
+<p role="status">@Properties.Resources.ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations</p>
+<GXButton type="button" Disabled="true">@Properties.Resources.GetProtectedAttributes</GXButton>
+<GXButton type="button" Disabled="true">@Properties.Resources.SetProtectedAttributes</GXButton>
+<GXButton type="button" Disabled="true">@Properties.Resources.InvokeProtectedMethod</GXButton>
 </section>
 
 @code {
+    /// <summary>Creates a default protected-object descriptor structure.</summary>
+    /// <returns>A default protected-object descriptor structure.</returns>
     private static object CreateProtectedObject() => new GXStructure
 {
     (ushort)ObjectType.Data, new byte[6], (sbyte)2, (ushort)0,
     new GXStructure { new GXEnum(0), null! }
 };
+    /// <summary>Creates the default nested structure for a protection parameter.</summary>
+    /// <returns>The default nested structure for a protection parameter.</returns>
     private static object CreateProtectionParameter() => new GXStructure
 {
     new GXEnum(0), new GXStructure

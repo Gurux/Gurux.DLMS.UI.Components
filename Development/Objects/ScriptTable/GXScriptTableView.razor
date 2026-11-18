@@ -38,11 +38,11 @@
 @inherits GXDLMSObjectViewBase<GXDLMSScriptTable>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Script Table Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" EditorTypePaths="@(new[] { "1.*.4" })" EditorPathLabels="ScriptLabels" EditorPathKinds="ScriptKinds" Label="Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Script Id", "Actions" })" CreateRow="@(() => new GXStructure { (ushort)1, new GXArray { new GXStructure { (byte)1, (ushort)1, new byte[6], (sbyte)2, (byte)0 } } })" />
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Script ID (0–65535)" Value="@ScriptId" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => ScriptId = value" Validate="text => ValidateParameter(nameof(ScriptId), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ExecuteAsync">Execute script</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.ScriptTableObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" EditorTypePaths="@(new[] { "1.*.4" })" EditorPathLabels="ScriptLabels" EditorPathKinds="_scriptKinds" Label="@Properties.Resources.Scripts" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.ScriptId, Properties.Resources.Actions })" CreateRow="@(() => new GXStructure { (ushort)1, new GXArray { new GXStructure { (byte)1, (ushort)1, new byte[6], (sbyte)2, (byte)0 } } })" />
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.ScriptID065535" Value="@ScriptId" Enabled="@(CanInvokeMethod(1))" InputKind="number" OnCommit="value => ScriptId = value" Validate="text => ValidateParameter(nameof(ScriptId), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ExecuteAsync">@Properties.Resources.ExecuteScript</GXButton>
     </fieldset>
 </section>
 
@@ -57,6 +57,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task ExecuteAsync() => InvokeMethodAsync(1, client => Target.Execute(client, ushort.Parse(ScriptId, CultureInfo.InvariantCulture)));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -73,18 +77,20 @@
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
-    private static readonly IReadOnlyDictionary<string, string> ScriptLabels = new Dictionary<string, string>
+    /// <summary>Maps nested script-table paths to their editor field captions.</summary>
+    private static IReadOnlyDictionary<string, string> ScriptLabels => new Dictionary<string, string>
     {
-        ["0"] = "Identifier",
-        ["1"] = "Actions",
-        ["1.*"] = "Action",
-        ["1.*.0"] = "Type",
-        ["1.*.1"] = "Object",
-        ["1.*.2"] = "Name",
-        ["1.*.3"] = "Index",
-        ["1.*.4"] = "Parameters"
+        ["0"] = Properties.Resources.Identifier,
+        ["1"] = Properties.Resources.Actions,
+        ["1.*"] = Properties.Resources.Action,
+        ["1.*.0"] = Properties.Resources.Type,
+        ["1.*.1"] = Properties.Resources.Object,
+        ["1.*.2"] = Properties.Resources.Name,
+        ["1.*.3"] = Properties.Resources.Index,
+        ["1.*.4"] = Properties.Resources.Parameters
     };
-    private static readonly IReadOnlyDictionary<string, string> ScriptKinds = new Dictionary<string, string>
+    /// <summary>Maps nested script-table paths to their scalar input kinds.</summary>
+    private static readonly IReadOnlyDictionary<string, string> _scriptKinds = new Dictionary<string, string>
     {
         ["1.*.2"] = "logicalname"
     };

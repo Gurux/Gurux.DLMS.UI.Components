@@ -41,72 +41,80 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="Ip6 Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.Ip6SetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Data link layer:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.DataLinkLayerLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Address config mode:" Enabled="CanEditAttribute(3)" EnumType="typeof(AddressConfigMode)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.AddressConfigModeLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(AddressConfigMode)"  />
     }
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="Unicast:">
+<GXTabPage Text="@Properties.Resources.UnicastLabel">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Unicast IP Address" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.UnicastIPAddress" Enabled="CanEditAttribute(4)" Columns='@(new[] { "_address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
     }
 </GXTabPage>
-<GXTabPage Text="Multicast:">
+<GXTabPage Text="@Properties.Resources.MulticastLabel">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Multicast IP Address" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MulticastIPAddress" Enabled="CanEditAttribute(5)" Columns='@(new[] { "_address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
     }
 </GXTabPage>
-<GXTabPage Text="Gateway:">
+<GXTabPage Text="@Properties.Resources.GatewayLabel">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Gateway IP Address" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.GatewayIPAddress" Enabled="CanEditAttribute(6)" Columns='@(new[] { "_address" })' CreateRow='@(() => new byte[16])' InputKind="ip" />
     }
 </GXTabPage>
 </GXTabControl>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Primary DNS Address:" Enabled="CanEditAttribute(7)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.PrimaryDNSAddressLabel" Enabled="CanEditAttribute(7)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Secondary DNS Address:" Enabled="CanEditAttribute(8)" InputKind="ip"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.SecondaryDNSAddressLabel" Enabled="CanEditAttribute(8)" InputKind="ip"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Traffic class:" Enabled="CanEditAttribute(9)"  />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.TrafficClassLabel" Enabled="CanEditAttribute(9)"  />
     }
-<fieldset class="gx-object-fields"><legend>Neighbor Discovery Setup</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.NeighborDiscoverySetup</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
     {
-        <GXAttributeField Edit="Edit" Index="10" Label="Neighbor Discovery Setup" Enabled="CanEditAttribute(10)" Columns='@(new[] { "RS Max Retry", "RS retry wait time", "RA send period" })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (uint)0 })' />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.NeighborDiscoverySetup" Enabled="CanEditAttribute(10)" Columns='@(new[] { Properties.Resources.RSMaxRetry, Properties.Resources.RSRetryWaitTime, Properties.Resources.RASendPeriod })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (uint)0 })' />
     }
 </fieldset>
 </div>
 </section>
 <section class="gx-object-actions">
-    <GXValueField @key='@((Target, "Address type"))' Label="Address type" Value="@AddressType.ToString()" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" EnumType="typeof(IPv6AddressType)" OnCommit="@(value => AddressType = Enum.Parse<IPv6AddressType>(value))" Validate='@(value => Enum.TryParse<IPv6AddressType>(value, out var type) && Enum.IsDefined(type) ? null : "Select a supported address type.")' />
-    <GXValueField @key='@((Target, "IPv6 address"))' Label="IPv6 address" Value="@Address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => Address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6 ? null : "Enter an IPv6 address.")' />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">Add IPv6 address</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RemoveAsync">Remove IPv6 address</GXButton></section>
+    <GXValueField @key='@((Target, Properties.Resources.AddressType))' Label="@Properties.Resources.AddressType" Value="@_addressType.ToString()" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" EnumType="typeof(IPv6AddressType)" OnCommit="@(value => _addressType = Enum.Parse<IPv6AddressType>(value))" Validate='@(value => Enum.TryParse<IPv6AddressType>(value, out var type) && Enum.IsDefined(type) ? null : Properties.Resources.SelectASupportedAddressType)' />
+    <GXValueField @key='@((Target, Properties.Resources.IPv6Address))' Label="@Properties.Resources.IPv6Address" Value="@_address" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2))" InputKind="ip" OnCommit="@(value => _address = value)" Validate='@(value => IPAddress.TryParse(value, out var address) && address.AddressFamily == System.Net.Sockets.AddressFamily.InterNetworkV6 ? null : Properties.Resources.EnterAnIPv6Address)' />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddAsync">@Properties.Resources.AddIPv6Address</GXButton><GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RemoveAsync">@Properties.Resources.RemoveIPv6Address</GXButton></section>
 @code {
-    private IPv6AddressType AddressType;
-    private string Address = "";
+    /// <summary>Selects the IPv6 address category used by add and remove requests.</summary>
+    private IPv6AddressType _addressType;
+    /// <summary>Retains the address text supplied to the object&apos;s address methods.</summary>
+    private string _address = "";
+    /// <summary>Parses and validates an IP address of the family required by this object.</summary>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     private IPAddress ParseAddress()
     {
-        var address = IPAddress.Parse(Address);
+        var address = IPAddress.Parse(_address);
         if (address.AddressFamily != System.Net.Sockets.AddressFamily.InterNetworkV6)
         {
-            throw new FormatException("Enter an IPv6 address.");
+            throw new FormatException(Properties.Resources.EnterAnIPv6Address);
         }
         return address;
     }
-    private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddAddress(client, AddressType, ParseAddress()));
-    private Task RemoveAsync() => InvokeMethodAsync(2, client => Target.RemoveAddress(client, AddressType, ParseAddress()));
+    /// <summary>Submits the method that adds the specified address to the object&apos;s address list.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
+    private Task AddAsync() => InvokeMethodAsync(1, client => Target.AddAddress(client, _addressType, ParseAddress()));
+    /// <summary>Submits the method that removes the specified IPv6 address.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
+    private Task RemoveAsync() => InvokeMethodAsync(2, client => Target.RemoveAddress(client, _addressType, ParseAddress()));
 }
 

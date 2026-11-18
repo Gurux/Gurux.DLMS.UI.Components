@@ -9,7 +9,7 @@
         <Version Condition=" '$(BUILD_BUILDNUMBER)' == '' ">0.0.1-local</Version>
         <Version Condition=" '$(BUILD_BUILDNUMBER)' != '' ">$(BUILD_BUILDNUMBER)</Version>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-        <TargetFramework>net10.0</TargetFramework>
+        <TargetFrameworks>net11.0;net10.0</TargetFrameworks>
         <Nullable>enable</Nullable>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
         <ImplicitUsings>enable</ImplicitUsings>
@@ -29,14 +29,17 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Gurux.DLMS" Version="9.0.2609.2201" />
-        <PackageReference Include="Gurux.Net" Version="8.4.2604.201" />
-        <PackageReference Include="Gurux.Serial" Version="8.4.2503.603" />
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1201" />
-        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.14" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.1801" />
     </ItemGroup>
 
-    <ItemGroup>
-        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.14" />
+    <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.15" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="10.0.15" />
+    </ItemGroup>
+
+    <ItemGroup Condition="'$(TargetFramework)' == 'net11.0'">
+        <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="11.0.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="11.0.0" />
     </ItemGroup>
 
     <ItemGroup>

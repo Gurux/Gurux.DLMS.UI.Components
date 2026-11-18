@@ -30,6 +30,8 @@
 @* <summary>Displays devices and their objects in selectable groups with context-menu actions.</summary> *@
 
 @using Microsoft.AspNetCore.Components.Web
+@* <typeparam name="TDevice">The device model that owns the displayed objects.</typeparam> *@
+@* <typeparam name="TObject">The object model grouped under each device.</typeparam> *@
 @typeparam TDevice
 @typeparam TObject
 
@@ -73,7 +75,7 @@
 @if (_contextOpen)
 {
     <div class="gx-tree-menu-backdrop" @onclick="CloseContextMenu" @oncontextmenu="CloseContextMenu" @oncontextmenu:preventDefault="true"></div>
-    <div class="gx-tree-context-menu" role="menu" aria-label="Device commands"
+    <div class="gx-tree-context-menu" role="menu" aria-label="@Properties.Resources.DeviceCommands"
          style="@($"left:min({_contextX.ToString(System.Globalization.CultureInfo.InvariantCulture)}px, calc(100vw - 190px));top:min({_contextY.ToString(System.Globalization.CultureInfo.InvariantCulture)}px, calc(100dvh - 340px))")"
          @onkeydown="ContextKeyDown">
         @foreach (var command in ContextCommands)
@@ -109,14 +111,17 @@
     {
         get; set;
     }
+    /// <summary>Tracks whether the device context menu is visible. Tracks whether the context menu targets the root collection.</summary>
     private bool _contextOpen, _contextCollection;
+    /// <summary>Stores the context menu&apos;s horizontal pointer coordinate. Stores the context menu&apos;s vertical pointer coordinate.</summary>
     private double _contextX, _contextY;
+    /// <summary>Gets the commands for the selected device or root collection.</summary>
     private (string Id, string Text)[] ContextCommands => _contextCollection
-        ? [("AddDeviceMnu", "Add Device")]
-        : [("ConnectMnu", "Connect"), ("DisconnectMnu", "Disconnect"), ("ReadMnu", "Read"),
-           ("ReadObjectMnu", "Read Object"), ("", ""), ("ImportMenu", "Load Values"),
-           ("ExportMenu", "Save Values As..."), ("", ""), ("DeleteMnu", "Delete"),
-           ("", ""), ("PropertiesMnu", "Properties")];
+        ? [("AddDeviceMnu", Properties.Resources.AddDevice2)]
+        : [("ConnectMnu", Properties.Resources.Connect), ("DisconnectMnu", Properties.Resources.Disconnect), ("ReadMnu", Properties.Resources.Read),
+           ("ReadObjectMnu", Properties.Resources.ReadObject), ("", ""), ("ImportMenu", Properties.Resources.LoadValues),
+           ("ExportMenu", Properties.Resources.SaveValuesAs), ("", ""), ("DeleteMnu", Properties.Resources.Delete),
+           ("", ""), ("PropertiesMnu", Properties.Resources.Properties)];
 
     /// <summary>
     /// Selects the target node and opens its context menu at the pointer position.
@@ -150,7 +155,10 @@
         await OnContextCommand.InvokeAsync(command);
     }
 
+    /// <summary>Hides the device context menu.</summary>
     private void CloseContextMenu() => _contextOpen = false;
+    /// <summary>Closes the device context menu when Escape is pressed.</summary>
+    /// <param name="e">The browser input event received by the component.</param>
     private void ContextKeyDown(KeyboardEventArgs e)
     {
         if (e.Key == "Escape")
@@ -159,6 +167,9 @@
         }
     }
 
+    /// <summary>Builds the path to an icon shipped with this component library.</summary>
+    /// <param name="name">The protocol or asset identifier used by the lookup.</param>
+    /// <returns>The path to an icon shipped with this component library.</returns>
     private static string Icon(string name) => $"_content/Gurux.DLMS.UI.Components/images/icons/{name}.svg";
     /// <summary>
     /// Devices displayed in the collection.
@@ -251,11 +262,11 @@
     /// <summary>
     /// Heading displayed above the component content.
     /// </summary>
-    [Parameter] public string Title { get; set; } = "Devices";
+    [Parameter] public string Title { get; set; } = Properties.Resources.Devices;
     /// <summary>
     /// Message displayed when the collection is empty.
     /// </summary>
-    [Parameter] public string EmptyText { get; set; } = "No devices loaded.";
+    [Parameter] public string EmptyText { get; set; } = Properties.Resources.NoDevicesLoaded;
 
     /// <summary>Optional atomic device/object selection callback, used instead of the separate selection callbacks.</summary>
     [Parameter] public EventCallback<(TDevice Device, TObject Object)> OnNavigateObject { get; set; }

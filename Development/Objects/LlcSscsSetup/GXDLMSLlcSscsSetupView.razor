@@ -40,18 +40,20 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="LLC SSCS Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.LLCSSCSSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Service Address:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.ServiceAddressLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Base Address:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.BaseAddressLabel" Enabled="CanEditAttribute(3)"  />
     }
 </div>
 </section>
-<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">Reset</GXButton></section>
+<section class="gx-object-actions"><GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton></section>
 @code {
+    /// <summary>Submits the object&apos;s reset method through the host action callback.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
 }

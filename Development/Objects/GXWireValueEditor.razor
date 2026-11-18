@@ -35,31 +35,30 @@
 @if (TypePaths?.Any(path => Matches(path, Prefix)) == true)
 {
     <div class="gx-wire-typed">
-    <div class="gx-dialog-field"><GXLabel>Type</GXLabel><GXDraftInput EnumType="typeof(Gurux.DLMS.Enums.DataType)" Value="@(((int)GXDLMSConverter.GetDLMSDataType(Value!)).ToString())" ValueChanged="ChangeDataType" Disabled="Disabled" /></div>
-    <div class="gx-dialog-field"><GXLabel>Value</GXLabel><GXWireValueEditor @ref="_typedEditor" Value="Value" ValueChanged="ValueChanged" InputKind="InputKind" Disabled="Disabled" /></div>
+    <div class="gx-dialog-field"><GXLabel>@Properties.Resources.Type</GXLabel><GXDraftInput EnumType="typeof(Gurux.DLMS.Enums.DataType)" Value="@(((int)GXDLMSConverter.GetDLMSDataType(Value!)).ToString())" ValueChanged="ChangeDataType" Disabled="Disabled" /></div>
+    <div class="gx-dialog-field"><GXLabel>@Properties.Resources.Value</GXLabel><GXWireValueEditor @ref="_typedEditor" Value="Value" ValueChanged="ValueChanged" InputKind="InputKind" Disabled="Disabled" /></div>
     </div>
 }
 else if (Value is GXStructure or GXArray)
 {
     var values = (IList<object>)Value;
     <div class="gx-wire-fields">
-        @for (var position = 0; position < (Paths?.Length ?? values.Count); ++position)
+        @foreach (var cell in Enumerable.Range(0, Paths?.Length ?? values.Count))
         {
-            var cell = position;
             <div class="gx-dialog-field">
-                <GXLabel>@(Labels?.ElementAtOrDefault(cell) ?? Resolve(PathLabels, ChildPath(cell)) ?? $"Value {cell + 1}")</GXLabel>
+                <GXLabel>@(Labels?.ElementAtOrDefault(cell) ?? Resolve(PathLabels, ChildPath(cell)) ?? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Value0, cell + 1))</GXLabel>
                 <GXWireValueEditor @key="cell" @ref="_children[cell]" Value="@(Paths is null ? values[cell] : AtPath(Value, Paths[cell]))" ValueChanged="value => ChangeCell(cell, value)"
                     InputKind="@(InputKinds?.ElementAtOrDefault(cell) ?? Resolve(PathKinds, ChildPath(cell)) ?? (InputKind == "hex" && values.ElementAtOrDefault(cell) is byte[] ? "hex" : null))"
                     PathLabels="PathLabels" PathKinds="PathKinds" PathFactories="PathFactories" TypePaths="TypePaths" Prefix="@ChildPath(cell)" Disabled="Disabled" />
-                @if (Value is GXArray) { <GXButton type="button" Disabled="Disabled" OnClick="() => RemoveItem(cell)">Remove</GXButton> }
+                @if (Value is GXArray) { <GXButton type="button" Disabled="Disabled" OnClick="() => RemoveItem(cell)">@Properties.Resources.Remove</GXButton> }
             </div>
         }
     </div>
-    @if (Value is GXArray) { <GXButton type="button" Disabled="@(Disabled || _itemTemplate is null && ArrayFactory is null)" OnClick="AddItem">Add...</GXButton> }
+    @if (Value is GXArray) { <GXButton type="button" Disabled="@(Disabled || _itemTemplate is null && ArrayFactory is null)" OnClick="AddItem">@Properties.Resources.Add</GXButton> }
 }
 else
 {
-    <GXDraftInput Label="Value" Value="@Text" ValueChanged="ChangeText" InputKind="@Kind" Disabled="Disabled" />
+    <GXDraftInput Label="@Properties.Resources.Value" Value="@Text" ValueChanged="ChangeText" InputKind="@Kind" Disabled="Disabled" />
 }
 @if (Error is not null) { <p role="alert">@Error</p> }
 
@@ -163,20 +162,27 @@ else
     {
         get; private set;
     }
+    /// <summary>Tracks child wire editors by collection index for recursive validation.</summary>
     private readonly Dictionary<int, GXWireValueEditor> _children = new();
+    /// <summary>Retains the current scalar input draft separately from its parsed wire value.</summary>
     private string? _text;
+    /// <summary>Identifies the previously supplied wire value to detect parent updates.</summary>
     private object? _lastValue;
+    /// <summary>Stores the inferred default element used when adding array items.</summary>
     private object? _itemTemplate;
+    /// <summary>References the scalar editor used for the selected COSEM data type.</summary>
     private GXWireValueEditor? _typedEditor;
     /// <summary>
     /// Whether this editor and its nested editors have no validation errors.
     /// </summary>
     public bool IsValid => Error is null && (_typedEditor?.IsValid ?? true) && _children.Values.All(child => child.IsValid);
+    /// <summary>Gets the scalar input draft or the current wire value formatted for editing.</summary>
     private string Text => _text ?? (InputKind == "ip" && Value is byte[] bytes ? new System.Net.IPAddress(bytes).ToString()
         : InputKind == "ip" && Value is uint address ? new System.Net.IPAddress(BitConverter.GetBytes(address).Reverse().ToArray()).ToString()
         : InputKind is "text" or "ascii" or "password" && Value is byte[] text ? System.Text.Encoding.UTF8.GetString(text)
         : InputKind == "hex" && Value is byte[] hex ? GXDLMSTranslator.ToHex(hex)
         : InputKind == "datetime" && Value is byte[] date ? GXDLMSObjectEditState.Format(GXDLMSClient.ChangeType(date, date.Length == 4 ? Gurux.DLMS.Enums.DataType.Time : date.Length == 5 ? Gurux.DLMS.Enums.DataType.Date : Gurux.DLMS.Enums.DataType.DateTime, false)) : GXWireValue.Editable(Value));
+    /// <summary>Gets the input or table variant selected for the current value.</summary>
     private string Kind => Value is GXDateTime ? "datetime" : InputKind ?? (Value is bool ? "bool" : Value is byte[] bytes && bytes.Length != 6 ? "hex" : Value is GXBitString ? "text" : Value is not (string or byte[]) ? "number" : "text");
     /// <inheritdoc />
     protected override void OnParametersSet()
@@ -197,6 +203,9 @@ else
             _children.Clear();
         }
     }
+    /// <summary>Parses scalar input and notifies the parent of a valid edited value.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private async System.Threading.Tasks.Task ChangeText(string text)
     {
         if (Disabled)
@@ -234,6 +243,10 @@ else
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { Error = ex.Message; }
     }
+    /// <summary>Copies the collection and replaces one child before notifying the parent.</summary>
+    /// <param name="cell">The zero-based child index in the current collection.</param>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task ChangeCell(int cell, object? value)
     {
         if (Disabled)
@@ -253,6 +266,10 @@ else
         }
         return ValueChanged.InvokeAsync(copy);
     }
+    /// <summary>Follows a dot-separated path through nested wire collections.</summary>
+    /// <param name="value">The input value to convert, format or stage.</param>
+    /// <param name="path">The dot-separated path of nested collection indices.</param>
+    /// <returns>The selected or copied value, or null when the source value is null.</returns>
     private static object? AtPath(object? value, string path)
     {
         foreach (var index in path.Split('.').Select(int.Parse))
@@ -261,11 +278,25 @@ else
         }
         return value;
     }
+    /// <summary>Builds the child path used to resolve nested editor settings.</summary>
+    /// <param name="cell">The zero-based child index in the current collection.</param>
+    /// <returns>The child path used to resolve nested editor settings.</returns>
     private string ChildPath(int cell) => string.IsNullOrEmpty(Prefix) ? Paths?.ElementAtOrDefault(cell) ?? cell.ToString() : Prefix + "." + (Paths?.ElementAtOrDefault(cell) ?? cell.ToString());
+    /// <summary>Finds the first editor setting whose wildcard pattern matches the path.</summary>
+    /// <param name="map">The path patterns and their configured editor values.</param>
+    /// <param name="path">The dot-separated path of nested collection indices.</param>
+    /// <returns>Finds the first editor setting whose wildcard pattern matches the path.</returns>
     private static string? Resolve(IReadOnlyDictionary<string, string>? map, string path)
         => map?.FirstOrDefault(pair => Matches(pair.Key, path)).Value;
+    /// <summary>Determines whether a wildcard collection-index pattern matches a concrete path.</summary>
+    /// <param name="pattern">The path pattern, with an asterisk matching a numeric collection index.</param>
+    /// <param name="path">The dot-separated path of nested collection indices.</param>
+    /// <returns>True when the requested condition is satisfied; otherwise, false.</returns>
     private static bool Matches(string pattern, string path) => System.Text.RegularExpressions.Regex.IsMatch(path, "^" + System.Text.RegularExpressions.Regex.Escape(pattern).Replace("\\*", "[0-9]+") + "$");
+    /// <summary>Gets the factory configured for new elements at the current array path.</summary>
     private Func<object>? ArrayFactory => PathFactories?.FirstOrDefault(pair => Matches(pair.Key, Prefix)).Value;
+    /// <summary>Appends a new array element using its configured factory or inferred template.</summary>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task AddItem()
     {
         if (Disabled || Value is not GXArray || _itemTemplate is null && ArrayFactory is null)
@@ -276,6 +307,9 @@ else
         copy.Add(GXWireValue.Copy(ArrayFactory?.Invoke() ?? _itemTemplate)!);
         return ValueChanged.InvokeAsync(copy);
     }
+    /// <summary>Removes an array element and notifies the parent of the copied collection.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task RemoveItem(int index)
     {
         if (Disabled || Value is not GXArray)
@@ -287,6 +321,9 @@ else
         _children.Clear();
         return ValueChanged.InvokeAsync(copy);
     }
+    /// <summary>Replaces the scalar value with a default value of the selected COSEM data type.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private System.Threading.Tasks.Task ChangeDataType(string text)
     {
         if (Disabled)
@@ -312,7 +349,7 @@ else
             };
             if (GXDLMSConverter.GetDLMSDataType(value!) != type)
             {
-                throw new NotSupportedException("The installed value codec cannot preserve this parameter data type.");
+                throw new NotSupportedException(Properties.Resources.TheInstalledValueCodecCannotPreserveThisParameterDataType);
             }
             Error = null;
             _children.Clear();

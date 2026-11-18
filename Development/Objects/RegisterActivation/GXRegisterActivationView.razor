@@ -39,18 +39,18 @@
 @inherits GXDLMSObjectViewBase<GXDLMSRegisterActivation>
 
 <section @key="Target" class="gx-object-view">
-    <GXObjectViewHeader Title="Register Activation Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXTabControl NavigateOnSelection="false"><GXTabPage Text="Assignments"><GXAttributeField Edit="Edit" Index="2" Label="Register Assignment" Enabled="CanEditAttribute(2)" Columns="@(new[] { "Object Type", "Logical Name" })" CreateRow="@(() => new GXStructure { (ushort)3, new byte[6] })" /></GXTabPage><GXTabPage Text="Masks">
-    <GXAttributeField Edit="Edit" Index="3" EditorKinds="@(new[] { "hex", "number" })" Label="Mask List" Enabled="CanEditAttribute(3)" Columns="@(new[] { "Name", "Indexes" })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), new GXArray { (byte)1 } })" />
-    <GXAttributeField Edit="Edit" Index="4" InputKind="hex" Label="Active mask" Enabled="CanEditAttribute(4)" /></GXTabPage></GXTabControl>
-    <fieldset><legend>Methods</legend>
-    <GXValueField Label="Object class ID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
-    <GXValueField Label="Object logical name" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddRegisterAsync">Add register</GXButton>
-    <GXValueField Label="Mask name (hexadecimal)" Value="@MaskNameHex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="hex" OnCommit="value => MaskNameHex = value" Validate="text => ValidateParameter(nameof(MaskNameHex), text)" />
-    <GXValueField Label="Mask indexes (comma separated bytes)" Value="@MaskIndexes" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => MaskIndexes = value" Validate="text => ValidateParameter(nameof(MaskIndexes), text)" />
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddMaskAsync">Add mask</GXButton>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveMaskAsync">Remove mask</GXButton>
+    <GXObjectViewHeader Title="@Properties.Resources.RegisterActivationObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXTabControl NavigateOnSelection="false"><GXTabPage Text="@Properties.Resources.Assignments"><GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.RegisterAssignment" Enabled="CanEditAttribute(2)" Columns="@(new[] { Properties.Resources.ObjectType, Properties.Resources.LogicalName })" CreateRow="@(() => new GXStructure { (ushort)3, new byte[6] })" /></GXTabPage><GXTabPage Text="@Properties.Resources.Masks">
+    <GXAttributeField Edit="Edit" Index="3" EditorKinds="@(new[] { "hex", "number" })" Label="@Properties.Resources.MaskList" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.Name, Properties.Resources.Indexes })" CreateRow="@(() => new GXStructure { Array.Empty<byte>(), new GXArray { (byte)1 } })" />
+    <GXAttributeField Edit="Edit" Index="4" InputKind="hex" Label="@Properties.Resources.ActiveMask" Enabled="CanEditAttribute(4)" /></GXTabPage></GXTabControl>
+    <fieldset><legend>@Properties.Resources.Methods</legend>
+    <GXValueField Label="@Properties.Resources.ObjectClassID" Value="@ObjectClass" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="number" OnCommit="value => ObjectClass = value" Validate="text => ValidateParameter(nameof(ObjectClass), text)" />
+    <GXValueField Label="@Properties.Resources.ObjectLogicalName" Value="@ObjectLogicalName" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => ObjectLogicalName = value" Validate="text => ValidateParameter(nameof(ObjectLogicalName), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="AddRegisterAsync">@Properties.Resources.AddRegister</GXButton>
+    <GXValueField Label="@Properties.Resources.MaskNameHexadecimal" Value="@MaskNameHex" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="hex" OnCommit="value => MaskNameHex = value" Validate="text => ValidateParameter(nameof(MaskNameHex), text)" />
+    <GXValueField Label="@Properties.Resources.MaskIndexesCommaSeparatedBytes" Value="@MaskIndexes" Enabled="@(CanInvokeMethod(1) || CanInvokeMethod(2) || CanInvokeMethod(3))" InputKind="text" OnCommit="value => MaskIndexes = value" Validate="text => ValidateParameter(nameof(MaskIndexes), text)" />
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="AddMaskAsync">@Properties.Resources.AddMask</GXButton>
+    <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="RemoveMaskAsync">@Properties.Resources.RemoveMask</GXButton>
     </fieldset>
 </section>
 
@@ -63,17 +63,19 @@
     /// Logical name identifying the object used by the operation.
     /// </summary>
     public string ObjectLogicalName { get; set; } = string.Empty;
+    /// <summary>Validates the class and logical-name inputs and creates the referenced object.</summary>
+    /// <returns>Validates the class and logical-name inputs and creates the referenced object.</returns>
     private GXDLMSObject ReadObject()
     {
         var type = (ObjectType)ushort.Parse(ObjectClass, CultureInfo.InvariantCulture);
         if (!Enum.IsDefined(type) || type == ObjectType.None)
         {
-            throw new FormatException("Enter a supported object class ID.");
+            throw new FormatException(Properties.Resources.EnterASupportedObjectClassID);
         }
         var parts = ObjectLogicalName.Split('.');
         if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
         {
-            throw new FormatException("A logical name requires six byte values.");
+            throw new FormatException(Properties.Resources.ALogicalNameRequiresSixByteValues);
         }
         var value = GXDLMSClient.CreateObject(type);
         value.LogicalName = ObjectLogicalName;
@@ -87,10 +89,12 @@
     /// Comma-separated register indices included in the activation mask.
     /// </summary>
     public string MaskIndexes { get; set; } = string.Empty;
+    /// <summary>Decodes and validates the nonempty register activation mask name.</summary>
+    /// <returns>The decoded bytes after validation.</returns>
     private byte[] ReadMaskName()
     {
         var value = Convert.FromHexString(MaskNameHex.Replace(" ", string.Empty));
-        return value.Length != 0 ? value : throw new FormatException("Enter a mask name.");
+        return value.Length != 0 ? value : throw new FormatException(Properties.Resources.EnterAMaskName);
     }
     /// <summary>
     /// Requests adding the entered object to the register assignment list.
@@ -101,7 +105,7 @@
         var register = ReadObject();
         if (register is not GXDLMSRegister && register is not GXDLMSDemandRegister)
         {
-            throw new FormatException("Choose a register, extended register or demand register.");
+            throw new FormatException(Properties.Resources.ChooseARegisterExtendedRegisterOrDemandRegister);
         }
         return Target.AddRegister(client, register);
     });
@@ -116,6 +120,10 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveMaskAsync() => InvokeMethodAsync(3, client => Target.RemoveMask(client, ReadMaskName()));
 
+    /// <summary>Checks a method input and returns a validation message instead of throwing.</summary>
+    /// <param name="field">The input identifier selecting the parameter validation rules.</param>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateParameter(string field, string text)
     {
         try
@@ -127,7 +135,7 @@
                         var type = (ObjectType)ushort.Parse(text, CultureInfo.InvariantCulture);
                         if (!Enum.IsDefined(type) || type == ObjectType.None)
                         {
-                            throw new FormatException("Select a supported object class.");
+                            throw new FormatException(Properties.Resources.SelectASupportedObjectClass);
                         }
                         break;
                     }
@@ -140,7 +148,7 @@
                     {
                         if (Convert.FromHexString(text.Replace(" ", string.Empty)).Length == 0)
                         {
-                            throw new FormatException("Enter a mask name.");
+                            throw new FormatException(Properties.Resources.EnterAMaskName);
                         }
                         break;
                     }
@@ -158,12 +166,14 @@
         catch (Exception ex) when (ex is not OutOfMemoryException) { return ex.Message; }
     }
 
+    /// <summary>Rejects logical names that do not contain six byte-valued components.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
     private static void CheckLogicalName(string text)
     {
         var parts = text.Split('.');
         if (parts.Length != 6 || parts.Any(p => !byte.TryParse(p, out _)))
         {
-            throw new FormatException("A logical name requires six byte values.");
+            throw new FormatException(Properties.Resources.ALogicalNameRequiresSixByteValues);
         }
     }
 }

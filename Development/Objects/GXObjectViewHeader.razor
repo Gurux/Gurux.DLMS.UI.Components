@@ -37,23 +37,23 @@
 @if (Error is not null) { <p class="gx-object-error" role="alert">@Error</p> }
 @for (var index = 1; index <= Target.GetValues().Length; ++index)
 {
-    if (Edit.Error(index) is { } error) { <p class="gx-object-error" role="alert">Attribute @index: @error</p> }
+    if (Edit.Error(index) is { } error) { <p class="gx-object-error" role="alert">@string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.AttributeError, index, error)</p> }
 }
 <div class="gx-object-title">
     @if (Title != string.Empty)
     {
-        <h2>@(Title ?? Target.ObjectType + " Object")</h2>
+        <h2>@(Title ?? string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Text0Object, Target.ObjectType))</h2>
     }
     <GXDLMSObjectHelp Target="Target" />
 </div>
 <div class="gx-object-identity">
-    <div class="gx-field-row"><GXLabel>Description:</GXLabel><GXInputText Value="@Target.Description" readonly aria-label="Description" /></div>
-    <div class="gx-field-row"><GXLabel>Logical Name:</GXLabel><GXInputText Value="@Target.LogicalName" readonly aria-label="Logical Name" /></div>
+    <div class="gx-field-row"><GXLabel>@Properties.Resources.DescriptionLabel</GXLabel><GXInputText Value="@Target.Description" readonly aria-label="@Properties.Resources.Description" /></div>
+    <div class="gx-field-row"><GXLabel>@Properties.Resources.LogicalNameLabel</GXLabel><GXInputText Value="@Target.LogicalName" readonly aria-label="@Properties.Resources.LogicalName" /></div>
 </div>
-@if (Edit.HasChanges) { <p role="status">Value changed</p> }
+@if (Edit.HasChanges) { <p role="status">@Properties.Resources.ValueChanged</p> }
 @if (Edit.LastActionResult is { } result)
 {
-    <details open><summary>Method result</summary><pre role="status">@result</pre></details>
+    <details open><summary>@Properties.Resources.MethodResult</summary><pre role="status">@result</pre></details>
 }
 
 @code {

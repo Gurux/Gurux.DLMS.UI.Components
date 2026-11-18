@@ -39,28 +39,28 @@
 @inherits GXDLMSObjectViewBase<GXDLMSArrayManager>
 
 <section class="gx-object-view" @key="Target">
-    <GXObjectViewHeader Title="Array Manager Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <GXAttributeField Edit="Edit" Index="2" Label="Elements" Enabled="CanEditAttribute(2)"
-        Columns='@(new[] { "ID", "Class ID", "Logical name", "Attribute index" })'
+    <GXObjectViewHeader Title="@Properties.Resources.ArrayManagerObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Elements" Enabled="CanEditAttribute(2)"
+        Columns='@(new[] { Properties.Resources.ID, Properties.Resources.ClassID, Properties.Resources.LogicalName2, Properties.Resources.AttributeIndex2 })'
         ColumnPaths='@(new[] { "0", "1.0", "1.1", "1.2" })'
         EditorKinds='@(new[] { "number", "number", "logicalname", "number" })'
         CreateRow="CreateElement" />
-    <fieldset><legend>Array</legend>
-        <GXValueField @ref="_arrayIdField" Label="Array ID (0–255)" Value="@ArrayId" Enabled="CanUseArray" InputKind="number" OnCommit="value => ArrayId = value" Validate="ValidateId" />
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="NumberOfEntriesAsync">Number of entries</GXButton>
+    <fieldset><legend>@Properties.Resources.Array</legend>
+        <GXValueField @ref="_arrayIdField" Label="@Properties.Resources.ArrayID0255" Value="@ArrayId" Enabled="CanUseArray" InputKind="number" OnCommit="value => ArrayId = value" Validate="ValidateId" />
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="NumberOfEntriesAsync">@Properties.Resources.NumberOfEntries</GXButton>
     </fieldset>
-    <fieldset><legend>Entry range</legend>
-        <GXValueField @ref="_fromField" Label="From index (1–65535)" Value="@FromIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => FromIndex = value" Validate="ValidateIndex" />
-        <GXValueField @ref="_toField" Label="To index (1–65535)" Value="@ToIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => ToIndex = value" Validate="ValidateIndex" />
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RetrieveEntriesAsync">Retrieve entries</GXButton>
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="RemoveEntriesAsync">Remove entries</GXButton>
+    <fieldset><legend>@Properties.Resources.EntryRange</legend>
+        <GXValueField @ref="_fromField" Label="@Properties.Resources.FromIndex165535" Value="@FromIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => FromIndex = value" Validate="ValidateIndex" />
+        <GXValueField @ref="_toField" Label="@Properties.Resources.ToIndex165535" Value="@ToIndex" Enabled="CanUseRange" InputKind="number" OnCommit="value => ToIndex = value" Validate="ValidateIndex" />
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="RetrieveEntriesAsync">@Properties.Resources.RetrieveEntries</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(5))" OnClick="RemoveEntriesAsync">@Properties.Resources.RemoveEntries</GXButton>
     </fieldset>
-    <fieldset><legend>Entry</legend>
-        <GXValueField @ref="_indexField" Label="Entry index (1–65535)" Value="@EntryIndex" Enabled="CanUseEntry" InputKind="number" OnCommit="value => EntryIndex = value" Validate="ValidateIndex" />
-        <GXValueField @ref="_entryField" Label="Entry (DLMS XML)" Value="@EntryXml" Enabled="CanUseEntry" OnCommit="value => EntryXml = value" Validate="ValidateEntry" />
+    <fieldset><legend>@Properties.Resources.Entry</legend>
+        <GXValueField @ref="_indexField" Label="@Properties.Resources.EntryIndex165535" Value="@EntryIndex" Enabled="CanUseEntry" InputKind="number" OnCommit="value => EntryIndex = value" Validate="ValidateIndex" />
+        <GXValueField @ref="_entryField" Label="@Properties.Resources.EntryDLMSXML" Value="@EntryXml" Enabled="CanUseEntry" OnCommit="value => EntryXml = value" Validate="ValidateEntry" />
         <p>Use a typed value, for example &lt;Int32 Value="7" /&gt;, or a Structure containing typed values.</p>
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="InsertEntryAsync">Insert entry</GXButton>
-        <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="UpdateEntryAsync">Update entry</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(3))" OnClick="InsertEntryAsync">@Properties.Resources.InsertEntry</GXButton>
+        <GXButton type="button" Disabled="@(!CanInvokeMethod(4))" OnClick="UpdateEntryAsync">@Properties.Resources.UpdateEntry</GXButton>
     </fieldset>
 </section>
 
@@ -85,10 +85,16 @@
     /// XML representation of the value to insert or update.
     /// </summary>
     public string EntryXml { get; set; } = "<Int32 Value=\"0\" />";
+    /// <summary>References the array identifier editor used for parameter validation. References the range-start editor used for parameter validation. References the range-end editor used for parameter validation. References the entry-index editor used for parameter validation. References the typed-entry editor used for parameter validation.</summary>
     private GXValueField? _arrayIdField, _fromField, _toField, _indexField, _entryField;
+    /// <summary>Gets whether any available method accepts the array identifier input.</summary>
     private bool CanUseArray => Enumerable.Range(1, 5).Any(CanInvokeMethod);
+    /// <summary>Gets whether a permitted method needs the range inputs.</summary>
     private bool CanUseRange => CanInvokeMethod(2) || CanInvokeMethod(5);
+    /// <summary>Gets whether a permitted method needs an entry value.</summary>
     private bool CanUseEntry => CanInvokeMethod(3) || CanInvokeMethod(4);
+    /// <summary>Creates the default descriptor structure for an array-manager entry.</summary>
+    /// <returns>The default descriptor structure for an array-manager entry.</returns>
     private static object CreateElement() => new GXStructure
     {
         (byte)0, new GXStructure { (ushort)ObjectType.Data, new byte[6], (sbyte)2 }
@@ -120,6 +126,9 @@
     /// <returns>A task representing completion of the operation.</returns>
     public Task RemoveEntriesAsync() => ExecuteAsync(5);
 
+    /// <summary>Validates the selected array operation and submits its method request.</summary>
+    /// <param name="method">The one-based COSEM method index to request.</param>
+    /// <returns>A task that completes when the request or callback has finished.</returns>
     private async Task ExecuteAsync(int method)
     {
         if (!CanInvokeMethod(method))
@@ -132,7 +141,7 @@
                 || (method == 2 || method == 5) && (_fromField?.Error is not null || _toField?.Error is not null)
                 || (method == 3 || method == 4) && (_indexField?.Error is not null || _entryField?.Error is not null))
             {
-                throw new FormatException("Correct the invalid parameters before invoking the method.");
+                throw new FormatException(Properties.Resources.CorrectTheInvalidParametersBeforeInvokingTheMethod);
             }
             var id = byte.Parse(ArrayId, NumberStyles.None, CultureInfo.InvariantCulture);
             var target = Target;
@@ -147,7 +156,7 @@
                 var to = ParseIndex(ToIndex);
                 if (from > to)
                 {
-                    throw new FormatException("From index must not exceed to index.");
+                    throw new FormatException(Properties.Resources.FromIndexMustNotExceedToIndex);
                 }
                 createMessages = method == 2
                     ? client => target.RetrieveEntries(client, id, from, to)
@@ -165,32 +174,47 @@
         }
         catch (Exception error) when (error is not OutOfMemoryException)
         {
-            ActionError = $"Action failed: {error.Message}";
+            ActionError = string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.ActionFailed0, error.Message);
         }
     }
 
+    /// <summary>Parses a nonzero unsigned 16-bit array entry index.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The parsed value in the representation required by the method.</returns>
     private static ushort ParseIndex(string text)
     {
         var index = ushort.Parse(text, NumberStyles.None, CultureInfo.InvariantCulture);
         if (index == 0)
         {
-            throw new FormatException("Entry indices must be between 1 and 65535.");
+            throw new FormatException(Properties.Resources.EntryIndicesMustBeBetween1And65535);
         }
         return index;
     }
 
+    /// <summary>Parses a typed XML DLMS entry value.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The parsed value, retaining the required DLMS or CLR data type.</returns>
     private static object ParseEntry(string text)
     {
         using var reader = XmlReader.Create(new StringReader(text), new XmlReaderSettings { DtdProcessing = DtdProcessing.Prohibit, XmlResolver = null });
         var document = XDocument.Load(reader);
         return GXDLMSTranslator.XmlToValue(document.ToString())
-            ?? throw new FormatException("Enter a typed DLMS value.");
+            ?? throw new FormatException(Properties.Resources.EnterATypedDLMSValue);
     }
 
+    /// <summary>Validates the array identifier as an unsigned byte.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateId(string text) => byte.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out _)
-        ? null : "Enter an array ID between 0 and 255.";
+        ? null : Properties.Resources.EnterAnArrayIDBetween0And255;
+    /// <summary>Validates a nonzero unsigned 16-bit entry index.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateIndex(string text) => ushort.TryParse(text, NumberStyles.None, CultureInfo.InvariantCulture, out var index) && index != 0
-        ? null : "Enter an index between 1 and 65535.";
+        ? null : Properties.Resources.EnterAnIndexBetween1And65535;
+    /// <summary>Checks whether the input is a valid typed DLMS entry.</summary>
+    /// <param name="text">The user input in the editor&apos;s invariant text representation.</param>
+    /// <returns>The validation message, or null when the input is valid.</returns>
     private static string? ValidateEntry(string text)
     {
         try

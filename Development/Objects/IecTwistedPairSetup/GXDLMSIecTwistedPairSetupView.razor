@@ -40,22 +40,22 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="IEC Twisted Pair Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.IECTwistedPairSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Mode" Enabled="CanEditAttribute(2)" EnumType="typeof(IecTwistedPairSetupMode)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Mode" Enabled="CanEditAttribute(2)" EnumType="typeof(IecTwistedPairSetupMode)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Speed:" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.SpeedLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Primary addresses:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Name" })' CreateRow='@(() => (byte)0)' />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.PrimaryAddressesLabel" Enabled="CanEditAttribute(4)" Columns='@(new[] { Properties.Resources.Name })' CreateRow='@(() => (byte)0)' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="TAB(i)" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Name" })' CreateRow='@(() => (byte)0)' />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.TABI" Enabled="CanEditAttribute(5)" Columns='@(new[] { Properties.Resources.Name })' CreateRow='@(() => (byte)0)' />
     }
 </div>
 </section>

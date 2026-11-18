@@ -34,20 +34,24 @@ namespace Gurux.DLMS.UI.Components.Help;
 /// <summary>Maps COSEM classes to localized official Gurux articles.</summary>
 public static class GXDLMSObjectHelpCatalog
 {
-    private static readonly HashSet<string> Topics = GXDLMSClient.GetObjectTypes()
+    /// <summary>Contains the help topics supported by the installed DLMS object types.</summary>
+    private static readonly HashSet<string> _topics = GXDLMSClient.GetObjectTypes()
         .Where(type => !type.IsDefined(typeof(ObsoleteAttribute), false))
         .Select(type => "cosem." + type.Name).ToHashSet(StringComparer.Ordinal);
-    private static readonly Lazy<GXDLMSHelpArticleReader> Reader = new(() =>
+    /// <summary>Reads and sanitizes official Gurux help articles.</summary>
+    private static readonly Lazy<GXDLMSHelpArticleReader> _reader = new(() =>
         new GXDLMSHelpArticleReader(new HttpClient(new HttpClientHandler { AllowAutoRedirect = false })));
 
     /// <summary>Gets a stable class topic, including the nearest supported base class for custom objects.</summary>
+    /// <param name="target">The DLMS object whose attribute or method is selected.</param>
+    /// <returns></returns>
     public static string GetTopic(GXDLMSObject target)
     {
         ArgumentNullException.ThrowIfNull(target);
         for (Type? type = target.GetType(); type != null && type != typeof(GXDLMSObject); type = type.BaseType)
         {
             var topic = "cosem." + type.Name;
-            if (Topics.Contains(topic))
+            if (_topics.Contains(topic))
             {
                 return topic;
             }
@@ -56,6 +60,8 @@ public static class GXDLMSObjectHelpCatalog
     }
 
     /// <summary>Creates a request retaining the object's version and current UI language.</summary>
+    /// <param name="target">The DLMS object whose attribute or method is selected.</param>
+    /// <returns></returns>
     public static GXHelpRequest GetRequest(GXDLMSObject target)
     {
         ArgumentNullException.ThrowIfNull(target);
@@ -64,10 +70,12 @@ public static class GXDLMSObjectHelpCatalog
 
     /// <summary>Returns a fixed official article URL for a known COSEM topic, or null for an unknown topic.</summary>
     /// <remarks>Finnish uses /fi/. Other UI languages use the English article.</remarks>
+    /// <param name="request">The help topic, version and culture to load.</param>
+    /// <returns></returns>
     public static Uri? GetAddress(GXHelpRequest request)
     {
         ArgumentNullException.ThrowIfNull(request);
-        if (!Topics.Contains(request.Topic))
+        if (!_topics.Contains(request.Topic))
         {
             return null;
         }
@@ -77,11 +85,17 @@ public static class GXDLMSObjectHelpCatalog
     }
 
     /// <summary>Loads HTML for browser article extraction and sanitization.</summary>
+    /// <param name="topic">The COSEM help topic identifying the requested article.</param>
+    /// <param name="cancellationToken">Cancels the pending article load.</param>
+    /// <returns></returns>
     public static Task<string?> LoadHtmlAsync(string topic, CancellationToken cancellationToken = default)
         => LoadHtmlAsync(new GXHelpRequest(topic), cancellationToken);
 
     /// <summary>Loads localized online help. Official articles describe their own version variants.</summary>
     /// <remarks>Version remains context metadata; the online article is not filtered by object version.</remarks>
+    /// <param name="request">The help topic, version and culture to load.</param>
+    /// <param name="cancellationToken">Cancels the pending article load.</param>
+    /// <returns></returns>
     public static Task<string?> LoadHtmlAsync(GXHelpRequest request, CancellationToken cancellationToken = default)
-        => Reader.Value.LoadHtmlAsync(request, cancellationToken);
+        => _reader.Value.LoadHtmlAsync(request, cancellationToken);
 }

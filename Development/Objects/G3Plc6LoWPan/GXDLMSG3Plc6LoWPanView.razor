@@ -41,110 +41,110 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="G3-PLC 6LoWPAN adaptation layer setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.G3PLC6LoWPANAdaptationLayerSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
 <GXTabControl NavigateOnSelection="false">
-<GXTabPage Text="General">
+<GXTabPage Text="@Properties.Resources.General">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Max Hops:" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.MaxHopsLabel" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Weak LQI Value:" Enabled="CanEditAttribute(3)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.WeakLQIValueLabel" Enabled="CanEditAttribute(3)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Security Level:" Enabled="CanEditAttribute(4)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.SecurityLevelLabel" Enabled="CanEditAttribute(4)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" Label="Broadcast Log TTL:" Enabled="CanEditAttribute(7)"  />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.BroadcastLogTTLLabel" Enabled="CanEditAttribute(7)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 13)
     {
-        <GXAttributeField Edit="Edit" Index="13" Label="Max Join WaitT:" Enabled="CanEditAttribute(13)"  />
+        <GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.MaxJoinWaitTLabel" Enabled="CanEditAttribute(13)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 14)
     {
-        <GXAttributeField Edit="Edit" Index="14" Label="Path discovery time:" Enabled="CanEditAttribute(14)"  />
+        <GXAttributeField Edit="Edit" Index="14" Label="@Properties.Resources.PathDiscoveryTimeLabel" Enabled="CanEditAttribute(14)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 15)
     {
-        <GXAttributeField Edit="Edit" Index="15" Label="Active key Index:" Enabled="CanEditAttribute(15)"  />
+        <GXAttributeField Edit="Edit" Index="15" Label="@Properties.Resources.ActiveKeyIndexLabel" Enabled="CanEditAttribute(15)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 16)
     {
-        <GXAttributeField Edit="Edit" Index="16" Label="Metric type:" Enabled="CanEditAttribute(16)"  />
+        <GXAttributeField Edit="Edit" Index="16" Label="@Properties.Resources.MetricTypeLabel" Enabled="CanEditAttribute(16)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 17)
     {
-        <GXAttributeField Edit="Edit" Index="17" Label="Coord address:" Enabled="CanEditAttribute(17)"  />
+        <GXAttributeField Edit="Edit" Index="17" Label="@Properties.Resources.CoordAddressLabel" Enabled="CanEditAttribute(17)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 18)
     {
-        <GXAttributeField Edit="Edit" Index="18" Label="Disable Default Routing" Enabled="CanEditAttribute(18)"  />
+        <GXAttributeField Edit="Edit" Index="18" Label="@Properties.Resources.DisableDefaultRouting" Enabled="CanEditAttribute(18)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 19)
     {
-        <GXAttributeField Edit="Edit" Index="19" Label="Device Type:" Enabled="CanEditAttribute(19)" EnumType="typeof(DeviceType)"  />
+        <GXAttributeField Edit="Edit" Index="19" Label="@Properties.Resources.DeviceTypeLabel" Enabled="CanEditAttribute(19)" EnumType="typeof(DeviceType)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 20)
     {
-        <GXAttributeField Edit="Edit" Index="20" Label="Default coord route enabled" Enabled="CanEditAttribute(20)"  />
+        <GXAttributeField Edit="Edit" Index="20" Label="@Properties.Resources.DefaultCoordRouteEnabled" Enabled="CanEditAttribute(20)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 21)
     {
-        <GXAttributeField Edit="Edit" Index="21" Label="Destination address" Enabled="CanEditAttribute(21)" Columns='@(new[] { "Destination address" })' CreateRow='@(() => (ushort)0)' />
+        <GXAttributeField Edit="Edit" Index="21" Label="@Properties.Resources.DestinationAddress" Enabled="CanEditAttribute(21)" Columns='@(new[] { Properties.Resources.DestinationAddress })' CreateRow='@(() => (ushort)0)' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 22)
     {
-        <GXAttributeField Edit="Edit" Index="22" Label="Low LQI:" Enabled="CanEditAttribute(22)"  />
+        <GXAttributeField Edit="Edit" Index="22" Label="@Properties.Resources.LowLQILabel" Enabled="CanEditAttribute(22)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 23)
     {
-        <GXAttributeField Edit="Edit" Index="23" Label="High LQI:" Enabled="CanEditAttribute(23)"  />
+        <GXAttributeField Edit="Edit" Index="23" Label="@Properties.Resources.HighLQILabel" Enabled="CanEditAttribute(23)"  />
     }
 </GXTabPage>
-<GXTabPage Text="Prefix">
+<GXTabPage Text="@Properties.Resources.Prefix">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="Prefix" Enabled="CanEditAttribute(5)" Columns='@(new[] { "Prefix" })' CreateRow='@(() => (byte)0)' />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.Prefix" Enabled="CanEditAttribute(5)" Columns='@(new[] { Properties.Resources.Prefix })' CreateRow='@(() => (byte)0)' />
     }
 </GXTabPage>
-<GXTabPage Text="Routing configuration">
+<GXTabPage Text="@Properties.Resources.RoutingConfiguration">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Routing configuration" Enabled="CanEditAttribute(6)" Columns='@(new[] { "Net Traversal Time", "TTL", "Kr", "Km", "Kc", "Kq", "Kh", "Krt", "Rreq Retries", "Rreq Rerr Wait", "Black list TTL", "Unicast Rreq Gen Enable", "Rlc Enabled", "Add Rev Link Cost" })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (ushort)0, false, false, (byte)0 })' />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.RoutingConfiguration" Enabled="CanEditAttribute(6)" Columns='@(new[] { Properties.Resources.NetTraversalTime, Properties.Resources.TTL, Properties.Resources.Kr, Properties.Resources.Km, Properties.Resources.Kc, Properties.Resources.Kq, Properties.Resources.Kh, Properties.Resources.Krt, Properties.Resources.RreqRetries, Properties.Resources.RreqRerrWait, Properties.Resources.BlackListTTL, Properties.Resources.UnicastRreqGenEnable, Properties.Resources.RlcEnabled, Properties.Resources.AddRevLinkCost })' CreateRow='@(() => new GXStructure { (byte)0, (ushort)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (byte)0, (ushort)0, false, false, (byte)0 })' />
     }
 </GXTabPage>
-<GXTabPage Text="Routing">
+<GXTabPage Text="@Properties.Resources.Routing">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Routing" Enabled="CanEditAttribute(8)" Columns='@(new[] { "Destination:", "Next Hop:", "Route:", "Hop Count:", "Weak Link:", "Valid Time:" })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0, (ushort)0, (byte)0, (byte)0, (ushort)0 })' />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.Routing" Enabled="CanEditAttribute(8)" Columns='@(new[] { Properties.Resources.DestinationLabel, Properties.Resources.NextHopLabel, Properties.Resources.RouteLabel, Properties.Resources.HopCountLabel, Properties.Resources.WeakLinkLabel, Properties.Resources.ValidTimeLabel })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0, (ushort)0, (byte)0, (byte)0, (ushort)0 })' />
     }
 </GXTabPage>
-<GXTabPage Text="Context information">
+<GXTabPage Text="@Properties.Resources.ContextInformation">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 9)
     {
-        <GXAttributeField Edit="Edit" Index="9" Label="Context information" Enabled="CanEditAttribute(9)" Columns='@(new[] { "CID", "Context", "Compression", "Valid lifetime" })' CreateRow='@(() => new GXStructure { new GXBitString("0000"), (byte)0, Array.Empty<byte>(), false, (ushort)0 })' ColumnIndices="@(new[] { 0, 2, 3, 4 })" EditorLabels='@(new[] { "CID", "Context length", "Context", "Compression", "Valid lifetime" })' />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.ContextInformation" Enabled="CanEditAttribute(9)" Columns='@(new[] { Properties.Resources.CID, Properties.Resources.Context, Properties.Resources.Compression, Properties.Resources.ValidLifetime })' CreateRow='@(() => new GXStructure { new GXBitString("0000"), (byte)0, Array.Empty<byte>(), false, (ushort)0 })' ColumnIndices="@(new[] { 0, 2, 3, 4 })" EditorLabels='@(new[] { Properties.Resources.CID, Properties.Resources.ContextLength, Properties.Resources.Context, Properties.Resources.Compression, Properties.Resources.ValidLifetime })' />
     }
 </GXTabPage>
-<GXTabPage Text="Blacklist">
+<GXTabPage Text="@Properties.Resources.Blacklist">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 10)
     {
-        <GXAttributeField Edit="Edit" Index="10" Label="Blacklist" Enabled="CanEditAttribute(10)" Columns='@(new[] { "Neighbour Address", "Valid Time" })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0 })' />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.Blacklist" Enabled="CanEditAttribute(10)" Columns='@(new[] { Properties.Resources.NeighbourAddress, Properties.Resources.ValidTime })' CreateRow='@(() => new GXStructure { (ushort)0, (ushort)0 })' />
     }
 </GXTabPage>
-<GXTabPage Text="Broadcast log">
+<GXTabPage Text="@Properties.Resources.BroadcastLog">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 11)
     {
-        <GXAttributeField Edit="Edit" Index="11" Label="Broadcast log" Enabled="CanEditAttribute(11)" Columns='@(new[] { "Source Address", "Sequence Number", "Valid Time" })' CreateRow='@(() => new GXStructure { (ushort)0, (byte)0, (ushort)0 })' />
+        <GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.BroadcastLog" Enabled="CanEditAttribute(11)" Columns='@(new[] { Properties.Resources.SourceAddress, Properties.Resources.SequenceNumber, Properties.Resources.ValidTime })' CreateRow='@(() => new GXStructure { (ushort)0, (byte)0, (ushort)0 })' />
     }
 </GXTabPage>
-<GXTabPage Text="Group">
+<GXTabPage Text="@Properties.Resources.Group">
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 12)
     {
-        <GXAttributeField Edit="Edit" Index="12" Label="Group" Enabled="CanEditAttribute(12)" Columns='@(new[] { "Group Address" })' CreateRow='@(() => (ushort)0)' />
+        <GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.Group" Enabled="CanEditAttribute(12)" Columns='@(new[] { Properties.Resources.GroupAddress })' CreateRow='@(() => (ushort)0)' />
     }
 </GXTabPage>
 </GXTabControl>

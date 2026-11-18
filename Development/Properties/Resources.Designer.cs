@@ -19,7 +19,7 @@ namespace Gurux.DLMS.UI.Components.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "18.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class Resources {
@@ -61,11 +61,2072 @@ namespace Gurux.DLMS.UI.Components.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Access Mode:.
+        /// </summary>
+        internal static string AccessModeLabel {
+            get {
+                return ResourceManager.GetString("AccessModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access Number:.
+        /// </summary>
+        internal static string AccessNumberLabel {
+            get {
+                return ResourceManager.GetString("AccessNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access rights.
+        /// </summary>
+        internal static string AccessRights {
+            get {
+                return ResourceManager.GetString("AccessRights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Access selector.
+        /// </summary>
+        internal static string AccessSelector {
+            get {
+                return ResourceManager.GetString("AccessSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Activation Time:.
+        /// </summary>
+        internal static string AccountActivationTimeLabel {
+            get {
+                return ResourceManager.GetString("AccountActivationTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Closure Time:.
+        /// </summary>
+        internal static string AccountClosureTimeLabel {
+            get {
+                return ResourceManager.GetString("AccountClosureTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Account Object.
+        /// </summary>
+        internal static string AccountObject {
+            get {
+                return ResourceManager.GetString("AccountObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACK random factor:.
+        /// </summary>
+        internal static string ACKRandomFactorLabel {
+            get {
+                return ResourceManager.GetString("ACKRandomFactorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ACK timeout (ms):.
+        /// </summary>
+        internal static string ACKTimeoutMsLabel {
+            get {
+                return ResourceManager.GetString("ACKTimeoutMsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action.
+        /// </summary>
+        internal static string Action {
+            get {
+                return ResourceManager.GetString("Action", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action failed: {0}.
+        /// </summary>
+        internal static string ActionFailed0 {
+            get {
+                return ResourceManager.GetString("ActionFailed0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action Over.
+        /// </summary>
+        internal static string ActionOver {
+            get {
+                return ResourceManager.GetString("ActionOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions.
+        /// </summary>
+        internal static string Actions {
+            get {
+                return ResourceManager.GetString("Actions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actions (binary bit string).
+        /// </summary>
+        internal static string ActionsBinaryBitString {
+            get {
+                return ResourceManager.GetString("ActionsBinaryBitString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action Schedule Object.
+        /// </summary>
+        internal static string ActionScheduleObject {
+            get {
+                return ResourceManager.GetString("ActionScheduleObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Action Under.
+        /// </summary>
+        internal static string ActionUnder {
+            get {
+                return ResourceManager.GetString("ActionUnder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate.
+        /// </summary>
+        internal static string Activate {
+            get {
+                return ResourceManager.GetString("Activate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activated:.
+        /// </summary>
+        internal static string ActivatedLabel {
+            get {
+                return ResourceManager.GetString("ActivatedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate Image....
+        /// </summary>
+        internal static string ActivateImage {
+            get {
+                return ResourceManager.GetString("ActivateImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate passive calendar.
+        /// </summary>
+        internal static string ActivatePassiveCalendar {
+            get {
+                return ResourceManager.GetString("ActivatePassiveCalendar", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activate Security.
+        /// </summary>
+        internal static string ActivateSecurity {
+            get {
+                return ResourceManager.GetString("ActivateSecurity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activation Time.
+        /// </summary>
+        internal static string ActivationTime {
+            get {
+                return ResourceManager.GetString("ActivationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active.
+        /// </summary>
+        internal static string Active {
+            get {
+                return ResourceManager.GetString("Active", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active key Index:.
+        /// </summary>
+        internal static string ActiveKeyIndexLabel {
+            get {
+                return ResourceManager.GetString("ActiveKeyIndexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Active mask.
+        /// </summary>
+        internal static string ActiveMask {
+            get {
+                return ResourceManager.GetString("ActiveMask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Activity Calendar Object.
+        /// </summary>
+        internal static string ActivityCalendarObject {
+            get {
+                return ResourceManager.GetString("ActivityCalendarObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Actor (0–255).
+        /// </summary>
+        internal static string Actor0255 {
+            get {
+                return ResourceManager.GetString("Actor0255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A data value is required..
+        /// </summary>
+        internal static string ADataValueIsRequired {
+            get {
+                return ResourceManager.GetString("ADataValueIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add....
+        /// </summary>
+        internal static string Add {
+            get {
+                return ResourceManager.GetString("Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string Add2 {
+            get {
+                return ResourceManager.GetString("Add2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Action....
+        /// </summary>
+        internal static string AddAction {
+            get {
+                return ResourceManager.GetString("AddAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add authentication key.
+        /// </summary>
+        internal static string AddAuthenticationKey {
+            get {
+                return ResourceManager.GetString("AddAuthenticationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Black list....
+        /// </summary>
+        internal static string AddBlackList {
+            get {
+                return ResourceManager.GetString("AddBlackList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Day....
+        /// </summary>
+        internal static string AddDay {
+            get {
+                return ResourceManager.GetString("AddDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to + Add Device.
+        /// </summary>
+        internal static string AddDevice {
+            get {
+                return ResourceManager.GetString("AddDevice", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Device.
+        /// </summary>
+        internal static string AddDevice2 {
+            get {
+                return ResourceManager.GetString("AddDevice2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add function....
+        /// </summary>
+        internal static string AddFunction {
+            get {
+                return ResourceManager.GetString("AddFunction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add IPv6 address.
+        /// </summary>
+        internal static string AddIPv6Address {
+            get {
+                return ResourceManager.GetString("AddIPv6Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add mask.
+        /// </summary>
+        internal static string AddMask {
+            get {
+                return ResourceManager.GetString("AddMask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add multicast address.
+        /// </summary>
+        internal static string AddMulticastAddress {
+            get {
+                return ResourceManager.GetString("AddMulticastAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add parameter.
+        /// </summary>
+        internal static string AddParameter {
+            get {
+                return ResourceManager.GetString("AddParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add register.
+        /// </summary>
+        internal static string AddRegister {
+            get {
+                return ResourceManager.GetString("AddRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address config mode:.
+        /// </summary>
+        internal static string AddressConfigModeLabel {
+            get {
+                return ResourceManager.GetString("AddressConfigModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address index.
+        /// </summary>
+        internal static string AddressIndex {
+            get {
+                return ResourceManager.GetString("AddressIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address:.
+        /// </summary>
+        internal static string AddressLabel {
+            get {
+                return ResourceManager.GetString("AddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address Mask:.
+        /// </summary>
+        internal static string AddressMaskLabel {
+            get {
+                return ResourceManager.GetString("AddressMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address State:.
+        /// </summary>
+        internal static string AddressStateLabel {
+            get {
+                return ResourceManager.GetString("AddressStateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address type.
+        /// </summary>
+        internal static string AddressType {
+            get {
+                return ResourceManager.GetString("AddressType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add Rev Link Cost.
+        /// </summary>
+        internal static string AddRevLinkCost {
+            get {
+                return ResourceManager.GetString("AddRevLinkCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add SAP.
+        /// </summary>
+        internal static string AddSAP {
+            get {
+                return ResourceManager.GetString("AddSAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add White list....
+        /// </summary>
+        internal static string AddWhiteList {
+            get {
+                return ResourceManager.GetString("AddWhiteList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A DER issuer is required..
+        /// </summary>
+        internal static string ADERIssuerIsRequired {
+            get {
+                return ResourceManager.GetString("ADERIssuerIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjacent Cells:.
+        /// </summary>
+        internal static string AdjacentCellsLabel {
+            get {
+                return ResourceManager.GetString("AdjacentCellsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjustments.
+        /// </summary>
+        internal static string Adjustments {
+            get {
+                return ResourceManager.GetString("Adjustments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Adjust to.
+        /// </summary>
+        internal static string AdjustTo {
+            get {
+                return ResourceManager.GetString("AdjustTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Advanced COSEM XML.
+        /// </summary>
+        internal static string AdvancedCOSEMXML {
+            get {
+                return ResourceManager.GetString("AdvancedCOSEMXML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Aggregated Debt:.
+        /// </summary>
+        internal static string AggregatedDebtLabel {
+            get {
+                return ResourceManager.GetString("AggregatedDebtLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Agree key.
+        /// </summary>
+        internal static string AgreeKey {
+            get {
+                return ResourceManager.GetString("AgreeKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A:.
+        /// </summary>
+        internal static string ALabel {
+            get {
+                return ResourceManager.GetString("ALabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Alarm:.
+        /// </summary>
+        internal static string AlarmLabel {
+            get {
+                return ResourceManager.GetString("AlarmLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed.
+        /// </summary>
+        internal static string Allowed {
+            get {
+                return ResourceManager.GetString("Allowed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed callers.
+        /// </summary>
+        internal static string AllowedCallers {
+            get {
+                return ResourceManager.GetString("AllowedCallers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Allowed failed attempts:.
+        /// </summary>
+        internal static string AllowedFailedAttemptsLabel {
+            get {
+                return ResourceManager.GetString("AllowedFailedAttemptsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A logical name requires six byte values..
+        /// </summary>
+        internal static string ALogicalNameRequiresSixByteValues {
+            get {
+                return ResourceManager.GetString("ALogicalNameRequiresSixByteValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount (Int32).
+        /// </summary>
+        internal static string AmountInt32 {
+            get {
+                return ResourceManager.GetString("AmountInt32", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Amount To Clear:.
+        /// </summary>
+        internal static string AmountToClearLabel {
+            get {
+                return ResourceManager.GetString("AmountToClearLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A new secret is required..
+        /// </summary>
+        internal static string ANewSecretIsRequired {
+            get {
+                return ResourceManager.GetString("ANewSecretIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An image identifier is required..
+        /// </summary>
+        internal static string AnImageIdentifierIsRequired {
+            get {
+                return ResourceManager.GetString("AnImageIdentifierIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An M-Bus encryption key must contain exactly 16 bytes..
+        /// </summary>
+        internal static string AnMBusEncryptionKeyMustContainExactly16Bytes {
+            get {
+                return ResourceManager.GetString("AnMBusEncryptionKeyMustContainExactly16Bytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A nonempty ASCII function name is required..
+        /// </summary>
+        internal static string ANonemptyASCIIFunctionNameIsRequired {
+            get {
+                return ResourceManager.GetString("ANonemptyASCIIFunctionNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A nonempty secret is required..
+        /// </summary>
+        internal static string ANonemptySecretIsRequired {
+            get {
+                return ResourceManager.GetString("ANonemptySecretIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to APN:.
+        /// </summary>
+        internal static string APNLabel {
+            get {
+                return ResourceManager.GetString("APNLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application context:.
+        /// </summary>
+        internal static string ApplicationContextLabel {
+            get {
+                return ResourceManager.GetString("ApplicationContextLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Application Context Name.
+        /// </summary>
+        internal static string ApplicationContextName {
+            get {
+                return ResourceManager.GetString("ApplicationContextName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Apply enable / disable.
+        /// </summary>
+        internal static string ApplyEnableDisable {
+            get {
+                return ResourceManager.GetString("ApplyEnableDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Arbitrator Object.
+        /// </summary>
+        internal static string ArbitratorObject {
+            get {
+                return ResourceManager.GetString("ArbitratorObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Array.
+        /// </summary>
+        internal static string Array {
+            get {
+                return ResourceManager.GetString("Array", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Array ID (0–255).
+        /// </summary>
+        internal static string ArrayID0255 {
+            get {
+                return ResourceManager.GetString("ArrayID0255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Array Manager Object.
+        /// </summary>
+        internal static string ArrayManagerObject {
+            get {
+                return ResourceManager.GetString("ArrayManagerObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A script logical name requires six byte values..
+        /// </summary>
+        internal static string AScriptLogicalNameRequiresSixByteValues {
+            get {
+                return ResourceManager.GetString("AScriptLogicalNameRequiresSixByteValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A signed ephemeral public key requires {0} bytes..
+        /// </summary>
+        internal static string ASignedEphemeralPublicKeyRequires0Bytes {
+            get {
+                return ResourceManager.GetString("ASignedEphemeralPublicKeyRequires0Bytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Assignments.
+        /// </summary>
+        internal static string Assignments {
+            get {
+                return ResourceManager.GetString("Assignments", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Associated partners ID.
+        /// </summary>
+        internal static string AssociatedPartnersID {
+            get {
+                return ResourceManager.GetString("AssociatedPartnersID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association Logical  Name Object.
+        /// </summary>
+        internal static string AssociationLogicalNameObject {
+            get {
+                return ResourceManager.GetString("AssociationLogicalNameObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association object.
+        /// </summary>
+        internal static string AssociationObject {
+            get {
+                return ResourceManager.GetString("AssociationObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association objects.
+        /// </summary>
+        internal static string AssociationObjects {
+            get {
+                return ResourceManager.GetString("AssociationObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association Short Name Object.
+        /// </summary>
+        internal static string AssociationShortNameObject {
+            get {
+                return ResourceManager.GetString("AssociationShortNameObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Association Status:.
+        /// </summary>
+        internal static string AssociationStatusLabel {
+            get {
+                return ResourceManager.GetString("AssociationStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute.
+        /// </summary>
+        internal static string Attribute {
+            get {
+                return ResourceManager.GetString("Attribute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute {0}.
+        /// </summary>
+        internal static string Attribute0 {
+            get {
+                return ResourceManager.GetString("Attribute0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute access.
+        /// </summary>
+        internal static string AttributeAccess {
+            get {
+                return ResourceManager.GetString("AttributeAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute Access (index:mask):.
+        /// </summary>
+        internal static string AttributeAccessIndexMaskLabel {
+            get {
+                return ResourceManager.GetString("AttributeAccessIndexMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute Access:.
+        /// </summary>
+        internal static string AttributeAccessLabel {
+            get {
+                return ResourceManager.GetString("AttributeAccessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute access mask is not supported by this association version..
+        /// </summary>
+        internal static string AttributeAccessMaskIsNotSupportedByThisAssociationVersion {
+            get {
+                return ResourceManager.GetString("AttributeAccessMaskIsNotSupportedByThisAssociationVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute Accesss.
+        /// </summary>
+        internal static string AttributeAccesss {
+            get {
+                return ResourceManager.GetString("AttributeAccesss", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute {0}: {1}.
+        /// </summary>
+        internal static string AttributeError {
+            get {
+                return ResourceManager.GetString("AttributeError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute ID:.
+        /// </summary>
+        internal static string AttributeIDLabel {
+            get {
+                return ResourceManager.GetString("AttributeIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute Index.
+        /// </summary>
+        internal static string AttributeIndex {
+            get {
+                return ResourceManager.GetString("AttributeIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute index (1–255).
+        /// </summary>
+        internal static string AttributeIndex1255 {
+            get {
+                return ResourceManager.GetString("AttributeIndex1255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute index.
+        /// </summary>
+        internal static string AttributeIndex2 {
+            get {
+                return ResourceManager.GetString("AttributeIndex2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute index exceeds the object&apos;s attribute count..
+        /// </summary>
+        internal static string AttributeIndexExceedsTheObjectSAttributeCount {
+            get {
+                return ResourceManager.GetString("AttributeIndexExceedsTheObjectSAttributeCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute Index:.
+        /// </summary>
+        internal static string AttributeIndexLabel {
+            get {
+                return ResourceManager.GetString("AttributeIndexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attribute index must be greater than zero..
+        /// </summary>
+        internal static string AttributeIndexMustBeGreaterThanZero {
+            get {
+                return ResourceManager.GetString("AttributeIndexMustBeGreaterThanZero", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Attributes.
+        /// </summary>
+        internal static string Attributes {
+            get {
+                return ResourceManager.GetString("Attributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A user name is required..
+        /// </summary>
+        internal static string AUserNameIsRequired {
+            get {
+                return ResourceManager.GetString("AUserNameIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication key (hexadecimal).
+        /// </summary>
+        internal static string AuthenticationKeyHexadecimal {
+            get {
+                return ResourceManager.GetString("AuthenticationKeyHexadecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication key ID.
+        /// </summary>
+        internal static string AuthenticationKeyID {
+            get {
+                return ResourceManager.GetString("AuthenticationKeyID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication:.
+        /// </summary>
+        internal static string AuthenticationLabel {
+            get {
+                return ResourceManager.GetString("AuthenticationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication Mechanism Name.
+        /// </summary>
+        internal static string AuthenticationMechanismName {
+            get {
+                return ResourceManager.GetString("AuthenticationMechanismName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication Name:.
+        /// </summary>
+        internal static string AuthenticationNameLabel {
+            get {
+                return ResourceManager.GetString("AuthenticationNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authentication secret.
+        /// </summary>
+        internal static string AuthenticationSecret {
+            get {
+                return ResourceManager.GetString("AuthenticationSecret", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Answer Object.
+        /// </summary>
+        internal static string AutoAnswerObject {
+            get {
+                return ResourceManager.GetString("AutoAnswerObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Auto Connect Object.
+        /// </summary>
+        internal static string AutoConnectObject {
+            get {
+                return ResourceManager.GetString("AutoConnectObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Baudrate:.
+        /// </summary>
+        internal static string AvailableBaudrateLabel {
+            get {
+                return ResourceManager.GetString("AvailableBaudrateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Credit:.
+        /// </summary>
+        internal static string AvailableCreditLabel {
+            get {
+                return ResourceManager.GetString("AvailableCreditLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Available Switches:.
+        /// </summary>
+        internal static string AvailableSwitchesLabel {
+            get {
+                return ResourceManager.GetString("AvailableSwitchesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bad CRCs:.
+        /// </summary>
+        internal static string BadCRCsLabel {
+            get {
+                return ResourceManager.GetString("BadCRCsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Base Address:.
+        /// </summary>
+        internal static string BaseAddressLabel {
+            get {
+                return ResourceManager.GetString("BaseAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Base Name:.
+        /// </summary>
+        internal static string BaseNameLabel {
+            get {
+                return ResourceManager.GetString("BaseNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon Rnd:.
+        /// </summary>
+        internal static string BeaconRndLabel {
+            get {
+                return ResourceManager.GetString("BeaconRndLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon RX Frequency:.
+        /// </summary>
+        internal static string BeaconRXFrequencyLabel {
+            get {
+                return ResourceManager.GetString("BeaconRXFrequencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon RX Slot:.
+        /// </summary>
+        internal static string BeaconRXSlotLabel {
+            get {
+                return ResourceManager.GetString("BeaconRXSlotLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon Slot Count:.
+        /// </summary>
+        internal static string BeaconSlotCountLabel {
+            get {
+                return ResourceManager.GetString("BeaconSlotCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacons Per Frame:.
+        /// </summary>
+        internal static string BeaconsPerFrameLabel {
+            get {
+                return ResourceManager.GetString("BeaconsPerFrameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon TX Frequency:.
+        /// </summary>
+        internal static string BeaconTXFrequencyLabel {
+            get {
+                return ResourceManager.GetString("BeaconTXFrequencyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Beacon TX Slot:.
+        /// </summary>
+        internal static string BeaconTXSlotLabel {
+            get {
+                return ResourceManager.GetString("BeaconTXSlotLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin.
+        /// </summary>
+        internal static string Begin {
+            get {
+                return ResourceManager.GetString("Begin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin date must not follow end date..
+        /// </summary>
+        internal static string BeginDateMustNotFollowEndDate {
+            get {
+                return ResourceManager.GetString("BeginDateMustNotFollowEndDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin date (yyyy-MM-dd).
+        /// </summary>
+        internal static string BeginDateYyyyMMDd {
+            get {
+                return ResourceManager.GetString("BeginDateYyyyMMDd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Begin:.
+        /// </summary>
+        internal static string BeginLabel {
+            get {
+                return ResourceManager.GetString("BeginLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BER:.
+        /// </summary>
+        internal static string BERLabel {
+            get {
+                return ResourceManager.GetString("BERLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blacklist.
+        /// </summary>
+        internal static string Blacklist {
+            get {
+                return ResourceManager.GetString("Blacklist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Black list TTL.
+        /// </summary>
+        internal static string BlackListTTL {
+            get {
+                return ResourceManager.GetString("BlackListTTL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Blocks Status:.
+        /// </summary>
+        internal static string BlocksStatusLabel {
+            get {
+                return ResourceManager.GetString("BlocksStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Block status must contain one zero or one per image block..
+        /// </summary>
+        internal static string BlockStatusMustContainOneZeroOrOnePerImageBlock {
+            get {
+                return ResourceManager.GetString("BlockStatusMustContainOneZeroOrOnePerImageBlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Block-wise transfer counter.
+        /// </summary>
+        internal static string BlockWiseTransferCounter {
+            get {
+                return ResourceManager.GetString("BlockWiseTransferCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast frames.
+        /// </summary>
+        internal static string BroadcastFrames {
+            get {
+                return ResourceManager.GetString("BroadcastFrames", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast Frames Counter.
+        /// </summary>
+        internal static string BroadcastFramesCounter {
+            get {
+                return ResourceManager.GetString("BroadcastFramesCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast frames counter:.
+        /// </summary>
+        internal static string BroadcastFramesCounterLabel {
+            get {
+                return ResourceManager.GetString("BroadcastFramesCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast log.
+        /// </summary>
+        internal static string BroadcastLog {
+            get {
+                return ResourceManager.GetString("BroadcastLog", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast Log TTL:.
+        /// </summary>
+        internal static string BroadcastLogTTLLabel {
+            get {
+                return ResourceManager.GetString("BroadcastLogTTLLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Broadcast max CW Enabled.
+        /// </summary>
+        internal static string BroadcastMaxCWEnabled {
+            get {
+                return ResourceManager.GetString("BroadcastMaxCWEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Browse....
+        /// </summary>
+        internal static string Browse {
+            get {
+                return ResourceManager.GetString("Browse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Buffer.
+        /// </summary>
+        internal static string Buffer {
+            get {
+                return ResourceManager.GetString("Buffer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Bus Address:.
+        /// </summary>
+        internal static string BusAddressLabel {
+            get {
+                return ResourceManager.GetString("BusAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calendar Name.
+        /// </summary>
+        internal static string CalendarName {
+            get {
+                return ResourceManager.GetString("CalendarName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Caller identity.
+        /// </summary>
+        internal static string CallerIdentity {
+            get {
+                return ResourceManager.GetString("CallerIdentity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Calling Window:.
+        /// </summary>
+        internal static string CallingWindowLabel {
+            get {
+                return ResourceManager.GetString("CallingWindowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Call type.
+        /// </summary>
+        internal static string CallType {
+            get {
+                return ResourceManager.GetString("CallType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cannot display attribute {0}: {1}..
+        /// </summary>
+        internal static string CannotDisplayAttribute01 {
+            get {
+                return ResourceManager.GetString("CannotDisplayAttribute01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capabilities:.
+        /// </summary>
+        internal static string CapabilitiesLabel {
+            get {
+                return ResourceManager.GetString("CapabilitiesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture.
+        /// </summary>
+        internal static string Capture {
+            get {
+                return ResourceManager.GetString("Capture", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Definition:.
+        /// </summary>
+        internal static string CaptureDefinitionLabel {
+            get {
+                return ResourceManager.GetString("CaptureDefinitionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture ID:.
+        /// </summary>
+        internal static string CaptureIDLabel {
+            get {
+                return ResourceManager.GetString("CaptureIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Method.
+        /// </summary>
+        internal static string CaptureMethod {
+            get {
+                return ResourceManager.GetString("CaptureMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} / attribute {1} / data {2}.
+        /// </summary>
+        internal static string CaptureObjectAttributeAndData {
+            get {
+                return ResourceManager.GetString("CaptureObjectAttributeAndData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Objects.
+        /// </summary>
+        internal static string CaptureObjects {
+            get {
+                return ResourceManager.GetString("CaptureObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Period:.
+        /// </summary>
+        internal static string CapturePeriodLabel {
+            get {
+                return ResourceManager.GetString("CapturePeriodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture time.
+        /// </summary>
+        internal static string CaptureTime {
+            get {
+                return ResourceManager.GetString("CaptureTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Time.
+        /// </summary>
+        internal static string CaptureTime2 {
+            get {
+                return ResourceManager.GetString("CaptureTime2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture time:.
+        /// </summary>
+        internal static string CaptureTimeLabel {
+            get {
+                return ResourceManager.GetString("CaptureTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Capture Time:.
+        /// </summary>
+        internal static string CaptureTimeLabel2 {
+            get {
+                return ResourceManager.GetString("CaptureTimeLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cell ID:.
+        /// </summary>
+        internal static string CellIDLabel {
+            get {
+                return ResourceManager.GetString("CellIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cell Info.
+        /// </summary>
+        internal static string CellInfo {
+            get {
+                return ResourceManager.GetString("CellInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cenelec Legacy:.
+        /// </summary>
+        internal static string CenelecLegacyLabel {
+            get {
+                return ResourceManager.GetString("CenelecLegacyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate request....
+        /// </summary>
+        internal static string CertificateRequest {
+            get {
+                return ResourceManager.GetString("CertificateRequest", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate requests and export responses are returned to the connection session..
+        /// </summary>
+        internal static string CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession {
+            get {
+                return ResourceManager.GetString("CertificateRequestsAndExportResponsesAreReturnedToTheConnectionSession", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificates.
+        /// </summary>
+        internal static string Certificates {
+            get {
+                return ResourceManager.GetString("Certificates", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate serial number must be positive..
+        /// </summary>
+        internal static string CertificateSerialNumberMustBePositive {
+            get {
+                return ResourceManager.GetString("CertificateSerialNumberMustBePositive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Certificate type:.
+        /// </summary>
+        internal static string CertificateTypeLabel {
+            get {
+                return ResourceManager.GetString("CertificateTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changed Parameter.
+        /// </summary>
+        internal static string ChangedParameter {
+            get {
+                return ResourceManager.GetString("ChangedParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Changing the base name also requires permission to update access rights..
+        /// </summary>
+        internal static string ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights {
+            get {
+                return ResourceManager.GetString("ChangingTheBaseNameAlsoRequiresPermissionToUpdateAccessRights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Channel ID:.
+        /// </summary>
+        internal static string ChannelIDLabel {
+            get {
+                return ResourceManager.GetString("ChannelIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Channel:.
+        /// </summary>
+        internal static string ChannelLabel {
+            get {
+                return ResourceManager.GetString("ChannelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge.
+        /// </summary>
+        internal static string Charge {
+            get {
+                return ResourceManager.GetString("Charge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Configuration.
+        /// </summary>
+        internal static string ChargeConfiguration {
+            get {
+                return ResourceManager.GetString("ChargeConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Object.
+        /// </summary>
+        internal static string ChargeObject {
+            get {
+                return ResourceManager.GetString("ChargeObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Per Unit.
+        /// </summary>
+        internal static string ChargePerUnit {
+            get {
+                return ResourceManager.GetString("ChargePerUnit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Per Unit Scaling Type.
+        /// </summary>
+        internal static string ChargePerUnitScalingType {
+            get {
+                return ResourceManager.GetString("ChargePerUnitScalingType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Reference.
+        /// </summary>
+        internal static string ChargeReference {
+            get {
+                return ResourceManager.GetString("ChargeReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Tables.
+        /// </summary>
+        internal static string ChargeTables {
+            get {
+                return ResourceManager.GetString("ChargeTables", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Charge Type.
+        /// </summary>
+        internal static string ChargeType {
+            get {
+                return ResourceManager.GetString("ChargeType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a reading mode..
+        /// </summary>
+        internal static string ChooseAReadingMode {
+            get {
+                return ResourceManager.GetString("ChooseAReadingMode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a register, extended register or demand register..
+        /// </summary>
+        internal static string ChooseARegisterExtendedRegisterOrDemandRegister {
+            get {
+                return ResourceManager.GetString("ChooseARegisterExtendedRegisterOrDemandRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a supported message..
+        /// </summary>
+        internal static string ChooseASupportedMessage {
+            get {
+                return ResourceManager.GetString("ChooseASupportedMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a supported service..
+        /// </summary>
+        internal static string ChooseASupportedService {
+            get {
+                return ResourceManager.GetString("ChooseASupportedService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a supported service and message..
+        /// </summary>
+        internal static string ChooseASupportedServiceAndMessage {
+            get {
+                return ResourceManager.GetString("ChooseASupportedServiceAndMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose a valid COSEM class..
+        /// </summary>
+        internal static string ChooseAValidCOSEMClass {
+            get {
+                return ResourceManager.GetString("ChooseAValidCOSEMClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CID.
+        /// </summary>
+        internal static string CID {
+            get {
+                return ResourceManager.GetString("CID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class ID.
+        /// </summary>
+        internal static string ClassID {
+            get {
+                return ResourceManager.GetString("ClassID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Class ID:.
+        /// </summary>
+        internal static string ClassIDLabel {
+            get {
+                return ResourceManager.GetString("ClassIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clearance Threshold:.
+        /// </summary>
+        internal static string ClearanceThresholdLabel {
+            get {
+                return ResourceManager.GetString("ClearanceThresholdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clear encryption key:.
+        /// </summary>
+        internal static string ClearEncryptionKeyLabel {
+            get {
+                return ResourceManager.GetString("ClearEncryptionKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client ID.
+        /// </summary>
+        internal static string ClientID {
+            get {
+                return ResourceManager.GetString("ClientID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client Key:.
+        /// </summary>
+        internal static string ClientKeyLabel {
+            get {
+                return ResourceManager.GetString("ClientKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client SAP:.
+        /// </summary>
+        internal static string ClientSAPLabel {
+            get {
+                return ResourceManager.GetString("ClientSAPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Client System Title:.
+        /// </summary>
+        internal static string ClientSystemTitleLabel {
+            get {
+                return ResourceManager.GetString("ClientSystemTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clock Base:.
+        /// </summary>
+        internal static string ClockBaseLabel {
+            get {
+                return ResourceManager.GetString("ClockBaseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Clock Object.
+        /// </summary>
+        internal static string ClockObject {
+            get {
+                return ResourceManager.GetString("ClockObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Close.
         /// </summary>
         internal static string Close {
             get {
                 return ResourceManager.GetString("Close", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CLT Re TX Timer:.
+        /// </summary>
+        internal static string CLTReTXTimerLabel {
+            get {
+                return ResourceManager.GetString("CLTReTXTimerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CoAP Diagnostic Object.
+        /// </summary>
+        internal static string CoAPDiagnosticObject {
+            get {
+                return ResourceManager.GetString("CoAPDiagnosticObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CoAP Setup Object.
+        /// </summary>
+        internal static string CoAPSetupObject {
+            get {
+                return ResourceManager.GetString("CoAPSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CoAP URI path:.
+        /// </summary>
+        internal static string CoAPURIPathLabel {
+            get {
+                return ResourceManager.GetString("CoAPURIPathLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Collect.
+        /// </summary>
+        internal static string Collect {
+            get {
+                return ResourceManager.GetString("Collect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Column.
+        /// </summary>
+        internal static string Column {
+            get {
+                return ResourceManager.GetString("Column", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Column selection.
+        /// </summary>
+        internal static string ColumnSelection {
+            get {
+                return ResourceManager.GetString("ColumnSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commodity Reference Type.
+        /// </summary>
+        internal static string CommodityReferenceType {
+            get {
+                return ResourceManager.GetString("CommodityReferenceType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Commodity Scale.
+        /// </summary>
+        internal static string CommodityScale {
+            get {
+                return ResourceManager.GetString("CommodityScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comm Speed:.
+        /// </summary>
+        internal static string CommSpeedLabel {
+            get {
+                return ResourceManager.GetString("CommSpeedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Communication port protection Object.
+        /// </summary>
+        internal static string CommunicationPortProtectionObject {
+            get {
+                return ResourceManager.GetString("CommunicationPortProtectionObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Communication Window.
+        /// </summary>
+        internal static string CommunicationWindow {
+            get {
+                return ResourceManager.GetString("CommunicationWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compact Data.
+        /// </summary>
+        internal static string CompactData {
+            get {
+                return ResourceManager.GetString("CompactData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Compression.
+        /// </summary>
+        internal static string Compression {
+            get {
+                return ResourceManager.GetString("Compression", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration.
+        /// </summary>
+        internal static string Configuration {
+            get {
+                return ResourceManager.GetString("Configuration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Configuration:.
+        /// </summary>
+        internal static string ConfigurationLabel {
+            get {
+                return ResourceManager.GetString("ConfigurationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation parameters.
+        /// </summary>
+        internal static string ConfirmationParameters {
+            get {
+                return ResourceManager.GetString("ConfirmationParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirmation Timeout:.
+        /// </summary>
+        internal static string ConfirmationTimeoutLabel {
+            get {
+                return ResourceManager.GetString("ConfirmationTimeoutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Conformance:.
+        /// </summary>
+        internal static string ConformanceLabel {
+            get {
+                return ResourceManager.GetString("ConformanceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Connect.
+        /// </summary>
+        internal static string Connect {
+            get {
+                return ResourceManager.GetString("Connect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context.
+        /// </summary>
+        internal static string Context {
+            get {
+                return ResourceManager.GetString("Context", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context ID:.
+        /// </summary>
+        internal static string ContextIDLabel {
+            get {
+                return ResourceManager.GetString("ContextIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context information.
+        /// </summary>
+        internal static string ContextInformation {
+            get {
+                return ResourceManager.GetString("ContextInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Context length.
+        /// </summary>
+        internal static string ContextLength {
+            get {
+                return ResourceManager.GetString("ContextLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control Mode:.
+        /// </summary>
+        internal static string ControlModeLabel {
+            get {
+                return ResourceManager.GetString("ControlModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Control State:.
+        /// </summary>
+        internal static string ControlStateLabel {
+            get {
+                return ResourceManager.GetString("ControlStateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Coord address:.
+        /// </summary>
+        internal static string CoordAddressLabel {
+            get {
+                return ResourceManager.GetString("CoordAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct the invalid fields before accepting..
+        /// </summary>
+        internal static string CorrectTheInvalidFieldsBeforeAccepting {
+            get {
+                return ResourceManager.GetString("CorrectTheInvalidFieldsBeforeAccepting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct the invalid parameters before invoking the method..
+        /// </summary>
+        internal static string CorrectTheInvalidParametersBeforeInvokingTheMethod {
+            get {
+                return ResourceManager.GetString("CorrectTheInvalidParametersBeforeInvokingTheMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Correct the invalid values..
+        /// </summary>
+        internal static string CorrectTheInvalidValues {
+            get {
+                return ResourceManager.GetString("CorrectTheInvalidValues", resourceCulture);
             }
         }
         
@@ -97,6 +2158,1887 @@ namespace Gurux.DLMS.UI.Components.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to COSEM objects.
+        /// </summary>
+        internal static string COSEMObjects {
+            get {
+                return ResourceManager.GetString("COSEMObjects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Count.
+        /// </summary>
+        internal static string Count {
+            get {
+                return ResourceManager.GetString("Count", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Counter.
+        /// </summary>
+        internal static string Counter {
+            get {
+                return ResourceManager.GetString("Counter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country:.
+        /// </summary>
+        internal static string CountryLabel {
+            get {
+                return ResourceManager.GetString("CountryLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country name:.
+        /// </summary>
+        internal static string CountryNameLabel {
+            get {
+                return ResourceManager.GetString("CountryNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRC Failed Count:.
+        /// </summary>
+        internal static string CRCFailedCountLabel {
+            get {
+                return ResourceManager.GetString("CRCFailedCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRC Incorrect Count:.
+        /// </summary>
+        internal static string CRCIncorrectCountLabel {
+            get {
+                return ResourceManager.GetString("CRCIncorrectCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRC NOK frames counter:.
+        /// </summary>
+        internal static string CRCNOKFramesCounterLabel {
+            get {
+                return ResourceManager.GetString("CRCNOKFramesCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CRC OK frames counter:.
+        /// </summary>
+        internal static string CRCOKFramesCounterLabel {
+            get {
+                return ResourceManager.GetString("CRCOKFramesCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit.
+        /// </summary>
+        internal static string Credit {
+            get {
+                return ResourceManager.GetString("Credit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Available Threshold.
+        /// </summary>
+        internal static string CreditAvailableThreshold {
+            get {
+                return ResourceManager.GetString("CreditAvailableThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Charge.
+        /// </summary>
+        internal static string CreditCharge {
+            get {
+                return ResourceManager.GetString("CreditCharge", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Configuration.
+        /// </summary>
+        internal static string CreditConfiguration {
+            get {
+                return ResourceManager.GetString("CreditConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Object.
+        /// </summary>
+        internal static string CreditObject {
+            get {
+                return ResourceManager.GetString("CreditObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit Reference.
+        /// </summary>
+        internal static string CreditReference {
+            get {
+                return ResourceManager.GetString("CreditReference", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Credit reference.
+        /// </summary>
+        internal static string CreditReference2 {
+            get {
+                return ResourceManager.GetString("CreditReference2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CS Attachment:.
+        /// </summary>
+        internal static string CSAttachmentLabel {
+            get {
+                return ResourceManager.GetString("CSAttachmentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSCM Fairness Limit:.
+        /// </summary>
+        internal static string CSCMFairnessLimitLabel {
+            get {
+                return ResourceManager.GetString("CSCMFairnessLimitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSMA Busy Counter:.
+        /// </summary>
+        internal static string CSMABusyCounterLabel {
+            get {
+                return ResourceManager.GetString("CSMABusyCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSMA Fail Counter:.
+        /// </summary>
+        internal static string CSMAFailCounterLabel {
+            get {
+                return ResourceManager.GetString("CSMAFailCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSMA Fails:.
+        /// </summary>
+        internal static string CSMAFailsLabel {
+            get {
+                return ResourceManager.GetString("CSMAFailsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to CSMA No Acks:.
+        /// </summary>
+        internal static string CSMANoAcksLabel {
+            get {
+                return ResourceManager.GetString("CSMANoAcksLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cumulative Failed Attempts:.
+        /// </summary>
+        internal static string CumulativeFailedAttemptsLabel {
+            get {
+                return ResourceManager.GetString("CumulativeFailedAttemptsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency Name:.
+        /// </summary>
+        internal static string CurrencyNameLabel {
+            get {
+                return ResourceManager.GetString("CurrencyNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency Scale:.
+        /// </summary>
+        internal static string CurrencyScaleLabel {
+            get {
+                return ResourceManager.GetString("CurrencyScaleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Currency Unit:.
+        /// </summary>
+        internal static string CurrencyUnitLabel {
+            get {
+                return ResourceManager.GetString("CurrencyUnitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Average.
+        /// </summary>
+        internal static string CurrentAverage {
+            get {
+                return ResourceManager.GetString("CurrentAverage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Credit Amount.
+        /// </summary>
+        internal static string CurrentCreditAmount {
+            get {
+                return ResourceManager.GetString("CurrentCreditAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Credit In Use:.
+        /// </summary>
+        internal static string CurrentCreditInUseLabel {
+            get {
+                return ResourceManager.GetString("CurrentCreditInUseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Credit Status:.
+        /// </summary>
+        internal static string CurrentCreditStatusLabel {
+            get {
+                return ResourceManager.GetString("CurrentCreditStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Start Time.
+        /// </summary>
+        internal static string CurrentStartTime {
+            get {
+                return ResourceManager.GetString("CurrentStartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current time.
+        /// </summary>
+        internal static string CurrentTime {
+            get {
+                return ResourceManager.GetString("CurrentTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current time written..
+        /// </summary>
+        internal static string CurrentTimeWritten {
+            get {
+                return ResourceManager.GetString("CurrentTimeWritten", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current time Zone.
+        /// </summary>
+        internal static string CurrentTimeZone {
+            get {
+                return ResourceManager.GetString("CurrentTimeZone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current user.
+        /// </summary>
+        internal static string CurrentUser {
+            get {
+                return ResourceManager.GetString("CurrentUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data.
+        /// </summary>
+        internal static string Data {
+            get {
+                return ResourceManager.GetString("Data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data header type:.
+        /// </summary>
+        internal static string DataHeaderTypeLabel {
+            get {
+                return ResourceManager.GetString("DataHeaderTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data index.
+        /// </summary>
+        internal static string DataIndex {
+            get {
+                return ResourceManager.GetString("DataIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Index.
+        /// </summary>
+        internal static string DataIndex2 {
+            get {
+                return ResourceManager.GetString("DataIndex2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data index:.
+        /// </summary>
+        internal static string DataIndexLabel {
+            get {
+                return ResourceManager.GetString("DataIndexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Information.
+        /// </summary>
+        internal static string DataInformation {
+            get {
+                return ResourceManager.GetString("DataInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Information (hex):.
+        /// </summary>
+        internal static string DataInformationHexLabel {
+            get {
+                return ResourceManager.GetString("DataInformationHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data link layer:.
+        /// </summary>
+        internal static string DataLinkLayerLabel {
+            get {
+                return ResourceManager.GetString("DataLinkLayerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Object.
+        /// </summary>
+        internal static string DataObject {
+            get {
+                return ResourceManager.GetString("DataObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Object — Unix time.
+        /// </summary>
+        internal static string DataObjectUnixTime {
+            get {
+                return ResourceManager.GetString("DataObjectUnixTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Protection Object.
+        /// </summary>
+        internal static string DataProtectionObject {
+            get {
+                return ResourceManager.GetString("DataProtectionObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data type:.
+        /// </summary>
+        internal static string DataTypeLabel {
+            get {
+                return ResourceManager.GetString("DataTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data Value.
+        /// </summary>
+        internal static string DataValue {
+            get {
+                return ResourceManager.GetString("DataValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Data value:.
+        /// </summary>
+        internal static string DataValueLabel {
+            get {
+                return ResourceManager.GetString("DataValueLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date.
+        /// </summary>
+        internal static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Date (yyyy-MM-dd).
+        /// </summary>
+        internal static string DateYyyyMMDd {
+            get {
+                return ResourceManager.GetString("DateYyyyMMDd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day action.
+        /// </summary>
+        internal static string DayAction {
+            get {
+                return ResourceManager.GetString("DayAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day actions.
+        /// </summary>
+        internal static string DayActions {
+            get {
+                return ResourceManager.GetString("DayActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day ID.
+        /// </summary>
+        internal static string DayID {
+            get {
+                return ResourceManager.GetString("DayID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day ID (0–255).
+        /// </summary>
+        internal static string DayID0255 {
+            get {
+                return ResourceManager.GetString("DayID0255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day IDs must be unique..
+        /// </summary>
+        internal static string DayIDsMustBeUnique {
+            get {
+                return ResourceManager.GetString("DayIDsMustBeUnique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Daylight Savings.
+        /// </summary>
+        internal static string DaylightSavings {
+            get {
+                return ResourceManager.GetString("DaylightSavings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day of month.
+        /// </summary>
+        internal static string DayOfMonth {
+            get {
+                return ResourceManager.GetString("DayOfMonth", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Day Profile.
+        /// </summary>
+        internal static string DayProfile {
+            get {
+                return ResourceManager.GetString("DayProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dedicated key:.
+        /// </summary>
+        internal static string DedicatedKeyLabel {
+            get {
+                return ResourceManager.GetString("DedicatedKeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Baudrate:.
+        /// </summary>
+        internal static string DefaultBaudrateLabel {
+            get {
+                return ResourceManager.GetString("DefaultBaudrateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default coord route enabled.
+        /// </summary>
+        internal static string DefaultCoordRouteEnabled {
+            get {
+                return ResourceManager.GetString("DefaultCoordRouteEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Mode:.
+        /// </summary>
+        internal static string DefaultModeLabel {
+            get {
+                return ResourceManager.GetString("DefaultModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Quality of Service.
+        /// </summary>
+        internal static string DefaultQualityOfService {
+            get {
+                return ResourceManager.GetString("DefaultQualityOfService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Default Tariff Band.
+        /// </summary>
+        internal static string DefaultTariffBand {
+            get {
+                return ResourceManager.GetString("DefaultTariffBand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to De-install.
+        /// </summary>
+        internal static string DeInstall {
+            get {
+                return ResourceManager.GetString("DeInstall", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay.
+        /// </summary>
+        internal static string Delay {
+            get {
+                return ResourceManager.GetString("Delay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delayed ACK timeout (ms):.
+        /// </summary>
+        internal static string DelayedACKTimeoutMsLabel {
+            get {
+                return ResourceManager.GetString("DelayedACKTimeoutMsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delay:.
+        /// </summary>
+        internal static string DelayLabel {
+            get {
+                return ResourceManager.GetString("DelayLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Delete {
+            get {
+                return ResourceManager.GetString("Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete authentication key.
+        /// </summary>
+        internal static string DeleteAuthenticationKey {
+            get {
+                return ResourceManager.GetString("DeleteAuthenticationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete day.
+        /// </summary>
+        internal static string DeleteDay {
+            get {
+                return ResourceManager.GetString("DeleteDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete entry.
+        /// </summary>
+        internal static string DeleteEntry {
+            get {
+                return ResourceManager.GetString("DeleteEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete multicast address.
+        /// </summary>
+        internal static string DeleteMulticastAddress {
+            get {
+                return ResourceManager.GetString("DeleteMulticastAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete parameter.
+        /// </summary>
+        internal static string DeleteParameter {
+            get {
+                return ResourceManager.GetString("DeleteParameter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery Method.
+        /// </summary>
+        internal static string DeliveryMethod {
+            get {
+                return ResourceManager.GetString("DeliveryMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delta Electrical Phase:.
+        /// </summary>
+        internal static string DeltaElectricalPhaseLabel {
+            get {
+                return ResourceManager.GetString("DeltaElectricalPhaseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Demand Register Object.
+        /// </summary>
+        internal static string DemandRegisterObject {
+            get {
+                return ResourceManager.GetString("DemandRegisterObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description:.
+        /// </summary>
+        internal static string DescriptionLabel {
+            get {
+                return ResourceManager.GetString("DescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Descriptions.
+        /// </summary>
+        internal static string Descriptions {
+            get {
+                return ResourceManager.GetString("Descriptions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination address.
+        /// </summary>
+        internal static string DestinationAddress {
+            get {
+                return ResourceManager.GetString("DestinationAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination:.
+        /// </summary>
+        internal static string DestinationLabel {
+            get {
+                return ResourceManager.GetString("DestinationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Destination must contain ASCII characters..
+        /// </summary>
+        internal static string DestinationMustContainASCIICharacters {
+            get {
+                return ResourceManager.GetString("DestinationMustContainASCIICharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Desynchronization listing.
+        /// </summary>
+        internal static string DesynchronizationListing {
+            get {
+                return ResourceManager.GetString("DesynchronizationListing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Deviation:.
+        /// </summary>
+        internal static string DeviationLabel {
+            get {
+                return ResourceManager.GetString("DeviationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Address:.
+        /// </summary>
+        internal static string DeviceAddressLabel {
+            get {
+                return ResourceManager.GetString("DeviceAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device commands.
+        /// </summary>
+        internal static string DeviceCommands {
+            get {
+                return ResourceManager.GetString("DeviceCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device general information.
+        /// </summary>
+        internal static string DeviceGeneralInformation {
+            get {
+                return ResourceManager.GetString("DeviceGeneralInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Devices.
+        /// </summary>
+        internal static string Devices {
+            get {
+                return ResourceManager.GetString("Devices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device Type:.
+        /// </summary>
+        internal static string DeviceTypeLabel {
+            get {
+                return ResourceManager.GetString("DeviceTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Device type:.
+        /// </summary>
+        internal static string DeviceTypeLabel2 {
+            get {
+                return ResourceManager.GetString("DeviceTypeLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DID.
+        /// </summary>
+        internal static string DID {
+            get {
+                return ResourceManager.GetString("DID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Direct Table:.
+        /// </summary>
+        internal static string DirectTableLabel {
+            get {
+                return ResourceManager.GetString("DirectTableLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable Default Routing.
+        /// </summary>
+        internal static string DisableDefaultRouting {
+            get {
+                return ResourceManager.GetString("DisableDefaultRouting", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disconnect.
+        /// </summary>
+        internal static string Disconnect {
+            get {
+                return ResourceManager.GetString("Disconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disconnect Control Object.
+        /// </summary>
+        internal static string DisconnectControlObject {
+            get {
+                return ResourceManager.GetString("DisconnectControlObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DLMS UA:.
+        /// </summary>
+        internal static string DLMSUALabel {
+            get {
+                return ResourceManager.GetString("DLMSUALabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to DLMS version number:.
+        /// </summary>
+        internal static string DLMSVersionNumberLabel {
+            get {
+                return ResourceManager.GetString("DLMSVersionNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Down LogicalName.
+        /// </summary>
+        internal static string DownLogicalName {
+            get {
+                return ResourceManager.GetString("DownLogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Down Script Selector.
+        /// </summary>
+        internal static string DownScriptSelector {
+            get {
+                return ResourceManager.GetString("DownScriptSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dropped messages:.
+        /// </summary>
+        internal static string DroppedMessagesLabel {
+            get {
+                return ResourceManager.GetString("DroppedMessagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dst LCID.
+        /// </summary>
+        internal static string DstLCID {
+            get {
+                return ResourceManager.GetString("DstLCID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dst LNID.
+        /// </summary>
+        internal static string DstLNID {
+            get {
+                return ResourceManager.GetString("DstLNID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Dst SID.
+        /// </summary>
+        internal static string DstSID {
+            get {
+                return ResourceManager.GetString("DstSID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duplicate detection.
+        /// </summary>
+        internal static string DuplicateDetection {
+            get {
+                return ResourceManager.GetString("DuplicateDetection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string Duration {
+            get {
+                return ResourceManager.GetString("Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each access-right index may appear only once..
+        /// </summary>
+        internal static string EachAccessRightIndexMayAppearOnlyOnce {
+            get {
+                return ResourceManager.GetString("EachAccessRightIndexMayAppearOnlyOnce", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each object must have a unique base name..
+        /// </summary>
+        internal static string EachObjectMustHaveAUniqueBaseName {
+            get {
+                return ResourceManager.GetString("EachObjectMustHaveAUniqueBaseName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Each object requires class-id,logical-name..
+        /// </summary>
+        internal static string EachObjectRequiresClassIdLogicalName {
+            get {
+                return ResourceManager.GetString("EachObjectRequiresClassIdLogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit....
+        /// </summary>
+        internal static string Edit {
+            get {
+                return ResourceManager.GetString("Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Edit2 {
+            get {
+                return ResourceManager.GetString("Edit2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Elements.
+        /// </summary>
+        internal static string Elements {
+            get {
+                return ResourceManager.GetString("Elements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Emergency profile.
+        /// </summary>
+        internal static string EmergencyProfile {
+            get {
+                return ResourceManager.GetString("EmergencyProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable.
+        /// </summary>
+        internal static string Enable {
+            get {
+                return ResourceManager.GetString("Enable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled.
+        /// </summary>
+        internal static string Enabled {
+            get {
+                return ResourceManager.GetString("Enabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enabled:.
+        /// </summary>
+        internal static string EnabledLabel {
+            get {
+                return ResourceManager.GetString("EnabledLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encryption key.
+        /// </summary>
+        internal static string EncryptionKey {
+            get {
+                return ResourceManager.GetString("EncryptionKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encryption key (16 bytes, hex):.
+        /// </summary>
+        internal static string EncryptionKey16BytesHexLabel {
+            get {
+                return ResourceManager.GetString("EncryptionKey16BytesHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Encryption Key Status:.
+        /// </summary>
+        internal static string EncryptionKeyStatusLabel {
+            get {
+                return ResourceManager.GetString("EncryptionKeyStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End.
+        /// </summary>
+        internal static string End {
+            get {
+                return ResourceManager.GetString("End", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End date (yyyy-MM-dd).
+        /// </summary>
+        internal static string EndDateYyyyMMDd {
+            get {
+                return ResourceManager.GetString("EndDateYyyyMMDd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End:.
+        /// </summary>
+        internal static string EndLabel {
+            get {
+                return ResourceManager.GetString("EndLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to End Time:.
+        /// </summary>
+        internal static string EndTimeLabel {
+            get {
+                return ResourceManager.GetString("EndTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a binary bit string..
+        /// </summary>
+        internal static string EnterABinaryBitString {
+            get {
+                return ResourceManager.GetString("EnterABinaryBitString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a key ID from 0 to 4294967295..
+        /// </summary>
+        internal static string EnterAKeyIDFrom0To4294967295 {
+            get {
+                return ResourceManager.GetString("EnterAKeyIDFrom0To4294967295", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a logical device name..
+        /// </summary>
+        internal static string EnterALogicalDeviceName {
+            get {
+                return ResourceManager.GetString("EnterALogicalDeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a logical name with six numbers..
+        /// </summary>
+        internal static string EnterALogicalNameWithSixNumbers {
+            get {
+                return ResourceManager.GetString("EnterALogicalNameWithSixNumbers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a logical name with six numbers between 0 and 255..
+        /// </summary>
+        internal static string EnterALogicalNameWithSixNumbersBetween0And255 {
+            get {
+                return ResourceManager.GetString("EnterALogicalNameWithSixNumbersBetween0And255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a mask name..
+        /// </summary>
+        internal static string EnterAMaskName {
+            get {
+                return ResourceManager.GetString("EnterAMaskName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an address index from 0 to 255..
+        /// </summary>
+        internal static string EnterAnAddressIndexFrom0To255 {
+            get {
+                return ResourceManager.GetString("EnterAnAddressIndexFrom0To255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an array ID between 0 and 255..
+        /// </summary>
+        internal static string EnterAnArrayIDBetween0And255 {
+            get {
+                return ResourceManager.GetString("EnterAnArrayIDBetween0And255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an ASCII profile name..
+        /// </summary>
+        internal static string EnterAnASCIIProfileName {
+            get {
+                return ResourceManager.GetString("EnterAnASCIIProfileName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an ID from 1 to 65535..
+        /// </summary>
+        internal static string EnterAnIDFrom1To65535 {
+            get {
+                return ResourceManager.GetString("EnterAnIDFrom1To65535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an index between 1 and 65535..
+        /// </summary>
+        internal static string EnterAnIndexBetween1And65535 {
+            get {
+                return ResourceManager.GetString("EnterAnIndexBetween1And65535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an IPv4 multicast address (224.0.0.0–239.255.255.255)..
+        /// </summary>
+        internal static string EnterAnIPv4MulticastAddress224000239255255255 {
+            get {
+                return ResourceManager.GetString("EnterAnIPv4MulticastAddress224000239255255255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an IPv6 address..
+        /// </summary>
+        internal static string EnterAnIPv6Address {
+            get {
+                return ResourceManager.GetString("EnterAnIPv6Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a non-empty hexadecimal authentication key..
+        /// </summary>
+        internal static string EnterANonEmptyHexadecimalAuthenticationKey {
+            get {
+                return ResourceManager.GetString("EnterANonEmptyHexadecimalAuthenticationKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a nonnegative block index..
+        /// </summary>
+        internal static string EnterANonnegativeBlockIndex {
+            get {
+                return ResourceManager.GetString("EnterANonnegativeBlockIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter an unsigned 32-bit number..
+        /// </summary>
+        internal static string EnterAnUnsigned32BitNumber {
+            get {
+                return ResourceManager.GetString("EnterAnUnsigned32BitNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a short address from 0 to 65535..
+        /// </summary>
+        internal static string EnterAShortAddressFrom0To65535 {
+            get {
+                return ResourceManager.GetString("EnterAShortAddressFrom0To65535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a signed ephemeral public key for security suite one or two..
+        /// </summary>
+        internal static string EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo {
+            get {
+                return ResourceManager.GetString("EnterASignedEphemeralPublicKeyForSecuritySuiteOneOrTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a supported object class ID..
+        /// </summary>
+        internal static string EnterASupportedObjectClassID {
+            get {
+                return ResourceManager.GetString("EnterASupportedObjectClassID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a token..
+        /// </summary>
+        internal static string EnterAToken {
+            get {
+                return ResourceManager.GetString("EnterAToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a typed DLMS value..
+        /// </summary>
+        internal static string EnterATypedDLMSValue {
+            get {
+                return ResourceManager.GetString("EnterATypedDLMSValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid date and time..
+        /// </summary>
+        internal static string EnterAValidDateAndTime {
+            get {
+                return ResourceManager.GetString("EnterAValidDateAndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid IP address..
+        /// </summary>
+        internal static string EnterAValidIPAddress {
+            get {
+                return ResourceManager.GetString("EnterAValidIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid local date and time..
+        /// </summary>
+        internal static string EnterAValidLocalDateAndTime {
+            get {
+                return ResourceManager.GetString("EnterAValidLocalDateAndTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a valid number..
+        /// </summary>
+        internal static string EnterAValidNumber {
+            get {
+                return ResourceManager.GetString("EnterAValidNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter a whole number between {0} and {1}..
+        /// </summary>
+        internal static string EnterAWholeNumberBetween0And1 {
+            get {
+                return ResourceManager.GetString("EnterAWholeNumberBetween0And1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter seven day IDs..
+        /// </summary>
+        internal static string EnterSevenDayIDs {
+            get {
+                return ResourceManager.GetString("EnterSevenDayIDs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the requested actions as a binary bit string..
+        /// </summary>
+        internal static string EnterTheRequestedActionsAsABinaryBitString {
+            get {
+                return ResourceManager.GetString("EnterTheRequestedActionsAsABinaryBitString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter the special day flags as a binary bit string..
+        /// </summary>
+        internal static string EnterTheSpecialDayFlagsAsABinaryBitString {
+            get {
+                return ResourceManager.GetString("EnterTheSpecialDayFlagsAsABinaryBitString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter True or False..
+        /// </summary>
+        internal static string EnterTrueOrFalse {
+            get {
+                return ResourceManager.GetString("EnterTrueOrFalse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity.
+        /// </summary>
+        internal static string Entity {
+            get {
+                return ResourceManager.GetString("Entity", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entity:.
+        /// </summary>
+        internal static string EntityLabel {
+            get {
+                return ResourceManager.GetString("EntityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entries.
+        /// </summary>
+        internal static string Entries {
+            get {
+                return ResourceManager.GetString("Entries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entries In Use.
+        /// </summary>
+        internal static string EntriesInUse {
+            get {
+                return ResourceManager.GetString("EntriesInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry.
+        /// </summary>
+        internal static string Entry {
+            get {
+                return ResourceManager.GetString("Entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry (DLMS XML).
+        /// </summary>
+        internal static string EntryDLMSXML {
+            get {
+                return ResourceManager.GetString("EntryDLMSXML", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry enabled.
+        /// </summary>
+        internal static string EntryEnabled {
+            get {
+                return ResourceManager.GetString("EntryEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry index.
+        /// </summary>
+        internal static string EntryIndex {
+            get {
+                return ResourceManager.GetString("EntryIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry index (1–65535).
+        /// </summary>
+        internal static string EntryIndex165535 {
+            get {
+                return ResourceManager.GetString("EntryIndex165535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry indices must be between 1 and 65535..
+        /// </summary>
+        internal static string EntryIndicesMustBeBetween1And65535 {
+            get {
+                return ResourceManager.GetString("EntryIndicesMustBeBetween1And65535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Entry range.
+        /// </summary>
+        internal static string EntryRange {
+            get {
+                return ResourceManager.GetString("EntryRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to EUI.
+        /// </summary>
+        internal static string EUI {
+            get {
+                return ResourceManager.GetString("EUI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exec spec days.
+        /// </summary>
+        internal static string ExecSpecDays {
+            get {
+                return ResourceManager.GetString("ExecSpecDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Executed Script.
+        /// </summary>
+        internal static string ExecutedScript {
+            get {
+                return ResourceManager.GetString("ExecutedScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execute script.
+        /// </summary>
+        internal static string ExecuteScript {
+            get {
+                return ResourceManager.GetString("ExecuteScript", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Execution time.
+        /// </summary>
+        internal static string ExecutionTime {
+            get {
+                return ResourceManager.GetString("ExecutionTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exec weekdays.
+        /// </summary>
+        internal static string ExecWeekdays {
+            get {
+                return ResourceManager.GetString("ExecWeekdays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exponential back-off:.
+        /// </summary>
+        internal static string ExponentialBackOffLabel {
+            get {
+                return ResourceManager.GetString("ExponentialBackOffLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exponent:.
+        /// </summary>
+        internal static string ExponentLabel {
+            get {
+                return ResourceManager.GetString("ExponentLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export certificate....
+        /// </summary>
+        internal static string ExportCertificate {
+            get {
+                return ResourceManager.GetString("ExportCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Extended Register Object.
+        /// </summary>
+        internal static string ExtendedRegisterObject {
+            get {
+                return ResourceManager.GetString("ExtendedRegisterObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed Attempts:.
+        /// </summary>
+        internal static string FailedAttemptsLabel {
+            get {
+                return ResourceManager.GetString("FailedAttemptsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FCC Legacy Mode:.
+        /// </summary>
+        internal static string FCCLegacyModeLabel {
+            get {
+                return ResourceManager.GetString("FCCLegacyModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FCS NOK Frames Counter:.
+        /// </summary>
+        internal static string FCSNOKFramesCounterLabel {
+            get {
+                return ResourceManager.GetString("FCSNOKFramesCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to FCS OK Frames Counter:.
+        /// </summary>
+        internal static string FCSOKFramesCounterLabel {
+            get {
+                return ResourceManager.GetString("FCSOKFramesCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Firmware Version:.
+        /// </summary>
+        internal static string FirmwareVersionLabel {
+            get {
+                return ResourceManager.GetString("FirmwareVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to First Block:.
+        /// </summary>
+        internal static string FirstBlockLabel {
+            get {
+                return ResourceManager.GetString("FirstBlockLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to For low authentication, edit Secret and write attribute 7. GMAC keys use Security setup..
+        /// </summary>
+        internal static string ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup {
+            get {
+                return ResourceManager.GetString("ForLowAuthenticationEditSecretAndWriteAttribute7GMACKeysUseSecuritySetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Frame Counter:.
+        /// </summary>
+        internal static string FrameCounterLabel {
+            get {
+                return ResourceManager.GetString("FrameCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Fri.
+        /// </summary>
+        internal static string Fri {
+            get {
+                return ResourceManager.GetString("Fri", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Friday.
+        /// </summary>
+        internal static string Friday {
+            get {
+                return ResourceManager.GetString("Friday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From index (1–65535).
+        /// </summary>
+        internal static string FromIndex165535 {
+            get {
+                return ResourceManager.GetString("FromIndex165535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to From index must not exceed to index..
+        /// </summary>
+        internal static string FromIndexMustNotExceedToIndex {
+            get {
+                return ResourceManager.GetString("FromIndexMustNotExceedToIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function commands.
+        /// </summary>
+        internal static string FunctionCommands {
+            get {
+                return ResourceManager.GetString("FunctionCommands", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function control Object.
+        /// </summary>
+        internal static string FunctionControlObject {
+            get {
+                return ResourceManager.GetString("FunctionControlObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Function Name:.
+        /// </summary>
+        internal static string FunctionNameLabel {
+            get {
+                return ResourceManager.GetString("FunctionNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to G3-PLC 6LoWPAN adaptation layer setup Object.
+        /// </summary>
+        internal static string G3PLC6LoWPANAdaptationLayerSetupObject {
+            get {
+                return ResourceManager.GetString("G3PLC6LoWPANAdaptationLayerSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to G3 PLC MAC layer counters Object.
+        /// </summary>
+        internal static string G3PLCMACLayerCountersObject {
+            get {
+                return ResourceManager.GetString("G3PLCMACLayerCountersObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to G3-PLC MAC setup object.
+        /// </summary>
+        internal static string G3PLCMACSetupObject {
+            get {
+                return ResourceManager.GetString("G3PLCMACSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gateway IP Address.
+        /// </summary>
+        internal static string GatewayIPAddress {
+            get {
+                return ResourceManager.GetString("GatewayIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gateway IP Address:.
+        /// </summary>
+        internal static string GatewayIPAddressLabel {
+            get {
+                return ResourceManager.GetString("GatewayIPAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Gateway:.
+        /// </summary>
+        internal static string GatewayLabel {
+            get {
+                return ResourceManager.GetString("GatewayLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string General {
+            get {
+                return ResourceManager.GetString("General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get multicast address count.
+        /// </summary>
+        internal static string GetMulticastAddressCount {
+            get {
+                return ResourceManager.GetString("GetMulticastAddressCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get neighbour table entry.
+        /// </summary>
+        internal static string GetNeighbourTableEntry {
+            get {
+                return ResourceManager.GetString("GetNeighbourTableEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get Parameters.
+        /// </summary>
+        internal static string GetParameters {
+            get {
+                return ResourceManager.GetString("GetParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get POS table entry.
+        /// </summary>
+        internal static string GetPOSTableEntry {
+            get {
+                return ResourceManager.GetString("GetPOSTableEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Get protected attributes.
+        /// </summary>
+        internal static string GetProtectedAttributes {
+            get {
+                return ResourceManager.GetString("GetProtectedAttributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GPRS Modem Setup Object.
+        /// </summary>
+        internal static string GPRSModemSetupObject {
+            get {
+                return ResourceManager.GetString("GPRSModemSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group.
+        /// </summary>
+        internal static string Group {
+            get {
+                return ResourceManager.GetString("Group", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group Address.
+        /// </summary>
+        internal static string GroupAddress {
+            get {
+                return ResourceManager.GetString("GroupAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group ID.
+        /// </summary>
+        internal static string GroupID {
+            get {
+                return ResourceManager.GetString("GroupID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Group IDs.
+        /// </summary>
+        internal static string GroupIDs {
+            get {
+                return ResourceManager.GetString("GroupIDs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to GSM diagnostic Object.
+        /// </summary>
+        internal static string GSMDiagnosticObject {
+            get {
+                return ResourceManager.GetString("GSMDiagnosticObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HDLC Setup Object.
+        /// </summary>
+        internal static string HDLCSetupObject {
+            get {
+                return ResourceManager.GetString("HDLCSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Help.
         /// </summary>
         internal static string Help {
@@ -115,11 +4057,6180 @@ namespace Gurux.DLMS.UI.Components.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hexadecimal.
+        /// </summary>
+        internal static string Hexadecimal {
+            get {
+                return ResourceManager.GetString("Hexadecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to High LQI:.
+        /// </summary>
+        internal static string HighLQILabel {
+            get {
+                return ResourceManager.GetString("HighLQILabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to HighPriority SIze:.
+        /// </summary>
+        internal static string HighPrioritySIzeLabel {
+            get {
+                return ResourceManager.GetString("HighPrioritySIzeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Holiday Intervals.
+        /// </summary>
+        internal static string HolidayIntervals {
+            get {
+                return ResourceManager.GetString("HolidayIntervals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hop Count:.
+        /// </summary>
+        internal static string HopCountLabel {
+            get {
+                return ResourceManager.GetString("HopCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID.
+        /// </summary>
+        internal static string ID {
+            get {
+                return ResourceManager.GetString("ID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identification.
+        /// </summary>
+        internal static string Identification {
+            get {
+                return ResourceManager.GetString("Identification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identification Number:.
+        /// </summary>
+        internal static string IdentificationNumberLabel {
+            get {
+                return ResourceManager.GetString("IdentificationNumberLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identification number:.
+        /// </summary>
+        internal static string IdentificationNumberLabel2 {
+            get {
+                return ResourceManager.GetString("IdentificationNumberLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identified organization:.
+        /// </summary>
+        internal static string IdentifiedOrganizationLabel {
+            get {
+                return ResourceManager.GetString("IdentifiedOrganizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier.
+        /// </summary>
+        internal static string Identifier {
+            get {
+                return ResourceManager.GetString("Identifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier (hex):.
+        /// </summary>
+        internal static string IdentifierHexLabel {
+            get {
+                return ResourceManager.GetString("IdentifierHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identifier signature (hex, optional):.
+        /// </summary>
+        internal static string IdentifierSignatureHexOptionalLabel {
+            get {
+                return ResourceManager.GetString("IdentifierSignatureHexOptionalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Identify by serial number and issuer:.
+        /// </summary>
+        internal static string IdentifyBySerialNumberAndIssuerLabel {
+            get {
+                return ResourceManager.GetString("IdentifyBySerialNumberAndIssuerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to ID:.
+        /// </summary>
+        internal static string IDLabel {
+            get {
+                return ResourceManager.GetString("IDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IEC Local Port Setup.
+        /// </summary>
+        internal static string IECLocalPortSetup {
+            get {
+                return ResourceManager.GetString("IECLocalPortSetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IEC Twisted Pair Setup Object.
+        /// </summary>
+        internal static string IECTwistedPairSetupObject {
+            get {
+                return ResourceManager.GetString("IECTwistedPairSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image activation.
+        /// </summary>
+        internal static string ImageActivation {
+            get {
+                return ResourceManager.GetString("ImageActivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image Block Size:.
+        /// </summary>
+        internal static string ImageBlockSizeLabel {
+            get {
+                return ResourceManager.GetString("ImageBlockSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image block transfer.
+        /// </summary>
+        internal static string ImageBlockTransfer {
+            get {
+                return ResourceManager.GetString("ImageBlockTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image file.
+        /// </summary>
+        internal static string ImageFile {
+            get {
+                return ResourceManager.GetString("ImageFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image file:.
+        /// </summary>
+        internal static string ImageFileLabel {
+            get {
+                return ResourceManager.GetString("ImageFileLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image (hex):.
+        /// </summary>
+        internal static string ImageHexLabel {
+            get {
+                return ResourceManager.GetString("ImageHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image initiation.
+        /// </summary>
+        internal static string ImageInitiation {
+            get {
+                return ResourceManager.GetString("ImageInitiation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image:.
+        /// </summary>
+        internal static string ImageLabel {
+            get {
+                return ResourceManager.GetString("ImageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Images:.
+        /// </summary>
+        internal static string ImagesLabel {
+            get {
+                return ResourceManager.GetString("ImagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image transfer.
+        /// </summary>
+        internal static string ImageTransfer {
+            get {
+                return ResourceManager.GetString("ImageTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image Transfer Object.
+        /// </summary>
+        internal static string ImageTransferObject {
+            get {
+                return ResourceManager.GetString("ImageTransferObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Image verification.
+        /// </summary>
+        internal static string ImageVerification {
+            get {
+                return ResourceManager.GetString("ImageVerification", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Immediate writing is not available for this connection..
+        /// </summary>
+        internal static string ImmediateWritingIsNotAvailableForThisConnection {
+            get {
+                return ResourceManager.GetString("ImmediateWritingIsNotAvailableForThisConnection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Import Certificate.
+        /// </summary>
+        internal static string ImportCertificate {
+            get {
+                return ResourceManager.GetString("ImportCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Inactivity Timeout:.
+        /// </summary>
+        internal static string InactivityTimeoutLabel {
+            get {
+                return ResourceManager.GetString("InactivityTimeoutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Index.
+        /// </summary>
+        internal static string Index {
+            get {
+                return ResourceManager.GetString("Index", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Indexes.
+        /// </summary>
+        internal static string Indexes {
+            get {
+                return ResourceManager.GetString("Indexes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initialisation:.
+        /// </summary>
+        internal static string InitialisationLabel {
+            get {
+                return ResourceManager.GetString("InitialisationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initial lockout time:.
+        /// </summary>
+        internal static string InitialLockoutTimeLabel {
+            get {
+                return ResourceManager.GetString("InitialLockoutTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initiator Electrical Phase:.
+        /// </summary>
+        internal static string InitiatorElectricalPhaseLabel {
+            get {
+                return ResourceManager.GetString("InitiatorElectricalPhaseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Initiator MAC Address:.
+        /// </summary>
+        internal static string InitiatorMACAddressLabel {
+            get {
+                return ResourceManager.GetString("InitiatorMACAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert day.
+        /// </summary>
+        internal static string InsertDay {
+            get {
+                return ResourceManager.GetString("InsertDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Insert entry.
+        /// </summary>
+        internal static string InsertEntry {
+            get {
+                return ResourceManager.GetString("InsertEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install.
+        /// </summary>
+        internal static string Install {
+            get {
+                return ResourceManager.GetString("Install", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Install primary address:.
+        /// </summary>
+        internal static string InstallPrimaryAddressLabel {
+            get {
+                return ResourceManager.GetString("InstallPrimaryAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Timeout.
+        /// </summary>
+        internal static string InternalTimeout {
+            get {
+                return ResourceManager.GetString("InternalTimeout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interval:.
+        /// </summary>
+        internal static string IntervalLabel {
+            get {
+                return ResourceManager.GetString("IntervalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interval {0}.
+        /// </summary>
+        internal static string IntervalNumber {
+            get {
+                return ResourceManager.GetString("IntervalNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Interval Tariff.
+        /// </summary>
+        internal static string IntervalTariff {
+            get {
+                return ResourceManager.GetString("IntervalTariff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to In use.
+        /// </summary>
+        internal static string InUse {
+            get {
+                return ResourceManager.GetString("InUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid value for the selected data type..
+        /// </summary>
+        internal static string InvalidValueForTheSelectedDataType {
+            get {
+                return ResourceManager.GetString("InvalidValueForTheSelectedDataType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoke credit.
+        /// </summary>
+        internal static string InvokeCredit {
+            get {
+                return ResourceManager.GetString("InvokeCredit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invoke protected method.
+        /// </summary>
+        internal static string InvokeProtectedMethod {
+            get {
+                return ResourceManager.GetString("InvokeProtectedMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ip4 Setup Object.
+        /// </summary>
+        internal static string Ip4SetupObject {
+            get {
+                return ResourceManager.GetString("Ip4SetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ip6 Setup Object.
+        /// </summary>
+        internal static string Ip6SetupObject {
+            get {
+                return ResourceManager.GetString("Ip6SetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Address:.
+        /// </summary>
+        internal static string IPAddressLabel {
+            get {
+                return ResourceManager.GetString("IPAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPCP Options:.
+        /// </summary>
+        internal static string IPCPOptionsLabel {
+            get {
+                return ResourceManager.GetString("IPCPOptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Options:.
+        /// </summary>
+        internal static string IPOptionsLabel {
+            get {
+                return ResourceManager.GetString("IPOptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IP Reference:.
+        /// </summary>
+        internal static string IPReferenceLabel {
+            get {
+                return ResourceManager.GetString("IPReferenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to IPv6 address.
+        /// </summary>
+        internal static string IPv6Address {
+            get {
+                return ResourceManager.GetString("IPv6Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issuer.
+        /// </summary>
+        internal static string Issuer {
+            get {
+                return ResourceManager.GetString("Issuer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Issuer (DER hex):.
+        /// </summary>
+        internal static string IssuerDERHexLabel {
+            get {
+                return ResourceManager.GetString("IssuerDERHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Joint ISO CTT:.
+        /// </summary>
+        internal static string JointISOCTTLabel {
+            get {
+                return ResourceManager.GetString("JointISOCTTLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kc.
+        /// </summary>
+        internal static string Kc {
+            get {
+                return ResourceManager.GetString("Kc", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to KEK (hex):.
+        /// </summary>
+        internal static string KEKHexLabel {
+            get {
+                return ResourceManager.GetString("KEKHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key agreement requires security suite one or two..
+        /// </summary>
+        internal static string KeyAgreementRequiresSecuritySuiteOneOrTwo {
+            get {
+                return ResourceManager.GetString("KeyAgreementRequiresSecuritySuiteOneOrTwo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key (hex):.
+        /// </summary>
+        internal static string KeyHexLabel {
+            get {
+                return ResourceManager.GetString("KeyHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key Info.
+        /// </summary>
+        internal static string KeyInfo {
+            get {
+                return ResourceManager.GetString("KeyInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key:.
+        /// </summary>
+        internal static string KeyLabel {
+            get {
+                return ResourceManager.GetString("KeyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key pair....
+        /// </summary>
+        internal static string KeyPair {
+            get {
+                return ResourceManager.GetString("KeyPair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keys:.
+        /// </summary>
+        internal static string KeysLabel {
+            get {
+                return ResourceManager.GetString("KeysLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key table.
+        /// </summary>
+        internal static string KeyTable {
+            get {
+                return ResourceManager.GetString("KeyTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Key transfer and agreement.
+        /// </summary>
+        internal static string KeyTransferAndAgreement {
+            get {
+                return ResourceManager.GetString("KeyTransferAndAgreement", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kh.
+        /// </summary>
+        internal static string Kh {
+            get {
+                return ResourceManager.GetString("Kh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to K:.
+        /// </summary>
+        internal static string KLabel {
+            get {
+                return ResourceManager.GetString("KLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Km.
+        /// </summary>
+        internal static string Km {
+            get {
+                return ResourceManager.GetString("Km", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kq.
+        /// </summary>
+        internal static string Kq {
+            get {
+                return ResourceManager.GetString("Kq", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kr.
+        /// </summary>
+        internal static string Kr {
+            get {
+                return ResourceManager.GetString("Kr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Krt.
+        /// </summary>
+        internal static string Krt {
+            get {
+                return ResourceManager.GetString("Krt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Average.
+        /// </summary>
+        internal static string LastAverage {
+            get {
+                return ResourceManager.GetString("LastAverage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Collection Amount.
+        /// </summary>
+        internal static string LastCollectionAmount {
+            get {
+                return ResourceManager.GetString("LastCollectionAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Collection Time.
+        /// </summary>
+        internal static string LastCollectionTime {
+            get {
+                return ResourceManager.GetString("LastCollectionTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last confirmation:.
+        /// </summary>
+        internal static string LastConfirmationLabel {
+            get {
+                return ResourceManager.GetString("LastConfirmationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Last Outcome.
+        /// </summary>
+        internal static string LastOutcome {
+            get {
+                return ResourceManager.GetString("LastOutcome", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LCP Options:.
+        /// </summary>
+        internal static string LCPOptionsLabel {
+            get {
+                return ResourceManager.GetString("LCPOptionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length.
+        /// </summary>
+        internal static string Length {
+            get {
+                return ResourceManager.GetString("Length", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Level.
+        /// </summary>
+        internal static string Level {
+            get {
+                return ResourceManager.GetString("Level", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limit.
+        /// </summary>
+        internal static string Limit {
+            get {
+                return ResourceManager.GetString("Limit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Limiter Object.
+        /// </summary>
+        internal static string LimiterObject {
+            get {
+                return ResourceManager.GetString("LimiterObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Link Status:.
+        /// </summary>
+        internal static string LinkStatusLabel {
+            get {
+                return ResourceManager.GetString("LinkStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listening Window:.
+        /// </summary>
+        internal static string ListeningWindowLabel {
+            get {
+                return ResourceManager.GetString("ListeningWindowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Listening windows.
+        /// </summary>
+        internal static string ListeningWindows {
+            get {
+                return ResourceManager.GetString("ListeningWindows", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LLC SSCS Setup Object.
+        /// </summary>
+        internal static string LLCSSCSSetupObject {
+            get {
+                return ResourceManager.GetString("LLCSSCSSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LNID:.
+        /// </summary>
+        internal static string LNIDLabel {
+            get {
+                return ResourceManager.GetString("LNIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LN settings.
+        /// </summary>
+        internal static string LNSettings {
+            get {
+                return ResourceManager.GetString("LNSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Loading help....
         /// </summary>
         internal static string LoadingHelp {
             get {
                 return ResourceManager.GetString("LoadingHelp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Load Values.
+        /// </summary>
+        internal static string LoadValues {
+            get {
+                return ResourceManager.GetString("LoadValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Local time:.
+        /// </summary>
+        internal static string LocalTimeLabel {
+            get {
+                return ResourceManager.GetString("LocalTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Location ID:.
+        /// </summary>
+        internal static string LocationIDLabel {
+            get {
+                return ResourceManager.GetString("LocationIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical Device Name.
+        /// </summary>
+        internal static string LogicalDeviceName {
+            get {
+                return ResourceManager.GetString("LogicalDeviceName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical device name.
+        /// </summary>
+        internal static string LogicalDeviceName2 {
+            get {
+                return ResourceManager.GetString("LogicalDeviceName2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical Name.
+        /// </summary>
+        internal static string LogicalName {
+            get {
+                return ResourceManager.GetString("LogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical name.
+        /// </summary>
+        internal static string LogicalName2 {
+            get {
+                return ResourceManager.GetString("LogicalName2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LogicalName.
+        /// </summary>
+        internal static string LogicalName3 {
+            get {
+                return ResourceManager.GetString("LogicalName3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical Name:.
+        /// </summary>
+        internal static string LogicalNameLabel {
+            get {
+                return ResourceManager.GetString("LogicalNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logical names require six bytes..
+        /// </summary>
+        internal static string LogicalNamesRequireSixBytes {
+            get {
+                return ResourceManager.GetString("LogicalNamesRequireSixBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Low Credit Threshold:.
+        /// </summary>
+        internal static string LowCreditThresholdLabel {
+            get {
+                return ResourceManager.GetString("LowCreditThresholdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Low LQI:.
+        /// </summary>
+        internal static string LowLQILabel {
+            get {
+                return ResourceManager.GetString("LowLQILabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LQI.
+        /// </summary>
+        internal static string LQI {
+            get {
+                return ResourceManager.GetString("LQI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to L SAP Selector:.
+        /// </summary>
+        internal static string LSAPSelectorLabel {
+            get {
+                return ResourceManager.GetString("LSAPSelectorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LSID.
+        /// </summary>
+        internal static string LSID {
+            get {
+                return ResourceManager.GetString("LSID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to LSID:.
+        /// </summary>
+        internal static string LSIDLabel {
+            get {
+                return ResourceManager.GetString("LSIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Address.
+        /// </summary>
+        internal static string MACAddress {
+            get {
+                return ResourceManager.GetString("MACAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Address:.
+        /// </summary>
+        internal static string MACAddressLabel {
+            get {
+                return ResourceManager.GetString("MACAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC address:.
+        /// </summary>
+        internal static string MACAddressLabel2 {
+            get {
+                return ResourceManager.GetString("MACAddressLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Address Setup Object.
+        /// </summary>
+        internal static string MACAddressSetupObject {
+            get {
+                return ResourceManager.GetString("MACAddressSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Group Address.
+        /// </summary>
+        internal static string MACGroupAddress {
+            get {
+                return ResourceManager.GetString("MACGroupAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MAC Group Addresses:.
+        /// </summary>
+        internal static string MACGroupAddressesLabel {
+            get {
+                return ResourceManager.GetString("MACGroupAddressesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Manufacturer ID:.
+        /// </summary>
+        internal static string ManufacturerIDLabel {
+            get {
+                return ResourceManager.GetString("ManufacturerIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mark frequency (Hz):.
+        /// </summary>
+        internal static string MarkFrequencyHzLabel {
+            get {
+                return ResourceManager.GetString("MarkFrequencyHzLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mask indexes (comma separated bytes).
+        /// </summary>
+        internal static string MaskIndexesCommaSeparatedBytes {
+            get {
+                return ResourceManager.GetString("MaskIndexesCommaSeparatedBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mask List.
+        /// </summary>
+        internal static string MaskList {
+            get {
+                return ResourceManager.GetString("MaskList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mask name (hexadecimal).
+        /// </summary>
+        internal static string MaskNameHexadecimal {
+            get {
+                return ResourceManager.GetString("MaskNameHexadecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Masks.
+        /// </summary>
+        internal static string Masks {
+            get {
+                return ResourceManager.GetString("Masks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max  backoff:.
+        /// </summary>
+        internal static string MaxBackoffLabel {
+            get {
+                return ResourceManager.GetString("MaxBackoffLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Connections:.
+        /// </summary>
+        internal static string MaxConnectionsLabel {
+            get {
+                return ResourceManager.GetString("MaxConnectionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max CSMA Backoffs.
+        /// </summary>
+        internal static string MaxCSMABackoffs {
+            get {
+                return ResourceManager.GetString("MaxCSMABackoffs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Ctl Re Tx:.
+        /// </summary>
+        internal static string MaxCtlReTxLabel {
+            get {
+                return ResourceManager.GetString("MaxCtlReTxLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Frame Retries:.
+        /// </summary>
+        internal static string MaxFrameRetriesLabel {
+            get {
+                return ResourceManager.GetString("MaxFrameRetriesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Hops:.
+        /// </summary>
+        internal static string MaxHopsLabel {
+            get {
+                return ResourceManager.GetString("MaxHopsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum Baudrate:.
+        /// </summary>
+        internal static string MaximumBaudrateLabel {
+            get {
+                return ResourceManager.GetString("MaximumBaudrateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum Length:.
+        /// </summary>
+        internal static string MaximumLengthLabel {
+            get {
+                return ResourceManager.GetString("MaximumLengthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum PDU size:.
+        /// </summary>
+        internal static string MaximumPDUSizeLabel {
+            get {
+                return ResourceManager.GetString("MaximumPDUSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum retransmissions exceeded:.
+        /// </summary>
+        internal static string MaximumRetransmissionsExceededLabel {
+            get {
+                return ResourceManager.GetString("MaximumRetransmissionsExceededLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Maximum retransmissions:.
+        /// </summary>
+        internal static string MaximumRetransmissionsLabel {
+            get {
+                return ResourceManager.GetString("MaximumRetransmissionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Join WaitT:.
+        /// </summary>
+        internal static string MaxJoinWaitTLabel {
+            get {
+                return ResourceManager.GetString("MaxJoinWaitTLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max:.
+        /// </summary>
+        internal static string MaxLabel {
+            get {
+                return ResourceManager.GetString("MaxLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Lockout Time:.
+        /// </summary>
+        internal static string MaxLockoutTimeLabel {
+            get {
+                return ResourceManager.GetString("MaxLockoutTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Promotion PDU:.
+        /// </summary>
+        internal static string MaxPromotionPDULabel {
+            get {
+                return ResourceManager.GetString("MaxPromotionPDULabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Provision:.
+        /// </summary>
+        internal static string MaxProvisionLabel {
+            get {
+                return ResourceManager.GetString("MaxProvisionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Provision Period:.
+        /// </summary>
+        internal static string MaxProvisionPeriodLabel {
+            get {
+                return ResourceManager.GetString("MaxProvisionPeriodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max receive PDU size:.
+        /// </summary>
+        internal static string MaxReceivePDUSizeLabel {
+            get {
+                return ResourceManager.GetString("MaxReceivePDUSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Receiving Gain:.
+        /// </summary>
+        internal static string MaxReceivingGainLabel {
+            get {
+                return ResourceManager.GetString("MaxReceivingGainLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Segment Size:.
+        /// </summary>
+        internal static string MaxSegmentSizeLabel {
+            get {
+                return ResourceManager.GetString("MaxSegmentSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max send PDU size:.
+        /// </summary>
+        internal static string MaxSendPDUSizeLabel {
+            get {
+                return ResourceManager.GetString("MaxSendPDUSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Transmitting Gain:.
+        /// </summary>
+        internal static string MaxTransmittingGainLabel {
+            get {
+                return ResourceManager.GetString("MaxTransmittingGainLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MBus Client Object.
+        /// </summary>
+        internal static string MBusClientObject {
+            get {
+                return ResourceManager.GetString("MBusClientObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MBus diagnostic Object.
+        /// </summary>
+        internal static string MBusDiagnosticObject {
+            get {
+                return ResourceManager.GetString("MBusDiagnosticObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MBus Master Port Setup Object.
+        /// </summary>
+        internal static string MBusMasterPortSetupObject {
+            get {
+                return ResourceManager.GetString("MBusMasterPortSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MBus Port Reference:.
+        /// </summary>
+        internal static string MBusPortReferenceLabel {
+            get {
+                return ResourceManager.GetString("MBusPortReferenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M-Bus Port Setup Object.
+        /// </summary>
+        internal static string MBusPortSetupObject {
+            get {
+                return ResourceManager.GetString("MBusPortSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MBus Slave Port Setup Object.
+        /// </summary>
+        internal static string MBusSlavePortSetupObject {
+            get {
+                return ResourceManager.GetString("MBusSlavePortSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to M-Bus version:.
+        /// </summary>
+        internal static string MBusVersionLabel {
+            get {
+                return ResourceManager.GetString("MBusVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MCC:.
+        /// </summary>
+        internal static string MCCLabel {
+            get {
+                return ResourceManager.GetString("MCCLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mean Throughput:.
+        /// </summary>
+        internal static string MeanThroughputLabel {
+            get {
+                return ResourceManager.GetString("MeanThroughputLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measuring period.
+        /// </summary>
+        internal static string MeasuringPeriod {
+            get {
+                return ResourceManager.GetString("MeasuringPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mechanism ID:.
+        /// </summary>
+        internal static string MechanismIDLabel {
+            get {
+                return ResourceManager.GetString("MechanismIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Members.
+        /// </summary>
+        internal static string Members {
+            get {
+                return ResourceManager.GetString("Members", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message:.
+        /// </summary>
+        internal static string MessageLabel {
+            get {
+                return ResourceManager.GetString("MessageLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Messages counter.
+        /// </summary>
+        internal static string MessagesCounter {
+            get {
+                return ResourceManager.GetString("MessagesCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method.
+        /// </summary>
+        internal static string Method {
+            get {
+                return ResourceManager.GetString("Method", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method {0}.
+        /// </summary>
+        internal static string Method0 {
+            get {
+                return ResourceManager.GetString("Method0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method access.
+        /// </summary>
+        internal static string MethodAccess {
+            get {
+                return ResourceManager.GetString("MethodAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Access.
+        /// </summary>
+        internal static string MethodAccess2 {
+            get {
+                return ResourceManager.GetString("MethodAccess2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Access (index:mask):.
+        /// </summary>
+        internal static string MethodAccessIndexMaskLabel {
+            get {
+                return ResourceManager.GetString("MethodAccessIndexMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Access:.
+        /// </summary>
+        internal static string MethodAccessLabel {
+            get {
+                return ResourceManager.GetString("MethodAccessLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method access mask is not supported by this association version..
+        /// </summary>
+        internal static string MethodAccessMaskIsNotSupportedByThisAssociationVersion {
+            get {
+                return ResourceManager.GetString("MethodAccessMaskIsNotSupportedByThisAssociationVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method access rights.
+        /// </summary>
+        internal static string MethodAccessRights {
+            get {
+                return ResourceManager.GetString("MethodAccessRights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Index.
+        /// </summary>
+        internal static string MethodIndex {
+            get {
+                return ResourceManager.GetString("MethodIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method Index:.
+        /// </summary>
+        internal static string MethodIndexLabel {
+            get {
+                return ResourceManager.GetString("MethodIndexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Method result.
+        /// </summary>
+        internal static string MethodResult {
+            get {
+                return ResourceManager.GetString("MethodResult", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Methods.
+        /// </summary>
+        internal static string Methods {
+            get {
+                return ResourceManager.GetString("Methods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Metric type:.
+        /// </summary>
+        internal static string MetricTypeLabel {
+            get {
+                return ResourceManager.GetString("MetricTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min  backoff:.
+        /// </summary>
+        internal static string MinBackoffLabel {
+            get {
+                return ResourceManager.GetString("MinBackoffLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min CW Attempts:.
+        /// </summary>
+        internal static string MinCWAttemptsLabel {
+            get {
+                return ResourceManager.GetString("MinCWAttemptsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min Delta Credit:.
+        /// </summary>
+        internal static string MinDeltaCreditLabel {
+            get {
+                return ResourceManager.GetString("MinDeltaCreditLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal Over.
+        /// </summary>
+        internal static string MinimalOver {
+            get {
+                return ResourceManager.GetString("MinimalOver", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minimal Under.
+        /// </summary>
+        internal static string MinimalUnder {
+            get {
+                return ResourceManager.GetString("MinimalUnder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min:.
+        /// </summary>
+        internal static string MinLabel {
+            get {
+                return ResourceManager.GetString("MinLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Min Switch Search Time:.
+        /// </summary>
+        internal static string MinSwitchSearchTimeLabel {
+            get {
+                return ResourceManager.GetString("MinSwitchSearchTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Minute.
+        /// </summary>
+        internal static string Minute {
+            get {
+                return ResourceManager.GetString("Minute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MNC:.
+        /// </summary>
+        internal static string MNCLabel {
+            get {
+                return ResourceManager.GetString("MNCLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mode.
+        /// </summary>
+        internal static string Mode {
+            get {
+                return ResourceManager.GetString("Mode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mode:.
+        /// </summary>
+        internal static string ModeLabel {
+            get {
+                return ResourceManager.GetString("ModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modem Configuration Object.
+        /// </summary>
+        internal static string ModemConfigurationObject {
+            get {
+                return ResourceManager.GetString("ModemConfigurationObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modem Profile:.
+        /// </summary>
+        internal static string ModemProfileLabel {
+            get {
+                return ResourceManager.GetString("ModemProfileLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modulation:.
+        /// </summary>
+        internal static string ModulationLabel {
+            get {
+                return ResourceManager.GetString("ModulationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mon.
+        /// </summary>
+        internal static string Mon {
+            get {
+                return ResourceManager.GetString("Mon", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monday.
+        /// </summary>
+        internal static string Monday {
+            get {
+                return ResourceManager.GetString("Monday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monitored.
+        /// </summary>
+        internal static string Monitored {
+            get {
+                return ResourceManager.GetString("Monitored", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Monitored Value.
+        /// </summary>
+        internal static string MonitoredValue {
+            get {
+                return ResourceManager.GetString("MonitoredValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Month.
+        /// </summary>
+        internal static string Month {
+            get {
+                return ResourceManager.GetString("Month", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Most Recent.
+        /// </summary>
+        internal static string MostRecent {
+            get {
+                return ResourceManager.GetString("MostRecent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multicast IP Address.
+        /// </summary>
+        internal static string MulticastIPAddress {
+            get {
+                return ResourceManager.GetString("MulticastIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multicast IP Address:.
+        /// </summary>
+        internal static string MulticastIPAddressLabel {
+            get {
+                return ResourceManager.GetString("MulticastIPAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multicast IPv4 address.
+        /// </summary>
+        internal static string MulticastIPv4Address {
+            get {
+                return ResourceManager.GetString("MulticastIPv4Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Multicast:.
+        /// </summary>
+        internal static string MulticastLabel {
+            get {
+                return ResourceManager.GetString("MulticastLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name.
+        /// </summary>
+        internal static string Name {
+            get {
+                return ResourceManager.GetString("Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Name:.
+        /// </summary>
+        internal static string NameLabel {
+            get {
+                return ResourceManager.GetString("NameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbor Discovery Setup.
+        /// </summary>
+        internal static string NeighborDiscoverySetup {
+            get {
+                return ResourceManager.GetString("NeighborDiscoverySetup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbour Address.
+        /// </summary>
+        internal static string NeighbourAddress {
+            get {
+                return ResourceManager.GetString("NeighbourAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbour table.
+        /// </summary>
+        internal static string NeighbourTable {
+            get {
+                return ResourceManager.GetString("NeighbourTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbour table TTL:.
+        /// </summary>
+        internal static string NeighbourTableTTLLabel {
+            get {
+                return ResourceManager.GetString("NeighbourTableTTLLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Neighbour Valid Time.
+        /// </summary>
+        internal static string NeighbourValidTime {
+            get {
+                return ResourceManager.GetString("NeighbourValidTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Net Traversal Time.
+        /// </summary>
+        internal static string NetTraversalTime {
+            get {
+                return ResourceManager.GetString("NetTraversalTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New high authentication secret (hex):.
+        /// </summary>
+        internal static string NewHighAuthenticationSecretHexLabel {
+            get {
+                return ResourceManager.GetString("NewHighAuthenticationSecretHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Credit Available Threshold:.
+        /// </summary>
+        internal static string NextCreditAvailableThresholdLabel {
+            get {
+                return ResourceManager.GetString("NextCreditAvailableThresholdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Hop:.
+        /// </summary>
+        internal static string NextHopLabel {
+            get {
+                return ResourceManager.GetString("NextHopLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Next Period.
+        /// </summary>
+        internal static string NextPeriod {
+            get {
+                return ResourceManager.GetString("NextPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Node Hierarchy Level:.
+        /// </summary>
+        internal static string NodeHierarchyLevelLabel {
+            get {
+                return ResourceManager.GetString("NodeHierarchyLevelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No devices loaded..
+        /// </summary>
+        internal static string NoDevicesLoaded {
+            get {
+                return ResourceManager.GetString("NoDevicesLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Non-piggybacked responses:.
+        /// </summary>
+        internal static string NonPiggybackedResponsesLabel {
+            get {
+                return ResourceManager.GetString("NonPiggybackedResponsesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No objects loaded..
+        /// </summary>
+        internal static string NoObjectsLoaded {
+            get {
+                return ResourceManager.GetString("NoObjectsLoaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NSTART:.
+        /// </summary>
+        internal static string NSTARTLabel {
+            get {
+                return ResourceManager.GetString("NSTARTLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to NTP Setup Object.
+        /// </summary>
+        internal static string NTPSetupObject {
+            get {
+                return ResourceManager.GetString("NTPSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number Of Calls:.
+        /// </summary>
+        internal static string NumberOfCallsLabel {
+            get {
+                return ResourceManager.GetString("NumberOfCallsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of entries.
+        /// </summary>
+        internal static string NumberOfEntries {
+            get {
+                return ResourceManager.GetString("NumberOfEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of Periods.
+        /// </summary>
+        internal static string NumberOfPeriods {
+            get {
+                return ResourceManager.GetString("NumberOfPeriods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Number of retries:.
+        /// </summary>
+        internal static string NumberOfRetriesLabel {
+            get {
+                return ResourceManager.GetString("NumberOfRetriesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object.
+        /// </summary>
+        internal static string Object {
+            get {
+                return ResourceManager.GetString("Object", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object class ID.
+        /// </summary>
+        internal static string ObjectClassID {
+            get {
+                return ResourceManager.GetString("ObjectClassID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object logical name.
+        /// </summary>
+        internal static string ObjectLogicalName {
+            get {
+                return ResourceManager.GetString("ObjectLogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objects.
+        /// </summary>
+        internal static string Objects {
+            get {
+                return ResourceManager.GetString("Objects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Objects (class-id,logical-name per line):.
+        /// </summary>
+        internal static string ObjectsClassIdLogicalNamePerLineLabel {
+            get {
+                return ResourceManager.GetString("ObjectsClassIdLogicalNamePerLineLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object Type.
+        /// </summary>
+        internal static string ObjectType {
+            get {
+                return ResourceManager.GetString("ObjectType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object type.
+        /// </summary>
+        internal static string ObjectType2 {
+            get {
+                return ResourceManager.GetString("ObjectType2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object type:.
+        /// </summary>
+        internal static string ObjectTypeLabel {
+            get {
+                return ResourceManager.GetString("ObjectTypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Object Type:.
+        /// </summary>
+        internal static string ObjectTypeLabel2 {
+            get {
+                return ResourceManager.GetString("ObjectTypeLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to OK.
+        /// </summary>
+        internal static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operation method:.
+        /// </summary>
+        internal static string OperationMethodLabel {
+            get {
+                return ResourceManager.GetString("OperationMethodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Operator.
+        /// </summary>
+        internal static string Operator {
+            get {
+                return ResourceManager.GetString("Operator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Originator System Title.
+        /// </summary>
+        internal static string OriginatorSystemTitle {
+            get {
+                return ResourceManager.GetString("OriginatorSystemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Other Information.
+        /// </summary>
+        internal static string OtherInformation {
+            get {
+                return ResourceManager.GetString("OtherInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Output State:.
+        /// </summary>
+        internal static string OutputStateLabel {
+            get {
+                return ResourceManager.GetString("OutputStateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PAN ID:.
+        /// </summary>
+        internal static string PANIDLabel {
+            get {
+                return ResourceManager.GetString("PANIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameter Monitor Object.
+        /// </summary>
+        internal static string ParameterMonitorObject {
+            get {
+                return ResourceManager.GetString("ParameterMonitorObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parameters.
+        /// </summary>
+        internal static string Parameters {
+            get {
+                return ResourceManager.GetString("Parameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passive.
+        /// </summary>
+        internal static string Passive {
+            get {
+                return ResourceManager.GetString("Passive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password 1:.
+        /// </summary>
+        internal static string Password1Label {
+            get {
+                return ResourceManager.GetString("Password1Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password 2:.
+        /// </summary>
+        internal static string Password2Label {
+            get {
+                return ResourceManager.GetString("Password2Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password 5:.
+        /// </summary>
+        internal static string Password5Label {
+            get {
+                return ResourceManager.GetString("Password5Label", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password:.
+        /// </summary>
+        internal static string PasswordLabel {
+            get {
+                return ResourceManager.GetString("PasswordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Path discovery time:.
+        /// </summary>
+        internal static string PathDiscoveryTimeLabel {
+            get {
+                return ResourceManager.GetString("PathDiscoveryTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Mode:.
+        /// </summary>
+        internal static string PaymentModeLabel {
+            get {
+                return ResourceManager.GetString("PaymentModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Peak Throughput:.
+        /// </summary>
+        internal static string PeakThroughputLabel {
+            get {
+                return ResourceManager.GetString("PeakThroughputLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Period.
+        /// </summary>
+        internal static string Period {
+            get {
+                return ResourceManager.GetString("Period", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phase Differential.
+        /// </summary>
+        internal static string PhaseDifferential {
+            get {
+                return ResourceManager.GetString("PhaseDifferential", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Phy Communication:.
+        /// </summary>
+        internal static string PhyCommunicationLabel {
+            get {
+                return ResourceManager.GetString("PhyCommunicationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PHY Reference:.
+        /// </summary>
+        internal static string PHYReferenceLabel {
+            get {
+                return ResourceManager.GetString("PHYReferenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Physical layer desynchronization:.
+        /// </summary>
+        internal static string PhysicalLayerDesynchronizationLabel {
+            get {
+                return ResourceManager.GetString("PhysicalLayerDesynchronizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PIN Code:.
+        /// </summary>
+        internal static string PINCodeLabel {
+            get {
+                return ResourceManager.GetString("PINCodeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Policy:.
+        /// </summary>
+        internal static string PolicyLabel {
+            get {
+                return ResourceManager.GetString("PolicyLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port communication status:.
+        /// </summary>
+        internal static string PortCommunicationStatusLabel {
+            get {
+                return ResourceManager.GetString("PortCommunicationStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port:.
+        /// </summary>
+        internal static string PortLabel {
+            get {
+                return ResourceManager.GetString("PortLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port reference:.
+        /// </summary>
+        internal static string PortReferenceLabel {
+            get {
+                return ResourceManager.GetString("PortReferenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Port settings.
+        /// </summary>
+        internal static string PortSettings {
+            get {
+                return ResourceManager.GetString("PortSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to POS table.
+        /// </summary>
+        internal static string POSTable {
+            get {
+                return ResourceManager.GetString("POSTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PPP Setup Object.
+        /// </summary>
+        internal static string PPPSetupObject {
+            get {
+                return ResourceManager.GetString("PPPSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Precedence:.
+        /// </summary>
+        internal static string PrecedenceLabel {
+            get {
+                return ResourceManager.GetString("PrecedenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Prefix.
+        /// </summary>
+        internal static string Prefix {
+            get {
+                return ResourceManager.GetString("Prefix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset Adjusting Time.
+        /// </summary>
+        internal static string PresetAdjustingTime {
+            get {
+                return ResourceManager.GetString("PresetAdjustingTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset Adjusting Time....
+        /// </summary>
+        internal static string PresetAdjustingTime2 {
+            get {
+                return ResourceManager.GetString("PresetAdjustingTime2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset Credit Amount.
+        /// </summary>
+        internal static string PresetCreditAmount {
+            get {
+                return ResourceManager.GetString("PresetCreditAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset time.
+        /// </summary>
+        internal static string PresetTime {
+            get {
+                return ResourceManager.GetString("PresetTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Preset time:.
+        /// </summary>
+        internal static string PresetTimeLabel {
+            get {
+                return ResourceManager.GetString("PresetTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price Scale.
+        /// </summary>
+        internal static string PriceScale {
+            get {
+                return ResourceManager.GetString("PriceScale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary addresses:.
+        /// </summary>
+        internal static string PrimaryAddressesLabel {
+            get {
+                return ResourceManager.GetString("PrimaryAddressesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary Address:.
+        /// </summary>
+        internal static string PrimaryAddressLabel {
+            get {
+                return ResourceManager.GetString("PrimaryAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary address:.
+        /// </summary>
+        internal static string PrimaryAddressLabel2 {
+            get {
+                return ResourceManager.GetString("PrimaryAddressLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary address must be between zero and 255..
+        /// </summary>
+        internal static string PrimaryAddressMustBeBetweenZeroAnd255 {
+            get {
+                return ResourceManager.GetString("PrimaryAddressMustBeBetweenZeroAnd255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Primary DNS Address:.
+        /// </summary>
+        internal static string PrimaryDNSAddressLabel {
+            get {
+                return ResourceManager.GetString("PrimaryDNSAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC Application identification Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCApplicationIdentificationObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCApplicationIdentificationObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC MAC counters Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCMACCountersObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCMACCountersObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC MAC functional parameters Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCMACFunctionalParametersObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCMACFunctionalParametersObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC MAC network administration data Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCMACNetworkAdministrationDataObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCMACNetworkAdministrationDataObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC MAC setup Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCMACSetupObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCMACSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PRIME NB OFDM PLC Physical layer counters Object.
+        /// </summary>
+        internal static string PRIMENBOFDMPLCPhysicalLayerCountersObject {
+            get {
+                return ResourceManager.GetString("PRIMENBOFDMPLCPhysicalLayerCountersObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Priority.
+        /// </summary>
+        internal static string Priority {
+            get {
+                return ResourceManager.GetString("Priority", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Probing rate:.
+        /// </summary>
+        internal static string ProbingRateLabel {
+            get {
+                return ResourceManager.GetString("ProbingRateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product ID:.
+        /// </summary>
+        internal static string ProductIDLabel {
+            get {
+                return ResourceManager.GetString("ProductIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile Generic.
+        /// </summary>
+        internal static string ProfileGeneric {
+            get {
+                return ResourceManager.GetString("ProfileGeneric", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Profile selection:.
+        /// </summary>
+        internal static string ProfileSelectionLabel {
+            get {
+                return ResourceManager.GetString("ProfileSelectionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Promotion PDU TX Period:.
+        /// </summary>
+        internal static string PromotionPDUTXPeriodLabel {
+            get {
+                return ResourceManager.GetString("PromotionPDUTXPeriodLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Properties.
+        /// </summary>
+        internal static string Properties {
+            get {
+                return ResourceManager.GetString("Properties", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Proportion.
+        /// </summary>
+        internal static string Proportion {
+            get {
+                return ResourceManager.GetString("Proportion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protected get, set and method messages are unavailable in Gurux.DLMS 9.0.2609.2201. The object API does not implement these operations..
+        /// </summary>
+        internal static string ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDoesNotImplementTheseOperations {
+            get {
+                return ResourceManager.GetString("ProtectedGetSetAndMethodMessagesAreUnavailableInGuruxDLMS9026092201TheObjectAPIDo" +
+                        "esNotImplementTheseOperations", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Buffer:.
+        /// </summary>
+        internal static string ProtectionBufferLabel {
+            get {
+                return ResourceManager.GetString("ProtectionBufferLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection:.
+        /// </summary>
+        internal static string ProtectionLabel {
+            get {
+                return ResourceManager.GetString("ProtectionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Mode:.
+        /// </summary>
+        internal static string ProtectionModeLabel {
+            get {
+                return ResourceManager.GetString("ProtectionModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Status:.
+        /// </summary>
+        internal static string ProtectionStatusLabel {
+            get {
+                return ResourceManager.GetString("ProtectionStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Protection Type.
+        /// </summary>
+        internal static string ProtectionType {
+            get {
+                return ResourceManager.GetString("ProtectionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to PS Status:.
+        /// </summary>
+        internal static string PSStatusLabel {
+            get {
+                return ResourceManager.GetString("PSStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push.
+        /// </summary>
+        internal static string Push {
+            get {
+                return ResourceManager.GetString("Push", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push client SAP:.
+        /// </summary>
+        internal static string PushClientSAPLabel {
+            get {
+                return ResourceManager.GetString("PushClientSAPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push Object.
+        /// </summary>
+        internal static string PushObject {
+            get {
+                return ResourceManager.GetString("PushObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Push protection parameters:.
+        /// </summary>
+        internal static string PushProtectionParametersLabel {
+            get {
+                return ResourceManager.GetString("PushProtectionParametersLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quality of service:.
+        /// </summary>
+        internal static string QualityOfServiceLabel {
+            get {
+                return ResourceManager.GetString("QualityOfServiceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Quarter.
+        /// </summary>
+        internal static string Quarter {
+            get {
+                return ResourceManager.GetString("Quarter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Randomisation:.
+        /// </summary>
+        internal static string RandomisationLabel {
+            get {
+                return ResourceManager.GetString("RandomisationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RA send period.
+        /// </summary>
+        internal static string RASendPeriod {
+            get {
+                return ResourceManager.GetString("RASendPeriod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read.
+        /// </summary>
+        internal static string Read {
+            get {
+                return ResourceManager.GetString("Read", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read {0}.
+        /// </summary>
+        internal static string Read0 {
+            get {
+                return ResourceManager.GetString("Read0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read all.
+        /// </summary>
+        internal static string ReadAll {
+            get {
+                return ResourceManager.GetString("ReadAll", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read a nonzero image block size before entering block status..
+        /// </summary>
+        internal static string ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus {
+            get {
+                return ResourceManager.GetString("ReadANonzeroImageBlockSizeBeforeEnteringBlockStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read a nonzero image block size before transfer..
+        /// </summary>
+        internal static string ReadANonzeroImageBlockSizeBeforeTransfer {
+            get {
+                return ResourceManager.GetString("ReadANonzeroImageBlockSizeBeforeTransfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read automatically on object selection.
+        /// </summary>
+        internal static string ReadAutomaticallyOnObjectSelection {
+            get {
+                return ResourceManager.GetString("ReadAutomaticallyOnObjectSelection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read Entry.
+        /// </summary>
+        internal static string ReadEntry {
+            get {
+                return ResourceManager.GetString("ReadEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read From.
+        /// </summary>
+        internal static string ReadFrom {
+            get {
+                return ResourceManager.GetString("ReadFrom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read From must not follow To..
+        /// </summary>
+        internal static string ReadFromMustNotFollowTo {
+            get {
+                return ResourceManager.GetString("ReadFromMustNotFollowTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reading.
+        /// </summary>
+        internal static string Reading {
+            get {
+                return ResourceManager.GetString("Reading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read last (Days).
+        /// </summary>
+        internal static string ReadLastDays {
+            get {
+                return ResourceManager.GetString("ReadLastDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read Object.
+        /// </summary>
+        internal static string ReadObject {
+            get {
+                return ResourceManager.GetString("ReadObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Read status after transfer, verification and activation. Resume uses the meter&apos;s block status or first missing block index..
+        /// </summary>
+        internal static string ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrFirstMissingBlockIndex {
+            get {
+                return ResourceManager.GetString("ReadStatusAfterTransferVerificationAndActivationResumeUsesTheMeterSBlockStatusOrF" +
+                        "irstMissingBlockIndex", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received acknowledgements:.
+        /// </summary>
+        internal static string ReceivedAcknowledgementsLabel {
+            get {
+                return ResourceManager.GetString("ReceivedAcknowledgementsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received blocks bit string (optional):.
+        /// </summary>
+        internal static string ReceivedBlocksBitStringOptionalLabel {
+            get {
+                return ResourceManager.GetString("ReceivedBlocksBitStringOptionalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received client errors:.
+        /// </summary>
+        internal static string ReceivedClientErrorsLabel {
+            get {
+                return ResourceManager.GetString("ReceivedClientErrorsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received messages:.
+        /// </summary>
+        internal static string ReceivedMessagesLabel {
+            get {
+                return ResourceManager.GetString("ReceivedMessagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received requests:.
+        /// </summary>
+        internal static string ReceivedRequestsLabel {
+            get {
+                return ResourceManager.GetString("ReceivedRequestsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received resets:.
+        /// </summary>
+        internal static string ReceivedResetsLabel {
+            get {
+                return ResourceManager.GetString("ReceivedResetsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received responses:.
+        /// </summary>
+        internal static string ReceivedResponsesLabel {
+            get {
+                return ResourceManager.GetString("ReceivedResponsesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received server errors:.
+        /// </summary>
+        internal static string ReceivedServerErrorsLabel {
+            get {
+                return ResourceManager.GetString("ReceivedServerErrorsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Received Signal Strength:.
+        /// </summary>
+        internal static string ReceivedSignalStrengthLabel {
+            get {
+                return ResourceManager.GetString("ReceivedSignalStrengthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receive:.
+        /// </summary>
+        internal static string ReceiveLabel {
+            get {
+                return ResourceManager.GetString("ReceiveLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recipient System Title.
+        /// </summary>
+        internal static string RecipientSystemTitle {
+            get {
+                return ResourceManager.GetString("RecipientSystemTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reconnect.
+        /// </summary>
+        internal static string Reconnect {
+            get {
+                return ResourceManager.GetString("Reconnect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Refresh values.
+        /// </summary>
+        internal static string RefreshValues {
+            get {
+                return ResourceManager.GetString("RefreshValues", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Activation Object.
+        /// </summary>
+        internal static string RegisterActivationObject {
+            get {
+                return ResourceManager.GetString("RegisterActivationObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Assignment.
+        /// </summary>
+        internal static string RegisterAssignment {
+            get {
+                return ResourceManager.GetString("RegisterAssignment", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Monitor Object.
+        /// </summary>
+        internal static string RegisterMonitorObject {
+            get {
+                return ResourceManager.GetString("RegisterMonitorObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Register Object.
+        /// </summary>
+        internal static string RegisterObject {
+            get {
+                return ResourceManager.GetString("RegisterObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Registration Authority:.
+        /// </summary>
+        internal static string RegistrationAuthorityLabel {
+            get {
+                return ResourceManager.GetString("RegistrationAuthorityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reliability:.
+        /// </summary>
+        internal static string ReliabilityLabel {
+            get {
+                return ResourceManager.GetString("ReliabilityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove.
+        /// </summary>
+        internal static string Remove {
+            get {
+                return ResourceManager.GetString("Remove", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove....
+        /// </summary>
+        internal static string Remove2 {
+            get {
+                return ResourceManager.GetString("Remove2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove certificate.
+        /// </summary>
+        internal static string RemoveCertificate {
+            get {
+                return ResourceManager.GetString("RemoveCertificate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove entries.
+        /// </summary>
+        internal static string RemoveEntries {
+            get {
+                return ResourceManager.GetString("RemoveEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove IPv6 address.
+        /// </summary>
+        internal static string RemoveIPv6Address {
+            get {
+                return ResourceManager.GetString("RemoveIPv6Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove mask.
+        /// </summary>
+        internal static string RemoveMask {
+            get {
+                return ResourceManager.GetString("RemoveMask", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove SAP.
+        /// </summary>
+        internal static string RemoveSAP {
+            get {
+                return ResourceManager.GetString("RemoveSAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the selected {0} row?.
+        /// </summary>
+        internal static string RemoveTheSelected0Row {
+            get {
+                return ResourceManager.GetString("RemoveTheSelected0Row", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Remove the selected association object and its access rights?.
+        /// </summary>
+        internal static string RemoveTheSelectedAssociationObjectAndItsAccessRights {
+            get {
+                return ResourceManager.GetString("RemoveTheSelectedAssociationObjectAndItsAccessRights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeater:.
+        /// </summary>
+        internal static string RepeaterLabel {
+            get {
+                return ResourceManager.GetString("RepeaterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repeater status:.
+        /// </summary>
+        internal static string RepeaterStatusLabel {
+            get {
+                return ResourceManager.GetString("RepeaterStatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repetition Delay:.
+        /// </summary>
+        internal static string RepetitionDelayLabel {
+            get {
+                return ResourceManager.GetString("RepetitionDelayLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repetition delay:.
+        /// </summary>
+        internal static string RepetitionDelayLabel2 {
+            get {
+                return ResourceManager.GetString("RepetitionDelayLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repetitions counter:.
+        /// </summary>
+        internal static string RepetitionsCounterLabel {
+            get {
+                return ResourceManager.GetString("RepetitionsCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Repetitions:.
+        /// </summary>
+        internal static string RepetitionsLabel {
+            get {
+                return ResourceManager.GetString("RepetitionsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request.
+        /// </summary>
+        internal static string Request {
+            get {
+                return ResourceManager.GetString("Request", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request Action.
+        /// </summary>
+        internal static string RequestAction {
+            get {
+                return ResourceManager.GetString("RequestAction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Request and response counter.
+        /// </summary>
+        internal static string RequestAndResponseCounter {
+            get {
+                return ResourceManager.GetString("RequestAndResponseCounter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested Quality of Service.
+        /// </summary>
+        internal static string RequestedQualityOfService {
+            get {
+                return ResourceManager.GetString("RequestedQualityOfService", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Requested status.
+        /// </summary>
+        internal static string RequestedStatus {
+            get {
+                return ResourceManager.GetString("RequestedStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Required Protection:.
+        /// </summary>
+        internal static string RequiredProtectionLabel {
+            get {
+                return ResourceManager.GetString("RequiredProtectionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset.
+        /// </summary>
+        internal static string Reset {
+            get {
+                return ResourceManager.GetString("Reset", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset alarm.
+        /// </summary>
+        internal static string ResetAlarm {
+            get {
+                return ResourceManager.GetString("ResetAlarm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset counters.
+        /// </summary>
+        internal static string ResetCounters {
+            get {
+                return ResourceManager.GetString("ResetCounters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset failed: {0}.
+        /// </summary>
+        internal static string ResetFailed0 {
+            get {
+                return ResourceManager.GetString("ResetFailed0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset is unavailable: this Gurux version exposes the method name but provides no supported command API..
+        /// </summary>
+        internal static string ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedCommandAPI {
+            get {
+                return ResourceManager.GetString("ResetIsUnavailableThisGuruxVersionExposesTheMethodNameButProvidesNoSupportedComma" +
+                        "ndAPI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset network administration data.
+        /// </summary>
+        internal static string ResetNetworkAdministrationData {
+            get {
+                return ResourceManager.GetString("ResetNetworkAdministrationData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset protection.
+        /// </summary>
+        internal static string ResetProtection {
+            get {
+                return ResourceManager.GetString("ResetProtection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resize {0}.
+        /// </summary>
+        internal static string Resize0 {
+            get {
+                return ResourceManager.GetString("Resize0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Response:.
+        /// </summary>
+        internal static string ResponseLabel {
+            get {
+                return ResourceManager.GetString("ResponseLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Response Time:.
+        /// </summary>
+        internal static string ResponseTimeLabel {
+            get {
+                return ResourceManager.GetString("ResponseTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restriction.
+        /// </summary>
+        internal static string Restriction {
+            get {
+                return ResourceManager.GetString("Restriction", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restriction range.
+        /// </summary>
+        internal static string RestrictionRange {
+            get {
+                return ResourceManager.GetString("RestrictionRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Restriction Type.
+        /// </summary>
+        internal static string RestrictionType {
+            get {
+                return ResourceManager.GetString("RestrictionType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume block index:.
+        /// </summary>
+        internal static string ResumeBlockIndexLabel {
+            get {
+                return ResourceManager.GetString("ResumeBlockIndexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resume index must identify an image block..
+        /// </summary>
+        internal static string ResumeIndexMustIdentifyAnImageBlock {
+            get {
+                return ResourceManager.GetString("ResumeIndexMustIdentifyAnImageBlock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retransmitted messages:.
+        /// </summary>
+        internal static string RetransmittedMessagesLabel {
+            get {
+                return ResourceManager.GetString("RetransmittedMessagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrieve entries.
+        /// </summary>
+        internal static string RetrieveEntries {
+            get {
+                return ResourceManager.GetString("RetrieveEntries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rights masks follow this association version. Unspecified rights are denied..
+        /// </summary>
+        internal static string RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied {
+            get {
+                return ResourceManager.GetString("RightsMasksFollowThisAssociationVersionUnspecifiedRightsAreDenied", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rights require a valid index:mask pair..
+        /// </summary>
+        internal static string RightsRequireAValidIndexMaskPair {
+            get {
+                return ResourceManager.GetString("RightsRequireAValidIndexMaskPair", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring Count In Window:.
+        /// </summary>
+        internal static string RingCountInWindowLabel {
+            get {
+                return ResourceManager.GetString("RingCountInWindowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Ring Count Out Of Window:.
+        /// </summary>
+        internal static string RingCountOutOfWindowLabel {
+            get {
+                return ResourceManager.GetString("RingCountOutOfWindowLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rlc Enabled.
+        /// </summary>
+        internal static string RlcEnabled {
+            get {
+                return ResourceManager.GetString("RlcEnabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Route cost to coord:.
+        /// </summary>
+        internal static string RouteCostToCoordLabel {
+            get {
+                return ResourceManager.GetString("RouteCostToCoordLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Route:.
+        /// </summary>
+        internal static string RouteLabel {
+            get {
+                return ResourceManager.GetString("RouteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routing.
+        /// </summary>
+        internal static string Routing {
+            get {
+                return ResourceManager.GetString("Routing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Routing configuration.
+        /// </summary>
+        internal static string RoutingConfiguration {
+            get {
+                return ResourceManager.GetString("RoutingConfiguration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rreq Rerr Wait.
+        /// </summary>
+        internal static string RreqRerrWait {
+            get {
+                return ResourceManager.GetString("RreqRerrWait", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rreq Retries.
+        /// </summary>
+        internal static string RreqRetries {
+            get {
+                return ResourceManager.GetString("RreqRetries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RS Max Retry.
+        /// </summary>
+        internal static string RSMaxRetry {
+            get {
+                return ResourceManager.GetString("RSMaxRetry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RS retry wait time.
+        /// </summary>
+        internal static string RSRetryWaitTime {
+            get {
+                return ResourceManager.GetString("RSRetryWaitTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rx Cmd Packets:.
+        /// </summary>
+        internal static string RxCmdPacketsLabel {
+            get {
+                return ResourceManager.GetString("RxCmdPacketsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Code.
+        /// </summary>
+        internal static string RXCode {
+            get {
+                return ResourceManager.GetString("RXCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Code Mod.
+        /// </summary>
+        internal static string RXCodeMod {
+            get {
+                return ResourceManager.GetString("RXCodeMod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Ctrl Packet Counter:.
+        /// </summary>
+        internal static string RXCtrlPacketCounterLabel {
+            get {
+                return ResourceManager.GetString("RXCtrlPacketCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rx Data Broadcasts:.
+        /// </summary>
+        internal static string RxDataBroadcastsLabel {
+            get {
+                return ResourceManager.GetString("RxDataBroadcastsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Data Packet Counter:.
+        /// </summary>
+        internal static string RXDataPacketCounterLabel {
+            get {
+                return ResourceManager.GetString("RXDataPacketCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rx Data Packets:.
+        /// </summary>
+        internal static string RxDataPacketsLabel {
+            get {
+                return ResourceManager.GetString("RxDataPacketsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Drop Count:.
+        /// </summary>
+        internal static string RXDropCountLabel {
+            get {
+                return ResourceManager.GetString("RXDropCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Level.
+        /// </summary>
+        internal static string RXLevel {
+            get {
+                return ResourceManager.GetString("RXLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX Lvl.
+        /// </summary>
+        internal static string RXLvl {
+            get {
+                return ResourceManager.GetString("RXLvl", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to RX SNR.
+        /// </summary>
+        internal static string RXSNR {
+            get {
+                return ResourceManager.GetString("RXSNR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAP address.
+        /// </summary>
+        internal static string SAPAddress {
+            get {
+                return ResourceManager.GetString("SAPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sap Assignment List.
+        /// </summary>
+        internal static string SapAssignmentList {
+            get {
+                return ResourceManager.GetString("SapAssignmentList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAP Assignment Object.
+        /// </summary>
+        internal static string SAPAssignmentObject {
+            get {
+                return ResourceManager.GetString("SAPAssignmentObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAP ID (1–65535).
+        /// </summary>
+        internal static string SAPID165535 {
+            get {
+                return ResourceManager.GetString("SAPID165535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SAP ID zero removes an assignment; enter an ID from 1 to 65535..
+        /// </summary>
+        internal static string SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535 {
+            get {
+                return ResourceManager.GetString("SAPIDZeroRemovesAnAssignmentEnterAnIDFrom1To65535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sat.
+        /// </summary>
+        internal static string Sat {
+            get {
+                return ResourceManager.GetString("Sat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saturday.
+        /// </summary>
+        internal static string Saturday {
+            get {
+                return ResourceManager.GetString("Saturday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Saturday Intervals.
+        /// </summary>
+        internal static string SaturdayIntervals {
+            get {
+                return ResourceManager.GetString("SaturdayIntervals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save Values As....
+        /// </summary>
+        internal static string SaveValuesAs {
+            get {
+                return ResourceManager.GetString("SaveValuesAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scaler.
+        /// </summary>
+        internal static string Scaler {
+            get {
+                return ResourceManager.GetString("Scaler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scaler:.
+        /// </summary>
+        internal static string ScalerLabel {
+            get {
+                return ResourceManager.GetString("ScalerLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scaler must be a positive power of ten..
+        /// </summary>
+        internal static string ScalerMustBeAPositivePowerOfTen {
+            get {
+                return ResourceManager.GetString("ScalerMustBeAPositivePowerOfTen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scaler must be a positive power of ten (for example 0.01, 1 or 100)..
+        /// </summary>
+        internal static string ScalerMustBeAPositivePowerOfTenForExample0011Or100 {
+            get {
+                return ResourceManager.GetString("ScalerMustBeAPositivePowerOfTenForExample0011Or100", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Schedule Object.
+        /// </summary>
+        internal static string ScheduleObject {
+            get {
+                return ResourceManager.GetString("ScheduleObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SCP Lengt:.
+        /// </summary>
+        internal static string SCPLengtLabel {
+            get {
+                return ResourceManager.GetString("SCPLengtLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SCP Max TX Attemps:.
+        /// </summary>
+        internal static string SCPMaxTXAttempsLabel {
+            get {
+                return ResourceManager.GetString("SCPMaxTXAttempsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script.
+        /// </summary>
+        internal static string Script {
+            get {
+                return ResourceManager.GetString("Script", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script Id.
+        /// </summary>
+        internal static string ScriptId {
+            get {
+                return ResourceManager.GetString("ScriptId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script ID (0–65535).
+        /// </summary>
+        internal static string ScriptID065535 {
+            get {
+                return ResourceManager.GetString("ScriptID065535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script logical name.
+        /// </summary>
+        internal static string ScriptLogicalName {
+            get {
+                return ResourceManager.GetString("ScriptLogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script Name.
+        /// </summary>
+        internal static string ScriptName {
+            get {
+                return ResourceManager.GetString("ScriptName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Scripts.
+        /// </summary>
+        internal static string Scripts {
+            get {
+                return ResourceManager.GetString("Scripts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script Selector.
+        /// </summary>
+        internal static string ScriptSelector {
+            get {
+                return ResourceManager.GetString("ScriptSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script selector.
+        /// </summary>
+        internal static string ScriptSelector2 {
+            get {
+                return ResourceManager.GetString("ScriptSelector2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script Table Object.
+        /// </summary>
+        internal static string ScriptTableObject {
+            get {
+                return ResourceManager.GetString("ScriptTableObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Script Type.
+        /// </summary>
+        internal static string ScriptType {
+            get {
+                return ResourceManager.GetString("ScriptType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search initiator threshold:.
+        /// </summary>
+        internal static string SearchInitiatorThresholdLabel {
+            get {
+                return ResourceManager.GetString("SearchInitiatorThresholdLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Search initiator timeout:.
+        /// </summary>
+        internal static string SearchInitiatorTimeoutLabel {
+            get {
+                return ResourceManager.GetString("SearchInitiatorTimeoutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Season Profile.
+        /// </summary>
+        internal static string SeasonProfile {
+            get {
+                return ResourceManager.GetString("SeasonProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secondary DNS Address:.
+        /// </summary>
+        internal static string SecondaryDNSAddressLabel {
+            get {
+                return ResourceManager.GetString("SecondaryDNSAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret (hex):.
+        /// </summary>
+        internal static string SecretHexLabel {
+            get {
+                return ResourceManager.GetString("SecretHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Secret:.
+        /// </summary>
+        internal static string SecretLabel {
+            get {
+                return ResourceManager.GetString("SecretLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security activation.
+        /// </summary>
+        internal static string SecurityActivation {
+            get {
+                return ResourceManager.GetString("SecurityActivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security Level:.
+        /// </summary>
+        internal static string SecurityLevelLabel {
+            get {
+                return ResourceManager.GetString("SecurityLevelLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security policy bit mask:.
+        /// </summary>
+        internal static string SecurityPolicyBitMaskLabel {
+            get {
+                return ResourceManager.GetString("SecurityPolicyBitMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security policy contains unsupported flags..
+        /// </summary>
+        internal static string SecurityPolicyContainsUnsupportedFlags {
+            get {
+                return ResourceManager.GetString("SecurityPolicyContainsUnsupportedFlags", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security setup:.
+        /// </summary>
+        internal static string SecuritySetupLabel {
+            get {
+                return ResourceManager.GetString("SecuritySetupLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Security Setup Object.
+        /// </summary>
+        internal static string SecuritySetupObject {
+            get {
+                return ResourceManager.GetString("SecuritySetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a day first..
+        /// </summary>
+        internal static string SelectADayFirst {
+            get {
+                return ResourceManager.GetString("SelectADayFirst", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a key type supported by this version..
+        /// </summary>
+        internal static string SelectAKeyTypeSupportedByThisVersion {
+            get {
+                return ResourceManager.GetString("SelectAKeyTypeSupportedByThisVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a nonempty image..
+        /// </summary>
+        internal static string SelectANonemptyImage {
+            get {
+                return ResourceManager.GetString("SelectANonemptyImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a nonempty image file..
+        /// </summary>
+        internal static string SelectANonemptyImageFile {
+            get {
+                return ResourceManager.GetString("SelectANonemptyImageFile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a scalar data type..
+        /// </summary>
+        internal static string SelectAScalarDataType {
+            get {
+                return ResourceManager.GetString("SelectAScalarDataType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a supported address type..
+        /// </summary>
+        internal static string SelectASupportedAddressType {
+            get {
+                return ResourceManager.GetString("SelectASupportedAddressType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a supported object class..
+        /// </summary>
+        internal static string SelectASupportedObjectClass {
+            get {
+                return ResourceManager.GetString("SelectASupportedObjectClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select at least one object..
+        /// </summary>
+        internal static string SelectAtLeastOneObject {
+            get {
+                return ResourceManager.GetString("SelectAtLeastOneObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a valid COSEM class..
+        /// </summary>
+        internal static string SelectAValidCOSEMClass {
+            get {
+                return ResourceManager.GetString("SelectAValidCOSEMClass", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a valid credit status..
+        /// </summary>
+        internal static string SelectAValidCreditStatus {
+            get {
+                return ResourceManager.GetString("SelectAValidCreditStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selected file:.
+        /// </summary>
+        internal static string SelectedFileLabel {
+            get {
+                return ResourceManager.GetString("SelectedFileLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Selector.
+        /// </summary>
+        internal static string Selector {
+            get {
+                return ResourceManager.GetString("Selector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send....
+        /// </summary>
+        internal static string Send {
+            get {
+                return ResourceManager.GetString("Send", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send data.
+        /// </summary>
+        internal static string SendData {
+            get {
+                return ResourceManager.GetString("SendData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send destination and method.
+        /// </summary>
+        internal static string SendDestinationAndMethod {
+            get {
+                return ResourceManager.GetString("SendDestinationAndMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sequence Number.
+        /// </summary>
+        internal static string SequenceNumber {
+            get {
+                return ResourceManager.GetString("SequenceNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serial Number.
+        /// </summary>
+        internal static string SerialNumber {
+            get {
+                return ResourceManager.GetString("SerialNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Serial Number (decimal):.
+        /// </summary>
+        internal static string SerialNumberDecimalLabel {
+            get {
+                return ResourceManager.GetString("SerialNumberDecimalLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server Address:.
+        /// </summary>
+        internal static string ServerAddressLabel {
+            get {
+                return ResourceManager.GetString("ServerAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server SAP:.
+        /// </summary>
+        internal static string ServerSAPLabel {
+            get {
+                return ResourceManager.GetString("ServerSAPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Server System Title:.
+        /// </summary>
+        internal static string ServerSystemTitleLabel {
+            get {
+                return ResourceManager.GetString("ServerSystemTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service Address:.
+        /// </summary>
+        internal static string ServiceAddressLabel {
+            get {
+                return ResourceManager.GetString("ServiceAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Service:.
+        /// </summary>
+        internal static string ServiceLabel {
+            get {
+                return ResourceManager.GetString("ServiceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set....
+        /// </summary>
+        internal static string Set {
+            get {
+                return ResourceManager.GetString("Set", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set amount.
+        /// </summary>
+        internal static string SetAmount {
+            get {
+                return ResourceManager.GetString("SetAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Parameters.
+        /// </summary>
+        internal static string SetParameters {
+            get {
+                return ResourceManager.GetString("SetParameters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set protected attributes.
+        /// </summary>
+        internal static string SetProtectedAttributes {
+            get {
+                return ResourceManager.GetString("SetProtectedAttributes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set status....
+        /// </summary>
+        internal static string SetStatus {
+            get {
+                return ResourceManager.GetString("SetStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Set Total....
+        /// </summary>
+        internal static string SetTotal {
+            get {
+                return ResourceManager.GetString("SetTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-FSK Active initiator Object.
+        /// </summary>
+        internal static string SFSKActiveInitiatorObject {
+            get {
+                return ResourceManager.GetString("SFSKActiveInitiatorObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-FSK MAC counters Object.
+        /// </summary>
+        internal static string SFSKMACCountersObject {
+            get {
+                return ResourceManager.GetString("SFSKMACCountersObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-FSK MAC synchronization timeouts Object.
+        /// </summary>
+        internal static string SFSKMACSynchronizationTimeoutsObject {
+            get {
+                return ResourceManager.GetString("SFSKMACSynchronizationTimeoutsObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to S-FSK Phy MAC Setup Object.
+        /// </summary>
+        internal static string SFSKPhyMACSetupObject {
+            get {
+                return ResourceManager.GetString("SFSKPhyMACSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift seconds:.
+        /// </summary>
+        internal static string ShiftSecondsLabel {
+            get {
+                return ResourceManager.GetString("ShiftSecondsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift seconds must be between -900 and 900..
+        /// </summary>
+        internal static string ShiftSecondsMustBeBetween900And900 {
+            get {
+                return ResourceManager.GetString("ShiftSecondsMustBeBetween900And900", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Shift Time....
+        /// </summary>
+        internal static string ShiftTime {
+            get {
+                return ResourceManager.GetString("ShiftTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short address.
+        /// </summary>
+        internal static string ShortAddress {
+            get {
+                return ResourceManager.GetString("ShortAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Short Address:.
+        /// </summary>
+        internal static string ShortAddressLabel {
+            get {
+                return ResourceManager.GetString("ShortAddressLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SID:.
+        /// </summary>
+        internal static string SIDLabel {
+            get {
+                return ResourceManager.GetString("SIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signal Quality:.
+        /// </summary>
+        internal static string SignalQualityLabel {
+            get {
+                return ResourceManager.GetString("SignalQualityLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signature.
+        /// </summary>
+        internal static string Signature {
+            get {
+                return ResourceManager.GetString("Signature", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Signed ephemeral public key (hex):.
+        /// </summary>
+        internal static string SignedEphemeralPublicKeyHexLabel {
+            get {
+                return ResourceManager.GetString("SignedEphemeralPublicKeyHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Size.
+        /// </summary>
+        internal static string Size {
+            get {
+                return ResourceManager.GetString("Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Slave.
+        /// </summary>
+        internal static string Slave {
+            get {
+                return ResourceManager.GetString("Slave", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SNA.
+        /// </summary>
+        internal static string SNA {
+            get {
+                return ResourceManager.GetString("SNA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SNA:.
+        /// </summary>
+        internal static string SNALabel {
+            get {
+                return ResourceManager.GetString("SNALabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SNR.
+        /// </summary>
+        internal static string SNR {
+            get {
+                return ResourceManager.GetString("SNR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sort.
+        /// </summary>
+        internal static string Sort {
+            get {
+                return ResourceManager.GetString("Sort", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Source Address.
+        /// </summary>
+        internal static string SourceAddress {
+            get {
+                return ResourceManager.GetString("SourceAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Space frequency (Hz):.
+        /// </summary>
+        internal static string SpaceFrequencyHzLabel {
+            get {
+                return ResourceManager.GetString("SpaceFrequencyHzLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special day bit string.
+        /// </summary>
+        internal static string SpecialDayBitString {
+            get {
+                return ResourceManager.GetString("SpecialDayBitString", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Day Date.
+        /// </summary>
+        internal static string SpecialDayDate {
+            get {
+                return ResourceManager.GetString("SpecialDayDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Days.
+        /// </summary>
+        internal static string SpecialDays {
+            get {
+                return ResourceManager.GetString("SpecialDays", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Special Days Table Object.
+        /// </summary>
+        internal static string SpecialDaysTableObject {
+            get {
+                return ResourceManager.GetString("SpecialDaysTableObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Speed:.
+        /// </summary>
+        internal static string SpeedLabel {
+            get {
+                return ResourceManager.GetString("SpeedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Src LCID.
+        /// </summary>
+        internal static string SrcLCID {
+            get {
+                return ResourceManager.GetString("SrcLCID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Src LNID.
+        /// </summary>
+        internal static string SrcLNID {
+            get {
+                return ResourceManager.GetString("SrcLNID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Src SID.
+        /// </summary>
+        internal static string SrcSID {
+            get {
+                return ResourceManager.GetString("SrcSID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start.
+        /// </summary>
+        internal static string Start {
+            get {
+                return ResourceManager.GetString("Start", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start date:.
+        /// </summary>
+        internal static string StartDateLabel {
+            get {
+                return ResourceManager.GetString("StartDateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Hour.
+        /// </summary>
+        internal static string StartHour {
+            get {
+                return ResourceManager.GetString("StartHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start hour must be between 0 and 23..
+        /// </summary>
+        internal static string StartHourMustBeBetween0And23 {
+            get {
+                return ResourceManager.GetString("StartHourMustBeBetween0And23", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time.
+        /// </summary>
+        internal static string StartTime {
+            get {
+                return ResourceManager.GetString("StartTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Start Time:.
+        /// </summary>
+        internal static string StartTimeLabel {
+            get {
+                return ResourceManager.GetString("StartTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State:.
+        /// </summary>
+        internal static string StateLabel {
+            get {
+                return ResourceManager.GetString("StateLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Static.
+        /// </summary>
+        internal static string Static {
+            get {
+                return ResourceManager.GetString("Static", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status.
+        /// </summary>
+        internal static string Status {
+            get {
+                return ResourceManager.GetString("Status", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status code.
+        /// </summary>
+        internal static string StatusCode {
+            get {
+                return ResourceManager.GetString("StatusCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Status:.
+        /// </summary>
+        internal static string StatusLabel {
+            get {
+                return ResourceManager.GetString("StatusLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Steepness Factor:.
+        /// </summary>
+        internal static string SteepnessFactorLabel {
+            get {
+                return ResourceManager.GetString("SteepnessFactorLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject.
+        /// </summary>
+        internal static string Subject {
+            get {
+                return ResourceManager.GetString("Subject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subject Alt Name.
+        /// </summary>
+        internal static string SubjectAltName {
+            get {
+                return ResourceManager.GetString("SubjectAltName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Subnet Mask:.
+        /// </summary>
+        internal static string SubnetMaskLabel {
+            get {
+                return ResourceManager.GetString("SubnetMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suite:.
+        /// </summary>
+        internal static string SuiteLabel {
+            get {
+                return ResourceManager.GetString("SuiteLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Summer season.
+        /// </summary>
+        internal static string SummerSeason {
+            get {
+                return ResourceManager.GetString("SummerSeason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sun.
+        /// </summary>
+        internal static string Sun {
+            get {
+                return ResourceManager.GetString("Sun", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Sunday.
+        /// </summary>
+        internal static string Sunday {
+            get {
+                return ResourceManager.GetString("Sunday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Table.
+        /// </summary>
+        internal static string SwitchTable {
+            get {
+                return ResourceManager.GetString("SwitchTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch time.
+        /// </summary>
+        internal static string SwitchTime {
+            get {
+                return ResourceManager.GetString("SwitchTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch time (HH:mm:ss).
+        /// </summary>
+        internal static string SwitchTimeHHMmSs {
+            get {
+                return ResourceManager.GetString("SwitchTimeHHMmSs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization locked:.
+        /// </summary>
+        internal static string SynchronizationLockedLabel {
+            get {
+                return ResourceManager.GetString("SynchronizationLockedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization register.
+        /// </summary>
+        internal static string SynchronizationRegister {
+            get {
+                return ResourceManager.GetString("SynchronizationRegister", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronization register:.
+        /// </summary>
+        internal static string SynchronizationRegisterLabel {
+            get {
+                return ResourceManager.GetString("SynchronizationRegisterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize clock.
+        /// </summary>
+        internal static string SynchronizeClock {
+            get {
+                return ResourceManager.GetString("SynchronizeClock", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Synchronize time.
+        /// </summary>
+        internal static string SynchronizeTime {
+            get {
+                return ResourceManager.GetString("SynchronizeTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System title (8 bytes, hex):.
+        /// </summary>
+        internal static string SystemTitle8BytesHexLabel {
+            get {
+                return ResourceManager.GetString("SystemTitle8BytesHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System title description:.
+        /// </summary>
+        internal static string SystemTitleDescriptionLabel {
+            get {
+                return ResourceManager.GetString("SystemTitleDescriptionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System Title:.
+        /// </summary>
+        internal static string SystemTitleLabel {
+            get {
+                return ResourceManager.GetString("SystemTitleLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to System title must contain eight bytes..
+        /// </summary>
+        internal static string SystemTitleMustContainEightBytes {
+            get {
+                return ResourceManager.GetString("SystemTitleMustContainEightBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TAB(i).
+        /// </summary>
+        internal static string TABI {
+            get {
+                return ResourceManager.GetString("TABI", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Table ID.
+        /// </summary>
+        internal static string TableID {
+            get {
+                return ResourceManager.GetString("TableID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Target.
+        /// </summary>
+        internal static string Target {
+            get {
+                return ResourceManager.GetString("Target", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tariff plan.
+        /// </summary>
+        internal static string TariffPlan {
+            get {
+                return ResourceManager.GetString("TariffPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tariff Plan Object.
+        /// </summary>
+        internal static string TariffPlanObject {
+            get {
+                return ResourceManager.GetString("TariffPlanObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TCP/UDP Setup Object.
+        /// </summary>
+        internal static string TCPUDPSetupObject {
+            get {
+                return ResourceManager.GetString("TCPUDPSetupObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template Description.
+        /// </summary>
+        internal static string TemplateDescription {
+            get {
+                return ResourceManager.GetString("TemplateDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Template ID.
+        /// </summary>
+        internal static string TemplateID {
+            get {
+                return ResourceManager.GetString("TemplateID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0}: {1}.
+        /// </summary>
+        internal static string Text01 {
+            get {
+                return ResourceManager.GetString("Text01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} {1}.
+        /// </summary>
+        internal static string Text012 {
+            get {
+                return ResourceManager.GetString("Text012", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} / attribute {1}.
+        /// </summary>
+        internal static string Text0Attribute1 {
+            get {
+                return ResourceManager.GetString("Text0Attribute1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} items.
+        /// </summary>
+        internal static string Text0Items {
+            get {
+                return ResourceManager.GetString("Text0Items", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} Object.
+        /// </summary>
+        internal static string Text0Object {
+            get {
+                return ResourceManager.GetString("Text0Object", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} request completed..
+        /// </summary>
+        internal static string Text0RequestCompleted {
+            get {
+                return ResourceManager.GetString("Text0RequestCompleted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The association list changed. Cancel and open the editor again..
+        /// </summary>
+        internal static string TheAssociationListChangedCancelAndOpenTheEditorAgain {
+            get {
+                return ResourceManager.GetString("TheAssociationListChangedCancelAndOpenTheEditorAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The date is outside the meter&apos;s supported range..
+        /// </summary>
+        internal static string TheDateIsOutsideTheMeterSSupportedRange {
+            get {
+                return ResourceManager.GetString("TheDateIsOutsideTheMeterSSupportedRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The installed value codec cannot preserve this parameter data type..
+        /// </summary>
+        internal static string TheInstalledValueCodecCannotPreserveThisParameterDataType {
+            get {
+                return ResourceManager.GetString("TheInstalledValueCodecCannotPreserveThisParameterDataType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected object changed before the action started..
+        /// </summary>
+        internal static string TheSelectedObjectChangedBeforeTheActionStarted {
+            get {
+                return ResourceManager.GetString("TheSelectedObjectChangedBeforeTheActionStarted", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected object changed. Open the editor again..
+        /// </summary>
+        internal static string TheSelectedObjectChangedOpenTheEditorAgain {
+            get {
+                return ResourceManager.GetString("TheSelectedObjectChangedOpenTheEditorAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected row no longer exists..
+        /// </summary>
+        internal static string TheSelectedRowNoLongerExists {
+            get {
+                return ResourceManager.GetString("TheSelectedRowNoLongerExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected security suite requires {0} key bytes..
+        /// </summary>
+        internal static string TheSelectedSecuritySuiteRequires0KeyBytes {
+            get {
+                return ResourceManager.GetString("TheSelectedSecuritySuiteRequires0KeyBytes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The target, access rights or pending value changed. Cancel and open the editor again..
+        /// </summary>
+        internal static string TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain {
+            get {
+                return ResourceManager.GetString("TheTargetAccessRightsOrPendingValueChangedCancelAndOpenTheEditorAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The validity start must not follow the validity end..
+        /// </summary>
+        internal static string TheValidityStartMustNotFollowTheValidityEnd {
+            get {
+                return ResourceManager.GetString("TheValidityStartMustNotFollowTheValidityEnd", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The value changed. Cancel and open the editor again..
+        /// </summary>
+        internal static string TheValueChangedCancelAndOpenTheEditorAgain {
+            get {
+                return ResourceManager.GetString("TheValueChangedCancelAndOpenTheEditorAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This action is not available..
+        /// </summary>
+        internal static string ThisActionIsNotAvailable {
+            get {
+                return ResourceManager.GetString("ThisActionIsNotAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This method requires high authentication; use attribute write or Security setup for other mechanisms..
+        /// </summary>
+        internal static string ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMechanisms {
+            get {
+                return ResourceManager.GetString("ThisMethodRequiresHighAuthenticationUseAttributeWriteOrSecuritySetupForOtherMecha" +
+                        "nisms", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Threshold.
+        /// </summary>
+        internal static string Threshold {
+            get {
+                return ResourceManager.GetString("Threshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Threshold Active.
+        /// </summary>
+        internal static string ThresholdActive {
+            get {
+                return ResourceManager.GetString("ThresholdActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Threshold Emergency.
+        /// </summary>
+        internal static string ThresholdEmergency {
+            get {
+                return ResourceManager.GetString("ThresholdEmergency", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Threshold Normal.
+        /// </summary>
+        internal static string ThresholdNormal {
+            get {
+                return ResourceManager.GetString("ThresholdNormal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thresholds.
+        /// </summary>
+        internal static string Thresholds {
+            get {
+                return ResourceManager.GetString("Thresholds", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thu.
+        /// </summary>
+        internal static string Thu {
+            get {
+                return ResourceManager.GetString("Thu", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Thursday.
+        /// </summary>
+        internal static string Thursday {
+            get {
+                return ResourceManager.GetString("Thursday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time.
+        /// </summary>
+        internal static string Time {
+            get {
+                return ResourceManager.GetString("Time", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time:.
+        /// </summary>
+        internal static string TimeLabel {
+            get {
+                return ResourceManager.GetString("TimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout frame not OK desynchronization:.
+        /// </summary>
+        internal static string TimeoutFrameNotOKDesynchronizationLabel {
+            get {
+                return ResourceManager.GetString("TimeoutFrameNotOKDesynchronizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout not addressed desynchronization:.
+        /// </summary>
+        internal static string TimeoutNotAddressedDesynchronizationLabel {
+            get {
+                return ResourceManager.GetString("TimeoutNotAddressedDesynchronizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeout not addressed:.
+        /// </summary>
+        internal static string TimeoutNotAddressedLabel {
+            get {
+                return ResourceManager.GetString("TimeoutNotAddressedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Stamp.
+        /// </summary>
+        internal static string TimeStamp {
+            get {
+                return ResourceManager.GetString("TimeStamp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Timeuout frame not OK:.
+        /// </summary>
+        internal static string TimeuoutFrameNotOKLabel {
+            get {
+                return ResourceManager.GetString("TimeuoutFrameNotOKLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time Zone:.
+        /// </summary>
+        internal static string TimeZoneLabel {
+            get {
+                return ResourceManager.GetString("TimeZoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Time zone:.
+        /// </summary>
+        internal static string TimeZoneLabel2 {
+            get {
+                return ResourceManager.GetString("TimeZoneLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TMR Valid Time.
+        /// </summary>
+        internal static string TMRValidTime {
+            get {
+                return ResourceManager.GetString("TMRValidTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To.
+        /// </summary>
+        internal static string To {
+            get {
+                return ResourceManager.GetString("To", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To index (1–65535).
+        /// </summary>
+        internal static string ToIndex165535 {
+            get {
+                return ResourceManager.GetString("ToIndex165535", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token.
+        /// </summary>
+        internal static string Token {
+            get {
+                return ResourceManager.GetString("Token", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token Gateway.
+        /// </summary>
+        internal static string TokenGateway {
+            get {
+                return ResourceManager.GetString("TokenGateway", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token Gateway Object.
+        /// </summary>
+        internal static string TokenGatewayObject {
+            get {
+                return ResourceManager.GetString("TokenGatewayObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token (hexadecimal).
+        /// </summary>
+        internal static string TokenHexadecimal {
+            get {
+                return ResourceManager.GetString("TokenHexadecimal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token length:.
+        /// </summary>
+        internal static string TokenLengthLabel {
+            get {
+                return ResourceManager.GetString("TokenLengthLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Token proportion.
+        /// </summary>
+        internal static string TokenProportion {
+            get {
+                return ResourceManager.GetString("TokenProportion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone Map:.
+        /// </summary>
+        internal static string ToneMapLabel {
+            get {
+                return ResourceManager.GetString("ToneMapLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone Map TTL:.
+        /// </summary>
+        internal static string ToneMapTTLLabel {
+            get {
+                return ResourceManager.GetString("ToneMapTTLLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tone Mask:.
+        /// </summary>
+        internal static string ToneMaskLabel {
+            get {
+                return ResourceManager.GetString("ToneMaskLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Amount Paid.
+        /// </summary>
+        internal static string TotalAmountPaid {
+            get {
+                return ResourceManager.GetString("TotalAmountPaid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Amount Remaining.
+        /// </summary>
+        internal static string TotalAmountRemaining {
+            get {
+                return ResourceManager.GetString("TotalAmountRemaining", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Traffic class:.
+        /// </summary>
+        internal static string TrafficClassLabel {
+            get {
+                return ResourceManager.GetString("TrafficClassLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transaction ID.
+        /// </summary>
+        internal static string TransactionID {
+            get {
+                return ResourceManager.GetString("TransactionID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer....
+        /// </summary>
+        internal static string Transfer {
+            get {
+                return ResourceManager.GetString("Transfer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer image blocks.
+        /// </summary>
+        internal static string TransferImageBlocks {
+            get {
+                return ResourceManager.GetString("TransferImageBlocks", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfers completed:.
+        /// </summary>
+        internal static string TransfersCompletedLabel {
+            get {
+                return ResourceManager.GetString("TransfersCompletedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfers started:.
+        /// </summary>
+        internal static string TransfersStartedLabel {
+            get {
+                return ResourceManager.GetString("TransfersStartedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfers timed out:.
+        /// </summary>
+        internal static string TransfersTimedOutLabel {
+            get {
+                return ResourceManager.GetString("TransfersTimedOutLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transfer token.
+        /// </summary>
+        internal static string TransferToken {
+            get {
+                return ResourceManager.GetString("TransferToken", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmission.
+        /// </summary>
+        internal static string Transmission {
+            get {
+                return ResourceManager.GetString("Transmission", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmissions Counter:.
+        /// </summary>
+        internal static string TransmissionsCounterLabel {
+            get {
+                return ResourceManager.GetString("TransmissionsCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmissions counter:.
+        /// </summary>
+        internal static string TransmissionsCounterLabel2 {
+            get {
+                return ResourceManager.GetString("TransmissionsCounterLabel2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmission speed:.
+        /// </summary>
+        internal static string TransmissionSpeedLabel {
+            get {
+                return ResourceManager.GetString("TransmissionSpeedLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmit.
+        /// </summary>
+        internal static string Transmit {
+            get {
+                return ResourceManager.GetString("Transmit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmit atten:.
+        /// </summary>
+        internal static string TransmitAttenLabel {
+            get {
+                return ResourceManager.GetString("TransmitAttenLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted acknowledgements:.
+        /// </summary>
+        internal static string TransmittedAcknowledgementsLabel {
+            get {
+                return ResourceManager.GetString("TransmittedAcknowledgementsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted client errors:.
+        /// </summary>
+        internal static string TransmittedClientErrorsLabel {
+            get {
+                return ResourceManager.GetString("TransmittedClientErrorsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted messages:.
+        /// </summary>
+        internal static string TransmittedMessagesLabel {
+            get {
+                return ResourceManager.GetString("TransmittedMessagesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted requests:.
+        /// </summary>
+        internal static string TransmittedRequestsLabel {
+            get {
+                return ResourceManager.GetString("TransmittedRequestsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted resets:.
+        /// </summary>
+        internal static string TransmittedResetsLabel {
+            get {
+                return ResourceManager.GetString("TransmittedResetsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted responses:.
+        /// </summary>
+        internal static string TransmittedResponsesLabel {
+            get {
+                return ResourceManager.GetString("TransmittedResponsesLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transmitted server errors:.
+        /// </summary>
+        internal static string TransmittedServerErrorsLabel {
+            get {
+                return ResourceManager.GetString("TransmittedServerErrorsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transport.
+        /// </summary>
+        internal static string Transport {
+            get {
+                return ResourceManager.GetString("Transport", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Transport mode:.
+        /// </summary>
+        internal static string TransportModeLabel {
+            get {
+                return ResourceManager.GetString("TransportModeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TTL.
+        /// </summary>
+        internal static string TTL {
+            get {
+                return ResourceManager.GetString("TTL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tue.
+        /// </summary>
+        internal static string Tue {
+            get {
+                return ResourceManager.GetString("Tue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tuesday.
+        /// </summary>
+        internal static string Tuesday {
+            get {
+                return ResourceManager.GetString("Tuesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tx Cmd Packets:.
+        /// </summary>
+        internal static string TxCmdPacketsLabel {
+            get {
+                return ResourceManager.GetString("TxCmdPacketsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Code.
+        /// </summary>
+        internal static string TXCode {
+            get {
+                return ResourceManager.GetString("TXCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Code Mod.
+        /// </summary>
+        internal static string TXCodeMod {
+            get {
+                return ResourceManager.GetString("TXCodeMod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Coefficients.
+        /// </summary>
+        internal static string TXCoefficients {
+            get {
+                return ResourceManager.GetString("TXCoefficients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Ctrl Packet Counter:.
+        /// </summary>
+        internal static string TXCtrlPacketCounterLabel {
+            get {
+                return ResourceManager.GetString("TXCtrlPacketCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tx Data Broadcasts:.
+        /// </summary>
+        internal static string TxDataBroadcastsLabel {
+            get {
+                return ResourceManager.GetString("TxDataBroadcastsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Data Packet Counter:.
+        /// </summary>
+        internal static string TXDataPacketCounterLabel {
+            get {
+                return ResourceManager.GetString("TXDataPacketCounterLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Tx Data Packets:.
+        /// </summary>
+        internal static string TxDataPacketsLabel {
+            get {
+                return ResourceManager.GetString("TxDataPacketsLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Drop Count:.
+        /// </summary>
+        internal static string TXDropCountLabel {
+            get {
+                return ResourceManager.GetString("TXDropCountLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Gain.
+        /// </summary>
+        internal static string TXGain {
+            get {
+                return ResourceManager.GetString("TXGain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Pwr.
+        /// </summary>
+        internal static string TXPwr {
+            get {
+                return ResourceManager.GetString("TXPwr", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Pwr Mod.
+        /// </summary>
+        internal static string TXPwrMod {
+            get {
+                return ResourceManager.GetString("TXPwrMod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to TX Resolution.
+        /// </summary>
+        internal static string TXResolution {
+            get {
+                return ResourceManager.GetString("TXResolution", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type.
+        /// </summary>
+        internal static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type:.
+        /// </summary>
+        internal static string TypeLabel {
+            get {
+                return ResourceManager.GetString("TypeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UDP reference:.
+        /// </summary>
+        internal static string UDPReferenceLabel {
+            get {
+                return ResourceManager.GetString("UDPReferenceLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to UIType.
+        /// </summary>
+        internal static string UIType {
+            get {
+                return ResourceManager.GetString("UIType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to display attribute: {0}.
+        /// </summary>
+        internal static string UnableToDisplayAttribute0 {
+            get {
+                return ResourceManager.GetString("UnableToDisplayAttribute0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unicast IP Address.
+        /// </summary>
+        internal static string UnicastIPAddress {
+            get {
+                return ResourceManager.GetString("UnicastIPAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unicast:.
+        /// </summary>
+        internal static string UnicastLabel {
+            get {
+                return ResourceManager.GetString("UnicastLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unicast Rreq Gen Enable.
+        /// </summary>
+        internal static string UnicastRreqGenEnable {
+            get {
+                return ResourceManager.GetString("UnicastRreqGenEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit.
+        /// </summary>
+        internal static string Unit {
+            get {
+                return ResourceManager.GetString("Unit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Charge Activation Time.
+        /// </summary>
+        internal static string UnitChargeActivationTime {
+            get {
+                return ResourceManager.GetString("UnitChargeActivationTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Charge Active.
+        /// </summary>
+        internal static string UnitChargeActive {
+            get {
+                return ResourceManager.GetString("UnitChargeActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit Charge Passive.
+        /// </summary>
+        internal static string UnitChargePassive {
+            get {
+                return ResourceManager.GetString("UnitChargePassive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit:.
+        /// </summary>
+        internal static string UnitLabel {
+            get {
+                return ResourceManager.GetString("UnitLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        internal static string Update {
+            get {
+                return ResourceManager.GetString("Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update amount.
+        /// </summary>
+        internal static string UpdateAmount {
+            get {
+                return ResourceManager.GetString("UpdateAmount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update entry.
+        /// </summary>
+        internal static string UpdateEntry {
+            get {
+                return ResourceManager.GetString("UpdateEntry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update High password.
+        /// </summary>
+        internal static string UpdateHighPassword {
+            get {
+                return ResourceManager.GetString("UpdateHighPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Image....
+        /// </summary>
+        internal static string UpdateImage {
+            get {
+                return ResourceManager.GetString("UpdateImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Key....
+        /// </summary>
+        internal static string UpdateKey {
+            get {
+                return ResourceManager.GetString("UpdateKey", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Update Total....
+        /// </summary>
+        internal static string UpdateTotal {
+            get {
+                return ResourceManager.GetString("UpdateTotal", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up LogicalName.
+        /// </summary>
+        internal static string UpLogicalName {
+            get {
+                return ResourceManager.GetString("UpLogicalName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Up Script Selector.
+        /// </summary>
+        internal static string UpScriptSelector {
+            get {
+                return ResourceManager.GetString("UpScriptSelector", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use DHCP:.
+        /// </summary>
+        internal static string UseDHCPLabel {
+            get {
+                return ResourceManager.GetString("UseDHCPLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User ID must be between zero and 255..
+        /// </summary>
+        internal static string UserIDMustBeBetweenZeroAnd255 {
+            get {
+                return ResourceManager.GetString("UserIDMustBeBetweenZeroAnd255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User List.
+        /// </summary>
+        internal static string UserList {
+            get {
+                return ResourceManager.GetString("UserList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Name:.
+        /// </summary>
+        internal static string UserNameLabel {
+            get {
+                return ResourceManager.GetString("UserNameLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string Users {
+            get {
+                return ResourceManager.GetString("Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use time zone:.
+        /// </summary>
+        internal static string UseTimeZoneLabel {
+            get {
+                return ResourceManager.GetString("UseTimeZoneLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Utility Tables Object.
+        /// </summary>
+        internal static string UtilityTablesObject {
+            get {
+                return ResourceManager.GetString("UtilityTablesObject", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity end:.
+        /// </summary>
+        internal static string ValidityEndLabel {
+            get {
+                return ResourceManager.GetString("ValidityEndLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity start:.
+        /// </summary>
+        internal static string ValidityStartLabel {
+            get {
+                return ResourceManager.GetString("ValidityStartLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity Window.
+        /// </summary>
+        internal static string ValidityWindow {
+            get {
+                return ResourceManager.GetString("ValidityWindow", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Validity window.
+        /// </summary>
+        internal static string ValidityWindow2 {
+            get {
+                return ResourceManager.GetString("ValidityWindow2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid lifetime.
+        /// </summary>
+        internal static string ValidLifetime {
+            get {
+                return ResourceManager.GetString("ValidLifetime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid Time.
+        /// </summary>
+        internal static string ValidTime {
+            get {
+                return ResourceManager.GetString("ValidTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid time.
+        /// </summary>
+        internal static string ValidTime2 {
+            get {
+                return ResourceManager.GetString("ValidTime2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Valid Time:.
+        /// </summary>
+        internal static string ValidTimeLabel {
+            get {
+                return ResourceManager.GetString("ValidTimeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value.
+        /// </summary>
+        internal static string Value {
+            get {
+                return ResourceManager.GetString("Value", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value {0}.
+        /// </summary>
+        internal static string Value0 {
+            get {
+                return ResourceManager.GetString("Value0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value changed.
+        /// </summary>
+        internal static string ValueChanged {
+            get {
+                return ResourceManager.GetString("ValueChanged", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Information.
+        /// </summary>
+        internal static string ValueInformation {
+            get {
+                return ResourceManager.GetString("ValueInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Value Information (hex):.
+        /// </summary>
+        internal static string ValueInformationHexLabel {
+            get {
+                return ResourceManager.GetString("ValueInformationHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Vendor ID:.
+        /// </summary>
+        internal static string VendorIDLabel {
+            get {
+                return ResourceManager.GetString("VendorIDLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Verify Image....
+        /// </summary>
+        internal static string VerifyImage {
+            get {
+                return ResourceManager.GetString("VerifyImage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version:.
+        /// </summary>
+        internal static string VersionLabel {
+            get {
+                return ResourceManager.GetString("VersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version must be between zero and 255..
+        /// </summary>
+        internal static string VersionMustBeBetweenZeroAnd255 {
+            get {
+                return ResourceManager.GetString("VersionMustBeBetweenZeroAnd255", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Version zero security policy must be between zero and three..
+        /// </summary>
+        internal static string VersionZeroSecurityPolicyMustBeBetweenZeroAndThree {
+            get {
+                return ResourceManager.GetString("VersionZeroSecurityPolicyMustBeBetweenZeroAndThree", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Warning Threshold.
+        /// </summary>
+        internal static string WarningThreshold {
+            get {
+                return ResourceManager.GetString("WarningThreshold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weak Link:.
+        /// </summary>
+        internal static string WeakLinkLabel {
+            get {
+                return ResourceManager.GetString("WeakLinkLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weak LQI Value:.
+        /// </summary>
+        internal static string WeakLQIValueLabel {
+            get {
+                return ResourceManager.GetString("WeakLQIValueLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wed.
+        /// </summary>
+        internal static string Wed {
+            get {
+                return ResourceManager.GetString("Wed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wednesday.
+        /// </summary>
+        internal static string Wednesday {
+            get {
+                return ResourceManager.GetString("Wednesday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekday flags (0–127).
+        /// </summary>
+        internal static string WeekdayFlags0127 {
+            get {
+                return ResourceManager.GetString("WeekdayFlags0127", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekday flags must be between 0 and 127..
+        /// </summary>
+        internal static string WeekdayFlagsMustBeBetween0And127 {
+            get {
+                return ResourceManager.GetString("WeekdayFlagsMustBeBetween0And127", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weekly Activation.
+        /// </summary>
+        internal static string WeeklyActivation {
+            get {
+                return ResourceManager.GetString("WeeklyActivation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week Name.
+        /// </summary>
+        internal static string WeekName {
+            get {
+                return ResourceManager.GetString("WeekName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Week Profile.
+        /// </summary>
+        internal static string WeekProfile {
+            get {
+                return ResourceManager.GetString("WeekProfile", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Weightings.
+        /// </summary>
+        internal static string Weightings {
+            get {
+                return ResourceManager.GetString("Weightings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Window Size:.
+        /// </summary>
+        internal static string WindowSizeLabel {
+            get {
+                return ResourceManager.GetString("WindowSizeLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Winter season.
+        /// </summary>
+        internal static string WinterSeason {
+            get {
+                return ResourceManager.GetString("WinterSeason", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wireless Mode Q channel.
+        /// </summary>
+        internal static string WirelessModeQChannel {
+            get {
+                return ResourceManager.GetString("WirelessModeQChannel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Working Day Intervals.
+        /// </summary>
+        internal static string WorkingDayIntervals {
+            get {
+                return ResourceManager.GetString("WorkingDayIntervals", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrapper version:.
+        /// </summary>
+        internal static string WrapperVersionLabel {
+            get {
+                return ResourceManager.GetString("WrapperVersionLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write current time.
+        /// </summary>
+        internal static string WriteCurrentTime {
+            get {
+                return ResourceManager.GetString("WriteCurrentTime", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Write request desynchronization:.
+        /// </summary>
+        internal static string WriteRequestDesynchronizationLabel {
+            get {
+                return ResourceManager.GetString("WriteRequestDesynchronizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Writing current time failed: {0}.
+        /// </summary>
+        internal static string WritingCurrentTimeFailed0 {
+            get {
+                return ResourceManager.GetString("WritingCurrentTimeFailed0", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong initiator desynchronization:.
+        /// </summary>
+        internal static string WrongInitiatorDesynchronizationLabel {
+            get {
+                return ResourceManager.GetString("WrongInitiatorDesynchronizationLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong IP address family..
+        /// </summary>
+        internal static string WrongIPAddressFamily {
+            get {
+                return ResourceManager.GetString("WrongIPAddressFamily", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X4.
+        /// </summary>
+        internal static string X4 {
+            get {
+                return ResourceManager.GetString("X4", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X.509 certificate (DER hex):.
+        /// </summary>
+        internal static string X509CertificateDERHexLabel {
+            get {
+                return ResourceManager.GetString("X509CertificateDERHexLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to X8.
+        /// </summary>
+        internal static string X8 {
+            get {
+                return ResourceManager.GetString("X8", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to xDLMS Context Info.
+        /// </summary>
+        internal static string XDLMSContextInfo {
+            get {
+                return ResourceManager.GetString("XDLMSContextInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to XML root does not match the COSEM data type..
+        /// </summary>
+        internal static string XMLRootDoesNotMatchTheCOSEMDataType {
+            get {
+                return ResourceManager.GetString("XMLRootDoesNotMatchTheCOSEMDataType", resourceCulture);
             }
         }
     }

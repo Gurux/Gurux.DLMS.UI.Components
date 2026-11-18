@@ -76,7 +76,9 @@ public abstract class GXDLMSObjectViewBase<TObject> : ComponentBase, IDisposable
     {
         get; set;
     }
+    /// <summary>Prevents overlapping method requests from the same view.</summary>
     private bool _invoking;
+    /// <summary>Prevents callbacks from updating a component after disposal.</summary>
     private bool _disposed;
     /// <summary>Determines whether the current view state and access rights allow a method request.</summary>
     /// <param name="index">The one-based method index.</param>
@@ -109,7 +111,7 @@ public abstract class GXDLMSObjectViewBase<TObject> : ComponentBase, IDisposable
             {
                 if (_disposed || !ReferenceEquals(Target, target))
                 {
-                    throw new InvalidOperationException("The selected object changed before the action started.");
+                    throw new InvalidOperationException(Properties.Resources.TheSelectedObjectChangedBeforeTheActionStarted);
                 }
 
                 return createMessages(client);
@@ -125,7 +127,7 @@ public abstract class GXDLMSObjectViewBase<TObject> : ComponentBase, IDisposable
         {
             if (ReferenceEquals(Target, target) && !_disposed)
             {
-                ActionError = $"Action failed: {ex.Message}";
+                ActionError = string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.ActionFailed0, ex.Message);
             }
         }
         finally { _invoking = false; }
@@ -181,6 +183,7 @@ public abstract class GXDLMSObjectViewBase<TObject> : ComponentBase, IDisposable
         ActionError = null;
         Edit.Changed += Changed;
     }
+    /// <summary>Dispatches the edit-state notification and rerenders the view unless it is disposed.</summary>
     private void Changed() => _ = InvokeAsync(async () => { if (_disposed) { return; } await OnChanged.InvokeAsync(Edit); StateHasChanged(); });
     /// <summary>Marks the view as disposed and detaches its edit-state change handler.</summary>
     public void Dispose()

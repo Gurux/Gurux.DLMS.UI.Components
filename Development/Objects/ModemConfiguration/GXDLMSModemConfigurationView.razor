@@ -40,18 +40,18 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="Modem Configuration Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.ModemConfigurationObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Speed:" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.SpeedLabel" Enabled="CanEditAttribute(2)" EnumType="typeof(BaudRate)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Initialisation:" Enabled="CanEditAttribute(3)" Columns='@(new[] { "Request", "Response:", "Delay" })' CreateRow='@(() => new GXStructure { Array.Empty<byte>(), Array.Empty<byte>(), (ushort)0 })' />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.InitialisationLabel" Enabled="CanEditAttribute(3)" Columns='@(new[] { Properties.Resources.Request, Properties.Resources.ResponseLabel, Properties.Resources.Delay })' CreateRow='@(() => new GXStructure { Array.Empty<byte>(), Array.Empty<byte>(), (ushort)0 })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="Modem Profile:" Enabled="CanEditAttribute(4)" Columns='@(new[] { "Modem Profile:" })' CreateRow='@(() => Array.Empty<byte>())' />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ModemProfileLabel" Enabled="CanEditAttribute(4)" Columns='@(new[] { Properties.Resources.ModemProfileLabel })' CreateRow='@(() => Array.Empty<byte>())' />
     }
 </div>
 </section>

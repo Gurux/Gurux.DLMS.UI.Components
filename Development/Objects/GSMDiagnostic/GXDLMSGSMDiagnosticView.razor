@@ -40,69 +40,69 @@
 
 <section class="gx-network-view">
 <div class="gx-view-content">
-<GXObjectViewHeader Title="GSM diagnostic Object" Target="Target" Edit="Edit" Error="@ActionError" />
+<GXObjectViewHeader Title="@Properties.Resources.GSMDiagnosticObject" Target="Target" Edit="Edit" Error="@ActionError" />
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 2)
     {
-        <GXAttributeField Edit="Edit" Index="2" Label="Operator" Enabled="CanEditAttribute(2)"  />
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Operator" Enabled="CanEditAttribute(2)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 3)
     {
-        <GXAttributeField Edit="Edit" Index="3" Label="Status:" Enabled="CanEditAttribute(3)" EnumType="typeof(GsmStatus)"  />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.StatusLabel" Enabled="CanEditAttribute(3)" EnumType="typeof(GsmStatus)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 4)
     {
-        <GXAttributeField Edit="Edit" Index="4" Label="CS Attachment:" Enabled="CanEditAttribute(4)" EnumType="typeof(GsmCircuitSwitchStatus)"  />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.CSAttachmentLabel" Enabled="CanEditAttribute(4)" EnumType="typeof(GsmCircuitSwitchStatus)"  />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 5)
     {
-        <GXAttributeField Edit="Edit" Index="5" Label="PS Status:" Enabled="CanEditAttribute(5)" EnumType="typeof(GsmPacketSwitchStatus)"  />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.PSStatusLabel" Enabled="CanEditAttribute(5)" EnumType="typeof(GsmPacketSwitchStatus)"  />
     }
-<fieldset class="gx-object-fields"><legend>Cell Info</legend>
+<fieldset class="gx-object-fields"><legend>@Properties.Resources.CellInfo</legend>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Cell ID:" Enabled="CanEditAttribute(6)" Part="0" Format='@(Target.Version == 0 ? "X4" : "X8")' />
-    }
-    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
-    {
-        <GXAttributeField Edit="Edit" Index="6" Label="Location ID:" Enabled="CanEditAttribute(6)" Part="1" Format="X4" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.CellIDLabel" Enabled="CanEditAttribute(6)" Part="0" Format='@(Target.Version == 0 ? Properties.Resources.X4 : Properties.Resources.X8)' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Signal Quality:" Enabled="CanEditAttribute(6)" Part="2" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.LocationIDLabel" Enabled="CanEditAttribute(6)" Part="1" Format="X4" />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="BER:" Enabled="CanEditAttribute(6)" Part="3" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.SignalQualityLabel" Enabled="CanEditAttribute(6)" Part="2" />
+    }
+    @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
+    {
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.BERLabel" Enabled="CanEditAttribute(6)" Part="3" />
     }
 @if (Target.Version > 0)
 {
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="MCC:" Enabled="CanEditAttribute(6)" Part="4" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.MCCLabel" Enabled="CanEditAttribute(6)" Part="4" />
     }
 }
 @if (Target.Version > 0)
 {
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="MNC:" Enabled="CanEditAttribute(6)" Part="5" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.MNCLabel" Enabled="CanEditAttribute(6)" Part="5" />
     }
 }
 @if (Target.Version > 0)
 {
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 6)
     {
-        <GXAttributeField Edit="Edit" Index="6" Label="Channel:" Enabled="CanEditAttribute(6)" Part="6" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.ChannelLabel" Enabled="CanEditAttribute(6)" Part="6" />
     }
 }
 </fieldset>
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 7)
     {
-        <GXAttributeField Edit="Edit" Index="7" ColumnFormats='@(new[] { Target.Version == 0 ? "X4" : "X8", string.Empty })' Label="Adjacent Cells:" Enabled="CanEditAttribute(7)" Columns='@(new[] { "Cell ID:", "Signal Quality:" })' CreateRow='@(() => new GXStructure { Target.Version == 0 ? (object)(ushort)0 : (uint)0, (byte)0 })' />
+        <GXAttributeField Edit="Edit" Index="7" ColumnFormats='@(new[] { Target.Version == 0 ? Properties.Resources.X4 : Properties.Resources.X8, string.Empty })' Label="@Properties.Resources.AdjacentCellsLabel" Enabled="CanEditAttribute(7)" Columns='@(new[] { Properties.Resources.CellIDLabel, Properties.Resources.SignalQualityLabel })' CreateRow='@(() => new GXStructure { Target.Version == 0 ? (object)(ushort)0 : (uint)0, (byte)0 })' />
     }
     @if (((IGXDLMSBase)Target).GetAttributeCount() >= 8)
     {
-        <GXAttributeField Edit="Edit" Index="8" Label="Capture Time:" Enabled="CanEditAttribute(8)"  />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.CaptureTimeLabel2" Enabled="CanEditAttribute(8)"  />
     }
 </div>
 </section>

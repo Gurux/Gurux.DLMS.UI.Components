@@ -29,6 +29,7 @@
 
 @* <summary>Lists selectable DLMS objects and attribute values with persistent resizable columns.</summary> *@
 
+@* <typeparam name="TObject">The object model displayed in each table row.</typeparam> *@
 @typeparam TObject
 @using System.Globalization
 @using System.Text.Json
@@ -48,7 +49,7 @@
     {
         var rows = Objects.Select(item => (Item: item, Values: GetAttributeValues(item))).ToArray();
         var columns = rows.SelectMany(row => row.Values.Keys).Where(index => index > 1).Distinct().Order().ToArray();
-        <div class="table-scroll" tabindex="0" role="region" aria-label="COSEM objects">
+        <div class="table-scroll" tabindex="0" role="region" aria-label="@Properties.Resources.COSEMObjects">
             <table id="@_tableId" style="width:@(TableWidth(columns))px">
                 <colgroup>
                     <col data-column="name" style="@ColumnStyle("name")" />
@@ -58,10 +59,10 @@
                         <col data-column="@AttributeKey(index)" style="@ColumnStyle(AttributeKey(index))" />
                     }
                 </colgroup>
-                <thead><tr><th scope="col">Name @ResizeHandle("name", "Name")</th><th scope="col">Object Type @ResizeHandle("type", "Object Type")</th>
+                <thead><tr><th scope="col">@Properties.Resources.Name @ResizeHandle("name", Properties.Resources.Name)</th><th scope="col">@Properties.Resources.ObjectType @ResizeHandle("type", Properties.Resources.ObjectType)</th>
                     @foreach (var index in columns)
                     {
-                        <th scope="col">Attribute @index @ResizeHandle(AttributeKey(index), $"Attribute {index}")</th>
+                        <th scope="col">@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Attribute0, index)) @ResizeHandle(AttributeKey(index), string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Attribute0, index))</th>
                     }
                 </tr></thead>
                 <tbody>
@@ -91,20 +92,45 @@
     /// Storage key used to persist object-list column widths.
     /// </summary>
     [Parameter] public string ColumnWidthsKey { get; set; } = "GXObjectList:ColumnWidths";
+    /// <summary>Identifies this table instance for JavaScript column resizing.</summary>
     private readonly string _tableId = "gx-objects-" + Guid.NewGuid().ToString("N");
+    /// <summary>Stores the column widths indexed by their persisted column identifiers.</summary>
     private readonly Dictionary<string, double> _widths = new();
+    /// <summary>Holds the imported JavaScript module for column resizing.</summary>
     private IJSObjectReference? _module;
+    /// <summary>Holds the JavaScript resize controller for this table.</summary>
     private IJSObjectReference? _resizer;
+    /// <summary>Keeps the .NET callback reference alive for the resize controller.</summary>
     private DotNetObjectReference<GXObjectList<TObject>>? _reference;
+    /// <summary>Tracks whether the persisted component settings have been loaded.</summary>
     private bool _loaded;
+    /// <summary>Builds the persisted column identifier for a COSEM attribute.</summary>
+    /// <param name="index">The one-based COSEM attribute or method index.</param>
+    /// <returns>The persisted column identifier for a COSEM attribute.</returns>
     private static string AttributeKey(int index) => $"attribute-{index}";
+    /// <summary>Gets the saved column width or its default width in pixels.</summary>
+    /// <param name="key">The persisted column or editor setting identifier.</param>
+    /// <returns>The saved column width or its default width in pixels.</returns>
     private double Width(string key) => _widths.GetValueOrDefault(key, key == "name" ? 320 : 160);
+    /// <summary>Formats the column width as an invariant CSS declaration.</summary>
+    /// <param name="key">The persisted column or editor setting identifier.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private string ColumnStyle(string key) => $"width:{Width(key).ToString(CultureInfo.InvariantCulture)}px";
+    /// <summary>Formats the total width of the visible columns in pixels.</summary>
+    /// <param name="columns">The attribute indices included in the visible table.</param>
+    /// <returns>The formatted text for the supplied value.</returns>
     private string TableWidth(int[] columns) => (Width("name") + Width("type") + columns.Sum(index => Width(AttributeKey(index)))).ToString(CultureInfo.InvariantCulture);
+    /// <summary>Determines whether a persisted key identifies a supported table column.</summary>
+    /// <param name="key">The persisted column or editor setting identifier.</param>
+    /// <returns>True when the requested condition is satisfied; otherwise, false.</returns>
     private static bool ValidKey(string key) => key is "name" or "type" || key.StartsWith("attribute-", StringComparison.Ordinal)
         && int.TryParse(key[10..], out var index) && index > 1;
+    /// <summary>Renders the accessible drag handle for resizing a table column.</summary>
+    /// <param name="key">The persisted column or editor setting identifier.</param>
+    /// <param name="label">The caption identifying the column to assistive technology.</param>
+    /// <returns>Renders the accessible drag handle for resizing a table column.</returns>
     private RenderFragment ResizeHandle(string key, string label) => @<span class="column-resizer" role="separator" tabindex="0"
-        aria-label="@($"Resize {label}")" aria-orientation="vertical" aria-valuemin="64" aria-valuemax="4096"
+        aria-label="@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Resize0, label))" aria-orientation="vertical" aria-valuemin="64" aria-valuemax="4096"
         aria-valuenow="@Width(key)" data-column="@key"></span>;
 
     /// <inheritdoc />
@@ -131,21 +157,28 @@
             }
             StateHasChanged();
         }
-        if (Objects.Count == 0)
+        try
         {
-            if (_resizer is not null)
+            if (Objects.Count == 0)
             {
-                await _resizer.InvokeVoidAsync("dispose");
-                await _resizer.DisposeAsync();
-                _resizer = null;
+                if (_resizer is not null)
+                {
+                    await _resizer.InvokeVoidAsync("dispose");
+                    await _resizer.DisposeAsync();
+                    _resizer = null;
+                }
+                return;
             }
-            return;
+            if (_resizer is null)
+            {
+                _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Gurux.DLMS.UI.Components/GXObjectList.razor.js");
+                _reference ??= DotNetObjectReference.Create(this);
+                _resizer = await _module.InvokeAsync<IJSObjectReference>("initialize", _tableId, _reference);
+            }
         }
-        if (_resizer is null)
+        catch (JSDisconnectedException)
         {
-            _module ??= await JS.InvokeAsync<IJSObjectReference>("import", "./_content/Gurux.DLMS.UI.Components/GXObjectList.razor.js");
-            _reference ??= DotNetObjectReference.Create(this);
-            _resizer = await _module.InvokeAsync<IJSObjectReference>("initialize", _tableId, _reference);
+            // Resizing is unavailable after the browser connection closes.
         }
     }
 
@@ -240,10 +273,13 @@
     /// <summary>
     /// Heading displayed above the component content.
     /// </summary>
-    [Parameter] public string Title { get; set; } = "Objects";
+    [Parameter] public string Title { get; set; } = Properties.Resources.Objects;
     /// <summary>
     /// Message displayed when the collection is empty.
     /// </summary>
-    [Parameter] public string EmptyText { get; set; } = "No objects loaded.";
+    [Parameter] public string EmptyText { get; set; } = Properties.Resources.NoObjectsLoaded;
+    /// <summary>Resolves the packaged SVG icon used by an object row.</summary>
+    /// <param name="name">The icon filename without its extension.</param>
+    /// <returns>The URL of the icon in this component library.</returns>
     private static string Icon(string name) => $"_content/Gurux.DLMS.UI.Components/images/icons/{name}.svg";
 }

@@ -35,21 +35,21 @@
 @inherits GXDLMSObjectViewBase<GXDLMSCoAPSetup>
 
 <section class="gx-object-view" @key="Target">
-    <GXObjectViewHeader Title="CoAP Setup Object" Target="Target" Edit="Edit" Error="@ActionError" />
-    <fieldset class="gx-object-fields"><legend>Transport</legend>
-        <GXAttributeField Edit="Edit" Index="2" Label="UDP reference:" Enabled="CanEditAttribute(2)" InputKind="logicalname" />
-        <GXAttributeField Edit="Edit" Index="10" Label="CoAP URI path:" Enabled="CanEditAttribute(10)" InputKind="ascii" />
-        <GXAttributeField Edit="Edit" Index="11" Label="Transport mode:" Enabled="CanEditAttribute(11)" EnumType="typeof(TransportMode)" />
-        <GXAttributeField Edit="Edit" Index="12" Label="Wrapper version:" Enabled="CanEditAttribute(12)" />
-        <GXAttributeField Edit="Edit" Index="13" Label="Token length:" Enabled="CanEditAttribute(13)" />
+    <GXObjectViewHeader Title="@Properties.Resources.CoAPSetupObject" Target="Target" Edit="Edit" Error="@ActionError" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.Transport</legend>
+        <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.UDPReferenceLabel" Enabled="CanEditAttribute(2)" InputKind="logicalname" />
+        <GXAttributeField Edit="Edit" Index="10" Label="@Properties.Resources.CoAPURIPathLabel" Enabled="CanEditAttribute(10)" InputKind="ascii" />
+        <GXAttributeField Edit="Edit" Index="11" Label="@Properties.Resources.TransportModeLabel" Enabled="CanEditAttribute(11)" EnumType="typeof(TransportMode)" />
+        <GXAttributeField Edit="Edit" Index="12" Label="@Properties.Resources.WrapperVersionLabel" Enabled="CanEditAttribute(12)" />
+        <GXAttributeField Edit="Edit" Index="13" Label="@Properties.Resources.TokenLengthLabel" Enabled="CanEditAttribute(13)" />
     </fieldset>
-    <fieldset class="gx-object-fields"><legend>Transmission</legend>
-        <GXAttributeField Edit="Edit" Index="3" Label="ACK timeout (ms):" Enabled="CanEditAttribute(3)" />
-        <GXAttributeField Edit="Edit" Index="4" Label="ACK random factor:" Enabled="CanEditAttribute(4)" />
-        <GXAttributeField Edit="Edit" Index="5" Label="Maximum retransmissions:" Enabled="CanEditAttribute(5)" />
-        <GXAttributeField Edit="Edit" Index="6" Label="NSTART:" Enabled="CanEditAttribute(6)" />
-        <GXAttributeField Edit="Edit" Index="7" Label="Delayed ACK timeout (ms):" Enabled="CanEditAttribute(7)" />
-        <GXAttributeField Edit="Edit" Index="8" Label="Exponential back-off:" Enabled="CanEditAttribute(8)" />
-        <GXAttributeField Edit="Edit" Index="9" Label="Probing rate:" Enabled="CanEditAttribute(9)" />
+    <fieldset class="gx-object-fields"><legend>@Properties.Resources.Transmission</legend>
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.ACKTimeoutMsLabel" Enabled="CanEditAttribute(3)" />
+        <GXAttributeField Edit="Edit" Index="4" Label="@Properties.Resources.ACKRandomFactorLabel" Enabled="CanEditAttribute(4)" />
+        <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.MaximumRetransmissionsLabel" Enabled="CanEditAttribute(5)" />
+        <GXAttributeField Edit="Edit" Index="6" Label="@Properties.Resources.NSTARTLabel" Enabled="CanEditAttribute(6)" />
+        <GXAttributeField Edit="Edit" Index="7" Label="@Properties.Resources.DelayedACKTimeoutMsLabel" Enabled="CanEditAttribute(7)" />
+        <GXAttributeField Edit="Edit" Index="8" Label="@Properties.Resources.ExponentialBackOffLabel" Enabled="CanEditAttribute(8)" />
+        <GXAttributeField Edit="Edit" Index="9" Label="@Properties.Resources.ProbingRateLabel" Enabled="CanEditAttribute(9)" />
     </fieldset>
 </section>
