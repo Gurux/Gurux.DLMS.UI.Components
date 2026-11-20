@@ -33,5 +33,6 @@ SPDX-License-Identifier: GPL-2.0-only OR LicenseRef-Gurux-Commercial
 .gx-field-value ::deep button { flex: 0 0 auto; margin: 0; white-space: nowrap; }
 .gx-attribute-table { width: 100%; min-width: 0; overflow: auto; }
 .gx-inline-value { width: 100%; min-width: 0; }
+.gx-attribute-bits { grid-column: 2; min-width: 0; }
 .gx-inline-value ::deep input:not([type="checkbox"]), .gx-inline-value ::deep select { width: 100%; min-width: 0; }
-@media(max-width:600px) { .gx-attribute-field { grid-template-columns: minmax(0,1fr); } }
+@media(max-width:600px) { .gx-attribute-field { grid-template-columns: minmax(0,1fr); } .gx-attribute-bits { grid-column: 1; } }

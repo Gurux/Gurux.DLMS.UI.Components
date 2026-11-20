@@ -32,8 +32,13 @@
 @namespace Gurux.DLMS.UI.Components.Objects
 @using System.Globalization
 @using Gurux.UI.Components
+@using Gurux.UI.Components.BitEditor
 
-@if (EnumType?.IsEnum == true && !EnumType.IsDefined(typeof(FlagsAttribute), false))
+@if (ValueItems is { Count: > 0 })
+{
+    @NamedEditor
+}
+else if (EnumType?.IsEnum == true && !EnumType.IsDefined(typeof(FlagsAttribute), false))
 {
     <select id="@Id" class="form-select" aria-label="@Label" disabled="@Disabled" value="@EnumValue" @onchange="e => Change(e.Value?.ToString() ?? string.Empty)">
         @foreach (var option in Enum.GetValues(EnumType).Cast<Enum>().Distinct())
@@ -90,6 +95,53 @@ else
 }
 
 @code {
+    /// <summary>Gets the manufacturer masks and their names in their supplied order.</summary>
+    private IReadOnlyDictionary<ulong, string> NamedValues => ValueItems!
+        .GroupBy(item => unchecked((ulong)(long)item.Value))
+        .ToDictionary(group => group.Key, group => group.First().UIValue ?? string.Empty);
+    /// <summary>Gets or sets whether the named-value bit editor displays its format selector.</summary>
+    [Parameter] public bool ShowFormatSelector { get; set; } = true;
+
+    /// <summary>Gets or sets the value representations shown below the named-value bit grid.</summary>
+    [Parameter] public Gurux.UI.Components.Enums.GXBitEditorFormats DisplayFormats { get; set; } = Gurux.UI.Components.Enums.GXBitEditorFormats.All;
+    /// <summary>Gets or sets the declared DLMS wire type used to preserve the bit width.</summary>
+    [Parameter] public Gurux.DLMS.Enums.DataType WireType { get; set; }
+
+    /// <summary>Gets the named bit editor specialized for the attribute's integer wire type.</summary>
+    private RenderFragment NamedEditor => WireType switch
+    {
+        Gurux.DLMS.Enums.DataType.UInt8 or Gurux.DLMS.Enums.DataType.Enum => RenderNamedEditor<byte>(),
+        Gurux.DLMS.Enums.DataType.UInt16 => RenderNamedEditor<ushort>(),
+        Gurux.DLMS.Enums.DataType.UInt32 => RenderNamedEditor<uint>(),
+        Gurux.DLMS.Enums.DataType.Int8 => RenderNamedEditor<sbyte>(),
+        Gurux.DLMS.Enums.DataType.Int16 => RenderNamedEditor<short>(),
+        Gurux.DLMS.Enums.DataType.Int32 => RenderNamedEditor<int>(),
+        Gurux.DLMS.Enums.DataType.Int64 => RenderNamedEditor<long>(),
+        _ => RenderNamedEditor<ulong>()
+    };
+
+    /// <summary>Renders a typed bit editor and forwards numeric edits through the existing draft validation.</summary>
+    /// <typeparam name="T">The CLR integer type matching the declared DLMS wire width.</typeparam>
+    /// <returns>The render fragment for the typed named bit editor.</returns>
+    private RenderFragment RenderNamedEditor<T>() where T : struct => builder =>
+    {
+        var value = string.IsNullOrWhiteSpace(Value) ? default(T) : (T)Convert.ChangeType(Value, typeof(T), CultureInfo.InvariantCulture);
+        builder.OpenComponent<GXBitEditor<T>>(0);
+        builder.AddAttribute(1, nameof(GXBitEditor<T>.Value), value);
+        builder.AddAttribute(2, nameof(GXBitEditor<T>.ValueChanged),
+            EventCallback.Factory.Create<T>(this, next => Change(Convert.ToString(next, CultureInfo.InvariantCulture))));
+        builder.AddAttribute(3, nameof(GXBitEditor<T>.ValueExpression), (System.Linq.Expressions.Expression<Func<T>>)(() => value));
+        builder.AddAttribute(4, nameof(GXBitEditor<T>.NamedValues), NamedValues);
+        builder.AddAttribute(5, nameof(GXBitEditor<T>.ReadOnly), Disabled);
+        builder.AddAttribute(6, nameof(GXBitEditor<T>.Disabled), Disabled);
+        builder.AddAttribute(7, nameof(GXBitEditor<T>.ShowToolbar), false);
+        builder.AddAttribute(8, "aria-label", Label);
+        builder.AddAttribute(9, nameof(GXBitEditor<T>.DisplayFormats), DisplayFormats);
+        builder.AddAttribute(10, nameof(GXBitEditor<T>.ShowFormatSelector), ShowFormatSelector);
+        builder.CloseComponent();
+    };
+    /// <summary>Manufacturer-defined device values and their display labels.</summary>
+    [Parameter] public Gurux.DLMS.ManufacturerSettings.GXObisValueItemCollection? ValueItems { get; set; }
     /// <summary>
     /// HTML identifier of the input element.
     /// </summary>

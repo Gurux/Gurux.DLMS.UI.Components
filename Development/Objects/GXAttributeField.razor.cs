@@ -72,6 +72,12 @@ public partial class GXAttributeField : IDisposable
     {
         get; set;
     }
+    /// <summary>Gets or sets whether the named-value bit editor displays its format selector.</summary>
+    [Parameter] public bool ShowFormatSelector { get; set; } = true;
+
+    /// <summary>Gets or sets the value representations shown by the named-value bit editor.</summary>
+    [Parameter]
+    public Gurux.UI.Components.Enums.GXBitEditorFormats DisplayFormats { get; set; } = Gurux.UI.Components.Enums.GXBitEditorFormats.All;
     /// <summary>Gets or sets the requested number of input rows.</summary>
     [Parameter] public int Rows { get; set; } = 1;
     /// <summary>Gets or sets the column headings for collection values.</summary>
@@ -184,6 +190,18 @@ public partial class GXAttributeField : IDisposable
     private string CurrentPath => string.Join('.', Indices);
     /// <summary>Gets the selected nested value from the pending or confirmed attribute.</summary>
     private object? CurrentValue => At(GXWireValue.Read(Edit, Index), Indices);
+    /// <summary>Gets manufacturer choices for the complete attribute, excluding nested elements.</summary>
+    private Gurux.DLMS.ManufacturerSettings.GXObisValueItemCollection? ValueItems =>
+        Indices.Length == 0 ? Edit.Target.Attributes.Find(Index)?.Values : null;
+    /// <summary>Gets the current value for the read-only bit view, tolerating unavailable wire values.</summary>
+    private object? BitValue
+    {
+        get
+        {
+            try { return CurrentValue; }
+            catch (Exception ex) when (ex is not OutOfMemoryException) { return null; }
+        }
+    }
     /// <summary>Holds the isolated wire value edited by the dialog.</summary>
     private object? _wireDraft;
     /// <summary>References the nested editor used to validate the wire draft.</summary>
@@ -371,6 +389,12 @@ public partial class GXAttributeField : IDisposable
     private string DraftText()
     {
         var value = CurrentValue;
+        if (ValueItems is { Count: > 0 })
+        {
+            return value is GXBitString bits ? bits.ToInteger().ToString(CultureInfo.InvariantCulture)
+                : value is Enum ? Convert.ToInt64(value, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture)
+                : Convert.ToString(value, CultureInfo.InvariantCulture) ?? string.Empty;
+        }
         if (InputKind == "logicalname" && value is byte[] name)
         {
             return string.Join(".", name);
@@ -522,7 +546,7 @@ public partial class GXAttributeField : IDisposable
             }
             else
             {
-                var text = CurrentValue is GXBitString bits && EnumType is not null ? new GXBitString(uint.Parse(Draft, CultureInfo.InvariantCulture), (byte)bits.ToString().Length).ToString() : Draft;
+                var text = CurrentValue is GXBitString bits && (EnumType is not null || ValueItems is { Count: > 0 }) ? new GXBitString(uint.Parse(Draft, CultureInfo.InvariantCulture), (byte)bits.ToString().Length).ToString() : Draft;
                 if (InputKind == "datetime" && Draft.Contains('T') && DateTime.TryParse(Draft, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date))
                 {
                     text = new GXDateTime(date).ToFormatMeterString(CultureInfo.InvariantCulture);
@@ -533,7 +557,7 @@ public partial class GXAttributeField : IDisposable
                     text = GXDLMSTranslator.ToHex(System.Text.Encoding.UTF8.GetBytes(Draft));
                 }
 
-                if (Format?.StartsWith('X') == true)
+                if (ValueItems is not { Count: > 0 } && Format?.StartsWith('X') == true)
                 {
                     text = ulong.Parse(Draft, NumberStyles.HexNumber, CultureInfo.InvariantCulture).ToString(CultureInfo.InvariantCulture);
                 }

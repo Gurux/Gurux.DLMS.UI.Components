@@ -50,7 +50,18 @@
                 {
                     var attributeIndex = index;
                     <tr><td><GXInputSwitch TValue="bool" Inline="true" Save="false" Value="@SelectedAttributes.Contains(index)" Disabled="@(!CanRead(index))" ValueChanged="value => SelectAttributeAsync(attributeIndex, value)" aria-label="@(string.Format(System.Globalization.CultureInfo.CurrentCulture, Properties.Resources.Read0, AttributeName(index)))" /></td>
-                        <td>@index</td><td>@AttributeName(index)</td><td>@AttributeValue(index)</td><td>@AttributeAccess(index)</td></tr>
+                        <td>@index</td><td>@AttributeName(index)</td>
+                        <td>
+                            @if (Target.Attributes.Find(index)?.Values is { Count: > 0 })
+                            {
+                                <GXAttributeField Edit="@GXDLMSObjectEditState.For(Target)" Index="@index" Label="@AttributeName(index)" Enabled="false" />
+                            }
+                            else
+                            {
+                                @AttributeValue(index)
+                            }
+                        </td>
+                        <td>@AttributeAccess(index)</td></tr>
                 }
                 </tbody></table>
             </div>

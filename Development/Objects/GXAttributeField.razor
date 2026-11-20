@@ -55,7 +55,7 @@
         else if (IsSimple)
         {
             <div class="gx-inline-value">
-                <GXDraftInput Id="@(_id + "-display")" Label="@Label" Value="@InlineValue" ValueChanged="ChangeInlineAsync" EnumType="EnumType" InputKind="@Kind" Disabled="@(!CanEditNow)" />
+                <GXDraftInput Id="@(_id + "-display")" Label="@Label" Value="@InlineValue" ValueChanged="ChangeInlineAsync" ValueItems="ValueItems" DisplayFormats="@DisplayFormats" ShowFormatSelector="@ShowFormatSelector" WireType="@Edit.Target.GetDataType(Index)" EnumType="EnumType" InputKind="@Kind" Disabled="@(!CanEditNow)" />
                 @if (Error is not null) { <p role="alert">@Error</p> }
             </div>
         }
@@ -80,7 +80,7 @@
             else
             {
                 <div class="gx-dialog-field"><GXLabel for="@(_id + "-draft")">@Label</GXLabel>
-                    <GXDraftInput Id="@(_id + "-draft")" Label="@Label" @bind-Value="Draft" EnumType="EnumType" InputKind="@Kind" Disabled="@(!Enabled)" />
+                    <GXDraftInput Id="@(_id + "-draft")" Label="@Label" @bind-Value="Draft" ValueItems="ValueItems" DisplayFormats="@DisplayFormats" ShowFormatSelector="@ShowFormatSelector" WireType="@Edit.Target.GetDataType(Index)" EnumType="EnumType" InputKind="@Kind" Disabled="@(!CanEditNow)" />
                 </div>
             }
         </ChildContent>
