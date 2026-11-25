@@ -3402,4 +3402,10 @@
   <data name="CaptureObjectAttributeAndData" xml:space="preserve">
     <value>{0} / attribute {1} / data {2}</value>
   </data>
+  <data name="ResetProfileClearsBuffer" xml:space="preserve">
+    <value>Reset will clear the profile buffer. Do you want to continue?</value>
+  </data>
+  <data name="ResetRegisterInitializesValue" xml:space="preserve">
+    <value>Reset will initialize the register value. Do you want to continue?</value>
+  </data>
 </root>

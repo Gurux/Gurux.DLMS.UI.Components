@@ -40,6 +40,7 @@
 @using Gurux.DLMS.Enums
 @using Gurux.DLMS.Objects.Enums
 @inherits GXDLMSObjectViewBase<GXDLMSProfileGeneric>
+@inject IServiceProvider Services
 
 <section @key="Target" class="gx-object-view">
     <GXObjectViewHeader Title="@Properties.Resources.ProfileGeneric" Target="Target" Edit="Edit" Error="@ActionError" />
@@ -50,15 +51,21 @@
         <GXAttributeField Edit="Edit" Index="5" Label="@Properties.Resources.Mode" Enabled="CanEditAttribute(5)" EnumType="typeof(SortMethod)" />
         <GXAttributeField Edit="Edit" Index="6" EditorLabels="@(new[] { Properties.Resources.ObjectType, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" Label="@Properties.Resources.Object" Enabled="CanEditAttribute(6)" />
     </fieldset>
-    <fieldset><legend>@Properties.Resources.Reading</legend>
-        <GXValueField Label="@Properties.Resources.Read" Value="@ReadingMode" Enabled="CanRead" EnumType="typeof(GXProfileReadMode)" OnCommit="value => ReadingMode = value" />
-        <GXValueField Label="@Properties.Resources.ReadLastDays" Value="@LastDays" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => LastDays = value" />
-        <GXValueField Label="@Properties.Resources.ReadFrom" Value="@From" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => From = value" />
-        <GXValueField Label="@Properties.Resources.To" Value="@To" Enabled="CanRead" InputKind="datetime" Validate="ValidateDate" OnCommit="value => To = value" />
-        <GXValueField Label="@Properties.Resources.ReadEntry" Value="@EntryStart" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryStart = value" />
-        <GXValueField Label="@Properties.Resources.Count" Value="@EntryCount" Enabled="CanRead" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryCount = value" />
-        <GXButton type="button" Disabled="@(!CanRead)" OnClick="ReadAsync">@Properties.Resources.Read</GXButton>
-    </fieldset>
+    @if (RangeOnly)
+    {
+        <GXProfileReadingRange Start="RangeStart" StartChanged="ChangeRangeStartAsync" End="RangeEnd" EndChanged="ChangeRangeEndAsync" Disabled="@_reading" />
+    }
+    else
+    {
+        <fieldset><legend>@Properties.Resources.Reading</legend>
+            <GXValueField Label="@Properties.Resources.Read" Value="@ReadingMode" Enabled="@(!ReadOnly && !_reading)" EnumType="typeof(GXProfileReadMode)" OnCommit="value => ReadingMode = value" />
+            <GXValueField Label="@Properties.Resources.ReadLastDays" Value="@LastDays" Enabled="@(!ReadOnly && !_reading && ReadingMode == nameof(GXProfileReadMode.LastDays))" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => LastDays = value" />
+            <GXValueField Label="@Properties.Resources.ReadFrom" Value="@From" Enabled="@(!ReadOnly && !_reading && ReadingMode == nameof(GXProfileReadMode.Range))" InputKind="datetime" Validate="ValidateDate" OnCommit="value => From = value" />
+            <GXValueField Label="@Properties.Resources.To" Value="@To" Enabled="@(!ReadOnly && !_reading && ReadingMode == nameof(GXProfileReadMode.Range))" InputKind="datetime" Validate="ValidateDate" OnCommit="value => To = value" />
+            <GXValueField Label="@Properties.Resources.ReadEntry" Value="@EntryStart" Enabled="@(!ReadOnly && !_reading && ReadingMode == nameof(GXProfileReadMode.Entry))" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryStart = value" />
+            <GXValueField Label="@Properties.Resources.Count" Value="@EntryCount" Enabled="@(!ReadOnly && !_reading && ReadingMode == nameof(GXProfileReadMode.Entry))" InputKind="number" Validate="ValidateUnsigned" OnCommit="value => EntryCount = value" />
+        </fieldset>
+    }
     <GXTabControl NavigateOnSelection="false">
     <GXTabPage Text="@Properties.Resources.Data">
     <div class="gx-profile-scroll">
@@ -73,20 +80,45 @@
         </HeaderContent>
         <ItemContent Context="row">@foreach (var cell in row) { <GXTd>@cell</GXTd> }</ItemContent>
     </GXTable></div>
-    <GXAttributeField Edit="Edit" Index="2" Label="@Properties.Resources.Buffer" Enabled="CanEditAttribute(2)" Columns="@CaptureObjects().Select(c => CaptureLabel(c.Key, c.Value.AttributeIndex)).ToArray()" />
-    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.AddWhiteList</GXButton>
-    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.AddBlackList</GXButton>
-    <GXButton type="button" Disabled="true" title="@Properties.Resources.ThisActionIsNotAvailable">@Properties.Resources.Remove2</GXButton>
     </GXTabPage>
     <GXTabPage Text="@Properties.Resources.CaptureObjects">
-        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CaptureObjects" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.ObjectType2, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" />
+        <GXAttributeField Edit="Edit" Index="3" Label="@Properties.Resources.CaptureObjects" Enabled="CanEditAttribute(3)" Columns="@(new[] { Properties.Resources.ObjectType2, Properties.Resources.LogicalName, Properties.Resources.AttributeIndex, Properties.Resources.DataIndex })" EditorKinds="@(new[] { "number", "logicalname", "number", "number" })" CreateRow="@(() => new GXStructure { (ushort)1, new byte[6], (sbyte)2, (ushort)0 })" />
     </GXTabPage>
     </GXTabControl>
-    <GXButton type="button" Disabled="@(!CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
+    <GXButton type="button" Disabled="@(_confirmingReset || !CanInvokeMethod(1))" OnClick="ResetAsync">@Properties.Resources.Reset</GXButton>
     <GXButton type="button" Disabled="@(!CanInvokeMethod(2))" OnClick="CaptureAsync">@Properties.Resources.Capture</GXButton>
 </section>
 
 @code {
+    /// <summary>Gets or sets whether reading is restricted to the bound From-To interval; other read modes remain available by default. Query boundaries remain editable when object editing is read-only.</summary>
+    [Parameter] public bool RangeOnly { get; set; }
+    /// <summary>Gets or sets the local range start used in range-only mode; null represents a cleared input.</summary>
+    [Parameter] public DateTime? RangeStart { get; set; } = DateTime.Today;
+    /// <summary>Gets or sets the callback notified when the range-only start changes.</summary>
+    [Parameter] public EventCallback<DateTime?> RangeStartChanged { get; set; }
+    /// <summary>Gets or sets the local range end used in range-only mode; null represents a cleared input.</summary>
+    [Parameter] public DateTime? RangeEnd { get; set; } = DateTime.Today.AddDays(1);
+    /// <summary>Gets or sets the callback notified when the range-only end changes.</summary>
+    [Parameter] public EventCallback<DateTime?> RangeEndChanged { get; set; }
+
+    /// <summary>Stages the local start and notifies the host without substituting a value for a cleared input.</summary>
+    /// <param name="value">The local interval start, or null when cleared.</param>
+    /// <returns>The completion of the host notification.</returns>
+    private async Task ChangeRangeStartAsync(DateTime? value)
+    {
+        RangeStart = value;
+        await RangeStartChanged.InvokeAsync(value);
+    }
+
+    /// <summary>Stages the local end and notifies the host without substituting a value for a cleared input.</summary>
+    /// <param name="value">The local interval end, or null when cleared.</param>
+    /// <returns>The completion of the host notification.</returns>
+    private async Task ChangeRangeEndAsync(DateTime? value)
+    {
+        RangeEnd = value;
+        await RangeEndChanged.InvokeAsync(value);
+    }
+
     /// <summary>Enumerates the profile&apos;s pending or confirmed capture-object descriptors.</summary>
     /// <returns>Enumerates the profile&apos;s pending or confirmed capture-object descriptors.</returns>
     private IEnumerable<GXKeyValuePair<GXDLMSObject, GXDLMSCaptureObject>> CaptureObjects()
@@ -113,7 +145,38 @@
     /// Requests execution of the target object's reset method.
     /// </summary>
     /// <returns>A task representing completion of the operation.</returns>
-    public Task ResetAsync() => InvokeMethodAsync(1, client => Target.Reset(client));
+    public async Task ResetAsync()
+    {
+        if (_confirmingReset || !CanInvokeMethod(1))
+        {
+            return;
+        }
+        var target = Target;
+        _confirmingReset = true;
+        try
+        {
+            if (Services.GetService(typeof(IGXConfirmation)) is IGXConfirmation confirmation
+                && !await confirmation.ConfirmAsync(Properties.Resources.Reset, Properties.Resources.ResetProfileClearsBuffer))
+            {
+                return;
+            }
+            if (!ReferenceEquals(Target, target) || !CanInvokeMethod(1))
+            {
+                return;
+            }
+            await InvokeMethodAsync(1, client => target.Reset(client));
+        }
+        catch (Exception ex) when (ex is not OutOfMemoryException)
+        {
+            if (!IsDisposed && ReferenceEquals(Target, target))
+            {
+                ActionError = ex.Message;
+            }
+        }
+        finally { _confirmingReset = false; }
+    }
+    /// <summary>Prevents overlapping reset confirmations and requests.</summary>
+    private bool _confirmingReset;
     /// <summary>
     /// Requests capture of the target object's current values.
     /// </summary>
@@ -130,27 +193,27 @@
     /// <summary>
     /// Profile read mode selected by the user.
     /// </summary>
-    public string ReadingMode { get; set; } = nameof(GXProfileReadMode.All);
+    public string ReadingMode { get => RangeOnly ? nameof(GXProfileReadMode.Range) : Edit.GetEditorText("Profile.ReadMode") ?? nameof(GXProfileReadMode.All); set => Edit.SetEditorText("Profile.ReadMode", Enum.Parse<GXProfileReadMode>(value).ToString()); }
     /// <summary>
     /// Number of recent days entered for a relative profile read.
     /// </summary>
-    public string LastDays { get; set; } = "1";
+    public string LastDays { get => Edit.GetEditorText("Profile.LastDays") ?? "1"; set => Edit.SetEditorText("Profile.LastDays", value); }
     /// <summary>
     /// Start timestamp entered for a profile range read.
     /// </summary>
-    public string From { get; set; } = DateTime.Today.ToString("s", CultureInfo.InvariantCulture);
+    public string From { get => Edit.GetEditorText("Profile.From") ?? DateTime.Today.ToString("s", CultureInfo.InvariantCulture); set => Edit.SetEditorText("Profile.From", value); }
     /// <summary>
     /// End timestamp entered for a profile range read.
     /// </summary>
-    public string To { get; set; } = DateTime.Today.AddDays(1).ToString("s", CultureInfo.InvariantCulture);
+    public string To { get => Edit.GetEditorText("Profile.To") ?? DateTime.Today.AddDays(1).ToString("s", CultureInfo.InvariantCulture); set => Edit.SetEditorText("Profile.To", value); }
     /// <summary>
     /// First entry index entered for a profile entry read.
     /// </summary>
-    public string EntryStart { get; set; } = "1";
+    public string EntryStart { get => Edit.GetEditorText("Profile.EntryStart") ?? "1"; set => Edit.SetEditorText("Profile.EntryStart", value); }
     /// <summary>
     /// Number of profile entries requested; zero requests the remaining entries.
     /// </summary>
-    public string EntryCount { get; set; } = "0";
+    public string EntryCount { get => Edit.GetEditorText("Profile.EntryCount") ?? "0"; set => Edit.SetEditorText("Profile.EntryCount", value); }
     /// <summary>Prevents overlapping read requests while a host callback is running.</summary>
     private bool _reading;
     /// <summary>Gets whether the current state permits a host-managed profile read.</summary>
@@ -171,6 +234,32 @@
         var rows = Edit.AttributeRows(2).ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));
     }
+    /// <summary>Validates the active selection and builds a request for the host's Read command.</summary>
+    /// <returns>The profile read request using the selected mode and local interval.</returns>
+    /// <exception cref="FormatException">The mode or required range boundaries are invalid.</exception>
+    public GXProfileReadRequest CreateReadRequest()
+    {
+        var mode = Enum.Parse<GXProfileReadMode>(ReadingMode);
+        if (!Enum.IsDefined(mode))
+        {
+            throw new FormatException(Properties.Resources.ChooseAReadingMode);
+        }
+        if (RangeOnly && (RangeStart == null || RangeEnd == null))
+        {
+            throw new FormatException(Properties.Resources.EnterAValidDateAndTime);
+        }
+        var start = mode == GXProfileReadMode.Range ? RangeOnly ? RangeStart!.Value : DateTime.Parse(From, CultureInfo.InvariantCulture) : default;
+        var end = mode == GXProfileReadMode.Range ? RangeOnly ? RangeEnd!.Value : DateTime.Parse(To, CultureInfo.InvariantCulture) : default;
+        if (mode == GXProfileReadMode.Range && (start > end || (RangeOnly && start == end)))
+        {
+            throw new FormatException(Properties.Resources.ReadFromMustNotFollowTo);
+        }
+        return new GXProfileReadRequest(Target, mode,
+            mode == GXProfileReadMode.LastDays ? uint.Parse(LastDays, CultureInfo.InvariantCulture) : 0,
+            start, end,
+            mode == GXProfileReadMode.Entry ? uint.Parse(EntryStart, CultureInfo.InvariantCulture) : 0,
+            mode == GXProfileReadMode.Entry ? uint.Parse(EntryCount, CultureInfo.InvariantCulture) : 0);
+    }
     /// <summary>
     /// Validates the profile selection and emits a profile read request.
     /// </summary>
@@ -186,18 +275,7 @@
         try
         {
             ActionError = null;
-            var mode = Enum.Parse<GXProfileReadMode>(ReadingMode);
-            if (!Enum.IsDefined(mode))
-            {
-                throw new FormatException(Properties.Resources.ChooseAReadingMode);
-            }
-            var start = DateTime.Parse(From, CultureInfo.InvariantCulture);
-            var end = DateTime.Parse(To, CultureInfo.InvariantCulture);
-            if (mode == GXProfileReadMode.Range && start > end)
-            {
-                throw new FormatException(Properties.Resources.ReadFromMustNotFollowTo);
-            }
-            await OnReadRequested.InvokeAsync(new GXProfileReadRequest(target, mode, uint.Parse(LastDays, CultureInfo.InvariantCulture), start, end, uint.Parse(EntryStart, CultureInfo.InvariantCulture), uint.Parse(EntryCount, CultureInfo.InvariantCulture)));
+            await OnReadRequested.InvokeAsync(CreateReadRequest());
         }
         catch (Exception ex) when (ex is not OutOfMemoryException) { if (!IsDisposed && ReferenceEquals(Target, target)) { ActionError = ex.Message; } }
         finally { _reading = false; }

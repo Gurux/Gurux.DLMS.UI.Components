@@ -29,7 +29,7 @@
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Gurux.DLMS" Version="9.0.2609.2201" />
-        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.2001" />
+        <PackageReference Include="Gurux.UI.Components" Version="4.0.2611.2402" />
     </ItemGroup>
     <ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
         <PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="10.0.15" />

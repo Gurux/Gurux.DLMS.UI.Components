@@ -3394,4 +3394,10 @@
   <data name="CaptureObjectAttributeAndData" xml:space="preserve">
     <value>{0} / attribuutti {1} / tieto {2}</value>
   </data>
+  <data name="ResetProfileClearsBuffer" xml:space="preserve">
+    <value>Reset tyhjentää profiilin puskurin. Haluatko jatkaa?</value>
+  </data>
+  <data name="ResetRegisterInitializesValue" xml:space="preserve">
+    <value>Reset alustaa rekisterin arvon. Haluatko jatkaa?</value>
+  </data>
 </root>

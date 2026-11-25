@@ -34,10 +34,17 @@
 
 @if (_viewType is not null)
 {
-    <CascadingValue Value="_access"><section class="gx-object-host"><DynamicComponent @key="Target" Type="_viewType" Parameters="_parameters" /></section></CascadingValue>
+    <CascadingValue Value="_access"><section class="gx-object-host"><DynamicComponent @key="Target" @ref="_view" Type="_viewType" Parameters="_parameters" /></section></CascadingValue>
 }
 
 @code {
+    /// <summary>References the currently rendered specialized object editor.</summary>
+    private DynamicComponent? _view;
+    /// <summary>Builds the displayed profile's buffer selection for a host-managed read.</summary>
+    /// <returns>The profile request, or null when the current editor is not the displayed profile.</returns>
+    public GXProfileReadRequest? CreateProfileReadRequest()
+        => _view?.Instance is GXProfileGenericView profile && ReferenceEquals(profile.Target, Target)
+            ? profile.CreateReadRequest() : null;
     /// <summary>
     /// DLMS object whose values or help are displayed.
     /// </summary>
@@ -114,6 +121,16 @@
     {
         get; set;
     }
+    /// <summary>Gets or sets whether profile reading shows only bound From-To inputs.</summary>
+    [Parameter] public bool ProfileRangeOnly { get; set; }
+    /// <summary>Gets or sets the local profile range start; null represents a cleared input.</summary>
+    [Parameter] public DateTime? ProfileRangeStart { get; set; } = DateTime.Today;
+    /// <summary>Gets or sets the callback receiving changes to the local profile range start.</summary>
+    [Parameter] public EventCallback<DateTime?> ProfileRangeStartChanged { get; set; }
+    /// <summary>Gets or sets the local profile range end; null represents a cleared input.</summary>
+    [Parameter] public DateTime? ProfileRangeEnd { get; set; } = DateTime.Today.AddDays(1);
+    /// <summary>Gets or sets the callback receiving changes to the local profile range end.</summary>
+    [Parameter] public EventCallback<DateTime?> ProfileRangeEndChanged { get; set; }
     /// <summary>Stores the resolved component type for the current COSEM object.</summary>
     private Type? _viewType;
     /// <summary>Stores the editor access policy associated with the current target.</summary>
@@ -143,6 +160,11 @@
         if (_viewType == typeof(GXProfileGenericView))
         {
             _parameters["OnReadRequested"] = OnProfileReadRequested;
+            _parameters[nameof(GXProfileGenericView.RangeOnly)] = ProfileRangeOnly;
+            _parameters[nameof(GXProfileGenericView.RangeStart)] = ProfileRangeStart!;
+            _parameters[nameof(GXProfileGenericView.RangeStartChanged)] = ProfileRangeStartChanged;
+            _parameters[nameof(GXProfileGenericView.RangeEnd)] = ProfileRangeEnd!;
+            _parameters[nameof(GXProfileGenericView.RangeEndChanged)] = ProfileRangeEndChanged;
         }
         if (_viewType == typeof(GXDLMSUnixTimeView))
         {

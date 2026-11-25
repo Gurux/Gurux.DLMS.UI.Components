@@ -10226,6 +10226,22 @@ namespace Gurux.DLMS.UI.Components.Properties {
         }
         
         /// <summary>
+        ///   Looks up the profile reset buffer-clearing confirmation.
+        /// </summary>
+        internal static string ResetProfileClearsBuffer {
+            get {
+                return ResourceManager.GetString("ResetProfileClearsBuffer", resourceCulture);
+            }
+        }
+
+        /// <summary>Looks up the register reset value-initialization confirmation.</summary>
+        internal static string ResetRegisterInitializesValue {
+            get {
+                return ResourceManager.GetString("ResetRegisterInitializesValue", resourceCulture);
+            }
+        }
+
+        /// <summary>
         ///   Looks up a localized string similar to XML root does not match the COSEM data type..
         /// </summary>
         internal static string XMLRootDoesNotMatchTheCOSEMDataType {

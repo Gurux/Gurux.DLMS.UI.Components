@@ -33,7 +33,9 @@
 @using Gurux.DLMS.Objects
 @using Gurux.DLMS.Enums
 @using Gurux.DLMS
+@using Gurux.UI.Components
 @inherits GXDLMSObjectViewBase<GXDLMSRegister>
+@inject IServiceProvider Services
 
 <section class="gx-object-view">
     @if (_resetError is not null) { <p role="alert">@_resetError</p> }
@@ -89,6 +91,15 @@
         var target = Target;
         try
         {
+            if (Services.GetService(typeof(IGXConfirmation)) is IGXConfirmation confirmation
+                && !await confirmation.ConfirmAsync(Properties.Resources.Reset, Properties.Resources.ResetRegisterInitializesValue))
+            {
+                return;
+            }
+            if (!ReferenceEquals(Target, target) || !ResetEnabled || !CanInvokeMethod(1))
+            {
+                return;
+            }
             await OnActionRequested.InvokeAsync(new GXDLMSActionRequest(target, 1, client => target.Reset(client)));
         }
         catch (Exception ex)
