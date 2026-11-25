@@ -231,7 +231,7 @@
     /// <returns>The current table rows together with their total count.</returns>
     private ValueTask<ItemsProviderResult<IReadOnlyList<string>>> GetBufferRows(GXItemsProviderRequest request)
     {
-        var rows = Edit.AttributeRows(2).ToArray();
+        var rows = GXProfileBufferFormatter.For(Target).GetRows().ToArray();
         return ValueTask.FromResult(new ItemsProviderResult<IReadOnlyList<string>>(rows, rows.Length));
     }
     /// <summary>Validates the active selection and builds a request for the host's Read command.</summary>
